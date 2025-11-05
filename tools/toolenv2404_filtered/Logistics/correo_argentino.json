@@ -1,0 +1,115 @@
+{
+    "product_id": "api_baa48b09-03e3-4e5f-ad9e-989740b77bde",
+    "tool_description": "Calcula gratis el costo de envio de correo argentino. Obtene las sucursales de correo argentino en todo el pais. ",
+    "home_url": "https://rapidapi.com/brunoaramburu/api/correo-argentino1/",
+    "name": "Correo Argentino",
+    "title": "Correo Argentino",
+    "pricing": "FREE",
+    "tool_name": "Correo Argentino",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 302,
+        "avgSuccessRate": 84,
+        "popularityScore": 8.9,
+        "__typename": "Score"
+    },
+    "host": "correo-argentino1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Calcular peso volumetrico GET",
+            "url": "https://correo-argentino1.p.rapidapi.com/calcularPesoVol",
+            "description": "Calculo de peso volumetrico.\n**(largo * ancho * alto) / 5000**\nComo parametros se deben enviar:\n- Largo en cm: **largo**\n- Ancho en cm: **ancho**\n- Alto en cm: **alto**",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "alto",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "15"
+                },
+                {
+                    "name": "largo",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "30"
+                },
+                {
+                    "name": "ancho",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://correo-argentino1.p.rapidapi.com/calcularPesoVol\"\nquerystring = {\"alto\": \"15\", \"largo\": \"30\", \"ancho\": \"20\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"correo-argentino1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://correo-argentino1.p.rapidapi.com/calcularPesoVol\"\nquerystring = {\"alto\": \"15\", \"largo\": \"30\", \"ancho\": \"20\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"correo-argentino1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Calcular costo de envio GET",
+            "url": "https://correo-argentino1.p.rapidapi.com/calcularPrecio",
+            "description": "Calculo de costo de envio de paqueteria con correo argentino.\nRetorna el costo de envio a sucursal y a domicilio.\nComo parametros se deben enviar:\n- Codigo postal de origen: **cpOrigen**\n- Codigo postal de destino: **cpDestino**\n- Codigo ISO 3166-2 de provincia de origen: **provinciaOrigen** \n- Codigo ISO 3166-2 de provincia de destino: **provinciaDestino**\n- Peso real o volumetrico (el que sea mayor): **peso**",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "provinciaOrigen",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "AR-B"
+                },
+                {
+                    "name": "peso",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "5"
+                },
+                {
+                    "name": "cpDestino",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2000"
+                },
+                {
+                    "name": "cpOrigen",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "1000"
+                },
+                {
+                    "name": "provinciaDestino",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "AR-S"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://correo-argentino1.p.rapidapi.com/calcularPrecio\"\nquerystring = {\"provinciaOrigen\": \"AR-B\", \"peso\": \"5\", \"cpDestino\": \"2000\", \"cpOrigen\": \"1000\", \"provinciaDestino\": \"AR-S\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"correo-argentino1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://correo-argentino1.p.rapidapi.com/calcularPrecio\"\nquerystring = {\"provinciaOrigen\": \"AR-B\", \"peso\": \"5\", \"cpDestino\": \"2000\", \"cpOrigen\": \"1000\", \"provinciaDestino\": \"AR-S\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"correo-argentino1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Obtener sucursales",
+            "url": "https://correo-argentino1.p.rapidapi.com/obtenerSucursales",
+            "description": "Obtener las sucursales de correo argentino en una determinada provincia\nComo parametro se debe enviar:\n- Codigo ISO 3166-2 de la provincia: **provincia**",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "provincia",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "AR-B"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://correo-argentino1.p.rapidapi.com/obtenerSucursales\"\nquerystring = {\"provincia\": \"AR-B\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"correo-argentino1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://correo-argentino1.p.rapidapi.com/obtenerSucursales\"\nquerystring = {\"provincia\": \"AR-B\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"correo-argentino1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

@@ -1,0 +1,140 @@
+{
+    "product_id": "api_fc7a355a-9de5-4bb2-985d-f94a7933cb9d",
+    "tool_description": "test",
+    "home_url": "https://rapidapi.com/my-comp-my-comp-default/api/bulk3/",
+    "name": "bulk",
+    "title": "bulk",
+    "pricing": "FREE",
+    "tool_name": "bulk",
+    "score": null,
+    "host": "bulk3.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Tracking ID API",
+            "url": "https://bulk3.p.rapidapi.com/status/tracking_id/{tracking id}",
+            "description": "API to check status of the transaction using tracking ID. For every request a Tracking ID numbers is generated",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "tracking id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://bulk3.p.rapidapi.com/status/tracking_id/{tracking id}\"\nquerystring = {\"tracking id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bulk3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bulk3.p.rapidapi.com/status/tracking_id/{tracking id}\"\nquerystring = {\"tracking id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bulk3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "tracking_id": {
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            "transaction_id": {
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            "status": {
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            "response_payload": {
+                                "type": "object",
+                                "properties": {
+                                    "year": {},
+                                    "minio_path": {
+                                        "type": "string",
+                                        "minLength": 1
+                                    },
+                                    "file_name": {
+                                        "type": "string",
+                                        "minLength": 1
+                                    }
+                                },
+                                "required": [
+                                    "minio_path",
+                                    "file_name"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "tracking_id",
+                            "transaction_id",
+                            "status",
+                            "response_payload"
+                        ]
+                    }
+                },
+                "required": [
+                    "status",
+                    "data"
+                ]
+            }
+        },
+        {
+            "name": "Download error API",
+            "url": "https://bulk3.p.rapidapi.com/errorfile",
+            "description": "API for downloading error file",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "doc_type",
+                    "type": "STRING",
+                    "description": "Doctype for which file has to be uploaded.",
+                    "default": "DGCER"
+                },
+                {
+                    "name": "upload_date",
+                    "type": "BINARY",
+                    "description": "The name of the csv file for which error file is requested.",
+                    "default": "ResultData_Sample_University_v5.zip"
+                },
+                {
+                    "name": "institution_type",
+                    "type": "STRING",
+                    "description": "Type of institution for which data has to be uploaded",
+                    "default": "University"
+                },
+                {
+                    "name": "year_of_exam",
+                    "type": "STRING",
+                    "description": "Year of exam for which file has to be uploaded.",
+                    "default": 2021
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://bulk3.p.rapidapi.com/errorfile\"\nquerystring = {\"doc_type\": \"DGCER\", \"upload_date\": \"ResultData_Sample_University_v5.zip\", \"institution_type\": \"University\", \"year_of_exam\": 2021}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bulk3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bulk3.p.rapidapi.com/errorfile\"\nquerystring = {\"doc_type\": \"DGCER\", \"upload_date\": \"ResultData_Sample_University_v5.zip\", \"institution_type\": \"University\", \"year_of_exam\": 2021}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bulk3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "trcking_id": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "transaction_id": {
+                        "type": "string",
+                        "minLength": 1
+                    }
+                }
+            }
+        }
+    ]
+}

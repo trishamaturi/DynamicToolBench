@@ -1,0 +1,482 @@
+{
+    "product_id": "api_e2d8961b-a34a-4e41-bfa9-6889ab1d0913",
+    "tool_description": "Effortlessly monitor the status and measure the carbon footprint of your Air Cargo shipments across a vast network of over 190 airlines with THE CO2 TRACK AND TRACE API.",
+    "home_url": "https://rapidapi.com/cargoai-cargoai-default/api/air-cargo-co2-track-and-trace/",
+    "name": "Air Cargo CO2 Track And Trace",
+    "title": "Air Cargo CO2 Track And Trace",
+    "pricing": "FREEMIUM",
+    "tool_name": "Air Cargo CO2 Track And Trace",
+    "score": {
+        "avgServiceLevel": 88,
+        "avgLatency": 7519,
+        "avgSuccessRate": 85,
+        "popularityScore": 9.5,
+        "__typename": "Score"
+    },
+    "host": "air-cargo-co2-track-and-trace.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "PULL (track - flight-uuid)",
+            "url": "https://air-cargo-co2-track-and-trace.p.rapidapi.com/track",
+            "description": "Easily access your booking details, Air Waybill (AWB), and booking creation status by making a request to our Tracking API with a valid flight-uuid.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "flight-uuid",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2129047a-d167-11ee-9435-322962e331c0"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://air-cargo-co2-track-and-trace.p.rapidapi.com/track\"\nquerystring = {\"flight-uuid\": \"2129047a-d167-11ee-9435-322962e331c0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"air-cargo-co2-track-and-trace.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://air-cargo-co2-track-and-trace.p.rapidapi.com/track\"\nquerystring = {\"flight-uuid\": \"2129047a-d167-11ee-9435-322962e331c0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"air-cargo-co2-track-and-trace.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "awb": {
+                            "type": "string",
+                            "description": "air waybill number"
+                        },
+                        "flightUUID": {
+                            "type": "string",
+                            "description": "flight unique identifier"
+                        },
+                        "providerId": {
+                            "type": "string",
+                            "description": "unique identifier in airline system"
+                        },
+                        "flight": {
+                            "type": "object",
+                            "properties": {
+                                "flightUID": {
+                                    "type": "string",
+                                    "description": "flight unique identifier"
+                                },
+                                "flightNumber": {
+                                    "type": "string",
+                                    "description": "flight number (ex: CAI162)"
+                                },
+                                "airlineCode": {
+                                    "type": "string",
+                                    "description": "operating carrier code"
+                                },
+                                "departureAirport": {
+                                    "type": "string",
+                                    "description": "origin airport code of the flight event"
+                                },
+                                "arrivalAirport": {
+                                    "type": "string",
+                                    "description": "destination airport code of the flight event"
+                                },
+                                "departureTime": {
+                                    "type": "string",
+                                    "description": "flight departure date and time"
+                                },
+                                "arrivalTime": {
+                                    "type": "string",
+                                    "description": "flight arrival date and time"
+                                },
+                                "latestAcceptanceTime": {
+                                    "type": "string",
+                                    "description": "shipment latest acceptance time at origin warehouse"
+                                },
+                                "timeOfAvailability": {
+                                    "type": "string",
+                                    "description": "shipment time of availability at destination warehouse"
+                                },
+                                "stops": {
+                                    "type": "string",
+                                    "description": "number of flight stops between first origin and last destination"
+                                },
+                                "legs": {
+                                    "type": "array",
+                                    "description": "flight segments breakdown",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "flightNumber": {
+                                                "type": "string",
+                                                "description": "flight number (ex: CAI162)"
+                                            },
+                                            "departureAirport": {
+                                                "type": "string",
+                                                "description": "origin airport code of the flight event"
+                                            },
+                                            "arrivalAirport": {
+                                                "type": "string",
+                                                "description": "destination airport code of the flight event"
+                                            },
+                                            "departureTime": {
+                                                "type": "string",
+                                                "description": "flight departure date and time"
+                                            },
+                                            "arrivalTime": {
+                                                "type": "string",
+                                                "description": "flight arrival date and time"
+                                            },
+                                            "bodyType": {
+                                                "type": "string",
+                                                "description": "aircraft body type"
+                                            },
+                                            "aircraftCode": {
+                                                "type": "string",
+                                                "description": "aircraft IATA code"
+                                            },
+                                            "detailedFlightNumber": {
+                                                "type": "object",
+                                                "description": "detailled information about flight number",
+                                                "properties": {
+                                                    "carrier": {
+                                                        "type": "string",
+                                                        "description": "operating carrier code"
+                                                    },
+                                                    "number": {
+                                                        "type": "string",
+                                                        "description": "flight number (ex: 162)"
+                                                    }
+                                                }
+                                            },
+                                            "co2": {
+                                                "type": "object",
+                                                "description": "carbon footprint details of flight segment",
+                                                "properties": {
+                                                    "value": {
+                                                        "type": "number",
+                                                        "description": "co2 value"
+                                                    },
+                                                    "estimation": {
+                                                        "type": "boolean",
+                                                        "description": "inform if the co2 value is estimated or real"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "features": {
+                                    "type": "object",
+                                    "description": "allowed booking features for this flight option",
+                                    "properties": {
+                                        "bookable": {
+                                            "type": "boolean",
+                                            "description": "is shipment bookable with this flight option"
+                                        },
+                                        "awbOptional": {
+                                            "type": "boolean",
+                                            "description": "is auto AWB allowed for this flight option"
+                                        }
+                                    }
+                                },
+                                "loading": {
+                                    "type": "boolean",
+                                    "description": "indicates if flight option is still pending for information from Schedules&Rate API"
+                                },
+                                "available": {
+                                    "type": "boolean",
+                                    "description": "indicates if flight is available for booking"
+                                },
+                                "availableReason": {
+                                    "type": "string",
+                                    "description": "explain why flight option is not bookable"
+                                },
+                                "source": {
+                                    "type": "string",
+                                    "description": "indicates flight source"
+                                },
+                                "awbPrefix": {
+                                    "type": "string",
+                                    "description": "provide the AWB prefix to force for booking (deprecated)"
+                                },
+                                "awbPrefixes": {
+                                    "type": "array",
+                                    "description": "indicates AWB prefixes list allowed for booking",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "airlineConditions": {
+                                    "type": "string",
+                                    "description": "provide additional information for flight option from airline"
+                                },
+                                "salesConditions": {
+                                    "type": "string",
+                                    "description": "indicates selling conditions of flight option"
+                                },
+                                "contacts": {
+                                    "type": "array",
+                                    "description": "provide airline contacts for shipment handling",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "handlingInfoLink": {
+                                    "type": "string",
+                                    "description": "redirection link to shipment handling terms&conditions"
+                                },
+                                "ghaName": {
+                                    "type": "string",
+                                    "description": "name of Global Handling Agent in charge of shipment handling at warehouse"
+                                },
+                                "hle": {
+                                    "type": "string",
+                                    "description": "warehouse shipment receiving/deliverying times"
+                                },
+                                "ghaAddress": {
+                                    "type": "string",
+                                    "description": "warehouse address of Global Handling Agent"
+                                },
+                                "rates": {
+                                    "type": "array",
+                                    "description": "bookable rates for flight option",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string",
+                                                "description": "rate unique identifier"
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "description": "rate marketing name"
+                                            },
+                                            "type": {
+                                                "type": "string",
+                                                "description": "rate type (live, market, negociated, estimated)"
+                                            },
+                                            "currency": {
+                                                "type": "string",
+                                                "description": "rate currency (ex: EUR, USD, SGD...)"
+                                            },
+                                            "netRate": {
+                                                "type": "number",
+                                                "description": "rate per kg without charges"
+                                            },
+                                            "allInRate": {
+                                                "type": "number",
+                                                "description": "rate per kg with all charges included (except OCDC)"
+                                            },
+                                            "total": {
+                                                "type": "number",
+                                                "description": "total all in for whole shipment"
+                                            },
+                                            "minimumRate": {
+                                                "type": "boolean",
+                                                "description": "indicates if the all in rate is the minimum rate applied"
+                                            },
+                                            "charges": {
+                                                "type": "array",
+                                                "description": "applicable charges for selected rate",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "label": {
+                                                            "type": "string",
+                                                            "description": "charge label to display"
+                                                        },
+                                                        "rate": {
+                                                            "type": "number",
+                                                            "description": "charge rate based on type"
+                                                        },
+                                                        "type": {
+                                                            "type": "string",
+                                                            "description": "charge type to calculate charge amount with rate (shippment, actual_weight, chargable_weight, pieces)"
+                                                        },
+                                                        "code": {
+                                                            "type": "string",
+                                                            "description": "charge code identifier"
+                                                        },
+                                                        "minAmount": {
+                                                            "type": "number",
+                                                            "description": "charge min amount"
+                                                        },
+                                                        "maxAmount": {
+                                                            "type": "number",
+                                                            "description": "charge max amount"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "ocdc": {
+                                                "type": "array",
+                                                "description": "other charges due carrier",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "label": {
+                                                            "type": "string",
+                                                            "description": "charge label to display"
+                                                        },
+                                                        "rate": {
+                                                            "type": "string",
+                                                            "description": "charge rate based on type"
+                                                        },
+                                                        "type": {
+                                                            "type": "string",
+                                                            "description": "charge type to calculate charge amount with rate (shippment, actual_weight, chargable_weight, pieces)"
+                                                        },
+                                                        "code": {
+                                                            "type": "string",
+                                                            "description": "charge code identifier"
+                                                        },
+                                                        "minAmount": {
+                                                            "type": "number",
+                                                            "description": "charge min amount"
+                                                        },
+                                                        "maxAmount": {
+                                                            "type": "number",
+                                                            "description": "charge max amount"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "shipment": {
+                                    "type": "object",
+                                    "properties": {
+                                        "product": {
+                                            "type": "string",
+                                            "description": "shipment commodity name (ex: GCR, PER...)"
+                                        },
+                                        "weight": {
+                                            "type": "number",
+                                            "description": "shipment total gross weight"
+                                        },
+                                        "pieces": {
+                                            "type": "interger",
+                                            "description": "shipment total pieces"
+                                        },
+                                        "chargeableWeight": {
+                                            "type": "number",
+                                            "description": "shipment total chargable weight"
+                                        },
+                                        "specialHandlingCodes": {
+                                            "type": "array",
+                                            "description": "shipment's list of special handling codes",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "measurementUnit": {
+                                            "type": "string",
+                                            "description": "shipment measurement unit (METRIC, IMPERIAL)"
+                                        },
+                                        "volume": {
+                                            "type": "number",
+                                            "description": "shipment total volume"
+                                        },
+                                        "dimensions": {
+                                            "type": "array",
+                                            "description": "shipment piece group dimensions",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "length": {
+                                                        "type": "number",
+                                                        "description": "piece group length"
+                                                    },
+                                                    "width": {
+                                                        "type": "number",
+                                                        "description": "piece group width"
+                                                    },
+                                                    "height": {
+                                                        "type": "number",
+                                                        "description": "piece groupe height"
+                                                    },
+                                                    "pieces": {
+                                                        "type": "integer",
+                                                        "description": "piece group number of pieces"
+                                                    },
+                                                    "weight": {
+                                                        "type": "number",
+                                                        "description": "piece group weight"
+                                                    },
+                                                    "volume": {
+                                                        "type": "number",
+                                                        "description": "piece group volume"
+                                                    },
+                                                    "stackable": {
+                                                        "type": "boolean",
+                                                        "description": "is piece group stackable"
+                                                    },
+                                                    "tiltable": {
+                                                        "type": "boolean",
+                                                        "description": "is piece group tiltable"
+                                                    },
+                                                    "toploadable": {
+                                                        "type": "boolean",
+                                                        "description": "is piece group top loadable"
+                                                    },
+                                                    "weightPerPiece": {
+                                                        "type": "string",
+                                                        "description": "weight per piece of the piece group"
+                                                    },
+                                                    "weightType": {
+                                                        "type": "string",
+                                                        "description": "indicates the weight type of the piece group weigh (PER_ITEM, TOTAL)"
+                                                    },
+                                                    "loadType": {
+                                                        "type": "string",
+                                                        "description": "piece group load type (DIMENSIONS, TOTAL, BUP)"
+                                                    },
+                                                    "uldType": {
+                                                        "type": "string",
+                                                        "description": "only with loadType BUP, indicates ULD type (AKE, LDP, MDP)"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "bookingResponse": {
+                                    "type": "object",
+                                    "description": "provide booking creation attempt results (when airline API process time >20s)",
+                                    "properties": {
+                                        "bookingStatus": {
+                                            "type": "string",
+                                            "description": "booking actual status (PENDING_AIRLINE_INFORMATION, PENDING_DELIVERY)"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "description": "provide error message when booking failed"
+                                        },
+                                        "rejectedReason": {
+                                            "type": "string",
+                                            "description": "provide rejection reason when booking is rejected by airline's API"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "PULL (track - AWB)",
+            "url": "https://air-cargo-co2-track-and-trace.p.rapidapi.com/track",
+            "description": "Retrieve real-time tracking information for your shipment by supplying a valid Air Waybill (AWB) to our API endpoint. On average, responses are delivered within 10 seconds. While the information retrieval process from the airline system typically takes between 1 second and 5 minutes, our API enforces a 30-second response time, occasionally leading to timeout errors.\n\nTo mitigate this, implement a retry logic in your system, attempting the request again 10 minutes after encountering a timeout. Alternatively, opt for the subscription 'PUSH (subscribe)' method to receive automatic updates without encountering timeout-related challenges.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "awb",
+                    "type": "STRING",
+                    "description": "provide valid AWB number",
+                    "default": "000-99999970"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://air-cargo-co2-track-and-trace.p.rapidapi.com/track\"\nquerystring = {\"awb\": \"000-99999970\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"air-cargo-co2-track-and-trace.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://air-cargo-co2-track-and-trace.p.rapidapi.com/track\"\nquerystring = {\"awb\": \"000-99999970\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"air-cargo-co2-track-and-trace.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

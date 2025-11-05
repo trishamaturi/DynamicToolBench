@@ -1,0 +1,98 @@
+{
+    "product_id": "api_a986429e-92be-4c32-a305-e0ec7ce7d2c4",
+    "tool_description": "Provides cheapest electricity hours (considering electricity and transport) in NordPool Baltics area. Can use this to schedule your time-shiftable energy consumption like floor heating and water boilers or electric car charging. ",
+    "home_url": "https://rapidapi.com/turvas/api/energy-optimizer/",
+    "name": "energy Optimizer",
+    "title": "energy Optimizer",
+    "pricing": "FREEMIUM",
+    "tool_name": "energy Optimizer",
+    "score": null,
+    "host": "energy-optimizer.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get hours_available",
+            "url": "https://energy-optimizer.p.rapidapi.com/ee/hours_available/{count}",
+            "description": "**Returns** : json of chepaest hours info, for future time interval\nParameters: \n**country** - one of supported 2-letter formats\n**count** - number of hours to return\n**start_time** - ISO formatted with time offset, like 2022-11-28T18:00:00+02:00, default next hour\n**end_time** - ISO formatted with time offset, like 2022-11-28T18:00:00+02:00, default end of available prices",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "count",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "ee"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "start_time",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "end_time",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://energy-optimizer.p.rapidapi.com/ee/hours_available/{count}\"\nquerystring = {\"count\": \"\", \"start_time\": \"\", \"end_time\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"energy-optimizer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://energy-optimizer.p.rapidapi.com/{country}/hours_available/{count}\"\nquerystring = {\"count\": \"\", \"start_time\": \"\", \"end_time\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"energy-optimizer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Get hours",
+            "url": "https://energy-optimizer.p.rapidapi.com/ee/hours/{count}",
+            "description": "**Returns** : json of chepaest hours, for full periods (past time included), depending period parameter\nParameters:\n**country** - one of supported 2-letter formats\n**count** - number of hours to return\n**period** - may be one of 0 - today (default), 1 - tomorrow, 2 - today and tomorrow",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "count",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "ee"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "period",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 0
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://energy-optimizer.p.rapidapi.com/ee/hours/{count}\"\nquerystring = {\"period\": 0, \"count\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"energy-optimizer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://energy-optimizer.p.rapidapi.com/{country}/hours/{count}\"\nquerystring = {\"period\": 0, \"count\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"energy-optimizer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "About",
+            "url": "https://energy-optimizer.p.rapidapi.com/",
+            "description": "Return version and data last updated info",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://energy-optimizer.p.rapidapi.com/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"energy-optimizer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://energy-optimizer.p.rapidapi.com/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"energy-optimizer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

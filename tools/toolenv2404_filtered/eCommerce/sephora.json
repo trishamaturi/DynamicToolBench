@@ -1,0 +1,266 @@
+{
+    "product_id": "api_a2663321-e197-4dac-a91e-345e16dfa2e4",
+    "tool_description": "Access Sephora's public data with our Scraper API for comprehensive information retrieval such as Search Results, Product Details and more.",
+    "home_url": "https://rapidapi.com/Octapi/api/sephora14/",
+    "name": "Sephora",
+    "title": "Sephora",
+    "pricing": "FREEMIUM",
+    "tool_name": "Sephora",
+    "score": {
+        "avgServiceLevel": 94,
+        "avgLatency": 444,
+        "avgSuccessRate": 94,
+        "popularityScore": 8.7,
+        "__typename": "Score"
+    },
+    "host": "sephora14.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Search By Brand",
+            "url": "https://sephora14.p.rapidapi.com/searchByBrand",
+            "description": "Get Search Results By Brand",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "brandID",
+                    "type": "STRING",
+                    "description": "Can be accessed through the **Brands** endpoint.",
+                    "default": ""
+                },
+                {
+                    "name": "sortBy",
+                    "type": "STRING",
+                    "description": "**Options**: BEST_SELLING, TOP_RATED. PRICE_LOW_TO_HIGH. PRICE_HIGH_TO_LOW. NEW",
+                    "default": "NEW"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "minPrice",
+                    "type": "NUMBER",
+                    "description": "Minimum Price",
+                    "default": ""
+                },
+                {
+                    "name": "minRating",
+                    "type": "NUMBER",
+                    "description": "Minimum Rating (1<)",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Page Number",
+                    "default": "1"
+                },
+                {
+                    "name": "maxPrice",
+                    "type": "NUMBER",
+                    "description": "Maximum Price",
+                    "default": ""
+                },
+                {
+                    "name": "filters",
+                    "type": "STRING",
+                    "description": "Accessible from the JSON response under **filters** property.\nFormat: filterKey=filterValue||filterKey=filterValue||filterKey=filterValue...\nfilterKey can be the same, for example: Brand=Gucci||Brand=Givenchy",
+                    "default": ""
+                },
+                {
+                    "name": "maxRating",
+                    "type": "NUMBER",
+                    "description": "Maximum Rating (5>)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sephora14.p.rapidapi.com/searchByBrand\"\nquerystring = {\"brandID\": \"\", \"minPrice\": \"\", \"minRating\": \"\", \"page\": \"1\", \"maxPrice\": \"\", \"sortBy\": \"NEW\", \"filters\": \"\", \"maxRating\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sephora14.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sephora14.p.rapidapi.com/searchByBrand\"\nquerystring = {\"brandID\": \"\", \"minPrice\": \"\", \"minRating\": \"\", \"page\": \"1\", \"maxPrice\": \"\", \"sortBy\": \"NEW\", \"filters\": \"\", \"maxRating\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sephora14.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Product Reviews",
+            "url": "https://sephora14.p.rapidapi.com/productReviews",
+            "description": "Get Product Reviews Based on Product ID",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "productID",
+                    "type": "STRING",
+                    "description": "Can be accessed through the **Search** endpoints.",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page Number (each page shows 100 reviews)",
+                    "default": "1"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://sephora14.p.rapidapi.com/productReviews\"\nquerystring = {\"productID\": \"\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sephora14.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sephora14.p.rapidapi.com/productReviews\"\nquerystring = {\"productID\": \"\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sephora14.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Search By Category",
+            "url": "https://sephora14.p.rapidapi.com/searchByCategory",
+            "description": "Get Search Results By Category",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "categoryID",
+                    "type": "STRING",
+                    "description": "Can be accessed through the **Categories** endpoint.",
+                    "default": ""
+                },
+                {
+                    "name": "sortBy",
+                    "type": "STRING",
+                    "description": "**Options**: BEST_SELLING, TOP_RATED. PRICE_LOW_TO_HIGH. PRICE_HIGH_TO_LOW. NEW",
+                    "default": "NEW"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "maxPrice",
+                    "type": "NUMBER",
+                    "description": "Maximum Price",
+                    "default": ""
+                },
+                {
+                    "name": "minPrice",
+                    "type": "NUMBER",
+                    "description": "Minimum Price",
+                    "default": ""
+                },
+                {
+                    "name": "minRating",
+                    "type": "NUMBER",
+                    "description": "Minimum Rating (1<)",
+                    "default": ""
+                },
+                {
+                    "name": "filters",
+                    "type": "STRING",
+                    "description": "Accessible from the JSON response under **filters** property.\nFormat: filterKey=filterValue||filterKey=filterValue||filterKey=filterValue...\nfilterKey can be the same, for example: Brand=Gucci||Brand=Givenchy",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Page Number",
+                    "default": "1"
+                },
+                {
+                    "name": "maxRating",
+                    "type": "NUMBER",
+                    "description": "Maximum Rating (5>)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sephora14.p.rapidapi.com/searchByCategory\"\nquerystring = {\"maxPrice\": \"\", \"categoryID\": \"\", \"minPrice\": \"\", \"minRating\": \"\", \"filters\": \"\", \"page\": \"1\", \"maxRating\": \"\", \"sortBy\": \"NEW\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sephora14.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sephora14.p.rapidapi.com/searchByCategory\"\nquerystring = {\"maxPrice\": \"\", \"categoryID\": \"\", \"minPrice\": \"\", \"minRating\": \"\", \"filters\": \"\", \"page\": \"1\", \"maxRating\": \"\", \"sortBy\": \"NEW\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sephora14.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Search By Keyword",
+            "url": "https://sephora14.p.rapidapi.com/searchByKeyword",
+            "description": "Get Search Results By Keyword",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "Search Term",
+                    "default": ""
+                },
+                {
+                    "name": "sortBy",
+                    "type": "STRING",
+                    "description": "**Options**: BEST_SELLING, TOP_RATED. PRICE_LOW_TO_HIGH. PRICE_HIGH_TO_LOW. NEW",
+                    "default": "NEW"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "minRating",
+                    "type": "NUMBER",
+                    "description": "Minimum Rating (1<)",
+                    "default": ""
+                },
+                {
+                    "name": "maxPrice",
+                    "type": "NUMBER",
+                    "description": "Maximum Price",
+                    "default": ""
+                },
+                {
+                    "name": "minPrice",
+                    "type": "NUMBER",
+                    "description": "Minimum Price",
+                    "default": ""
+                },
+                {
+                    "name": "filters",
+                    "type": "STRING",
+                    "description": "Accessible from the JSON response under **filters** property.\nFormat: filterKey=filterValue||filterKey=filterValue||filterKey=filterValue...\nfilterKey can be the same, for example: Brand=Gucci||Brand=Givenchy",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Page Number",
+                    "default": "1"
+                },
+                {
+                    "name": "maxRating",
+                    "type": "NUMBER",
+                    "description": "Maximum Rating (5>)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sephora14.p.rapidapi.com/searchByKeyword\"\nquerystring = {\"minRating\": \"\", \"maxPrice\": \"\", \"minPrice\": \"\", \"filters\": \"\", \"search\": \"\", \"page\": \"1\", \"maxRating\": \"\", \"sortBy\": \"NEW\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sephora14.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sephora14.p.rapidapi.com/searchByKeyword\"\nquerystring = {\"minRating\": \"\", \"maxPrice\": \"\", \"minPrice\": \"\", \"filters\": \"\", \"search\": \"\", \"page\": \"1\", \"maxRating\": \"\", \"sortBy\": \"NEW\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sephora14.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Brands",
+            "url": "https://sephora14.p.rapidapi.com/brands",
+            "description": "Get All Brands",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://sephora14.p.rapidapi.com/brands\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sephora14.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sephora14.p.rapidapi.com/brands\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sephora14.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Product Details",
+            "url": "https://sephora14.p.rapidapi.com/product",
+            "description": "Get Product Details By ID",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "productID",
+                    "type": "STRING",
+                    "description": "Can be accessed through the **Search** endpoints.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://sephora14.p.rapidapi.com/product\"\nquerystring = {\"productID\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sephora14.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sephora14.p.rapidapi.com/product\"\nquerystring = {\"productID\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sephora14.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Categories",
+            "url": "https://sephora14.p.rapidapi.com/categories",
+            "description": "Get All Categories",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://sephora14.p.rapidapi.com/categories\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sephora14.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sephora14.p.rapidapi.com/categories\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sephora14.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

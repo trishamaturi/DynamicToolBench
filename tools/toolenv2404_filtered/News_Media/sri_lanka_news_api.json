@@ -1,0 +1,118 @@
+{
+    "product_id": "api_bc41fdfe-db0b-460d-b402-2d7ad1e4a832",
+    "tool_description": "A simple API that allows you to obtain the most recent news from Sri Lankan media sites in Sinhala.\u00a0",
+    "home_url": "https://rapidapi.com/mheshan27/api/sri-lanka-news-api/",
+    "name": "Sri Lanka News Api",
+    "title": "Sri Lanka News Api",
+    "pricing": "PAID",
+    "tool_name": "Sri Lanka News Api",
+    "score": null,
+    "host": "sri-lanka-news-api.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get news from one news source",
+            "url": "https://sri-lanka-news-api.p.rapidapi.com/news/sinhala/Ada.lk/data/1",
+            "description": "Get news from one news source passing {source} paramter value and {page} value.Each news soure different number of news count in one page.\n\n\n**News Sources\n--Lankadeepa.lk\n--Deshaya.lk\n--Ada.lk\n--BBCSinhala.com\n--Mawbima.lk",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 1
+                },
+                {
+                    "name": "source",
+                    "type": "string",
+                    "description": "",
+                    "default": "Ada.lk"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://sri-lanka-news-api.p.rapidapi.com/news/sinhala/Ada.lk/data/1\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sri-lanka-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sri-lanka-news-api.p.rapidapi.com/news/sinhala/{source}/data/{page}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sri-lanka-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "title": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string"
+                                },
+                                "timestamp": {
+                                    "type": "string"
+                                },
+                                "img": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "source": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "succes": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get all latest news",
+            "url": "https://sri-lanka-news-api.p.rapidapi.com/news/sinhala",
+            "description": "Get latest news from all the news sources.This route return all the latest news from each news source at once",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://sri-lanka-news-api.p.rapidapi.com/news/sinhala\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sri-lanka-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sri-lanka-news-api.p.rapidapi.com/news/sinhala\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sri-lanka-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "title": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string"
+                                },
+                                "timestamp": {
+                                    "type": "string"
+                                },
+                                "img": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "source": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "succes": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    ]
+}

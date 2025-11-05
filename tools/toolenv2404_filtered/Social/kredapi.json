@@ -1,0 +1,78 @@
+{
+    "product_id": "53aa4930e4b0a798dbd19f25",
+    "tool_description": "Kred, created by PeopleBrowsr, measures influence in online communities connected by interest. Kred values audience quality and engagement over audience size. It assesses the ability to inspire action (Influence) and propensity to engage with others (Outreach)",
+    "home_url": "https://rapidapi.com/kred/api/kredapi/",
+    "name": "KredAPI",
+    "title": "KredAPI",
+    "pricing": "FREEMIUM",
+    "tool_name": "KredAPI",
+    "score": null,
+    "host": "kred-exp-v2.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/kred/activity",
+            "url": "https://kred-exp-v2.p.rapidapi.com/kred/activity/twitter/bbcnews",
+            "description": "Fetch the influence/outreach of recent activity for a user.  A 204 response means the user was not found.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "source",
+                    "type": "STRING",
+                    "description": "Source of the activity, e.g. twitter",
+                    "default": "twitter"
+                },
+                {
+                    "name": "username",
+                    "type": "STRING",
+                    "description": "The username related to the source, e.g. bbcnews",
+                    "default": "bbcnews"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "count",
+                    "type": "NUMBER",
+                    "description": "The number of items to return",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Which page to return",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://kred-exp-v2.p.rapidapi.com/kred/activity/twitter/bbcnews\"\nquerystring = {\"count\": \"\", \"page\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kred-exp-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kred-exp-v2.p.rapidapi.com/kred/activity/{source}/{username}\"\nquerystring = {\"count\": \"\", \"page\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kred-exp-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "/kred/score",
+            "url": "https://kred-exp-v2.p.rapidapi.com/kred/score/twitter/neilhimself",
+            "description": "Kredentials presents the Kred score of a user in a comprehensive format that makes it simple to understand the source of their Kred score. Internally, we refer to this as an identity archive.  A 204 response means the user was not found.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "source",
+                    "type": "STRING",
+                    "description": "Source of the score, e.g. twitter",
+                    "default": "twitter"
+                },
+                {
+                    "name": "username",
+                    "type": "STRING",
+                    "description": "The username related to the source, e.g. neilhimself",
+                    "default": "neilhimself"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://kred-exp-v2.p.rapidapi.com/kred/score/twitter/neilhimself\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kred-exp-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kred-exp-v2.p.rapidapi.com/kred/score/{source}/{username}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kred-exp-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

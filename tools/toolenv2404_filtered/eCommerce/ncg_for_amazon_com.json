@@ -1,0 +1,440 @@
+{
+    "product_id": "api_eed0c494-9749-4ed6-bf8a-adbf7c59661e",
+    "tool_description": "Access all products from Amazon.com",
+    "home_url": "https://rapidapi.com/neobay-neobay-default/api/ncg-for-amazon-com/",
+    "name": "NCG for Amazon.com",
+    "title": "NCG for Amazon.com",
+    "pricing": "FREEMIUM",
+    "tool_name": "NCG for Amazon.com",
+    "score": null,
+    "host": "ncg-for-amazon-com.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Default Info",
+            "url": "https://ncg-for-amazon-com.p.rapidapi.com/",
+            "description": "Gets the basic information for this API.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://ncg-for-amazon-com.p.rapidapi.com/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ncg-for-amazon-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://ncg-for-amazon-com.p.rapidapi.com/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ncg-for-amazon-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "displayName": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get a Product By URL",
+            "url": "https://ncg-for-amazon-com.p.rapidapi.com/product",
+            "description": "Access product details.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "https://www.amazon.com/dp/B09GLWY5NJ"
+                },
+                {
+                    "name": "zipCode",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20001"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://ncg-for-amazon-com.p.rapidapi.com/product\"\nquerystring = {\"url\": \"https://www.amazon.com/dp/B09GLWY5NJ\", \"zipCode\": \"20001\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ncg-for-amazon-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://ncg-for-amazon-com.p.rapidapi.com/product\"\nquerystring = {\"url\": \"https://www.amazon.com/dp/B09GLWY5NJ\", \"zipCode\": \"20001\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ncg-for-amazon-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "crawler": {
+                        "type": "object",
+                        "properties": {
+                            "displayName": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "key": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "thumbnail": {
+                                "type": "string"
+                            },
+                            "images": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "price": {
+                                "type": "number"
+                            },
+                            "salePrice": {
+                                "type": "number"
+                            },
+                            "stock": {
+                                "type": "integer"
+                            },
+                            "attributes": {
+                                "type": "null"
+                            },
+                            "options": {
+                                "type": "array"
+                            }
+                        }
+                    },
+                    "syncedAt": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get a Page",
+            "url": "https://ncg-for-amazon-com.p.rapidapi.com/pageable",
+            "description": "Access the product listing page.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "zipCode",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20001"
+                },
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "https://www.amazon.com/Loose-Gemstones/b/ref=dp_bc_aui_C_4?node=8975615011"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "If empty, it is determined by the URL.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://ncg-for-amazon-com.p.rapidapi.com/pageable\"\nquerystring = {\"zipCode\": \"20001\", \"page\": \"\", \"url\": \"https://www.amazon.com/Loose-Gemstones/b/ref=dp_bc_aui_C_4?node=8975615011\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ncg-for-amazon-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://ncg-for-amazon-com.p.rapidapi.com/pageable\"\nquerystring = {\"zipCode\": \"20001\", \"page\": \"\", \"url\": \"https://www.amazon.com/Loose-Gemstones/b/ref=dp_bc_aui_C_4?node=8975615011\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ncg-for-amazon-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "crawler": {
+                        "type": "object",
+                        "properties": {
+                            "displayName": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "key": {
+                        "type": "object",
+                        "properties": {
+                            "key": {
+                                "type": "string"
+                            },
+                            "page": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "contents": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "thumbnail": {
+                                            "type": "string"
+                                        },
+                                        "images": {
+                                            "type": "null"
+                                        },
+                                        "description": {
+                                            "type": "null"
+                                        },
+                                        "price": {
+                                            "type": "integer"
+                                        },
+                                        "salePrice": {
+                                            "type": "number"
+                                        },
+                                        "stock": {
+                                            "type": "integer"
+                                        },
+                                        "attributes": {
+                                            "type": "null"
+                                        },
+                                        "options": {
+                                            "type": "null"
+                                        }
+                                    }
+                                }
+                            },
+                            "page": {
+                                "type": "integer"
+                            },
+                            "totalCount": {
+                                "type": "integer"
+                            },
+                            "lastPage": {
+                                "type": "integer"
+                            },
+                            "size": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "syncedAt": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get a Product",
+            "url": "https://ncg-for-amazon-com.p.rapidapi.com/product/B09GLWY5NJ",
+            "description": "Access product details.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "B09GLWY5NJ"
+                },
+                {
+                    "name": "zipCode",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20001"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://ncg-for-amazon-com.p.rapidapi.com/product/B09GLWY5NJ\"\nquerystring = {\"zipCode\": \"20001\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ncg-for-amazon-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://ncg-for-amazon-com.p.rapidapi.com/product/{id}\"\nquerystring = {\"zipCode\": \"20001\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ncg-for-amazon-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "crawler": {
+                        "type": "object",
+                        "properties": {
+                            "displayName": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "key": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "thumbnail": {
+                                "type": "string"
+                            },
+                            "images": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "price": {
+                                "type": "number"
+                            },
+                            "salePrice": {
+                                "type": "number"
+                            },
+                            "stock": {
+                                "type": "integer"
+                            },
+                            "attributes": {
+                                "type": "null"
+                            },
+                            "options": {
+                                "type": "array"
+                            }
+                        }
+                    },
+                    "syncedAt": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Product Search",
+            "url": "https://ncg-for-amazon-com.p.rapidapi.com/search",
+            "description": "Access products for search results.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "zipCode",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20001"
+                },
+                {
+                    "name": "keyword",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Garnet"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "If empty, it is determined by the URL.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://ncg-for-amazon-com.p.rapidapi.com/search\"\nquerystring = {\"page\": \"\", \"zipCode\": \"20001\", \"keyword\": \"Garnet\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ncg-for-amazon-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://ncg-for-amazon-com.p.rapidapi.com/search\"\nquerystring = {\"page\": \"\", \"zipCode\": \"20001\", \"keyword\": \"Garnet\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ncg-for-amazon-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "crawler": {
+                        "type": "object",
+                        "properties": {
+                            "displayName": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "key": {
+                        "type": "object",
+                        "properties": {
+                            "key": {
+                                "type": "string"
+                            },
+                            "page": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "contents": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "thumbnail": {
+                                            "type": "string"
+                                        },
+                                        "images": {
+                                            "type": "null"
+                                        },
+                                        "description": {
+                                            "type": "null"
+                                        },
+                                        "price": {
+                                            "type": "integer"
+                                        },
+                                        "salePrice": {
+                                            "type": "number"
+                                        },
+                                        "stock": {
+                                            "type": "integer"
+                                        },
+                                        "attributes": {
+                                            "type": "null"
+                                        },
+                                        "options": {
+                                            "type": "null"
+                                        }
+                                    }
+                                }
+                            },
+                            "page": {
+                                "type": "integer"
+                            },
+                            "totalCount": {
+                                "type": "integer"
+                            },
+                            "lastPage": {
+                                "type": "integer"
+                            },
+                            "size": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "syncedAt": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    ]
+}

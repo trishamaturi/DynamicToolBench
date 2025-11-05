@@ -1,0 +1,214 @@
+{
+    "product_id": "api_4764bbad-bf77-401c-8602-dc604562ed26",
+    "tool_description": "Find Linkedin profile by email and get all data: (name,photo,education,experience and so on)",
+    "home_url": "https://rapidapi.com/shatmanoverl/api/linkedin-find-by-email/",
+    "name": "Linkedin find by Email",
+    "title": "Linkedin find by Email",
+    "pricing": "FREEMIUM",
+    "tool_name": "Linkedin find by Email",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 3221,
+        "avgSuccessRate": 100,
+        "popularityScore": 8.1,
+        "__typename": "Score"
+    },
+    "host": "linkedin-find-by-email.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get data of person by email address",
+            "url": "https://linkedin-find-by-email.p.rapidapi.com/api/linkedin",
+            "description": "This API endpoint accepts an email address as input and returns data about the corresponding LinkedIn user. It helps retrieve information like the user's name, headline, location, education, and LinkedIn profile URL based on their email. This can be useful for verifying user identities or enriching user profiles with LinkedIn data.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "email",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "tynis43@gmail.com"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://linkedin-find-by-email.p.rapidapi.com/api/linkedin\"\nquerystring = {\"email\": \"tynis43@gmail.com\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"linkedin-find-by-email.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://linkedin-find-by-email.p.rapidapi.com/api/linkedin\"\nquerystring = {\"email\": \"tynis43@gmail.com\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"linkedin-find-by-email.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "persons": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "displayName": {
+                                    "type": "string"
+                                },
+                                "firstName": {
+                                    "type": "string"
+                                },
+                                "lastName": {
+                                    "type": "string"
+                                },
+                                "emails": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "phoneNumbers": {
+                                    "type": "array"
+                                },
+                                "headline": {
+                                    "type": "string"
+                                },
+                                "location": {
+                                    "type": "string"
+                                },
+                                "linkedInUrl": {
+                                    "type": "string"
+                                },
+                                "reportProfileUrl": {
+                                    "type": "string"
+                                },
+                                "connectionCount": {
+                                    "type": "integer"
+                                },
+                                "isConnectionCountObfuscated": {
+                                    "type": "boolean"
+                                },
+                                "connectionDegree": {
+                                    "type": "string"
+                                },
+                                "connectionStatus": {
+                                    "type": "string"
+                                },
+                                "locale": {
+                                    "type": "object",
+                                    "properties": {
+                                        "country": {
+                                            "type": "string"
+                                        },
+                                        "language": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "schools": {
+                                    "type": "object",
+                                    "properties": {
+                                        "educationsCount": {
+                                            "type": "integer"
+                                        },
+                                        "educationHistory": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "school": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "schoolName": {
+                                                                "type": "string"
+                                                            },
+                                                            "linkedInUrl": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "startEndDate": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "start": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "year": {
+                                                                        "type": "integer"
+                                                                    }
+                                                                }
+                                                            },
+                                                            "end": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "year": {
+                                                                        "type": "integer"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "schoolName": {
+                                                        "type": "string"
+                                                    },
+                                                    "linkedInUrl": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "positions": {
+                                    "type": "object",
+                                    "properties": {
+                                        "positionsCount": {
+                                            "type": "integer"
+                                        },
+                                        "positionHistory": {
+                                            "type": "array"
+                                        }
+                                    }
+                                },
+                                "skillEndorsements": {
+                                    "type": "object",
+                                    "properties": {
+                                        "skillEndorsementsCount": {
+                                            "type": "integer"
+                                        },
+                                        "skillEndorsements": {
+                                            "type": "array"
+                                        }
+                                    }
+                                },
+                                "newsMentions": {
+                                    "type": "object",
+                                    "properties": {
+                                        "newsMentionCount": {
+                                            "type": "integer"
+                                        },
+                                        "newsMentions": {
+                                            "type": "array"
+                                        }
+                                    }
+                                },
+                                "userGeneratedContents": {
+                                    "type": "object",
+                                    "properties": {
+                                        "userGeneratedContentCount": {
+                                            "type": "integer"
+                                        },
+                                        "userGeneratedContents": {
+                                            "type": "array"
+                                        }
+                                    }
+                                },
+                                "isPublic": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    ]
+}

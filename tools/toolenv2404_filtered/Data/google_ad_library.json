@@ -1,0 +1,232 @@
+{
+    "product_id": "api_3aa03a1a-4975-4a25-b978-62ae82fa996b",
+    "tool_description": "Powerful tool designed to provide comprehensive access to data from Google's extensive ad library.",
+    "home_url": "https://rapidapi.com/omarmhaimdat/api/google-ad-library/",
+    "name": "Google Ad Library",
+    "title": "Google Ad Library",
+    "pricing": "FREEMIUM",
+    "tool_name": "Google Ad Library",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 616,
+        "avgSuccessRate": 100,
+        "popularityScore": 7.4,
+        "__typename": "Score"
+    },
+    "host": "google-ad-library.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Search",
+            "url": "https://google-ad-library.p.rapidapi.com/search",
+            "description": "Search ads based on a domain name",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "apple.com"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "continuation_token",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "ALL"
+                },
+                {
+                    "name": "country_code",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "US"
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "40"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://google-ad-library.p.rapidapi.com/search\"\nquerystring = {\"domain\": \"apple.com\", \"continuation_token\": \"\", \"format\": \"ALL\", \"country_code\": \"US\", \"limit\": \"40\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"google-ad-library.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://google-ad-library.p.rapidapi.com/search\"\nquerystring = {\"domain\": \"apple.com\", \"continuation_token\": \"\", \"format\": \"ALL\", \"country_code\": \"US\", \"limit\": \"40\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"google-ad-library.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Ad Details",
+            "url": "https://google-ad-library.p.rapidapi.com/ad/details",
+            "description": "Get details on a particular ad",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "advertiser_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "AR00604964697900318721"
+                },
+                {
+                    "name": "creative_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "CR16132651600551346177"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://google-ad-library.p.rapidapi.com/ad/details\"\nquerystring = {\"advertiser_id\": \"AR00604964697900318721\", \"creative_id\": \"CR16132651600551346177\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"google-ad-library.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://google-ad-library.p.rapidapi.com/ad/details\"\nquerystring = {\"advertiser_id\": \"AR00604964697900318721\", \"creative_id\": \"CR16132651600551346177\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"google-ad-library.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "advertiser_id": {
+                        "type": "string"
+                    },
+                    "creative_id": {
+                        "type": "string"
+                    },
+                    "original_url": {
+                        "type": "string"
+                    },
+                    "variants": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "content": {
+                                    "type": "string"
+                                },
+                                "height": {
+                                    "type": "integer"
+                                },
+                                "width": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "start": {
+                        "type": "null"
+                    },
+                    "last_seen": {
+                        "type": "string"
+                    },
+                    "advertiser_name": {
+                        "type": "null"
+                    },
+                    "format": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Advertiser Ads",
+            "url": "https://google-ad-library.p.rapidapi.com/advertiser/ads",
+            "description": "Get the list of ads based on the querying parameters",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "advertiser_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "AR00604964697900318721"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "start_period",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "Possible values: `ALL`, `IMAGE`, `TEXT`, `VIDEO`",
+                    "default": "ALL"
+                },
+                {
+                    "name": "country_code",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "US"
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "end_period",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://google-ad-library.p.rapidapi.com/advertiser/ads\"\nquerystring = {\"advertiser_id\": \"AR00604964697900318721\", \"start_period\": \"\", \"format\": \"ALL\", \"country_code\": \"US\", \"limit\": \"\", \"end_period\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"google-ad-library.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://google-ad-library.p.rapidapi.com/advertiser/ads\"\nquerystring = {\"advertiser_id\": \"AR00604964697900318721\", \"start_period\": \"\", \"format\": \"ALL\", \"country_code\": \"US\", \"limit\": \"\", \"end_period\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"google-ad-library.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Advertiser Details",
+            "url": "https://google-ad-library.p.rapidapi.com/advertiser/details",
+            "description": "Get details about advertiser",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "advertiser_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "AR00604964697900318721"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://google-ad-library.p.rapidapi.com/advertiser/details\"\nquerystring = {\"advertiser_id\": \"AR00604964697900318721\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"google-ad-library.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://google-ad-library.p.rapidapi.com/advertiser/details\"\nquerystring = {\"advertiser_id\": \"AR00604964697900318721\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"google-ad-library.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "advertiser_id": {
+                        "type": "string"
+                    },
+                    "advertiser_name": {
+                        "type": "string"
+                    },
+                    "country_code": {
+                        "type": "string"
+                    },
+                    "advertiser_legal_name": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Supported Countries",
+            "url": "https://google-ad-library.p.rapidapi.com/countries",
+            "description": "Get a list supported countries",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://google-ad-library.p.rapidapi.com/countries\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"google-ad-library.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://google-ad-library.p.rapidapi.com/countries\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"google-ad-library.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

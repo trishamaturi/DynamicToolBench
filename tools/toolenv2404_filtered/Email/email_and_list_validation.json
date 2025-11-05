@@ -1,0 +1,442 @@
+{
+    "product_id": "api_e5a1855d-8108-4936-8e21-fd5c206b4b9b",
+    "tool_description": "Verify single and multiple emails, lists & reverify them if needed after time!",
+    "home_url": "https://rapidapi.com/llg/api/email-and-list-validation/",
+    "name": "Email and List Validation",
+    "title": "Email and List Validation",
+    "pricing": "FREEMIUM",
+    "tool_name": "Email and List Validation",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 84,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.1,
+        "__typename": "Score"
+    },
+    "host": "email-and-list-validation.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Retrieve listing of processed emails",
+            "url": "https://email-and-list-validation.p.rapidapi.com/verifyEmail/getByStatusDone",
+            "description": "The listing is sorted by time_done in ascending order. <br><br>Using this method, you can easily retrieve continuously processed emails. To do this, proceed as follows<br>\r\n    1. Send a request with a minimum limit of 1000 emails.<br>\r\n    2. Save the retrieved data & newest_time_done in your preferred datastore<br>\r\n    3. After a few minutes, send another request with timeDoneAfter = saved value newest_time_done.<br><br>\r\n\r\n    Notice:\r\n    The next request may include emails already received in the previous request. This is possible because several emails can finish processing in the same second.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "timeCreateAfter",
+                    "type": "NUMBER",
+                    "description": "Get emails created after UNIX timestamp (operator =>)",
+                    "default": ""
+                },
+                {
+                    "name": "listName",
+                    "type": "STRING",
+                    "description": "List name",
+                    "default": "Email list for summer campaign"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "How many emails to fetch in one request",
+                    "default": 10
+                },
+                {
+                    "name": "timeDoneAfter",
+                    "type": "NUMBER",
+                    "description": "Get emails processed after UNIX timestamp (operator =>)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://email-and-list-validation.p.rapidapi.com/verifyEmail/getByStatusDone\"\nquerystring = {\"timeCreateAfter\": \"\", \"listName\": \"Email list for summer campaign\", \"limit\": 10, \"timeDoneAfter\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"email-and-list-validation.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://email-and-list-validation.p.rapidapi.com/verifyEmail/getByStatusDone\"\nquerystring = {\"timeCreateAfter\": \"\", \"listName\": \"Email list for summer campaign\", \"limit\": 10, \"timeDoneAfter\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"email-and-list-validation.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "newest_time_done": {
+                                "type": "integer"
+                            },
+                            "list": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "list": {
+                                            "type": "string"
+                                        },
+                                        "processing_status": {
+                                            "type": "string"
+                                        },
+                                        "validity": {
+                                            "type": "string"
+                                        },
+                                        "detail": {
+                                            "type": "string"
+                                        },
+                                        "safety": {
+                                            "type": "integer"
+                                        },
+                                        "time_create": {
+                                            "type": "integer"
+                                        },
+                                        "time_done": {
+                                            "type": "integer"
+                                        },
+                                        "time_create_human": {
+                                            "type": "string"
+                                        },
+                                        "time_done_human": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "result": {
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "message": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "error": {
+                        "type": "array"
+                    },
+                    "warning": {
+                        "type": "array"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Reverify emails matching criteria",
+            "url": "https://email-and-list-validation.p.rapidapi.com/verifyEmail/reverify",
+            "description": "Emails may become invalid after some time. Use this endpoint to mark chosen emails to be verified again.\nOnly emails with processing status DONE are marked for reverification.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "How many emails to set for revalidation. Default limit is 10 as a safety measure. Please change to desired.",
+                    "default": 10
+                },
+                {
+                    "name": "listName",
+                    "type": "STRING",
+                    "description": "List name",
+                    "default": "Email list for summer campaign"
+                },
+                {
+                    "name": "timeCreateTo",
+                    "type": "NUMBER",
+                    "description": "Reverify emails created before UNIX timestamp (operator <=)",
+                    "default": ""
+                },
+                {
+                    "name": "timeDoneTo",
+                    "type": "NUMBER",
+                    "description": "Reverify emails processed before UNIX timestamp (operator <=)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://email-and-list-validation.p.rapidapi.com/verifyEmail/reverify\"\nquerystring = {\"limit\": 10, \"listName\": \"Email list for summer campaign\", \"timeCreateTo\": \"\", \"timeDoneTo\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"email-and-list-validation.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://email-and-list-validation.p.rapidapi.com/verifyEmail/reverify\"\nquerystring = {\"limit\": 10, \"listName\": \"Email list for summer campaign\", \"timeCreateTo\": \"\", \"timeDoneTo\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"email-and-list-validation.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Retrieve summarized verification status for emails list",
+            "url": "https://email-and-list-validation.p.rapidapi.com/verifyList/getByName",
+            "description": "Get list overall health.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "listName",
+                    "type": "STRING",
+                    "description": "List name",
+                    "default": "Email list for summer campaign"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://email-and-list-validation.p.rapidapi.com/verifyList/getByName\"\nquerystring = {\"listName\": \"Email list for summer campaign\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"email-and-list-validation.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://email-and-list-validation.p.rapidapi.com/verifyList/getByName\"\nquerystring = {\"listName\": \"Email list for summer campaign\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"email-and-list-validation.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "listName": {
+                                "type": "string"
+                            },
+                            "emails_all": {
+                                "type": "object",
+                                "properties": {
+                                    "count": {
+                                        "type": "integer"
+                                    },
+                                    "by_processing_status_count": {
+                                        "type": "object",
+                                        "properties": {
+                                            "DONE": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "emails_done": {
+                                "type": "object",
+                                "properties": {
+                                    "count": {
+                                        "type": "integer"
+                                    },
+                                    "safety_average": {
+                                        "type": "number"
+                                    },
+                                    "done_percentage": {
+                                        "type": "integer"
+                                    },
+                                    "by_validaty_status_count": {
+                                        "type": "object",
+                                        "properties": {
+                                            "VALID": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "count": {
+                                                        "type": "integer"
+                                                    },
+                                                    "safety": {
+                                                        "type": "integer"
+                                                    },
+                                                    "percentage": {
+                                                        "type": "number"
+                                                    }
+                                                }
+                                            },
+                                            "PROBABLY_VALID": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "count": {
+                                                        "type": "integer"
+                                                    },
+                                                    "safety": {
+                                                        "type": "integer"
+                                                    },
+                                                    "percentage": {
+                                                        "type": "number"
+                                                    }
+                                                }
+                                            },
+                                            "CANT_CONFIRM_BUT_VALID_IN_PAST": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "count": {
+                                                        "type": "integer"
+                                                    },
+                                                    "safety": {
+                                                        "type": "integer"
+                                                    },
+                                                    "percentage": {
+                                                        "type": "number"
+                                                    }
+                                                }
+                                            },
+                                            "SERVER_UNAVAILABLE_NOW_BUT_VALID_IN_PAST": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "count": {
+                                                        "type": "integer"
+                                                    },
+                                                    "safety": {
+                                                        "type": "integer"
+                                                    },
+                                                    "percentage": {
+                                                        "type": "number"
+                                                    }
+                                                }
+                                            },
+                                            "CANT_CONFIRM": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "count": {
+                                                        "type": "integer"
+                                                    },
+                                                    "safety": {
+                                                        "type": "integer"
+                                                    },
+                                                    "percentage": {
+                                                        "type": "number"
+                                                    }
+                                                }
+                                            },
+                                            "SERVER_UNAVAILABLE_NOW": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "count": {
+                                                        "type": "integer"
+                                                    },
+                                                    "safety": {
+                                                        "type": "integer"
+                                                    },
+                                                    "percentage": {
+                                                        "type": "number"
+                                                    }
+                                                }
+                                            },
+                                            "NOT_VALID": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "count": {
+                                                        "type": "integer"
+                                                    },
+                                                    "safety": {
+                                                        "type": "integer"
+                                                    },
+                                                    "percentage": {
+                                                        "type": "number"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "result": {
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "message": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "error": {
+                        "type": "array"
+                    },
+                    "warning": {
+                        "type": "array"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get chosen email verification status",
+            "url": "https://email-and-list-validation.p.rapidapi.com/verifyEmail/getByEmail",
+            "description": "Get verification status for specific email",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "email",
+                    "type": "STRING",
+                    "description": "Email address",
+                    "default": "john@example.com"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://email-and-list-validation.p.rapidapi.com/verifyEmail/getByEmail\"\nquerystring = {\"email\": \"john@example.com\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"email-and-list-validation.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://email-and-list-validation.p.rapidapi.com/verifyEmail/getByEmail\"\nquerystring = {\"email\": \"john@example.com\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"email-and-list-validation.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Add single email for verification",
+            "url": "https://email-and-list-validation.p.rapidapi.com/verifyEmail/single",
+            "description": "Add one email for verification.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "email",
+                    "type": "STRING",
+                    "description": "Email address",
+                    "default": "john@example.com"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "listName",
+                    "type": "STRING",
+                    "description": "List name",
+                    "default": "Email list for summer campaign"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://email-and-list-validation.p.rapidapi.com/verifyEmail/single\"\nquerystring = {\"email\": \"john@example.com\", \"listName\": \"Email list for summer campaign\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"email-and-list-validation.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://email-and-list-validation.p.rapidapi.com/verifyEmail/single\"\nquerystring = {\"email\": \"john@example.com\", \"listName\": \"Email list for summer campaign\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"email-and-list-validation.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "time_took": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "result": {
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "message": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "error": {
+                        "type": "array"
+                    },
+                    "warning": {
+                        "type": "array"
+                    }
+                }
+            }
+        }
+    ]
+}

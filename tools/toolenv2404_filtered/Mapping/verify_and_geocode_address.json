@@ -1,0 +1,220 @@
+{
+    "product_id": "api_4469709a-9f41-402c-8791-23aec462e328",
+    "tool_description": "Check if the address exists and get its location and additional fields like phone number, opening hours, etc.",
+    "home_url": "https://rapidapi.com/geoapify-gmbh-geoapify/api/verify-and-geocode-address/",
+    "name": "Verify and geocode address",
+    "title": "Verify and geocode address",
+    "pricing": "FREEMIUM",
+    "tool_name": "Verify and geocode address",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 536,
+        "avgSuccessRate": 100,
+        "popularityScore": 8.1,
+        "__typename": "Score"
+    },
+    "host": "verify-and-geocode-address.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Geocoding",
+            "url": "https://verify-and-geocode-address.p.rapidapi.com/v1/geocode/search",
+            "description": "Parse, validate, and locate an address or place",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "text",
+                    "type": "STRING",
+                    "description": "Free-form address, place, region or area name",
+                    "default": "10 Bd du Palais, 75001 Paris, France"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "bias",
+                    "type": "STRING",
+                    "description": "refer places by country, boundary, circle, location:\n* by circle - circle:lon,lat,radiusMeters, for example, bias=circle:-87.770231,41.878968,5000\n* by rectangle - rect:lon1,lat1,lon2,lat2, for example , bias=rect:-89.097540,39.668983,-88.399274,40.383412\n* by country - comma-separated ISO 3166-1 Alpha-2 country codes (in lower case),  for example, bias=countrycode:de,es,fr\n* by proximity - proximity:lon,lat, for example, bias=proximity:41.2257145,52.971411",
+                    "default": "proximity:41.2257145,52.971411"
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Desired result granularity  (country, state, city, postcode, street, or amenity)",
+                    "default": ""
+                },
+                {
+                    "name": "filter",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "countrycode:de,es,fr"
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "Maximum number of results",
+                    "default": "1"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Preferable results language code (en, de, it, fr)",
+                    "default": "en"
+                },
+                {
+                    "name": "lon",
+                    "type": "STRING",
+                    "description": "Location bias longitude (requires \\\"lat\\\")",
+                    "default": "-73.98"
+                },
+                {
+                    "name": "lat",
+                    "type": "STRING",
+                    "description": "Location bias latitude (requires \\\"lon\\\")",
+                    "default": "40.74"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://verify-and-geocode-address.p.rapidapi.com/v1/geocode/search\"\nquerystring = {\"bias\": \"proximity:41.2257145,52.971411\", \"text\": \"10 Bd du Palais, 75001 Paris, France\", \"type\": \"\", \"filter\": \"countrycode:de,es,fr\", \"limit\": \"1\", \"lang\": \"en\", \"lon\": \"-73.98\", \"lat\": \"40.74\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"verify-and-geocode-address.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://verify-and-geocode-address.p.rapidapi.com/v1/geocode/search\"\nquerystring = {\"bias\": \"proximity:41.2257145,52.971411\", \"text\": \"10 Bd du Palais, 75001 Paris, France\", \"type\": \"\", \"filter\": \"countrycode:de,es,fr\", \"limit\": \"1\", \"lang\": \"en\", \"lon\": \"-73.98\", \"lat\": \"40.74\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"verify-and-geocode-address.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string"
+                    },
+                    "features": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "type": {
+                                    "type": "string"
+                                },
+                                "properties": {
+                                    "type": "object",
+                                    "properties": {
+                                        "datasource": {
+                                            "type": "object",
+                                            "properties": {
+                                                "sourcename": {
+                                                    "type": "string"
+                                                },
+                                                "attraction": {
+                                                    "type": "string"
+                                                },
+                                                "commercial": {
+                                                    "type": "string"
+                                                },
+                                                "suburb": {
+                                                    "type": "string"
+                                                },
+                                                "country_code": {
+                                                    "type": "string"
+                                                },
+                                                "phone": {
+                                                    "type": "string"
+                                                },
+                                                "website": {
+                                                    "type": "string"
+                                                },
+                                                "wheelchair": {
+                                                    "type": "string"
+                                                },
+                                                "opening_hours": {
+                                                    "type": "string"
+                                                },
+                                                "osm_type": {
+                                                    "type": "string"
+                                                },
+                                                "osm_id": {
+                                                    "type": "integer"
+                                                },
+                                                "display_name": {
+                                                    "type": "string"
+                                                },
+                                                "category": {
+                                                    "type": "string"
+                                                },
+                                                "type": {
+                                                    "type": "string"
+                                                },
+                                                "osm_key": {
+                                                    "type": "string"
+                                                },
+                                                "osm_value": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "housenumber": {
+                                            "type": "string"
+                                        },
+                                        "street": {
+                                            "type": "string"
+                                        },
+                                        "city": {
+                                            "type": "string"
+                                        },
+                                        "county": {
+                                            "type": "string"
+                                        },
+                                        "state": {
+                                            "type": "string"
+                                        },
+                                        "postcode": {
+                                            "type": "string"
+                                        },
+                                        "country": {
+                                            "type": "string"
+                                        },
+                                        "lon": {
+                                            "type": "number"
+                                        },
+                                        "lat": {
+                                            "type": "number"
+                                        },
+                                        "address_level": {
+                                            "type": "string"
+                                        },
+                                        "country_code": {
+                                            "type": "string"
+                                        },
+                                        "formatted": {
+                                            "type": "string"
+                                        },
+                                        "distance": {
+                                            "type": "number"
+                                        }
+                                    }
+                                },
+                                "bbox": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "number"
+                                    }
+                                },
+                                "geometry": {
+                                    "type": "object",
+                                    "properties": {
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "coordinates": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

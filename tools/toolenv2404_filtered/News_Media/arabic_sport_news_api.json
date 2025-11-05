@@ -1,0 +1,157 @@
+{
+    "product_id": "api_a77b3675-a6c2-4144-83dc-3eee1f856181",
+    "tool_description": "200,000+ Arabic Sport News Articles & Videos from 50+ News Sources upadated every hour ",
+    "home_url": "https://rapidapi.com/xevriltd/api/arabic-sport-news-api/",
+    "name": "Arabic Sport News API",
+    "title": "Arabic Sport News API",
+    "pricing": "FREEMIUM",
+    "tool_name": "Arabic Sport News API",
+    "score": null,
+    "host": "arabic-sport-news-api.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get one article details by id",
+            "url": "https://arabic-sport-news-api.p.rapidapi.com/get/6400ff56062f1875bf0878a4",
+            "description": "Get the details of one news post by id \nthis includes post body. post body lines are separated by the new line symbol.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "6400ff56062f1875bf0878a4"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://arabic-sport-news-api.p.rapidapi.com/get/6400ff56062f1875bf0878a4\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"arabic-sport-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://arabic-sport-news-api.p.rapidapi.com/get/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"arabic-sport-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "ok": {
+                        "type": "boolean"
+                    },
+                    "result": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "mediatype": {
+                                    "type": "string"
+                                },
+                                "media": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "tags": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "createdOn": {
+                                    "type": "string"
+                                },
+                                "modifiedOn": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "body": {
+                                    "type": "string"
+                                },
+                                "source": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "error": {
+                        "type": "null"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get List of All Arabic Sport News Articles",
+            "url": "https://arabic-sport-news-api.p.rapidapi.com/",
+            "description": "- Get a JSON response listing all Articles ordered by date in descending order.\n- Articles are ordered from recent to older articles.\n- each data page consists of 10 articles synopsis.\n- use the other details end point to get the full text of the article",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://arabic-sport-news-api.p.rapidapi.com/\"\nquerystring = {\"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"arabic-sport-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://arabic-sport-news-api.p.rapidapi.com/\"\nquerystring = {\"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"arabic-sport-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "ok": {
+                        "type": "boolean"
+                    },
+                    "result": {
+                        "type": "object",
+                        "properties": {
+                            "totalPages": {
+                                "type": "integer"
+                            },
+                            "currentPage": {
+                                "type": "integer"
+                            },
+                            "pageSize": {
+                                "type": "integer"
+                            },
+                            "posts": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "mediatype": {
+                                            "type": "string"
+                                        },
+                                        "tags": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "createdOn": {
+                                            "type": "string"
+                                        },
+                                        "modifiedOn": {
+                                            "type": "string"
+                                        },
+                                        "title": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "error": {
+                        "type": "null"
+                    }
+                }
+            }
+        }
+    ]
+}

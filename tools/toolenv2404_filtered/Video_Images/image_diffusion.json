@@ -1,0 +1,158 @@
+{
+    "product_id": "api_2471e490-d9fe-46b8-9238-aba1ff833177",
+    "tool_description": "Diffusion APIs",
+    "home_url": "https://rapidapi.com/xct007/api/image-diffusion/",
+    "name": "Image diffusion",
+    "title": "Image diffusion",
+    "pricing": "PAID",
+    "tool_name": "Image diffusion",
+    "score": {
+        "avgServiceLevel": 75,
+        "avgLatency": 32970,
+        "avgSuccessRate": 23,
+        "popularityScore": 1.9,
+        "__typename": "Score"
+    },
+    "host": "image-diffusion.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Anime SD API",
+            "url": "https://image-diffusion.p.rapidapi.com/image/anime/diffusion",
+            "description": "design to generate weeb stuff.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "steps",
+                    "type": "NUMBER",
+                    "description": "maximum 50",
+                    "default": "25"
+                },
+                {
+                    "name": "image_num",
+                    "type": "NUMBER",
+                    "description": "maximum 4",
+                    "default": "1"
+                },
+                {
+                    "name": "width",
+                    "type": "NUMBER",
+                    "description": "maximum width/height 1024",
+                    "default": "512"
+                },
+                {
+                    "name": "cfg",
+                    "type": "NUMBER",
+                    "description": "maximum 20",
+                    "default": "7.5"
+                },
+                {
+                    "name": "height",
+                    "type": "NUMBER",
+                    "description": "maximum width/height 1024",
+                    "default": "512"
+                },
+                {
+                    "name": "prompt",
+                    "type": "STRING",
+                    "description": "Describe your fantasy in prompt",
+                    "default": "1girl"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "negative_prompt",
+                    "type": "STRING",
+                    "description": "negative prompt. v2 dont need this parameter.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://image-diffusion.p.rapidapi.com/image/anime/diffusion\"\nquerystring = {\"negative_prompt\": \"\", \"steps\": \"25\", \"image_num\": \"1\", \"width\": \"512\", \"cfg\": \"7.5\", \"height\": \"512\", \"prompt\": \"1girl\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"image-diffusion.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://image-diffusion.p.rapidapi.com/image/anime/diffusion\"\nquerystring = {\"negative_prompt\": \"\", \"steps\": \"25\", \"image_num\": \"1\", \"width\": \"512\", \"cfg\": \"7.5\", \"height\": \"512\", \"prompt\": \"1girl\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"image-diffusion.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "result": {
+                        "type": "object",
+                        "properties": {
+                            "metadata": {
+                                "type": "object",
+                                "properties": {
+                                    "mimetype": {
+                                        "type": "string"
+                                    },
+                                    "prompt": {
+                                        "type": "string"
+                                    },
+                                    "width": {
+                                        "type": "string"
+                                    },
+                                    "height": {
+                                        "type": "string"
+                                    },
+                                    "batch_size": {
+                                        "type": "string"
+                                    },
+                                    "steps": {
+                                        "type": "string"
+                                    },
+                                    "cfg_scale": {
+                                        "type": "string"
+                                    },
+                                    "images": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Prompter",
+            "url": "https://image-diffusion.p.rapidapi.com/image/stable/prompter",
+            "description": "generate prompt from image url",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "full path image url.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://image-diffusion.p.rapidapi.com/image/stable/prompter\"\nquerystring = {\"url\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"image-diffusion.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://image-diffusion.p.rapidapi.com/image/stable/prompter\"\nquerystring = {\"url\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"image-diffusion.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "result": {
+                        "type": "object",
+                        "properties": {
+                            "model": {
+                                "type": "string"
+                            },
+                            "prompt": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

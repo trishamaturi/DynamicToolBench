@@ -1,0 +1,121 @@
+{
+    "product_id": "api_eb371049-79ee-4e04-9a5d-05d1cab7f969",
+    "tool_description": "Api for parsing, formatting and validating international phone numbers",
+    "home_url": "https://rapidapi.com/aaslaouireda-bFjiCsSyAti/api/phone-validator1/",
+    "name": "Phone Validator",
+    "title": "Phone Validator",
+    "pricing": "FREEMIUM",
+    "tool_name": "Phone Validator",
+    "score": null,
+    "host": "phone-validator1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Format International",
+            "url": "https://phone-validator1.p.rapidapi.com/api/ValidatePhone/FormatInternational/15417543010/US",
+            "description": "Formats a phone number in the international format by region code",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "regionCode",
+                    "type": "string",
+                    "description": "",
+                    "default": "US"
+                },
+                {
+                    "name": "phoneNumber",
+                    "type": "string",
+                    "description": "",
+                    "default": "15417543010"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://phone-validator1.p.rapidapi.com/api/ValidatePhone/FormatInternational/15417543010/US\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"phone-validator1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://phone-validator1.p.rapidapi.com/api/ValidatePhone/FormatInternational/{phonenumber}/{regioncode}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"phone-validator1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "internationalFormat": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get Supported Regions",
+            "url": "https://phone-validator1.p.rapidapi.com/api/ValidatePhone/GetSupportedRegions",
+            "description": "Get the list of regions which are managed by the Api",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://phone-validator1.p.rapidapi.com/api/ValidatePhone/GetSupportedRegions\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"phone-validator1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://phone-validator1.p.rapidapi.com/api/ValidatePhone/GetSupportedRegions\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"phone-validator1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "regionCode": {
+                            "type": "string"
+                        },
+                        "countryCode": {
+                            "type": "string"
+                        },
+                        "phoneNumberExample": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Validate Phone Number",
+            "url": "https://phone-validator1.p.rapidapi.com/api/ValidatePhone/IsValidPhoneNumber/+15417543010",
+            "description": "Full validation of a phone number by using only the phone number and region",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "phoneNumber",
+                    "type": "string",
+                    "description": "",
+                    "default": "+15417543010"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "defaultRegion",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "US"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://phone-validator1.p.rapidapi.com/api/ValidatePhone/IsValidPhoneNumber/+15417543010\"\nquerystring = {\"defaultRegion\": \"US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"phone-validator1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://phone-validator1.p.rapidapi.com/api/ValidatePhone/IsValidPhoneNumber/{phonenumber}\"\nquerystring = {\"defaultRegion\": \"US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"phone-validator1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "enteredPhoneNumber": {
+                        "type": "string"
+                    },
+                    "defaultRegion": {
+                        "type": "string"
+                    },
+                    "countryCode": {
+                        "type": "string"
+                    },
+                    "phoneNumberRegion": {
+                        "type": "string"
+                    },
+                    "isValidNumber": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    ]
+}

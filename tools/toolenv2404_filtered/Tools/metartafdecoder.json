@@ -1,0 +1,439 @@
+{
+    "product_id": "api_99bce75e-27ed-4af4-8f9b-0e2d45e88e60",
+    "tool_description": "API to decode METAR and TAF messages",
+    "home_url": "https://rapidapi.com/mivek/api/metartafdecoder/",
+    "name": "MetarTAFDecoder",
+    "title": "MetarTAFDecoder",
+    "pricing": "FREE",
+    "tool_name": "MetarTAFDecoder",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1325,
+        "avgSuccessRate": 69,
+        "popularityScore": 7.6,
+        "__typename": "Score"
+    },
+    "host": "metartafdecoder.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get TAF",
+            "url": "https://metartafdecoder.p.rapidapi.com/taf/LFPG",
+            "description": "Retrieve and decode a TAF given a station ICAO code",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "icao",
+                    "type": "string",
+                    "description": "",
+                    "default": "LFPG"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://metartafdecoder.p.rapidapi.com/taf/LFPG\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"metartafdecoder.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://metartafdecoder.p.rapidapi.com/taf/{icao}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"metartafdecoder.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "wind": {
+                        "type": "object",
+                        "properties": {
+                            "speed": {
+                                "type": "integer"
+                            },
+                            "direction": {
+                                "type": "string"
+                            },
+                            "directionDegrees": {
+                                "type": "integer"
+                            },
+                            "gust": {
+                                "type": "integer"
+                            },
+                            "unit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "visibility": {
+                        "type": "object",
+                        "properties": {
+                            "mainVisibility": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "clouds": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "height": {
+                                    "type": "integer"
+                                },
+                                "quantity": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "cavok": {
+                        "type": "boolean"
+                    },
+                    "day": {
+                        "type": "integer"
+                    },
+                    "time": {
+                        "type": "string"
+                    },
+                    "airport": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "city": {
+                                "type": "string"
+                            },
+                            "country": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "iata": {
+                                "type": "string"
+                            },
+                            "icao": {
+                                "type": "string"
+                            },
+                            "latitude": {
+                                "type": "number"
+                            },
+                            "longitude": {
+                                "type": "number"
+                            },
+                            "altitude": {
+                                "type": "integer"
+                            },
+                            "timezone": {
+                                "type": "string"
+                            },
+                            "dst": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "station": {
+                        "type": "string"
+                    },
+                    "validity": {
+                        "type": "object",
+                        "properties": {
+                            "startDay": {
+                                "type": "integer"
+                            },
+                            "startHour": {
+                                "type": "integer"
+                            },
+                            "endDay": {
+                                "type": "integer"
+                            },
+                            "endHour": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "maxTemperature": {
+                        "type": "object",
+                        "properties": {
+                            "temperature": {
+                                "type": "integer"
+                            },
+                            "day": {
+                                "type": "integer"
+                            },
+                            "hour": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "minTemperature": {
+                        "type": "object",
+                        "properties": {
+                            "temperature": {
+                                "type": "integer"
+                            },
+                            "day": {
+                                "type": "integer"
+                            },
+                            "hour": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "becmgs": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "tempos": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "cancelled": {
+                        "type": "boolean"
+                    },
+                    "auto": {
+                        "type": "boolean"
+                    },
+                    "amendment": {
+                        "type": "boolean"
+                    },
+                    "nil": {
+                        "type": "boolean"
+                    },
+                    "corrected": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get station METAR",
+            "url": "https://metartafdecoder.p.rapidapi.com/metar/LFPG",
+            "description": "This endpoint retrieves and decode the current METAR for a given station.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "icao",
+                    "type": "string",
+                    "description": "",
+                    "default": "LFPG"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://metartafdecoder.p.rapidapi.com/metar/LFPG\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"metartafdecoder.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://metartafdecoder.p.rapidapi.com/metar/{icao}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"metartafdecoder.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "wind": {
+                        "type": "object",
+                        "properties": {
+                            "speed": {
+                                "type": "integer"
+                            },
+                            "direction": {
+                                "type": "string"
+                            },
+                            "directionDegrees": {
+                                "type": "integer"
+                            },
+                            "gust": {
+                                "type": "integer"
+                            },
+                            "unit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "visibility": {
+                        "type": "object",
+                        "properties": {
+                            "mainVisibility": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "clouds": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "height": {
+                                    "type": "integer"
+                                },
+                                "quantity": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "cavok": {
+                        "type": "boolean"
+                    },
+                    "day": {
+                        "type": "integer"
+                    },
+                    "time": {
+                        "type": "string"
+                    },
+                    "airport": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "city": {
+                                "type": "string"
+                            },
+                            "country": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "iata": {
+                                "type": "string"
+                            },
+                            "icao": {
+                                "type": "string"
+                            },
+                            "latitude": {
+                                "type": "number"
+                            },
+                            "longitude": {
+                                "type": "number"
+                            },
+                            "altitude": {
+                                "type": "integer"
+                            },
+                            "timezone": {
+                                "type": "string"
+                            },
+                            "dst": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "station": {
+                        "type": "string"
+                    },
+                    "temperature": {
+                        "type": "integer"
+                    },
+                    "dewPoint": {
+                        "type": "integer"
+                    },
+                    "altimeter": {
+                        "type": "integer"
+                    },
+                    "nosig": {
+                        "type": "boolean"
+                    },
+                    "trends": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "wind": {
+                                    "type": "object",
+                                    "properties": {
+                                        "speed": {
+                                            "type": "integer"
+                                        },
+                                        "direction": {
+                                            "type": "string"
+                                        },
+                                        "directionDegrees": {
+                                            "type": "integer"
+                                        },
+                                        "gust": {
+                                            "type": "integer"
+                                        },
+                                        "unit": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "visibility": {
+                                    "type": "object",
+                                    "properties": {
+                                        "mainVisibility": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "clouds": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "height": {
+                                                "type": "integer"
+                                            },
+                                            "quantity": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "weatherConditions": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "descriptive": {
+                                                "type": "string"
+                                            },
+                                            "phenomenons": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "valid": {
+                                                "type": "boolean"
+                                            }
+                                        }
+                                    }
+                                },
+                                "cavok": {
+                                    "type": "boolean"
+                                },
+                                "type": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "cancelled": {
+                        "type": "boolean"
+                    },
+                    "auto": {
+                        "type": "boolean"
+                    },
+                    "amendment": {
+                        "type": "boolean"
+                    },
+                    "nil": {
+                        "type": "boolean"
+                    },
+                    "corrected": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    ]
+}

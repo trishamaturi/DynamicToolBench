@@ -1,0 +1,52 @@
+{
+    "product_id": "api_802d4448-b7e6-47af-9fa7-2f8e9ae8d753",
+    "tool_description": "Unofficial Tatoeba.org API to search for example sentences with translations and audio.",
+    "home_url": "https://rapidapi.com/was-was-was-was-default/api/givemees/",
+    "name": "GiveMeES",
+    "title": "GiveMeES",
+    "pricing": "FREEMIUM",
+    "tool_name": "GiveMeES",
+    "score": null,
+    "host": "givemees.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "givemees",
+            "url": "https://givemees.p.rapidapi.com/givemees",
+            "description": "Search for example sentences.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The language of examples you want to get. Must be specified in the ISO 639-2 format (3 letter format, example: eng, jpn).",
+                    "default": "eng"
+                },
+                {
+                    "name": "word",
+                    "type": "STRING",
+                    "description": "Specify the word to search. Advanced search options for Tatoeba.org search can be used.",
+                    "default": "function"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "has_audio",
+                    "type": "STRING",
+                    "description": "The only possible usage is has&#95;audio=yes. Don't use if you don't need audio of the example sentences. If has&#95;audio=yes the result will include only examples with audio and will include the link to the audio file. If not used, the link to the audio file will not be included in the results.",
+                    "default": ""
+                },
+                {
+                    "name": "translatedTo",
+                    "type": "STRING",
+                    "description": "If used, will give the translations to the specified language in the result. If not, the results will not include translations. Must be specified in the ISO 639-2 format (3 letter format, example: eng, jpn).",
+                    "default": "jpn"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://givemees.p.rapidapi.com/givemees\"\nquerystring = {\"language\": \"eng\", \"has_audio\": \"\", \"word\": \"function\", \"translatedTo\": \"jpn\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"givemees.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://givemees.p.rapidapi.com/givemees\"\nquerystring = {\"language\": \"eng\", \"has_audio\": \"\", \"word\": \"function\", \"translatedTo\": \"jpn\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"givemees.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

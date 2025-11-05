@@ -1,0 +1,111 @@
+{
+    "product_id": "api_684edae8-2cd0-400f-915e-2740af4b9830",
+    "tool_description": "Search millions of job listings from hundreds of sources in hundreds of cities.\n\nThe salary range is provided when it's available.",
+    "home_url": "https://rapidapi.com/jobwiz-jobwiz-default/api/job-search-api1/",
+    "name": "Job Search API",
+    "title": "Job Search API",
+    "pricing": "FREEMIUM",
+    "tool_name": "Job Search API",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 12887,
+        "avgSuccessRate": 99,
+        "popularityScore": 9.4,
+        "__typename": "Score"
+    },
+    "host": "job-search-api1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "searchJob",
+            "url": "https://job-search-api1.p.rapidapi.com/v1/job-description-search",
+            "description": "Searches job with a search query.\nThe search query is mandatory.\nWhen there are no results, a 200 status code with an empty jobs array will be returned.\nThe salary range is provided when it's available.\nThe salary_type has 5 possible values: \"yearly\", \"monthly\", \"weekly\", \"daily\" and \"hourly\".",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "software engineer"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "[ISO 3166-1 alpha-2  country code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)",
+                    "default": "us"
+                },
+                {
+                    "name": "city",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Seattle"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "First page index is 1",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://job-search-api1.p.rapidapi.com/v1/job-description-search\"\nquerystring = {\"country\": \"us\", \"q\": \"software engineer\", \"city\": \"Seattle\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"job-search-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://job-search-api1.p.rapidapi.com/v1/job-description-search\"\nquerystring = {\"country\": \"us\", \"q\": \"software engineer\", \"city\": \"Seattle\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"job-search-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "jobs": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "application_url": {
+                                    "type": "string"
+                                },
+                                "company_name": {
+                                    "type": "string"
+                                },
+                                "plain_text_description": {
+                                    "type": "string"
+                                },
+                                "html_description": {
+                                    "type": "string"
+                                },
+                                "publication_time": {
+                                    "type": "string"
+                                },
+                                "source": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "salary": {
+                                    "type": "object|null",
+                                    "properties": {
+                                        "min_salary": {
+                                            "type": "number"
+                                        },
+                                        "max_salary": {
+                                            "type": "number"
+                                        },
+                                        "currency": {
+                                            "type": "string"
+                                        },
+                                        "salary_type": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

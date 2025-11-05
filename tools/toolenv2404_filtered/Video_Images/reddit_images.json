@@ -1,0 +1,65 @@
+{
+    "product_id": "api_b8b73790-5b9b-4dbc-90f5-c3b3bdb71b6a",
+    "tool_description": "Get a collection of images from the Reddit platform.",
+    "home_url": "https://rapidapi.com/agobrech/api/reddit-images/",
+    "name": "Reddit Images",
+    "title": "Reddit Images",
+    "pricing": "FREEMIUM",
+    "tool_name": "Reddit Images",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1335,
+        "avgSuccessRate": 0,
+        "popularityScore": 0,
+        "__typename": "Score"
+    },
+    "host": "reddit-images.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get image by category",
+            "url": "https://reddit-images.p.rapidapi.com/Landscape",
+            "description": "Get 50 images from a specific category. To get the next 50 images from the same category, add as a query the fields of  \"LastEvaluatedKey\" which are category and uuid. By using the LastEvaluatedKey you can browsee through the pages of images. To get the categories please use the other",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "category",
+                    "type": "string",
+                    "description": "",
+                    "default": "Landscape"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "uuid",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "202110-2612-3859-"
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Landscape"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://reddit-images.p.rapidapi.com/Landscape\"\nquerystring = {\"uuid\": \"202110-2612-3859-\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"reddit-images.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://reddit-images.p.rapidapi.com/{category}\"\nquerystring = {\"uuid\": \"202110-2612-3859-\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"reddit-images.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get all available categories",
+            "url": "https://reddit-images.p.rapidapi.com/categories",
+            "description": "Endpoint to receive an array of String with the name of all the categories avaible with images.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://reddit-images.p.rapidapi.com/categories\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"reddit-images.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://reddit-images.p.rapidapi.com/categories\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"reddit-images.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

@@ -1,0 +1,202 @@
+{
+    "product_id": "api_840d1e32-87fe-4dd3-8fba-577737c144fa",
+    "tool_description": "REALTIME! #1 Most Hated API by Bookmakers: Competitions, Matches & Odds for bet365. Available sports: Football (Soccer), Basketball, Ice Hockey, American Football, Tennis, Handball, Volleyball, Baseball, Cricket, Darts, Boxing, MMA, Rugby, Snooker, Table Tennis, Waterpolo, Futsal, Aussie Rules, Field Hockey, Floorball & Squash.",
+    "home_url": "https://rapidapi.com/arbitrage-bettors1-arbitrage-bettors-default/api/bet36528/",
+    "name": "Bet365",
+    "title": "Bet365",
+    "pricing": "FREEMIUM",
+    "tool_name": "Bet365",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1152,
+        "avgSuccessRate": 84,
+        "popularityScore": 9.3,
+        "__typename": "Score"
+    },
+    "host": "bet36528.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Matches - (may take time)",
+            "url": "https://bet36528.p.rapidapi.com/matches_bet365",
+            "description": "Retrieves all Matches in our system. As this endpoint is on demand, the first request of the day for the selected competition may take up to 30 seconds.\nUse \"matchid\" for the endpoint \"Odds\".",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "match_urls",
+                    "type": "BOOLEAN",
+                    "description": "Links to each match by available bookmaker (true or false)",
+                    "default": "false"
+                },
+                {
+                    "name": "competition",
+                    "type": "STRING",
+                    "description": "Preferred competition (e.g. premier-league / nba)",
+                    "default": "premier-league"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Preferred country (e.g. england / usa)",
+                    "default": "england"
+                },
+                {
+                    "name": "sport",
+                    "type": "STRING",
+                    "description": "Preferred sport (e.g. soccer / basketball)",
+                    "default": "soccer"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://bet36528.p.rapidapi.com/matches_bet365\"\nquerystring = {\"match_urls\": \"false\", \"competition\": \"premier-league\", \"country\": \"england\", \"sport\": \"soccer\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet36528.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bet36528.p.rapidapi.com/matches_bet365\"\nquerystring = {\"match_urls\": \"false\", \"competition\": \"premier-league\", \"country\": \"england\", \"sport\": \"soccer\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet36528.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Odds (historical)",
+            "url": "https://bet36528.p.rapidapi.com/historical/odds_bet365",
+            "description": "Retrieves historical Odds for the selected match. Use the endpoint \"Matches (historical)\" first to get the correct input data for \"matchid\".",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "matchid",
+                    "type": "STRING",
+                    "description": "matchid from Matches (historical) -endpoint",
+                    "default": "id1005141763283"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://bet36528.p.rapidapi.com/historical/odds_bet365\"\nquerystring = {\"matchid\": \"id1005141763283\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet36528.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bet36528.p.rapidapi.com/historical/odds_bet365\"\nquerystring = {\"matchid\": \"id1005141763283\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet36528.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Javascript - Odds endpoint in Node.js",
+            "url": "https://bet36528.p.rapidapi.com/odds-javascript_bet365",
+            "description": "This Code Snippet helps to bring a request from the Odds-endpoint into useful Node.js format via Javascript.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://bet36528.p.rapidapi.com/odds-javascript_bet365\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet36528.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bet36528.p.rapidapi.com/odds-javascript_bet365\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet36528.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Competitions",
+            "url": "https://bet36528.p.rapidapi.com/competitions_bet365",
+            "description": "Retrieves all competitions in our system for the selected sport.\nRemember to use the received credentials of each competition for the endpoint \"Matches\".",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "sport",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "soccer"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://bet36528.p.rapidapi.com/competitions_bet365\"\nquerystring = {\"sport\": \"soccer\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet36528.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bet36528.p.rapidapi.com/competitions_bet365\"\nquerystring = {\"sport\": \"soccer\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet36528.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Odds - (pre-game & live)",
+            "url": "https://bet36528.p.rapidapi.com/odds_bet365",
+            "description": "Retrieves real-time Odds for the selected match filtered for bet365 Sportsbook. Use the endpoint \"Matches\" first to get the correct input data for \"matchid\".",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "matchid",
+                    "type": "STRING",
+                    "description": "matchid from Matches-endpoint",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://bet36528.p.rapidapi.com/odds_bet365\"\nquerystring = {\"matchid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet36528.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bet36528.p.rapidapi.com/odds_bet365\"\nquerystring = {\"matchid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet36528.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Matches (historical)",
+            "url": "https://bet36528.p.rapidapi.com/historical/matches",
+            "description": "Retrieves all historical Matches in our system. Take the endpoint \"Competitions\" as a reference for the input.\nUse \"matchid\" for the endpoint \"Odds (historical)\".",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "competition",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "premier-league"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "england"
+                },
+                {
+                    "name": "sport",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "soccer"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://bet36528.p.rapidapi.com/historical/matches\"\nquerystring = {\"competition\": \"premier-league\", \"country\": \"england\", \"sport\": \"soccer\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet36528.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bet36528.p.rapidapi.com/historical/matches\"\nquerystring = {\"competition\": \"premier-league\", \"country\": \"england\", \"sport\": \"soccer\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet36528.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Javascript - Matches endpoint in Node.js",
+            "url": "https://bet36528.p.rapidapi.com/matches-javascript_bet365",
+            "description": "This Code Snippet helps to bring a request from the Matches-endpoint into useful Node.js format via Javascript.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://bet36528.p.rapidapi.com/matches-javascript_bet365\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet36528.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bet36528.p.rapidapi.com/matches-javascript_bet365\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet36528.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Python - Odds endpoint in Dataframe",
+            "url": "https://bet36528.p.rapidapi.com/odds-python-dataframe_bet365",
+            "description": "This Code Snippet helps to bring a request from the Odds-endpoint into useful Dataframe format by pandas.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://bet36528.p.rapidapi.com/odds-python-dataframe_bet365\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet36528.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bet36528.p.rapidapi.com/odds-python-dataframe_bet365\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet36528.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Python - Matches endpoint in Dataframe",
+            "url": "https://bet36528.p.rapidapi.com/matches-python-dataframe_bet365",
+            "description": "This Code Snippet helps to bring a request from the Matches-endpoint into useful Dataframe format by pandas.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://bet36528.p.rapidapi.com/matches-python-dataframe_bet365\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet36528.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bet36528.p.rapidapi.com/matches-python-dataframe_bet365\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet36528.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Sports",
+            "url": "https://bet36528.p.rapidapi.com/allsports_bet365",
+            "description": "Retrieves all sports for bet365 Sportsbook",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://bet36528.p.rapidapi.com/allsports_bet365\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet36528.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bet36528.p.rapidapi.com/allsports_bet365\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet36528.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

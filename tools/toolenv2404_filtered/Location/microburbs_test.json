@@ -1,0 +1,643 @@
+{
+    "product_id": "api_ebfd6c37-0b3f-49f6-8d8a-c5dde0dd3fb8",
+    "tool_description": "An API that retrieves data relating to areas of Australia collected and processed by Microburbs. Data is available on the area's house prices, education levels, crime rates and much more. ",
+    "home_url": "https://rapidapi.com/microburbs-2-microburbs-2-default/api/microburbs-test/",
+    "name": "Microburbs (Test)",
+    "title": "Microburbs (Test)",
+    "pricing": "FREEMIUM",
+    "tool_name": "Microburbs (Test)",
+    "score": null,
+    "host": "microburbs-test.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Areas",
+            "url": "https://microburbs-test.p.rapidapi.com/areas/",
+            "description": "Gets either:\n- What areas of the level of the scope are contained within a passed in area \n- The names of areas from the scope  the passed in area is within\nregion refers to the region level (e.g. lga)  of the passed in area name and scope refers to the region level of the areas that the call will find.  For example with the query area_name=Melbourne region_level=lga scope=state the API gets the state Melbourne in within ('Victoria). Alternatively, the query with area_name=Melbourne region_level=sa2 scope=state will return all sa2s within the lga of Melbourne.\nReturns a list of:\n- The area name, region level and scope passed into the query.\n-  One of found areas that fits the scope",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "scope",
+                    "type": "STRING",
+                    "description": "The region level of the areas being searched for ",
+                    "default": "state"
+                },
+                {
+                    "name": "area_name",
+                    "type": "STRING",
+                    "description": "The name of the area to get the area it's within or the areas apart of it.",
+                    "default": "South Yarra"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "region",
+                    "type": "STRING",
+                    "description": "The region level of the area passed into area_name. Required if area_name is not a state",
+                    "default": "sal"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/areas/\"\nquerystring = {\"scope\": \"state\", \"area_name\": \"South Yarra\", \"region\": \"sal\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/areas/\"\nquerystring = {\"scope\": \"state\", \"area_name\": \"South Yarra\", \"region\": \"sal\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Fields",
+            "url": "https://microburbs-test.p.rapidapi.com/fields/",
+            "description": "Get the names of fields. Can filter by section and topic .\nIf you want fields available for sa1 level data pass in true for the sa1 parameter.\nEvery figure is the value of a field in an area. (e.g. The value of census_population in the SaL Melbourne is 47000) and every field has a topic and section.\nReturns:\n- The id of the field, which is used when querying for figures in figures endpoints.\n- The section and topic that the field belongs to.\n- The name of the field\n- The region level the field belongs to. Every field id is unique to a region level (census_population only exists at the sal level)\n- A defintion of what that field is, if avaliable.\n- The Premium level of a feature",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "topic",
+                    "type": "STRING",
+                    "description": "Every section and field is a part of a a topic.",
+                    "default": "Affluence"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "sa1",
+                    "type": "BOOLEAN",
+                    "description": "True if you want fields for sa1 level data",
+                    "default": ""
+                },
+                {
+                    "name": "section",
+                    "type": "STRING",
+                    "description": "Every field belongs to a section. (The census\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\_private\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\_school\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\_students  field belongs to the Education Section which belongs to the Affluence topic)",
+                    "default": "Education"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/fields/\"\nquerystring = {\"sa1\": \"\", \"section\": \"Education\", \"topic\": \"Affluence\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/fields/\"\nquerystring = {\"sa1\": \"\", \"section\": \"Education\", \"topic\": \"Affluence\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "note": {
+                        "type": "string"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "topic": {
+                                    "type": "string"
+                                },
+                                "section": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "definition": {
+                                    "type": "string"
+                                },
+                                "region_level": {
+                                    "type": "string"
+                                },
+                                "premium": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Figure All Level 1",
+            "url": "https://microburbs-test.p.rapidapi.com/figures/all/1/",
+            "description": "Gets the latest and previous values of a figure from an area.\nOnly gets figures of premium Level 1. Use GET fields endpoint to view the level of a field.\nField and area_name are required.\nFor each figure returns:\n- The details passed into the query (area_name and field)\n- The region_level the figure belongs to\n- The date the figure was recorded\n- The value of the figure\n- The rank amongst other areas.\n- The number of areas that it is being compared to in rank.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "area_name",
+                    "type": "STRING",
+                    "description": "The area name to get the figures for.",
+                    "default": "Bondi"
+                },
+                {
+                    "name": "field",
+                    "type": "STRING",
+                    "description": "The id of the field that the figures belong to (e.g census_population)",
+                    "default": "census_population"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/figures/all/1/\"\nquerystring = {\"area_name\": \"Bondi\", \"field\": \"census_population\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/figures/all/1/\"\nquerystring = {\"area_name\": \"Bondi\", \"field\": \"census_population\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "note": {
+                        "type": "string"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "region_level": {
+                                    "type": "string"
+                                },
+                                "field": {
+                                    "type": "string"
+                                },
+                                "area_name": {
+                                    "type": "string"
+                                },
+                                "dat": {
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "type": "integer"
+                                },
+                                "rank": {
+                                    "type": "integer"
+                                },
+                                "areas": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Figures All Trial",
+            "url": "https://microburbs-test.p.rapidapi.com/figures/all/0/",
+            "description": "Get some figures for free from some of Australia's top suburbs: Bondi,  Sydney,  South Yarra,  Melbourne, Box Hill (Vic.).\nGets the latest and previous values of a figure from one of those area.\nOnly gets figures of premium Level 1. Use GET fields endpoint to view the level of a field.\nField and area_name are required.\nFor each figure returns:\n\n    The details passed into the query (area_name and field)\n    The region_level the figure belongs to\n    The date the figure was recorded\n    The value of the figure\n    The rank amongst other areas.\n    The number of areas that it is being compared to in rank.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "area_name",
+                    "type": "STRING",
+                    "description": "The area name to get the figures for.",
+                    "default": "Bondi"
+                },
+                {
+                    "name": "field",
+                    "type": "STRING",
+                    "description": "The id of the field that the figure belongs to (e.g census_population)",
+                    "default": "census_population"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/figures/all/0/\"\nquerystring = {\"area_name\": \"Bondi\", \"field\": \"census_population\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/figures/all/0/\"\nquerystring = {\"area_name\": \"Bondi\", \"field\": \"census_population\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Figures Latest Trial",
+            "url": "https://microburbs-test.p.rapidapi.com/figures/latest/0/",
+            "description": "Get some figures for free from some of Australia's top suburbs: Bondi,  Sydney,  South Yarra,  Melbourne, Box Hill (Vic.).\nGets the latest value of a figure in one of those areas.\nOnly gets figures of premium Level 1. Use GET fields endpoint to view the level of a field.\nField and area name are required.\nReturns:\n- The details passed into the query (area_name and field)\n- The region_level the figure belongs to\n- The date the figure was recorded\n- The value of the figure\n- The rank amongst other areas.\n- The number of areas that it is being compared to in rank.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "area_name",
+                    "type": "STRING",
+                    "description": "The area name to get the figures for.",
+                    "default": "South Yarra"
+                },
+                {
+                    "name": "field",
+                    "type": "STRING",
+                    "description": "The id of the field that the figure belongs to (e.g census_population)",
+                    "default": "census_population"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/figures/latest/0/\"\nquerystring = {\"area_name\": \"South Yarra\", \"field\": \"census_population\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/figures/latest/0/\"\nquerystring = {\"area_name\": \"South Yarra\", \"field\": \"census_population\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Figures All Level 3",
+            "url": "https://microburbs-test.p.rapidapi.com/figures/all/3/",
+            "description": "Gets the latest and previous values of a figure from an area.\nOnly gets figures of premium Level 3. Use GET fields endpoint to view the level of a field.\nField and area_name are required.\nFor each figure returns:\n- The details passed into the query (area_name and field)\n- The region_level the figure belongs to\n- The date the figure was recorded\n- The value of the figure\n- The rank amongst other areas.\n- The number of areas that it is being compared to in rank.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "field",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "mib_combined_income_diversification"
+                },
+                {
+                    "name": "area_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "South Yarra"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/figures/all/3/\"\nquerystring = {\"field\": \"mib_combined_income_diversification\", \"area_name\": \"South Yarra\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/figures/all/3/\"\nquerystring = {\"field\": \"mib_combined_income_diversification\", \"area_name\": \"South Yarra\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "note": {
+                        "type": "string"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "region_level": {
+                                    "type": "string"
+                                },
+                                "field": {
+                                    "type": "string"
+                                },
+                                "area_name": {
+                                    "type": "string"
+                                },
+                                "dat": {
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "type": "number"
+                                },
+                                "rank": {
+                                    "type": "integer"
+                                },
+                                "areas": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Multiple Figures Latest Level 1",
+            "url": "https://microburbs-test.p.rapidapi.com/figures/multi_latest/",
+            "description": "Get latest figures from an area filtered by a section and topic pair.\nOnly returns figures of Level 1. Individual calls are needed to get access to figures of higher levels.\narea_name and section must be included.\nregion_level is required if the area is not a state.\nFor each figure returns:\n\nThe details passed into the query (area_name and field)\nThe region_level the figure belongs to\nThe date the figure was recorded\nThe value of the figure\nThe rank amongst other areas.\nThe number of areas that it is being compared to in rank.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "topic",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Affluence"
+                },
+                {
+                    "name": "area_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "South Yarra"
+                },
+                {
+                    "name": "section",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Education"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "region_level",
+                    "type": "STRING",
+                    "description": "Required if not state (e.g. sal, lga)",
+                    "default": "sal"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/figures/multi_latest/\"\nquerystring = {\"region_level\": \"sal\", \"topic\": \"Affluence\", \"area_name\": \"South Yarra\", \"section\": \"Education\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/figures/multi_latest/\"\nquerystring = {\"region_level\": \"sal\", \"topic\": \"Affluence\", \"area_name\": \"South Yarra\", \"section\": \"Education\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "note": {
+                        "type": "string"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "region_level": {
+                                    "type": "string"
+                                },
+                                "field": {
+                                    "type": "string"
+                                },
+                                "area_name": {
+                                    "type": "string"
+                                },
+                                "dat": {
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "type": "number"
+                                },
+                                "rank": {
+                                    "type": "integer"
+                                },
+                                "areas": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Sections",
+            "url": "https://microburbs-test.p.rapidapi.com/sections/",
+            "description": "Gets the names of Sections and the topics they are a part of.\nEvery field belongs to a section. \nA topic can be passed into filter out sections not belonging to that topic.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "topic",
+                    "type": "STRING",
+                    "description": "The topic to get the sections from. Topics are broader categories that a section belongs to. (e.g. The Education section is a part of the Affluence topic)",
+                    "default": "Affluence"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/sections/\"\nquerystring = {\"topic\": \"Affluence\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/sections/\"\nquerystring = {\"topic\": \"Affluence\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "title": "Section_Return",
+                "required": [
+                    "sections"
+                ],
+                "type": "object",
+                "properties": {
+                    "sections": {
+                        "title": "Sections",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Figures Latest Level 3",
+            "url": "https://microburbs-test.p.rapidapi.com/figures/latest/3/",
+            "description": "Gets the latest value of a figure in an area.  \nOnly gets figures of premium Level 3. Use GET fields endpoint to view the level of a field.\n Field and area name are required.\nReturns:\n- The details passed into the query (area_name and field)\n- The region_level the figure belongs to\n- The date the figure was recorded\n- The value of the figure\n- The rank amongst other areas.\n- The number of areas that it is being compared to in rank.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "area_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Bondi"
+                },
+                {
+                    "name": "field",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "mib_combined_income_diversification"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/figures/latest/3/\"\nquerystring = {\"area_name\": \"Bondi\", \"field\": \"mib_combined_income_diversification\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/figures/latest/3/\"\nquerystring = {\"area_name\": \"Bondi\", \"field\": \"mib_combined_income_diversification\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "note": {
+                        "type": "string"
+                    },
+                    "result": {
+                        "type": "object",
+                        "properties": {
+                            "region_level": {
+                                "type": "string"
+                            },
+                            "field": {
+                                "type": "string"
+                            },
+                            "area_name": {
+                                "type": "string"
+                            },
+                            "dat": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            },
+                            "rank": {
+                                "type": "integer"
+                            },
+                            "areas": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Figures All Level 2",
+            "url": "https://microburbs-test.p.rapidapi.com/figures/all/2/",
+            "description": "Gets the latest and previous values of a figure from an area.\nOnly gets figures of premium Level 2. Use GET fields endpoint to view the level of a field.\nField and area_name are required.\nFor each figure returns:\n- The details passed into the query (area_name and field)\n- The region_level the figure belongs to\n- The date the figure was recorded\n- The value of the figure\n- The rank amongst other areas.\n- The number of areas that it is being compared to in rank.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "field",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "census_education_degree_holders"
+                },
+                {
+                    "name": "area_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "South Yarra"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/figures/all/2/\"\nquerystring = {\"field\": \"census_education_degree_holders\", \"area_name\": \"South Yarra\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/figures/all/2/\"\nquerystring = {\"field\": \"census_education_degree_holders\", \"area_name\": \"South Yarra\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Figures Latest Level 2",
+            "url": "https://microburbs-test.p.rapidapi.com/figures/latest/2/",
+            "description": "Gets the latest value of a figure in an area.  \nOnly gets figures of premium Level 2. Use GET fields endpoint to view the level of a field.\n Field and area name are required.\nReturns:\n- The details passed into the query (area_name and field)\n- The region_level the figure belongs to\n- The date the figure was recorded\n- The value of the figure\n- The rank amongst other areas.\n- The number of areas that it is being compared to in rank.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "field",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "census_it_degree_holders"
+                },
+                {
+                    "name": "area_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Melbourne"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/figures/latest/2/\"\nquerystring = {\"field\": \"census_it_degree_holders\", \"area_name\": \"Melbourne\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/figures/latest/2/\"\nquerystring = {\"field\": \"census_it_degree_holders\", \"area_name\": \"Melbourne\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "note": {
+                        "type": "string"
+                    },
+                    "result": {
+                        "type": "object",
+                        "properties": {
+                            "region_level": {
+                                "type": "string"
+                            },
+                            "field": {
+                                "type": "string"
+                            },
+                            "area_name": {
+                                "type": "string"
+                            },
+                            "dat": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            },
+                            "rank": {
+                                "type": "integer"
+                            },
+                            "areas": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Region Levels",
+            "url": "https://microburbs-test.p.rapidapi.com/region_levels",
+            "description": "Returns the region levels that an area can be apart of. A region level is an area's type (Victoria is a state) and usually relates to its size. Some area names are repeated across region levels.\nSaL (Suburbs and Locality) is the region level with the most figures assosciated with it.\nTo learn more about region levels are their sizes see the About tab.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/region_levels\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/region_levels\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Topics",
+            "url": "https://microburbs-test.p.rapidapi.com/topics",
+            "description": "Gets the names of all topics. \nTopics are borad categories and the parents of sections.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/topics\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/topics\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "title": "Topics",
+                "required": [
+                    "topics"
+                ],
+                "type": "object",
+                "properties": {
+                    "topics": {
+                        "title": "Topics",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Figure Latest Level 1",
+            "url": "https://microburbs-test.p.rapidapi.com/figures/latest/1/",
+            "description": "Gets the latest value of a figure in an area.  \nOnly gets figures of premium Level 1. Use GET fields endpoint to view the level of a field.\n Field and area name are required.\nReturns:\n- The details passed into the query (area_name and field)\n- The region_level the figure belongs to\n- The date the figure was recorded\n- The value of the figure\n- The rank amongst other areas.\n- The number of areas that it is being compared to in rank.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "area_name",
+                    "type": "STRING",
+                    "description": "The area name to get the figures for.",
+                    "default": "South Yarra"
+                },
+                {
+                    "name": "field",
+                    "type": "STRING",
+                    "description": "The id of the field that the figure belongs to (e.g census_population)\n",
+                    "default": "census_population"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/figures/latest/1/\"\nquerystring = {\"area_name\": \"South Yarra\", \"field\": \"census_population\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://microburbs-test.p.rapidapi.com/figures/latest/1/\"\nquerystring = {\"area_name\": \"South Yarra\", \"field\": \"census_population\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microburbs-test.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "note": {
+                        "type": "string"
+                    },
+                    "result": {
+                        "type": "object",
+                        "properties": {
+                            "region_level": {
+                                "type": "string"
+                            },
+                            "field": {
+                                "type": "string"
+                            },
+                            "area_name": {
+                                "type": "string"
+                            },
+                            "dat": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "integer"
+                            },
+                            "rank": {
+                                "type": "integer"
+                            },
+                            "areas": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

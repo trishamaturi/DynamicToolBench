@@ -1,0 +1,1127 @@
+{
+    "product_id": "api_5a90ba13-9f91-4a17-95d7-1f8f94576a5d",
+    "tool_description": "Fetch music links and metadata for any artist, album, or track from 20+ streaming platforms with a single API call.\n\nProvide an (artist/album/track) URL, track ISRC or album UPC and we\u2019ll deliver back a rich JSON result containing all the platform links and metadata we could find, cleaned and normalized. \n\nHelp your users stream the music featured in your app, no matter which platform they use.\n\nMusicfetch discovers matching content from the following platforms:\n- Amazon\n- Amazon Music\n- Angh...",
+    "home_url": "https://rapidapi.com/musicfetch-musicfetch-default/api/musicfetch2/",
+    "name": "MusicFetch",
+    "title": "MusicFetch",
+    "pricing": "FREEMIUM",
+    "tool_name": "MusicFetch",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 2302,
+        "avgSuccessRate": 52,
+        "popularityScore": 8.5,
+        "__typename": "Score"
+    },
+    "host": "musicfetch2.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Lookup by ISRC",
+            "url": "https://musicfetch2.p.rapidapi.com/isrc",
+            "description": "Fetch track details and streaming links by ISRC lookup.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "isrc",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "US"
+                },
+                {
+                    "name": "services",
+                    "type": "STRING",
+                    "description": "amazon, amazonMusic, anghami, audius, audiomack, awa, bandcamp, boomplay, deezer, gaana, iHeartRadio, instagram, appleMusic, itunesStore, jioSaavn, joox, kkbox, lineMusic, napster, netease, pandora, qobuz, qqMusic, sevenDigital, soundcloud, spotify, tidal, tiktok,  wynkMusic, yandex, youtube, youtubeMusic",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://musicfetch2.p.rapidapi.com/isrc\"\nquerystring = {\"isrc\": \"\", \"country\": \"US\", \"services\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"musicfetch2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://musicfetch2.p.rapidapi.com/isrc\"\nquerystring = {\"isrc\": \"\", \"country\": \"US\", \"services\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"musicfetch2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "result": {
+                        "type": "object",
+                        "properties": {
+                            "type": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "duration": {
+                                "type": "integer"
+                            },
+                            "isrc": {
+                                "type": "string"
+                            },
+                            "isExplicit": {
+                                "type": "boolean"
+                            },
+                            "previewUrl": {
+                                "type": "string"
+                            },
+                            "image": {
+                                "type": "object",
+                                "properties": {
+                                    "url": {
+                                        "type": "string"
+                                    },
+                                    "width": {
+                                        "type": "integer"
+                                    },
+                                    "height": {
+                                        "type": "integer"
+                                    }
+                                }
+                            },
+                            "services": {
+                                "type": "object",
+                                "properties": {
+                                    "spotify": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "audiomack": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "qobuz": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "tidal": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "youtube": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "youtubeMusic": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "resso": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "amazon": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "deezer": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "appleMusic": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "jioSaavn": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "gaana": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "pandora": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "lineMusic": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "soundcloud": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "napster": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "tiktok": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "amazonMusic": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "artists": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "image": {
+                                            "type": "object",
+                                            "properties": {
+                                                "url": {
+                                                    "type": "string"
+                                                },
+                                                "width": {
+                                                    "type": "integer"
+                                                },
+                                                "height": {
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        },
+                                        "services": {
+                                            "type": "object",
+                                            "properties": {
+                                                "spotify": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "appleMusic": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "deezer": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "tidal": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "napster": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "pandora": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "amazon": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "soundcloud": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "qobuz": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "lineMusic": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "amazonMusic": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "albums": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "totalTracks": {
+                                            "type": "integer"
+                                        },
+                                        "releaseDate": {
+                                            "type": "string"
+                                        },
+                                        "image": {
+                                            "type": "object",
+                                            "properties": {
+                                                "height": {
+                                                    "type": "integer"
+                                                },
+                                                "url": {
+                                                    "type": "string"
+                                                },
+                                                "width": {
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        },
+                                        "services": {
+                                            "type": "object",
+                                            "properties": {
+                                                "amazonMusic": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "spotify": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "tidal": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "amazon": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "deezer": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "pandora": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "lineMusic": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "performance": {
+                        "type": "object",
+                        "properties": {
+                            "spotify": {
+                                "type": "integer"
+                            },
+                            "gaana": {
+                                "type": "integer"
+                            },
+                            "jioSaavn": {
+                                "type": "integer"
+                            },
+                            "bandcamp": {
+                                "type": "integer"
+                            },
+                            "discogs": {
+                                "type": "integer"
+                            },
+                            "musicBrainz": {
+                                "type": "integer"
+                            },
+                            "awa": {
+                                "type": "integer"
+                            },
+                            "ticketmaster": {
+                                "type": "integer"
+                            },
+                            "resso": {
+                                "type": "integer"
+                            },
+                            "audiomack": {
+                                "type": "integer"
+                            },
+                            "qobuz": {
+                                "type": "integer"
+                            },
+                            "tidal": {
+                                "type": "integer"
+                            },
+                            "youtube": {
+                                "type": "integer"
+                            },
+                            "amazon": {
+                                "type": "integer"
+                            },
+                            "deezer": {
+                                "type": "integer"
+                            },
+                            "appleMusic": {
+                                "type": "integer"
+                            },
+                            "pandora": {
+                                "type": "integer"
+                            },
+                            "lineMusic": {
+                                "type": "integer"
+                            },
+                            "audius": {
+                                "type": "integer"
+                            },
+                            "soundcloud": {
+                                "type": "integer"
+                            },
+                            "napster": {
+                                "type": "integer"
+                            },
+                            "tiktok": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Lookup by URL",
+            "url": "https://musicfetch2.p.rapidapi.com/url",
+            "description": "Fetch artist, album, or track details and streaming links by supported platform's URL lookup.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "services",
+                    "type": "STRING",
+                    "description": "amazon, amazonMusic, anghami, audius, audiomack, awa, bandcamp, boomplay, deezer, gaana, appleMusic, iHeartRadio, itunesStore, jioSaavn, joox, kkbox, lineMusic, napster, netease, pandora, qobuz, qqMusic, sevenDigital, soundcloud, spotify, tidal, wynkMusic, yandex, youtube, youtubeMusic",
+                    "default": ""
+                },
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "Spotify, Apple Music, Deezer, Tidal, Napster, Pandora, YouTube Music and SoundCloud platforms are supported for URL lookup.",
+                    "default": ""
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "US"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "withTracks",
+                    "type": "STRING",
+                    "description": "true, false (applicable in the case of album)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://musicfetch2.p.rapidapi.com/url\"\nquerystring = {\"services\": \"\", \"url\": \"\", \"country\": \"US\", \"withTracks\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"musicfetch2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://musicfetch2.p.rapidapi.com/url\"\nquerystring = {\"services\": \"\", \"url\": \"\", \"country\": \"US\", \"withTracks\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"musicfetch2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Lookup by UPC",
+            "url": "https://musicfetch2.p.rapidapi.com/upc",
+            "description": "Fetch album details and streaming links by UPC lookup.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "US"
+                },
+                {
+                    "name": "upc",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "services",
+                    "type": "STRING",
+                    "description": "amazon, amazonMusic, anghami, audius, audiomack, awa, bandcamp, boomplay, deezer, gaana, appleMusic, iHeartRadio, itunesStore, jioSaavn, joox, kkbox, lineMusic, napster, netease, pandora, qobuz, qqMusic, sevenDigital, soundcloud, spotify, tidal, wynkMusic, yandex, youtube, youtubeMusic",
+                    "default": ""
+                },
+                {
+                    "name": "withTracks",
+                    "type": "STRING",
+                    "description": "true, false",
+                    "default": "false"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://musicfetch2.p.rapidapi.com/upc\"\nquerystring = {\"country\": \"US\", \"upc\": \"\", \"services\": \"\", \"withTracks\": \"false\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"musicfetch2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://musicfetch2.p.rapidapi.com/upc\"\nquerystring = {\"country\": \"US\", \"upc\": \"\", \"services\": \"\", \"withTracks\": \"false\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"musicfetch2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "result": {
+                        "type": "object",
+                        "properties": {
+                            "type": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "totalTracks": {
+                                "type": "integer"
+                            },
+                            "releaseDate": {
+                                "type": "string"
+                            },
+                            "upc": {
+                                "type": "string"
+                            },
+                            "image": {
+                                "type": "object",
+                                "properties": {
+                                    "url": {
+                                        "type": "string"
+                                    },
+                                    "width": {
+                                        "type": "integer"
+                                    },
+                                    "height": {
+                                        "type": "integer"
+                                    }
+                                }
+                            },
+                            "services": {
+                                "type": "object",
+                                "properties": {
+                                    "amazonMusic": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "youtube": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "spotify": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "audiomack": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "napster": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "tidal": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "gaana": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "amazon": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "qobuz": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "appleMusic": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "resso": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "youtubeMusic": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "jioSaavn": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "lineMusic": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "pandora": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "artists": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "image": {
+                                            "type": "object",
+                                            "properties": {
+                                                "url": {
+                                                    "type": "string"
+                                                },
+                                                "width": {
+                                                    "type": "integer"
+                                                },
+                                                "height": {
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        },
+                                        "services": {
+                                            "type": "object",
+                                            "properties": {
+                                                "spotify": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "appleMusic": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "tidal": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "napster": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "pandora": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "amazon": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "youtubeMusic": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "qobuz": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "lineMusic": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "amazonMusic": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "link": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "performance": {
+                        "type": "object",
+                        "properties": {
+                            "spotify": {
+                                "type": "integer"
+                            },
+                            "gaana": {
+                                "type": "integer"
+                            },
+                            "audius": {
+                                "type": "integer"
+                            },
+                            "jioSaavn": {
+                                "type": "integer"
+                            },
+                            "discogs": {
+                                "type": "integer"
+                            },
+                            "musicBrainz": {
+                                "type": "integer"
+                            },
+                            "awa": {
+                                "type": "integer"
+                            },
+                            "ticketmaster": {
+                                "type": "integer"
+                            },
+                            "tiktok": {
+                                "type": "integer"
+                            },
+                            "resso": {
+                                "type": "integer"
+                            },
+                            "soundcloud": {
+                                "type": "integer"
+                            },
+                            "audiomack": {
+                                "type": "integer"
+                            },
+                            "napster": {
+                                "type": "integer"
+                            },
+                            "tidal": {
+                                "type": "integer"
+                            },
+                            "amazon": {
+                                "type": "integer"
+                            },
+                            "bandcamp": {
+                                "type": "integer"
+                            },
+                            "qobuz": {
+                                "type": "integer"
+                            },
+                            "deezer": {
+                                "type": "integer"
+                            },
+                            "appleMusic": {
+                                "type": "integer"
+                            },
+                            "youtube": {
+                                "type": "integer"
+                            },
+                            "lineMusic": {
+                                "type": "integer"
+                            },
+                            "pandora": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

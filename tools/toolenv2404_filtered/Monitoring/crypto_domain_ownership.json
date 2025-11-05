@@ -1,0 +1,117 @@
+{
+    "product_id": "api_e09326ef-7d2e-484c-a459-4fa21fe9a891",
+    "tool_description": "Get metadata and owner's wallet for NFT/Blockchain domains at scale.",
+    "home_url": "https://rapidapi.com/saumarpe/api/crypto-domain-ownership/",
+    "name": "Crypto Domain Ownership",
+    "title": "Crypto Domain Ownership",
+    "pricing": "FREEMIUM",
+    "tool_name": "Crypto Domain Ownership",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 34,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.1,
+        "__typename": "Score"
+    },
+    "host": "crypto-domain-ownership.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Transfers",
+            "url": "https://crypto-domain-ownership.p.rapidapi.com/brad.crypto/transfers/latest",
+            "description": "Figure out if a domain has been transfered in the past and their addresses.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "websiteURL",
+                    "type": "string",
+                    "description": "",
+                    "default": "brad.crypto"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://crypto-domain-ownership.p.rapidapi.com/brad.crypto/transfers/latest\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"crypto-domain-ownership.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://crypto-domain-ownership.p.rapidapi.com/{websiteurl}/transfers/latest\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"crypto-domain-ownership.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "data": [
+                    {
+                        "domain": "{websiteURL}",
+                        "from": "0x020e7c546B1567FfC7f6202Ca5F748533523dADc",
+                        "to": "0x8aaD44321A86b170879d7A244c1e8d360c99DdA8",
+                        "networkId": 1,
+                        "blockNumber": 10060311,
+                        "blockchain": "ETH"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Owner",
+            "url": "https://crypto-domain-ownership.p.rapidapi.com/ben.crypto",
+            "description": "Check domain availability and query for the records and metadata for any web3 domain",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "websiteURL",
+                    "type": "string",
+                    "description": "",
+                    "default": "ben.crypto"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://crypto-domain-ownership.p.rapidapi.com/ben.crypto\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"crypto-domain-ownership.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://crypto-domain-ownership.p.rapidapi.com/{websiteurl}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"crypto-domain-ownership.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "records": {
+                        "type": "object",
+                        "properties": {
+                            "crypto.BTC.address": {
+                                "type": "string"
+                            },
+                            "crypto.ETH.address": {
+                                "type": "string"
+                            },
+                            "crypto.LTC.address": {
+                                "type": "string"
+                            },
+                            "crypto.XRP.address": {
+                                "type": "string"
+                            },
+                            "crypto.ZIL.address": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "meta": {
+                        "type": "object",
+                        "properties": {
+                            "domain": {
+                                "type": "string"
+                            },
+                            "blockchain": {
+                                "type": "string"
+                            },
+                            "networkId": {
+                                "type": "integer"
+                            },
+                            "owner": {
+                                "type": "string"
+                            },
+                            "resolver": {
+                                "type": "string"
+                            },
+                            "registry": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

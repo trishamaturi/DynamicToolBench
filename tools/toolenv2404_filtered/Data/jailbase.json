@@ -1,0 +1,117 @@
+{
+    "product_id": "53aa3bc1e4b0a705fcc30d96",
+    "tool_description": "JailBase provides mugshots and arrest information to the public for free. \r\n\r\nWe have an easy to use web api so your website or application can access our extensive county jail inmate data. Using the API, you can search for arrested and booked individuals in county jails. \r\n\r\nThe web service uses a REST interface to make calls and returns results in JSON (JSONP is also supported). Calls to the webservice do not require a developer key, however they are rate limited (see terms of use). If you have questions or comments, please contact us. \r\n\r\nUse our api to search for county jail mugshots today.",
+    "home_url": "https://rapidapi.com/jailbase/api/jailbase/",
+    "name": "JailBase",
+    "title": "JailBase",
+    "pricing": "FREE",
+    "tool_name": "JailBase",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 2192,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.5,
+        "__typename": "Score"
+    },
+    "host": "jailbase-jailbase.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Recent",
+            "url": "https://jailbase-jailbase.p.rapidapi.com/recent/",
+            "description": "Get recent arrests",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "source_id",
+                    "type": "STRING",
+                    "description": "The id of a specific organization to search (use 'az-mcso' for test).  Full list at http://www.jailbase.com/api/#sources_list",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "The page number to return.  Only 10 records are returned per page.  See total_records, current_page and next_page values in the results.",
+                    "default": ""
+                },
+                {
+                    "name": "json_callback",
+                    "type": "STRING",
+                    "description": "If using JSONP, specify the function name here.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://jailbase-jailbase.p.rapidapi.com/recent/\"\nquerystring = {\"source_id\": \"\", \"page\": \"\", \"json_callback\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"jailbase-jailbase.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://jailbase-jailbase.p.rapidapi.com/recent/\"\nquerystring = {\"source_id\": \"\", \"page\": \"\", \"json_callback\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"jailbase-jailbase.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Search",
+            "url": "https://jailbase-jailbase.p.rapidapi.com/search/",
+            "description": "Search for individuals by name",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "source_id",
+                    "type": "STRING",
+                    "description": "The id of a specific organization to search.  Full list at http://www.jailbase.com/api/#sources_list",
+                    "default": ""
+                },
+                {
+                    "name": "last_name",
+                    "type": "STRING",
+                    "description": "The last name to search for, partial names accepted",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "first_name",
+                    "type": "STRING",
+                    "description": "The first name to search for, partial names accepted",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "The page number to return. Only 10 records are returned per page. See total_records, current_page and next_page values in the results. Default: 1.",
+                    "default": ""
+                },
+                {
+                    "name": "json_callback",
+                    "type": "STRING",
+                    "description": "If using JSONP, specify the function name here",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://jailbase-jailbase.p.rapidapi.com/search/\"\nquerystring = {\"source_id\": \"\", \"last_name\": \"\", \"first_name\": \"\", \"page\": \"\", \"json_callback\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"jailbase-jailbase.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://jailbase-jailbase.p.rapidapi.com/search/\"\nquerystring = {\"source_id\": \"\", \"last_name\": \"\", \"first_name\": \"\", \"page\": \"\", \"json_callback\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"jailbase-jailbase.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Sources",
+            "url": "https://jailbase-jailbase.p.rapidapi.com/sources/",
+            "description": "All the organizations we collect information for",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "json_callback",
+                    "type": "STRING",
+                    "description": "If using JSONP, specify the function name here.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://jailbase-jailbase.p.rapidapi.com/sources/\"\nquerystring = {\"json_callback\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"jailbase-jailbase.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://jailbase-jailbase.p.rapidapi.com/sources/\"\nquerystring = {\"json_callback\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"jailbase-jailbase.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

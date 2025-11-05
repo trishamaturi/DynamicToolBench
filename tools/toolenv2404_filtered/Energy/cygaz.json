@@ -1,0 +1,88 @@
+{
+    "product_id": "api_063e1cd6-1039-4a91-b3a0-4efb40684a97",
+    "tool_description": "Cyprus Gas Prices\n\n\t                        Unlead 95\tUnlead 98\tDiesel heat\tDiesel auto\tKerosene\npetroleum_type\t1\t                2\t                3\t                4\t                5",
+    "home_url": "https://rapidapi.com/dmouratidis153/api/cygaz/",
+    "name": "CyGaz",
+    "title": "CyGaz",
+    "pricing": "FREEMIUM",
+    "tool_name": "CyGaz",
+    "score": null,
+    "host": "cygaz.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Gas Pricing",
+            "url": "https://cygaz.p.rapidapi.com/prices/1",
+            "description": "This wil fetch all the stations for whole Cyprus\n\npetroleum_type can have the following allowed values\n\n\n|                    | Unlead 95 | Unlead 98 | Diesel heat | Diesel auto | Kerosene |\n|--------------------|-----------|-----------|-------------|-------------|----------|\n| **petroleum_type** | 1         | 2         | 3           | 4           | 5        |\n\n---",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "petroleum_type",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cygaz.p.rapidapi.com/prices/1\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cygaz.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cygaz.p.rapidapi.com/prices/{petroleum_type}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cygaz.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "updated_at": {
+                        "type": "integer"
+                    },
+                    "petroleum_type": {
+                        "type": "integer"
+                    },
+                    "stations": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "brand": {
+                                    "type": "string"
+                                },
+                                "offline": {
+                                    "type": "boolean"
+                                },
+                                "company": {
+                                    "type": "string"
+                                },
+                                "address": {
+                                    "type": "string"
+                                },
+                                "latitude": {
+                                    "type": "string"
+                                },
+                                "longitude": {
+                                    "type": "string"
+                                },
+                                "area": {
+                                    "type": "string"
+                                },
+                                "price": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get API version",
+            "url": "https://cygaz.p.rapidapi.com/version",
+            "description": "Get deployed API version",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cygaz.p.rapidapi.com/version\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cygaz.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cygaz.p.rapidapi.com/version\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cygaz.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

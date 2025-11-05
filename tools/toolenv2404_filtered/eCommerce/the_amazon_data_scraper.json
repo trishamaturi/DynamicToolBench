@@ -1,0 +1,220 @@
+{
+    "product_id": "api_d72f2ef5-0cdf-425d-a9c9-a13d5a840b42",
+    "tool_description": "The Amazon Data Scraper API is the easiest way to get access to millions of data points about products on amazon. Like price, sales rank, and reviews just to name a few all in JSON format.",
+    "home_url": "https://rapidapi.com/charleshasoneleg-1mH0z6Nb8Ly/api/the-amazon-data-scraper/",
+    "name": "The Amazon Data Scraper",
+    "title": "The Amazon Data Scraper",
+    "pricing": "FREEMIUM",
+    "tool_name": "The Amazon Data Scraper",
+    "score": null,
+    "host": "the-amazon-data-scraper.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Amazon Product Reviews",
+            "url": "https://the-amazon-data-scraper.p.rapidapi.com/products/B08N5M9XBS/reviews",
+            "description": "This Endpoint can be accessed with /products/{productId}/reviews gives you all the review info for a certain amazon product",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "productId",
+                    "type": "string",
+                    "description": "",
+                    "default": "B08N5M9XBS"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "api_key",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "034a629dc2291c164b9de760eecd0482"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://the-amazon-data-scraper.p.rapidapi.com/products/B08N5M9XBS/reviews\"\nquerystring = {\"api_key\": \"034a629dc2291c164b9de760eecd0482\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"the-amazon-data-scraper.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://the-amazon-data-scraper.p.rapidapi.com/products/{productid}/reviews\"\nquerystring = {\"api_key\": \"034a629dc2291c164b9de760eecd0482\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"the-amazon-data-scraper.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "average_rating": {
+                        "type": "number"
+                    },
+                    "total_ratings": {
+                        "type": "integer"
+                    },
+                    "filtered_total_ratings": {
+                        "type": "null"
+                    },
+                    "total_reviews": {
+                        "type": "null"
+                    },
+                    "filtered_total_reviews": {
+                        "type": "null"
+                    },
+                    "5_star_ratings": {
+                        "type": "integer"
+                    },
+                    "5_star_percentage": {
+                        "type": "number"
+                    },
+                    "4_star_ratings": {
+                        "type": "integer"
+                    },
+                    "4_star_percentage": {
+                        "type": "number"
+                    },
+                    "3_star_ratings": {
+                        "type": "integer"
+                    },
+                    "3_star_percentage": {
+                        "type": "number"
+                    },
+                    "2_star_ratings": {
+                        "type": "integer"
+                    },
+                    "2_star_percentage": {
+                        "type": "number"
+                    },
+                    "1_star_ratings": {
+                        "type": "integer"
+                    },
+                    "1_star_percentage": {
+                        "type": "number"
+                    },
+                    "product": {
+                        "type": "object",
+                        "properties": {
+                            "url": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "brand": {
+                                "type": "string"
+                            },
+                            "price": {
+                                "type": "null"
+                            },
+                            "image": {
+                                "type": "string"
+                            },
+                            "variation": {
+                                "type": "object",
+                                "properties": {
+                                    "Capacity": {
+                                        "type": "string"
+                                    },
+                                    "Color": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "top_positive_review": {
+                        "type": "object",
+                        "properties": {
+                            "stars": {
+                                "type": "integer"
+                            },
+                            "date": {
+                                "type": "string"
+                            },
+                            "verified_purchase": {
+                                "type": "boolean"
+                            },
+                            "manufacturer_replied": {
+                                "type": "boolean"
+                            },
+                            "username": {
+                                "type": "string"
+                            },
+                            "userUrl": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "review": {
+                                "type": "string"
+                            },
+                            "reviewUrl": {
+                                "type": "string"
+                            },
+                            "total_found_helpful": {
+                                "type": "integer"
+                            },
+                            "images": {
+                                "type": "array"
+                            },
+                            "variation": {
+                                "type": "object"
+                            },
+                            "videoUrl": {
+                                "type": "null"
+                            }
+                        }
+                    },
+                    "top_critical_review": {
+                        "type": "object",
+                        "properties": {
+                            "stars": {
+                                "type": "integer"
+                            },
+                            "date": {
+                                "type": "string"
+                            },
+                            "verified_purchase": {
+                                "type": "boolean"
+                            },
+                            "manufacturer_replied": {
+                                "type": "boolean"
+                            },
+                            "username": {
+                                "type": "string"
+                            },
+                            "userUrl": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "review": {
+                                "type": "string"
+                            },
+                            "reviewUrl": {
+                                "type": "string"
+                            },
+                            "total_found_helpful": {
+                                "type": "integer"
+                            },
+                            "images": {
+                                "type": "array"
+                            },
+                            "variation": {
+                                "type": "object"
+                            },
+                            "videoUrl": {
+                                "type": "null"
+                            }
+                        }
+                    },
+                    "reviews": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "pagination": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

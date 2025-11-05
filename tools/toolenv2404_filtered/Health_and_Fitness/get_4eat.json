@@ -1,0 +1,768 @@
+{
+    "product_id": "api_c8c66953-139f-40c2-be88-7c17b481b882",
+    "tool_description": "4eat API is the Digital Nutritionist infrastructure for the internet. It provides you with an easy and advanced digital nutritionist that you can integrate into your service. We aim to add value to verticals related to nutrition services, so we can improve people's life through better health, which starts with better nutrition.",
+    "home_url": "https://rapidapi.com/4eat-4eat-default/api/4eat/",
+    "name": "4eat",
+    "title": "4eat",
+    "pricing": "FREEMIUM",
+    "tool_name": "4eat",
+    "score": null,
+    "host": "4eat.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "get-user",
+            "url": "https://4eat.p.rapidapi.com/user",
+            "description": "This endpoint provides you all the information of a specific user. This will be useful to present to the user specific information. To update any of those values, you need to use ```PUT /user```",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://4eat.p.rapidapi.com/user\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"4eat.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://4eat.p.rapidapi.com/user\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"4eat.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "user": {
+                        "type": "object",
+                        "properties": {
+                            "planType": {
+                                "type": "integer",
+                                "title": "planType",
+                                "enum": [
+                                    1,
+                                    2
+                                ],
+                                "description": "Defines the type of plan for the user.\n\n- **1** = Automatic plan. The week is pre-filled with the best healthy options for each meal.  \n- **2** = Manual plan. The week is empty and each meal can be selected manually following our nutrition logic.",
+                                "x-internal": false
+                            },
+                            "weight": {
+                                "type": "number",
+                                "title": "weight",
+                                "description": "Defines the weight of the user in kilograms. We use the weight to determine the right amount of each ingredient on every meal",
+                                "x-internal": false
+                            },
+                            "height": {
+                                "type": "integer",
+                                "title": "height",
+                                "minimum": 80,
+                                "maximum": 250,
+                                "description": "Defines the height of the user in centimeters",
+                                "x-internal": false
+                            },
+                            "age": {
+                                "type": "integer",
+                                "title": "age",
+                                "minimum": 4,
+                                "maximum": 120,
+                                "description": "Defines the age of the user in years",
+                                "x-internal": false
+                            },
+                            "gender": {
+                                "type": "integer",
+                                "title": "gender",
+                                "description": "Defines the gender of the user\n\n- **1** = male\n- **2** = female",
+                                "enum": [
+                                    1,
+                                    2
+                                ],
+                                "x-internal": false
+                            },
+                            "dietID": {
+                                "type": "integer",
+                                "title": "dietID",
+                                "description": "Defines the diet type of the user\n\n- **1** = without restrictions\n- **2** = vegan",
+                                "enum": [
+                                    1,
+                                    2
+                                ],
+                                "x-internal": false
+                            },
+                            "modeID": {
+                                "type": "integer",
+                                "title": "modeID",
+                                "description": "Defines the diet mode of the user. It determines the way we select the available recipes and the ingredients quantities optimization\n\n- **1** = healthy\n- **2** = lose weight\n- **3** = gain muscle",
+                                "enum": [
+                                    1,
+                                    2,
+                                    3
+                                ],
+                                "x-internal": false
+                            },
+                            "langID": {
+                                "type": "integer",
+                                "title": "langID",
+                                "description": "Defines the language ID used to show the texts. See the list of available languages with ```GET /setupData``` method",
+                                "x-internal": false
+                            },
+                            "countryID": {
+                                "type": "integer",
+                                "title": "countryID",
+                                "description": "Defines the country ID associated to the user. We use the country to optimice the available recipes for the user. See the list of available countries with ```GET /setupData``` method",
+                                "x-internal": false
+                            },
+                            "signupDate": {
+                                "type": "integer",
+                                "description": "Defines the date when the user was signed up in seconds since 1970 (epoch)"
+                            },
+                            "mealsDistributions": {
+                                "title": "mealsDistributionsArray",
+                                "type": "array",
+                                "description": "Defines a list of every meals distribution for several days (up to seven)",
+                                "items": {
+                                    "title": "mealsDistributionsObject",
+                                    "type": "object",
+                                    "description": "Defines the meals distribution for a given day ID",
+                                    "properties": {
+                                        "dayID": {
+                                            "type": "integer",
+                                            "title": "dayID",
+                                            "description": "Defines the day ID inside a week. Each plan represents one week and have 7 days associated to it",
+                                            "minimum": 1,
+                                            "maximum": 7,
+                                            "x-internal": false
+                                        },
+                                        "mealsNumber": {
+                                            "type": "integer",
+                                            "title": "mealsNumber",
+                                            "description": "Defines the number of meals per day for a plan",
+                                            "enum": [
+                                                3,
+                                                4,
+                                                5
+                                            ]
+                                        },
+                                        "mealsDistribution": {
+                                            "type": "integer",
+                                            "title": "mealsDistribution",
+                                            "description": "Defines the meals distribution for a day, i.e. the combination of the meal types. There are 3 distributions for every different number of meals. See the list of every available distribution with ```GET /setupData``` method",
+                                            "enum": [
+                                                1,
+                                                2,
+                                                3
+                                            ]
+                                        }
+                                    }
+                                }
+                            },
+                            "constraints": {
+                                "type": "array",
+                                "description": "Defines the list of the existing constraints for the user",
+                                "items": {
+                                    "title": "constraintObjectWithName",
+                                    "type": "object",
+                                    "properties": {
+                                        "constraintID": {
+                                            "type": "integer",
+                                            "title": "constraintID",
+                                            "description": "Defines the constraint ID for a user. This could be an allergy or ingredient you want to exclude from the user's plan"
+                                        },
+                                        "type": {
+                                            "type": "integer",
+                                            "title": "constraintType",
+                                            "description": "Defines the type of the constraint\n\n- **1** = standard allergy (see list of every available allergy with ```GET /setupData``` method)\n- **2** = ingredient allergy\n- **3** = ingredient dislike",
+                                            "enum": [
+                                                1,
+                                                2,
+                                                3
+                                            ]
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "title": "constraintName",
+                                            "description": "Defines the name of the constraint"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "post-getDislikes",
+            "url": "https://4eat.p.rapidapi.com/dislikes",
+            "description": "Displays the list of ingredients that the user can indicate as disliked. We'll remove these from his diet",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://4eat.p.rapidapi.com/dislikes\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"4eat.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://4eat.p.rapidapi.com/dislikes\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"4eat.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "post-getRecipes",
+            "url": "https://4eat.p.rapidapi.com/recipes",
+            "description": "This endpoint will provide you a list with all the recipes that you have available as a customer. This includes our recipes, if enabled, and the recipes that you can create. Consider that this method should not be used for user diet selections, as we have a specific endpoint for those cases, where we optimize which recipes can be selected in a meal.\n\nThis is a list that you can use to review and check your recipes and analyze the available recipes, but not as a meal selection tool.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://4eat.p.rapidapi.com/recipes\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"4eat.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://4eat.p.rapidapi.com/recipes\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"4eat.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "recipes": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "recipeID": {
+                                    "type": "integer",
+                                    "title": "recipeID",
+                                    "description": "Defines the recipe ID. See the list of every available recipe with ```GET /recipes``` method"
+                                },
+                                "ownRecipe": {
+                                    "type": "boolean",
+                                    "description": "Defines if the recipe has been created by you"
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "title": "recipeName",
+                                    "description": "Defines the name of the recipe"
+                                },
+                                "subcategoryName": {
+                                    "type": "string",
+                                    "title": "subcategoryName",
+                                    "description": "Defines the name of the recipe's subcategory. See the list of every available subcategory with ```GET /setupData``` method"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "post-getAllergies",
+            "url": "https://4eat.p.rapidapi.com/allergies",
+            "description": "Displays the list of allergies and ingredients that the user can indicate as allergy. We'll remove these from his diet",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://4eat.p.rapidapi.com/allergies\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"4eat.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://4eat.p.rapidapi.com/allergies\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"4eat.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "constraints": {
+                        "type": "array",
+                        "description": "Defines the list of constraints that can be selected as standard allergy (type 1) or ingredient allergy (type 2)",
+                        "items": {
+                            "title": "constraintObjectWithName",
+                            "type": "object",
+                            "properties": {
+                                "constraintID": {
+                                    "type": "integer",
+                                    "title": "constraintID",
+                                    "description": "Defines the constraint ID for a user. This could be an allergy or ingredient you want to exclude from the user's plan"
+                                },
+                                "type": {
+                                    "type": "integer",
+                                    "title": "constraintType",
+                                    "description": "Defines the type of the constraint\n\n- **1** = standard allergy (see list of every available allergy with ```GET /setupData``` method)\n- **2** = ingredient allergy\n- **3** = ingredient dislike",
+                                    "enum": [
+                                        1,
+                                        2,
+                                        3
+                                    ]
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "title": "constraintName",
+                                    "description": "Defines the name of the constraint"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "post-getCustomerSetup",
+            "url": "https://4eat.p.rapidapi.com/setupData",
+            "description": "This endpoint is a generic function that provides all the relevant information for you as a customer to setup your environment. As a response, we provide the list of countries, languages, subcategories of ingredients, ingredients, subcategories of recipes, allergies, etc.\n\nThis is a critical endpoint that you will need to define several properties and to get some important data as ingredients, in order to define your own recipes.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://4eat.p.rapidapi.com/setupData\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"4eat.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://4eat.p.rapidapi.com/setupData\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"4eat.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "countries": {
+                        "type": "array",
+                        "description": "Defines the list of available countries",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "countryID": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "langs": {
+                        "type": "array",
+                        "description": "Defines the list of available languages",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "langID": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "ingredients": {
+                        "type": "array",
+                        "description": "Defines the list of available ingredients",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "ingrediendID": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "groupID": {
+                                    "type": "integer"
+                                },
+                                "mainNutrientID": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "subcategories": {
+                        "type": "array",
+                        "description": "Defines the list of available recipe subcategories",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "subcategoryID": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "ingredientsGroups": {
+                        "type": "array",
+                        "description": "Defines the list of available ingredient groups",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "groupID": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "allergies": {
+                        "type": "array",
+                        "description": "Defines the list of available allergies",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "allergyID": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "nutrients": {
+                        "type": "array",
+                        "description": "Defines the list of available nutrients",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "nutrientID": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "meals": {
+                        "type": "object",
+                        "properties": {
+                            "mealTypes": {
+                                "type": "array",
+                                "description": "Defines the list of available meal types. Each meal of the week will have a mealType associated to it",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "mealType": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "mealDistributions": {
+                                "type": "array",
+                                "description": "Defines the list of available meals distributions",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "mealsNumber": {
+                                            "type": "integer"
+                                        },
+                                        "mealsDistribution": {
+                                            "type": "integer"
+                                        },
+                                        "meals": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "mealID": {
+                                                        "type": "integer"
+                                                    },
+                                                    "mealType": {
+                                                        "type": "integer"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "post-getCreateRecipeConstraints",
+            "url": "https://4eat.p.rapidapi.com/userRecipe",
+            "description": "This endpoint returns the constraints for creating an user-specific recipe for a certain meal.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://4eat.p.rapidapi.com/userRecipe\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"4eat.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://4eat.p.rapidapi.com/userRecipe\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"4eat.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "post-getRecipeImage",
+            "url": "https://4eat.p.rapidapi.com/recipeImage/{recipeID}/thumb",
+            "description": "This endpoint provides you the image associated to the requested recipe from 4eat. As your recipes are defined by yourself, and only you have access to them, you will be in charge of the images for your own recipes. If you decide to use our recipes, this endpoint gives you those images.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "recipeID",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "thumb",
+                    "type": "STRING",
+                    "description": "Add ```/thumb``` to endpoint to get recipe thumbnail image",
+                    "default": "thumb"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://4eat.p.rapidapi.com/recipeImage/{recipeID}/thumb\"\nquerystring = {\"recipeID\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"4eat.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://4eat.p.rapidapi.com/recipeImage/{recipeID}/{thumb}\"\nquerystring = {\"recipeID\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"4eat.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "post-getShoppingList",
+            "url": "https://4eat.p.rapidapi.com/shoppingList",
+            "description": "This endpoint returns the list of ingredients and their quantities for a range of weeks, days or meals. You can select as many ranges as you need, to get the specific list of ingredients that you need.\n\nFor every range, you can define:\n- Week\n- Week and day\n- Week, day and meal\n\nWe also convert the quantities to a measurement that makes sense depending on the ingredient (grams, units, slices, etc)",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://4eat.p.rapidapi.com/shoppingList\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"4eat.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://4eat.p.rapidapi.com/shoppingList\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"4eat.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "ingredients": {
+                        "type": "array",
+                        "items": {
+                            "title": "ingredientShoppingListObject",
+                            "type": "object",
+                            "description": "Defines the shopping list quantity for an ingredient for the specified ranges",
+                            "properties": {
+                                "ingredientID": {
+                                    "type": "integer",
+                                    "title": "ingredientID",
+                                    "description": "Defines the ingredient ID. See the list of every available ingredient with ```GET /setupData``` method "
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "title": "ingredientName",
+                                    "description": "Name of the ingredient"
+                                },
+                                "quantity": {
+                                    "type": "integer",
+                                    "title": "ingredientQuantity",
+                                    "description": "Defines the quantity of ingredient in the most appropiate measurement. If ```null```, it means that the quantity is free of choice for the user, since the nutritional contribution of this ingredient is not very relevant"
+                                },
+                                "measurement": {
+                                    "type": "string",
+                                    "title": "ingredientMeasurement",
+                                    "description": "Defines the text for the measurement"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "get-recipeForMeal",
+            "url": "https://4eat.p.rapidapi.com/recipeForMeal",
+            "description": "This method provides your users the list of available recipes for a meal.\n\nAvailable means that they meet the nutritional requirements for the user in that specific moment, considering the rest of the meals already selected. Our algorithms ensure that the alternatives that your users can select at each meal are fitted to their requirements in terms of amounts, allergies, likes and dislikes, macronutrients and ingredients balance.\n\nThis can be used to select a blank meal or to replace an existing recipe on that meal.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://4eat.p.rapidapi.com/recipeForMeal\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"4eat.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://4eat.p.rapidapi.com/recipeForMeal\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"4eat.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "post-getWeek",
+            "url": "https://4eat.p.rapidapi.com/week/{weekID}",
+            "description": "This method returns a previously generated week for a user.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "weekID",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://4eat.p.rapidapi.com/week/{weekID}\"\nquerystring = {\"weekID\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"4eat.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://4eat.p.rapidapi.com/week/{weekID}\"\nquerystring = {\"weekID\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"4eat.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "week": {
+                        "title": "weekObject",
+                        "type": "object",
+                        "description": "Defines a plan for a week",
+                        "properties": {
+                            "weekID": {
+                                "type": "integer",
+                                "title": "weekID",
+                                "description": "Defines the week ID for a diet plan. Each user can have several weeks generated, each one indentified with this parameter",
+                                "minimum": 0,
+                                "x-internal": false
+                            },
+                            "days": {
+                                "type": "array",
+                                "items": {
+                                    "title": "dayObject",
+                                    "type": "object",
+                                    "properties": {
+                                        "dayID": {
+                                            "type": "integer",
+                                            "title": "dayID",
+                                            "description": "Defines the day ID inside a week. Each plan represents one week and have 7 days associated to it",
+                                            "minimum": 1,
+                                            "maximum": 7,
+                                            "x-internal": false
+                                        },
+                                        "mealsNumber": {
+                                            "type": "integer",
+                                            "title": "mealsNumber",
+                                            "description": "Defines the number of meals per day for a plan",
+                                            "enum": [
+                                                3,
+                                                4,
+                                                5
+                                            ]
+                                        },
+                                        "mealsDistribution": {
+                                            "type": "integer",
+                                            "title": "mealsDistribution",
+                                            "description": "Defines the meals distribution for a day, i.e. the combination of the meal types. There are 3 distributions for every different number of meals. See the list of every available distribution with ```GET /setupData``` method",
+                                            "enum": [
+                                                1,
+                                                2,
+                                                3
+                                            ]
+                                        },
+                                        "meals": {
+                                            "type": "array",
+                                            "items": {
+                                                "title": "mealObject",
+                                                "type": "object",
+                                                "description": "Defines a meal. \n\nIf recipe ID it's equal to -1, it means that there are no recipe associated to that meal. For example, all meals will be blank by default using the manual plan type, or if you use ```PUT /skipMeal``` on a meal",
+                                                "properties": {
+                                                    "mealID": {
+                                                        "type": "integer",
+                                                        "title": "mealID",
+                                                        "description": "Defines the meal ID inside a day. Each day can have up to 5 meals associated to it",
+                                                        "minimum": 1,
+                                                        "maximum": 5,
+                                                        "x-internal": false
+                                                    },
+                                                    "mealType": {
+                                                        "type": "integer",
+                                                        "title": "mealType",
+                                                        "description": "Defines the type of a meal.\n\n- **1** = breakfast\n- **2** = noon snack\n- **3** = lunch\n- **4** = afternoon snack\n- **5** = dinner\n- **6** = supper",
+                                                        "enum": [
+                                                            1,
+                                                            2,
+                                                            3,
+                                                            4,
+                                                            5,
+                                                            6
+                                                        ]
+                                                    },
+                                                    "recipeID": {
+                                                        "type": "integer",
+                                                        "title": "recipeID",
+                                                        "description": "Defines the recipe ID. See the list of every available recipe with ```GET /recipes``` method"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "title": "recipeName",
+                                                        "description": "Defines the name of the recipe"
+                                                    },
+                                                    "subcategoryName": {
+                                                        "type": "string",
+                                                        "title": "subcategoryName",
+                                                        "description": "Defines the name of the recipe's subcategory. See the list of every available subcategory with ```GET /setupData``` method"
+                                                    },
+                                                    "level": {
+                                                        "type": "integer",
+                                                        "title": "recipeLevel",
+                                                        "description": "Defines the difficulty for cooking the recipe, from 1 to 3 (the highest, the harder)",
+                                                        "enum": [
+                                                            1,
+                                                            2,
+                                                            3
+                                                        ]
+                                                    },
+                                                    "time": {
+                                                        "type": "integer",
+                                                        "title": "recipeTime",
+                                                        "description": "Defines the approximate time for cooking the recipe, in minutes"
+                                                    },
+                                                    "done": {
+                                                        "type": "boolean",
+                                                        "title": "mealDone",
+                                                        "description": "Defines if a meal has been done by the user. We use this information to better optimice the plan and quantities"
+                                                    },
+                                                    "custom": {
+                                                        "title": "customRecipe",
+                                                        "type": "boolean",
+                                                        "description": "Defines if the recipe has been created by the user (using ```POST /userRecipe```)"
+                                                    },
+                                                    "ingredients": {
+                                                        "title": "ingredientQuantityArray",
+                                                        "type": "array",
+                                                        "description": "Defines a list of ingredients with associated quantities",
+                                                        "items": {
+                                                            "title": "ingredientQuantityObject",
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "ingredientID": {
+                                                                    "type": "integer",
+                                                                    "title": "ingredientID",
+                                                                    "description": "Defines the ingredient ID. See the list of every available ingredient with ```GET /setupData``` method "
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "title": "ingredientName",
+                                                                    "description": "Name of the ingredient"
+                                                                },
+                                                                "grams": {
+                                                                    "type": "integer",
+                                                                    "title": "ingredientGrams",
+                                                                    "description": "Defines the quantity of ingredient in grams"
+                                                                },
+                                                                "quantity": {
+                                                                    "type": "integer",
+                                                                    "title": "ingredientQuantity",
+                                                                    "description": "Defines the quantity of ingredient in the most appropiate measurement. If ```null```, it means that the quantity is free of choice for the user, since the nutritional contribution of this ingredient is not very relevant"
+                                                                },
+                                                                "measurement": {
+                                                                    "type": "string",
+                                                                    "title": "ingredientMeasurement",
+                                                                    "description": "Defines the text for the measurement"
+                                                                }
+                                                            },
+                                                            "description": "Defines the required quantity for an ingredient. If you defined a fixed quantity for your own recipe, ```quantity``` and ```measurement``` fields won't appear"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

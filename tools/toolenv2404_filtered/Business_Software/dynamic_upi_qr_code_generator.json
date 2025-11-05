@@ -1,0 +1,70 @@
+{
+    "product_id": "api_bb9f248c-4474-4323-b60f-a190d7369184",
+    "tool_description": "Generate dynamic UPI QR Code to receive payment from any UPI APP",
+    "home_url": "https://rapidapi.com/sisinfo-sisinfo-default/api/dynamic-upi-qr-code-generator/",
+    "name": "Dynamic UPI QR Code Generator",
+    "title": "Dynamic UPI QR Code Generator",
+    "pricing": "FREEMIUM",
+    "tool_name": "Dynamic UPI QR Code Generator",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 525,
+        "avgSuccessRate": 100,
+        "popularityScore": 6.8,
+        "__typename": "Score"
+    },
+    "host": "dynamic-upi-qr-code-generator.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "https://www.omqrc.com",
+            "url": "https://dynamic-upi-qr-code-generator.p.rapidapi.com/dynaupiqrapi",
+            "description": "API generate Dynamic  UPI QR Code in the form of PNG image or Base64 image format, depending the output parameter, defined. You can display the image on POS, vending machines or print the image on the bills, so payer can scan the UPI QR Code with UPI APPs to make payment.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "payee",
+                    "type": "STRING",
+                    "description": "Receiver of the Payment whose vpa is given.\n\nNote: Replace blank Spaces in the Parameter value with %20",
+                    "default": "Softsys%20Infotek%20Solutions"
+                },
+                {
+                    "name": "vpa",
+                    "type": "STRING",
+                    "description": "BankAccount@IFSCCode, if receiving payment with bank account & IFSC Code, otherwise upiid@upihandle",
+                    "default": "5000004897053@hdfc0000061"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "billno",
+                    "type": "STRING",
+                    "description": "Bill Number / Order Number / Transaction Referance",
+                    "default": "123456"
+                },
+                {
+                    "name": "paymode",
+                    "type": "STRING",
+                    "description": "Parameter is required to receive payment with Bank Account No. & IFSC Code. In case you have UPI ID / VPA, then the parameter is not required.",
+                    "default": "bankac"
+                },
+                {
+                    "name": "amount",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "100.00"
+                },
+                {
+                    "name": "output",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "json"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://dynamic-upi-qr-code-generator.p.rapidapi.com/dynaupiqrapi\"\nquerystring = {\"billno\": \"123456\", \"paymode\": \"bankac\", \"payee\": \"Softsys%20Infotek%20Solutions\", \"vpa\": \"5000004897053@hdfc0000061\", \"amount\": \"100.00\", \"output\": \"json\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dynamic-upi-qr-code-generator.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dynamic-upi-qr-code-generator.p.rapidapi.com/dynaupiqrapi\"\nquerystring = {\"billno\": \"123456\", \"paymode\": \"bankac\", \"payee\": \"Softsys%20Infotek%20Solutions\", \"vpa\": \"5000004897053@hdfc0000061\", \"amount\": \"100.00\", \"output\": \"json\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dynamic-upi-qr-code-generator.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

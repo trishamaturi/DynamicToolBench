@@ -1,0 +1,307 @@
+{
+    "product_id": "api_15992f9c-a057-4563-9395-1555c5d32b0d",
+    "tool_description": "Get nearby establishments.",
+    "home_url": "https://rapidapi.com/NovusAPI/api/nearby-places/",
+    "name": "Nearby Places",
+    "title": "Nearby Places",
+    "pricing": "FREEMIUM",
+    "tool_name": "Nearby Places",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1026,
+        "avgSuccessRate": 93,
+        "popularityScore": 8.6,
+        "__typename": "Score"
+    },
+    "host": "nearby-places.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Nearby - (ArcGIS)",
+            "url": "https://nearby-places.p.rapidapi.com/v2/nearby",
+            "description": "Returns nearby places sorted by distance from the origin coordinates in ascending order.\n\nOnly type values from **/v2/types (ArcGIS)** are valid.\n\nMaximum returned places is 50.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "lng",
+                    "type": "NUMBER",
+                    "description": "Longitude",
+                    "default": "-123.0413988"
+                },
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "Latitude",
+                    "default": "49.2803703"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "**Meters**\nDefault: 200\nMaximum: 50000",
+                    "default": "500"
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Default: 'coffee shop'",
+                    "default": "coffee shop"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://nearby-places.p.rapidapi.com/v2/nearby\"\nquerystring = {\"radius\": \"500\", \"lng\": \"-123.0413988\", \"type\": \"coffee shop\", \"lat\": \"49.2803703\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"nearby-places.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://nearby-places.p.rapidapi.com/v2/nearby\"\nquerystring = {\"radius\": \"500\", \"lng\": \"-123.0413988\", \"type\": \"coffee shop\", \"lat\": \"49.2803703\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"nearby-places.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Nearby - (Google)",
+            "url": "https://nearby-places.p.rapidapi.com/nearby",
+            "description": "Returns a **JSON array of nearby places** sorted by distance from the origin coordinates in ascending order.\n\nOnly values from **/types (Google)** are valid types.\n\nMaximum places returned per request is 20.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "Latitude",
+                    "default": "49.283030"
+                },
+                {
+                    "name": "lng",
+                    "type": "NUMBER",
+                    "description": "Longitude",
+                    "default": "-123.118990"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Default is **cafe**.",
+                    "default": "cafe"
+                },
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "**Meters**\nDefault: 200\nMax: 50000",
+                    "default": "200"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://nearby-places.p.rapidapi.com/nearby\"\nquerystring = {\"type\": \"cafe\", \"lat\": \"49.283030\", \"lng\": \"-123.118990\", \"radius\": \"200\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"nearby-places.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://nearby-places.p.rapidapi.com/nearby\"\nquerystring = {\"type\": \"cafe\", \"lat\": \"49.283030\", \"lng\": \"-123.118990\", \"radius\": \"200\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"nearby-places.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object"
+                }
+            }
+        },
+        {
+            "name": "Types - (Google)",
+            "url": "https://nearby-places.p.rapidapi.com/types",
+            "description": "Get a list of establishment types.\n\nThese types will only work with **/nearby (Google)**.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://nearby-places.p.rapidapi.com/types\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"nearby-places.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://nearby-places.p.rapidapi.com/types\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"nearby-places.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "name": "Random (Google)",
+            "url": "https://nearby-places.p.rapidapi.com/random",
+            "description": "Return a random place nearby.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "Latitude",
+                    "default": "49.2803703"
+                },
+                {
+                    "name": "lng",
+                    "type": "NUMBER",
+                    "description": "Longitude",
+                    "default": "-123.0413988"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Default: 'cafe'",
+                    "default": "cafe"
+                },
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "**Meters**\nDefault: 200\nMax: 50000\n",
+                    "default": "500"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://nearby-places.p.rapidapi.com/random\"\nquerystring = {\"type\": \"cafe\", \"lat\": \"49.2803703\", \"lng\": \"-123.0413988\", \"radius\": \"500\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"nearby-places.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://nearby-places.p.rapidapi.com/random\"\nquerystring = {\"type\": \"cafe\", \"lat\": \"49.2803703\", \"lng\": \"-123.0413988\", \"radius\": \"500\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"nearby-places.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "place_id": {
+                        "type": "string"
+                    },
+                    "location": {
+                        "type": "object",
+                        "properties": {
+                            "lat": {
+                                "type": "number"
+                            },
+                            "lng": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "distanceMeter": {
+                        "type": "number"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Place Details - (Google)",
+            "url": "https://nearby-places.p.rapidapi.com/details",
+            "description": "Get contact and opening hours for a place.\n\nRequires a **place id** provided by **/nearby (Google)**.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Place ID.\nThis value can be retrieved from */nearby* or */random* endpoints.",
+                    "default": "ChIJCxzX9tpwhlQRIFVwULOI2FM"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://nearby-places.p.rapidapi.com/details\"\nquerystring = {\"id\": \"ChIJCxzX9tpwhlQRIFVwULOI2FM\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"nearby-places.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://nearby-places.p.rapidapi.com/details\"\nquerystring = {\"id\": \"ChIJCxzX9tpwhlQRIFVwULOI2FM\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"nearby-places.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "place_id": {
+                        "type": "string"
+                    },
+                    "location": {
+                        "type": "object",
+                        "properties": {
+                            "lat": {
+                                "type": "number"
+                            },
+                            "lng": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "types": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "map_url": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "opening_hours": {
+                        "type": "object",
+                        "properties": {
+                            "open_now": {
+                                "type": "boolean"
+                            },
+                            "periods": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "close": {
+                                            "type": "object",
+                                            "properties": {
+                                                "day": {
+                                                    "type": "integer"
+                                                },
+                                                "time": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "open": {
+                                            "type": "object",
+                                            "properties": {
+                                                "day": {
+                                                    "type": "integer"
+                                                },
+                                                "time": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "weekday_text": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "website": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Types - (ArcGIS)",
+            "url": "https://nearby-places.p.rapidapi.com/v2/types",
+            "description": "Types (categories) of establishments. These types will only work with **/v2/nearby (ArcGIS)**.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://nearby-places.p.rapidapi.com/v2/types\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"nearby-places.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://nearby-places.p.rapidapi.com/v2/types\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"nearby-places.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            }
+        }
+    ]
+}

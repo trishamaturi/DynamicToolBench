@@ -1,0 +1,115 @@
+{
+    "product_id": "api_26063fd1-e4d6-473a-b202-39807ff3f7d1",
+    "tool_description": "Distance Matrix service computes travel distance and journey duration between multiple origins and destinations using a given mode of travel.",
+    "home_url": "https://rapidapi.com/samsandr1996-4VrhG4ruory/api/distance-matrix-routing/",
+    "name": "Distance Matrix/Routing",
+    "title": "Distance Matrix/Routing",
+    "pricing": "FREEMIUM",
+    "tool_name": "Distance Matrix/Routing",
+    "score": null,
+    "host": "distance-matrix-routing.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Distance Calculation",
+            "url": "https://distance-matrix-routing.p.rapidapi.com/distance",
+            "description": "This endpoint allows to get travel distance and time for a matrix of origin and destination. Response of this API looks like Google Maps API compact response.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "destination",
+                    "type": "STRING",
+                    "description": "One location to use as the final destination for calculating travel distance and time. Location in the form of latitude/longitude coordinates or longitude/latitude coordinates",
+                    "default": "52.522199,13.425576"
+                },
+                {
+                    "name": "origin",
+                    "type": "STRING",
+                    "description": "Starting point for calculating travel distance and time. Location in the form of latitude/longitude coordinates or longitude/latitude coordinates",
+                    "default": "52.429892,13.505498"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "priority",
+                    "type": "STRING",
+                    "description": "You may specify a priority of your route. It can be the fastest route or the shortest route.",
+                    "default": "fast"
+                },
+                {
+                    "name": "vehicle",
+                    "type": "STRING",
+                    "description": "For the calculation of distances, you may specify the transportation mode to use. By default, distances are calculated for the driving mode. The following travel modes are supported: auto, walk, truck",
+                    "default": "auto"
+                },
+                {
+                    "name": "units",
+                    "type": "STRING",
+                    "description": "You can specify units for distance. It can be miles or kilometers. Default units are miles. The following units are supported: ml, km",
+                    "default": "ml"
+                },
+                {
+                    "name": "order",
+                    "type": "STRING",
+                    "description": "You may specify an order of what stands first in origin and destination. lat_lon stands for Latitude/Longitude. lon_lat stands for Longitude/Latitude",
+                    "default": "lat_lon"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://distance-matrix-routing.p.rapidapi.com/distance\"\nquerystring = {\"priority\": \"fast\", \"vehicle\": \"auto\", \"units\": \"ml\", \"destination\": \"52.522199,13.425576\", \"order\": \"lat_lon\", \"origin\": \"52.429892,13.505498\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"distance-matrix-routing.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://distance-matrix-routing.p.rapidapi.com/distance\"\nquerystring = {\"priority\": \"fast\", \"vehicle\": \"auto\", \"units\": \"ml\", \"destination\": \"52.522199,13.425576\", \"order\": \"lat_lon\", \"origin\": \"52.429892,13.505498\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"distance-matrix-routing.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "destination": {
+                        "type": "string"
+                    },
+                    "origin": {
+                        "type": "string"
+                    },
+                    "rows": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "elements": {
+                                    "type": "object",
+                                    "properties": {
+                                        "distance": {
+                                            "type": "object",
+                                            "properties": {
+                                                "text": {
+                                                    "type": "string"
+                                                },
+                                                "value": {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        },
+                                        "duration": {
+                                            "type": "object",
+                                            "properties": {
+                                                "text": {
+                                                    "type": "string"
+                                                },
+                                                "value": {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        },
+                                        "status": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    ]
+}

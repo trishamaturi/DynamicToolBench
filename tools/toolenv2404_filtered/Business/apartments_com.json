@@ -1,0 +1,300 @@
+{
+    "product_id": "api_33047e34-6a26-4463-a052-1423f1115951",
+    "tool_description": "Retrieve Apartments.com to crawl millions of real estate properties nationwide. Specify any location and extract data on all available properties in that area.",
+    "home_url": "https://rapidapi.com/epctex-epctex-default/api/apartments-com1/",
+    "name": "Apartments.com",
+    "title": "Apartments.com",
+    "pricing": "FREEMIUM",
+    "tool_name": "Apartments.com",
+    "score": {
+        "avgServiceLevel": 99,
+        "avgLatency": 2103,
+        "avgSuccessRate": 99,
+        "popularityScore": 9.6,
+        "__typename": "Score"
+    },
+    "host": "apartments-com1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "getPropertyReviews",
+            "url": "https://apartments-com1.p.rapidapi.com/properties/v07q4kg/reviews",
+            "description": "Returns all the reviews and comments of a property by its ID",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "propertyId",
+                    "type": "STRING",
+                    "description": "Property ID",
+                    "default": "v07q4kg"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page of the list",
+                    "default": 1
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://apartments-com1.p.rapidapi.com/properties/v07q4kg/reviews\"\nquerystring = {\"page\": 1}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"apartments-com1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://apartments-com1.p.rapidapi.com/properties/{propertyid}/reviews\"\nquerystring = {\"page\": 1}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"apartments-com1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "key": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "text": {
+                                    "type": "string"
+                                },
+                                "isOwner": {
+                                    "type": "boolean"
+                                },
+                                "submissionDate": {
+                                    "type": "string"
+                                },
+                                "rating": {
+                                    "type": "number"
+                                },
+                                "positiveFeedbackCount": {
+                                    "type": "number"
+                                },
+                                "comments": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "text": {
+                                                "type": "string"
+                                            },
+                                            "createdDate": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "searchProperty",
+            "url": "https://apartments-com1.p.rapidapi.com/properties",
+            "description": "Returns all the properties that matches up by the filters",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "Location for the search results",
+                    "default": "Ohio"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "minRent",
+                    "type": "STRING",
+                    "description": "Minimum rent filter for search results",
+                    "default": 100
+                },
+                {
+                    "name": "minBed",
+                    "type": "STRING",
+                    "description": "Minimum beds filter for search results",
+                    "default": 1
+                },
+                {
+                    "name": "maxRent",
+                    "type": "STRING",
+                    "description": "Maximum rent filter for search results",
+                    "default": 1000
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page for the pagination of the search results",
+                    "default": 2
+                },
+                {
+                    "name": "maxBed",
+                    "type": "STRING",
+                    "description": "Maximum beds filter for search results",
+                    "default": 3
+                },
+                {
+                    "name": "maxBath",
+                    "type": "STRING",
+                    "description": "Maximum baths filter for search results",
+                    "default": 3
+                },
+                {
+                    "name": "minBath",
+                    "type": "STRING",
+                    "description": "Minimum baths filter for search results",
+                    "default": 1
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Sort the search results",
+                    "default": "default"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://apartments-com1.p.rapidapi.com/properties\"\nquerystring = {\"minRent\": 100, \"minBed\": 1, \"maxRent\": 1000, \"page\": 2, \"maxBed\": 3, \"maxBath\": 3, \"minBath\": 1, \"location\": \"Ohio\", \"sort\": \"default\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"apartments-com1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://apartments-com1.p.rapidapi.com/properties\"\nquerystring = {\"minRent\": 100, \"minBed\": 1, \"maxRent\": 1000, \"page\": 2, \"maxBed\": 3, \"maxBath\": 3, \"minBath\": 1, \"location\": \"Ohio\", \"sort\": \"default\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"apartments-com1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "bedRange": {
+                                    "type": "string"
+                                },
+                                "rentRange": {
+                                    "type": "string"
+                                },
+                                "address": {
+                                    "type": "object",
+                                    "properties": {
+                                        "country": {
+                                            "type": "string"
+                                        },
+                                        "lineOne": {
+                                            "type": "string"
+                                        },
+                                        "lineTwo": {
+                                            "type": "string"
+                                        },
+                                        "city": {
+                                            "type": "string"
+                                        },
+                                        "state": {
+                                            "type": "string"
+                                        },
+                                        "postalCode": {
+                                            "type": "string"
+                                        },
+                                        "latitude": {
+                                            "type": "number"
+                                        },
+                                        "longitude": {
+                                            "type": "number"
+                                        },
+                                        "fullAddress": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "getProperty",
+            "url": "https://apartments-com1.p.rapidapi.com/properties/v07q4kg",
+            "description": "Returns all the detailed information of a property by its ID",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "propertyId",
+                    "type": "STRING",
+                    "description": "Property ID",
+                    "default": "v07q4kg"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://apartments-com1.p.rapidapi.com/properties/v07q4kg\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"apartments-com1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://apartments-com1.p.rapidapi.com/properties/{propertyid}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"apartments-com1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getPropertyImages",
+            "url": "https://apartments-com1.p.rapidapi.com/properties/v07q4kg/images",
+            "description": "Returns all the images and virtual tour links of a property by its ID",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "propertyId",
+                    "type": "STRING",
+                    "description": "Property ID",
+                    "default": "v07q4kg"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://apartments-com1.p.rapidapi.com/properties/v07q4kg/images\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"apartments-com1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://apartments-com1.p.rapidapi.com/properties/{propertyid}/images\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"apartments-com1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "width": {
+                                    "type": "number"
+                                },
+                                "height": {
+                                    "type": "number"
+                                },
+                                "link": {
+                                    "type": "string"
+                                },
+                                "virtualTourLink": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

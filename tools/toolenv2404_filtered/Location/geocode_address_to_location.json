@@ -1,0 +1,307 @@
+{
+    "product_id": "api_200962ef-ca01-432e-a95f-702a4be3617f",
+    "tool_description": "Convert any address to a Lat/Lon location - parse, validate and format the address to store it in a database or show on a map.",
+    "home_url": "https://rapidapi.com/geoapify-gmbh-geoapify/api/geocode-address-to-location/",
+    "name": "Geocode address to location",
+    "title": "Geocode address to location",
+    "pricing": "FREEMIUM",
+    "tool_name": "Geocode address to location",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 553,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.4,
+        "__typename": "Score"
+    },
+    "host": "geocode-address-to-location.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Address completion",
+            "url": "https://geocode-address-to-location.p.rapidapi.com/v1/geocode/autocomplete",
+            "description": "Address autocomplete endpoint for address forms. Send a part of an address and get address suggestions + their Latitude/Longitude coordinates.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "text",
+                    "type": "STRING",
+                    "description": "Free-form address, place, region or area name",
+                    "default": "Berl"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Desired result granularity  (country, state, city, postcode, street, or amenity)",
+                    "default": "city"
+                },
+                {
+                    "name": "lat",
+                    "type": "STRING",
+                    "description": "Location bias latitude (requires \\\"lon\\\")",
+                    "default": "52.51"
+                },
+                {
+                    "name": "countrycodes",
+                    "type": "STRING",
+                    "description": "Limit search to a comma-separated list of countries (ISO country codes)",
+                    "default": "de"
+                },
+                {
+                    "name": "lon",
+                    "type": "STRING",
+                    "description": "Location bias longitude (requires \\\"lat\\\")",
+                    "default": "13.38"
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "Maximum number of results",
+                    "default": "1"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Preferable results language code (en, de, it, fr)",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geocode-address-to-location.p.rapidapi.com/v1/geocode/autocomplete\"\nquerystring = {\"type\": \"city\", \"text\": \"Berl\", \"lat\": \"52.51\", \"countrycodes\": \"de\", \"lon\": \"13.38\", \"limit\": \"1\", \"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geocode-address-to-location.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geocode-address-to-location.p.rapidapi.com/v1/geocode/autocomplete\"\nquerystring = {\"type\": \"city\", \"text\": \"Berl\", \"lat\": \"52.51\", \"countrycodes\": \"de\", \"lon\": \"13.38\", \"limit\": \"1\", \"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geocode-address-to-location.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "features": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "geometry": {
+                                    "type": "object",
+                                    "properties": {
+                                        "coordinates": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "type": {
+                                    "type": "string"
+                                },
+                                "properties": {
+                                    "type": "object",
+                                    "properties": {
+                                        "country": {
+                                            "type": "string"
+                                        },
+                                        "city": {
+                                            "type": "string"
+                                        },
+                                        "postcode": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "state": {
+                                            "type": "string"
+                                        },
+                                        "datasource": {
+                                            "type": "object",
+                                            "properties": {
+                                                "sourcename": {
+                                                    "type": "string"
+                                                },
+                                                "osm_id": {
+                                                    "type": "integer"
+                                                },
+                                                "osm_type": {
+                                                    "type": "string"
+                                                },
+                                                "osm_key": {
+                                                    "type": "string"
+                                                },
+                                                "osm_value": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "lon": {
+                                            "type": "number"
+                                        },
+                                        "lat": {
+                                            "type": "number"
+                                        },
+                                        "distance": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Geocoding",
+            "url": "https://geocode-address-to-location.p.rapidapi.com/v1/geocode/search",
+            "description": "Send a street address and get the corresponding latitude/longitude coordinates, address parts, and the formatted address.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "text",
+                    "type": "STRING",
+                    "description": "Free-form address, place, region or area name",
+                    "default": "Empire State Building in New York"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "Maximum number of results",
+                    "default": "1"
+                },
+                {
+                    "name": "lat",
+                    "type": "STRING",
+                    "description": "Location bias latitude (requires \\\"lon\\\")",
+                    "default": "40.74"
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Desired result granularity  (country, state, city, postcode, street, or amenity)",
+                    "default": ""
+                },
+                {
+                    "name": "countrycodes",
+                    "type": "STRING",
+                    "description": "Limit search to a comma-separated list of countries (ISO country codes)",
+                    "default": ""
+                },
+                {
+                    "name": "lon",
+                    "type": "STRING",
+                    "description": "Location bias longitude (requires \\\"lat\\\")",
+                    "default": "-73.98"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Preferable results language code (en, de, it, fr)",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geocode-address-to-location.p.rapidapi.com/v1/geocode/search\"\nquerystring = {\"text\": \"Empire State Building in New York\", \"limit\": \"1\", \"lat\": \"40.74\", \"type\": \"\", \"countrycodes\": \"\", \"lon\": \"-73.98\", \"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geocode-address-to-location.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geocode-address-to-location.p.rapidapi.com/v1/geocode/search\"\nquerystring = {\"text\": \"Empire State Building in New York\", \"limit\": \"1\", \"lat\": \"40.74\", \"type\": \"\", \"countrycodes\": \"\", \"lon\": \"-73.98\", \"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geocode-address-to-location.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "features": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "geometry": {
+                                    "type": "object",
+                                    "properties": {
+                                        "coordinates": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "type": {
+                                    "type": "string"
+                                },
+                                "properties": {
+                                    "type": "object",
+                                    "properties": {
+                                        "country": {
+                                            "type": "string"
+                                        },
+                                        "housenumber": {
+                                            "type": "string"
+                                        },
+                                        "city": {
+                                            "type": "string"
+                                        },
+                                        "street": {
+                                            "type": "string"
+                                        },
+                                        "postcode": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "state": {
+                                            "type": "string"
+                                        },
+                                        "datasource": {
+                                            "type": "object",
+                                            "properties": {
+                                                "sourcename": {
+                                                    "type": "string"
+                                                },
+                                                "osm_id": {
+                                                    "type": "integer"
+                                                },
+                                                "osm_type": {
+                                                    "type": "string"
+                                                },
+                                                "osm_key": {
+                                                    "type": "string"
+                                                },
+                                                "osm_value": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "lon": {
+                                            "type": "number"
+                                        },
+                                        "lat": {
+                                            "type": "number"
+                                        },
+                                        "distance": {
+                                            "type": "number"
+                                        }
+                                    }
+                                },
+                                "bbox": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "number"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    ]
+}

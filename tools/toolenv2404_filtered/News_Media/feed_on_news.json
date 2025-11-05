@@ -1,0 +1,267 @@
+{
+    "product_id": "api_ff852137-a95c-4263-b9a7-e8619d46b157",
+    "tool_description": "A simple API that provides news from the world's leading newspapers or from custom sources",
+    "home_url": "https://rapidapi.com/anymorehere/api/feed-on-news/",
+    "name": "Feed On News",
+    "title": "Feed On News",
+    "pricing": "FREEMIUM",
+    "tool_name": "Feed On News",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 657,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.2,
+        "__typename": "Score"
+    },
+    "host": "feed-on-news.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get one source by name and section",
+            "url": "https://feed-on-news.p.rapidapi.com/sources/telegraph/climate-change",
+            "description": "Shows source by name and section",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "name",
+                    "type": "string",
+                    "description": "Source name according to registration",
+                    "default": "telegraph"
+                },
+                {
+                    "name": "section",
+                    "type": "string",
+                    "description": "Source section name according to registration",
+                    "default": "climate-change"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "expire",
+                    "type": "NUMBER",
+                    "description": "Cache expiration time in minutes",
+                    "default": "60"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "Source language",
+                    "default": "en"
+                },
+                {
+                    "name": "defaults",
+                    "type": "BOOLEAN",
+                    "description": "Query source. If defaults is true show queries from default sources",
+                    "default": "true"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://feed-on-news.p.rapidapi.com/sources/telegraph/climate-change\"\nquerystring = {\"expire\": \"60\", \"language\": \"en\", \"defaults\": \"true\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"feed-on-news.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://feed-on-news.p.rapidapi.com/sources/{name}/{section}\"\nquerystring = {\"expire\": \"60\", \"language\": \"en\", \"defaults\": \"true\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"feed-on-news.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "section": {
+                            "type": "string"
+                        },
+                        "url": {
+                            "type": "string"
+                        },
+                        "language": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get all sections by source",
+            "url": "https://feed-on-news.p.rapidapi.com/sources/telegraph",
+            "description": "Shows all sections from source",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "name",
+                    "type": "string",
+                    "description": "Source name according to registration",
+                    "default": "telegraph"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "expire",
+                    "type": "NUMBER",
+                    "description": "Cache expiration time in minutes",
+                    "default": "60"
+                },
+                {
+                    "name": "defaults",
+                    "type": "BOOLEAN",
+                    "description": "Query source. If defaults is true show queries from default sources",
+                    "default": "true"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "Source language",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://feed-on-news.p.rapidapi.com/sources/telegraph\"\nquerystring = {\"expire\": \"60\", \"defaults\": \"true\", \"language\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"feed-on-news.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://feed-on-news.p.rapidapi.com/sources/{name}\"\nquerystring = {\"expire\": \"60\", \"defaults\": \"true\", \"language\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"feed-on-news.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "section": {
+                            "type": "string"
+                        },
+                        "url": {
+                            "type": "string"
+                        },
+                        "language": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get all sources",
+            "url": "https://feed-on-news.p.rapidapi.com/sources",
+            "description": "Shows all standard or user-customized news sources. Both can be filtered by language",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "defaults",
+                    "type": "BOOLEAN",
+                    "description": "Query source. If defaults is true show queries from default sources",
+                    "default": "true"
+                },
+                {
+                    "name": "expire",
+                    "type": "NUMBER",
+                    "description": "Cache expiration time in minutes",
+                    "default": "60"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "Source language. Example: en, pt-BR.",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://feed-on-news.p.rapidapi.com/sources\"\nquerystring = {\"defaults\": \"true\", \"expire\": \"60\", \"language\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"feed-on-news.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://feed-on-news.p.rapidapi.com/sources\"\nquerystring = {\"defaults\": \"true\", \"expire\": \"60\", \"language\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"feed-on-news.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "cached": {
+                        "type": "boolean"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "section": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string"
+                                },
+                                "language": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get all news",
+            "url": "https://feed-on-news.p.rapidapi.com/news",
+            "description": "This endpoint returns all news from sources\n**Attention! Make request limitation by specifying sources, sections and search terms for it.  To not receive an invalid result by timeout.**",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "section",
+                    "type": "STRING",
+                    "description": "Source section according to registration",
+                    "default": "climate-change"
+                },
+                {
+                    "name": "source",
+                    "type": "STRING",
+                    "description": "Source name according to registration",
+                    "default": "telegraph,guardian"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "expire",
+                    "type": "NUMBER",
+                    "description": "Cache expiration time in minutes",
+                    "default": "60"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "Source language",
+                    "default": "en"
+                },
+                {
+                    "name": "term",
+                    "type": "STRING",
+                    "description": "Query term in news content",
+                    "default": "climate,weather"
+                },
+                {
+                    "name": "defaults",
+                    "type": "BOOLEAN",
+                    "description": "Query source. If defaults is true show queries from default sources",
+                    "default": "true"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://feed-on-news.p.rapidapi.com/news\"\nquerystring = {\"expire\": \"60\", \"section\": \"climate-change\", \"language\": \"en\", \"source\": \"telegraph,guardian\", \"term\": \"climate,weather\", \"defaults\": \"true\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"feed-on-news.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://feed-on-news.p.rapidapi.com/news\"\nquerystring = {\"expire\": \"60\", \"section\": \"climate-change\", \"language\": \"en\", \"source\": \"telegraph,guardian\", \"term\": \"climate,weather\", \"defaults\": \"true\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"feed-on-news.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "title": {
+                            "type": "string"
+                        },
+                        "url": {
+                            "type": "string"
+                        },
+                        "source": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

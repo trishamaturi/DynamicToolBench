@@ -1,0 +1,438 @@
+{
+    "product_id": "api_689a8502-1f57-4855-945f-df949c26a255",
+    "tool_description": "\u6307\u5b9a\u3057\u305f\u5730\u70b9\u304b\u3089\u6307\u5b9a\u3057\u305f\u6642\u9593\u3067\u5230\u7740\u3067\u304d\u308b\u5730\u70b9\u3084\u99c5\u3092\u691c\u7d22\u3067\u304d\u307e\u3059\u3002\u3000Search points and stations that can be reached from the specific points in a specific time. ",
+    "home_url": "https://rapidapi.com/navitimejapan-navitimejapan/api/navitime-reachable/",
+    "name": "NAVITIME Reachable",
+    "title": "NAVITIME Reachable",
+    "pricing": "FREEMIUM",
+    "tool_name": "NAVITIME Reachable",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 791,
+        "avgSuccessRate": 99,
+        "popularityScore": 9.1,
+        "__typename": "Score"
+    },
+    "host": "navitime-reachable.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "reachable_motorcycle",
+            "url": "https://navitime-reachable.p.rapidapi.com/reachable_motorcycle",
+            "description": "\u30d0\u30a4\u30af\u3092\u79fb\u52d5\u624b\u6bb5\u3068\u3057\u3066\u3001\u6307\u5b9a\u3057\u305f\u5730\u70b9\u304b\u3089\u6307\u5b9a\u3057\u305f\u6642\u9593\u307e\u305f\u306f\u8ddd\u96e2\u3067\u5230\u9054\u53ef\u80fd\u306a\u5730\u70b9\u3092\u63a2\u7d22\u3057\u307e\u3059\u3002",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Departure point.\n(node ID or latitude/longitude) (ex.35.689457,139.691935)",
+                    "default": "35.689457,139.691935"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "motorcycle_fare",
+                    "type": "STRING",
+                    "description": "Toll road use flag.\n(free: no toll road use, \ntoll: use toll roads (default))",
+                    "default": "toll"
+                },
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude.\n(wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "partition_count",
+                    "type": "NUMBER",
+                    "description": "Number of divisions of the reach search.\n(either 3,4,6,9,12,18,36,40,45,60,72 or 90)\nSpecifies the number of divisions of the 360-degree search area.\n\nIf you specify 36, the direction of travel is divided by 10 degrees, and a total of 36 points will be calculated.",
+                    "default": "36"
+                },
+                {
+                    "name": "start_time",
+                    "type": "STRING",
+                    "description": "Departure time.\n(ex: 2022-01-26T08:00:00)",
+                    "default": ""
+                },
+                {
+                    "name": "range",
+                    "type": "NUMBER",
+                    "description": "Range of search distances.\n(Minimum value: 1, Maximum value: 300,000)\nThe unit is \\\"meters\\\".\n\nSpecify either the term or the range.",
+                    "default": ""
+                },
+                {
+                    "name": "term",
+                    "type": "NUMBER",
+                    "description": "Range of search time.\n(Minimum value: 1, Maximum value: 180)\nThe unit is \\\"minutes\\\".\n\nSpecify either the term or the range.",
+                    "default": "30"
+                },
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data.\n(degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                },
+                {
+                    "name": "displacement",
+                    "type": "NUMBER",
+                    "description": "Displacement of the motorcycle.\n(Minimum value: 1, Maximum value: 3000)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-reachable.p.rapidapi.com/reachable_motorcycle\"\nquerystring = {\"motorcycle_fare\": \"toll\", \"datum\": \"wgs84\", \"partition_count\": \"36\", \"start_time\": \"\", \"range\": \"\", \"term\": \"30\", \"coord_unit\": \"degree\", \"start\": \"35.689457,139.691935\", \"displacement\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-reachable.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-reachable.p.rapidapi.com/reachable_motorcycle\"\nquerystring = {\"motorcycle_fare\": \"toll\", \"datum\": \"wgs84\", \"partition_count\": \"36\", \"start_time\": \"\", \"range\": \"\", \"term\": \"30\", \"coord_unit\": \"degree\", \"start\": \"35.689457,139.691935\", \"displacement\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-reachable.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "reachable_transit",
+            "url": "https://navitime-reachable.p.rapidapi.com/reachable_transit",
+            "description": "Search reachable stations from the specified latitude and longitude by train and on foot, including airplane.\nReachable range within the specified time or number of transfer is retrieved.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "term",
+                    "type": "NUMBER",
+                    "description": "Range of search time. (Minimum value: 1, Maximum value: 180) The unit is \"minutes\".",
+                    "default": "30"
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Departure point. (node ID or latitude/longitude) (ex.35.689457,139.691935)",
+                    "default": "35.689457,139.691935"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Skips a given number of first data. (Minimum value: 0, Maximum value: 1000, Default value: 0)",
+                    "default": "0"
+                },
+                {
+                    "name": "options",
+                    "type": "STRING",
+                    "description": "Additional output information. (node_detail: detailed information about the node)",
+                    "default": ""
+                },
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data. (degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                },
+                {
+                    "name": "unuse",
+                    "type": "STRING",
+                    "description": "Public transportation that does not use. Can be specified multiple times, separated by a period.",
+                    "default": ""
+                },
+                {
+                    "name": "term_from",
+                    "type": "NUMBER",
+                    "description": "Lower limit of the search range. (Minimum value: 0, Maximum value : value of the term, Default value: 0) The unit is \"minutes\".",
+                    "default": "0"
+                },
+                {
+                    "name": "transit_limit",
+                    "type": "NUMBER",
+                    "description": "Maximum number of transfers. (Minimum value: 0, Maximum value: 30)",
+                    "default": "0"
+                },
+                {
+                    "name": "node_type",
+                    "type": "STRING",
+                    "description": "Output node type. Can be specified multiple times, separated by a period.",
+                    "default": ""
+                },
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude. (wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "walk_speed",
+                    "type": "NUMBER",
+                    "description": "Walking speed. (Minimum value: 3.0, Maximum value: 8.0, Default value: 5) The Unit is \"km/h\".  Small numbers are valid up to the first place.",
+                    "default": "5"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limits the number of response data. (Minimum value: 1, Maximum value: 2000, Default value: 10)",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-reachable.p.rapidapi.com/reachable_transit\"\nquerystring = {\"offset\": \"0\", \"term\": \"30\", \"options\": \"\", \"coord_unit\": \"degree\", \"unuse\": \"\", \"term_from\": \"0\", \"start\": \"35.689457,139.691935\", \"transit_limit\": \"0\", \"node_type\": \"\", \"datum\": \"wgs84\", \"walk_speed\": \"5\", \"limit\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-reachable.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-reachable.p.rapidapi.com/reachable_transit\"\nquerystring = {\"offset\": \"0\", \"term\": \"30\", \"options\": \"\", \"coord_unit\": \"degree\", \"unuse\": \"\", \"term_from\": \"0\", \"start\": \"35.689457,139.691935\", \"transit_limit\": \"0\", \"node_type\": \"\", \"datum\": \"wgs84\", \"walk_speed\": \"5\", \"limit\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-reachable.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "reachable_car",
+            "url": "https://navitime-reachable.p.rapidapi.com/reachable_car",
+            "description": "Search reachable points from the specified latitude and longitude by automobile.\nReachable range within the specified time or distance is retrieved.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Departure point. (node ID or latitude/longitude) (ex.35.689457,139.691935)",
+                    "default": "35.689457,139.691935"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "partition_count",
+                    "type": "NUMBER",
+                    "description": "Number of divisions of the reach search. (either 3, 4, 6, 9, 12, 18, or 36)  Specifies the number of divisions of the 360-degree search area.  If you specify 36, the direction of travel is divided by 10 degrees, and a total of 36 points will be calculated.",
+                    "default": ""
+                },
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data. (degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                },
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude. (wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "car_fare",
+                    "type": "STRING",
+                    "description": "Toll road use flag. (free: no toll road use,  toll: use toll roads (default))",
+                    "default": "toll"
+                },
+                {
+                    "name": "term",
+                    "type": "NUMBER",
+                    "description": "Range of search time. (Minimum value: 1, Maximum value: 180) The unit is \"minutes\".  Specify either the term or the range.",
+                    "default": "30"
+                },
+                {
+                    "name": "start_time",
+                    "type": "STRING",
+                    "description": "Departure time. (ex: 2019-09-26T08:00:00)",
+                    "default": ""
+                },
+                {
+                    "name": "range",
+                    "type": "NUMBER",
+                    "description": "Range of search distances. (Minimum value: 1, Maximum value: 300,000) The unit is \"meters\".  Specify either the term or the range.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-reachable.p.rapidapi.com/reachable_car\"\nquerystring = {\"partition_count\": \"\", \"coord_unit\": \"degree\", \"start\": \"35.689457,139.691935\", \"datum\": \"wgs84\", \"car_fare\": \"toll\", \"term\": \"30\", \"start_time\": \"\", \"range\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-reachable.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-reachable.p.rapidapi.com/reachable_car\"\nquerystring = {\"partition_count\": \"\", \"coord_unit\": \"degree\", \"start\": \"35.689457,139.691935\", \"datum\": \"wgs84\", \"car_fare\": \"toll\", \"term\": \"30\", \"start_time\": \"\", \"range\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-reachable.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "reachable_walk",
+            "url": "https://navitime-reachable.p.rapidapi.com/reachable_walk",
+            "description": "Search reachable points from the specified latitude and longitude by walk.\nReachable range within the specified time or distance is retrieved.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Departure point. (node ID or latitude/longitude) (ex.35.689457,139.691935)",
+                    "default": "35.665251,139.712092"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude. (wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "range",
+                    "type": "NUMBER",
+                    "description": "Range of search distances. (Minimum value: 1, Maximum value: 300,000) The unit is \"meters\".  Specify either the term or the range.",
+                    "default": ""
+                },
+                {
+                    "name": "partition_count",
+                    "type": "NUMBER",
+                    "description": "Number of divisions of the reach search. (either 3, 4, 6, 9, 12, 18, or 36)  Specifies the number of divisions of the 360-degree search area.  If you specify 36, the direction of travel is divided by 10 degrees, and a total of 36 points will be calculated.",
+                    "default": ""
+                },
+                {
+                    "name": "term",
+                    "type": "NUMBER",
+                    "description": "Range of search time. (Minimum value: 1, Maximum value: 180) The unit is \"minutes\".  Specify either the term or the range.",
+                    "default": "30"
+                },
+                {
+                    "name": "walk_speed",
+                    "type": "NUMBER",
+                    "description": "Walking speed. (Minimum value: 3.0, Maximum value: 8.0, Default value: 5) Unit is \"km/h\".  Small numbers are valid up to the first place.",
+                    "default": ""
+                },
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data. (degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-reachable.p.rapidapi.com/reachable_walk\"\nquerystring = {\"datum\": \"wgs84\", \"range\": \"\", \"partition_count\": \"\", \"term\": \"30\", \"walk_speed\": \"\", \"coord_unit\": \"degree\", \"start\": \"35.665251,139.712092\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-reachable.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-reachable.p.rapidapi.com/reachable_walk\"\nquerystring = {\"datum\": \"wgs84\", \"range\": \"\", \"partition_count\": \"\", \"term\": \"30\", \"walk_speed\": \"\", \"coord_unit\": \"degree\", \"start\": \"35.665251,139.712092\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-reachable.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "reachable_bicycle",
+            "url": "https://navitime-reachable.p.rapidapi.com/reachable_bicycle",
+            "description": "Search reachable points from the specified latitude and longitude by bicycle.\nReachable range within the specified time or distance is retrieved.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Departure point. (latitude/longitude) (ex.35.689457,139.691935)",
+                    "default": "35.665251,139.712092"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "range",
+                    "type": "NUMBER",
+                    "description": "Range of search distances. (Minimum value: 1, Maximum value: 300,000) The unit is \"meters\".  Specify either the term or the range.",
+                    "default": ""
+                },
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data. (degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                },
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude. (wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "bicycle_speed",
+                    "type": "NUMBER",
+                    "description": "Bicycle speed. (Minimum value: 5, Maximum value: 132, Default value: 15) Unit is \"km/h\".  Small numbers are valid up to the first place.",
+                    "default": "15"
+                },
+                {
+                    "name": "partition_count",
+                    "type": "NUMBER",
+                    "description": "Number of divisions of the reach search. (either 3, 4, 6, 9, 12, 18, or 36)  Specifies the number of divisions of the 360-degree search area.  If you specify 36, the direction of travel is divided by 10 degrees, and a total of 36 points will be calculated.",
+                    "default": ""
+                },
+                {
+                    "name": "term",
+                    "type": "NUMBER",
+                    "description": "Range of search time. (Minimum value: 1, Maximum value: 180) The unit is \"minutes\".  Specify either the term or the range.",
+                    "default": "30"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-reachable.p.rapidapi.com/reachable_bicycle\"\nquerystring = {\"range\": \"\", \"coord_unit\": \"degree\", \"datum\": \"wgs84\", \"bicycle_speed\": \"15\", \"start\": \"35.665251,139.712092\", \"partition_count\": \"\", \"term\": \"30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-reachable.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-reachable.p.rapidapi.com/reachable_bicycle\"\nquerystring = {\"range\": \"\", \"coord_unit\": \"degree\", \"datum\": \"wgs84\", \"bicycle_speed\": \"15\", \"start\": \"35.665251,139.712092\", \"partition_count\": \"\", \"term\": \"30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-reachable.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

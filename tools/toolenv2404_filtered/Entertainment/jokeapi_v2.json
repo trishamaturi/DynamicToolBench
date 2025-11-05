@@ -1,0 +1,164 @@
+{
+    "product_id": "api_a2c0c932-2106-4ae8-9f0d-22232da407bf",
+    "tool_description": "REST API that serves uniformly and well formatted jokes in JSON, XML, YAML or plain text format that also offers a great variety of filtering methods",
+    "home_url": "https://rapidapi.com/Sv443/api/jokeapi-v2/",
+    "name": "JokeAPI v2",
+    "title": "JokeAPI v2",
+    "pricing": "FREE",
+    "tool_name": "JokeAPI v2",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 377,
+        "avgSuccessRate": 97,
+        "popularityScore": 9.6,
+        "__typename": "Score"
+    },
+    "host": "jokeapi-v2.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Joke",
+            "url": "https://jokeapi-v2.p.rapidapi.com/joke/Any",
+            "description": "This is the endpoint you need to call to get a joke.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "categories",
+                    "type": "string",
+                    "description": "A single category or comma-separated list of categories or the value Any to get jokes of a random category",
+                    "default": "Any"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "contains",
+                    "type": "STRING",
+                    "description": "If specified, only jokes that contain this string will be served. Value needs to be percent-encoded.",
+                    "default": "C%23"
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Will make JokeAPI only serve jokes with this joke type. Leave empty to randomly select a type.",
+                    "default": ""
+                },
+                {
+                    "name": "idRange",
+                    "type": "STRING",
+                    "description": "A single ID or range of IDs to serve jokes from",
+                    "default": "0-150"
+                },
+                {
+                    "name": "blacklistFlags",
+                    "type": "STRING",
+                    "description": "A single or comma-separated list of blacklist flags",
+                    "default": "nsfw,racist"
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "The file format the joke should be served with",
+                    "default": "json"
+                },
+                {
+                    "name": "safe-mode",
+                    "type": "STRING",
+                    "description": "A value-less parameter, that, if present, will tell JokeAPI to try its hardest not to serve any offensive jokes. By default, every joke that has one or more flags set to true is considered unsafe, in addition to a few more hand-picked ones.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://jokeapi-v2.p.rapidapi.com/joke/Any\"\nquerystring = {\"contains\": \"C%23\", \"type\": \"\", \"idRange\": \"0-150\", \"blacklistFlags\": \"nsfw,racist\", \"format\": \"json\", \"safe-mode\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"jokeapi-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://jokeapi-v2.p.rapidapi.com/joke/{categories}\"\nquerystring = {\"contains\": \"C%23\", \"type\": \"\", \"idRange\": \"0-150\", \"blacklistFlags\": \"nsfw,racist\", \"format\": \"json\", \"safe-mode\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"jokeapi-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Info",
+            "url": "https://jokeapi-v2.p.rapidapi.com/info",
+            "description": "This endpoint provides some information on JokeAPI",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "The file format the joke should be served with",
+                    "default": "json"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://jokeapi-v2.p.rapidapi.com/info\"\nquerystring = {\"format\": \"json\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"jokeapi-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://jokeapi-v2.p.rapidapi.com/info\"\nquerystring = {\"format\": \"json\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"jokeapi-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Categories",
+            "url": "https://jokeapi-v2.p.rapidapi.com/categories",
+            "description": "This endpoint returns a list / an array of all available joke categories",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "The file format the joke should be served with. More info: https://sv443.net/jokeapi/v2/#response-formats",
+                    "default": "json"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://jokeapi-v2.p.rapidapi.com/categories\"\nquerystring = {\"format\": \"json\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"jokeapi-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://jokeapi-v2.p.rapidapi.com/categories\"\nquerystring = {\"format\": \"json\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"jokeapi-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Ping",
+            "url": "https://jokeapi-v2.p.rapidapi.com/ping",
+            "description": "This endpoint is intended for external uptime monitoring but you can also use it if you want to.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "The file format the joke should be served with. More info: https://sv443.net/jokeapi/v2/#response-formats",
+                    "default": "json"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://jokeapi-v2.p.rapidapi.com/ping\"\nquerystring = {\"format\": \"json\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"jokeapi-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://jokeapi-v2.p.rapidapi.com/ping\"\nquerystring = {\"format\": \"json\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"jokeapi-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Flags",
+            "url": "https://jokeapi-v2.p.rapidapi.com/flags",
+            "description": "This endpoint returns a list / an array of all available blacklist flags",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "The file format the joke should be served with. More info: https://sv443.net/jokeapi/v2/#response-formats",
+                    "default": "json"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://jokeapi-v2.p.rapidapi.com/flags\"\nquerystring = {\"format\": \"json\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"jokeapi-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://jokeapi-v2.p.rapidapi.com/flags\"\nquerystring = {\"format\": \"json\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"jokeapi-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Formats",
+            "url": "https://jokeapi-v2.p.rapidapi.com/formats",
+            "description": "This endpoint returns a list / an array of all available response formats",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "The file format the joke should be served with. More info: https://sv443.net/jokeapi/v2/#response-formats",
+                    "default": "json"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://jokeapi-v2.p.rapidapi.com/formats\"\nquerystring = {\"format\": \"json\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"jokeapi-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://jokeapi-v2.p.rapidapi.com/formats\"\nquerystring = {\"format\": \"json\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"jokeapi-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

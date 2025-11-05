@@ -1,0 +1,719 @@
+{
+    "product_id": "api_a429c2ab-16d2-4d32-9842-0d8841d479c7",
+    "tool_description": "An API that allows you to beable to interract with binance including getting price data, trades data, order book data, candle stick data and many more",
+    "home_url": "https://rapidapi.com/daviesnzan/api/binance-api8/",
+    "name": "Binance-API",
+    "title": "Binance-API",
+    "pricing": "FREEMIUM",
+    "tool_name": "Binance-API",
+    "score": null,
+    "host": "binance-api8.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "top long short account ratio",
+            "url": "https://binance-api8.p.rapidapi.com/top-long-short-account-ratio/bnbusdt/{period}",
+            "description": "Returns the top long to short account ratio\n\nIf **startTime** and **endTime** are not sent, the most recent data is returned.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "period",
+                    "type": "ENUM",
+                    "description": "time period for each stat",
+                    "default": ""
+                },
+                {
+                    "name": "pair",
+                    "type": "string",
+                    "description": "e.g bnbusdt or BNBUSDT. Cases insensitive",
+                    "default": "bnbusdt"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "endTime",
+                    "type": "NUMBER",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "number value of the limit of number of stats to be returned (default=30, max=500)",
+                    "default": ""
+                },
+                {
+                    "name": "startTime",
+                    "type": "NUMBER",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/top-long-short-account-ratio/bnbusdt/{period}\"\nquerystring = {\"endTime\": \"\", \"limit\": \"\", \"startTime\": \"\", \"period\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/top-long-short-account-ratio/{pair}/{period}\"\nquerystring = {\"endTime\": \"\", \"limit\": \"\", \"startTime\": \"\", \"period\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "candle stick",
+            "url": "https://binance-api8.p.rapidapi.com/candlestick/btcusdt",
+            "description": "Allows you to get information about one or many candle sticks\n\nValid **Intervals** are [\"1m\", \"3m\", \"5m\", \"15m\", \"30m\", \"1h\", \"2h\", \"4h\", \"6h\", \"8h\", \"12h\", \"1d\", \"3d\", \"1w\", \"1M\"]",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "pair",
+                    "type": "string",
+                    "description": "e.g bnbusdt or BNBUSDT. Cases insensitive",
+                    "default": "btcusdt"
+                },
+                {
+                    "name": "interval",
+                    "type": "ENUM",
+                    "description": "candle stick interval",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "endTime",
+                    "type": "NUMBER",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "number value of the limit of number of canldles to be returned (default=500, max=1500)",
+                    "default": ""
+                },
+                {
+                    "name": "startTime",
+                    "type": "NUMBER",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/candlestick/btcusdt\"\nquerystring = {\"endTime\": \"\", \"limit\": \"\", \"startTime\": \"\", \"interval\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/candlestick/{pair}\"\nquerystring = {\"endTime\": \"\", \"limit\": \"\", \"startTime\": \"\", \"interval\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "market order book",
+            "url": "https://binance-api8.p.rapidapi.com/market-order-book/BTCUSDT",
+            "description": "Returns the most recent trades in order book for the market pair provided\n\nLimits that are set must be among these [5, 10, 20, 50, 100, 500, 1000]\n\nFor each element in the bids/asks response (See example response)\n[\n          \"19952.90\",  #price\n          \"15.393\"        #quantity\n]\n**E** is the message output time\n**T** is the transaction time",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "pair",
+                    "type": "string",
+                    "description": "",
+                    "default": "BTCUSDT"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "number value of the limit of number of trades to be returned (default=500)\nValue must be among these [5, 10, 20, 50, 100, 500, 1000]",
+                    "default": "10"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/market-order-book/BTCUSDT\"\nquerystring = {\"limit\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/market-order-book/{pair}\"\nquerystring = {\"limit\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "top long short position ratio",
+            "url": "https://binance-api8.p.rapidapi.com/top-long-short-position-ratio/ethusdt/{period}",
+            "description": "Returns the top long to short positions ratio\n\nIf **startTime** and **endTime** are not sent, the most recent data is returned.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "period",
+                    "type": "ENUM",
+                    "description": "time period for each stat",
+                    "default": ""
+                },
+                {
+                    "name": "pair",
+                    "type": "string",
+                    "description": "e.g bnbusdt or BNBUSDT. Case insensitive",
+                    "default": "ethusdt"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "number value of the limit of number of stats to be returned (default=30, max=500)",
+                    "default": "10"
+                },
+                {
+                    "name": "endTime",
+                    "type": "NUMBER",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                },
+                {
+                    "name": "startTime",
+                    "type": "NUMBER",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/top-long-short-position-ratio/ethusdt/{period}\"\nquerystring = {\"limit\": \"10\", \"endTime\": \"\", \"period\": \"\", \"startTime\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/top-long-short-position-ratio/{pair}/{period}\"\nquerystring = {\"limit\": \"10\", \"endTime\": \"\", \"period\": \"\", \"startTime\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "contract candlestick",
+            "url": "https://binance-api8.p.rapidapi.com/contract-candlestick/BTCUSDT/{contract}/{interval}",
+            "description": "Get candle sticks from a particular contract\n\n**contract** types are PERPETUAL, CURRENT_QUARTER and NEXT_QUARTER\nValid **Intervals** are [\"1m\", \"3m\", \"5m\", \"15m\", \"30m\", \"1h\", \"2h\", \"4h\", \"6h\", \"8h\", \"12h\", \"1d\", \"3d\", \"1w\", \"1M\"]",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "interval",
+                    "type": "ENUM",
+                    "description": "candle stick interval",
+                    "default": ""
+                },
+                {
+                    "name": "contract",
+                    "type": "ENUM",
+                    "description": "The type of contract to interact with\n",
+                    "default": ""
+                },
+                {
+                    "name": "pair",
+                    "type": "string",
+                    "description": "",
+                    "default": "BTCUSDT"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "endTime",
+                    "type": "NUMBER",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "number value of the limit of number of candles to be returned (default=500, max=1500)",
+                    "default": ""
+                },
+                {
+                    "name": "startTime",
+                    "type": "NUMBER",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/contract-candlestick/BTCUSDT/{contract}/{interval}\"\nquerystring = {\"interval\": \"\", \"contract\": \"\", \"endTime\": \"\", \"limit\": \"\", \"startTime\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/contract-candlestick/{pair}/{contract}/{interval}\"\nquerystring = {\"interval\": \"\", \"contract\": \"\", \"endTime\": \"\", \"limit\": \"\", \"startTime\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "funding rate history",
+            "url": "https://binance-api8.p.rapidapi.com/funding-rate",
+            "description": "Returns funding rate history\n\n\n**endTime** is a timestamp in ms\n**limit** is the number of candle sticks to get (default=500)\n\nIf no **pair** is provided, it returns all current funding rates.\nIf **startTime** and **endTime **are not sent, the most recent limit data are returned.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "startTime",
+                    "type": "NUMBER",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "number value of the limit of number of pairs to be returned (default=100, max=1000)",
+                    "default": ""
+                },
+                {
+                    "name": "endTime",
+                    "type": "NUMBER",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                },
+                {
+                    "name": "pair",
+                    "type": "STRING",
+                    "description": "e.g bnbusdt or BNBUSDT. Cases insensitive",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/funding-rate\"\nquerystring = {\"startTime\": \"\", \"limit\": \"\", \"endTime\": \"\", \"pair\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/funding-rate\"\nquerystring = {\"startTime\": \"\", \"limit\": \"\", \"endTime\": \"\", \"pair\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "mark price candlestick",
+            "url": "https://binance-api8.p.rapidapi.com/mark-price-candlestick/BTCUSDT/{interval}",
+            "description": "Returns the mark price candle sticks for the specified pairs\n\nValid **intervals** are [\"1m\", \"3m\", \"5m\", \"15m\", \"30m\", \"1h\", \"2h\", \"4h\", \"6h\", \"8h\", \"12h\", \"1d\", \"3d\", \"1w\", \"1M\"]\n\nIf startTime and endTime are not sent, the most recent candle sticks are returned",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "interval",
+                    "type": "ENUM",
+                    "description": "candle stick interval\n",
+                    "default": ""
+                },
+                {
+                    "name": "pair",
+                    "type": "string",
+                    "description": "e.g bnbusdt or BNBUSDT. Cases insensitive",
+                    "default": "BTCUSDT"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "number value of the limit of number of pairs to be returned (default=100, max=1000)",
+                    "default": ""
+                },
+                {
+                    "name": "endTime",
+                    "type": "NUMBER",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                },
+                {
+                    "name": "startTime",
+                    "type": "NUMBER",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/mark-price-candlestick/BTCUSDT/{interval}\"\nquerystring = {\"limit\": \"\", \"endTime\": \"\", \"interval\": \"\", \"startTime\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/mark-price-candlestick/{pair}/{interval}\"\nquerystring = {\"limit\": \"\", \"endTime\": \"\", \"interval\": \"\", \"startTime\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "24 hr stats",
+            "url": "https://binance-api8.p.rapidapi.com/24hr-stats",
+            "description": "24 hour rolling window price change statistics.\nBe Careful when accessing this with no **pair**.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "pair",
+                    "type": "STRING",
+                    "description": "e.g bnbusdt or BNBUSDT. Cases insensitive",
+                    "default": "ethusdt"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/24hr-stats\"\nquerystring = {\"pair\": \"ethusdt\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/24hr-stats\"\nquerystring = {\"pair\": \"ethusdt\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "recent trades",
+            "url": "https://binance-api8.p.rapidapi.com/trades/btcusdt",
+            "description": "Returns the most recent trades of a particular pair\n\nSet **limit** as a query parameter to specify the number of trades to get (default=500, max=1000).",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "pair",
+                    "type": "string",
+                    "description": "e.g bnbusdt or BNBUSDT. Cases insensitive",
+                    "default": "btcusdt"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "number value of the limit of number of trades to be returned (default=100, max=1000)",
+                    "default": "200"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/trades/btcusdt\"\nquerystring = {\"limit\": \"200\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/trades/{pair}\"\nquerystring = {\"limit\": \"200\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "open interest",
+            "url": "https://binance-api8.p.rapidapi.com/open-interest/bnbusdt",
+            "description": "Returns present open interest of a specific pair.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "pair",
+                    "type": "string",
+                    "description": "e.g bnbusdt or BNBUSDT. Case insensitive",
+                    "default": "bnbusdt"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/open-interest/bnbusdt\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/open-interest/{pair}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "exchange info",
+            "url": "https://binance-api8.p.rapidapi.com/exchange-info",
+            "description": "Returns the rules of Binance exchange",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/exchange-info\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/exchange-info\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "index info",
+            "url": "https://binance-api8.p.rapidapi.com/index-info",
+            "description": "Returns Index info of a **pair**\n\nIf a **pair** is not provided, index info for all the pairs will be returned",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "pair",
+                    "type": "STRING",
+                    "description": "e.g bnbusdt or BNBUSDT. Case insensitive",
+                    "default": "bnbusdt"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/index-info\"\nquerystring = {\"pair\": \"bnbusdt\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/index-info\"\nquerystring = {\"pair\": \"bnbusdt\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "order book",
+            "url": "https://binance-api8.p.rapidapi.com/order-book",
+            "description": "Returns the order book of the **pair** provided.\n\nIf no pair is provided, order books of all pairs will be returned in an array.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "pair",
+                    "type": "STRING",
+                    "description": "e.g bnbusdt or BNBUSDT. Cases insensitive",
+                    "default": "rayusdt"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/order-book\"\nquerystring = {\"pair\": \"rayusdt\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/order-book\"\nquerystring = {\"pair\": \"rayusdt\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "taker long short ratio",
+            "url": "https://binance-api8.p.rapidapi.com/taker-long-short-ratio/ethusdt/{period}",
+            "description": "Returns takers long to short positions ratio\n\nIf **startTime** and **endTime** are not sent, the most recent data is returned.\nOnly the data of the latest 30 days is available.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "period",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "pair",
+                    "type": "string",
+                    "description": "",
+                    "default": "ethusdt"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "startTime",
+                    "type": "NUMBER",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                },
+                {
+                    "name": "endTime",
+                    "type": "NUMBER",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "number value of the limit of number of stats to be returned (default=30, max=500)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/taker-long-short-ratio/ethusdt/{period}\"\nquerystring = {\"startTime\": \"\", \"endTime\": \"\", \"limit\": \"\", \"period\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/taker-long-short-ratio/{pair}/{period}\"\nquerystring = {\"startTime\": \"\", \"endTime\": \"\", \"limit\": \"\", \"period\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "global long short account ratio",
+            "url": "https://binance-api8.p.rapidapi.com/global-long-short-account-ratio/bnbusdt/{period}",
+            "description": "Returns the global long to short account ratio\n\nIf **startTime** and **endTime** are not sent, the most recent data is returned.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "pair",
+                    "type": "string",
+                    "description": "e.g bnbusdt or BNBUSDT. Case insensitive",
+                    "default": "bnbusdt"
+                },
+                {
+                    "name": "period",
+                    "type": "ENUM",
+                    "description": "time period for each stat",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "startTime",
+                    "type": "NUMBER",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                },
+                {
+                    "name": "endTime",
+                    "type": "NUMBER",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "number value of the limit of number of stats to be returned (default=30, max=500)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/global-long-short-account-ratio/bnbusdt/{period}\"\nquerystring = {\"startTime\": \"\", \"endTime\": \"\", \"limit\": \"\", \"period\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/global-long-short-account-ratio/{pair}/{period}\"\nquerystring = {\"startTime\": \"\", \"endTime\": \"\", \"limit\": \"\", \"period\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "asset index",
+            "url": "https://binance-api8.p.rapidapi.com/asset-info",
+            "description": "Returns asset index for Multi-Assets mode\n\nIf no **pair** is provided, it returns data for all the pairs",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "pair",
+                    "type": "STRING",
+                    "description": "e.g AUDUSD or audusd. Case insensitive",
+                    "default": "bnbusdt"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/asset-info\"\nquerystring = {\"pair\": \"bnbusdt\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/asset-info\"\nquerystring = {\"pair\": \"bnbusdt\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "blvt nav candlestick",
+            "url": "https://binance-api8.p.rapidapi.com/blvt-nav-candlestick/BTCDOWN/1m,3m,5m,15m,30m,1h,2h,4h,6h,8h,12h,1d,3d,1w,1M",
+            "description": "The BLVT NAV system is based on Binance Futures\nReturns  LVT candlesticks",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "pair",
+                    "type": "string",
+                    "description": "",
+                    "default": "BTCDOWN"
+                },
+                {
+                    "name": "interval",
+                    "type": "string",
+                    "description": "",
+                    "default": "1m,3m,5m,15m,30m,1h,2h,4h,6h,8h,12h,1d,3d,1w,1M"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "endTime",
+                    "type": "STRING",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                },
+                {
+                    "name": "startTime",
+                    "type": "STRING",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "The limit of number of candles to be returned (default=500, max=1000)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/blvt-nav-candlestick/BTCDOWN/1m,3m,5m,15m,30m,1h,2h,4h,6h,8h,12h,1d,3d,1w,1M\"\nquerystring = {\"endTime\": \"\", \"startTime\": \"\", \"limit\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/blvt-nav-candlestick/{pair}/{interval}\"\nquerystring = {\"endTime\": \"\", \"startTime\": \"\", \"limit\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "open interest stats",
+            "url": "https://binance-api8.p.rapidapi.com/open-interest-hist/btcusdt/{interval}",
+            "description": "Returns open interest statistics with the period provided\n\nIf **startTime** and **endTime** are not sent, the most recent data is returned.\nOnly the data of the latest 30 days is available.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "interval",
+                    "type": "ENUM",
+                    "description": "time period for each stat",
+                    "default": ""
+                },
+                {
+                    "name": "pair",
+                    "type": "string",
+                    "description": "e.g bnbusdt or BNBUSDT. Cases insensitive",
+                    "default": "btcusdt"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "startTime",
+                    "type": "NUMBER",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                },
+                {
+                    "name": "endTime",
+                    "type": "NUMBER",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "number value of the limit of number of stats to be returned (default=30, max=500)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/open-interest-hist/btcusdt/{interval}\"\nquerystring = {\"interval\": \"\", \"startTime\": \"\", \"endTime\": \"\", \"limit\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/open-interest-hist/{pair}/{interval}\"\nquerystring = {\"interval\": \"\", \"startTime\": \"\", \"endTime\": \"\", \"limit\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "premium index",
+            "url": "https://binance-api8.p.rapidapi.com/premium-index",
+            "description": "Returns the preimum index and funding rate of a pair\nIf no pair is given, it returns the premium indexes and funding rates of all the pairs",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "pair",
+                    "type": "STRING",
+                    "description": "e.g bnbusdt or BNBUSDT. Cases insensitive",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/premium-index\"\nquerystring = {\"pair\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/premium-index\"\nquerystring = {\"pair\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Index price candle stick",
+            "url": "https://binance-api8.p.rapidapi.com/index-price-candlestick/BTCUSDT/1m,3m,5m,15m,30m,1h,2h,4h,6h,8h,12h,1d,3d,1w,1M",
+            "description": "Returns the index price candle sticks of the specified pair\n\nValid **Intervals** are [\"1m\", \"3m\", \"5m\", \"15m\", \"30m\", \"1h\", \"2h\", \"4h\", \"6h\", \"8h\", \"12h\", \"1d\", \"3d\", \"1w\", \"1M\"]",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "interval",
+                    "type": "string",
+                    "description": "candle stick interval",
+                    "default": "1m,3m,5m,15m,30m,1h,2h,4h,6h,8h,12h,1d,3d,1w,1M"
+                },
+                {
+                    "name": "pair",
+                    "type": "string",
+                    "description": "e.g bnbusdt or BNBUSDT. Cases insensitive",
+                    "default": "BTCUSDT"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "endTime",
+                    "type": "NUMBER",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                },
+                {
+                    "name": "startTime",
+                    "type": "NUMBER",
+                    "description": "Timestamp in ms (unix time value).",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "number value of the limit of number of pairs to be returned (default=500, max=1500)",
+                    "default": "20"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/index-price-candlestick/BTCUSDT/1m,3m,5m,15m,30m,1h,2h,4h,6h,8h,12h,1d,3d,1w,1M\"\nquerystring = {\"endTime\": \"\", \"startTime\": \"\", \"limit\": \"20\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/index-price-candlestick/{pair}/{interval}\"\nquerystring = {\"endTime\": \"\", \"startTime\": \"\", \"limit\": \"20\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "price",
+            "url": "https://binance-api8.p.rapidapi.com/price",
+            "description": "Returns the price of an asset\n\nIf no **pair** is provided, prices for all symbols will be returned in an array.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "pair",
+                    "type": "STRING",
+                    "description": "e.g bnbusdt or BNBUSDT. Cases insensitive",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/price\"\nquerystring = {\"pair\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/price\"\nquerystring = {\"pair\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "server time",
+            "url": "https://binance-api8.p.rapidapi.com/server-time",
+            "description": "Returns current time on the server.\nAlso used to check if you are connected too the API",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/server-time\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://binance-api8.p.rapidapi.com/server-time\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"binance-api8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

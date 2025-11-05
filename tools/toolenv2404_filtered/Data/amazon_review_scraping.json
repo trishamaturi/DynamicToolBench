@@ -1,0 +1,70 @@
+{
+    "product_id": "api_6bc5a51e-7b06-49aa-8229-2bf8dd83aa07",
+    "tool_description": "Amazon Review Scraping is designed to scrape and return structured reviews from Amazon product pages. It supports filtering by star rating, sorting by recent or helpful reviews, and targeting specific Amazon regional domains. This function is ideal for aggregating customer feedback, performing sentiment analysis, or enhancing product-related applications with real user reviews.\n\n Currently, we support US and German Amazon only. Feel free to message us if you want your region supported.",
+    "home_url": "https://rapidapi.com/amaru-labs-amaru-labs-default/api/amazon-review-scraping/",
+    "name": "Amazon Review Scraping",
+    "title": "Amazon Review Scraping",
+    "pricing": "FREEMIUM",
+    "tool_name": "Amazon Review Scraping",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 5151,
+        "avgSuccessRate": 69,
+        "popularityScore": 8.3,
+        "__typename": "Score"
+    },
+    "host": "amazon-review-scraping.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Query Reviews",
+            "url": "https://amazon-review-scraping.p.rapidapi.com/getAmazReviews",
+            "description": "Get current reviews of a product on Amazon.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "productId",
+                    "type": "STRING",
+                    "description": "The unique identifier for the Amazon product.\n\nThis parameter should be replaced with the actual product ID to fetch reviews for that specific product.",
+                    "default": "B09QH2NJXC"
+                },
+                {
+                    "name": "geoCode",
+                    "type": "STRING",
+                    "description": "Specifies the geographical region code. Currently supported 'us' and 'de'.\n\nThis parameter is used to retrieve reviews from a specific geographical region. Example value 'de' indicates Germany.",
+                    "default": "de"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "stars",
+                    "type": "NUMBER",
+                    "description": "Filters reviews based on the number of stars. (1-5)",
+                    "default": ""
+                },
+                {
+                    "name": "verifiedOnly",
+                    "type": "BOOLEAN",
+                    "description": "Filters reviews based on their verification status.",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Pagination parameter. Can go from 1-10 depending on how many reviews are available. Specifies the page number of reviews.",
+                    "default": ""
+                },
+                {
+                    "name": "sortBy",
+                    "type": "STRING",
+                    "description": "Determines the order in which reviews are sorted.\n\nWhen set to 'recent', reviews are sorted based on the date of the review. If set to 'helpful', it will sort the review by the count of upvotes.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://amazon-review-scraping.p.rapidapi.com/getAmazReviews\"\nquerystring = {\"productId\": \"B09QH2NJXC\", \"stars\": \"\", \"verifiedOnly\": \"\", \"page\": \"\", \"geoCode\": \"de\", \"sortBy\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"amazon-review-scraping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://amazon-review-scraping.p.rapidapi.com/getAmazReviews\"\nquerystring = {\"productId\": \"B09QH2NJXC\", \"stars\": \"\", \"verifiedOnly\": \"\", \"page\": \"\", \"geoCode\": \"de\", \"sortBy\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"amazon-review-scraping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

@@ -1,0 +1,129 @@
+{
+    "product_id": "api_33093092-9e95-4712-9d2d-3bd7726d2d33",
+    "tool_description": "Search 25 million datasets in thousands of repositories across the web on Google Dataset Search in real-time as seen on datasetsearch.research.google.com.",
+    "home_url": "https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-dataset-search/",
+    "name": "Real-Time Dataset Search",
+    "title": "Real-Time Dataset Search",
+    "pricing": "FREEMIUM",
+    "tool_name": "Real-Time Dataset Search",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 72,
+        "avgSuccessRate": 100,
+        "popularityScore": 8.5,
+        "__typename": "Score"
+    },
+    "host": "real-time-dataset-search.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Search Datasets",
+            "url": "https://real-time-dataset-search.p.rapidapi.com/search-datasets",
+            "description": "Search Datasets",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Search query.",
+                    "default": "science"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "last_updated",
+                    "type": "ENUM",
+                    "description": "Only return datasets updated in a specific time period.\n\n**Allowed values:** `ALL`, `MONTH`, `YEAR`, `3_YEARS`.\n**Default:** `ALL`.",
+                    "default": ""
+                },
+                {
+                    "name": "download_format",
+                    "type": "STRING",
+                    "description": "Return datasets with specific download formats, specified as a comma (,) delimited list of download formats to match.\n\n**Allowed values:** `TABULAR`, `DOCUMENT`, `IMAGE`, `TEXT`, `ARCHIVE`, `STRUCTURED`, `OTHER`.\n\n**e.g.** *`TABULAR`*\n**e.g.** *`TABULAR,DOCUMENT,ARCHIVE`*",
+                    "default": ""
+                },
+                {
+                    "name": "usage_rights",
+                    "type": "ENUM",
+                    "description": "Only return datasets with specific usage rights.\n\n**Allowed values:** `ALL`, `COMMERCIAL`, `NONCOMMERCIAL`.\n**Default:** `ALL`.",
+                    "default": ""
+                },
+                {
+                    "name": "free_only",
+                    "type": "BOOLEAN",
+                    "description": "Only return free datasets.\n\n**Default:** `false`.",
+                    "default": "false"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Number of results to skip / offset.\n\n**Allowed values:** `Positive integers`.\n**Default:** `0`.",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Maximum number of results to return.\n\n**Allowed values:** `0-100`.\n**Default:** `10`.",
+                    "default": "10"
+                },
+                {
+                    "name": "topics",
+                    "type": "STRING",
+                    "description": "Return datasets in specific topics, specified as a comma (,) delimited list of topics to match.\n\n**Allowed values:** `HUMANITIES`, `SOCIAL_SCIENCES`, `LIFE_SCIENCES`, `AGRICULTURE`, `NATURAL_SCIENCES`, `GEO_SCIENCES`, `COMPUTING`, \n `AGRICULTURE_AND_URBAN_PLANNING`, `ENGINEERING`.\n\n**e.g.** *`HUMANITIES`*\n**e.g.** *`HUMANITIES, SOCIAL_SCIENCES, COMPUTING`*\n",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://real-time-dataset-search.p.rapidapi.com/search-datasets\"\nquerystring = {\"last_updated\": \"\", \"download_format\": \"\", \"usage_rights\": \"\", \"free_only\": \"false\", \"offset\": \"\", \"limit\": \"10\", \"topics\": \"\", \"query\": \"science\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"real-time-dataset-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://real-time-dataset-search.p.rapidapi.com/search-datasets\"\nquerystring = {\"last_updated\": \"\", \"download_format\": \"\", \"usage_rights\": \"\", \"free_only\": \"false\", \"offset\": \"\", \"limit\": \"10\", \"topics\": \"\", \"query\": \"science\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"real-time-dataset-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "query": {
+                                "type": "string"
+                            },
+                            "limit": {
+                                "type": "integer"
+                            },
+                            "offset": {
+                                "type": "integer"
+                            },
+                            "last_updated": {
+                                "type": "string"
+                            },
+                            "usage_rights": {
+                                "type": "string"
+                            },
+                            "free_only": {
+                                "type": "boolean"
+                            }
+                        }
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "datasets": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "total": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

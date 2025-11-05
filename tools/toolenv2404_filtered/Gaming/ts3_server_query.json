@@ -1,0 +1,80 @@
+{
+    "product_id": "api_5d0a92ee-2c83-4501-b3f1-10b77aa9a601",
+    "tool_description": "You can use this API to retrieve server data from your TS3 server.",
+    "home_url": "https://rapidapi.com/BlackFlagTV/api/ts3-server-query/",
+    "name": "TS3 Server Query",
+    "title": "TS3 Server Query",
+    "pricing": "FREEMIUM",
+    "tool_name": "TS3 Server Query",
+    "score": null,
+    "host": "ts3-server-query.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get ClientList",
+            "url": "https://ts3-server-query.p.rapidapi.com/index.php",
+            "description": "Returns a list of all online clients",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "ip",
+                    "type": "STRING",
+                    "description": "ip from your TS3 server",
+                    "default": "ts3.kskclan.com"
+                },
+                {
+                    "name": "username",
+                    "type": "STRING",
+                    "description": "default: serveradmin",
+                    "default": "serveradmin"
+                },
+                {
+                    "name": "query_port",
+                    "type": "STRING",
+                    "description": "default: 10011",
+                    "default": "10011"
+                },
+                {
+                    "name": "server_port",
+                    "type": "STRING",
+                    "description": "default: 9987",
+                    "default": "9987"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "password",
+                    "type": "STRING",
+                    "description": "default: no password",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://ts3-server-query.p.rapidapi.com/index.php\"\nquerystring = {\"ip\": \"ts3.kskclan.com\", \"username\": \"serveradmin\", \"password\": \"\", \"query_port\": \"10011\", \"server_port\": \"9987\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ts3-server-query.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://ts3-server-query.p.rapidapi.com/index.php\"\nquerystring = {\"ip\": \"ts3.kskclan.com\", \"username\": \"serveradmin\", \"password\": \"\", \"query_port\": \"10011\", \"server_port\": \"9987\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ts3-server-query.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

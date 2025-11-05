@@ -1,0 +1,225 @@
+{
+    "product_id": "api_64c77e8a-671b-45e9-a283-549516b84c77",
+    "tool_description": "\u81ea\u8ee2\u8eca\u306e\u6700\u9069\u306a\u79fb\u52d5\u7d4c\u8def\u3092\u7b97\u51fa\u3059\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002\u3000Calculate the optimal route for bicycles. ",
+    "home_url": "https://rapidapi.com/navitimejapan-navitimejapan/api/navitime-route-bicycle/",
+    "name": "NAVITIME Route(bicycle)",
+    "title": "NAVITIME Route(bicycle)",
+    "pricing": "FREEMIUM",
+    "tool_name": "NAVITIME Route(bicycle)",
+    "score": null,
+    "host": "navitime-route-bicycle.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "route_bicycle",
+            "url": "https://navitime-route-bicycle.p.rapidapi.com/route_bicycle",
+            "description": "Calculate the optimal route for bicycles.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Departure point. (node ID or latitude/longitude) (ex.35.689457,139.691935)",
+                    "default": "35.665251,139.712092"
+                },
+                {
+                    "name": "goal",
+                    "type": "STRING",
+                    "description": "Arrival point. (node ID or latitude/longitude)",
+                    "default": "35.661971,139.703795"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "options",
+                    "type": "STRING",
+                    "description": "Additional output information. (turn_by_turn: turn-by-turn information)  Point information for guiding progress information at such as intersections.",
+                    "default": ""
+                },
+                {
+                    "name": "goal_time",
+                    "type": "STRING",
+                    "description": "Arrival time. (ex.2019-09-26T08:00:00)",
+                    "default": ""
+                },
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data. (degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                },
+                {
+                    "name": "via_type",
+                    "type": "STRING",
+                    "description": "Routing mode. (specified: specified order, optimal: optimal order)",
+                    "default": ""
+                },
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude. (wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "via",
+                    "type": "STRING",
+                    "description": "Destination. (maximum number of 10 points)",
+                    "default": ""
+                },
+                {
+                    "name": "speed",
+                    "type": "NUMBER",
+                    "description": "Bicycle speed. (Minimum value: 5, Maximum value: 132, Default value: 15) Unit is \"km/h\".  Set the speed as an integer.",
+                    "default": "15"
+                },
+                {
+                    "name": "start_time",
+                    "type": "STRING",
+                    "description": "Departure time. (ex.2019-09-26T08:00:00)",
+                    "default": ""
+                },
+                {
+                    "name": "condition",
+                    "type": "STRING",
+                    "description": "Priority considerations for bicycle route search. (recommend: recommended route (default),  total_distance: total distance is shorter,  low_pitched: fewer slopes,  high_pitched: a lot of slopes,  main_street: main street priority,  back_street: back street priority,  cycling_road: cycling road priority)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-route-bicycle.p.rapidapi.com/route_bicycle\"\nquerystring = {\"start\": \"35.665251,139.712092\", \"options\": \"\", \"goal_time\": \"\", \"coord_unit\": \"degree\", \"via_type\": \"\", \"datum\": \"wgs84\", \"via\": \"\", \"speed\": \"15\", \"goal\": \"35.661971,139.703795\", \"start_time\": \"\", \"condition\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-route-bicycle.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-route-bicycle.p.rapidapi.com/route_bicycle\"\nquerystring = {\"start\": \"35.665251,139.712092\", \"options\": \"\", \"goal_time\": \"\", \"coord_unit\": \"degree\", \"via_type\": \"\", \"datum\": \"wgs84\", \"via\": \"\", \"speed\": \"15\", \"goal\": \"35.661971,139.703795\", \"start_time\": \"\", \"condition\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-route-bicycle.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "shape_bicycle",
+            "url": "https://navitime-route-bicycle.p.rapidapi.com/shape_bicycle",
+            "description": "Return informations of route shape to draw lines on a map.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Departure point. (node ID or latitude/longitude) (ex.35.689457,139.691935)",
+                    "default": "35.665251,139.712092"
+                },
+                {
+                    "name": "goal",
+                    "type": "STRING",
+                    "description": "Arrival point. (node ID or latitude/longitude)",
+                    "default": "35.661971,139.703795"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude. (wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "via_type",
+                    "type": "STRING",
+                    "description": "Routing mode. (specified: specified order, optimal: optimal order)",
+                    "default": ""
+                },
+                {
+                    "name": "speed",
+                    "type": "NUMBER",
+                    "description": "Bicycle speed. (Minimum value: 5, Maximum value: 132, Default value: 15) Unit is \"km/h\".  Set the speed as an integer.",
+                    "default": "15"
+                },
+                {
+                    "name": "start_time",
+                    "type": "STRING",
+                    "description": "Departure time. (ex.2019-09-26T08:00:00)",
+                    "default": ""
+                },
+                {
+                    "name": "condition",
+                    "type": "STRING",
+                    "description": "Priority considerations for bicycle route search. (recommend: recommended route (default),  total_distance: total distance is shorter,  low_pitched: fewer slopes,  high_pitched: a lot of slopes,  main_street: main street priority,  back_street: back street priority,  cycling_road: cycling road priority)",
+                    "default": ""
+                },
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data. (degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "Output format (geojson: GeoJSON format (default), json: JSON format)",
+                    "default": "geojson"
+                },
+                {
+                    "name": "via",
+                    "type": "STRING",
+                    "description": "Destination. (maximum number of 10 points)",
+                    "default": ""
+                },
+                {
+                    "name": "options",
+                    "type": "STRING",
+                    "description": "Additional output information. (turn_by_turn: turn-by-turn information)  Point information for guiding progress information at such as intersections.",
+                    "default": ""
+                },
+                {
+                    "name": "goal_time",
+                    "type": "STRING",
+                    "description": "Arrival time. (ex.2019-09-26T08:00:00)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-route-bicycle.p.rapidapi.com/shape_bicycle\"\nquerystring = {\"datum\": \"wgs84\", \"via_type\": \"\", \"speed\": \"15\", \"start_time\": \"\", \"condition\": \"\", \"coord_unit\": \"degree\", \"format\": \"geojson\", \"start\": \"35.665251,139.712092\", \"via\": \"\", \"goal\": \"35.661971,139.703795\", \"options\": \"\", \"goal_time\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-route-bicycle.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-route-bicycle.p.rapidapi.com/shape_bicycle\"\nquerystring = {\"datum\": \"wgs84\", \"via_type\": \"\", \"speed\": \"15\", \"start_time\": \"\", \"condition\": \"\", \"coord_unit\": \"degree\", \"format\": \"geojson\", \"start\": \"35.665251,139.712092\", \"via\": \"\", \"goal\": \"35.661971,139.703795\", \"options\": \"\", \"goal_time\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-route-bicycle.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

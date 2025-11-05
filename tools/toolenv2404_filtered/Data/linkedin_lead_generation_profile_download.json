@@ -1,0 +1,325 @@
+{
+    "product_id": "api_172c17a3-c442-45ea-820d-0f6c2777bebb",
+    "tool_description": "Best Lead Gen API on RapidAPI. On average 78% of downloaded profiles have valid business emails.\nAll profiles are downloaded by our system, after you call the API, so they are completely fresh & up-to-date.\nHow to use:\n1. Start profile download using **Download LI profiles with valid emails** endpoint\n2. Retrieve downloaded profiles using **Get downloaded profiles** endpoint\n\nSee **Example response** in Get downloaded profiles endpoint to see the data provided.\nReach out to us on telegram htt...",
+    "home_url": "https://rapidapi.com/llg/api/linkedin-lead-generation-profile-download/",
+    "name": "LinkedIn Lead Generation & Profile Download",
+    "title": "LinkedIn Lead Generation & Profile Download",
+    "pricing": "PAID",
+    "tool_name": "LinkedIn Lead Generation & Profile Download",
+    "score": null,
+    "host": "linkedin-lead-generation-profile-download.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get downloaded profiles",
+            "url": "https://linkedin-lead-generation-profile-download.p.rapidapi.com/get/profile",
+            "description": "Easily get downloaded profiles & emails:\n- fetch and paginate through all downloaded profiles\n- fetch profiles, downloaded after specified unix timestamp (useful for retrieving new profiles in batches)\n- fetch profile, by url provided in the download/profile endpoint\n\nProfiles are sorted by download time descending.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "page_current",
+                    "type": "NUMBER",
+                    "description": "Which page to fetch?",
+                    "default": "1"
+                },
+                {
+                    "name": "downloaded_after_time",
+                    "type": "NUMBER",
+                    "description": "Get profiles downloaded after or at unix timestamp (greater than or equal to)",
+                    "default": ""
+                },
+                {
+                    "name": "input_url",
+                    "type": "STRING",
+                    "description": "Get profile, by URL sent in download/profile endpoint",
+                    "default": ""
+                },
+                {
+                    "name": "page_size",
+                    "type": "NUMBER",
+                    "description": "How many profiles per request?",
+                    "default": "10"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://linkedin-lead-generation-profile-download.p.rapidapi.com/get/profile\"\nquerystring = {\"page_current\": \"1\", \"downloaded_after_time\": \"\", \"input_url\": \"\", \"page_size\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"linkedin-lead-generation-profile-download.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://linkedin-lead-generation-profile-download.p.rapidapi.com/get/profile\"\nquerystring = {\"page_current\": \"1\", \"downloaded_after_time\": \"\", \"input_url\": \"\", \"page_size\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"linkedin-lead-generation-profile-download.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "result": {
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "message": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "error": {
+                        "type": "array"
+                    },
+                    "warning": {
+                        "type": "array"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "pagination": {
+                                "type": "object",
+                                "properties": {
+                                    "total_count": {
+                                        "type": "integer"
+                                    },
+                                    "page_current": {
+                                        "type": "integer"
+                                    },
+                                    "page_size": {
+                                        "type": "integer"
+                                    },
+                                    "page_max": {
+                                        "type": "integer"
+                                    }
+                                }
+                            },
+                            "profiles": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "business_emails": {
+                                            "type": "object",
+                                            "properties": {
+                                                "best_found": {
+                                                    "type": "string"
+                                                },
+                                                "main_company": {
+                                                    "type": "string"
+                                                },
+                                                "main_position": {
+                                                    "type": "string"
+                                                },
+                                                "other_1": {
+                                                    "type": "string"
+                                                },
+                                                "other_2": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "contact_main": {
+                                            "type": "object",
+                                            "properties": {
+                                                "uniq_id": {
+                                                    "type": "string"
+                                                },
+                                                "first_name": {
+                                                    "type": "string"
+                                                },
+                                                "last_name": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "contact_position": {
+                                            "type": "object",
+                                            "properties": {
+                                                "title": {
+                                                    "type": "string"
+                                                },
+                                                "department": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "contact_linkedin": {
+                                            "type": "object",
+                                            "properties": {
+                                                "vanity_url": {
+                                                    "type": "string"
+                                                },
+                                                "profile_id": {
+                                                    "type": "integer"
+                                                },
+                                                "connections_count": {
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        },
+                                        "contact_location": {
+                                            "type": "object",
+                                            "properties": {
+                                                "country": {
+                                                    "type": "string"
+                                                },
+                                                "area": {
+                                                    "type": "string"
+                                                },
+                                                "city": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "contact_meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "linkedin_profile_about": {
+                                                    "type": "string"
+                                                },
+                                                "has_valid_business_email": {
+                                                    "type": "integer"
+                                                },
+                                                "profile_input_url": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "contact_employment": {
+                                            "type": "object",
+                                            "properties": {
+                                                "current": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "company_name": {
+                                                                "type": "string"
+                                                            },
+                                                            "company_linkedin_id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "company_location_main": {
+                                                                "type": "string"
+                                                            },
+                                                            "company_location_city": {
+                                                                "type": "string"
+                                                            },
+                                                            "company_location_country": {
+                                                                "type": "string"
+                                                            },
+                                                            "company_linkedin_page_url": {
+                                                                "type": "string"
+                                                            },
+                                                            "contact_position_title": {
+                                                                "type": "string"
+                                                            },
+                                                            "contact_position_department": {
+                                                                "type": "string"
+                                                            },
+                                                            "contact_started_month": {
+                                                                "type": "integer"
+                                                            },
+                                                            "contact_started_year": {
+                                                                "type": "integer"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "past": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "company_main": {
+                                            "type": "object",
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "website_url": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "company_linkedin": {
+                                            "type": "object",
+                                            "properties": {
+                                                "page_url": {
+                                                    "type": "string"
+                                                },
+                                                "company_linkedin_id": {
+                                                    "type": "integer"
+                                                },
+                                                "founded_year": {
+                                                    "type": "integer"
+                                                },
+                                                "page_followers_count": {
+                                                    "type": "integer"
+                                                },
+                                                "empployee_range": {
+                                                    "type": "string"
+                                                },
+                                                "specialities": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "industry": {
+                                                    "type": "string"
+                                                },
+                                                "employee_count_on_linkedin": {
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        },
+                                        "company_location": {
+                                            "type": "object",
+                                            "properties": {
+                                                "country": {
+                                                    "type": "string"
+                                                },
+                                                "area": {
+                                                    "type": "string"
+                                                },
+                                                "city": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "company_meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "linkedin_company_description": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "images_base64": {
+                                            "type": "object",
+                                            "properties": {
+                                                "contact_profile_photo": {
+                                                    "type": "string"
+                                                },
+                                                "company_logo": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "download_time": {
+                                            "type": "object",
+                                            "properties": {
+                                                "timestamp": {
+                                                    "type": "integer"
+                                                },
+                                                "string": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

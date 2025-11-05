@@ -1,0 +1,98 @@
+{
+    "product_id": "api_cd866275-40aa-4218-bac1-fdbbbfdd873b",
+    "tool_description": "Find place location and realated data by place name or free-form address.",
+    "home_url": "https://rapidapi.com/geoapify-gmbh-geoapify/api/places-by-name/",
+    "name": "Places by name",
+    "title": "Places by name",
+    "pricing": "FREEMIUM",
+    "tool_name": "Places by name",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 506,
+        "avgSuccessRate": 100,
+        "popularityScore": 7.4,
+        "__typename": "Score"
+    },
+    "host": "places-by-name.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Place by name",
+            "url": "https://places-by-name.p.rapidapi.com/v1/geocode/search",
+            "description": "Parse, validate, and locate an address or place",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "text",
+                    "type": "STRING",
+                    "description": "Free-form address, place, region or area name",
+                    "default": "Empire State Building"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "Maximum number of results",
+                    "default": "1"
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Desired result granularity  (country, state, city, postcode, street, or amenity)",
+                    "default": ""
+                },
+                {
+                    "name": "countrycodes",
+                    "type": "STRING",
+                    "description": "Limit search to a comma-separated list of countries (ISO country codes)",
+                    "default": ""
+                },
+                {
+                    "name": "lat",
+                    "type": "STRING",
+                    "description": "Location bias latitude (requires \"lon\")",
+                    "default": "40.74"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Preferable results language code (en, de, it, fr)",
+                    "default": "en"
+                },
+                {
+                    "name": "lon",
+                    "type": "STRING",
+                    "description": "Location bias longitude (requires \"lat\")",
+                    "default": "-73.98"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://places-by-name.p.rapidapi.com/v1/geocode/search\"\nquerystring = {\"limit\": \"1\", \"text\": \"Empire State Building\", \"type\": \"\", \"countrycodes\": \"\", \"lat\": \"40.74\", \"lang\": \"en\", \"lon\": \"-73.98\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"places-by-name.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://places-by-name.p.rapidapi.com/v1/geocode/search\"\nquerystring = {\"limit\": \"1\", \"text\": \"Empire State Building\", \"type\": \"\", \"countrycodes\": \"\", \"lat\": \"40.74\", \"lang\": \"en\", \"lon\": \"-73.98\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"places-by-name.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

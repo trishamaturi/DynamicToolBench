@@ -1,0 +1,753 @@
+{
+    "product_id": "api_74d3593d-a98a-42a9-8db8-5bb6a02305ee",
+    "tool_description": "An API that provides geolocation and country and city informations.",
+    "home_url": "https://rapidapi.com/Maevha/api/world-countries1/",
+    "name": "World Countries",
+    "title": "World Countries",
+    "pricing": "FREEMIUM",
+    "tool_name": "World Countries",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 534,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.1,
+        "__typename": "Score"
+    },
+    "host": "world-countries1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Cities Nearby",
+            "url": "https://world-countries1.p.rapidapi.com/api/v1/cities/nearby",
+            "description": "Returns Nearby Cities",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "55.11"
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "37.02"
+                },
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "The radius in km",
+                    "default": "25"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "per_page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "max_population",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "25000"
+                },
+                {
+                    "name": "min_population",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "100"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://world-countries1.p.rapidapi.com/api/v1/cities/nearby\"\nquerystring = {\"latitude\": \"55.11\", \"per_page\": \"10\", \"page\": \"1\", \"max_population\": \"25000\", \"longitude\": \"37.02\", \"min_population\": \"100\", \"radius\": \"25\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-countries1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://world-countries1.p.rapidapi.com/api/v1/cities/nearby\"\nquerystring = {\"latitude\": \"55.11\", \"per_page\": \"10\", \"page\": \"1\", \"max_population\": \"25000\", \"longitude\": \"37.02\", \"min_population\": \"100\", \"radius\": \"25\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-countries1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "total": {
+                        "type": "integer"
+                    },
+                    "perPage": {
+                        "type": "integer"
+                    },
+                    "page": {
+                        "type": "integer"
+                    },
+                    "totalPages": {
+                        "type": "integer"
+                    },
+                    "nextPage": {
+                        "type": "null"
+                    },
+                    "prevPage": {
+                        "type": "null"
+                    },
+                    "radius": {
+                        "type": "integer"
+                    },
+                    "location": {
+                        "type": "object",
+                        "properties": {
+                            "latitude": {
+                                "type": "number"
+                            },
+                            "longitude": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "geonameid": {
+                                    "type": "integer"
+                                },
+                                "country": {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "currency": {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "latitude": {
+                                    "type": "number"
+                                },
+                                "longitude": {
+                                    "type": "number"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "population": {
+                                    "type": "integer"
+                                },
+                                "timezone": {
+                                    "type": "string"
+                                },
+                                "distance": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Countries List with details",
+            "url": "https://world-countries1.p.rapidapi.com/api/v1/countries/full",
+            "description": "Get list of countries with full details",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "per_page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://world-countries1.p.rapidapi.com/api/v1/countries/full\"\nquerystring = {\"page\": \"1\", \"per_page\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-countries1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://world-countries1.p.rapidapi.com/api/v1/countries/full\"\nquerystring = {\"page\": \"1\", \"per_page\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-countries1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "totalDocs": {
+                        "type": "integer"
+                    },
+                    "perPage": {
+                        "type": "integer"
+                    },
+                    "page": {
+                        "type": "integer"
+                    },
+                    "totalPages": {
+                        "type": "integer"
+                    },
+                    "nextPage": {
+                        "type": "integer"
+                    },
+                    "hasPrevPage": {
+                        "type": "boolean"
+                    },
+                    "prevPage": {
+                        "type": "null"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "geonameid": {
+                                    "type": "integer"
+                                },
+                                "area_size": {
+                                    "type": "string"
+                                },
+                                "capital": {
+                                    "type": "object",
+                                    "properties": {
+                                        "geonameid": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "code": {
+                                    "type": "string"
+                                },
+                                "continent": {
+                                    "type": "object",
+                                    "properties": {
+                                        "geonameid": {
+                                            "type": "string"
+                                        },
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "currency": {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "languages": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "code": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "population": {
+                                    "type": "integer"
+                                },
+                                "is_in_eu": {
+                                    "type": "boolean"
+                                },
+                                "flag": {
+                                    "type": "object",
+                                    "properties": {
+                                        "emoji": {
+                                            "type": "string"
+                                        },
+                                        "unicode": {
+                                            "type": "string"
+                                        },
+                                        "file": {
+                                            "type": "string"
+                                        },
+                                        "_id": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Cities List By Country",
+            "url": "https://world-countries1.p.rapidapi.com/api/v1/countries/FR/cities",
+            "description": "Get the list of cities by country",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "countryCode",
+                    "type": "string",
+                    "description": "",
+                    "default": "FR"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "per_page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://world-countries1.p.rapidapi.com/api/v1/countries/FR/cities\"\nquerystring = {\"page\": \"1\", \"per_page\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-countries1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://world-countries1.p.rapidapi.com/api/v1/countries/{countrycode}/cities\"\nquerystring = {\"page\": \"1\", \"per_page\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-countries1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "totalDocs": {
+                        "type": "integer"
+                    },
+                    "perPage": {
+                        "type": "integer"
+                    },
+                    "page": {
+                        "type": "integer"
+                    },
+                    "totalPages": {
+                        "type": "integer"
+                    },
+                    "nextPage": {
+                        "type": "integer"
+                    },
+                    "hasPrevPage": {
+                        "type": "boolean"
+                    },
+                    "prevPage": {
+                        "type": "null"
+                    },
+                    "countryCode": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "geonameid": {
+                                    "type": "integer"
+                                },
+                                "country": {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "currency": {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "latitude": {
+                                    "type": "number"
+                                },
+                                "longitude": {
+                                    "type": "number"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "population": {
+                                    "type": "integer"
+                                },
+                                "timezone": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Countries List",
+            "url": "https://world-countries1.p.rapidapi.com/api/v1/countries",
+            "description": "Get the list of countries",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "per_page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://world-countries1.p.rapidapi.com/api/v1/countries\"\nquerystring = {\"per_page\": \"10\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-countries1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://world-countries1.p.rapidapi.com/api/v1/countries\"\nquerystring = {\"per_page\": \"10\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-countries1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "totalDocs": {
+                        "type": "integer"
+                    },
+                    "perPage": {
+                        "type": "integer"
+                    },
+                    "page": {
+                        "type": "integer"
+                    },
+                    "totalPages": {
+                        "type": "integer"
+                    },
+                    "nextPage": {
+                        "type": "integer"
+                    },
+                    "hasPrevPage": {
+                        "type": "boolean"
+                    },
+                    "prevPage": {
+                        "type": "null"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Cities List All Countries",
+            "url": "https://world-countries1.p.rapidapi.com/api/v1/cities",
+            "description": "Get the list of cities in world",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "per_page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://world-countries1.p.rapidapi.com/api/v1/cities\"\nquerystring = {\"page\": \"1\", \"per_page\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-countries1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://world-countries1.p.rapidapi.com/api/v1/cities\"\nquerystring = {\"page\": \"1\", \"per_page\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-countries1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "totalDocs": {
+                        "type": "integer"
+                    },
+                    "perPage": {
+                        "type": "integer"
+                    },
+                    "page": {
+                        "type": "integer"
+                    },
+                    "totalPages": {
+                        "type": "integer"
+                    },
+                    "nextPage": {
+                        "type": "integer"
+                    },
+                    "hasPrevPage": {
+                        "type": "boolean"
+                    },
+                    "prevPage": {
+                        "type": "null"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "geonameid": {
+                                    "type": "integer"
+                                },
+                                "country": {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "currency": {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "latitude": {
+                                    "type": "number"
+                                },
+                                "longitude": {
+                                    "type": "number"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "population": {
+                                    "type": "integer"
+                                },
+                                "timezone": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Country Details",
+            "url": "https://world-countries1.p.rapidapi.com/api/v1/countries/FR",
+            "description": "Get country details by code",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "",
+                    "default": "FR"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://world-countries1.p.rapidapi.com/api/v1/countries/FR\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-countries1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://world-countries1.p.rapidapi.com/api/v1/countries/{code}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-countries1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "geonameid": {
+                        "type": "integer"
+                    },
+                    "area_size": {
+                        "type": "string"
+                    },
+                    "capital": {
+                        "type": "object",
+                        "properties": {
+                            "geonameid": {
+                                "type": "integer"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "code": {
+                        "type": "string"
+                    },
+                    "continent": {
+                        "type": "object",
+                        "properties": {
+                            "geonameid": {
+                                "type": "string"
+                            },
+                            "code": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "currency": {
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "languages": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "population": {
+                        "type": "integer"
+                    },
+                    "is_in_eu": {
+                        "type": "boolean"
+                    },
+                    "flag": {
+                        "type": "object",
+                        "properties": {
+                            "emoji": {
+                                "type": "string"
+                            },
+                            "unicode": {
+                                "type": "string"
+                            },
+                            "file": {
+                                "type": "string"
+                            },
+                            "_id": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "City Details",
+            "url": "https://world-countries1.p.rapidapi.com/api/v1/cities/784321",
+            "description": "Get cyty details by geonameid",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "geonameid",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "784321"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://world-countries1.p.rapidapi.com/api/v1/cities/784321\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-countries1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://world-countries1.p.rapidapi.com/api/v1/cities/{geonameid}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-countries1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "geonameid": {
+                        "type": "integer"
+                    },
+                    "country": {
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "currency": {
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "latitude": {
+                        "type": "number"
+                    },
+                    "longitude": {
+                        "type": "number"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "population": {
+                        "type": "integer"
+                    },
+                    "timezone": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    ]
+}

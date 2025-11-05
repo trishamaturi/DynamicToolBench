@@ -1,0 +1,225 @@
+{
+    "product_id": "api_f81e8ec9-b0d0-4396-b385-551dec1a331c",
+    "tool_description": "Sentiment analysis tool that monitors app reviews to provide real-time insights into customer opinions and feedback. ",
+    "home_url": "https://rapidapi.com/neurotechnology-neurotechnology-default/api/netgeist-app-review-monitoring/",
+    "name": "NetGeist App Review Monitoring",
+    "title": "NetGeist App Review Monitoring",
+    "pricing": "FREEMIUM",
+    "tool_name": "NetGeist App Review Monitoring",
+    "score": null,
+    "host": "netgeist-app-review-monitoring.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Ping",
+            "url": "https://netgeist-app-review-monitoring.p.rapidapi.com/ping",
+            "description": "**Check if server is still alive**\n\nArgs:\n* _name_: Your name\n\nReturns:\n* A greeting",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://netgeist-app-review-monitoring.p.rapidapi.com/ping\"\nquerystring = {\"name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"netgeist-app-review-monitoring.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://netgeist-app-review-monitoring.p.rapidapi.com/ping\"\nquerystring = {\"name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"netgeist-app-review-monitoring.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "title": "PingSchema",
+                "required": [
+                    "message"
+                ],
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "title": "Message",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "App Metadata",
+            "url": "https://netgeist-app-review-monitoring.p.rapidapi.com/app/{id}",
+            "description": "**Get meta data of the app**\n\nArgs:\n* _None_\n\nReturns:\n* Metadata of required app",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://netgeist-app-review-monitoring.p.rapidapi.com/app/{id}\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"netgeist-app-review-monitoring.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://netgeist-app-review-monitoring.p.rapidapi.com/app/{id}\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"netgeist-app-review-monitoring.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "title": "AppID",
+                "required": [
+                    "app_metadata"
+                ],
+                "type": "object",
+                "properties": {
+                    "app_metadata": {
+                        "title": "App Metadata",
+                        "type": "array",
+                        "items": {
+                            "title": "AppIdSchema",
+                            "required": [
+                                "app_name",
+                                "app_id",
+                                "review_count",
+                                "first_timestamp"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "app_name": {
+                                    "title": "App Name",
+                                    "type": "string"
+                                },
+                                "app_id": {
+                                    "title": "App Id",
+                                    "type": "string"
+                                },
+                                "review_count": {
+                                    "title": "Review Count",
+                                    "type": "integer"
+                                },
+                                "first_timestamp": {
+                                    "title": "First Timestamp",
+                                    "type": "string"
+                                },
+                                "category": {
+                                    "title": "Category",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "App Topics",
+            "url": "https://netgeist-app-review-monitoring.p.rapidapi.com/app/{id}/topics",
+            "description": "**Get topics of an app sorted by count of reviews**\n\nArgs:\n* _dateFrom_: from which date to filter (format: yyyy-MM-ddTHH:mm:ss)\n* _dateTo_: to which date to filter (format: yyyy-MM-ddTHH:mm:ss)\n\nReturns:\n* Topics of an app sorted by count of reviews",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "dateFrom",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "dateTo",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://netgeist-app-review-monitoring.p.rapidapi.com/app/{id}/topics\"\nquerystring = {\"dateFrom\": \"\", \"dateTo\": \"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"netgeist-app-review-monitoring.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://netgeist-app-review-monitoring.p.rapidapi.com/app/{id}/topics\"\nquerystring = {\"dateFrom\": \"\", \"dateTo\": \"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"netgeist-app-review-monitoring.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "App Review Metrics",
+            "url": "https://netgeist-app-review-monitoring.p.rapidapi.com/app/{id}/review-metrics",
+            "description": "**Get daily aggregated metrics of app reviews**\n\nArgs:\n* _dateFrom_: from which date to filter (format: yyyy-MM-ddTHH:mm:ss)\n* _dateTo_: to which date to filter (format: yyyy-MM-ddTHH:mm:ss)\n\nReturns:\n* Daily aggregated metrics of app reviews",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "dateTo",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "dateFrom",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://netgeist-app-review-monitoring.p.rapidapi.com/app/{id}/review-metrics\"\nquerystring = {\"id\": \"\", \"dateTo\": \"\", \"dateFrom\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"netgeist-app-review-monitoring.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://netgeist-app-review-monitoring.p.rapidapi.com/app/{id}/review-metrics\"\nquerystring = {\"id\": \"\", \"dateTo\": \"\", \"dateFrom\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"netgeist-app-review-monitoring.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Query Apps",
+            "url": "https://netgeist-app-review-monitoring.p.rapidapi.com/query-apps",
+            "description": "**Get apps that are similar to a given app-name**\n\nArgs:\n* _appSubstring_: Search apps by name with a given string\n\nReturns:\n* Apps that contain appSubstring",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "appSubstring",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://netgeist-app-review-monitoring.p.rapidapi.com/query-apps\"\nquerystring = {\"appSubstring\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"netgeist-app-review-monitoring.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://netgeist-app-review-monitoring.p.rapidapi.com/query-apps\"\nquerystring = {\"appSubstring\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"netgeist-app-review-monitoring.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "App Reviews",
+            "url": "https://netgeist-app-review-monitoring.p.rapidapi.com/app/{id}/reviews",
+            "description": "**Get reviews of a given app sorted by @timestamp**\n\nArgs:\n* _dateFrom_: from which date to filter (format: yyyy-MM-ddTHH:mm:ss)\n* _dateTo_: to which date to filter (format: yyyy-MM-ddTHH:mm:ss)\n\nReturns:\n* Reviews of a given app sorted by @timestamp",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "dateFrom",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "dateTo",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://netgeist-app-review-monitoring.p.rapidapi.com/app/{id}/reviews\"\nquerystring = {\"dateFrom\": \"\", \"id\": \"\", \"dateTo\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"netgeist-app-review-monitoring.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://netgeist-app-review-monitoring.p.rapidapi.com/app/{id}/reviews\"\nquerystring = {\"dateFrom\": \"\", \"id\": \"\", \"dateTo\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"netgeist-app-review-monitoring.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

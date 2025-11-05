@@ -1,0 +1,97 @@
+{
+    "product_id": "55aa2726e4b09ec98bb37f1f",
+    "tool_description": "Appetitoso is a semantic search engine for dishes. It allows developers to include a search engine and a recommender system into their applications by suggesting to the final users only the best dishes prepared by the restaurant near a location. Each dish has a score computed by Appetitoso taking into account more than 30 different parameter.",
+    "home_url": "https://rapidapi.com/appetitoso/api/food-search-engine/",
+    "name": "Food Search Engine",
+    "title": "Food Search Engine",
+    "pricing": "PAID",
+    "tool_name": "Food Search Engine",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 226,
+        "avgSuccessRate": 0,
+        "popularityScore": 0,
+        "__typename": "Score"
+    },
+    "host": "appetitoso-best-food-dishes-v1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "search",
+            "url": "https://appetitoso-best-food-dishes-v1.p.rapidapi.com/dish/search",
+            "description": "Semantic Search Engine for dishes. It allows developers to find best dishes given a query and a position.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "Latitude of the place that you want explore.",
+                    "default": "43.7799582"
+                },
+                {
+                    "name": "lng",
+                    "type": "NUMBER",
+                    "description": "Longitude of the place that you want explore.",
+                    "default": "11.2409679"
+                },
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Text query in natural language. Typically it is the name of the dish (e.g. pasta) or the cuisine type (e.g. italian)",
+                    "default": "Bistecca"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language preference (it | en)",
+                    "default": "it"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://appetitoso-best-food-dishes-v1.p.rapidapi.com/dish/search\"\nquerystring = {\"lang\": \"it\", \"lat\": \"43.7799582\", \"lng\": \"11.2409679\", \"query\": \"Bistecca\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appetitoso-best-food-dishes-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://appetitoso-best-food-dishes-v1.p.rapidapi.com/dish/search\"\nquerystring = {\"lang\": \"it\", \"lat\": \"43.7799582\", \"lng\": \"11.2409679\", \"query\": \"Bistecca\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appetitoso-best-food-dishes-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "suggestions",
+            "url": "https://appetitoso-best-food-dishes-v1.p.rapidapi.com/dish/suggestions/",
+            "description": "This endpoint allows developers to get best dishes suggested by Appetitoso nearby.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "Latitude of the place that you want explore.",
+                    "default": "43.7799582"
+                },
+                {
+                    "name": "lng",
+                    "type": "NUMBER",
+                    "description": "Longitude of the place that you want explore.",
+                    "default": "11.2409679"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "Distance from the center (lat, lng) in KM. Max value = 15",
+                    "default": "15"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language preference (it | en)",
+                    "default": "it"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://appetitoso-best-food-dishes-v1.p.rapidapi.com/dish/suggestions/\"\nquerystring = {\"radius\": \"15\", \"lang\": \"it\", \"lat\": \"43.7799582\", \"lng\": \"11.2409679\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appetitoso-best-food-dishes-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://appetitoso-best-food-dishes-v1.p.rapidapi.com/dish/suggestions/\"\nquerystring = {\"radius\": \"15\", \"lang\": \"it\", \"lat\": \"43.7799582\", \"lng\": \"11.2409679\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appetitoso-best-food-dishes-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

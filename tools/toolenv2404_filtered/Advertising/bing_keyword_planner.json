@@ -1,0 +1,87 @@
+{
+    "product_id": "api_1ef9edda-c839-4b66-b9dd-d0bfed0bc116",
+    "tool_description": "Get all the data from Bing Keyword Planner (Bing Keyword Research Tool). Get access to search volume, monthly searches, competition, and other related data.",
+    "home_url": "https://rapidapi.com/microbrands/api/bing-keyword-planner/",
+    "name": "Bing Keyword Planner",
+    "title": "Bing Keyword Planner",
+    "pricing": "FREEMIUM",
+    "tool_name": "Bing Keyword Planner",
+    "score": null,
+    "host": "bing-keyword-planner.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "URL Seed",
+            "url": "https://bing-keyword-planner.p.rapidapi.com/urlseed",
+            "description": "Based on your provided keywords, this endpoint will return up to 3000 suitable keyword recommendations. Set up to 200 keywords and obtain the results that Bing Ads suggests for your query. Using this tool, you may obtain up to 3000 keyword ideas.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "target_domain",
+                    "type": "STRING",
+                    "description": "The domain name of the target website.",
+                    "default": "chewy.com"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "location_name",
+                    "type": "STRING",
+                    "description": "Name of location.\n\nCan be a Country, Region or City. \n\nExamples: \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"United States\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Germany\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"London,England,United Kingdom\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"",
+                    "default": "United States"
+                },
+                {
+                    "name": "device",
+                    "type": "STRING",
+                    "description": "Limits data for a particular device type.\n\nPossible values: *all*, *mobile*, *desktop*, *tablet*\nDefault value: *all*",
+                    "default": "all"
+                },
+                {
+                    "name": "language_name",
+                    "type": "STRING",
+                    "description": "Name of language.\n\nExamples: \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"English\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"German\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Spanish\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"",
+                    "default": "English"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://bing-keyword-planner.p.rapidapi.com/urlseed\"\nquerystring = {\"location_name\": \"United States\", \"device\": \"all\", \"target_domain\": \"chewy.com\", \"language_name\": \"English\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bing-keyword-planner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bing-keyword-planner.p.rapidapi.com/urlseed\"\nquerystring = {\"location_name\": \"United States\", \"device\": \"all\", \"target_domain\": \"chewy.com\", \"language_name\": \"English\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bing-keyword-planner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Keyword Ideas",
+            "url": "https://bing-keyword-planner.p.rapidapi.com/keywordideas",
+            "description": "Based on your provided keywords, this endpoint will return up to 3000 suitable keyword recommendations. Set up to 200 keywords and obtain the results that Bing Ads suggests for your query. Using this tool, you may obtain up to 3000 keyword ideas.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "keywords",
+                    "type": "STRING",
+                    "description": "Comma-separated list of input keywords.\n\nMaximum number of input keywords: 200",
+                    "default": "dog,puppy"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "device",
+                    "type": "STRING",
+                    "description": "Limits data for a particular device type.\n\nPossible values: *all*, *mobile*, *desktop*, *tablet*\nDefault value: *all*",
+                    "default": "all"
+                },
+                {
+                    "name": "location_name",
+                    "type": "STRING",
+                    "description": "Name of location.\n\nCan be a Country, Region or City. \n\nExamples: \\\\\\\\\\\\\\\"United States\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\"Germany\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\"London,England,United Kingdom\\\\\\\\\\\\\\\"",
+                    "default": "United States"
+                },
+                {
+                    "name": "language_name",
+                    "type": "STRING",
+                    "description": "Name of language.\n\nExamples: \\\\\\\\\\\\\\\"English\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\"German\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\"Spanish\\\\\\\\\\\\\\\"",
+                    "default": "English"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://bing-keyword-planner.p.rapidapi.com/keywordideas\"\nquerystring = {\"device\": \"all\", \"keywords\": \"dog,puppy\", \"location_name\": \"United States\", \"language_name\": \"English\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bing-keyword-planner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bing-keyword-planner.p.rapidapi.com/keywordideas\"\nquerystring = {\"device\": \"all\", \"keywords\": \"dog,puppy\", \"location_name\": \"United States\", \"language_name\": \"English\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bing-keyword-planner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

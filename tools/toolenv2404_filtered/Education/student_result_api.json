@@ -1,0 +1,1282 @@
+{
+    "product_id": "api_6260af37-9e45-4ed2-be7d-41b2c2c75d2d",
+    "tool_description": "This api can be used to store student information, formulate student result that consist totalscores, gpa, cgpa, point, unit, commulative point, commulative unit e.t.c. It can be used to update student level, academic session, student department and faculty. It can also be used to remove student, remove all student at a level. And finally to get total student in the school",
+    "home_url": "https://rapidapi.com/beforg-beforg-default/api/student-result-api/",
+    "name": "Student Result Api",
+    "title": "Student Result Api",
+    "pricing": "FREEMIUM",
+    "tool_name": "Student Result Api",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 22446,
+        "avgSuccessRate": 100,
+        "popularityScore": 6.8,
+        "__typename": "Score"
+    },
+    "host": "student-result-api.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "retrieve student results with matriculation number",
+            "url": "https://student-result-api.p.rapidapi.com/api/student-result/df80b9e7-cf2c-4e6e-80cf-1db72129dc65",
+            "description": "This request is used to retrieve student results with matriculation number.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "uid",
+                    "type": "string",
+                    "description": "The fetch id",
+                    "default": "df80b9e7-cf2c-4e6e-80cf-1db72129dc65"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "matriculationNumber",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "140001"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/student-result/df80b9e7-cf2c-4e6e-80cf-1db72129dc65\"\nquerystring = {\"matriculationNumber\": \"140001\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/student-result/{uid}\"\nquerystring = {\"matriculationNumber\": \"140001\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "paginations": {
+                        "type": "integer"
+                    },
+                    "paginationNumber": {
+                        "type": "integer"
+                    },
+                    "studentResult": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "matriculationNumber": {
+                                    "type": "string"
+                                },
+                                "details": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "level": {
+                                            "type": "string"
+                                        },
+                                        "session": {
+                                            "type": "string"
+                                        },
+                                        "commulativePoint": {
+                                            "type": "string"
+                                        },
+                                        "commulativeUnit": {
+                                            "type": "string"
+                                        },
+                                        "point": {
+                                            "type": "string"
+                                        },
+                                        "unit": {
+                                            "type": "string"
+                                        },
+                                        "totalScore": {
+                                            "type": "string"
+                                        },
+                                        "obtainableScore": {
+                                            "type": "string"
+                                        },
+                                        "faculty": {
+                                            "type": "string"
+                                        },
+                                        "department": {
+                                            "type": "string"
+                                        },
+                                        "carryOver": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "gpa": {
+                                            "type": "string"
+                                        },
+                                        "cgpa": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "result": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "courseCode": {
+                                                "type": "string"
+                                            },
+                                            "courseTitle": {
+                                                "type": "string"
+                                            },
+                                            "unit": {
+                                                "type": "string"
+                                            },
+                                            "totalScore": {
+                                                "type": "string"
+                                            },
+                                            "obtainableScore": {
+                                                "type": "string"
+                                            },
+                                            "test": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "testObtainableScore": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "exam": {
+                                                "type": "string"
+                                            },
+                                            "examObtainableScore": {
+                                                "type": "string"
+                                            },
+                                            "grade": {
+                                                "type": "string"
+                                            },
+                                            "point": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "retrieve student results within level and faculty",
+            "url": "https://student-result-api.p.rapidapi.com/api/student-result/df80b9e7-cf2c-4e6e-80cf-1db72129dc65",
+            "description": "This request is used to retrieve student results within level and faculty.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "uid",
+                    "type": "string",
+                    "description": "The fetch id",
+                    "default": "df80b9e7-cf2c-4e6e-80cf-1db72129dc65"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "level",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "300"
+                },
+                {
+                    "name": "faculty",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "agricultural science"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/student-result/df80b9e7-cf2c-4e6e-80cf-1db72129dc65\"\nquerystring = {\"level\": \"300\", \"faculty\": \"agricultural science\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/student-result/{uid}\"\nquerystring = {\"level\": \"300\", \"faculty\": \"agricultural science\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "paginations": {
+                        "type": "integer"
+                    },
+                    "paginationNumber": {
+                        "type": "integer"
+                    },
+                    "studentResult": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "matriculationNumber": {
+                                    "type": "string"
+                                },
+                                "details": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "level": {
+                                            "type": "string"
+                                        },
+                                        "session": {
+                                            "type": "string"
+                                        },
+                                        "commulativePoint": {
+                                            "type": "string"
+                                        },
+                                        "commulativeUnit": {
+                                            "type": "string"
+                                        },
+                                        "point": {
+                                            "type": "string"
+                                        },
+                                        "unit": {
+                                            "type": "string"
+                                        },
+                                        "totalScore": {
+                                            "type": "string"
+                                        },
+                                        "obtainableScore": {
+                                            "type": "string"
+                                        },
+                                        "faculty": {
+                                            "type": "string"
+                                        },
+                                        "department": {
+                                            "type": "string"
+                                        },
+                                        "carryOver": {
+                                            "type": "array"
+                                        },
+                                        "gpa": {
+                                            "type": "string"
+                                        },
+                                        "cgpa": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "result": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "courseCode": {
+                                                "type": "string"
+                                            },
+                                            "courseTitle": {
+                                                "type": "string"
+                                            },
+                                            "unit": {
+                                                "type": "string"
+                                            },
+                                            "totalScore": {
+                                                "type": "string"
+                                            },
+                                            "obtainableScore": {
+                                                "type": "string"
+                                            },
+                                            "test": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "testObtainableScore": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "exam": {
+                                                "type": "string"
+                                            },
+                                            "examObtainableScore": {
+                                                "type": "string"
+                                            },
+                                            "grade": {
+                                                "type": "string"
+                                            },
+                                            "point": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "retrieve student results within level and department",
+            "url": "https://student-result-api.p.rapidapi.com/api/student-result/df80b9e7-cf2c-4e6e-80cf-1db72129dc65",
+            "description": "This request is used to retrieve student results within level and department.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "uid",
+                    "type": "string",
+                    "description": "The fetch id",
+                    "default": "df80b9e7-cf2c-4e6e-80cf-1db72129dc65"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "department",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "crop production"
+                },
+                {
+                    "name": "level",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "300"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/student-result/df80b9e7-cf2c-4e6e-80cf-1db72129dc65\"\nquerystring = {\"department\": \"crop production\", \"level\": \"300\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/student-result/{uid}\"\nquerystring = {\"department\": \"crop production\", \"level\": \"300\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "paginations": {
+                        "type": "integer"
+                    },
+                    "paginationNumber": {
+                        "type": "integer"
+                    },
+                    "studentResult": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "matriculationNumber": {
+                                    "type": "string"
+                                },
+                                "details": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "level": {
+                                            "type": "string"
+                                        },
+                                        "session": {
+                                            "type": "string"
+                                        },
+                                        "commulativePoint": {
+                                            "type": "string"
+                                        },
+                                        "commulativeUnit": {
+                                            "type": "string"
+                                        },
+                                        "point": {
+                                            "type": "string"
+                                        },
+                                        "unit": {
+                                            "type": "string"
+                                        },
+                                        "totalScore": {
+                                            "type": "string"
+                                        },
+                                        "obtainableScore": {
+                                            "type": "string"
+                                        },
+                                        "faculty": {
+                                            "type": "string"
+                                        },
+                                        "department": {
+                                            "type": "string"
+                                        },
+                                        "carryOver": {
+                                            "type": "array"
+                                        },
+                                        "gpa": {
+                                            "type": "string"
+                                        },
+                                        "cgpa": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "result": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "courseCode": {
+                                                "type": "string"
+                                            },
+                                            "courseTitle": {
+                                                "type": "string"
+                                            },
+                                            "unit": {
+                                                "type": "string"
+                                            },
+                                            "totalScore": {
+                                                "type": "string"
+                                            },
+                                            "obtainableScore": {
+                                                "type": "string"
+                                            },
+                                            "test": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "testObtainableScore": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "exam": {
+                                                "type": "string"
+                                            },
+                                            "examObtainableScore": {
+                                                "type": "string"
+                                            },
+                                            "grade": {
+                                                "type": "string"
+                                            },
+                                            "point": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "retrieve student results within level",
+            "url": "https://student-result-api.p.rapidapi.com/api/student-result/df80b9e7-cf2c-4e6e-80cf-1db72129dc65",
+            "description": "This request is used to retrieve student results within the level.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "uid",
+                    "type": "string",
+                    "description": "The fetch id",
+                    "default": "df80b9e7-cf2c-4e6e-80cf-1db72129dc65"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "level",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "300"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/student-result/df80b9e7-cf2c-4e6e-80cf-1db72129dc65\"\nquerystring = {\"level\": \"300\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/student-result/{uid}\"\nquerystring = {\"level\": \"300\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "paginations": {
+                        "type": "integer"
+                    },
+                    "paginationNumber": {
+                        "type": "integer"
+                    },
+                    "studentResult": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "matriculationNumber": {
+                                    "type": "string"
+                                },
+                                "details": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "level": {
+                                            "type": "string"
+                                        },
+                                        "session": {
+                                            "type": "string"
+                                        },
+                                        "commulativePoint": {
+                                            "type": "string"
+                                        },
+                                        "commulativeUnit": {
+                                            "type": "string"
+                                        },
+                                        "point": {
+                                            "type": "string"
+                                        },
+                                        "unit": {
+                                            "type": "string"
+                                        },
+                                        "totalScore": {
+                                            "type": "string"
+                                        },
+                                        "obtainableScore": {
+                                            "type": "string"
+                                        },
+                                        "faculty": {
+                                            "type": "string"
+                                        },
+                                        "department": {
+                                            "type": "string"
+                                        },
+                                        "carryOver": {
+                                            "type": "array"
+                                        },
+                                        "gpa": {
+                                            "type": "string"
+                                        },
+                                        "cgpa": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "result": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "retrieve student results within  faculty",
+            "url": "https://student-result-api.p.rapidapi.com/api/student-result/df80b9e7-cf2c-4e6e-80cf-1db72129dc65",
+            "description": "This request is used to retrieve student results within the faculty.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "uid",
+                    "type": "string",
+                    "description": "The fetch id",
+                    "default": "df80b9e7-cf2c-4e6e-80cf-1db72129dc65"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "faculty",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "agricultural science"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/student-result/df80b9e7-cf2c-4e6e-80cf-1db72129dc65\"\nquerystring = {\"faculty\": \"agricultural science\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/student-result/{uid}\"\nquerystring = {\"faculty\": \"agricultural science\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "paginations": {
+                        "type": "integer"
+                    },
+                    "paginationNumber": {
+                        "type": "integer"
+                    },
+                    "studentResult": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "matriculationNumber": {
+                                    "type": "string"
+                                },
+                                "details": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "level": {
+                                            "type": "string"
+                                        },
+                                        "session": {
+                                            "type": "string"
+                                        },
+                                        "commulativePoint": {
+                                            "type": "string"
+                                        },
+                                        "commulativeUnit": {
+                                            "type": "string"
+                                        },
+                                        "point": {
+                                            "type": "string"
+                                        },
+                                        "unit": {
+                                            "type": "string"
+                                        },
+                                        "totalScore": {
+                                            "type": "string"
+                                        },
+                                        "obtainableScore": {
+                                            "type": "string"
+                                        },
+                                        "faculty": {
+                                            "type": "string"
+                                        },
+                                        "department": {
+                                            "type": "string"
+                                        },
+                                        "carryOver": {
+                                            "type": "array"
+                                        },
+                                        "gpa": {
+                                            "type": "string"
+                                        },
+                                        "cgpa": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "result": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "courseCode": {
+                                                "type": "string"
+                                            },
+                                            "courseTitle": {
+                                                "type": "string"
+                                            },
+                                            "unit": {
+                                                "type": "string"
+                                            },
+                                            "totalScore": {
+                                                "type": "string"
+                                            },
+                                            "obtainableScore": {
+                                                "type": "string"
+                                            },
+                                            "test": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "testObtainableScore": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "exam": {
+                                                "type": "string"
+                                            },
+                                            "examObtainableScore": {
+                                                "type": "string"
+                                            },
+                                            "grade": {
+                                                "type": "string"
+                                            },
+                                            "point": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "retrieve student results within  department",
+            "url": "https://student-result-api.p.rapidapi.com/api/student-result/df80b9e7-cf2c-4e6e-80cf-1db72129dc65",
+            "description": "This request is used to retrieve student results within the department.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "uid",
+                    "type": "string",
+                    "description": "The fetch id",
+                    "default": "df80b9e7-cf2c-4e6e-80cf-1db72129dc65"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "department",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "crop production"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/student-result/df80b9e7-cf2c-4e6e-80cf-1db72129dc65\"\nquerystring = {\"department\": \"crop production\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/student-result/{uid}\"\nquerystring = {\"department\": \"crop production\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "paginations": {
+                        "type": "integer"
+                    },
+                    "paginationNumber": {
+                        "type": "integer"
+                    },
+                    "studentResult": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "matriculationNumber": {
+                                    "type": "string"
+                                },
+                                "details": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "level": {
+                                            "type": "string"
+                                        },
+                                        "session": {
+                                            "type": "string"
+                                        },
+                                        "commulativePoint": {
+                                            "type": "string"
+                                        },
+                                        "commulativeUnit": {
+                                            "type": "string"
+                                        },
+                                        "point": {
+                                            "type": "string"
+                                        },
+                                        "unit": {
+                                            "type": "string"
+                                        },
+                                        "totalScore": {
+                                            "type": "string"
+                                        },
+                                        "obtainableScore": {
+                                            "type": "string"
+                                        },
+                                        "faculty": {
+                                            "type": "string"
+                                        },
+                                        "department": {
+                                            "type": "string"
+                                        },
+                                        "carryOver": {
+                                            "type": "array"
+                                        },
+                                        "gpa": {
+                                            "type": "string"
+                                        },
+                                        "cgpa": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "result": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "courseCode": {
+                                                "type": "string"
+                                            },
+                                            "courseTitle": {
+                                                "type": "string"
+                                            },
+                                            "unit": {
+                                                "type": "string"
+                                            },
+                                            "totalScore": {
+                                                "type": "string"
+                                            },
+                                            "obtainableScore": {
+                                                "type": "string"
+                                            },
+                                            "test": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "testObtainableScore": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "exam": {
+                                                "type": "string"
+                                            },
+                                            "examObtainableScore": {
+                                                "type": "string"
+                                            },
+                                            "grade": {
+                                                "type": "string"
+                                            },
+                                            "point": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "retrieve student results by range",
+            "url": "https://student-result-api.p.rapidapi.com/api/student-result/df80b9e7-cf2c-4e6e-80cf-1db72129dc65",
+            "description": "This request is used to retrieve student results within the school using range.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "uid",
+                    "type": "string",
+                    "description": "The fetch id",
+                    "default": "df80b9e7-cf2c-4e6e-80cf-1db72129dc65"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "range",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/student-result/df80b9e7-cf2c-4e6e-80cf-1db72129dc65\"\nquerystring = {\"range\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/student-result/{uid}\"\nquerystring = {\"range\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "paginations": {
+                        "type": "integer"
+                    },
+                    "paginationNumber": {
+                        "type": "integer"
+                    },
+                    "studentResult": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "matriculationNumber": {
+                                    "type": "string"
+                                },
+                                "details": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "level": {
+                                            "type": "string"
+                                        },
+                                        "session": {
+                                            "type": "string"
+                                        },
+                                        "commulativePoint": {
+                                            "type": "string"
+                                        },
+                                        "commulativeUnit": {
+                                            "type": "string"
+                                        },
+                                        "point": {
+                                            "type": "string"
+                                        },
+                                        "unit": {
+                                            "type": "string"
+                                        },
+                                        "totalScore": {
+                                            "type": "string"
+                                        },
+                                        "obtainableScore": {
+                                            "type": "string"
+                                        },
+                                        "faculty": {
+                                            "type": "string"
+                                        },
+                                        "department": {
+                                            "type": "string"
+                                        },
+                                        "carryOver": {
+                                            "type": "array"
+                                        },
+                                        "gpa": {
+                                            "type": "string"
+                                        },
+                                        "cgpa": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "result": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "retrieve student results",
+            "url": "https://student-result-api.p.rapidapi.com/api/student-result/df80b9e7-cf2c-4e6e-80cf-1db72129dc65",
+            "description": "This request is used to retrieve student results within the school.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "uid",
+                    "type": "string",
+                    "description": "The fetch id",
+                    "default": "df80b9e7-cf2c-4e6e-80cf-1db72129dc65"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/student-result/df80b9e7-cf2c-4e6e-80cf-1db72129dc65\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/student-result/{uid}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "paginations": {
+                        "type": "integer"
+                    },
+                    "paginationNumber": {
+                        "type": "integer"
+                    },
+                    "studentResult": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "matriculationNumber": {
+                                    "type": "string"
+                                },
+                                "details": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "level": {
+                                            "type": "string"
+                                        },
+                                        "session": {
+                                            "type": "string"
+                                        },
+                                        "commulativePoint": {
+                                            "type": "string"
+                                        },
+                                        "commulativeUnit": {
+                                            "type": "string"
+                                        },
+                                        "point": {
+                                            "type": "string"
+                                        },
+                                        "unit": {
+                                            "type": "string"
+                                        },
+                                        "totalScore": {
+                                            "type": "string"
+                                        },
+                                        "obtainableScore": {
+                                            "type": "string"
+                                        },
+                                        "faculty": {
+                                            "type": "string"
+                                        },
+                                        "department": {
+                                            "type": "string"
+                                        },
+                                        "carryOver": {
+                                            "type": "array"
+                                        },
+                                        "gpa": {
+                                            "type": "string"
+                                        },
+                                        "cgpa": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "result": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "retrieve total students within level and department",
+            "url": "https://student-result-api.p.rapidapi.com/api/total-student/df80b9e7-cf2c-4e6e-80cf-1db72129dc65",
+            "description": "This request is used to retrieve total students within the level and department.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "uid",
+                    "type": "string",
+                    "description": "The fetch id",
+                    "default": "df80b9e7-cf2c-4e6e-80cf-1db72129dc65"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "level",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "300"
+                },
+                {
+                    "name": "department",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "computer engineering"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/total-student/df80b9e7-cf2c-4e6e-80cf-1db72129dc65\"\nquerystring = {\"level\": \"300\", \"department\": \"computer engineering\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/total-student/{uid}\"\nquerystring = {\"level\": \"300\", \"department\": \"computer engineering\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "totalStudent": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        {
+            "name": "retrieve total students within level and faculty",
+            "url": "https://student-result-api.p.rapidapi.com/api/total-student/df80b9e7-cf2c-4e6e-80cf-1db72129dc65",
+            "description": "This request is used to retrieve total students within the level and faculty.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "uid",
+                    "type": "string",
+                    "description": "The fetch id",
+                    "default": "df80b9e7-cf2c-4e6e-80cf-1db72129dc65"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "level",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "300"
+                },
+                {
+                    "name": "faculty",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "engineering"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/total-student/df80b9e7-cf2c-4e6e-80cf-1db72129dc65\"\nquerystring = {\"level\": \"300\", \"faculty\": \"engineering\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/total-student/{uid}\"\nquerystring = {\"level\": \"300\", \"faculty\": \"engineering\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "totalStudent": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        {
+            "name": "retrieve total students within level",
+            "url": "https://student-result-api.p.rapidapi.com/api/total-student/df80b9e7-cf2c-4e6e-80cf-1db72129dc65",
+            "description": "This request is used to retrieve total students within the level.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "uid",
+                    "type": "string",
+                    "description": "The fetch id",
+                    "default": "df80b9e7-cf2c-4e6e-80cf-1db72129dc65"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "level",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "300"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/total-student/df80b9e7-cf2c-4e6e-80cf-1db72129dc65\"\nquerystring = {\"level\": \"300\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/total-student/{uid}\"\nquerystring = {\"level\": \"300\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "totalStudent": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        {
+            "name": "retrieve total students within faculty",
+            "url": "https://student-result-api.p.rapidapi.com/api/total-student/df80b9e7-cf2c-4e6e-80cf-1db72129dc65",
+            "description": "This request is used to retrieve total students within the faculty.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "uid",
+                    "type": "string",
+                    "description": "The fetch id",
+                    "default": "df80b9e7-cf2c-4e6e-80cf-1db72129dc65"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "faculty",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "agricultural science"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/total-student/df80b9e7-cf2c-4e6e-80cf-1db72129dc65\"\nquerystring = {\"faculty\": \"agricultural science\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/total-student/{uid}\"\nquerystring = {\"faculty\": \"agricultural science\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "totalStudent": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        {
+            "name": "retrieve total students within department",
+            "url": "https://student-result-api.p.rapidapi.com/api/total-student/df80b9e7-cf2c-4e6e-80cf-1db72129dc65",
+            "description": "This request is used to retrieve total students within the department.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "uid",
+                    "type": "string",
+                    "description": "The fetch id",
+                    "default": "df80b9e7-cf2c-4e6e-80cf-1db72129dc65"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "department",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "crop production"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/total-student/df80b9e7-cf2c-4e6e-80cf-1db72129dc65\"\nquerystring = {\"department\": \"crop production\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/total-student/{uid}\"\nquerystring = {\"department\": \"crop production\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "totalStudent": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        {
+            "name": "retrieve total students",
+            "url": "https://student-result-api.p.rapidapi.com/api/total-student/df80b9e7-cf2c-4e6e-80cf-1db72129dc65",
+            "description": "This request is used to retrieve total students within the school.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "uid",
+                    "type": "string",
+                    "description": "The fetch id",
+                    "default": "df80b9e7-cf2c-4e6e-80cf-1db72129dc65"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/total-student/df80b9e7-cf2c-4e6e-80cf-1db72129dc65\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://student-result-api.p.rapidapi.com/api/total-student/{uid}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"student-result-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "totalStudent": {
+                        "type": "integer"
+                    }
+                }
+            }
+        }
+    ]
+}

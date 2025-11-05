@@ -1,0 +1,56 @@
+{
+    "product_id": "api_cb6651db-24ee-466c-a1dd-300f5c258884",
+    "tool_description": "Provide a service for querying Amazon review information, supporting global sites and including complete details of reviews such as title, content, star rating, images, videos, etc. It is capable of querying more than 100 records (surpassing the official default query limit) with high stability and low latency.",
+    "home_url": "https://rapidapi.com/winwindg/api/amazon-reviews-data/",
+    "name": "Amazon Reviews Data",
+    "title": "Amazon Reviews Data",
+    "pricing": "FREEMIUM",
+    "tool_name": "Amazon Reviews Data",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1377,
+        "avgSuccessRate": 100,
+        "popularityScore": 7.7,
+        "__typename": "Score"
+    },
+    "host": "amazon-reviews-data.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Product Reviews",
+            "url": "https://amazon-reviews-data.p.rapidapi.com/reviews/B0BJ6R4VVL",
+            "description": "Get and paginate through all product reviews on Amazon. Each page contains up to 10 reviews.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "countryCode",
+                    "type": "STRING",
+                    "description": "- Default: us\n- Allowed values: us, au, br, ca, cn, fr, de, in, it, mx, nl, sg, es, tr, ae, gb, jp, sa, pl, se, be, eg",
+                    "default": "us"
+                },
+                {
+                    "name": "asin",
+                    "type": "string",
+                    "description": "Amazon Standard Identification Number",
+                    "default": "B0BJ6R4VVL"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "includeVariants",
+                    "type": "STRING",
+                    "description": "Whether it includes review information for all variants associated with the ASIN. The default values is true.",
+                    "default": "true"
+                },
+                {
+                    "name": "pageNo",
+                    "type": "NUMBER",
+                    "description": "Result pages to return. The default values is 1.",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://amazon-reviews-data.p.rapidapi.com/reviews/B0BJ6R4VVL\"\nquerystring = {\"includeVariants\": \"true\", \"pageNo\": \"1\", \"countryCode\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"amazon-reviews-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://amazon-reviews-data.p.rapidapi.com/reviews/{asin}\"\nquerystring = {\"includeVariants\": \"true\", \"pageNo\": \"1\", \"countryCode\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"amazon-reviews-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

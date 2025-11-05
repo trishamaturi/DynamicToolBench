@@ -1,0 +1,85 @@
+{
+    "product_id": "api_1b67f376-42a5-41d5-886a-c6a1af66e07b",
+    "tool_description": "Access a diverse array of workouts instantly with our API. Tailored to fitness enthusiasts, our API pulls from an extensive dataset to deliver personalized exercise routines, catering to specific muscles and equipment preferences. Simplify your fitness journey with targeted, data-driven workout selections",
+    "home_url": "https://rapidapi.com/naeimsalib/api/work-out-api1/",
+    "name": "Work Out API",
+    "title": "Work Out API",
+    "pricing": "FREEMIUM",
+    "tool_name": "Work Out API",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 781,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.6,
+        "__typename": "Score"
+    },
+    "host": "work-out-api1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Work outs",
+            "url": "https://work-out-api1.p.rapidapi.com/search",
+            "description": "This end point returns the work out json formate according to the inputs provided",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "Intensity_Level",
+                    "type": "STRING",
+                    "description": "Available Intensity Levels\n- Beginner\n- Intermediate\n- Expert",
+                    "default": ""
+                },
+                {
+                    "name": "Muscles",
+                    "type": "STRING",
+                    "description": "Available muscle groups\n- Biceps\n- Triceps\n- Chest\n- Back\n- Legs\n- Abs\n- Stretching\n- Warm Up\n- Lats\n- Hamstring\n- Calves\n- Quadriceps\n- Trapezius\n- Shoulders\n- Glutes",
+                    "default": "biceps"
+                },
+                {
+                    "name": "Equipment",
+                    "type": "STRING",
+                    "description": "Example of Equipments\n- Barbell\n- Dumbbells \n- EZ-bar\n- kettlebell\n- Bench\n- Chest press machine\n- and much more ...\n*  It can also be empty",
+                    "default": ""
+                },
+                {
+                    "name": "WorkOut",
+                    "type": "STRING",
+                    "description": "This Provides the name of the official workout",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://work-out-api1.p.rapidapi.com/search\"\nquerystring = {\"Intensity_Level\": \"\", \"Muscles\": \"biceps\", \"Equipment\": \"\", \"WorkOut\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"work-out-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://work-out-api1.p.rapidapi.com/search\"\nquerystring = {\"Intensity_Level\": \"\", \"Muscles\": \"biceps\", \"Equipment\": \"\", \"WorkOut\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"work-out-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "Muscle": {
+                            "type": "string"
+                        },
+                        "Work Out": {
+                            "type": "string"
+                        },
+                        "Sets": {
+                            "type": "string"
+                        },
+                        "Reps": {
+                            "type": "string"
+                        },
+                        "Breaks": {
+                            "type": "integer"
+                        },
+                        "Equipments": {
+                            "type": "string"
+                        },
+                        "Explaination": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

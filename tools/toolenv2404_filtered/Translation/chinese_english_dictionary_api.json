@@ -1,0 +1,107 @@
+{
+    "product_id": "api_710a1bb6-1ed1-4be9-90e0-60964020b7f5",
+    "tool_description": "An API that lets you find search a Chinese-English dictionary for characters, definitions, and pinyin. ",
+    "home_url": "https://rapidapi.com/snordgren/api/chinese-english-dictionary-api/",
+    "name": "Chinese-English Dictionary API",
+    "title": "Chinese-English Dictionary API",
+    "pricing": "FREEMIUM",
+    "tool_name": "Chinese-English Dictionary API",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1328,
+        "avgSuccessRate": 100,
+        "popularityScore": 6.9,
+        "__typename": "Score"
+    },
+    "host": "chinese-english-dictionary-api.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/definition",
+            "url": "https://chinese-english-dictionary-api.p.rapidapi.com/definition",
+            "description": "Search for a definition.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "definition",
+                    "type": "STRING",
+                    "description": "The definition to search for.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "simplified",
+                    "type": "STRING",
+                    "description": "The simplified Chinese character to search for.",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The maximum number of definitions to return.",
+                    "default": ""
+                },
+                {
+                    "name": "traditional",
+                    "type": "STRING",
+                    "description": "The traditional Chinese character to search for.",
+                    "default": ""
+                },
+                {
+                    "name": "any",
+                    "type": "STRING",
+                    "description": "A search term that can be either a definition, simplified Chinese character, traditional Chinese character, or pinyin.",
+                    "default": ""
+                },
+                {
+                    "name": "exact",
+                    "type": "BOOLEAN",
+                    "description": "Flag to set whether to return exact matches only.",
+                    "default": true
+                },
+                {
+                    "name": "pinyin",
+                    "type": "STRING",
+                    "description": "The pinyin to search for. This can be either with diacritics or tone numbers.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://chinese-english-dictionary-api.p.rapidapi.com/definition\"\nquerystring = {\"simplified\": \"\", \"limit\": \"\", \"traditional\": \"\", \"any\": \"\", \"exact\": true, \"pinyin\": \"\", \"definition\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chinese-english-dictionary-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://chinese-english-dictionary-api.p.rapidapi.com/definition\"\nquerystring = {\"simplified\": \"\", \"limit\": \"\", \"traditional\": \"\", \"any\": \"\", \"exact\": true, \"pinyin\": \"\", \"definition\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chinese-english-dictionary-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "simplified": {
+                        "type": "string"
+                    },
+                    "traditional": {
+                        "type": "string"
+                    },
+                    "pinyin": {
+                        "type": "object",
+                        "properties": {
+                            "diacritics": {
+                                "type": "string",
+                                "description": "Pinyin with diacritics."
+                            },
+                            "numbers": {
+                                "type": "string",
+                                "description": "Pinyin with tone numbers."
+                            }
+                        }
+                    },
+                    "definitions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "description": "A definition."
+                        },
+                        "description": "A list of definitions."
+                    }
+                }
+            }
+        }
+    ]
+}

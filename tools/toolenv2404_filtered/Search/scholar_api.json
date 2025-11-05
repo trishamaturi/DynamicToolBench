@@ -1,0 +1,237 @@
+{
+    "product_id": "api_00491acb-4e28-4056-805d-c47a309aa515",
+    "tool_description": "Fetch search results, citations, and profiles from Google Scholar.",
+    "home_url": "https://rapidapi.com/JamieThomasAnderson/api/scholar-api2/",
+    "name": "Scholar API",
+    "title": "Scholar API",
+    "pricing": "FREEMIUM",
+    "tool_name": "Scholar API",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 3819,
+        "avgSuccessRate": 98,
+        "popularityScore": 8.1,
+        "__typename": "Score"
+    },
+    "host": "scholar-api2.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Citation",
+            "url": "https://scholar-api2.p.rapidapi.com/cite",
+            "description": "Return a page of search results from Google Scholar given a citation ID. A citation ID is a 20-length numeric identification number.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "9051104150546983359"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "startYear",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2014"
+                },
+                {
+                    "name": "endYear",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2012"
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://scholar-api2.p.rapidapi.com/cite\"\nquerystring = {\"startYear\": \"2014\", \"endYear\": \"2012\", \"id\": \"9051104150546983359\", \"page\": \"2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"scholar-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://scholar-api2.p.rapidapi.com/cite\"\nquerystring = {\"startYear\": \"2014\", \"endYear\": \"2012\", \"id\": \"9051104150546983359\", \"page\": \"2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"scholar-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "citations": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "title": {
+                                    "type": "string"
+                                },
+                                "article": {
+                                    "type": "string"
+                                },
+                                "authors": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "authorProfile": {
+                                    "type": "string"
+                                },
+                                "publication": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "excerpt": {
+                                    "type": "string"
+                                },
+                                "access": {
+                                    "type": "string"
+                                },
+                                "citedBy": {
+                                    "type": "string"
+                                },
+                                "citationCount": {
+                                    "type": "string"
+                                },
+                                "relatedArticles": {
+                                    "type": "string"
+                                },
+                                "versionHistory": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Profile",
+            "url": "https://scholar-api2.p.rapidapi.com/profile",
+            "description": "Return profile information and articles given a valid user.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "user",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "r0a222QAAAAJ"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://scholar-api2.p.rapidapi.com/profile\"\nquerystring = {\"user\": \"r0a222QAAAAJ\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"scholar-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://scholar-api2.p.rapidapi.com/profile\"\nquerystring = {\"user\": \"r0a222QAAAAJ\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"scholar-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Scholar",
+            "url": "https://scholar-api2.p.rapidapi.com/scholar",
+            "description": "Return a page of profile search results from Google Scholar given a query.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Mark Brown"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://scholar-api2.p.rapidapi.com/scholar\"\nquerystring = {\"q\": \"Mark Brown\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"scholar-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://scholar-api2.p.rapidapi.com/scholar\"\nquerystring = {\"q\": \"Mark Brown\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"scholar-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Search",
+            "url": "https://scholar-api2.p.rapidapi.com/search",
+            "description": "Return a page of article search results from Google Scholar given a query.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "quantum computing"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2"
+                },
+                {
+                    "name": "startYear",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2014"
+                },
+                {
+                    "name": "endYear",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2012"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://scholar-api2.p.rapidapi.com/search\"\nquerystring = {\"page\": \"2\", \"q\": \"quantum computing\", \"startYear\": \"2014\", \"endYear\": \"2012\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"scholar-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://scholar-api2.p.rapidapi.com/search\"\nquerystring = {\"page\": \"2\", \"q\": \"quantum computing\", \"startYear\": \"2014\", \"endYear\": \"2012\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"scholar-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "articles": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "title": {
+                                    "type": "string"
+                                },
+                                "article": {
+                                    "type": "string"
+                                },
+                                "authors": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "authorProfile": {
+                                    "type": "string"
+                                },
+                                "publication": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "excerpt": {
+                                    "type": "string"
+                                },
+                                "access": {
+                                    "type": "string"
+                                },
+                                "citedBy": {
+                                    "type": "string"
+                                },
+                                "citationCount": {
+                                    "type": "integer"
+                                },
+                                "relatedArticles": {
+                                    "type": "string"
+                                },
+                                "versionHistory": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

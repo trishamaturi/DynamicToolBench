@@ -1,0 +1,279 @@
+{
+    "product_id": "59ef20b9e4b0c95e003b329e",
+    "tool_description": "Utelly universal search and recommendations APIs for Movies, Series and TV shows.",
+    "home_url": "https://rapidapi.com/utelly/api/utelly/",
+    "name": "Utelly",
+    "title": "Utelly",
+    "pricing": "FREEMIUM",
+    "tool_name": "Utelly",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 447,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.6,
+        "__typename": "Score"
+    },
+    "host": "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/lookup",
+            "url": "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup",
+            "description": "Lookup a tv show or movie by name and retrieve its availability across supported services for a particular country || Netflix, Amazon Prime Video, Amazon Instant Video, Apple TV+, Google Play, iTunes, YouTube Premium, Disney Plus, Hulu, Atom Tickets, CBS, DC Universe, HBO, Discovery Channel, Fandango Movies, Fox, NBC, Nickelodeon.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "only selects services available in a specific country - supported territories uk, us, ar, at, be, br, ca, de, es, fr, ie, id, it, is, kr, my, mx, no, nl, pt,  se & sg",
+                    "default": "uk"
+                },
+                {
+                    "name": "term",
+                    "type": "STRING",
+                    "description": "name of the show you want availability - supports partial strings",
+                    "default": "bojack"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup\"\nquerystring = {\"country\": \"uk\", \"term\": \"bojack\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup\"\nquerystring = {\"country\": \"uk\", \"term\": \"bojack\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "variant": {
+                        "type": "string"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "locations": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "display_name": {
+                                                "type": "string"
+                                            },
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "url": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "icon": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "weight": {
+                                    "type": "integer"
+                                },
+                                "id": {
+                                    "type": "string"
+                                },
+                                "external_ids": {
+                                    "type": "object",
+                                    "properties": {
+                                        "imdb": {
+                                            "type": "object",
+                                            "properties": {
+                                                "url": {
+                                                    "type": "string"
+                                                },
+                                                "id": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "tmdb": {
+                                            "type": "object",
+                                            "properties": {
+                                                "url": {
+                                                    "type": "string"
+                                                },
+                                                "id": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "iva": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "facebook": {
+                                            "type": "null"
+                                        },
+                                        "rotten_tomatoes": {
+                                            "type": "null"
+                                        },
+                                        "wiki_data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "url": {
+                                                    "type": "string"
+                                                },
+                                                "id": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "iva_rating": {
+                                            "type": "null"
+                                        },
+                                        "gracenote": {
+                                            "type": "null"
+                                        }
+                                    }
+                                },
+                                "picture": {
+                                    "type": "string"
+                                },
+                                "provider": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "updated": {
+                        "type": "string"
+                    },
+                    "term": {
+                        "type": "string"
+                    },
+                    "status_code": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        {
+            "name": "/idlookup",
+            "url": "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/idlookup",
+            "description": "Find where to watch a movie or tv show, with look-up using common IDs (IMDb, tmdb, wiki, etc). \n\nFor example (The Shawshank Redemption): \n\n- **IMDb**, tt0111161\n-  **TMDb**, movie/278",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "source_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "tt3398228"
+                },
+                {
+                    "name": "source",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "imdb"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "only selects services available in a specific country - supported territories uk, us, ar, at, be, br, ca, de, es, fr, ie, id, it, is, kr, my, mx, no, nl, pt,  se & sg",
+                    "default": "us"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/idlookup\"\nquerystring = {\"source_id\": \"tt3398228\", \"source\": \"imdb\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/idlookup\"\nquerystring = {\"source_id\": \"tt3398228\", \"source\": \"imdb\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "collection": {
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "locations": {
+                                "items": {
+                                    "properties": {
+                                        "country": {
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "display_name": {
+                                            "type": "string"
+                                        },
+                                        "icon": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "picture": {
+                                "type": "string"
+                            },
+                            "provider": {
+                                "type": "string"
+                            },
+                            "source_ids": {
+                                "properties": {
+                                    "imdb": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "url": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "weight": {
+                                "type": "integer"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "status_code": {
+                        "type": "integer"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "variant": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    ]
+}

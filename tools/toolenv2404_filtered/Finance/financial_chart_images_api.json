@@ -1,0 +1,128 @@
+{
+    "product_id": "api_06e88a14-be34-4b09-b0e3-1fb5ff0bdfa2",
+    "tool_description": "Generate candlestick, line, bar chart images for stocks. API by finchartist.com.",
+    "home_url": "https://rapidapi.com/finchartist-finchartist-default/api/financial-chart-images-api1/",
+    "name": "Financial Chart Images API",
+    "title": "Financial Chart Images API",
+    "pricing": "FREEMIUM",
+    "tool_name": "Financial Chart Images API",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 4334,
+        "avgSuccessRate": 89,
+        "popularityScore": 6.6,
+        "__typename": "Score"
+    },
+    "host": "financial-chart-images-api1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "get_supported_exchanges_exchanges_get",
+            "url": "https://financial-chart-images-api1.p.rapidapi.com/exchanges",
+            "description": "Fetches a list of supported exchanges using the Twelve Data API.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://financial-chart-images-api1.p.rapidapi.com/exchanges\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"financial-chart-images-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://financial-chart-images-api1.p.rapidapi.com/exchanges\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"financial-chart-images-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "health_check_health_get",
+            "url": "https://financial-chart-images-api1.p.rapidapi.com/health",
+            "description": "Health Check endpoint to verify the service is operational.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://financial-chart-images-api1.p.rapidapi.com/health\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"financial-chart-images-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://financial-chart-images-api1.p.rapidapi.com/health\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"financial-chart-images-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "get_stocks_on_exchange_stocks__exchange__get",
+            "url": "https://financial-chart-images-api1.p.rapidapi.com/stocks/{exchange}",
+            "description": "Fetches a list of all stocks available on the specified exchange using the Twelve Data API.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "exchange",
+                    "type": "STRING",
+                    "description": "The exchange to fetch stocks from",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://financial-chart-images-api1.p.rapidapi.com/stocks/{exchange}\"\nquerystring = {\"exchange\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"financial-chart-images-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://financial-chart-images-api1.p.rapidapi.com/stocks/{exchange}\"\nquerystring = {\"exchange\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"financial-chart-images-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "generate_chart_get",
+            "url": "https://financial-chart-images-api1.p.rapidapi.com/chart",
+            "description": "Generates a stock chart for a given symbol and exchange.\n\nThis endpoint fetches stock data for the specified symbol from the given exchange and generates a chart based on the specified parameters. The chart can be customized with various options such as interval, chart type, and appearance settings.\n\nThe resulting chart is returned as an HTML image element embedded with the base64-encoded chart image.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "exchange",
+                    "type": "OBJECT",
+                    "description": "Stock exchange",
+                    "default": "NYSE"
+                },
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "Stock symbol to fetch data for",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "chart_type",
+                    "type": "OBJECT",
+                    "description": "Type of chart to display",
+                    "default": "candlestick"
+                },
+                {
+                    "name": "outputsize",
+                    "type": "NUMBER",
+                    "description": "Number of data points to return",
+                    "default": 100
+                },
+                {
+                    "name": "dark_mode",
+                    "type": "BOOLEAN",
+                    "description": "Whether to use dark mode for the chart",
+                    "default": false
+                },
+                {
+                    "name": "volume",
+                    "type": "BOOLEAN",
+                    "description": "Whether to include volume in the chart",
+                    "default": true
+                },
+                {
+                    "name": "grid",
+                    "type": "BOOLEAN",
+                    "description": "Whether to display grid on the chart",
+                    "default": true
+                },
+                {
+                    "name": "interval",
+                    "type": "OBJECT",
+                    "description": "Time interval for the stock data",
+                    "default": "1day"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://financial-chart-images-api1.p.rapidapi.com/chart\"\nquerystring = {\"exchange\": \"NYSE\", \"chart_type\": \"candlestick\", \"outputsize\": 100, \"symbol\": \"\", \"dark_mode\": false, \"volume\": true, \"grid\": true, \"interval\": \"1day\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"financial-chart-images-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://financial-chart-images-api1.p.rapidapi.com/chart\"\nquerystring = {\"exchange\": \"NYSE\", \"chart_type\": \"candlestick\", \"outputsize\": 100, \"symbol\": \"\", \"dark_mode\": false, \"volume\": true, \"grid\": true, \"interval\": \"1day\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"financial-chart-images-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

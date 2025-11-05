@@ -1,0 +1,360 @@
+{
+    "product_id": "api_a066f274-8d2e-4132-abb6-43175af7d86e",
+    "tool_description": "With this API, users can tap data into real-time data from Booking.com, allowing them to access information on hotel rooms, prices, amenities, and policies from a vast selection of hotels worldwide. ",
+    "home_url": "https://rapidapi.com/tvhaudev/api/booking-data/",
+    "name": "Booking  Data",
+    "title": "Booking  Data",
+    "pricing": "FREEMIUM",
+    "tool_name": "Booking  Data",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1189,
+        "avgSuccessRate": 100,
+        "popularityScore": 7.8,
+        "__typename": "Score"
+    },
+    "host": "booking-data.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "properties/detail/facilities",
+            "url": "https://booking-data.p.rapidapi.com/booking/stays/detail/facilities",
+            "description": "properties/detail/facilities",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "detail_id",
+                    "type": "STRING",
+                    "description": "The value of the detail_id field is obtained from the **`detailId`** field in the `stays/auto-complete` API.",
+                    "default": "de/gold-palais"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "language_code",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en-us"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-data.p.rapidapi.com/booking/stays/detail/facilities\"\nquerystring = {\"detail_id\": \"de/gold-palais\", \"language_code\": \"en-us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-data.p.rapidapi.com/booking/stays/detail/facilities\"\nquerystring = {\"detail_id\": \"de/gold-palais\", \"language_code\": \"en-us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "properties/list",
+            "url": "https://booking-data.p.rapidapi.com/booking/stays/list",
+            "description": "properties/list",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "checkin_date",
+                    "type": "STRING",
+                    "description": "Format: YYYY-MM-DD\nEx: 2023-09-01",
+                    "default": "2023-10-01"
+                },
+                {
+                    "name": "checkout_date",
+                    "type": "STRING",
+                    "description": "Format: YYYY-MM-DD\nEx: 2023-09-30",
+                    "default": "2023-10-28"
+                },
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "The value of the **location** field is retrieved from the \u3010stays/auto-complete API\u3011.",
+                    "default": "Berlin, Berlin Federal State, Germany"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "room_accessibility",
+                    "type": "STRING",
+                    "description": "Room Accessibility\nYou can enter multiple values separated by commas. \nEx: accessible_room_facilities::131,  accessible_room_facilities::132\n\n`accessible_room_facilities::131`  :  Entire unit located on ground floor\n`accessible_room_facilities::132`  :  Upper floors accessible by elevator\n`accessible_room_facilities::134`  :  Entire unit wheelchair accessible\n`accessible_room_facilities::147`  :  Toilet with grab rails\n`accessible_room_facilities::148`  :  Adapted bath\n`accessible_room_facilities::149`  :  Roll-in shower\n`accessible_room_facilities::150`  :  Walk-in shower\n`accessible_room_facilities::151`  :  Raised toilet\n`accessible_room_facilities::152`  :  Lower sink\n`accessible_room_facilities::153`  :  Emergency cord in bathroom\n`accessible_room_facilities::154`  :  Shower chair\n\n\u203b These values may vary depending on where the user enters them. \nYou can check the filter values of the **room_accessibility** in the API at **filter**\u21d2**title:'Room Accessibility'** \u200bto see the available options.",
+                    "default": ""
+                },
+                {
+                    "name": "property_accessibility",
+                    "type": "STRING",
+                    "description": "Property Accessibility\nYou can enter multiple values separated by commas. \nEx: accessible_facilities::185,  accessible_facilities::186\n\n`accessible_facilities::185`  :  Wheelchair accessible\n`accessible_facilities::186`  :  Toilet with grab rails\n`accessible_facilities::187`  :  Raised toilet\n`accessible_facilities::188`  :  Lowered sink\n`accessible_facilities::189`  :  Bathroom emergency cord\n`accessible_facilities::211`  :  Visual aids (Braille)\n`accessible_facilities::212`  :  Visual aids (tactile signs)\n`accessible_facilities::213`  :  Auditory guidance\n\n\u203b These values may vary depending on where the user enters them. \nYou can check the filter values of the **property_accessibility** in the API at **filter**\u21d2**title:'Property Accessibility'** \u200bto see the available options.",
+                    "default": ""
+                },
+                {
+                    "name": "facilities",
+                    "type": "STRING",
+                    "description": "Facilities\nYou can enter multiple values separated by commas. \nEx: hotelfacility::107,  hotelfacility::16\n\n`hotelfacility::107`  :  Free WiFi\n`hotelfacility::16`     :  Non-smoking rooms\n`hotelfacility::2`        :  Parking\n`hotelfacility::28`     :  Family rooms\n`hotelfacility::4`        :  Pet friendly\n`hotelfacility::8`        :  24-hour front desk\n`hotelfacility::25`     :  Facilities for disabled guests\n`hotelfacility::3`        :  Restaurant\n`hotelfacility::11`     :  Fitness center\n`hotelfacility::5`        : Room service\n`hotelfacility::182`  :  Electric vehicle charging station\n`hotelfacility::17`     :  Airport shuttle\n`hotelfacility::54`     :  Spa\n`hotelfacility::433`  :  Swimming pool\n\n\u203b These values may vary depending on where the user enters them. \nYou can check the filter values of the **facilities** in the API at **filter**\u21d2**title:'Facilities'** \u200bto see the available options.",
+                    "default": ""
+                },
+                {
+                    "name": "brands",
+                    "type": "STRING",
+                    "description": "Brands\nYou can enter multiple values separated by commas. \nEx: chaincode::13837,  chaincode::13777\n\n`chaincode::13837`  :  limehome\n`chaincode::13777`  :  numa\n`chaincode::1053`  :  ibis\n`chaincode::10822`  :  Novum Select Hotels\n`chaincode::1844`  :  Leonardo Hotels\n`chaincode::2305`  :  Select Hotels\n`chaincode::10820`  :  Novum Hotels\n`chaincode::1050`  :  Novotel\n`chaincode::1051`  :  Mercure\n`chaincode::1072`  :  Holiday Inn Hotels & Resorts\n`chaincode::1641`  :  Design Hotels\n`chaincode::13371`  :  Good Morning Hotels by Ligula\n`chaincode::14579`  :  Acora\n`chaincode::1029`  :  Best Western\n`chaincode::1040`  :  Park Plaza Hotels & Resorts\n`chaincode::1052`  :  Novotel Suites\n`chaincode::1226` :  H-Hotels.com\n`chaincode::1231`  :  Maritim\n`chaincode::1348`  :  Pestana Hotel & Resorts\n`chaincode::1490`  :  Steigenberger Hotels & Resorts\n\n\u203b These values may vary depending on where the user enters them. \nYou can check the filter values of the **brands** in the API at **filter**\u21d2**title:'Brands'** \u200bto see the available options.",
+                    "default": ""
+                },
+                {
+                    "name": "room_facilities",
+                    "type": "STRING",
+                    "description": "Room Facilities\nYou can enter multiple values separated by commas. \nEx: roomfacility::14,  roomfacility::24\n\n`roomfacility::14`  :  Hot tub\n`roomfacility::24`  :  Shared bathroom\n`roomfacility::109`  :  Lake view\n`roomfacility::130`  :  Outdoor dining area\n`roomfacility::159`  :  Pool with a view\n`roomfacility::10`  :  Fax\n`roomfacility::36 ` :  Video games\n`roomfacility::42`  :  Shared toilet\n`roomfacility::103`  :  Game console\n`roomfacility::110 ` :  Garden view\n`roomfacility::143`  :  Board games/puzzles\n`roomfacility::157`  :  Rooftop pool\n`roomfacility::163`  :  Pool towels\n`roomfacility::100`  :  Bidet\n`roomfacility::127 ` :  High chair\n`roomfacility::18`  :  Suit press\n`roomfacility::129 ` :  Outdoor furniture\n`roomfacility::133`  :  Upper floors accessible by stairs only\n`roomfacility::190 ` :  Inner courtyard view\n`roomfacility::87`  :  Executive lounge access\n`roomfacility::96`  :  Oven\n`roomfacility::122`  :  River view\n`roomfacility::80`  :  Tile/Marble floor\n`roomfacility::191`  :  Quiet street view\n`roomfacility::215`  :  Air purifiers\n\n\u203b These values may vary depending on where the user enters them. \nYou can check the filter values of the **room_facilities** in the API at **filter**\u21d2**title:'Room Facilities'** \u200bto see the available options.",
+                    "default": ""
+                },
+                {
+                    "name": "fun_things_to_do",
+                    "type": "STRING",
+                    "description": "Fun Things To Do\nYou can enter multiple values separated by commas. \nEx: popular_activities::11,  popular_activities::253\n\n`popular_activities::11`  :  Fitness center\n`popular_activities::253`  :  Fitness\n`popular_activities::447`  :  Bicycle rental\n`popular_activities::55`  :  Massage\n`popular_activities::10`  :  Sauna\n`popular_activities::76`  :  Cycling\n`popular_activities::302`  :  Beach\n`popular_activities::70`  :  Hiking\n`popular_activities::12`  :  Golf course\n`popular_activities::82`  :  Diving\n\u203b These values may vary depending on where the user enters them. \nYou can check the filter values of the **fun_things_to_do** in the API at **filter**\u21d2**title:'Fun Things To Do'** \u200bto see the available options.",
+                    "default": ""
+                },
+                {
+                    "name": "cancellation_policy",
+                    "type": "STRING",
+                    "description": "Cancellation Policy\nYou can enter multiple values separated by commas. \nEx: fc::2, fc::5\n\n`fc::2`  :  Free cancellation\n`fc::5`  :  No prepayment\n\u203b These values may vary depending on where the user enters them. \nYou can check the filter values of the **cancellation_policy** in the API at **filter**\u21d2**title:'Cancellation Policy'** \u200bto see the available options.",
+                    "default": ""
+                },
+                {
+                    "name": "meals",
+                    "type": "STRING",
+                    "description": "Meals\nYou can enter multiple values separated by commas. \nEx: mealplan::999,  mealplan::1\n\n`mealplan::999`  :  Kitchen facilities\n`mealplan::1`  :  Breakfast Included\n`mealplan::4`  :  All-inclusive\n`mealplan::8`  :  Breakfast & lunch included\n`mealplan::9`  :  Breakfast & dinner included\n\n\u203b These values may vary depending on where the user enters them. \nYou can check the filter values of the **meals** in the API at **filter**\u21d2**title:'Meals'** \u200bto see the available options.",
+                    "default": ""
+                },
+                {
+                    "name": "property_rating",
+                    "type": "STRING",
+                    "description": "Property rating\nYou can enter multiple values separated by commas. \nEx: class::3, class::4\n\n`class::1`  :  1 stars\n`class::2`  :  2 stars\n`class::3`  :  3 stars\n`class::4 ` :  4 stars\n`class::5`  :  5 stars\n`class::0`  :  Unrated\n\u203b These values may vary depending on where the user enters them. \nYou can check the filter values of the **property_rating** in the API at **filter**\u21d2**title:'Property rating'** \u200bto see the available options.",
+                    "default": ""
+                },
+                {
+                    "name": "property_type",
+                    "type": "STRING",
+                    "description": "Property type\nYou can enter multiple values separated by commas. \nEx: ht_id::201, ht_id::204\n\n`privacy_type::3 ` :  Entire homes & apartments\n`family_friendly_property::1`  :  Family-Friendly Properties\n`ht_id::201`  :  Apartments\n`ht_id::204`  :  Hotels\n`ht_id::203`  :  Hostels\n`ht_id::215`  :  Boats\n`ht_id::212`  :  Resort Villages\n`ht_id::220`  :  Vacation Homes\n`ht_id::221`  :  Lodges\n`ht_id::220`  :  Vacation Homes\n`ht_id::208`  :  Bed and Breakfast\n`ht_id::216`  :  Guesthouses\n`ht_id::222`  :  Homestays\n\u203b These values may vary depending on where the user enters them. \nYou can check the filter values of the **property_type** in the API at **filter**\u21d2**title:'Property Type'** \u200bto see the available options.",
+                    "default": ""
+                },
+                {
+                    "name": "filter_other",
+                    "type": "STRING",
+                    "description": "You can enter any filter values you want and can enter multiple values separated by commas. \n**Neighborhood**\n`di::2285`   :   Berlin City Center\nOR\n**Landmarks**\n`popular_nearby_landmarks::1537`   :   The Brandenburg Gate\n\netc.\n\u203b These values may vary depending on where the user enters them.\nYou can check the filter values of the **filter_other** in the API at **filter** \u200bto see the available options.",
+                    "default": ""
+                },
+                {
+                    "name": "language_code",
+                    "type": "STRING",
+                    "description": "The `language_code` value is obtained from the `code` field of the \u3010languages\u3011 API.",
+                    "default": ""
+                },
+                {
+                    "name": "bed_preference",
+                    "type": "STRING",
+                    "description": "Bed Preference\nYou can enter multiple values separated by commas. \nEx: tdb::2, tdb::3\n\n`tdb::2`  :  Twin beds\n`tdb::3 ` :  Double bed\n\u203b These values may vary depending on where the user enters them. \nYou can check the filter values of the **bed_preference** in the API at **filter**\u21d2**title:'Bed Preference'** \u200bto see the available options.",
+                    "default": ""
+                },
+                {
+                    "name": "min_bedrooms",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "distance_from",
+                    "type": "STRING",
+                    "description": "Distance from\nYou can enter multiple values separated by commas. \nEx: distance::1000, distance::3000\n\n`distance::1000`  :  Less than 1 km\n`distance::3000`  :  Less than 3 km\n`distance::5000`  :  Less than 5 km\n\u203b These values may vary depending on where the user enters them. \nYou can check the filter values of the **distance_from** in the API at **filter**\u21d2**title:'Distance from'** \u200bto see the available options.",
+                    "default": ""
+                },
+                {
+                    "name": "review_score",
+                    "type": "STRING",
+                    "description": "Review Score\nYou can enter multiple values separated by commas. \nEx: review_score::90,  review_score::80\n\n`review_score::90`  :  Wonderful: 9+\n`review_score::80 ` :  Very Good: 8+\n`review_score::70`  :  Good: 7+\n`review_score::60`  :  Pleasant: 6+\n\n\u203b These values may vary depending on where the user enters them. \nYou can check the filter values of the **review_score** in the API at **filter**\u21d2**title:'Review Score'** \u200bto see the available options.",
+                    "default": ""
+                },
+                {
+                    "name": "sustainability",
+                    "type": "STRING",
+                    "description": "Sustainability\nYou can enter multiple values separated by commas. \n\n`SustainablePropertyFilter::1 ` :  Travel Sustainable properties\n\n\u203b These values may vary depending on where the user enters them. \nYou can check the filter values of the **sustainability** in the API at **filter**\u21d2**title:'Sustainability'** \u200bto see the available options.",
+                    "default": ""
+                },
+                {
+                    "name": "min_beds",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "rooms",
+                    "type": "NUMBER",
+                    "description": "Default: 1",
+                    "default": ""
+                },
+                {
+                    "name": "children_age",
+                    "type": "NUMBER",
+                    "description": "**children_age** must be numbers separated by commas.\nEx: 5,7",
+                    "default": ""
+                },
+                {
+                    "name": "min_bathrooms",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "adults",
+                    "type": "NUMBER",
+                    "description": "Default: 2",
+                    "default": ""
+                },
+                {
+                    "name": "children",
+                    "type": "NUMBER",
+                    "description": "Default: 0",
+                    "default": ""
+                },
+                {
+                    "name": "currency_code",
+                    "type": "STRING",
+                    "description": "The `currency_code` value is obtained from the `code` field of the \u3010currencies\u3011 API.",
+                    "default": ""
+                },
+                {
+                    "name": "sort",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-data.p.rapidapi.com/booking/stays/list\"\nquerystring = {\"room_accessibility\": \"\", \"property_accessibility\": \"\", \"facilities\": \"\", \"brands\": \"\", \"room_facilities\": \"\", \"fun_things_to_do\": \"\", \"cancellation_policy\": \"\", \"meals\": \"\", \"property_rating\": \"\", \"property_type\": \"\", \"checkin_date\": \"2023-10-01\", \"filter_other\": \"\", \"checkout_date\": \"2023-10-28\", \"language_code\": \"\", \"bed_preference\": \"\", \"min_bedrooms\": \"\", \"distance_from\": \"\", \"review_score\": \"\", \"sustainability\": \"\", \"min_beds\": \"\", \"rooms\": \"\", \"children_age\": \"\", \"min_bathrooms\": \"\", \"adults\": \"\", \"children\": \"\", \"location\": \"Berlin, Berlin Federal State, Germany\", \"currency_code\": \"\", \"sort\": \"\", \"page\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-data.p.rapidapi.com/booking/stays/list\"\nquerystring = {\"room_accessibility\": \"\", \"property_accessibility\": \"\", \"facilities\": \"\", \"brands\": \"\", \"room_facilities\": \"\", \"fun_things_to_do\": \"\", \"cancellation_policy\": \"\", \"meals\": \"\", \"property_rating\": \"\", \"property_type\": \"\", \"checkin_date\": \"2023-10-01\", \"filter_other\": \"\", \"checkout_date\": \"2023-10-28\", \"language_code\": \"\", \"bed_preference\": \"\", \"min_bedrooms\": \"\", \"distance_from\": \"\", \"review_score\": \"\", \"sustainability\": \"\", \"min_beds\": \"\", \"rooms\": \"\", \"children_age\": \"\", \"min_bathrooms\": \"\", \"adults\": \"\", \"children\": \"\", \"location\": \"Berlin, Berlin Federal State, Germany\", \"currency_code\": \"\", \"sort\": \"\", \"page\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "stays/auto-complete",
+            "url": "https://booking-data.p.rapidapi.com/booking/autocomplete",
+            "description": "auto-complete",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Berlin"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "language_code",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en-us"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-data.p.rapidapi.com/booking/autocomplete\"\nquerystring = {\"location\": \"Berlin\", \"language_code\": \"en-us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-data.p.rapidapi.com/booking/autocomplete\"\nquerystring = {\"location\": \"Berlin\", \"language_code\": \"en-us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "properties/detail/photos",
+            "url": "https://booking-data.p.rapidapi.com/booking/stays/detail/photos",
+            "description": "properties/detail/photos",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "detail_id",
+                    "type": "STRING",
+                    "description": "The value of the detail_id field is obtained from  **`the  detailId`**  field in the `stays/auto-complete` API.",
+                    "default": "de/gold-palais"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "language_code",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en-us"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-data.p.rapidapi.com/booking/stays/detail/photos\"\nquerystring = {\"language_code\": \"en-us\", \"detail_id\": \"de/gold-palais\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-data.p.rapidapi.com/booking/stays/detail/photos\"\nquerystring = {\"language_code\": \"en-us\", \"detail_id\": \"de/gold-palais\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "properties/detail",
+            "url": "https://booking-data.p.rapidapi.com/booking/stays/detail",
+            "description": "properties/detail",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "detail_id",
+                    "type": "STRING",
+                    "description": "The value of the  **detail_id** field is obtained from the  **detailId ** field in the `stays/auto-complete` API.",
+                    "default": "de/gold-palais"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "checkin_date",
+                    "type": "STRING",
+                    "description": "Format: YYYY-MM-DD",
+                    "default": ""
+                },
+                {
+                    "name": "language_code",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en-us"
+                },
+                {
+                    "name": "checkout_date",
+                    "type": "STRING",
+                    "description": "Format: YYYY-MM-DD",
+                    "default": ""
+                },
+                {
+                    "name": "currency_code",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "USD"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-data.p.rapidapi.com/booking/stays/detail\"\nquerystring = {\"checkin_date\": \"\", \"language_code\": \"en-us\", \"checkout_date\": \"\", \"detail_id\": \"de/gold-palais\", \"currency_code\": \"USD\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-data.p.rapidapi.com/booking/stays/detail\"\nquerystring = {\"checkin_date\": \"\", \"language_code\": \"en-us\", \"checkout_date\": \"\", \"detail_id\": \"de/gold-palais\", \"currency_code\": \"USD\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "currencies",
+            "url": "https://booking-data.p.rapidapi.com/booking/currency",
+            "description": "currencies",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-data.p.rapidapi.com/booking/currency\"\nquerystring = {\"name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-data.p.rapidapi.com/booking/currency\"\nquerystring = {\"name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "languages",
+            "url": "https://booking-data.p.rapidapi.com/booking/languages",
+            "description": "languages",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-data.p.rapidapi.com/booking/languages\"\nquerystring = {\"name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-data.p.rapidapi.com/booking/languages\"\nquerystring = {\"name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

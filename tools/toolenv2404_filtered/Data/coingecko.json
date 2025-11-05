@@ -1,0 +1,689 @@
+{
+    "product_id": "api_024b86ae-b26c-4447-8893-8b829a08a023",
+    "tool_description": "Access cryptocurrency data such as price, market cap, volume, developer stats, social activity, and more from over 4000 cryptocurrencies such as Bitcoin, Ethereum, Litecoin, EOS, Grin, Stellar, and more!",
+    "home_url": "https://rapidapi.com/coingecko/api/coingecko/",
+    "name": "CoinGecko",
+    "title": "CoinGecko",
+    "pricing": "FREE",
+    "tool_name": "CoinGecko",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 96,
+        "avgSuccessRate": 46,
+        "popularityScore": 9.9,
+        "__typename": "Score"
+    },
+    "host": "coingecko.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/exchanges/{id}",
+            "url": "https://coingecko.p.rapidapi.com/exchanges/{id}",
+            "description": "Get exchange volume in BTC and top 100 tickers only",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "pass the exchange id (can be obtained from /exchanges/list) eg. binance",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/exchanges/{id}\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/exchanges/{id}\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/events",
+            "url": "https://coingecko.p.rapidapi.com/events",
+            "description": "Get events, paginated by 100",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "country_code",
+                    "type": "STRING",
+                    "description": "country_code of event (eg. \u2018US\u2019). use /api/v3/events/countries for list of country_codes",
+                    "default": ""
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "type of event (eg. \u2018Conference\u2019). use /api/v3/events/types for list of types",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "page of results (paginated by 100)",
+                    "default": ""
+                },
+                {
+                    "name": "from_date",
+                    "type": "STRING",
+                    "description": "lists events after this date yyyy-mm-dd",
+                    "default": ""
+                },
+                {
+                    "name": "to_date",
+                    "type": "STRING",
+                    "description": "lists events before this date yyyy-mm-dd (set upcoming_events_only to false if fetching past events)",
+                    "default": ""
+                },
+                {
+                    "name": "upcoming_events_only",
+                    "type": "STRING",
+                    "description": "lists only upcoming events.  true, false",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/events\"\nquerystring = {\"country_code\": \"\", \"type\": \"\", \"page\": \"\", \"from_date\": \"\", \"to_date\": \"\", \"upcoming_events_only\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/events\"\nquerystring = {\"country_code\": \"\", \"type\": \"\", \"page\": \"\", \"from_date\": \"\", \"to_date\": \"\", \"upcoming_events_only\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/events/countries",
+            "url": "https://coingecko.p.rapidapi.com/events/countries",
+            "description": "Get list of event countries",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/events/countries\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/events/countries\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/global",
+            "url": "https://coingecko.p.rapidapi.com/global",
+            "description": "Get cryptocurrency global data",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/global\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/global\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/events/types",
+            "url": "https://coingecko.p.rapidapi.com/events/types",
+            "description": "Get list of events types",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/events/types\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/events/types\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/exchanges",
+            "url": "https://coingecko.p.rapidapi.com/exchanges",
+            "description": "List all exchanges",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/exchanges\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/exchanges\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/coins/markets",
+            "url": "https://coingecko.p.rapidapi.com/coins/markets",
+            "description": "Use this to obtain all the coins market data (price, market cap, volume)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "vs_currency",
+                    "type": "STRING",
+                    "description": "The target currency of market data (usd, eur, jpy, etc.)",
+                    "default": "usd"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "price_change_percentage",
+                    "type": "STRING",
+                    "description": "Include price change percentage in 1h, 24h, 7d, 14d, 30d, 200d, 1y (eg. '1h,24h,7d' comma-separated, invalid values will be discarded)",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page through resuts",
+                    "default": "1"
+                },
+                {
+                    "name": "sparkline",
+                    "type": "BOOLEAN",
+                    "description": "Include sparkline 7 days data (eg. true, false)",
+                    "default": false
+                },
+                {
+                    "name": "per_page",
+                    "type": "STRING",
+                    "description": "Total results per page. Between 1 to 250",
+                    "default": "100"
+                },
+                {
+                    "name": "ids",
+                    "type": "STRING",
+                    "description": "The ids of the coin, comma separated crytocurrency symbols (base). refers to /coins/list. When left empty, returns numbers the coins observing the params limit and start",
+                    "default": ""
+                },
+                {
+                    "name": "order",
+                    "type": "STRING",
+                    "description": "sort results by field. valid values: market_cap_desc, gecko_desc, gecko_asc, market_cap_asc, market_cap_desc, volume_asc, volume_desc",
+                    "default": "market_cap_desc"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/coins/markets\"\nquerystring = {\"price_change_percentage\": \"\", \"page\": \"1\", \"sparkline\": false, \"vs_currency\": \"usd\", \"per_page\": \"100\", \"ids\": \"\", \"order\": \"market_cap_desc\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/coins/markets\"\nquerystring = {\"price_change_percentage\": \"\", \"page\": \"1\", \"sparkline\": false, \"vs_currency\": \"usd\", \"per_page\": \"100\", \"ids\": \"\", \"order\": \"market_cap_desc\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/ping",
+            "url": "https://coingecko.p.rapidapi.com/ping",
+            "description": "Check API server status",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/ping\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/ping\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/coins/{id}/tickers",
+            "url": "https://coingecko.p.rapidapi.com/coins/{id}/tickers",
+            "description": " Get coin tickers (paginated to 100 items)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "pass the coin id (can be obtained from /coins/list) eg. bitcoin",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "exchange_ids",
+                    "type": "STRING",
+                    "description": "filter results by exchange_ids (ref: v3/exchanges/list)",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page through results",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/coins/{id}/tickers\"\nquerystring = {\"exchange_ids\": \"\", \"page\": \"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/coins/{id}/tickers\"\nquerystring = {\"exchange_ids\": \"\", \"page\": \"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/simple/price",
+            "url": "https://coingecko.p.rapidapi.com/simple/price",
+            "description": "Get the current price of any cryptocurrencies in any other supported currencies that you need.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "ids",
+                    "type": "STRING",
+                    "description": "id of coins, comma-separated if querying more than 1 coin *refers to coins/list",
+                    "default": ""
+                },
+                {
+                    "name": "vs_currencies",
+                    "type": "STRING",
+                    "description": "vs_currency of coins, comma-separated if querying more than 1 vs_currency *refers to simple/supported_vs_currencies",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "include_last_updated_at",
+                    "type": "STRING",
+                    "description": "true/false to include last_updated_at of price",
+                    "default": false
+                },
+                {
+                    "name": "include_market_cap",
+                    "type": "STRING",
+                    "description": "true/false to include market_cap",
+                    "default": false
+                },
+                {
+                    "name": "include_24hr_change",
+                    "type": "STRING",
+                    "description": "true/false to include 24hr_change",
+                    "default": false
+                },
+                {
+                    "name": "include_24hr_vol",
+                    "type": "STRING",
+                    "description": "true/false to include 24hr_vol",
+                    "default": false
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/simple/price\"\nquerystring = {\"include_last_updated_at\": false, \"include_market_cap\": false, \"ids\": \"\", \"vs_currencies\": \"\", \"include_24hr_change\": false, \"include_24hr_vol\": false}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/simple/price\"\nquerystring = {\"include_last_updated_at\": false, \"include_market_cap\": false, \"ids\": \"\", \"vs_currencies\": \"\", \"include_24hr_change\": false, \"include_24hr_vol\": false}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/coins/{id}/market_chart",
+            "url": "https://coingecko.p.rapidapi.com/coins/{id}/market_chart",
+            "description": "Get historical market data include price, market cap, and 24h volume (granularity auto)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "vs_currency",
+                    "type": "STRING",
+                    "description": "The target currency of market data (usd, eur, jpy, etc.)",
+                    "default": ""
+                },
+                {
+                    "name": "days",
+                    "type": "STRING",
+                    "description": "Data up to number of days ago (eg. 1,14,30,max)",
+                    "default": ""
+                },
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "pass the coin id (can be obtained from /coins) eg. bitcoin",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/coins/{id}/market_chart\"\nquerystring = {\"vs_currency\": \"\", \"days\": \"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/coins/{id}/market_chart\"\nquerystring = {\"vs_currency\": \"\", \"days\": \"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/exchanges/list",
+            "url": "https://coingecko.p.rapidapi.com/exchanges/list",
+            "description": "List all supported markets id and name (no pagination required)",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/exchanges/list\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/exchanges/list\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/coins/{id}",
+            "url": "https://coingecko.p.rapidapi.com/coins/{id}",
+            "description": "Get current data (name, price, market, ... including exchange tickers) for a coin",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "pass the coin id (can be obtained from /coins) eg. bitcoin",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "localization",
+                    "type": "STRING",
+                    "description": "Include all localized languages in response (true/false)",
+                    "default": "true"
+                },
+                {
+                    "name": "tickers",
+                    "type": "BOOLEAN",
+                    "description": "Include tickers data (true/false)",
+                    "default": "true"
+                },
+                {
+                    "name": "market_data",
+                    "type": "BOOLEAN",
+                    "description": "Include market_data (true/false) ",
+                    "default": "true"
+                },
+                {
+                    "name": "community_data",
+                    "type": "BOOLEAN",
+                    "description": "Include community_data data (true/false)",
+                    "default": "true"
+                },
+                {
+                    "name": "developer_data",
+                    "type": "BOOLEAN",
+                    "description": "Include developer_data data (true/false)",
+                    "default": "true"
+                },
+                {
+                    "name": "sparkline",
+                    "type": "BOOLEAN",
+                    "description": "Include sparkline 7 days data (eg. true, false)",
+                    "default": "false"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/coins/{id}\"\nquerystring = {\"localization\": \"true\", \"tickers\": \"true\", \"market_data\": \"true\", \"community_data\": \"true\", \"developer_data\": \"true\", \"id\": \"\", \"sparkline\": \"false\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/coins/{id}\"\nquerystring = {\"localization\": \"true\", \"tickers\": \"true\", \"market_data\": \"true\", \"community_data\": \"true\", \"developer_data\": \"true\", \"id\": \"\", \"sparkline\": \"false\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/coins/{id}/contract/{contract_address}",
+            "url": "https://coingecko.p.rapidapi.com/coins/{id}/contract/{contract_address}",
+            "description": "Get coin info from contract address",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "contract_address",
+                    "type": "STRING",
+                    "description": "Token\u2019s contract address",
+                    "default": ""
+                },
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Asset platform (only ethereum is supported at this moment)",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/coins/{id}/contract/{contract_address}\"\nquerystring = {\"contract_address\": \"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/coins/{id}/contract/{contract_address}\"\nquerystring = {\"contract_address\": \"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/coins/{id}/status_updates",
+            "url": "https://coingecko.p.rapidapi.com/coins/{id}/status_updates",
+            "description": "Get status updates for a given coin",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "pass the coin id (can be obtained from /coins) eg. bitcoin",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "per_page",
+                    "type": "STRING",
+                    "description": "Total results per page",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page through results",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/coins/{id}/status_updates\"\nquerystring = {\"id\": \"\", \"per_page\": \"\", \"page\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/coins/{id}/status_updates\"\nquerystring = {\"id\": \"\", \"per_page\": \"\", \"page\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/exchange_rates",
+            "url": "https://coingecko.p.rapidapi.com/exchange_rates",
+            "description": "Get BTC-to-Currency exchange rates",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/exchange_rates\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/exchange_rates\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/coins/{id}/market_chart/range",
+            "url": "https://coingecko.p.rapidapi.com/coins/{id}/market_chart/range",
+            "description": "Get historical market data include price, market cap, and 24h volume within a range of timestamp (granularity auto)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "From date in UNIX Timestamp (eg. 1392577232)",
+                    "default": ""
+                },
+                {
+                    "name": "vs_currency",
+                    "type": "STRING",
+                    "description": "The target currency of market data (usd, eur, jpy, etc.)",
+                    "default": ""
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "To date in UNIX Timestamp (eg. 1422577232)",
+                    "default": ""
+                },
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "pass the coin id (can be obtained from /coins) eg. bitcoin",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/coins/{id}/market_chart/range\"\nquerystring = {\"from\": \"\", \"vs_currency\": \"\", \"to\": \"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/coins/{id}/market_chart/range\"\nquerystring = {\"from\": \"\", \"vs_currency\": \"\", \"to\": \"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/exchanges/{id}/status_updates",
+            "url": "https://coingecko.p.rapidapi.com/exchanges/{id}/status_updates",
+            "description": "Get status updates for a given exchange (beta)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "pass the exchange id (can be obtained from /exchanges/list) eg. binance",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "per_page",
+                    "type": "STRING",
+                    "description": "Total results per page",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page through results",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/exchanges/{id}/status_updates\"\nquerystring = {\"id\": \"\", \"per_page\": \"\", \"page\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/exchanges/{id}/status_updates\"\nquerystring = {\"id\": \"\", \"per_page\": \"\", \"page\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/coins/list",
+            "url": "https://coingecko.p.rapidapi.com/coins/list",
+            "description": "List all supported coins id, name and symbol (no pagination required)",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/coins/list\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/coins/list\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/simple/supported_vs_currencies",
+            "url": "https://coingecko.p.rapidapi.com/simple/supported_vs_currencies",
+            "description": "Get list of supported_vs_currencies.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/simple/supported_vs_currencies\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/simple/supported_vs_currencies\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/exchanges/{id}/tickers",
+            "url": "https://coingecko.p.rapidapi.com/exchanges/{id}/tickers",
+            "description": "Get exchange tickers (paginated)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "pass the exchange id (can be obtained from /exchanges/list) eg. binance",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page through results",
+                    "default": ""
+                },
+                {
+                    "name": "coin_ids",
+                    "type": "STRING",
+                    "description": "filter tickers by coin_ids (ref: v3/coins/list)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/exchanges/{id}/tickers\"\nquerystring = {\"id\": \"\", \"page\": \"\", \"coin_ids\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/exchanges/{id}/tickers\"\nquerystring = {\"id\": \"\", \"page\": \"\", \"coin_ids\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/status_updates",
+            "url": "https://coingecko.p.rapidapi.com/status_updates",
+            "description": " List all status_updates with data (description, category, created_at, user, user_title and pin)",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "project_type",
+                    "type": "STRING",
+                    "description": "Filtered by Project Type (eg. coin, market). If left empty returns both status from coins and markets.",
+                    "default": ""
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "Filtered by category (eg. general, milestone, partnership, exchange_listing, software_release, fund_movement, new_listings, event)",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page through results",
+                    "default": ""
+                },
+                {
+                    "name": "per_page",
+                    "type": "STRING",
+                    "description": "Total results per page",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/status_updates\"\nquerystring = {\"project_type\": \"\", \"category\": \"\", \"page\": \"\", \"per_page\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/status_updates\"\nquerystring = {\"project_type\": \"\", \"category\": \"\", \"page\": \"\", \"per_page\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/coins/{id}/history",
+            "url": "https://coingecko.p.rapidapi.com/coins/{id}/history",
+            "description": "Get historical data (name, price, market, stats) at a given date for a coin",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "The date of data snapshot in dd-mm-yyyy eg. 30-12-2017",
+                    "default": ""
+                },
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "pass the coin id (can be obtained from /coins) eg. bitcoin",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "localization",
+                    "type": "STRING",
+                    "description": "Set to false to exclude localized languages in response",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/coins/{id}/history\"\nquerystring = {\"date\": \"\", \"id\": \"\", \"localization\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/coins/{id}/history\"\nquerystring = {\"date\": \"\", \"id\": \"\", \"localization\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/simple/token_price/{id}",
+            "url": "https://coingecko.p.rapidapi.com/simple/token_price/{id}",
+            "description": "Get current price of tokens (using contract addresses) for a given platform in any other currency that you need.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The id of the platform issuing tokens (Only ethereum is supported for now)",
+                    "default": ""
+                },
+                {
+                    "name": "vs_currencies",
+                    "type": "STRING",
+                    "description": "vs_currency of coins, comma-separated if querying more than 1 vs_currency *refers to simple/supported_vs_currencies",
+                    "default": [
+                        "undefined"
+                    ]
+                },
+                {
+                    "name": "contract_addresses",
+                    "type": "STRING",
+                    "description": "The contract address of tokens, comma separated",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "include_24hr_vol",
+                    "type": "STRING",
+                    "description": "true/false to include 24hr_vol",
+                    "default": [
+                        false
+                    ]
+                },
+                {
+                    "name": "include_market_cap",
+                    "type": "STRING",
+                    "description": "true/false to include market_cap",
+                    "default": [
+                        false
+                    ]
+                },
+                {
+                    "name": "include_last_updated_at",
+                    "type": "STRING",
+                    "description": "true/false to include last_updated_at of price",
+                    "default": [
+                        false
+                    ]
+                },
+                {
+                    "name": "include_24hr_change",
+                    "type": "STRING",
+                    "description": "true/false to include 24hr_change",
+                    "default": [
+                        false
+                    ]
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/simple/token_price/{id}\"\nquerystring = {\"include_24hr_vol\": [false], \"include_market_cap\": [false], \"include_last_updated_at\": [false], \"include_24hr_change\": [false], \"id\": \"\", \"vs_currencies\": [\"undefined\"], \"contract_addresses\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coingecko.p.rapidapi.com/simple/token_price/{id}\"\nquerystring = {\"include_24hr_vol\": [false], \"include_market_cap\": [false], \"include_last_updated_at\": [false], \"include_24hr_change\": [false], \"id\": \"\", \"vs_currencies\": [\"undefined\"], \"contract_addresses\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coingecko.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

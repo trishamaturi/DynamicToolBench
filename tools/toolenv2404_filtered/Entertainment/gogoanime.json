@@ -1,0 +1,211 @@
+{
+    "product_id": "api_1669bc61-3de5-4280-a66a-6962584fa6f5",
+    "tool_description": "Anime Streaming, Discovery API made with Cheerio and Express. Uses data from Gogoanime",
+    "home_url": "https://rapidapi.com/riimuru/api/gogoanime2/",
+    "name": "Gogoanime",
+    "title": "Gogoanime",
+    "pricing": "FREEMIUM",
+    "tool_name": "Gogoanime",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 10,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.5,
+        "__typename": "Score"
+    },
+    "host": "gogoanime2.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Top Airing",
+            "url": "https://gogoanime2.p.rapidapi.com/top-airing",
+            "description": "returns a list of top airing anime",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "page limit [1-26]. -1 to fetch all the pages avaliable **Note: Waiting time will be much longer.**",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://gogoanime2.p.rapidapi.com/top-airing\"\nquerystring = {\"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gogoanime2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://gogoanime2.p.rapidapi.com/top-airing\"\nquerystring = {\"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gogoanime2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Anime Movies",
+            "url": "https://gogoanime2.p.rapidapi.com/anime-movies",
+            "description": "Returns a list of anime movies",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "page limit may vary",
+                    "default": "1"
+                },
+                {
+                    "name": "aph",
+                    "type": "STRING",
+                    "description": "by default the movie list is random. values are from [A-Z]. And 0 is Ascending order with page limit of [1-89].",
+                    "default": "A"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://gogoanime2.p.rapidapi.com/anime-movies\"\nquerystring = {\"page\": \"1\", \"aph\": \"A\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gogoanime2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://gogoanime2.p.rapidapi.com/anime-movies\"\nquerystring = {\"page\": \"1\", \"aph\": \"A\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gogoanime2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Episode Thread",
+            "url": "https://gogoanime2.p.rapidapi.com/thread/spy-x-family-episode-9",
+            "description": "returns a list of comments for that episode",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "episodeId",
+                    "type": "string",
+                    "description": "",
+                    "default": "spy-x-family-episode-9"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "comments page",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://gogoanime2.p.rapidapi.com/thread/spy-x-family-episode-9\"\nquerystring = {\"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gogoanime2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://gogoanime2.p.rapidapi.com/thread/{episodeid}\"\nquerystring = {\"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gogoanime2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Streaming URLs",
+            "url": "https://gogoanime2.p.rapidapi.com/{server}/watch/overlord-iv-episode-8",
+            "description": "returns m3u8 streaming sources.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "episodeId",
+                    "type": "string",
+                    "description": "",
+                    "default": "overlord-iv-episode-8"
+                },
+                {
+                    "name": "server",
+                    "type": "ENUM",
+                    "description": "Currently there're 2 supported servers: `vidcdn`, and `streamsb`.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://gogoanime2.p.rapidapi.com/{server}/watch/overlord-iv-episode-8\"\nquerystring = {\"server\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gogoanime2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://gogoanime2.p.rapidapi.com/{server}/watch/{episodeid}\"\nquerystring = {\"server\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gogoanime2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Anime Details",
+            "url": "https://gogoanime2.p.rapidapi.com/anime-details/overlord-iv",
+            "description": "returns the anime details (including the episodes)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "animeId",
+                    "type": "string",
+                    "description": "",
+                    "default": "overlord-iv"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://gogoanime2.p.rapidapi.com/anime-details/overlord-iv\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gogoanime2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://gogoanime2.p.rapidapi.com/anime-details/{animeid}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gogoanime2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Anime Genres",
+            "url": "https://gogoanime2.p.rapidapi.com/genre/{genre}",
+            "description": "returns a list of anime",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "genre",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "The page limit varies by genre",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://gogoanime2.p.rapidapi.com/genre/{genre}\"\nquerystring = {\"genre\": \"\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gogoanime2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://gogoanime2.p.rapidapi.com/genre/{genre}\"\nquerystring = {\"genre\": \"\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gogoanime2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Popular Anime",
+            "url": "https://gogoanime2.p.rapidapi.com/popular",
+            "description": "Returns a list of popular anime",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "page limit: [1-504]",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://gogoanime2.p.rapidapi.com/popular\"\nquerystring = {\"page\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gogoanime2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://gogoanime2.p.rapidapi.com/popular\"\nquerystring = {\"page\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gogoanime2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Recent Episodes",
+            "url": "https://gogoanime2.p.rapidapi.com/recent-release",
+            "description": "Returns a list of recent episodes",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "by default the type is `1`. type `1`: japanese with subtitle. type `2`: english dub with no subtitles. type `3`: chinese with english subtitles.",
+                    "default": "1"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "type 1 page limit: [1-331]. type 2: [1-139]. type 3: [1-22].",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://gogoanime2.p.rapidapi.com/recent-release\"\nquerystring = {\"type\": \"1\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gogoanime2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://gogoanime2.p.rapidapi.com/recent-release\"\nquerystring = {\"type\": \"1\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gogoanime2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

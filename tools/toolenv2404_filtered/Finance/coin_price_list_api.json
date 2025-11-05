@@ -1,0 +1,179 @@
+{
+    "product_id": "api_424081b8-a92e-4ae7-a817-5142eaaf548b",
+    "tool_description": "Coin Price List is a service for obtaining historical, statistical data on crypto pairs. Exchange crypto pairs.",
+    "home_url": "https://rapidapi.com/seregapish/api/coin-price-list-api/",
+    "name": "Coin Price List Api",
+    "title": "Coin Price List Api",
+    "pricing": "FREEMIUM",
+    "tool_name": "Coin Price List Api",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1360,
+        "avgSuccessRate": 100,
+        "popularityScore": 5.8,
+        "__typename": "Score"
+    },
+    "host": "coin-price-list-api.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Historical data",
+            "url": "https://coin-price-list-api.p.rapidapi.com/api/exchanges/history",
+            "description": "This endpoint returns the exchange rate history for the selected pair",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "interval",
+                    "type": "ENUM",
+                    "description": "This parameter contains the interval with which you want to return the exchange rate history for the selected pair. Available values : hourly, daily, weekly, monthly.",
+                    "default": ""
+                },
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "This parameter contains a crypto pair, the list of which can be obtained in the server response via the GET /api\u200b/exchanges\u200b/pairs endpoint",
+                    "default": "BTCUSDT"
+                },
+                {
+                    "name": "exchangeId",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "This parameter contains the date and time from which the course history should be returned.  Example: 2022-05-31T02:45:26.799Z",
+                    "default": "2023-12-01T02:45:26.799Z"
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "This parameter contains the date and time from which the course history should be returned.  Example: 2022-05-31T02:45:26.799Z",
+                    "default": "2023-12-12T02:45:26.799Z"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coin-price-list-api.p.rapidapi.com/api/exchanges/history\"\nquerystring = {\"interval\": \"\", \"symbol\": \"BTCUSDT\", \"exchangeId\": \"1\", \"from\": \"2023-12-01T02:45:26.799Z\", \"to\": \"2023-12-12T02:45:26.799Z\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coin-price-list-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coin-price-list-api.p.rapidapi.com/api/exchanges/history\"\nquerystring = {\"interval\": \"\", \"symbol\": \"BTCUSDT\", \"exchangeId\": \"1\", \"from\": \"2023-12-01T02:45:26.799Z\", \"to\": \"2023-12-12T02:45:26.799Z\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coin-price-list-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Convert cryptocurrency",
+            "url": "https://coin-price-list-api.p.rapidapi.com/api/exchanges/convert",
+            "description": "This endpoint allows you to convert cryptocurrency to cryptocurrency, fiat currency to cryptocurrency, cryptocurrency to fiat currency, and fiat currency to fiat currency.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "USDT"
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "BTC"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "exchangeId",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coin-price-list-api.p.rapidapi.com/api/exchanges/convert\"\nquerystring = {\"to\": \"USDT\", \"from\": \"BTC\", \"exchangeId\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coin-price-list-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coin-price-list-api.p.rapidapi.com/api/exchanges/convert\"\nquerystring = {\"to\": \"USDT\", \"from\": \"BTC\", \"exchangeId\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coin-price-list-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get crypto pairs on the selected exchange",
+            "url": "https://coin-price-list-api.p.rapidapi.com/api/exchanges/pairs",
+            "description": "Getting cryptocurrency pairs on the selected exchange",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "exchangeId",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10"
+                },
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "BTCUSDT"
+                },
+                {
+                    "name": "order",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coin-price-list-api.p.rapidapi.com/api/exchanges/pairs\"\nquerystring = {\"limit\": \"10\", \"exchangeId\": \"1\", \"search\": \"BTCUSDT\", \"order\": \"\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coin-price-list-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coin-price-list-api.p.rapidapi.com/api/exchanges/pairs\"\nquerystring = {\"limit\": \"10\", \"exchangeId\": \"1\", \"search\": \"BTCUSDT\", \"order\": \"\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coin-price-list-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get available exchanges",
+            "url": "https://coin-price-list-api.p.rapidapi.com/api/exchanges/list",
+            "description": "This endpoint allows you to get a list of all available exchanges, the Ids of which should be used in other requests.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10"
+                },
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "binance"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "order",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coin-price-list-api.p.rapidapi.com/api/exchanges/list\"\nquerystring = {\"limit\": \"10\", \"search\": \"binance\", \"page\": \"1\", \"order\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coin-price-list-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coin-price-list-api.p.rapidapi.com/api/exchanges/list\"\nquerystring = {\"limit\": \"10\", \"search\": \"binance\", \"page\": \"1\", \"order\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coin-price-list-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

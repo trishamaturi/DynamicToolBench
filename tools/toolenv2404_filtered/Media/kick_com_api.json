@@ -1,0 +1,372 @@
+{
+    "product_id": "api_bf9bf01b-3034-4fff-8bb5-3688af6aa3c0",
+    "tool_description": "API to access Kick.com streaming platform. Get streamer data, channel details, chat, and more. 2023",
+    "home_url": "https://rapidapi.com/Bukk/api/kick-com-api/",
+    "name": "Kick.com API",
+    "title": "Kick.com API",
+    "pricing": "FREEMIUM",
+    "tool_name": "Kick.com API",
+    "score": {
+        "avgServiceLevel": 75,
+        "avgLatency": 31168,
+        "avgSuccessRate": 75,
+        "popularityScore": 6.6,
+        "__typename": "Score"
+    },
+    "host": "kick-com-api.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Messages",
+            "url": "https://kick-com-api.p.rapidapi.com/channels/4721174/messages",
+            "description": "Gets latest chat messages (including paged history). This endpoint requires Channel's ID. This ID can be obtained using Channels.GetChannelInfo endpoint (ID field).\n\nUse returned Cursor to page through data history.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "channelId",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "4721174"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "cursor",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "1699961655213189"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/channels/4721174/messages\"\nquerystring = {\"cursor\": \"1699961655213189\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/channels/{channelid}/messages\"\nquerystring = {\"cursor\": \"1699961655213189\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get Sub-Categories",
+            "url": "https://kick-com-api.p.rapidapi.com/subcategories",
+            "description": "Get Sub-Categories information (paged request)",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "2"
+                },
+                {
+                    "name": "perPage",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/subcategories\"\nquerystring = {\"page\": \"2\", \"perPage\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/subcategories\"\nquerystring = {\"page\": \"2\", \"perPage\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get Sub-Category Clips",
+            "url": "https://kick-com-api.p.rapidapi.com/subcategories/valorant/clips",
+            "description": "Get clips under specific Sub-Category. Paged request.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "subcategorySlug",
+                    "type": "string",
+                    "description": "",
+                    "default": "valorant"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "cursor",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "clip_01HETNJAM32TF6DWR5XC8EYAN2"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/subcategories/valorant/clips\"\nquerystring = {\"cursor\": \"clip_01HETNJAM32TF6DWR5XC8EYAN2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/subcategories/{subcategoryslug}/clips\"\nquerystring = {\"cursor\": \"clip_01HETNJAM32TF6DWR5XC8EYAN2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get Sub-Categories List",
+            "url": "https://kick-com-api.p.rapidapi.com/subcategories/list",
+            "description": "Get simple list of all Sub-Categories in one call.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/subcategories/list\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/subcategories/list\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get Sub-Category",
+            "url": "https://kick-com-api.p.rapidapi.com/subcategories/valorant",
+            "description": "Get information about specific Sub-Category.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "subcategorySlug",
+                    "type": "string",
+                    "description": "",
+                    "default": "valorant"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/subcategories/valorant\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/subcategories/{subcategoryslug}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get Top Categories",
+            "url": "https://kick-com-api.p.rapidapi.com/categories/top",
+            "description": "Gets TOP 13 categories (including subcategories)",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/categories/top\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/categories/top\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get Category",
+            "url": "https://kick-com-api.p.rapidapi.com/categories/games",
+            "description": "Get details about specific main category.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "categorySlug",
+                    "type": "string",
+                    "description": "",
+                    "default": "games"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/categories/games\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/categories/{categoryslug}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get Categories",
+            "url": "https://kick-com-api.p.rapidapi.com/categories",
+            "description": "Get main categories",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/categories\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/categories\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get Channel Links",
+            "url": "https://kick-com-api.p.rapidapi.com/channels/fusedchat/links",
+            "description": "Gets channel links (like social media).",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "username",
+                    "type": "string",
+                    "description": "",
+                    "default": "fusedchat"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "cursor",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "clip_01HER0KX3326X79XTBXPJNPBER"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/channels/fusedchat/links\"\nquerystring = {\"cursor\": \"clip_01HER0KX3326X79XTBXPJNPBER\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/channels/{username}/links\"\nquerystring = {\"cursor\": \"clip_01HER0KX3326X79XTBXPJNPBER\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Get Livestream Status",
+            "url": "https://kick-com-api.p.rapidapi.com/livestream/fusedchat/status",
+            "description": "Gets Livestream status. Returns true/false based on running livestream on the channel.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "username",
+                    "type": "string",
+                    "description": "",
+                    "default": "fusedchat"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/livestream/fusedchat/status\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/livestream/{username}/status\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get Livestream Info",
+            "url": "https://kick-com-api.p.rapidapi.com/livestream/fusedchat",
+            "description": "Get information about currently running livestream.\n\nReturns NoContent (204) if there is no livestream running.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "username",
+                    "type": "string",
+                    "description": "",
+                    "default": "fusedchat"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/livestream/fusedchat\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/livestream/{username}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get User Details",
+            "url": "https://kick-com-api.p.rapidapi.com/users/fusedchat",
+            "description": "Get detailed user information.\n\nFor example User ID, bio, media links and more.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "username",
+                    "type": "string",
+                    "description": "",
+                    "default": "fusedchat"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/users/fusedchat\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/users/{username}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get Channel Followers Count",
+            "url": "https://kick-com-api.p.rapidapi.com/channels/fusedchat/followers/count",
+            "description": "Get specific channel follower count.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "username",
+                    "type": "string",
+                    "description": "",
+                    "default": "fusedchat"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/channels/fusedchat/followers/count\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/channels/{username}/followers/count\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get Channel Clips",
+            "url": "https://kick-com-api.p.rapidapi.com/channels/fusedchat/clips",
+            "description": "Gets channel clips list and their details.\n\nEach clip contains URL, who is creator, views and likes count, and more.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "username",
+                    "type": "string",
+                    "description": "",
+                    "default": "fusedchat"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "cursor",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "clip_01HER0KX3326X79XTBXPJNPBER"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/channels/fusedchat/clips\"\nquerystring = {\"cursor\": \"clip_01HER0KX3326X79XTBXPJNPBER\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/channels/{username}/clips\"\nquerystring = {\"cursor\": \"clip_01HER0KX3326X79XTBXPJNPBER\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get Channel Emotes",
+            "url": "https://kick-com-api.p.rapidapi.com/channels/fusedchat/emotes",
+            "description": "Gets channel emotes list.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "username",
+                    "type": "string",
+                    "description": "",
+                    "default": "fusedchat"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/channels/fusedchat/emotes\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/channels/{username}/emotes\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get Channel Chatroom",
+            "url": "https://kick-com-api.p.rapidapi.com/channels/fusedchat/chatroom",
+            "description": "Gets channel chatroom information.\n\nThis includes chatroom ID, mode, message intervals, slow-mode, protection, and more.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "username",
+                    "type": "string",
+                    "description": "",
+                    "default": "fusedchat"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/channels/fusedchat/chatroom\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/channels/{username}/chatroom\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get Channel Info",
+            "url": "https://kick-com-api.p.rapidapi.com/channels/fusedchat",
+            "description": "Gets channel detailed information.\n\nIncluding userId, banner image, categories, livestream data, chatroom settings, and more.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "username",
+                    "type": "string",
+                    "description": "Username (also called Slug) of the channel",
+                    "default": "fusedchat"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/channels/fusedchat\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kick-com-api.p.rapidapi.com/channels/{username}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kick-com-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

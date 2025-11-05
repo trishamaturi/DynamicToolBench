@@ -1,0 +1,164 @@
+{
+    "product_id": "api_4926f96d-5ecc-48b3-983c-3a44ec3b03b2",
+    "tool_description": "Lightning Fast Scraping of Emails, Phone Numbers, and Social URLs (Facebook, TikTok, Instagram, Twitter, LinkedIn and others) from a Website in Real-Time.",
+    "home_url": "https://rapidapi.com/letscrape-6bRBa3QguO5/api/website-contacts-scraper/",
+    "name": "Website Contacts Scraper",
+    "title": "Website Contacts Scraper",
+    "pricing": "FREEMIUM",
+    "tool_name": "Website Contacts Scraper",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1816,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.8,
+        "__typename": "Score"
+    },
+    "host": "website-contacts-scraper.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Scrape Contacts from Website",
+            "url": "https://website-contacts-scraper.p.rapidapi.com/scrape-contacts",
+            "description": "Extract emails, phone numbers and social profiles from website root domain domain.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Domain from which to scrape emails and contacts (e.g. wsgr.com). Accepts any valid url and uses its root domain as a starting point for the extraction.",
+                    "default": "wsgr.com"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "external_matching",
+                    "type": "BOOLEAN",
+                    "description": "Try to match any web source, in addition to website and social platforms.\nDefault: `false`.",
+                    "default": "false"
+                },
+                {
+                    "name": "match_email_domain",
+                    "type": "BOOLEAN",
+                    "description": "Only return emails in the same domain like the one supplied with the *query* parameter. Default: `false`.",
+                    "default": "false"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://website-contacts-scraper.p.rapidapi.com/scrape-contacts\"\nquerystring = {\"external_matching\": \"false\", \"match_email_domain\": \"false\", \"query\": \"wsgr.com\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"website-contacts-scraper.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://website-contacts-scraper.p.rapidapi.com/scrape-contacts\"\nquerystring = {\"external_matching\": \"false\", \"match_email_domain\": \"false\", \"query\": \"wsgr.com\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"website-contacts-scraper.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "domain": {
+                                    "type": "string"
+                                },
+                                "query": {
+                                    "type": "string"
+                                },
+                                "emails": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "value": {
+                                                "type": "string"
+                                            },
+                                            "sources": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "phone_numbers": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "value": {
+                                                "type": "string"
+                                            },
+                                            "sources": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "facebook": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "instagram": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "tiktok": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "snapchat": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "twitter": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "linkedin": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "github": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "youtube": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "pinterest": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

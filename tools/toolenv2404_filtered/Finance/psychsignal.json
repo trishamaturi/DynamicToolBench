@@ -1,0 +1,237 @@
+{
+    "product_id": "53aa5932e4b0a798dbd1af6d",
+    "tool_description": "The most granular real time financial sentiment API in the world.",
+    "home_url": "https://rapidapi.com/psychsignal/api/psychsignal-1/",
+    "name": "PsychSignal",
+    "title": "PsychSignal",
+    "pricing": "FREE",
+    "tool_name": "PsychSignal",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 79,
+        "avgSuccessRate": 100,
+        "popularityScore": 5.9,
+        "__typename": "Score"
+    },
+    "host": "mashaper-psychsignal.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "GET /api/sentiments/all",
+            "url": "https://mashaper-psychsignal.p.rapidapi.com/sentiments/all",
+            "description": "Returns the raw bullish and bearish values for all stocks and specific date aggregated by period. Defaults to most recent data available for your API access level.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "period",
+                    "type": "STRING",
+                    "description": "Period of sentiments aggregation. It can be d for daily values or 2 for 2 minutes values. (Required)",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "Specific date of the request. The date can be formatted as YYYY-MM-DD. Date can be modified depending on your API access level. (Optional)",
+                    "default": ""
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "Output format. Accepted output formats are json or csv. Defaults to JSON (Optional)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mashaper-psychsignal.p.rapidapi.com/sentiments/all\"\nquerystring = {\"date\": \"\", \"period\": \"\", \"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mashaper-psychsignal.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mashaper-psychsignal.p.rapidapi.com/sentiments/all\"\nquerystring = {\"date\": \"\", \"period\": \"\", \"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mashaper-psychsignal.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GET /api/alerts-stream",
+            "url": "https://mashaper-psychsignal.p.rapidapi.com/alerts-stream",
+            "description": "Returns paginated alerts triggered on the system from most recent to oldest. It can be stock specific and it is limited to 100 alerts per request. It's also limited by your API level access.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "max_id",
+                    "type": "STRING",
+                    "description": "Alert ID. Alerts returned will be older than the specified id. (Optional)",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "Number of alerts to be returned. Max and default to 100 alerts. (Optional)",
+                    "default": ""
+                },
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "Stock symbol. Examples: AAPL, IBM, FB. For the aggregate of all market sentiment, use MARKET as symbol. (Optional)",
+                    "default": ""
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "Output format. Accepted output formats are json or csv. Defaults to JSON (Optional)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mashaper-psychsignal.p.rapidapi.com/alerts-stream\"\nquerystring = {\"max_id\": \"\", \"limit\": \"\", \"symbol\": \"\", \"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mashaper-psychsignal.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mashaper-psychsignal.p.rapidapi.com/alerts-stream\"\nquerystring = {\"max_id\": \"\", \"limit\": \"\", \"symbol\": \"\", \"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mashaper-psychsignal.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GET /api/ratio",
+            "url": "https://mashaper-psychsignal.p.rapidapi.com/ratio",
+            "description": "Returns daily bullish / bearish messages volume ratio for a specific symbol. Defaults to most recent data available for your API access level.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "Stock symbol. Examples: AAPL, IBM, FB. For the aggregate of all market sentiment, use MARKET as symbol. Defaults to MARKET. (optional)",
+                    "default": ""
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "Start date of the returned range. The date must be formatted as YYYY-MM-DD. Range can be modified depending on your API access level. (Optional)",
+                    "default": ""
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "End date of the returned range. The date must be formatted as YYYY-MM-DD. Range can be modified depending on your API access level. (Optional)",
+                    "default": ""
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "Output format. Accepted output formats are json or csv. Defaults to JSON (Optional)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mashaper-psychsignal.p.rapidapi.com/ratio\"\nquerystring = {\"symbol\": \"\", \"from\": \"\", \"to\": \"\", \"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mashaper-psychsignal.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mashaper-psychsignal.p.rapidapi.com/ratio\"\nquerystring = {\"symbol\": \"\", \"from\": \"\", \"to\": \"\", \"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mashaper-psychsignal.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GET /api/ratio/all",
+            "url": "https://mashaper-psychsignal.p.rapidapi.com/ratio/all",
+            "description": "Returns daily bullish / bearish messages volume ratio for all symbols. Defaults to most recent data available for your API access level.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "Specific date of the request. The date can be formatted as YYYY-MM-DD. Date can be modified depending on your API access level. (Optional)",
+                    "default": ""
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "Output format. Accepted output formats are json or csv. Defaults to JSON (Optional)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mashaper-psychsignal.p.rapidapi.com/ratio/all\"\nquerystring = {\"date\": \"\", \"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mashaper-psychsignal.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mashaper-psychsignal.p.rapidapi.com/ratio/all\"\nquerystring = {\"date\": \"\", \"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mashaper-psychsignal.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GET /api/sentiments",
+            "url": "https://mashaper-psychsignal.p.rapidapi.com/sentiments",
+            "description": "Returns the raw bullish and bearish values for a specific stock and specified date range aggregated by period. Defaults to most recent data available for your API access level.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "Stock symbol. Examples: AAPL, IBM, FB. For the aggregate of all market sentiment, use MARKET as symbol. (Required)",
+                    "default": ""
+                },
+                {
+                    "name": "period",
+                    "type": "STRING",
+                    "description": "Period of sentiments aggregation. It can be d for daily values or 2 for 2 minutes values. (Required)",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "Start date of the returned range. The date can be formatted as YYYY-MM-DD or YYYY-MM-DD HH:MM:SS. Range can be modified depending on your API access level. (Optional)",
+                    "default": ""
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "End date of the returned range. The date can be formatted as YYYY-MM-DD or YYYY-MM-DD HH:MM:SS. Range can be modified depending on your API access level. (Optional)",
+                    "default": ""
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "Output format. Accepted output formats are json or csv. Defaults to JSON (Optional)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mashaper-psychsignal.p.rapidapi.com/sentiments\"\nquerystring = {\"symbol\": \"\", \"from\": \"\", \"to\": \"\", \"period\": \"\", \"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mashaper-psychsignal.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mashaper-psychsignal.p.rapidapi.com/sentiments\"\nquerystring = {\"symbol\": \"\", \"from\": \"\", \"to\": \"\", \"period\": \"\", \"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mashaper-psychsignal.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GET /api/alerts",
+            "url": "https://mashaper-psychsignal.p.rapidapi.com/alerts",
+            "description": "Returns alerts triggered on the system for the requested date range. Defaults to most recent data available for your API access level. It can be stock specific and the date range is limited to 30 days.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "Start date of the returned range. The date can be formatted as YYYY-MM-DD or YYYY-MM-DD HH:MM:SS. Range can be modified depending on your API access level. (Optional)",
+                    "default": ""
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "End date of the returned range. The date can be formatted as YYYY-MM-DD or YYYY-MM-DD HH:MM:SS. Range can be modified depending on your API access level. (Optional)",
+                    "default": ""
+                },
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "Stock symbol. Examples: AAPL, IBM, FB. For the aggregate of all market sentiment, use MARKET as symbol. (Optional)",
+                    "default": ""
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "Output format. Accepted output formats are json or csv. Defaults to JSON (Optional)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mashaper-psychsignal.p.rapidapi.com/alerts\"\nquerystring = {\"from\": \"\", \"to\": \"\", \"symbol\": \"\", \"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mashaper-psychsignal.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mashaper-psychsignal.p.rapidapi.com/alerts\"\nquerystring = {\"from\": \"\", \"to\": \"\", \"symbol\": \"\", \"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mashaper-psychsignal.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

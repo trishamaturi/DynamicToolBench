@@ -1,0 +1,112 @@
+{
+    "product_id": "api_ed2e6d1b-73e9-445e-a5f2-726a2ef6f3df",
+    "tool_description": "This is a free youtube metadata viewer and downloader tool that uses the YouTube Data API to get and extract the title, thumbnails, creator details, and description of a YouTube video. By making API calls to YouTube's extensive video information repository.",
+    "home_url": "https://rapidapi.com/as3771083/api/youtube-metadata-extractor/",
+    "name": "Youtube Metadata Extractor",
+    "title": "Youtube Metadata Extractor",
+    "pricing": "FREE",
+    "tool_name": "Youtube Metadata Extractor",
+    "score": {
+        "avgServiceLevel": 99,
+        "avgLatency": 1572,
+        "avgSuccessRate": 87,
+        "popularityScore": 8.9,
+        "__typename": "Score"
+    },
+    "host": "youtube-metadata-extractor.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "get-youtube-video-metadata",
+            "url": "https://youtube-metadata-extractor.p.rapidapi.com/get_youtube_video_title_description",
+            "description": "This API allows you to fetch metadata for YouTube videos, including information such as title, thumbnails, likes, views count, upload date, video category, description, and creator details.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "Url of the youtube video",
+                    "default": "https://youtu.be/YCaipV5Brmw"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://youtube-metadata-extractor.p.rapidapi.com/get_youtube_video_title_description\"\nquerystring = {\"url\": \"https://youtu.be/YCaipV5Brmw\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"youtube-metadata-extractor.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://youtube-metadata-extractor.p.rapidapi.com/get_youtube_video_title_description\"\nquerystring = {\"url\": \"https://youtu.be/YCaipV5Brmw\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"youtube-metadata-extractor.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "title": {
+                                "type": "string"
+                            },
+                            "thumbnails": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "width": {
+                                            "type": "integer"
+                                        },
+                                        "height": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            },
+                            "likes": {
+                                "type": "null"
+                            },
+                            "viewsCount": {
+                                "type": "string"
+                            },
+                            "uploadDate": {
+                                "type": "string"
+                            },
+                            "videoCategory": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "dislikes": {
+                                "type": "null"
+                            },
+                            "isShort": {
+                                "type": "boolean"
+                            },
+                            "creatorDetails": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "channerlLink": {
+                                        "type": "string"
+                                    },
+                                    "subscribersCount": {
+                                        "type": "integer"
+                                    },
+                                    "profilePic": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "message": {
+                        "type": "null"
+                    }
+                }
+            }
+        }
+    ]
+}

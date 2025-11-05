@@ -1,0 +1,103 @@
+{
+    "product_id": "api_f6f51317-5695-4672-8b1d-e72e8f089886",
+    "tool_description": "Convert text to audio quickly, supports over 100 languages \u200b\u200band 300+ speakers",
+    "home_url": "https://rapidapi.com/cloudlabs-dev/api/cloudlabs-text-to-speech/",
+    "name": "Cloudlabs Text To Speech",
+    "title": "Cloudlabs Text To Speech",
+    "pricing": "FREEMIUM",
+    "tool_name": "Cloudlabs Text To Speech",
+    "score": {
+        "avgServiceLevel": 99,
+        "avgLatency": 1289,
+        "avgSuccessRate": 92,
+        "popularityScore": 9.5,
+        "__typename": "Score"
+    },
+    "host": "cloudlabs-text-to-speech.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "voices",
+            "url": "https://cloudlabs-text-to-speech.p.rapidapi.com/voices",
+            "description": "This endpoint is used to get a list of available speakers",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "language_code",
+                    "type": "STRING",
+                    "description": "Use this parameter to filter the results by language code.\nLeave blank if you want to retrieve all available speakers",
+                    "default": "en-US"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://cloudlabs-text-to-speech.p.rapidapi.com/voices\"\nquerystring = {\"language_code\": \"en-US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudlabs-text-to-speech.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cloudlabs-text-to-speech.p.rapidapi.com/voices\"\nquerystring = {\"language_code\": \"en-US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudlabs-text-to-speech.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "voices": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "language_code": {
+                                    "type": "string"
+                                },
+                                "language_name": {
+                                    "type": "string"
+                                },
+                                "voice_type": {
+                                    "type": "string"
+                                },
+                                "voice_code": {
+                                    "type": "string"
+                                },
+                                "voice_gender": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "languages",
+            "url": "https://cloudlabs-text-to-speech.p.rapidapi.com/languages",
+            "description": "This endpoint is used to get a list of available languages",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cloudlabs-text-to-speech.p.rapidapi.com/languages\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudlabs-text-to-speech.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cloudlabs-text-to-speech.p.rapidapi.com/languages\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudlabs-text-to-speech.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "languages": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "language_code": {
+                                    "type": "string"
+                                },
+                                "language_name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

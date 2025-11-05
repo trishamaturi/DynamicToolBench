@@ -1,0 +1,467 @@
+{
+    "product_id": "api_215177c0-033f-4a24-ba37-1e5675bd6a40",
+    "tool_description": "API para obtener datos acerca de contagios de coronavirus (COVID-19) en Chile. Utiliza los datos oficiales del Gobierno de Chile y el Ministerio de Salud.",
+    "home_url": "https://rapidapi.com/sanguineti/api/chile-coronapi1/",
+    "name": "chile-coronapi",
+    "title": "chile-coronapi",
+    "pricing": "FREE",
+    "tool_name": "chile-coronapi",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 542,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.2,
+        "__typename": "Score"
+    },
+    "host": "chile-coronapi1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Datos hist\u00f3ritcos nacionales",
+            "url": "https://chile-coronapi1.p.rapidapi.com/v3/historical/nation",
+            "description": "Se obtienen los datos, desde el 7 de marzo hasta el d\u00eda de hoy, de contagiados confirmados, muertes y \"recuperados\"  Estos datos corresponden al total a nivel pa\u00eds.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/historical/nation\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/historical/nation\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Datos hist\u00f3ricos regionales",
+            "url": "https://chile-coronapi1.p.rapidapi.com/v3/historical/regions",
+            "description": "Se obtienen los datos hist\u00f3ricos de contagiados y muertes por regi\u00f3n. En el caso de los contagiados, los datos est\u00e1n disponibles desde el 7 de marzo hasta el d\u00eda de hoy. Para el caso de las muertes, los datos est\u00e1n s\u00f3lo disponibles desde el 1 de abril, que es desde en donde el Gobierno tiene publicadas las cifras oficiales.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/historical/regions\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/historical/regions\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Datos hist\u00f3ricos regionales para una regi\u00f3n en espec\u00edfico",
+            "url": "https://chile-coronapi1.p.rapidapi.com/v3/historical/regions",
+            "description": "Se obtienen los datos de contagiados y muertes por regi\u00f3n de la misma forma que en el endpoint anterior, sin embargo, si se entrega el par\u00e1metro de region-id (sin los corchetes) se reciben los datos para la regi\u00f3n indicada. Los c\u00f3digos de las regiones corresponden al antiguo sistema de regiones numeradas (e.g, Metropolitana es 13.) Se pueden consultar todos los c\u00f3digos de regiones disponibles utilizando el Endpoint de models que se detalla m\u00e1s abajo.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "ID de la regi\u00f3n a consultar. 13 es RM.",
+                    "default": "13"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/historical/regions\"\nquerystring = {\"id\": \"13\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/historical/regions\"\nquerystring = {\"id\": \"13\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Datos hist\u00f3ricos comunales",
+            "url": "https://chile-coronapi1.p.rapidapi.com/v3/historical/communes",
+            "description": "Se obtienen los datos hist\u00f3ricos que el Gobierno ha publicado para todas las comunas. Estos datos son entregados por parte del ministerio con poca frecuencia, usualmente cada un par de d\u00edas o un poco m\u00e1s. Para este caso, s\u00f3lo est\u00e1n disponibles los contagiados confirmados, que es lo \u00fanico que el gobierno ha entregado de forma oficial. Usualmente un 0 representa que no hay datos significativos para esta comuna.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/historical/communes\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/historical/communes\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Datos hist\u00f3ricos comunales para una comuna en espec\u00edfico",
+            "url": "https://chile-coronapi1.p.rapidapi.com/v3/historical/communes?id",
+            "description": "Se obtienen los datos de la misma forma que en el endpoint anterior, sin embargo, al igual que con las regiones, se puede obtener para una comuna en espec\u00edfico, entregando el commune-id, sin los corchetes. La lista de los IDs de comuna est\u00e1 disponible en el endpoint de models de m\u00e1s abajo.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "ID de la comuna a consultar. 5101 es Valpara\u00edso",
+                    "default": "5101"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/historical/communes?id\"\nquerystring = {\"id\": \"5101\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/historical/communes?id\"\nquerystring = {\"id\": \"5101\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Datos del \u00faltimo d\u00eda para el pa\u00eds",
+            "url": "https://chile-coronapi1.p.rapidapi.com/v3/latest/nation",
+            "description": "Se obtienen los datos de contagiados, muertes y recuperados para el \u00faltimo d\u00eda en que el gobierno ha realizado un reporte. El gobierno actualmente realiza un reporte todas las ma\u00f1anas, con los datos cortados hasta el d\u00eda anterior a las 21:00 hrs.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/latest/nation\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/latest/nation\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Datos del \u00faltimo d\u00eda para todas las regiones",
+            "url": "https://chile-coronapi1.p.rapidapi.com/v3/latest/regions",
+            "description": "Datos de regiones para el \u00faltimo d\u00eda reportado por el ministerio. Con este endpoint se obtiene el \u00faltimo reporte para todas las regiones.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/latest/regions\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/latest/regions\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Datos del \u00faltimo d\u00eda para la comuna seleccionada",
+            "url": "https://chile-coronapi1.p.rapidapi.com/v3/latest/communes",
+            "description": "Datos de comunas para el \u00faltimo d\u00eda reportado por el ministerio. Con este endpoint se obtiene el \u00faltimo reporte para la comuna se\u00f1alada en el commune-id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "ID de la comuna a consultar. 13 es RM.",
+                    "default": "5101"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/latest/communes\"\nquerystring = {\"id\": \"5101\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/latest/communes\"\nquerystring = {\"id\": \"5101\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Datos del \u00faltimo d\u00eda para todas las comunas",
+            "url": "https://chile-coronapi1.p.rapidapi.com/v3/latest/communes",
+            "description": "Datos de comunas para el \u00faltimo d\u00eda reportado por el ministerio. Con este endpoint se obtiene el \u00faltimo reporte para todas las comunas.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/latest/communes\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/latest/communes\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Datos del \u00faltimo d\u00eda para la regi\u00f3n seleccionada",
+            "url": "https://chile-coronapi1.p.rapidapi.com/v3/latest/regions",
+            "description": "Datos de regiones para el \u00faltimo d\u00eda reportado por el ministerio. Con este endpoint se obtiene el \u00faltimo reporte para la regi\u00f3n se\u00f1alada en el region-id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "ID de la regi\u00f3n a consultar. 13 es RM.",
+                    "default": "13"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/latest/regions\"\nquerystring = {\"id\": \"13\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/latest/regions\"\nquerystring = {\"id\": \"13\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Regiones",
+            "url": "https://chile-coronapi1.p.rapidapi.com/v3/models/regions",
+            "description": "Se obtiene una lista de todas las regiones junto a su ID respectivo.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/models/regions\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/models/regions\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Comunas",
+            "url": "https://chile-coronapi1.p.rapidapi.com/v3/models/communes",
+            "description": "Se obtiene una lista con todas las comunas del pa\u00eds, junto a su ID y a qu\u00e9 regi\u00f3n del pa\u00eds pertenecen.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/models/communes\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://chile-coronapi1.p.rapidapi.com/v3/models/communes\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chile-coronapi1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

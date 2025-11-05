@@ -1,0 +1,345 @@
+{
+    "product_id": "api_52973fb2-9cfb-4319-855e-90ccbad7830d",
+    "tool_description": "Welcome to Quotastic, the largest RESTful API of its kind, boasting an unparalleled collection of over 600,000 famous quotes from across the globe and throughout history. Dive into a world where wisdom meets technology, offering a daily sprinkle of inspiration with each quote. Lovingly built using the Django Rest Framework, Quotastic serves as your digital sanctuary, blending the timeless with the technological. Experience the vast expanse of human thought and emotion, curated to inspire, mot...",
+    "home_url": "https://rapidapi.com/palexandru008/api/famous-quotes15/",
+    "name": "famous quotes",
+    "title": "famous quotes",
+    "pricing": "FREEMIUM",
+    "tool_name": "famous quotes",
+    "score": null,
+    "host": "famous-quotes15.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "listTopics",
+            "url": "https://famous-quotes15.p.rapidapi.com/topics/",
+            "description": "Returns a list of topics. Supports complex filtering by combining author ID, author name, topic ID, and topic name. Author and topic filters can be used in combination to perform refined searches.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "topic_id",
+                    "type": "NUMBER",
+                    "description": "Filter topics by topic ID",
+                    "default": ""
+                },
+                {
+                    "name": "author_id",
+                    "type": "NUMBER",
+                    "description": "Filter topics by author ID. Can be combined with topic_id or topic_name for more refined filtering.",
+                    "default": ""
+                },
+                {
+                    "name": "author_name",
+                    "type": "STRING",
+                    "description": "Filter topics by author name. Can be combined with topic_id or topic_name for more refined filtering.",
+                    "default": ""
+                },
+                {
+                    "name": "topic_name",
+                    "type": "STRING",
+                    "description": "Filter topics by topic name",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://famous-quotes15.p.rapidapi.com/topics/\"\nquerystring = {\"topic_id\": \"\", \"author_id\": \"\", \"author_name\": \"\", \"topic_name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"famous-quotes15.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://famous-quotes15.p.rapidapi.com/topics/\"\nquerystring = {\"topic_id\": \"\", \"author_id\": \"\", \"author_name\": \"\", \"topic_name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"famous-quotes15.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "/dailyquote/",
+            "url": "https://famous-quotes15.p.rapidapi.com/dailyquote/",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://famous-quotes15.p.rapidapi.com/dailyquote/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"famous-quotes15.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://famous-quotes15.p.rapidapi.com/dailyquote/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"famous-quotes15.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "quote": {
+                        "type": "string"
+                    },
+                    "author": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "nationality": {
+                                "type": "string"
+                            },
+                            "profession": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "topics": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "listQuotes",
+            "url": "https://famous-quotes15.p.rapidapi.com/quotes/",
+            "description": "Returns a list of quotes. Supports complex filtering by author ID, author name, topic ID, topic name, and quote ID. Author and topic filters can be used in combination to perform refined searches.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "topic_name",
+                    "type": "STRING",
+                    "description": "Filter quotes by topic name. Can be combined with author_id or author_name for more specific results.",
+                    "default": ""
+                },
+                {
+                    "name": "topic_id",
+                    "type": "NUMBER",
+                    "description": "Filter quotes by topic ID. Can be combined with author_id or author_name for more specific results.",
+                    "default": ""
+                },
+                {
+                    "name": "quote_id",
+                    "type": "NUMBER",
+                    "description": "Filter quotes by quote ID. This filter is typically used on its own.",
+                    "default": ""
+                },
+                {
+                    "name": "author_name",
+                    "type": "STRING",
+                    "description": "Filter quotes by author name. Can be combined with topic_id or topic_name for more specific results.",
+                    "default": ""
+                },
+                {
+                    "name": "author_id",
+                    "type": "NUMBER",
+                    "description": "Filter quotes by author ID. Can be combined with topic_id or topic_name for more specific results.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://famous-quotes15.p.rapidapi.com/quotes/\"\nquerystring = {\"topic_name\": \"\", \"topic_id\": \"\", \"quote_id\": \"\", \"author_name\": \"\", \"author_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"famous-quotes15.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://famous-quotes15.p.rapidapi.com/quotes/\"\nquerystring = {\"topic_name\": \"\", \"topic_id\": \"\", \"quote_id\": \"\", \"author_name\": \"\", \"author_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"famous-quotes15.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "quote": {
+                            "type": "string"
+                        },
+                        "author": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "nationality": {
+                                    "type": "string"
+                                },
+                                "profession": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "topics": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "listAuthors",
+            "url": "https://famous-quotes15.p.rapidapi.com/authors/",
+            "description": "Returns a list of authors. Supports filtering by author ID, author name, and other criteria.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "topic_name",
+                    "type": "STRING",
+                    "description": "Filter authors by topic name",
+                    "default": ""
+                },
+                {
+                    "name": "topic_id",
+                    "type": "NUMBER",
+                    "description": "Filter authors by topic ID",
+                    "default": ""
+                },
+                {
+                    "name": "author_name",
+                    "type": "STRING",
+                    "description": "Filter authors by author name",
+                    "default": ""
+                },
+                {
+                    "name": "author_id",
+                    "type": "NUMBER",
+                    "description": "Filter authors by author ID",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://famous-quotes15.p.rapidapi.com/authors/\"\nquerystring = {\"topic_name\": \"\", \"topic_id\": \"\", \"author_name\": \"\", \"author_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"famous-quotes15.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://famous-quotes15.p.rapidapi.com/authors/\"\nquerystring = {\"topic_name\": \"\", \"topic_id\": \"\", \"author_name\": \"\", \"author_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"famous-quotes15.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "nationality": {
+                            "type": "string"
+                        },
+                        "profession": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "listFamousQuotes",
+            "url": "https://famous-quotes15.p.rapidapi.com/famous/",
+            "description": "Returns a list of famous quotes. Supports filtering by author ID, author name, topic ID, topic name, and allows combinations for refined searches.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "topic_name",
+                    "type": "STRING",
+                    "description": "Filter famous quotes by topic name. Can be combined with author_id or author_name for more specific results.",
+                    "default": ""
+                },
+                {
+                    "name": "topic_id",
+                    "type": "NUMBER",
+                    "description": "Filter famous quotes by topic ID. Can be combined with author_id or author_name for more specific results.",
+                    "default": ""
+                },
+                {
+                    "name": "author_name",
+                    "type": "STRING",
+                    "description": "Filter famous quotes by author name. Can be combined with topic_id or topic_name for more specific results.",
+                    "default": ""
+                },
+                {
+                    "name": "author_id",
+                    "type": "NUMBER",
+                    "description": "Filter famous quotes by author ID. Can be combined with topic_id or topic_name for more specific results.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://famous-quotes15.p.rapidapi.com/famous/\"\nquerystring = {\"topic_name\": \"\", \"topic_id\": \"\", \"author_name\": \"\", \"author_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"famous-quotes15.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://famous-quotes15.p.rapidapi.com/famous/\"\nquerystring = {\"topic_name\": \"\", \"topic_id\": \"\", \"author_name\": \"\", \"author_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"famous-quotes15.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "quote": {
+                            "type": "string"
+                        },
+                        "author": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "nationality": {
+                                    "type": "string"
+                                },
+                                "profession": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "topics": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

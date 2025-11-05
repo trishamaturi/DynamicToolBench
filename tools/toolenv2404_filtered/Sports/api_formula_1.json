@@ -1,0 +1,1296 @@
+{
+    "product_id": "api_5bdfc3b0-7d3b-4a30-937f-935e799e4279",
+    "tool_description": "All data about Formula 1, Circuits, Teams, Drivers, Rankings... Documentation : https://api-sports.io/documentation/formula-1/v1",
+    "home_url": "https://rapidapi.com/api-sports/api/api-formula-1/",
+    "name": "API-FORMULA-1",
+    "title": "API-FORMULA-1",
+    "pricing": "FREEMIUM",
+    "tool_name": "API-FORMULA-1",
+    "score": {
+        "avgServiceLevel": 99,
+        "avgLatency": 112,
+        "avgSuccessRate": 99,
+        "popularityScore": 9.7,
+        "__typename": "Score"
+    },
+    "host": "api-formula-1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "starting grid rankings",
+            "url": "https://api-formula-1.p.rapidapi.com/rankings/startinggrid",
+            "description": "Get the starting grid for a race.\n\n> All the parameters of this endpoint can be used together.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "race",
+                    "type": "NUMBER",
+                    "description": "The id of the race",
+                    "default": "50"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "team",
+                    "type": "NUMBER",
+                    "description": "The id of the team",
+                    "default": ""
+                },
+                {
+                    "name": "driver",
+                    "type": "STRING",
+                    "description": "The id of the driver",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/rankings/startinggrid\"\nquerystring = {\"team\": \"\", \"race\": \"50\", \"driver\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/rankings/startinggrid\"\nquerystring = {\"team\": \"\", \"race\": \"50\", \"driver\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "race": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "races",
+            "url": "https://api-formula-1.p.rapidapi.com/races",
+            "description": "Get the list of available **races** for a competition.\n\nFor all requests to races you can add the query parameter `timezone` to your request in order to retrieve the list of races in the time zone of your choice like *\u201cEurope/London\u201c*\n\nTo know the list of available time zones you have to use the endpoint `timezone`\n\n**Available Status**\n* Live\n* Completed\n* Cancelled\n* Postponed\n* Scheduled\n\n**Available Types**\n* Race\n* Sprint\n* 1st Practice\n* 2nd Practice\n* 3rd Practice\n* 1st Qualifying\n* 2nd Qualifying\n* 3rd Qualifying\n\n> This endpoint requires at least one of these parameters `id`, `date`, `next`, `last` and `season`.\n\n> All the parameters of this endpoint can be used together.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "circuit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "A valid date",
+                    "default": ""
+                },
+                {
+                    "name": "last",
+                    "type": "NUMBER",
+                    "description": "The X last races",
+                    "default": ""
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "The type of the race",
+                    "default": "race"
+                },
+                {
+                    "name": "season",
+                    "type": "NUMBER",
+                    "description": "The season of the race",
+                    "default": "2021"
+                },
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "The id of the race",
+                    "default": ""
+                },
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "A valid timezone",
+                    "default": ""
+                },
+                {
+                    "name": "competition",
+                    "type": "NUMBER",
+                    "description": "The id of the competition",
+                    "default": "23"
+                },
+                {
+                    "name": "next",
+                    "type": "NUMBER",
+                    "description": "The X next races",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/races\"\nquerystring = {\"circuit\": \"\", \"date\": \"\", \"last\": \"\", \"type\": \"race\", \"season\": \"2021\", \"id\": \"\", \"timezone\": \"\", \"competition\": \"23\", \"next\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/races\"\nquerystring = {\"circuit\": \"\", \"date\": \"\", \"last\": \"\", \"type\": \"race\", \"season\": \"2021\", \"id\": \"\", \"timezone\": \"\", \"competition\": \"23\", \"next\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "errors": {
+                        "type": "array"
+                    },
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "properties": {
+                            "competition": {
+                                "type": "string"
+                            },
+                            "season": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "response": {
+                        "items": {
+                            "properties": {
+                                "circuit": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "image": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "competition": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "location": {
+                                            "properties": {
+                                                "city": {
+                                                    "type": "string"
+                                                },
+                                                "country": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "date": {
+                                    "type": "string"
+                                },
+                                "distance": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "laps": {
+                                    "type": "object"
+                                },
+                                "season": {
+                                    "type": "integer"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "timezone": {
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "type": "string"
+                                },
+                                "weather": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "pit stops",
+            "url": "https://api-formula-1.p.rapidapi.com/pitstops",
+            "description": "Get the list of pit stops made by all drivers during a race.\n\n> All the parameters of this endpoint can be used together.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "race",
+                    "type": "NUMBER",
+                    "description": "The id of the race",
+                    "default": "50"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "team",
+                    "type": "NUMBER",
+                    "description": "The id of the team",
+                    "default": ""
+                },
+                {
+                    "name": "driver",
+                    "type": "STRING",
+                    "description": "The id of the driver",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/pitstops\"\nquerystring = {\"team\": \"\", \"race\": \"50\", \"driver\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/pitstops\"\nquerystring = {\"team\": \"\", \"race\": \"50\", \"driver\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "race": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "fastest laps rankings",
+            "url": "https://api-formula-1.p.rapidapi.com/rankings/fastestlaps",
+            "description": "Get the ranking of the fastest laps for a race.\n\n> All the parameters of this endpoint can be used together.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "race",
+                    "type": "NUMBER",
+                    "description": "The id of the race",
+                    "default": "50"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "driver",
+                    "type": "STRING",
+                    "description": "The id of the driver",
+                    "default": ""
+                },
+                {
+                    "name": "team",
+                    "type": "NUMBER",
+                    "description": "The id of the team",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/rankings/fastestlaps\"\nquerystring = {\"driver\": \"\", \"race\": \"50\", \"team\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/rankings/fastestlaps\"\nquerystring = {\"driver\": \"\", \"race\": \"50\", \"team\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "race": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "search competitions",
+            "url": "https://api-formula-1.p.rapidapi.com/competitions",
+            "description": "Allow to search for a competition name",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "Allow to search for a competition name",
+                    "default": "austra"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/competitions\"\nquerystring = {\"search\": \"austra\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/competitions\"\nquerystring = {\"search\": \"austra\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "search": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "location": {
+                                    "type": "object",
+                                    "properties": {
+                                        "country": {
+                                            "type": "string"
+                                        },
+                                        "city": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "teams",
+            "url": "https://api-formula-1.p.rapidapi.com/teams",
+            "description": "Get the list of available competitions.\n\nThe team `id` are **unique** in the API and teams keep it across all `seasons`\n\n**Sample `logo` of a team :**\n\n![team](https://media.api-sports.io/formula-1/teams/5.png)\n\n> All the parameters of this endpoint can be used together.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "The id of the team",
+                    "default": "1"
+                },
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "Allow to search for a team name",
+                    "default": ""
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "The name of the team",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/teams\"\nquerystring = {\"id\": \"1\", \"search\": \"\", \"name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/teams\"\nquerystring = {\"id\": \"1\", \"search\": \"\", \"name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "teams rankings",
+            "url": "https://api-formula-1.p.rapidapi.com/rankings/teams",
+            "description": "Get the teams rankings for a season.\n\n> All the parameters of this endpoint can be used together.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "season",
+                    "type": "NUMBER",
+                    "description": "The season",
+                    "default": "2021"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "team",
+                    "type": "NUMBER",
+                    "description": "The id of the team",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/rankings/teams\"\nquerystring = {\"team\": \"\", \"season\": \"2021\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/rankings/teams\"\nquerystring = {\"team\": \"\", \"season\": \"2021\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "season": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "position": {
+                                    "type": "integer"
+                                },
+                                "team": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "logo": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "points": {
+                                    "type": "integer"
+                                },
+                                "season": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "races rankings",
+            "url": "https://api-formula-1.p.rapidapi.com/rankings/races",
+            "description": "Get the rankings for a race.\n\n> All the parameters of this endpoint can be used together.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "race",
+                    "type": "NUMBER",
+                    "description": "The id of the race",
+                    "default": "50"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "team",
+                    "type": "NUMBER",
+                    "description": "The id of the team",
+                    "default": ""
+                },
+                {
+                    "name": "driver",
+                    "type": "STRING",
+                    "description": "The id of the driver",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/rankings/races\"\nquerystring = {\"team\": \"\", \"race\": \"50\", \"driver\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/rankings/races\"\nquerystring = {\"team\": \"\", \"race\": \"50\", \"driver\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "race": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "drivers",
+            "url": "https://api-formula-1.p.rapidapi.com/drivers",
+            "description": "Get the list of available drivers.\n\nThe driver `id` are **unique** in the API and drivers keep it across all `seasons`\n\n**Sample `image` of a driver :**\n\n![circuit](https://media.api-sports.io/formula-1/drivers/20.png)\n\n> All the parameters of this endpoint can be used together.\n\n> This endpoint require at least one parameter.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "Allow to search for a driver name",
+                    "default": "lewi"
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "The name of the driver",
+                    "default": ""
+                },
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "The id of the driver",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/drivers\"\nquerystring = {\"search\": \"lewi\", \"name\": \"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/drivers\"\nquerystring = {\"search\": \"lewi\", \"name\": \"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "search": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "image": {
+                                    "type": "string"
+                                },
+                                "nationality": {
+                                    "type": "string"
+                                },
+                                "birthdate": {
+                                    "type": "string"
+                                },
+                                "teams": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "season": {
+                                                "type": "integer"
+                                            },
+                                            "team": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer"
+                                                    },
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "logo": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "competitions",
+            "url": "https://api-formula-1.p.rapidapi.com/competitions",
+            "description": "Get the list of available competitions.\n\nThe competition `id` are **unique** in the API and competitions keep it across all `seasons`\n\n> All the parameters of this endpoint can be used together.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "Allow to search for a competition name",
+                    "default": ""
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "The name of the competition",
+                    "default": ""
+                },
+                {
+                    "name": "city",
+                    "type": "STRING",
+                    "description": "The name of the city",
+                    "default": ""
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The name of the country",
+                    "default": ""
+                },
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "The id of the competition",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/competitions\"\nquerystring = {\"search\": \"\", \"name\": \"\", \"city\": \"\", \"country\": \"\", \"id\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/competitions\"\nquerystring = {\"search\": \"\", \"name\": \"\", \"city\": \"\", \"country\": \"\", \"id\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "location": {
+                                    "type": "object",
+                                    "properties": {
+                                        "country": {
+                                            "type": "string"
+                                        },
+                                        "city": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "circuits",
+            "url": "https://api-formula-1.p.rapidapi.com/circuits",
+            "description": "Get the list of available circuits.\n\nThe circuit `id` are **unique** in the API and circuits keep it across all `seasons`\n\n**Sample `image` of a circuit :**\n\n![circuit](https://media.api-sports.io/formula-1/circuits/1.png)\n\n> All the parameters of this endpoint can be used together.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "competition",
+                    "type": "NUMBER",
+                    "description": "The id of the competition",
+                    "default": ""
+                },
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "Allow to search for a circuit name",
+                    "default": ""
+                },
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "The id of the circuit",
+                    "default": "1"
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "The name of the circuit",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/circuits\"\nquerystring = {\"competition\": \"\", \"search\": \"\", \"id\": \"1\", \"name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/circuits\"\nquerystring = {\"competition\": \"\", \"search\": \"\", \"id\": \"1\", \"name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "seasons",
+            "url": "https://api-formula-1.p.rapidapi.com/seasons",
+            "description": "Get all seasons available.\n\nAll seasons are only **4-digit keys**. All results can be used in other endpoints as filters.\n\n> This endpoint does not require any parameters.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/seasons\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/seasons\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "timezone",
+            "url": "https://api-formula-1.p.rapidapi.com/timezone",
+            "description": "Get the list of available timezone to be used in the races endpoint.\n\n> This endpoint does not require any parameters.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/timezone\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/timezone\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "drivers rankings",
+            "url": "https://api-formula-1.p.rapidapi.com/rankings/drivers",
+            "description": "Get the drivers rankings for a season.\n\n> All the parameters of this endpoint can be used together.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "season",
+                    "type": "NUMBER",
+                    "description": "The season",
+                    "default": "2021"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "team",
+                    "type": "STRING",
+                    "description": "The id of the team",
+                    "default": ""
+                },
+                {
+                    "name": "driver",
+                    "type": "STRING",
+                    "description": "The id of the driver",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/rankings/drivers\"\nquerystring = {\"team\": \"\", \"driver\": \"\", \"season\": \"2021\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/rankings/drivers\"\nquerystring = {\"team\": \"\", \"driver\": \"\", \"season\": \"2021\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "season": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "position": {
+                                    "type": "integer"
+                                },
+                                "driver": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "image": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "team": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "logo": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "points": {
+                                    "type": "integer"
+                                },
+                                "wins": {
+                                    "type": "integer"
+                                },
+                                "behind": {
+                                    "type": "integer"
+                                },
+                                "season": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "search circuits",
+            "url": "https://api-formula-1.p.rapidapi.com/circuits",
+            "description": "Allow to search for a circuit name",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "Allow to search for a circuit name",
+                    "default": "silver"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/circuits\"\nquerystring = {\"search\": \"silver\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/circuits\"\nquerystring = {\"search\": \"silver\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "search": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "image": {
+                                    "type": "string"
+                                },
+                                "competition": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "location": {
+                                            "type": "object",
+                                            "properties": {
+                                                "country": {
+                                                    "type": "string"
+                                                },
+                                                "city": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "length": {
+                                    "type": "string"
+                                },
+                                "capacity": {
+                                    "type": "integer"
+                                },
+                                "opened": {
+                                    "type": "null"
+                                },
+                                "owner": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "search drivers",
+            "url": "https://api-formula-1.p.rapidapi.com/drivers",
+            "description": "Allow to search for a driver name",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "Allow to search for a driver name",
+                    "default": "lewi"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/drivers\"\nquerystring = {\"search\": \"lewi\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/drivers\"\nquerystring = {\"search\": \"lewi\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "search": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "image": {
+                                    "type": "string"
+                                },
+                                "nationality": {
+                                    "type": "string"
+                                },
+                                "birthdate": {
+                                    "type": "string"
+                                },
+                                "teams": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "season": {
+                                                "type": "integer"
+                                            },
+                                            "team": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer"
+                                                    },
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "logo": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "search teams",
+            "url": "https://api-formula-1.p.rapidapi.com/teams",
+            "description": "Allow to search for a team name",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "Allow to search for a team name",
+                    "default": "petron"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/teams\"\nquerystring = {\"search\": \"petron\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-formula-1.p.rapidapi.com/teams\"\nquerystring = {\"search\": \"petron\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-formula-1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "search": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "logo": {
+                                    "type": "string"
+                                },
+                                "president": {
+                                    "type": "string"
+                                },
+                                "director": {
+                                    "type": "string"
+                                },
+                                "technical_manager": {
+                                    "type": "string"
+                                },
+                                "engine": {
+                                    "type": "string"
+                                },
+                                "tyres": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,154 @@
+{
+    "product_id": "api_f9142fc1-fea0-4630-bb1b-7e7c8b86d99c",
+    "tool_description": "Newegg Data Scraper is the easiest way to get Newegg tech products data like: product title, product price, product images , product details, reviews and more in JSON format.",
+    "home_url": "https://rapidapi.com/ossacodes/api/newegg-data-scraper/",
+    "name": "Newegg Data Scraper",
+    "title": "Newegg Data Scraper",
+    "pricing": "PAID",
+    "tool_name": "Newegg Data Scraper",
+    "score": {
+        "avgServiceLevel": 71,
+        "avgLatency": 291,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.2,
+        "__typename": "Score"
+    },
+    "host": "newegg-data-scraper.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Newegg Product Details",
+            "url": "https://newegg-data-scraper.p.rapidapi.com/products/",
+            "description": "This endpoint will help you to get any Newegg product details data.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "productUrl",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "https://www.newegg.com/abs-ali563/p/N82E16883360193?Description=rtx&cm_re=rtx-_-83-360-193-_-Product"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://newegg-data-scraper.p.rapidapi.com/products/\"\nquerystring = {\"productUrl\": \"https://www.newegg.com/abs-ali563/p/N82E16883360193?Description=rtx&cm_re=rtx-_-83-360-193-_-Product\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"newegg-data-scraper.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://newegg-data-scraper.p.rapidapi.com/products/\"\nquerystring = {\"productUrl\": \"https://www.newegg.com/abs-ali563/p/N82E16883360193?Description=rtx&cm_re=rtx-_-83-360-193-_-Product\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"newegg-data-scraper.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "products": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "price": {
+                                    "type": "string"
+                                },
+                                "image": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object"
+                                    }
+                                },
+                                "product_info": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "options": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "reviews": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "review_title": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "reviews": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "array"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get Newegg product search results data",
+            "url": "https://newegg-data-scraper.p.rapidapi.com/search/RTX",
+            "description": "This endpoint will help you get Newegg product results data buy a single query",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "searchQuery",
+                    "type": "string",
+                    "description": "",
+                    "default": "RTX"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://newegg-data-scraper.p.rapidapi.com/search/RTX\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"newegg-data-scraper.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://newegg-data-scraper.p.rapidapi.com/search/{searchquery}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"newegg-data-scraper.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "products": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "price": {
+                                    "type": "string"
+                                },
+                                "shipping": {
+                                    "type": "string"
+                                },
+                                "image": {
+                                    "type": "string"
+                                },
+                                "link": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

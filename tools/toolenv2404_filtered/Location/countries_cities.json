@@ -1,0 +1,1242 @@
+{
+    "product_id": "api_a4a5877c-a8e0-4719-8d27-5d3f3d1fc476",
+    "tool_description": "Provides geo location and information about countries and cities",
+    "home_url": "https://rapidapi.com/natkapral/api/countries-cities/",
+    "name": "Countries Cities",
+    "title": "Countries Cities",
+    "pricing": "FREEMIUM",
+    "tool_name": "Countries Cities",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 144,
+        "avgSuccessRate": 99,
+        "popularityScore": 8.9,
+        "__typename": "Score"
+    },
+    "host": "countries-cities.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Cities in the Country",
+            "url": "https://countries-cities.p.rapidapi.com/location/country/US/city/list",
+            "description": "Returns the list of cities for the specified population. Maximum 1000 cities per page and the default population is greater than 15000",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "STRING",
+                    "description": "Country Code (example US, GB, NO)",
+                    "default": "US"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "per_page",
+                    "type": "NUMBER",
+                    "description": "results per page (max 20)",
+                    "default": "20"
+                },
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "format of the response",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "page number",
+                    "default": "2"
+                },
+                {
+                    "name": "population",
+                    "type": "NUMBER",
+                    "description": "The minimal population of the city",
+                    "default": "1501"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://countries-cities.p.rapidapi.com/location/country/US/city/list\"\nquerystring = {\"per_page\": \"20\", \"format\": \"\", \"page\": \"2\", \"population\": \"1501\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"countries-cities.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://countries-cities.p.rapidapi.com/location/country/{code}/city/list\"\nquerystring = {\"per_page\": \"20\", \"format\": \"\", \"page\": \"2\", \"population\": \"1501\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"countries-cities.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "cities": {
+                        "items": {
+                            "properties": {
+                                "geonameid": {
+                                    "type": "integer"
+                                },
+                                "latitude": {
+                                    "type": "string"
+                                },
+                                "longitude": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "population": {
+                                    "type": "integer"
+                                },
+                                "timezone": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "links": {
+                        "properties": {
+                            "first": {
+                                "type": "string"
+                            },
+                            "last": {
+                                "type": "string"
+                            },
+                            "next": {
+                                "type": "string"
+                            },
+                            "previous": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "page": {
+                        "type": "integer"
+                    },
+                    "per_page": {
+                        "type": "integer"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "total_cities": {
+                        "type": "integer"
+                    },
+                    "total_pages": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Country GeoJson",
+            "url": "https://countries-cities.p.rapidapi.com/location/country/GB/geojson",
+            "description": "Returns geoJSON of the country",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "STRING",
+                    "description": "Country Code (example US, GB, NO)",
+                    "default": "GB"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://countries-cities.p.rapidapi.com/location/country/GB/geojson\"\nquerystring = {\"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"countries-cities.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://countries-cities.p.rapidapi.com/location/country/{code}/geojson\"\nquerystring = {\"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"countries-cities.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Countries List",
+            "url": "https://countries-cities.p.rapidapi.com/location/country/list",
+            "description": "Returns the list of all countries with country codes",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "format of the response",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://countries-cities.p.rapidapi.com/location/country/list\"\nquerystring = {\"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"countries-cities.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://countries-cities.p.rapidapi.com/location/country/list\"\nquerystring = {\"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"countries-cities.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "countries": {
+                        "properties": {
+                            "AD": {
+                                "type": "string"
+                            },
+                            "AE": {
+                                "type": "string"
+                            },
+                            "AF": {
+                                "type": "string"
+                            },
+                            "AG": {
+                                "type": "string"
+                            },
+                            "AI": {
+                                "type": "string"
+                            },
+                            "AL": {
+                                "type": "string"
+                            },
+                            "AM": {
+                                "type": "string"
+                            },
+                            "AN": {
+                                "type": "string"
+                            },
+                            "AO": {
+                                "type": "string"
+                            },
+                            "AQ": {
+                                "type": "string"
+                            },
+                            "AR": {
+                                "type": "string"
+                            },
+                            "AS": {
+                                "type": "string"
+                            },
+                            "AT": {
+                                "type": "string"
+                            },
+                            "AU": {
+                                "type": "string"
+                            },
+                            "AW": {
+                                "type": "string"
+                            },
+                            "AX": {
+                                "type": "string"
+                            },
+                            "AZ": {
+                                "type": "string"
+                            },
+                            "BA": {
+                                "type": "string"
+                            },
+                            "BB": {
+                                "type": "string"
+                            },
+                            "BD": {
+                                "type": "string"
+                            },
+                            "BE": {
+                                "type": "string"
+                            },
+                            "BF": {
+                                "type": "string"
+                            },
+                            "BG": {
+                                "type": "string"
+                            },
+                            "BH": {
+                                "type": "string"
+                            },
+                            "BI": {
+                                "type": "string"
+                            },
+                            "BJ": {
+                                "type": "string"
+                            },
+                            "BL": {
+                                "type": "string"
+                            },
+                            "BM": {
+                                "type": "string"
+                            },
+                            "BN": {
+                                "type": "string"
+                            },
+                            "BO": {
+                                "type": "string"
+                            },
+                            "BQ": {
+                                "type": "string"
+                            },
+                            "BR": {
+                                "type": "string"
+                            },
+                            "BS": {
+                                "type": "string"
+                            },
+                            "BT": {
+                                "type": "string"
+                            },
+                            "BV": {
+                                "type": "string"
+                            },
+                            "BW": {
+                                "type": "string"
+                            },
+                            "BY": {
+                                "type": "string"
+                            },
+                            "BZ": {
+                                "type": "string"
+                            },
+                            "CA": {
+                                "type": "string"
+                            },
+                            "CC": {
+                                "type": "string"
+                            },
+                            "CD": {
+                                "type": "string"
+                            },
+                            "CF": {
+                                "type": "string"
+                            },
+                            "CG": {
+                                "type": "string"
+                            },
+                            "CH": {
+                                "type": "string"
+                            },
+                            "CI": {
+                                "type": "string"
+                            },
+                            "CK": {
+                                "type": "string"
+                            },
+                            "CL": {
+                                "type": "string"
+                            },
+                            "CM": {
+                                "type": "string"
+                            },
+                            "CN": {
+                                "type": "string"
+                            },
+                            "CO": {
+                                "type": "string"
+                            },
+                            "CR": {
+                                "type": "string"
+                            },
+                            "CS": {
+                                "type": "string"
+                            },
+                            "CU": {
+                                "type": "string"
+                            },
+                            "CV": {
+                                "type": "string"
+                            },
+                            "CW": {
+                                "type": "string"
+                            },
+                            "CX": {
+                                "type": "string"
+                            },
+                            "CY": {
+                                "type": "string"
+                            },
+                            "CZ": {
+                                "type": "string"
+                            },
+                            "DE": {
+                                "type": "string"
+                            },
+                            "DJ": {
+                                "type": "string"
+                            },
+                            "DK": {
+                                "type": "string"
+                            },
+                            "DM": {
+                                "type": "string"
+                            },
+                            "DO": {
+                                "type": "string"
+                            },
+                            "DZ": {
+                                "type": "string"
+                            },
+                            "EC": {
+                                "type": "string"
+                            },
+                            "EE": {
+                                "type": "string"
+                            },
+                            "EG": {
+                                "type": "string"
+                            },
+                            "EH": {
+                                "type": "string"
+                            },
+                            "ER": {
+                                "type": "string"
+                            },
+                            "ES": {
+                                "type": "string"
+                            },
+                            "ET": {
+                                "type": "string"
+                            },
+                            "FI": {
+                                "type": "string"
+                            },
+                            "FJ": {
+                                "type": "string"
+                            },
+                            "FK": {
+                                "type": "string"
+                            },
+                            "FM": {
+                                "type": "string"
+                            },
+                            "FO": {
+                                "type": "string"
+                            },
+                            "FR": {
+                                "type": "string"
+                            },
+                            "GA": {
+                                "type": "string"
+                            },
+                            "GB": {
+                                "type": "string"
+                            },
+                            "GD": {
+                                "type": "string"
+                            },
+                            "GE": {
+                                "type": "string"
+                            },
+                            "GF": {
+                                "type": "string"
+                            },
+                            "GG": {
+                                "type": "string"
+                            },
+                            "GH": {
+                                "type": "string"
+                            },
+                            "GI": {
+                                "type": "string"
+                            },
+                            "GL": {
+                                "type": "string"
+                            },
+                            "GM": {
+                                "type": "string"
+                            },
+                            "GN": {
+                                "type": "string"
+                            },
+                            "GP": {
+                                "type": "string"
+                            },
+                            "GQ": {
+                                "type": "string"
+                            },
+                            "GR": {
+                                "type": "string"
+                            },
+                            "GS": {
+                                "type": "string"
+                            },
+                            "GT": {
+                                "type": "string"
+                            },
+                            "GU": {
+                                "type": "string"
+                            },
+                            "GW": {
+                                "type": "string"
+                            },
+                            "GY": {
+                                "type": "string"
+                            },
+                            "HK": {
+                                "type": "string"
+                            },
+                            "HM": {
+                                "type": "string"
+                            },
+                            "HN": {
+                                "type": "string"
+                            },
+                            "HR": {
+                                "type": "string"
+                            },
+                            "HT": {
+                                "type": "string"
+                            },
+                            "HU": {
+                                "type": "string"
+                            },
+                            "ID": {
+                                "type": "string"
+                            },
+                            "IE": {
+                                "type": "string"
+                            },
+                            "IL": {
+                                "type": "string"
+                            },
+                            "IM": {
+                                "type": "string"
+                            },
+                            "IN": {
+                                "type": "string"
+                            },
+                            "IO": {
+                                "type": "string"
+                            },
+                            "IQ": {
+                                "type": "string"
+                            },
+                            "IR": {
+                                "type": "string"
+                            },
+                            "IS": {
+                                "type": "string"
+                            },
+                            "IT": {
+                                "type": "string"
+                            },
+                            "JE": {
+                                "type": "string"
+                            },
+                            "JM": {
+                                "type": "string"
+                            },
+                            "JO": {
+                                "type": "string"
+                            },
+                            "JP": {
+                                "type": "string"
+                            },
+                            "KE": {
+                                "type": "string"
+                            },
+                            "KG": {
+                                "type": "string"
+                            },
+                            "KH": {
+                                "type": "string"
+                            },
+                            "KI": {
+                                "type": "string"
+                            },
+                            "KM": {
+                                "type": "string"
+                            },
+                            "KN": {
+                                "type": "string"
+                            },
+                            "KP": {
+                                "type": "string"
+                            },
+                            "KR": {
+                                "type": "string"
+                            },
+                            "KW": {
+                                "type": "string"
+                            },
+                            "KY": {
+                                "type": "string"
+                            },
+                            "KZ": {
+                                "type": "string"
+                            },
+                            "LA": {
+                                "type": "string"
+                            },
+                            "LB": {
+                                "type": "string"
+                            },
+                            "LC": {
+                                "type": "string"
+                            },
+                            "LI": {
+                                "type": "string"
+                            },
+                            "LK": {
+                                "type": "string"
+                            },
+                            "LR": {
+                                "type": "string"
+                            },
+                            "LS": {
+                                "type": "string"
+                            },
+                            "LT": {
+                                "type": "string"
+                            },
+                            "LU": {
+                                "type": "string"
+                            },
+                            "LV": {
+                                "type": "string"
+                            },
+                            "LY": {
+                                "type": "string"
+                            },
+                            "MA": {
+                                "type": "string"
+                            },
+                            "MC": {
+                                "type": "string"
+                            },
+                            "MD": {
+                                "type": "string"
+                            },
+                            "ME": {
+                                "type": "string"
+                            },
+                            "MF": {
+                                "type": "string"
+                            },
+                            "MG": {
+                                "type": "string"
+                            },
+                            "MH": {
+                                "type": "string"
+                            },
+                            "MK": {
+                                "type": "string"
+                            },
+                            "ML": {
+                                "type": "string"
+                            },
+                            "MM": {
+                                "type": "string"
+                            },
+                            "MN": {
+                                "type": "string"
+                            },
+                            "MO": {
+                                "type": "string"
+                            },
+                            "MP": {
+                                "type": "string"
+                            },
+                            "MQ": {
+                                "type": "string"
+                            },
+                            "MR": {
+                                "type": "string"
+                            },
+                            "MS": {
+                                "type": "string"
+                            },
+                            "MT": {
+                                "type": "string"
+                            },
+                            "MU": {
+                                "type": "string"
+                            },
+                            "MV": {
+                                "type": "string"
+                            },
+                            "MW": {
+                                "type": "string"
+                            },
+                            "MX": {
+                                "type": "string"
+                            },
+                            "MY": {
+                                "type": "string"
+                            },
+                            "MZ": {
+                                "type": "string"
+                            },
+                            "NA": {
+                                "type": "string"
+                            },
+                            "NC": {
+                                "type": "string"
+                            },
+                            "NE": {
+                                "type": "string"
+                            },
+                            "NF": {
+                                "type": "string"
+                            },
+                            "NG": {
+                                "type": "string"
+                            },
+                            "NI": {
+                                "type": "string"
+                            },
+                            "NL": {
+                                "type": "string"
+                            },
+                            "NO": {
+                                "type": "string"
+                            },
+                            "NP": {
+                                "type": "string"
+                            },
+                            "NR": {
+                                "type": "string"
+                            },
+                            "NU": {
+                                "type": "string"
+                            },
+                            "NZ": {
+                                "type": "string"
+                            },
+                            "OM": {
+                                "type": "string"
+                            },
+                            "PA": {
+                                "type": "string"
+                            },
+                            "PE": {
+                                "type": "string"
+                            },
+                            "PF": {
+                                "type": "string"
+                            },
+                            "PG": {
+                                "type": "string"
+                            },
+                            "PH": {
+                                "type": "string"
+                            },
+                            "PK": {
+                                "type": "string"
+                            },
+                            "PL": {
+                                "type": "string"
+                            },
+                            "PM": {
+                                "type": "string"
+                            },
+                            "PN": {
+                                "type": "string"
+                            },
+                            "PR": {
+                                "type": "string"
+                            },
+                            "PS": {
+                                "type": "string"
+                            },
+                            "PT": {
+                                "type": "string"
+                            },
+                            "PW": {
+                                "type": "string"
+                            },
+                            "PY": {
+                                "type": "string"
+                            },
+                            "QA": {
+                                "type": "string"
+                            },
+                            "RE": {
+                                "type": "string"
+                            },
+                            "RO": {
+                                "type": "string"
+                            },
+                            "RS": {
+                                "type": "string"
+                            },
+                            "RU": {
+                                "type": "string"
+                            },
+                            "RW": {
+                                "type": "string"
+                            },
+                            "SA": {
+                                "type": "string"
+                            },
+                            "SB": {
+                                "type": "string"
+                            },
+                            "SC": {
+                                "type": "string"
+                            },
+                            "SD": {
+                                "type": "string"
+                            },
+                            "SE": {
+                                "type": "string"
+                            },
+                            "SG": {
+                                "type": "string"
+                            },
+                            "SH": {
+                                "type": "string"
+                            },
+                            "SI": {
+                                "type": "string"
+                            },
+                            "SJ": {
+                                "type": "string"
+                            },
+                            "SK": {
+                                "type": "string"
+                            },
+                            "SL": {
+                                "type": "string"
+                            },
+                            "SM": {
+                                "type": "string"
+                            },
+                            "SN": {
+                                "type": "string"
+                            },
+                            "SO": {
+                                "type": "string"
+                            },
+                            "SR": {
+                                "type": "string"
+                            },
+                            "SS": {
+                                "type": "string"
+                            },
+                            "ST": {
+                                "type": "string"
+                            },
+                            "SV": {
+                                "type": "string"
+                            },
+                            "SX": {
+                                "type": "string"
+                            },
+                            "SY": {
+                                "type": "string"
+                            },
+                            "SZ": {
+                                "type": "string"
+                            },
+                            "TC": {
+                                "type": "string"
+                            },
+                            "TD": {
+                                "type": "string"
+                            },
+                            "TF": {
+                                "type": "string"
+                            },
+                            "TG": {
+                                "type": "string"
+                            },
+                            "TH": {
+                                "type": "string"
+                            },
+                            "TJ": {
+                                "type": "string"
+                            },
+                            "TK": {
+                                "type": "string"
+                            },
+                            "TL": {
+                                "type": "string"
+                            },
+                            "TM": {
+                                "type": "string"
+                            },
+                            "TN": {
+                                "type": "string"
+                            },
+                            "TO": {
+                                "type": "string"
+                            },
+                            "TR": {
+                                "type": "string"
+                            },
+                            "TT": {
+                                "type": "string"
+                            },
+                            "TV": {
+                                "type": "string"
+                            },
+                            "TW": {
+                                "type": "string"
+                            },
+                            "TZ": {
+                                "type": "string"
+                            },
+                            "UA": {
+                                "type": "string"
+                            },
+                            "UG": {
+                                "type": "string"
+                            },
+                            "UM": {
+                                "type": "string"
+                            },
+                            "US": {
+                                "type": "string"
+                            },
+                            "UY": {
+                                "type": "string"
+                            },
+                            "UZ": {
+                                "type": "string"
+                            },
+                            "VA": {
+                                "type": "string"
+                            },
+                            "VC": {
+                                "type": "string"
+                            },
+                            "VE": {
+                                "type": "string"
+                            },
+                            "VG": {
+                                "type": "string"
+                            },
+                            "VI": {
+                                "type": "string"
+                            },
+                            "VN": {
+                                "type": "string"
+                            },
+                            "VU": {
+                                "type": "string"
+                            },
+                            "WF": {
+                                "type": "string"
+                            },
+                            "WS": {
+                                "type": "string"
+                            },
+                            "XK": {
+                                "type": "string"
+                            },
+                            "YE": {
+                                "type": "string"
+                            },
+                            "YT": {
+                                "type": "string"
+                            },
+                            "ZA": {
+                                "type": "string"
+                            },
+                            "ZM": {
+                                "type": "string"
+                            },
+                            "ZW": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "City Details",
+            "url": "https://countries-cities.p.rapidapi.com/location/city/5128580",
+            "description": "Returns a detailed information about the city and it's location",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "geonameid",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "5128580"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://countries-cities.p.rapidapi.com/location/city/5128580\"\nquerystring = {\"format\": \"\", \"language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"countries-cities.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://countries-cities.p.rapidapi.com/location/city/{geonameid}\"\nquerystring = {\"format\": \"\", \"language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"countries-cities.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Country Details",
+            "url": "https://countries-cities.p.rapidapi.com/location/country/GB",
+            "description": "Returns capital, location, timezone, population, currency, languages, phone code of the country",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "STRING",
+                    "description": "Country code (example: US, GB, NO)",
+                    "default": "GB"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "format of the response",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://countries-cities.p.rapidapi.com/location/country/GB\"\nquerystring = {\"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"countries-cities.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://countries-cities.p.rapidapi.com/location/country/{code}\"\nquerystring = {\"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"countries-cities.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "area_size": {
+                        "type": "string"
+                    },
+                    "capital": {
+                        "type": "string"
+                    },
+                    "code": {
+                        "type": "string"
+                    },
+                    "continent": {
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "geonameid": {
+                                "type": "integer"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "currency": {
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "geonameid": {
+                        "type": "integer"
+                    },
+                    "is_in_eu": {
+                        "type": "boolean"
+                    },
+                    "languages": {
+                        "type": "object",
+                        "properties": {
+                            "en": {
+                                "type": "string"
+                            },
+                            "es": {
+                                "type": "string"
+                            },
+                            "fr": {
+                                "type": "string"
+                            },
+                            "haw": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "phone_code": {
+                        "type": "string"
+                    },
+                    "population": {
+                        "type": "integer"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "timezone": {
+                        "type": "object",
+                        "properties": {
+                            "gtm_offset": {
+                                "type": "integer"
+                            },
+                            "time": {
+                                "type": "string"
+                            },
+                            "timezone": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Cities Nearby",
+            "url": "https://countries-cities.p.rapidapi.com/location/city/nearby",
+            "description": "list of the cities next to the location",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "max_population",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10000"
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "37.02"
+                },
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "per_page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10"
+                },
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "55.11"
+                },
+                {
+                    "name": "min_population",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "99"
+                },
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "25"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://countries-cities.p.rapidapi.com/location/city/nearby\"\nquerystring = {\"max_population\": \"10000\", \"longitude\": \"37.02\", \"format\": \"\", \"per_page\": \"10\", \"latitude\": \"55.11\", \"min_population\": \"99\", \"radius\": \"25\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"countries-cities.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://countries-cities.p.rapidapi.com/location/city/nearby\"\nquerystring = {\"max_population\": \"10000\", \"longitude\": \"37.02\", \"format\": \"\", \"per_page\": \"10\", \"latitude\": \"55.11\", \"min_population\": \"99\", \"radius\": \"25\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"countries-cities.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "cities": {
+                        "items": {
+                            "properties": {
+                                "distance": {
+                                    "type": "string"
+                                },
+                                "geonameid": {
+                                    "type": "integer"
+                                },
+                                "latitude": {
+                                    "type": "number"
+                                },
+                                "longitude": {
+                                    "type": "number"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "population": {
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "links": {
+                        "properties": {
+                            "first": {
+                                "type": "string"
+                            },
+                            "last": {
+                                "type": "string"
+                            },
+                            "next": {
+                                "type": "string"
+                            },
+                            "previous": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "location": {
+                        "properties": {
+                            "latitude": {
+                                "type": "number"
+                            },
+                            "longitude": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "page": {
+                        "type": "integer"
+                    },
+                    "per_page": {
+                        "type": "integer"
+                    },
+                    "radius": {
+                        "type": "integer"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "total_cities": {
+                        "type": "integer"
+                    },
+                    "total_pages": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    ]
+}

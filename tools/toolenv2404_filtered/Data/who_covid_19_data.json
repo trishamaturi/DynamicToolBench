@@ -1,0 +1,273 @@
+{
+    "product_id": "api_0b4e6966-286b-4fe8-8bc2-d776ccc37ef3",
+    "tool_description": "Global COVID-19 data (free to use). - latest data: Aug. 16, 2020",
+    "home_url": "https://rapidapi.com/pillious/api/who-covid-19-data/",
+    "name": "WHO Covid-19 data",
+    "title": "WHO Covid-19 data",
+    "pricing": "FREE",
+    "tool_name": "WHO Covid-19 data",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 52,
+        "avgSuccessRate": 100,
+        "popularityScore": 8.6,
+        "__typename": "Score"
+    },
+    "host": "who-covid-19-data.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Regions",
+            "url": "https://who-covid-19-data.p.rapidapi.com/api/data/regions",
+            "description": "Get a list of valid region.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://who-covid-19-data.p.rapidapi.com/api/data/regions\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"who-covid-19-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://who-covid-19-data.p.rapidapi.com/api/data/regions\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"who-covid-19-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get data",
+            "url": "https://who-covid-19-data.p.rapidapi.com/api/data",
+            "description": "Get the data.\n(If no query parameters are provided, returns data for the most recent report)",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "deaths",
+                    "type": "NUMBER",
+                    "description": "Limit search to n number of total confirmed deaths and above.",
+                    "default": ""
+                },
+                {
+                    "name": "newCases",
+                    "type": "NUMBER",
+                    "description": "Limit search to n number of new confirmed cases (since the previous report) and above.",
+                    "default": ""
+                },
+                {
+                    "name": "newDeaths",
+                    "type": "NUMBER",
+                    "description": "Limit search to n number of new confirmed deaths (since the previous report) and above.",
+                    "default": ""
+                },
+                {
+                    "name": "transmissionType",
+                    "type": "NUMBER",
+                    "description": "Filter data by a specific method of virus transmission.",
+                    "default": ""
+                },
+                {
+                    "name": "region",
+                    "type": "STRING",
+                    "description": "Enter a valid region.",
+                    "default": "European Region"
+                },
+                {
+                    "name": "cases",
+                    "type": "NUMBER",
+                    "description": "Limit search to n number of total confirmed cases and above.",
+                    "default": "35000"
+                },
+                {
+                    "name": "reportNumber",
+                    "type": "NUMBER",
+                    "description": "Each report has a report number attached.",
+                    "default": ""
+                },
+                {
+                    "name": "territory",
+                    "type": "BOOLEAN",
+                    "description": "Get only countries or only territories.",
+                    "default": ""
+                },
+                {
+                    "name": "reportDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Get data for a specific day.",
+                    "default": "2020-03-25"
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Enter a valid country or territory.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://who-covid-19-data.p.rapidapi.com/api/data\"\nquerystring = {\"deaths\": \"\", \"newCases\": \"\", \"newDeaths\": \"\", \"transmissionType\": \"\", \"region\": \"European Region\", \"cases\": \"35000\", \"reportNumber\": \"\", \"territory\": \"\", \"reportDate\": \"2020-03-25\", \"name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"who-covid-19-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://who-covid-19-data.p.rapidapi.com/api/data\"\nquerystring = {\"deaths\": \"\", \"newCases\": \"\", \"newDeaths\": \"\", \"transmissionType\": \"\", \"region\": \"European Region\", \"cases\": \"35000\", \"reportNumber\": \"\", \"territory\": \"\", \"reportDate\": \"2020-03-25\", \"name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"who-covid-19-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "items": {
+                    "properties": {
+                        "cases": {
+                            "type": "integer"
+                        },
+                        "daysSinceLastCase": {
+                            "type": "integer"
+                        },
+                        "deaths": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "newCases": {
+                            "type": "integer"
+                        },
+                        "newDeaths": {
+                            "type": "integer"
+                        },
+                        "region": {
+                            "type": "string"
+                        },
+                        "reportDate": {
+                            "type": "string"
+                        },
+                        "reportNumber": {
+                            "type": "integer"
+                        },
+                        "territory": {
+                            "type": "boolean"
+                        },
+                        "transmissionType": {
+                            "type": "integer"
+                        }
+                    },
+                    "type": "object"
+                },
+                "type": "array"
+            }
+        },
+        {
+            "name": "Names",
+            "url": "https://who-covid-19-data.p.rapidapi.com/api/data/names",
+            "description": "Get a list of valid country and territory names.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://who-covid-19-data.p.rapidapi.com/api/data/names\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"who-covid-19-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://who-covid-19-data.p.rapidapi.com/api/data/names\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"who-covid-19-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Transmission types",
+            "url": "https://who-covid-19-data.p.rapidapi.com/api/data/transmissionTypes",
+            "description": "Describes each transmission type.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://who-covid-19-data.p.rapidapi.com/api/data/transmissionTypes\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"who-covid-19-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://who-covid-19-data.p.rapidapi.com/api/data/transmissionTypes\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"who-covid-19-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Dates",
+            "url": "https://who-covid-19-data.p.rapidapi.com/api/data/dates",
+            "description": "Retrieve all available report dates.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://who-covid-19-data.p.rapidapi.com/api/data/dates\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"who-covid-19-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://who-covid-19-data.p.rapidapi.com/api/data/dates\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"who-covid-19-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

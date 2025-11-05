@@ -1,0 +1,324 @@
+{
+    "product_id": "api_17b8d26a-c9a7-4c2d-9d3b-1de29bd2c2ae",
+    "tool_description": "Scrapy ChatGPT GPTs information(name, description, icon and so on)",
+    "home_url": "https://rapidapi.com/gpt-api-gpt-api-default/api/gpt-clawler/",
+    "name": "GPT clawler",
+    "title": "GPT clawler",
+    "pricing": "FREEMIUM",
+    "tool_name": "GPT clawler",
+    "score": null,
+    "host": "gpt-clawler.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "GPTs by Category",
+            "url": "https://gpt-clawler.p.rapidapi.com/gptsByCategory/trending/en",
+            "description": "Currently category could be one of below:\ntrending, featured, dalle, writing, productivity, research, programming, education, lifestyle",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "trending, featured, dalle, writing, productivity, research, programming, education, lifestyle",
+                    "default": "trending"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "6"
+                },
+                {
+                    "name": "locale",
+                    "type": "string",
+                    "description": "",
+                    "default": "en"
+                },
+                {
+                    "name": "cursor",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "6"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://gpt-clawler.p.rapidapi.com/gptsByCategory/trending/en\"\nquerystring = {\"limit\": \"6\", \"cursor\": \"6\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gpt-clawler.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://gpt-clawler.p.rapidapi.com/gptsByCategory/{category}/{locale}\"\nquerystring = {\"limit\": \"6\", \"cursor\": \"6\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gpt-clawler.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "statusCode": {
+                        "type": "integer"
+                    },
+                    "gptData": {
+                        "type": "object",
+                        "properties": {
+                            "info": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "display_type": {
+                                        "type": "string"
+                                    },
+                                    "display_group": {
+                                        "type": "string"
+                                    },
+                                    "locale": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "list": {
+                                "type": "object",
+                                "properties": {
+                                    "items": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "resource": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "gizmo": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string"
+                                                                },
+                                                                "organization_id": {
+                                                                    "type": "string"
+                                                                },
+                                                                "short_url": {
+                                                                    "type": "string"
+                                                                },
+                                                                "author": {
+                                                                    "type": "object"
+                                                                },
+                                                                "voice": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "string"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "workspace_id": {
+                                                                    "type": "null"
+                                                                },
+                                                                "model": {
+                                                                    "type": "null"
+                                                                },
+                                                                "instructions": {
+                                                                    "type": "null"
+                                                                },
+                                                                "settings": {
+                                                                    "type": "null"
+                                                                },
+                                                                "display": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "name": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "description": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "welcome_message": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "prompt_starters": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        },
+                                                                        "profile_picture_url": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "categories": {
+                                                                            "type": "array"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "share_recipient": {
+                                                                    "type": "string"
+                                                                },
+                                                                "created_at": {
+                                                                    "type": "string"
+                                                                },
+                                                                "updated_at": {
+                                                                    "type": "string"
+                                                                },
+                                                                "last_interacted_at": {
+                                                                    "type": "null"
+                                                                },
+                                                                "tags": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "version": {
+                                                                    "type": "null"
+                                                                },
+                                                                "live_version": {
+                                                                    "type": "null"
+                                                                },
+                                                                "training_disabled": {
+                                                                    "type": "null"
+                                                                },
+                                                                "allowed_sharing_recipients": {
+                                                                    "type": "null"
+                                                                },
+                                                                "sharing_targets": {
+                                                                    "type": "null"
+                                                                },
+                                                                "appeal_info": {
+                                                                    "type": "null"
+                                                                },
+                                                                "vanity_metrics": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "num_conversations_str": {
+                                                                            "type": "null"
+                                                                        },
+                                                                        "num_pins": {
+                                                                            "type": "integer"
+                                                                        },
+                                                                        "num_users_interacted_with": {
+                                                                            "type": "integer"
+                                                                        },
+                                                                        "created_ago_str": {
+                                                                            "type": "null"
+                                                                        },
+                                                                        "num_conversations": {
+                                                                            "type": "null"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "workspace_approval_date": {
+                                                                    "type": "null"
+                                                                },
+                                                                "workspace_approved": {
+                                                                    "type": "null"
+                                                                }
+                                                            }
+                                                        },
+                                                        "tools": {
+                                                            "type": "array"
+                                                        },
+                                                        "files": {
+                                                            "type": "array"
+                                                        },
+                                                        "product_features": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "attachments": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "type": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "accepted_mime_types": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        },
+                                                                        "image_mime_types": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        },
+                                                                        "can_accept_all_mime_types": {
+                                                                            "type": "boolean"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "cursor": {
+                                        "type": "null"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "requestTime": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "topList",
+            "url": "https://gpt-clawler.p.rapidapi.com/topList",
+            "description": "Get homepage lists in https://chat.openai.com/gpts",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://gpt-clawler.p.rapidapi.com/topList\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gpt-clawler.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://gpt-clawler.p.rapidapi.com/topList\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gpt-clawler.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "gpt",
+            "url": "https://gpt-clawler.p.rapidapi.com/gpt",
+            "description": "Clawler GPT details by id",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "g-alKfVrz9K-canva"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://gpt-clawler.p.rapidapi.com/gpt\"\nquerystring = {\"id\": \"g-alKfVrz9K-canva\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gpt-clawler.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://gpt-clawler.p.rapidapi.com/gpt\"\nquerystring = {\"id\": \"g-alKfVrz9K-canva\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gpt-clawler.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,96 @@
+{
+    "product_id": "api_e3c99ff9-278b-4823-8353-e867780ae375",
+    "tool_description": "Fast and Reliable Perspectives Web Searches on Google in Real-Time - Videos, News, Social - Reddit, Stack Overflow, and Other Community-First Sites.",
+    "home_url": "https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-perspectives-search/",
+    "name": "Real-Time Perspectives Search",
+    "title": "Real-Time Perspectives Search",
+    "pricing": "FREEMIUM",
+    "tool_name": "Real-Time Perspectives Search",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 73,
+        "avgSuccessRate": 100,
+        "popularityScore": 8.7,
+        "__typename": "Score"
+    },
+    "host": "real-time-perspectives-search.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Search",
+            "url": "https://real-time-perspectives-search.p.rapidapi.com/search",
+            "description": "Search for Google's Perspectives on the web - Videos, News, Reddit, Stack Overflow, and other community-first sites.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The language to use for the search (Google's *hl* parameter).\n\n**Allowed values:** 2-letter country code, see [ISO 639-1 alpha-2](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n**Default:** `en`.",
+                    "default": "en"
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Number of results to skip (for pagination).\n\n**Allowed values:** positive integers.\n**Default:** `0`.",
+                    "default": "0"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The country / region from for which to make the query.\n\n**Allowed values:** 2-letter country code, see [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).\n**Default:** `us`.",
+                    "default": "us"
+                },
+                {
+                    "name": "time",
+                    "type": "ENUM",
+                    "description": "Find perspectives published in a specific time range.\n\n**Allowed values:** `hour, day, week, month, year`",
+                    "default": ""
+                },
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Search query.",
+                    "default": "bing copilot"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://real-time-perspectives-search.p.rapidapi.com/search\"\nquerystring = {\"language\": \"en\", \"start\": \"0\", \"country\": \"us\", \"time\": \"\", \"query\": \"bing copilot\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"real-time-perspectives-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://real-time-perspectives-search.p.rapidapi.com/search\"\nquerystring = {\"language\": \"en\", \"start\": \"0\", \"country\": \"us\", \"time\": \"\", \"query\": \"bing copilot\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"real-time-perspectives-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "query": {
+                                "type": "string"
+                            },
+                            "start": {
+                                "type": "integer"
+                            },
+                            "country": {
+                                "type": "string"
+                            },
+                            "language": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

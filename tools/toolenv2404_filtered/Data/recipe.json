@@ -1,0 +1,260 @@
+{
+    "product_id": "53aa54dee4b059614034091d",
+    "tool_description": "The WebKnox Recipe API allows you to access over 330,000 recipes. It allows users to search for recipes using natural language such as \"gluten free brownies without sugar\". Furthermore, several widgets to visualize ingredient lists, price breakdowns, This Food API also contains thousands of information bits about ingredients such as nutrition, prices, tips, and more.",
+    "home_url": "https://rapidapi.com/webknox/api/recipe/",
+    "name": "Recipe",
+    "title": "Recipe",
+    "pricing": "FREEMIUM",
+    "tool_name": "Recipe",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 824,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.2,
+        "__typename": "Score"
+    },
+    "host": "webknox-recipes.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Summarize Recipe",
+            "url": "https://webknox-recipes.p.rapidapi.com/recipes/4632/summary",
+            "description": "Summarize the recipe in a short text.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The id of the recipe to summarize.",
+                    "default": "4632"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://webknox-recipes.p.rapidapi.com/recipes/4632/summary\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webknox-recipes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://webknox-recipes.p.rapidapi.com/recipes/{id}/summary\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webknox-recipes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Extract Recipe Data",
+            "url": "https://webknox-recipes.p.rapidapi.com/recipes/extract",
+            "description": "Extract recipe data from a recipe blog or Web page.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "The URL of the recipe page.",
+                    "default": "http://www.melskitchencafe.com/the-best-fudgy-brownies/"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "forceExtraction",
+                    "type": "BOOLEAN",
+                    "description": "If true, the extraction will be triggered no matter whether we know the recipe already. Use that only if information is missing as this operation is slower.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://webknox-recipes.p.rapidapi.com/recipes/extract\"\nquerystring = {\"url\": \"http://www.melskitchencafe.com/the-best-fudgy-brownies/\", \"forceExtraction\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webknox-recipes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://webknox-recipes.p.rapidapi.com/recipes/extract\"\nquerystring = {\"url\": \"http://www.melskitchencafe.com/the-best-fudgy-brownies/\", \"forceExtraction\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webknox-recipes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Compute Daily Meal Plan",
+            "url": "https://webknox-recipes.p.rapidapi.com/recipes/mealplans/generate",
+            "description": "Compute a meal plan for a day.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "timeFrame",
+                    "type": "STRING",
+                    "description": "For one day or a complete week, allowed values are \"day\" and \"week\".",
+                    "default": "day"
+                },
+                {
+                    "name": "targetCalories",
+                    "type": "NUMBER",
+                    "description": "The target number of calories per day.",
+                    "default": "2000"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://webknox-recipes.p.rapidapi.com/recipes/mealplans/generate\"\nquerystring = {\"timeFrame\": \"day\", \"targetCalories\": \"2000\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webknox-recipes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://webknox-recipes.p.rapidapi.com/recipes/mealplans/generate\"\nquerystring = {\"timeFrame\": \"day\", \"targetCalories\": \"2000\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webknox-recipes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Quick Answer",
+            "url": "https://webknox-recipes.p.rapidapi.com/recipes/quickAnswer",
+            "description": "Answer a nutrition related natural language question.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "The nutrition-related question.",
+                    "default": "How much vitamin c is in 2 apples?"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://webknox-recipes.p.rapidapi.com/recipes/quickAnswer\"\nquerystring = {\"q\": \"How much vitamin c is in 2 apples?\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webknox-recipes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://webknox-recipes.p.rapidapi.com/recipes/quickAnswer\"\nquerystring = {\"q\": \"How much vitamin c is in 2 apples?\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webknox-recipes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Find Similar Recipes",
+            "url": "https://webknox-recipes.p.rapidapi.com/recipes/156992/similar",
+            "description": "Find recipes which are similar to the given one.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The id of the source recipe to which similar recipes should be found.",
+                    "default": "156992"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://webknox-recipes.p.rapidapi.com/recipes/156992/similar\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webknox-recipes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://webknox-recipes.p.rapidapi.com/recipes/{id}/similar\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webknox-recipes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Recipe Information",
+            "url": "https://webknox-recipes.p.rapidapi.com/recipes/156992/information",
+            "description": "Get information about a recipe.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The id of the recipe.",
+                    "default": "156992"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://webknox-recipes.p.rapidapi.com/recipes/156992/information\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webknox-recipes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://webknox-recipes.p.rapidapi.com/recipes/{id}/information\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webknox-recipes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Search Recipes",
+            "url": "https://webknox-recipes.p.rapidapi.com/recipes/search",
+            "description": "Search recipes in natural language.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "The (natural language) search query.",
+                    "default": "burger"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "The number of results to skip (between 0 and 900).",
+                    "default": "0"
+                },
+                {
+                    "name": "number",
+                    "type": "NUMBER",
+                    "description": "The number of results to return (between 0 and 100).",
+                    "default": "10"
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "The type of the recipes. One of the following: main course, side dish, dessert, appetizer, salad, bread, breakfast, soup, beverage, sauce, or drink.",
+                    "default": "main course"
+                },
+                {
+                    "name": "cuisine",
+                    "type": "STRING",
+                    "description": "The cuisine(s) of the recipes. One or more (comma separated) of the following: african, chinese, japanese, korean, vietnamese, thai, indian, british, irish, french, italian, mexican, spanish, middle eastern, jewish, american, cajun, southern, greek, german, nordic, eastern european, caribbean, or latin american.",
+                    "default": "italian"
+                },
+                {
+                    "name": "diet",
+                    "type": "STRING",
+                    "description": "The diet to which the recipes must be compliant. Possible values are: pescetarian, lacto vegetarian, ovo vegetarian, vegan, and vegetarian.",
+                    "default": "vegetarian"
+                },
+                {
+                    "name": "intolerances",
+                    "type": "STRING",
+                    "description": "A comma-separated list of intolerances. All found recipes must not have ingredients that could cause problems for people with one of the given tolerances. Possible values are: dairy, egg, gluten, peanut, sesame, seafood, shellfish, soy, sulfite, tree nut, and wheat.",
+                    "default": "egg, gluten"
+                },
+                {
+                    "name": "excludeIngredients",
+                    "type": "STRING",
+                    "description": "An comma-separated list of ingredients or ingredient types that must not be contained in the recipes.",
+                    "default": "coconut"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://webknox-recipes.p.rapidapi.com/recipes/search\"\nquerystring = {\"offset\": \"0\", \"number\": \"10\", \"type\": \"main course\", \"cuisine\": \"italian\", \"diet\": \"vegetarian\", \"intolerances\": \"egg, gluten\", \"excludeIngredients\": \"coconut\", \"query\": \"burger\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webknox-recipes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://webknox-recipes.p.rapidapi.com/recipes/search\"\nquerystring = {\"offset\": \"0\", \"number\": \"10\", \"type\": \"main course\", \"cuisine\": \"italian\", \"diet\": \"vegetarian\", \"intolerances\": \"egg, gluten\", \"excludeIngredients\": \"coconut\", \"query\": \"burger\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webknox-recipes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Find By Ingredients",
+            "url": "https://webknox-recipes.p.rapidapi.com/recipes/findByIngredients",
+            "description": "Find recipes that use as many of the given ingredients as possible and have as little as possible missing ingredients.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "ingredients",
+                    "type": "STRING",
+                    "description": "A comma-separated list of ingredients that the recipes should contain.",
+                    "default": "apples,flour,sugar"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "number",
+                    "type": "STRING",
+                    "description": "The maximal number of recipes to return (default = 5).",
+                    "default": "5"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://webknox-recipes.p.rapidapi.com/recipes/findByIngredients\"\nquerystring = {\"ingredients\": \"apples,flour,sugar\", \"number\": \"5\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webknox-recipes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://webknox-recipes.p.rapidapi.com/recipes/findByIngredients\"\nquerystring = {\"ingredients\": \"apples,flour,sugar\", \"number\": \"5\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webknox-recipes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Autocomplete Ingredient Search",
+            "url": "https://webknox-recipes.p.rapidapi.com/food/ingredients/autocomplete",
+            "description": "Autocomplete a search for an ingredient.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "The query - a partial of complete ingredient name.",
+                    "default": "appl"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://webknox-recipes.p.rapidapi.com/food/ingredients/autocomplete\"\nquerystring = {\"query\": \"appl\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webknox-recipes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://webknox-recipes.p.rapidapi.com/food/ingredients/autocomplete\"\nquerystring = {\"query\": \"appl\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webknox-recipes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

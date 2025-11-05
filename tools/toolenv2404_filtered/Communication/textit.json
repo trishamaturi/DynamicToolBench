@@ -1,0 +1,193 @@
+{
+    "product_id": "53aa507ae4b00287471a188a",
+    "tool_description": "Easily create interactive SMS applications anywhere in the world.  At the core of TextIt lies our exclusive Flow engine. With Flows, anybody can set up or modify a complex SMS application without the need of a programmer or expensive consulting company.\r\nUsing a basic Android phone, you can launch your application instantly in any country while avoiding expensive set-up costs or external technical support.",
+    "home_url": "https://rapidapi.com/community/api/textit/",
+    "name": "TextIt",
+    "title": "TextIt",
+    "pricing": "FREE",
+    "tool_name": "TextIt",
+    "score": null,
+    "host": "community-textit.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Calls",
+            "url": "https://community-textit.p.rapidapi.com/calls.json",
+            "description": "Returns the incoming and outgoing calls for your organization, most recent first.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "relayer",
+                    "type": "STRING",
+                    "description": "which relayer received or placed this call (int) (filterable: relayer)",
+                    "default": ""
+                },
+                {
+                    "name": "phone",
+                    "type": "STRING",
+                    "description": "the phone number of the caller or callee depending on the call_type (string) (filterable: phone)",
+                    "default": ""
+                },
+                {
+                    "name": "created_on",
+                    "type": "STRING",
+                    "description": "when the call was received or sent (datetime) (filterable: before and after)",
+                    "default": ""
+                },
+                {
+                    "name": "duration",
+                    "type": "STRING",
+                    "description": "the duration of the call in seconds (int, 0 for missed calls)",
+                    "default": ""
+                },
+                {
+                    "name": "call_type",
+                    "type": "STRING",
+                    "description": "one of the following strings: (filterable: call_type) mt_call - Outgoing Call  mo_call - Incoming Call  mo_miss - Missed Incoming Call",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://community-textit.p.rapidapi.com/calls.json\"\nquerystring = {\"relayer\": \"\", \"phone\": \"\", \"created_on\": \"\", \"duration\": \"\", \"call_type\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-textit.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://community-textit.p.rapidapi.com/calls.json\"\nquerystring = {\"relayer\": \"\", \"phone\": \"\", \"created_on\": \"\", \"duration\": \"\", \"call_type\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-textit.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Listing SMS Messages",
+            "url": "https://community-textit.p.rapidapi.com/sms.json",
+            "description": "Returns the SMS activity for your organization, listing the most recent messages first.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "relayer",
+                    "type": "STRING",
+                    "description": "the id of the Android relayer that sent or received this message (int) (filterable: relayer)",
+                    "default": ""
+                },
+                {
+                    "name": "phone",
+                    "type": "STRING",
+                    "description": "the phone number of the sender or receiver, depending on direction (string) (filterable: phone)",
+                    "default": ""
+                },
+                {
+                    "name": "direction",
+                    "type": "STRING",
+                    "description": "the direction of the SMS, either I for incoming messages or O for outgoing (string) (filterable: direction)",
+                    "default": ""
+                },
+                {
+                    "name": "text",
+                    "type": "STRING",
+                    "description": "the text of the message received, not this is the logical view, this message may have been received as multiple text messages (string)",
+                    "default": ""
+                },
+                {
+                    "name": "created_on",
+                    "type": "STRING",
+                    "description": "the datetime when this sms was either received by the relayer or created by TextIt (datetime) (filterable: before and after)",
+                    "default": ""
+                },
+                {
+                    "name": "sent_on",
+                    "type": "STRING",
+                    "description": "for outgoing messages, the datetime when the relayer sent the message (null if not yet sent or an incoming message) (datetime)",
+                    "default": ""
+                },
+                {
+                    "name": "delivered_on",
+                    "type": "STRING",
+                    "description": "for outgoing messages, the datetime when the relayer delivered the message (null if not yet sent or an incoming message) (datetime)",
+                    "default": ""
+                },
+                {
+                    "name": "status",
+                    "type": "STRING",
+                    "description": "the status of this message, a string one of: (filterable: status) Q - Message is queued awaiting to be sent S - Message has been sent by the relayer D - Message was delivered to the recipient H - Incoming message was handled by TextIt F - Message was not sent due to a failure",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://community-textit.p.rapidapi.com/sms.json\"\nquerystring = {\"relayer\": \"\", \"phone\": \"\", \"direction\": \"\", \"text\": \"\", \"created_on\": \"\", \"sent_on\": \"\", \"delivered_on\": \"\", \"status\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-textit.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://community-textit.p.rapidapi.com/sms.json\"\nquerystring = {\"relayer\": \"\", \"phone\": \"\", \"direction\": \"\", \"text\": \"\", \"created_on\": \"\", \"sent_on\": \"\", \"delivered_on\": \"\", \"status\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-textit.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "List Relayers",
+            "url": "https://community-textit.p.rapidapi.com/relayers.json",
+            "description": "A GET returns the list of Android relayers for your organization, in the order of last activity date. Note that all status information for the device is as of the last time it was seen and can be null before the first sync.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "relayer",
+                    "type": "STRING",
+                    "description": "the id of the the relayer (long)",
+                    "default": ""
+                },
+                {
+                    "name": "phone",
+                    "type": "STRING",
+                    "description": "the phone number for the relayer (string) (filterable: phone)",
+                    "default": ""
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "the name of this relayer (string)",
+                    "default": ""
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "which country the sim card for this relayer is registered for (string, two letter country code) (filterable: country)",
+                    "default": ""
+                },
+                {
+                    "name": "last_seen",
+                    "type": "STRING",
+                    "description": "the datetime when this relayer was last seen by TextIt (datetime) (filterable: before and after)",
+                    "default": ""
+                },
+                {
+                    "name": "power_level",
+                    "type": "STRING",
+                    "description": "the power level of the device (int)",
+                    "default": ""
+                },
+                {
+                    "name": "power_status",
+                    "type": "STRING",
+                    "description": "the power status, either STATUS_DISCHARGING or STATUS_CHARGING (string)",
+                    "default": ""
+                },
+                {
+                    "name": "power_source",
+                    "type": "STRING",
+                    "description": "the source of power as reported by Android (string)",
+                    "default": ""
+                },
+                {
+                    "name": "network_type",
+                    "type": "STRING",
+                    "description": "the type of network the device is connected to as reported by Android (string)",
+                    "default": ""
+                },
+                {
+                    "name": "pending_message_count",
+                    "type": "STRING",
+                    "description": "how many messages are assigned to this relayer but not yet sent (int)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://community-textit.p.rapidapi.com/relayers.json\"\nquerystring = {\"relayer\": \"\", \"phone\": \"\", \"name\": \"\", \"country\": \"\", \"last_seen\": \"\", \"power_level\": \"\", \"power_status\": \"\", \"power_source\": \"\", \"network_type\": \"\", \"pending_message_count\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-textit.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://community-textit.p.rapidapi.com/relayers.json\"\nquerystring = {\"relayer\": \"\", \"phone\": \"\", \"name\": \"\", \"country\": \"\", \"last_seen\": \"\", \"power_level\": \"\", \"power_status\": \"\", \"power_source\": \"\", \"network_type\": \"\", \"pending_message_count\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-textit.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

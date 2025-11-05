@@ -1,0 +1,67 @@
+{
+    "product_id": "api_70bb57b8-cb0e-49ea-ba13-905874cd2049",
+    "tool_description": "Retrieve a random proverb from one of the following sources: Rumi, Emerson, Thoreau, Tao Te Ching, Shakespeare, and the book of Proverbs.",
+    "home_url": "https://rapidapi.com/robertdavis/api/proverbs/",
+    "name": "Proverbs",
+    "title": "Proverbs",
+    "pricing": "FREEMIUM",
+    "tool_name": "Proverbs",
+    "score": null,
+    "host": "proverbs.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Proverb",
+            "url": "https://proverbs.p.rapidapi.com/proverbs-api.php",
+            "description": "This endpoint allows you to retrieve one proverb and the source it came from.  There are three optional parameters - includeSources, excludeSources, and searchTerm.  If a value is provided in the includeSources parameter it is considered a comma separated list of sources.  The same goes for the excludeSources parameter.  The available sources to EITHER include OR exclude are Rumi, Emerson, Thoreau, Shakespeare, Tao Te Ching, or Proverbs.  If includeSources is populated then excludeSources is ignored.\n\nA third optional parameter called searchTerm can be used to make sure the resulting proverb contains that term.  Only letters, numbers, and spaces are allowed in the searchTerm parameter (other characters will be ignored).  All parameters are case insensitive.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "includeSources",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "rumi,emerson"
+                },
+                {
+                    "name": "excludeSources",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "searchTerm",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "love"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://proverbs.p.rapidapi.com/proverbs-api.php\"\nquerystring = {\"includeSources\": \"rumi,emerson\", \"excludeSources\": \"\", \"searchTerm\": \"love\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proverbs.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proverbs.p.rapidapi.com/proverbs-api.php\"\nquerystring = {\"includeSources\": \"rumi,emerson\", \"excludeSources\": \"\", \"searchTerm\": \"love\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proverbs.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

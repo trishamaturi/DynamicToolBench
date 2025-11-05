@@ -1,0 +1,239 @@
+{
+    "product_id": "api_2931a5e4-5a6a-4fee-a233-68ce3caccbde",
+    "tool_description": "Websearch (SearX) with Webhooks on new results. Allows to automate brand, product, topic monitoring using tools like n8n or node-red.",
+    "home_url": "https://rapidapi.com/stromdao-stromdao-default/api/searchhook/",
+    "name": "searchhook",
+    "title": "searchhook",
+    "pricing": "FREEMIUM",
+    "tool_name": "searchhook",
+    "score": {
+        "avgServiceLevel": 14,
+        "avgLatency": 19564,
+        "avgSuccessRate": 14,
+        "popularityScore": 2,
+        "__typename": "Score"
+    },
+    "host": "searchhook.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "search",
+            "url": "https://searchhook.p.rapidapi.com/search",
+            "description": "Search endpoint - Parameters compatible to SEARXNG  (see linked external documentation). \nIn addition, a parameter `url` might be given to specify a webhook URL (POST request will be sent).",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "SearchHook API"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "safesearch",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0"
+                },
+                {
+                    "name": "categories",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "general"
+                },
+                {
+                    "name": "time_range",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "None"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "de-DE"
+                },
+                {
+                    "name": "queryId",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0x02cAce04c8469580A2ADc20F57E143a3693c22bF"
+                },
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "https://engine.corrently.cloud/webhook-test/44a17c5c-5087-483f-8398-dedbc8d713d4"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://searchhook.p.rapidapi.com/search\"\nquerystring = {\"safesearch\": \"0\", \"categories\": \"general\", \"time_range\": \"None\", \"language\": \"de-DE\", \"queryId\": \"0x02cAce04c8469580A2ADc20F57E143a3693c22bF\", \"url\": \"https://engine.corrently.cloud/webhook-test/44a17c5c-5087-483f-8398-dedbc8d713d4\", \"q\": \"SearchHook API\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"searchhook.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://searchhook.p.rapidapi.com/search\"\nquerystring = {\"safesearch\": \"0\", \"categories\": \"general\", \"time_range\": \"None\", \"language\": \"de-DE\", \"queryId\": \"0x02cAce04c8469580A2ADc20F57E143a3693c22bF\", \"url\": \"https://engine.corrently.cloud/webhook-test/44a17c5c-5087-483f-8398-dedbc8d713d4\", \"q\": \"SearchHook API\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"searchhook.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string"
+                    },
+                    "number_of_results": {
+                        "type": "integer"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "answers": {
+                        "type": "array"
+                    },
+                    "corrections": {
+                        "type": "array"
+                    },
+                    "infoboxes": {
+                        "type": "array"
+                    },
+                    "suggestions": {
+                        "type": "array"
+                    },
+                    "unresponsive_engines": {
+                        "type": "array"
+                    },
+                    "queryid": {
+                        "type": "string"
+                    },
+                    "new": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "title": {
+                                    "type": "string"
+                                },
+                                "content": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string"
+                                },
+                                "engine": {
+                                    "type": "string"
+                                },
+                                "parsed_url": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "template": {
+                                    "type": "string"
+                                },
+                                "engines": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "positions": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "score": {
+                                    "type": "number"
+                                },
+                                "category": {
+                                    "type": "string"
+                                },
+                                "pretty_url": {
+                                    "type": "string"
+                                },
+                                "resultid": {
+                                    "type": "string"
+                                },
+                                "isNew": {
+                                    "type": "boolean"
+                                },
+                                "firstSeen": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "webhooks",
+            "url": "https://searchhook.p.rapidapi.com/webhooks",
+            "description": "Returns list of saved queries with associated  webhooks.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://searchhook.p.rapidapi.com/webhooks\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"searchhook.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://searchhook.p.rapidapi.com/webhooks\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"searchhook.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "queryId": {
+                            "type": "string"
+                        },
+                        "search": {
+                            "type": "object",
+                            "properties": {
+                                "q": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string"
+                                },
+                                "queryId": {
+                                    "type": "string"
+                                },
+                                "format": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "url": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "extend",
+            "url": "https://searchhook.p.rapidapi.com/extend",
+            "description": "Extend expiry of query identified with parameter `queryId` .",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "queryId",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0x02cAce04c8469580A2ADc20F57E143a3693c22bF"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://searchhook.p.rapidapi.com/extend\"\nquerystring = {\"queryId\": \"0x02cAce04c8469580A2ADc20F57E143a3693c22bF\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"searchhook.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://searchhook.p.rapidapi.com/extend\"\nquerystring = {\"queryId\": \"0x02cAce04c8469580A2ADc20F57E143a3693c22bF\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"searchhook.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    ]
+}

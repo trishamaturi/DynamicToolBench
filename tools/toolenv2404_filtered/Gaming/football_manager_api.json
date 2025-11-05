@@ -1,0 +1,281 @@
+{
+    "product_id": "api_8cc30b01-b1bd-4b2c-a711-8a4ca1404137",
+    "tool_description": "Extensive API for Football Manager 2024. Fully updated to the new database! Allows searching and filtering for every technical, mental, physical and hidden attribute, as well as numerous other stats.",
+    "home_url": "https://rapidapi.com/VaughnDev/api/football-manager-api/",
+    "name": "Football Manager API",
+    "title": "Football Manager API",
+    "pricing": "FREEMIUM",
+    "tool_name": "Football Manager API",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 345,
+        "avgSuccessRate": 97,
+        "popularityScore": 8.6,
+        "__typename": "Score"
+    },
+    "host": "football-manager-api.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Club Shortnames",
+            "url": "https://football-manager-api.p.rapidapi.com/clubs/list",
+            "description": "Get a list of the shortnames that are used for the other /clubs endpoints. On some occasions, the names used for the /clubs endpoint may differ because the players were exported before a name change. Some examples are Manchester United which can be found by /clubs/ManUFC or Real Madrid (/clubs/R.Madrid)",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "count",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "100"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://football-manager-api.p.rapidapi.com/clubs/list\"\nquerystring = {\"count\": \"100\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-manager-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-manager-api.p.rapidapi.com/clubs/list\"\nquerystring = {\"count\": \"100\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-manager-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get players of Club",
+            "url": "https://football-manager-api.p.rapidapi.com/clubs/Barcelona",
+            "description": "Get players that play for a club. Club name is the \"Short Name\" used in game without spaces. Examples: \"Barcelona\", \"ManCity\", \"Liverpool\", \"PSG\"",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "clubName",
+                    "type": "string",
+                    "description": "",
+                    "default": "Barcelona"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "length",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "20"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://football-manager-api.p.rapidapi.com/clubs/Barcelona\"\nquerystring = {\"length\": \"20\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-manager-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-manager-api.p.rapidapi.com/clubs/{clubname}\"\nquerystring = {\"length\": \"20\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-manager-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get similarity of players",
+            "url": "https://football-manager-api.p.rapidapi.com/players/similar/messi/ronaldo",
+            "description": "Get the similarity of the two players supplied.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "firstPlayer",
+                    "type": "string",
+                    "description": "",
+                    "default": "messi"
+                },
+                {
+                    "name": "secondPlayer",
+                    "type": "string",
+                    "description": "",
+                    "default": "ronaldo"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://football-manager-api.p.rapidapi.com/players/similar/messi/ronaldo\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-manager-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-manager-api.p.rapidapi.com/players/similar/{firstplayer}/{secondplayer}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-manager-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get weighted cosine similar player",
+            "url": "https://football-manager-api.p.rapidapi.com/players/similar/cosine/alternative/messi",
+            "description": "Get most similar based on weighted cosine similarity.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "name",
+                    "type": "string",
+                    "description": "",
+                    "default": "messi"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://football-manager-api.p.rapidapi.com/players/similar/cosine/alternative/messi\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-manager-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-manager-api.p.rapidapi.com/players/similar/cosine/alternative/{name}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-manager-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get cosine similar player",
+            "url": "https://football-manager-api.p.rapidapi.com/players/similar/cosine/messi",
+            "description": "Get most similar player by cosine similarity.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "name",
+                    "type": "string",
+                    "description": "",
+                    "default": "messi"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://football-manager-api.p.rapidapi.com/players/similar/cosine/messi\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-manager-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-manager-api.p.rapidapi.com/players/similar/cosine/{name}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-manager-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get similar player",
+            "url": "https://football-manager-api.p.rapidapi.com/players/similar/kvaratskhelia",
+            "description": "Finds the player that has the most similar attributes to another player submitted in the query.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "comparisonPlayer",
+                    "type": "string",
+                    "description": "",
+                    "default": "kvaratskhelia"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://football-manager-api.p.rapidapi.com/players/similar/kvaratskhelia\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-manager-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-manager-api.p.rapidapi.com/players/similar/{comparisonplayer}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-manager-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Players",
+            "url": "https://football-manager-api.p.rapidapi.com/players",
+            "description": "Filter through the Football Manager players by their age, asking Price, club, minimum CA (Current Ability, 1-200), maximum CA, minimum PA (Potential Ability, 1-200), maximum PA, name, End of Contract year, nationality, position (and secondary positions), and select the length of entries you want to receive. Specify an attribute to sort the results by in this format: \"finishing-desc\", \"InjuryProneness-asc\"\n\nSee Documentation for the filter query attributes dictionary.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "orderBy",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "currentAbility-desc"
+                },
+                {
+                    "name": "minAskingPrice",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10"
+                },
+                {
+                    "name": "minAge",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "16"
+                },
+                {
+                    "name": "minCa",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "130"
+                },
+                {
+                    "name": "maxAskingPrice",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "200"
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Messi"
+                },
+                {
+                    "name": "nationality",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "ARG"
+                },
+                {
+                    "name": "position",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "ST (C)"
+                },
+                {
+                    "name": "length",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "20"
+                },
+                {
+                    "name": "club",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "PSG"
+                },
+                {
+                    "name": "contractTo",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "2025"
+                },
+                {
+                    "name": "maxAge",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "40"
+                },
+                {
+                    "name": "minPa",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "170"
+                },
+                {
+                    "name": "maxCa",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "200"
+                },
+                {
+                    "name": "maxPa",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "200"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://football-manager-api.p.rapidapi.com/players\"\nquerystring = {\"orderBy\": \"currentAbility-desc\", \"minAskingPrice\": \"10\", \"minAge\": \"16\", \"minCa\": \"130\", \"maxAskingPrice\": \"200\", \"name\": \"Messi\", \"nationality\": \"ARG\", \"position\": \"ST (C)\", \"length\": \"20\", \"club\": \"PSG\", \"contractTo\": \"2025\", \"maxAge\": \"40\", \"minPa\": \"170\", \"maxCa\": \"200\", \"maxPa\": \"200\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-manager-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-manager-api.p.rapidapi.com/players\"\nquerystring = {\"orderBy\": \"currentAbility-desc\", \"minAskingPrice\": \"10\", \"minAge\": \"16\", \"minCa\": \"130\", \"maxAskingPrice\": \"200\", \"name\": \"Messi\", \"nationality\": \"ARG\", \"position\": \"ST (C)\", \"length\": \"20\", \"club\": \"PSG\", \"contractTo\": \"2025\", \"maxAge\": \"40\", \"minPa\": \"170\", \"maxCa\": \"200\", \"maxPa\": \"200\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-manager-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get player by ID",
+            "url": "https://football-manager-api.p.rapidapi.com/players/83320135",
+            "description": "Get a player by his unique ID.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "83320135"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "length",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "20"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://football-manager-api.p.rapidapi.com/players/83320135\"\nquerystring = {\"length\": \"20\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-manager-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-manager-api.p.rapidapi.com/players/{id}\"\nquerystring = {\"length\": \"20\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-manager-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

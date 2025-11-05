@@ -1,0 +1,467 @@
+{
+    "product_id": "api_92a0b1a8-6574-4f00-9d10-6e288539424c",
+    "tool_description": "stocksEyes is a comprehensive API that provides real-time candlestick data (OHLCV - open, high, low, close, volume) for stocks and other securities. With stocksEyes, you have access to live prices and last traded prices, as well as a wealth of historical data. This powerful tool is ideal for traders and investors looking to stay up-to-date on the latest market trends and make informed investment decisions. With its user-friendly interface and reliable data sources, stocksEyes is the go-to sol...",
+    "home_url": "https://rapidapi.com/singhaltushar903/api/stockseyes/",
+    "name": "StocksEyes",
+    "title": "StocksEyes",
+    "pricing": "FREEMIUM",
+    "tool_name": "StocksEyes",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 960,
+        "avgSuccessRate": 92,
+        "popularityScore": 8.4,
+        "__typename": "Score"
+    },
+    "host": "stockseyes.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get all Instruments",
+            "url": "https://stockseyes.p.rapidapi.com/allInstruments",
+            "description": "Caution: This API returns large amount of data. Browser may hang. Better to test in program. Here small mocked sample response is used.\nThe \"/allInstruments\" API returns an extensive array of financial instruments, including options, equities, futures, currency and commodities listed on various exchanges such as  NSE, BSE, BCD, MCX, CDS, and NFO, totalling nearly 100,000 items.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://stockseyes.p.rapidapi.com/allInstruments\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stockseyes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://stockseyes.p.rapidapi.com/allInstruments\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stockseyes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "instrument_token": {
+                            "type": "integer"
+                        },
+                        "exchange_token": {
+                            "type": "string"
+                        },
+                        "tradingsymbol": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "last_price": {
+                            "type": "string"
+                        },
+                        "expiry": {
+                            "type": "string"
+                        },
+                        "strike": {
+                            "type": "string"
+                        },
+                        "tick_size": {
+                            "type": "string"
+                        },
+                        "lot_size": {
+                            "type": "string"
+                        },
+                        "instrument_type": {
+                            "type": "string"
+                        },
+                        "segment": {
+                            "type": "string"
+                        },
+                        "exchange": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get Latest Quote By Instrument Id",
+            "url": "https://stockseyes.p.rapidapi.com/latestQuoteByInstrumentId",
+            "description": "The \"/getLatestQuoteByInstrumentId\" API facilitates the retrieval of the most recent real-time quote corresponding to a specified instrumentId. This functionality grants access to an extensive array of financial instruments, including options, equities, futures, and commodities listed on various exchanges such as  NSE, BSE, BCD, MCX, CDS, and NFO, totalling nearly 100,000 items. The comprehensive list of available instruments can be accessed through the provided link. For the convenience of users in locating specific instruments, the \"searchInstrumentAPI\" is available for utilisation.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "instrumentId",
+                    "type": "string",
+                    "description": "Any valid instrument_token, fetched from search instruments or all instruments API\n",
+                    "default": "738561"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://stockseyes.p.rapidapi.com/latestQuoteByInstrumentId\"\nquerystring = {\"instrumentId\": \"738561\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stockseyes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://stockseyes.p.rapidapi.com/latestQuoteByInstrumentId\"\nquerystring = {\"instrumentId\": \"738561\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stockseyes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "instrument_token": {
+                        "type": "integer"
+                    },
+                    "timestamp": {
+                        "type": "string"
+                    },
+                    "last_trade_time": {
+                        "type": "string"
+                    },
+                    "last_price": {
+                        "type": "number"
+                    },
+                    "last_quantity": {
+                        "type": "integer"
+                    },
+                    "buy_quantity": {
+                        "type": "integer"
+                    },
+                    "sell_quantity": {
+                        "type": "integer"
+                    },
+                    "volume": {
+                        "type": "integer"
+                    },
+                    "average_price": {
+                        "type": "integer"
+                    },
+                    "oi": {
+                        "type": "integer"
+                    },
+                    "oi_day_high": {
+                        "type": "integer"
+                    },
+                    "oi_day_low": {
+                        "type": "integer"
+                    },
+                    "net_change": {
+                        "type": "integer"
+                    },
+                    "lower_circuit_limit": {
+                        "type": "number"
+                    },
+                    "upper_circuit_limit": {
+                        "type": "number"
+                    },
+                    "ohlc": {
+                        "type": "object",
+                        "properties": {
+                            "open": {
+                                "type": "integer"
+                            },
+                            "high": {
+                                "type": "number"
+                            },
+                            "low": {
+                                "type": "integer"
+                            },
+                            "close": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "depth": {
+                        "type": "object",
+                        "properties": {
+                            "buy": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "price": {
+                                            "type": "integer"
+                                        },
+                                        "quantity": {
+                                            "type": "integer"
+                                        },
+                                        "orders": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            },
+                            "sell": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "price": {
+                                            "type": "integer"
+                                        },
+                                        "quantity": {
+                                            "type": "integer"
+                                        },
+                                        "orders": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "GET Futures List By Trading Symbol",
+            "url": "https://stockseyes.p.rapidapi.com/getFutureListByTradingSymbol",
+            "description": "The \"/getFutureListByTradingSymbol\" API facilitates the retrieval of all the futures live for given trading symbol.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "tradingSymbol",
+                    "type": "string",
+                    "description": "Any valid trading symbol\n",
+                    "default": "NIFTY"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://stockseyes.p.rapidapi.com/getFutureListByTradingSymbol\"\nquerystring = {\"tradingSymbol\": \"NIFTY\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stockseyes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://stockseyes.p.rapidapi.com/getFutureListByTradingSymbol\"\nquerystring = {\"tradingSymbol\": \"NIFTY\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stockseyes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "futures": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "instrument_token": {
+                                    "type": "integer"
+                                },
+                                "exchange_token": {
+                                    "type": "string"
+                                },
+                                "tradingsymbol": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "last_price": {
+                                    "type": "string"
+                                },
+                                "expiry": {
+                                    "type": "string"
+                                },
+                                "strike": {
+                                    "type": "string"
+                                },
+                                "tick_size": {
+                                    "type": "string"
+                                },
+                                "lot_size": {
+                                    "type": "string"
+                                },
+                                "instrument_type": {
+                                    "type": "string"
+                                },
+                                "segment": {
+                                    "type": "string"
+                                },
+                                "exchange": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "GET Option List By Trading Symbol",
+            "url": "https://stockseyes.p.rapidapi.com/getOptionListByTradingSymbol",
+            "description": "The \"/getOptionListByTradingSymbol\" API facilitates the retrieval of all the options live for a trading symbol.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "tradingSymbol",
+                    "type": "string",
+                    "description": "Any valid trading symbol\n",
+                    "default": "NIFTY"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://stockseyes.p.rapidapi.com/getOptionListByTradingSymbol\"\nquerystring = {\"tradingSymbol\": \"NIFTY\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stockseyes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://stockseyes.p.rapidapi.com/getOptionListByTradingSymbol\"\nquerystring = {\"tradingSymbol\": \"NIFTY\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stockseyes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "options": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "instrument_token": {
+                                    "type": "integer"
+                                },
+                                "exchange_token": {
+                                    "type": "string"
+                                },
+                                "tradingsymbol": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "last_price": {
+                                    "type": "string"
+                                },
+                                "expiry": {
+                                    "type": "string"
+                                },
+                                "strike": {
+                                    "type": "string"
+                                },
+                                "tick_size": {
+                                    "type": "string"
+                                },
+                                "lot_size": {
+                                    "type": "string"
+                                },
+                                "instrument_type": {
+                                    "type": "string"
+                                },
+                                "segment": {
+                                    "type": "string"
+                                },
+                                "exchange": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get Latest Quote By Exchange And Trading Symbol",
+            "url": "https://stockseyes.p.rapidapi.com/latestQuoteByExchangeAndTradingSymbol",
+            "description": "The /latestQuoteByExchangeAndTradingSymbol API returns latest realtime quote for for given combination of exchange and trading symbol. This functionality grants access to an extensive array of financial instruments, including options, equities, futures, and commodities listed on various exchanges such as  NSE, BSE, BCD, MCX, CDS, and NFO, totalling nearly 100,000 instruments. The comprehensive list of available instruments can be accessed through the provided link. For the convenience of users in locating specific instruments, the \"searchInstrumentAPI\" is available for utilisation.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "tradingSymbol",
+                    "type": "string",
+                    "description": "Trading Symbol of the instrument. To check the latest list , Please check this link or use searchInstrumentAPI",
+                    "default": "RELIANCE"
+                },
+                {
+                    "name": "exchange",
+                    "type": "ENUM",
+                    "description": "Any of the following exchange is valid, use the symbol in bracket\n\nNational Stock Exchange (NSE)\nBombay Stock Exchange (BSE)\nBCD Exchange (BCD)\nMulti Commodity Exchange (MCX)\nCommodity Derivatives Segment (CDS)\nNFO Exchange (NFO)\n",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://stockseyes.p.rapidapi.com/latestQuoteByExchangeAndTradingSymbol\"\nquerystring = {\"tradingSymbol\": \"RELIANCE\", \"exchange\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stockseyes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://stockseyes.p.rapidapi.com/latestQuoteByExchangeAndTradingSymbol\"\nquerystring = {\"tradingSymbol\": \"RELIANCE\", \"exchange\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stockseyes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "instrument_token": {
+                        "type": "integer"
+                    },
+                    "timestamp": {
+                        "type": "string"
+                    },
+                    "last_trade_time": {
+                        "type": "string"
+                    },
+                    "last_price": {
+                        "type": "number"
+                    },
+                    "last_quantity": {
+                        "type": "integer"
+                    },
+                    "buy_quantity": {
+                        "type": "integer"
+                    },
+                    "sell_quantity": {
+                        "type": "integer"
+                    },
+                    "volume": {
+                        "type": "integer"
+                    },
+                    "average_price": {
+                        "type": "number"
+                    },
+                    "oi": {
+                        "type": "integer"
+                    },
+                    "oi_day_high": {
+                        "type": "integer"
+                    },
+                    "oi_day_low": {
+                        "type": "integer"
+                    },
+                    "net_change": {
+                        "type": "integer"
+                    },
+                    "lower_circuit_limit": {
+                        "type": "number"
+                    },
+                    "upper_circuit_limit": {
+                        "type": "number"
+                    },
+                    "ohlc": {
+                        "type": "object",
+                        "properties": {
+                            "open": {
+                                "type": "number"
+                            },
+                            "high": {
+                                "type": "integer"
+                            },
+                            "low": {
+                                "type": "number"
+                            },
+                            "close": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "depth": {
+                        "type": "object",
+                        "properties": {
+                            "buy": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "price": {
+                                            "type": "number"
+                                        },
+                                        "quantity": {
+                                            "type": "integer"
+                                        },
+                                        "orders": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            },
+                            "sell": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "price": {
+                                            "type": "number"
+                                        },
+                                        "quantity": {
+                                            "type": "integer"
+                                        },
+                                        "orders": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

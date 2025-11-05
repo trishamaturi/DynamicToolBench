@@ -1,0 +1,1032 @@
+{
+    "product_id": "api_6b947e5b-d891-491d-b937-ce42ae1a1d81",
+    "tool_description": "Corrently - from italian corrente, which is energy",
+    "home_url": "https://rapidapi.com/stromdao-stromdao-default/api/corrently/",
+    "name": "Corrently",
+    "title": "Corrently",
+    "pricing": "FREEMIUM",
+    "tool_name": "Corrently",
+    "score": null,
+    "host": "corrently.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "omReadings",
+            "url": "https://corrently.p.rapidapi.com/alternative/openmeter/readings",
+            "description": "Provides a list of available meterrs in the OpenMETER project ( https://www.openmeter.de/ ) which grants access for analytics as data discovery.\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/alternative/openmeter/readings\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/alternative/openmeter/readings\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "meterId": {
+                            "description": "identifier to be used in other methods like readings or activities.",
+                            "type": "string"
+                        },
+                        "manufacturerId": {
+                            "description": "DLMS manufacturerId",
+                            "type": "string"
+                        },
+                        "location": {
+                            "description": "Basic address information for geo coding",
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "Device type of the meter",
+                            "type": "string"
+                        },
+                        "measurementType": {
+                            "description": "Physical quantity being measured by the meter",
+                            "type": "string"
+                        },
+                        "loadProfileType": {
+                            "description": "Metering load profile type associated with the meter",
+                            "type": "string"
+                        },
+                        "scalingFactor": {
+                            "description": "Factor imposed on metered current AND voltage by a transducer",
+                            "type": "integer"
+                        },
+                        "currentScalingFactor": {
+                            "description": "Factor imposed on metered current by a transducer",
+                            "type": "integer"
+                        },
+                        "voltageScalingFactor": {
+                            "description": "Factor imposed on metered voltage by a transducer",
+                            "type": "integer"
+                        },
+                        "meta": {
+                            "description": "Statistical metadata for this household",
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "gsiDispatch",
+            "url": "https://corrently.p.rapidapi.com/gsi/dispatch",
+            "description": "Dispatch of green energy has two aspects to consider:\n  - Availability of gerneration facility (depends on weather and installed capacity)\n  - Demand of energy\nUsing the green power index (Gr\u00fcnstromIndex) we have received a tool to automate distribution of energy in order to prevent redispatch situations. Doing this alows to opimize resource usage (tactical) and leverage data for investment planning (strategic).\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "zip",
+                    "type": "STRING",
+                    "description": "Zipcode (Postleitzahl) of a city in Germany.",
+                    "default": ""
+                },
+                {
+                    "name": "key",
+                    "type": "STRING",
+                    "description": "Any valid Stromkonto account (address).",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/gsi/dispatch\"\nquerystring = {\"zip\": \"\", \"key\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/gsi/dispatch\"\nquerystring = {\"zip\": \"\", \"key\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "premix": {
+                        "description": "Green Energy Mix prior to dispatch of given city",
+                        "type": "object"
+                    },
+                    "postmix": {
+                        "description": "Green Energy Mix after dispatch of given city",
+                        "type": "object"
+                    },
+                    "dispatch_from": {
+                        "description": "List of current sources of green energy (into requested location)",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "energy": {
+                                    "description": "Percentage of energy",
+                                    "type": "number"
+                                },
+                                "location": {
+                                    "description": "GeoJSON encoded location of target or source of green energy.",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "dispatch_target": {
+                        "description": "List of current targets of green energy (out of requested location)",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "energy": {
+                                    "description": "Percentage of energy",
+                                    "type": "number"
+                                },
+                                "location": {
+                                    "description": "GeoJSON encoded location of target or source of green energy.",
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "timeframe": {
+                        "type": "object",
+                        "description": "Evaluated timeframe for this request",
+                        "properties": {
+                            "start": {
+                                "type": "integer",
+                                "description": "Starting time of window evaluated in order to get dispatches"
+                            },
+                            "end": {
+                                "type": "integer",
+                                "description": "Ending time of window evaluated for this request/dispatches."
+                            }
+                        }
+                    },
+                    "avg_distance_km": {
+                        "type": "number",
+                        "description": "Averaged geospatial distance in kilometers between energy generation and usage at requested location."
+                    }
+                }
+            }
+        },
+        {
+            "name": "ocppSessions",
+            "url": "https://corrently.p.rapidapi.com/alternative/ocpp/lastSessions",
+            "description": "Returns lastSession info of OCCP Cloud service for clearing in corrently ecosystem. Might be tested via [OCPP cloud simulator](https://ocpp.corrently.cloud).\nLast session Info of managed EV charging stations connected to the correnty ecosystem.\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/alternative/ocpp/lastSessions\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/alternative/ocpp/lastSessions\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "description": "Given ID by easee api",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Name set for charger",
+                            "type": "string"
+                        },
+                        "lastSession": {
+                            "description": "lastSession Info as given by easee API",
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "meteringGet",
+            "url": "https://corrently.p.rapidapi.com/metering/reading",
+            "description": "Retrieves a metered reading using account (Stromkonto).\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "account",
+                    "type": "STRING",
+                    "description": "Account/Address (Stromkonto) to retrieve reading for.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/metering/reading\"\nquerystring = {\"account\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/metering/reading\"\nquerystring = {\"account\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "account": {
+                        "description": "Stromkonto/Metering address allocated (this is not the MELOID!)",
+                        "type": "string"
+                    },
+                    "1.8.0": {
+                        "description": "Reading as provided as input in Wh",
+                        "type": "integer"
+                    },
+                    "1.8.1": {
+                        "description": "Green energy calculated using Green Power Index (Gr\u00fcnstromIndex) in Wh",
+                        "type": "integer"
+                    },
+                    "1.8.2": {
+                        "description": "Grey energy calculated using Green Power Index (Gr\u00fcnstromIndex) in Wh",
+                        "type": "integer"
+                    },
+                    "timeStamp": {
+                        "description": "API Consensus time this reading was fully received",
+                        "type": "integer"
+                    },
+                    "_processingTime": {
+                        "description": "Time this reading got imported into consensus (e.q. signed timestamp).",
+                        "type": "integer"
+                    },
+                    "co2_g_standard": {
+                        "description": "CO2 Emission of metered energy in a standard mix",
+                        "type": "integer"
+                    },
+                    "co2_g_oekostrom": {
+                        "description": "CO2 Emission of metered energy in a green energy mix (e.q. \u00d6kostromtarif)",
+                        "type": "integer"
+                    },
+                    "ttl": {
+                        "description": "Time to Live for this reader. If no update is provided it gets decommissioned.",
+                        "type": "integer"
+                    },
+                    "credits": {
+                        "description": "Update credits this meter has. Gets refilled automtically to prevent too frequent updates"
+                    }
+                }
+            }
+        },
+        {
+            "name": "tariffSLPH0",
+            "url": "https://corrently.p.rapidapi.com/tariff/slph0",
+            "description": "Provides pricing data for private households with standard load profiles (Standardlastprofil H0).\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "zipcode",
+                    "type": "STRING",
+                    "description": "Zipcode (Postzleitzahl) of a city in Germany.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/tariff/slph0\"\nquerystring = {\"zipcode\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/tariff/slph0\"\nquerystring = {\"zipcode\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "ap": {
+                            "description": "Energy price in cent per kwh. (Arbeitspreis) including all taxes and fees.",
+                            "type": "integer"
+                        },
+                        "gp": {
+                            "description": "Base price in euro per montah (Grundpreis) including all taxes and fees.",
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "co2compensate",
+            "url": "https://corrently.p.rapidapi.com/co2/compensate",
+            "description": "You might call the /price API endpoint prior to a checkout to get latest pricing information. This method returns a URL for direct checkout using Stripe. All CO2 offset prices are based on VCS Verified CO2 Emission Reduction In accordance with the requirements of ISO 14064-1. CO2 prices are actual market prices and may change every hour.\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "co2",
+                    "type": "NUMBER",
+                    "description": "CO2 equivalence in gram to compensate",
+                    "default": "12345"
+                },
+                {
+                    "name": "liter",
+                    "type": "NUMBER",
+                    "description": "Liter of fuel to compensate.",
+                    "default": "30"
+                },
+                {
+                    "name": "kwh",
+                    "type": "NUMBER",
+                    "description": "Kilo Watt hours of electricity to co2 offset.",
+                    "default": "30"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/co2/compensate\"\nquerystring = {\"co2\": \"12345\", \"liter\": \"30\", \"kwh\": \"30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/co2/compensate\"\nquerystring = {\"co2\": \"12345\", \"liter\": \"30\", \"kwh\": \"30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "description": "URL for interactive checkout and payment of CO2 offset for a co2 certificate.",
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "name": "stromkontoBalances",
+            "url": "https://corrently.p.rapidapi.com/stromkonto/balances",
+            "description": "Stromkonto represents a core component of the Corrently Ecosystem. It is a ledger for green energy related transactions and gets heavily used by the public Web-UI on www.stromkonto.net . Beside of some decoration and reformating operations all data is backed by the [Energychain blockchain](https://github.com/energychain/) to provide consensus of balances and transactions. Use this API Endppoint if you prefere not to work with low level Distributed Ledger Technology (Blockchain).\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "account",
+                    "type": "STRING",
+                    "description": "Ethereum style address referencing a valid account (AKA Stromkonto).",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/stromkonto/balances\"\nquerystring = {\"account\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/stromkonto/balances\"\nquerystring = {\"account\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "soll": {
+                            "description": "Sum due by account",
+                            "type": "integer"
+                        },
+                        "haben": {
+                            "description": "Sum owned by account",
+                            "type": "integer"
+                        },
+                        "balance": {
+                            "description": "Sum owned - sum due by account",
+                            "type": "integer"
+                        },
+                        "txs": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "timeStamp": {
+                                        "description": "Cross signed timestamp of transaction",
+                                        "type": "integer"
+                                    },
+                                    "txid": {
+                                        "description": "Unique hash of this transaction as provided by counter signing party",
+                                        "type": "string"
+                                    },
+                                    "cashier": {
+                                        "description": "Pretty print of counter signing party",
+                                        "type": "string"
+                                    },
+                                    "txtype": {
+                                        "description": "Type of transaction per cashier implementation and schema",
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "description": "Amount covered by transaction",
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        },
+                        "variation": {
+                            "description": "Type of subbalance (sub account)",
+                            "type": "string",
+                            "enum": [
+                                "gsb",
+                                "erzeugung",
+                                "eigenstrom",
+                                "co2",
+                                "baeume"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "gsiBesthour",
+            "url": "https://corrently.p.rapidapi.com/gsi/bestHour",
+            "description": "Simple Wrapper around the GreenPowerIndex for easy integration into almost any SmartHome system that allows access to a JSON/REST Service This endpoint is designed to indicate if a device should be turned on or off. (Switch state).\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "zip",
+                    "type": "STRING",
+                    "description": "Zipcode (Postleitzahl) of a city in Germany.",
+                    "default": ""
+                },
+                {
+                    "name": "hours",
+                    "type": "NUMBER",
+                    "description": "How many hours in row do you need the device turned on?",
+                    "default": ""
+                },
+                {
+                    "name": "key",
+                    "type": "STRING",
+                    "description": "Any valid Stromkonto account (address).",
+                    "default": ""
+                },
+                {
+                    "name": "timeframe",
+                    "type": "NUMBER",
+                    "description": "Number of hours to check (default 24 hours from now).",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/gsi/bestHour\"\nquerystring = {\"zip\": \"\", \"hours\": \"\", \"key\": \"\", \"timeframe\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/gsi/bestHour\"\nquerystring = {\"zip\": \"\", \"hours\": \"\", \"key\": \"\", \"timeframe\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "boolean",
+                "description": "true if device should be turned on now. false if not."
+            }
+        },
+        {
+            "name": "gsiMarketdata",
+            "url": "https://corrently.p.rapidapi.com/gsi/marketdata",
+            "description": "Compatible to awattar (https://api.awattar.de/v1/marketdata) API interface but data comes from GreenPowerIndex instead of EPEXSpot.\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "zip",
+                    "type": "STRING",
+                    "description": "Zipcode (Postleitzahl) of a city in Germany.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/gsi/marketdata\"\nquerystring = {\"zip\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/gsi/marketdata\"\nquerystring = {\"zip\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "description": "Energyprice for the upcomming hours",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "start_timestamp": {
+                                    "description": "Timestamp in Standard Milliseconds",
+                                    "type": "integer"
+                                },
+                                "end_timestamp": {
+                                    "description": "Timestamp in Standard Milliseconds",
+                                    "type": "integer"
+                                },
+                                "marketprice": {
+                                    "description": "Actual Marketprice for regional green power in EUR per MWh",
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "quittungZugferd",
+            "url": "https://corrently.p.rapidapi.com/quittung/zugferd",
+            "description": "Allows to retrieve XML of the zugferd invoice.\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "account",
+                    "type": "STRING",
+                    "description": "Quittung Identifier  (serialnumber generated during receipt generation process)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/quittung/zugferd\"\nquerystring = {\"account\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/quittung/zugferd\"\nquerystring = {\"account\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "omActivities",
+            "url": "https://corrently.p.rapidapi.com/alternative/openmeter/activities",
+            "description": "Provides a list of available meterrs in the OpenMETER project ( https://www.openmeter.de/ ) which grants access for analytics as data discovery.\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/alternative/openmeter/activities\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/alternative/openmeter/activities\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "meterId": {
+                            "description": "identifier to be used in other methods like readings or activities.",
+                            "type": "string"
+                        },
+                        "manufacturerId": {
+                            "description": "DLMS manufacturerId",
+                            "type": "string"
+                        },
+                        "location": {
+                            "description": "Basic address information for geo coding",
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "Device type of the meter",
+                            "type": "string"
+                        },
+                        "measurementType": {
+                            "description": "Physical quantity being measured by the meter",
+                            "type": "string"
+                        },
+                        "loadProfileType": {
+                            "description": "Metering load profile type associated with the meter",
+                            "type": "string"
+                        },
+                        "scalingFactor": {
+                            "description": "Factor imposed on metered current AND voltage by a transducer",
+                            "type": "integer"
+                        },
+                        "currentScalingFactor": {
+                            "description": "Factor imposed on metered current by a transducer",
+                            "type": "integer"
+                        },
+                        "voltageScalingFactor": {
+                            "description": "Factor imposed on metered voltage by a transducer",
+                            "type": "integer"
+                        },
+                        "meta": {
+                            "description": "Statistical metadata for this household",
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "easeeSessions",
+            "url": "https://corrently.p.rapidapi.com/alternative/easee/lastSessions",
+            "description": "Refer to easee.cloud API for details.\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "password",
+                    "type": "STRING",
+                    "description": "Password as used on easy.cloud",
+                    "default": ""
+                },
+                {
+                    "name": "username",
+                    "type": "STRING",
+                    "description": "Username as used on easy.cloud",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/alternative/easee/lastSessions\"\nquerystring = {\"password\": \"\", \"username\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/alternative/easee/lastSessions\"\nquerystring = {\"password\": \"\", \"username\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "description": "Given ID by easee api",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Name set for charger",
+                            "type": "string"
+                        },
+                        "lastSession": {
+                            "description": "lastSession Info as given by easee API",
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "wimstatus",
+            "url": "https://corrently.p.rapidapi.com/wim/status",
+            "description": "Access to status information of an existing metering change and allocation process.\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "vid",
+                    "type": "STRING",
+                    "description": "VID key of the process.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/wim/status\"\nquerystring = {\"vid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/wim/status\"\nquerystring = {\"vid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "wim_status": {
+                        "description": "Latest Status",
+                        "type": "string"
+                    },
+                    "wim_started": {
+                        "description": "Starting time of process",
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        {
+            "name": "co2sources",
+            "url": "https://corrently.p.rapidapi.com/co2/sources",
+            "description": "Valid and certified sources of co2 compensation.\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/co2/sources\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/co2/sources\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stromkontoChoices",
+            "url": "https://corrently.p.rapidapi.com/stromkonto/choices",
+            "description": "Signable choices (contract changes) for customer.\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "account",
+                    "type": "STRING",
+                    "description": "Ethereum style address referencing a valid account alias (never use Stromkonto directly!).",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/stromkonto/choices\"\nquerystring = {\"account\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/stromkonto/choices\"\nquerystring = {\"account\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "soll": {
+                            "description": "Sum due by account",
+                            "type": "integer"
+                        },
+                        "haben": {
+                            "description": "Sum owned by account",
+                            "type": "integer"
+                        },
+                        "balance": {
+                            "description": "Sum owned - sum due by account",
+                            "type": "integer"
+                        },
+                        "txs": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "timeStamp": {
+                                        "description": "Cross signed timestamp of transaction",
+                                        "type": "integer"
+                                    },
+                                    "txid": {
+                                        "description": "Unique hash of this transaction as provided by counter signing party",
+                                        "type": "string"
+                                    },
+                                    "cashier": {
+                                        "description": "Pretty print of counter signing party",
+                                        "type": "string"
+                                    },
+                                    "txtype": {
+                                        "description": "Type of transaction per cashier implementation and schema",
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "description": "Amount covered by transaction",
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        },
+                        "variation": {
+                            "description": "Type of subbalance (sub account)",
+                            "type": "string",
+                            "enum": [
+                                "gsb",
+                                "erzeugung",
+                                "eigenstrom",
+                                "co2",
+                                "baeume"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "co2price",
+            "url": "https://corrently.p.rapidapi.com/co2/price",
+            "description": "All CO2 offset prices are based on VCS Verified CO2 Emission Reduction In accordance with the requirements of ISO 14064-1. CO2 prices are actual market prices and may change every hour.\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "liter",
+                    "type": "NUMBER",
+                    "description": "Liter of fuel to compensate.",
+                    "default": "30"
+                },
+                {
+                    "name": "co2",
+                    "type": "NUMBER",
+                    "description": "CO2 equivalence in gram to compensate",
+                    "default": "12345"
+                },
+                {
+                    "name": "kwh",
+                    "type": "NUMBER",
+                    "description": "Kilo Watt hours of electricity to co2 offset.",
+                    "default": "30"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/co2/price\"\nquerystring = {\"liter\": \"30\", \"co2\": \"12345\", \"kwh\": \"30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/co2/price\"\nquerystring = {\"liter\": \"30\", \"co2\": \"12345\", \"kwh\": \"30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "priceCent": {
+                        "description": "EUR Cent price of co2 offset certificate",
+                        "type": "integer"
+                    },
+                    "priceEUR": {
+                        "description": "EUR price of co2 offset certificate",
+                        "type": "string"
+                    },
+                    "reqCO2": {
+                        "description": "Requested CO2 to offset",
+                        "type": "number"
+                    },
+                    "getCO2": {
+                        "description": "CO2 offset you receive. Might be more than requested, due to minimum requirements on the market.",
+                        "type": "number"
+                    },
+                    "remainCO2": {
+                        "description": "Remaining CO2 (getCO2-reqCO2)",
+                        "type": "number"
+                    }
+                }
+            }
+        },
+        {
+            "name": "tariffcomponents",
+            "url": "https://corrently.p.rapidapi.com/tariff/components",
+            "description": "Provides insides into the different cost components of energy for a private household.\nSample Request: https://api.corrently.io/v2.0/tariff/components?email=demo%40corrently.io&zip=69168&kwha=3300\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "kwha",
+                    "type": "NUMBER",
+                    "description": "Total amount of energy in kilo-watt-hours per year. (sample 2100)",
+                    "default": ""
+                },
+                {
+                    "name": "wh",
+                    "type": "NUMBER",
+                    "description": "If provided together with milliseconds, a cost component stament for a particular event (like charging a car) will be created.",
+                    "default": ""
+                },
+                {
+                    "name": "milliseconds",
+                    "type": "NUMBER",
+                    "description": "If provided all results will be scaled to this timeframe",
+                    "default": ""
+                },
+                {
+                    "name": "email",
+                    "type": "STRING",
+                    "description": "Valid email address to assign request to (pre offer generation). Ensure GDPR (DSGVO) at any time",
+                    "default": ""
+                },
+                {
+                    "name": "zipcode",
+                    "type": "STRING",
+                    "description": "Zipcode (Postzleitzahl) of a city in Germany.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/tariff/components\"\nquerystring = {\"kwha\": \"\", \"wh\": \"\", \"milliseconds\": \"\", \"email\": \"\", \"zipcode\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/tariff/components\"\nquerystring = {\"kwha\": \"\", \"wh\": \"\", \"milliseconds\": \"\", \"email\": \"\", \"zipcode\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "sum": {
+                        "description": "Total sum in Euro for this price component.",
+                        "type": "number"
+                    },
+                    "describtion": {
+                        "description": "What is this price component about",
+                        "type": "string"
+                    },
+                    "mutlityplier": {
+                        "description": "Frequency/dependency of component",
+                        "type": "string"
+                    },
+                    "per": {
+                        "description": "Single unit price multiyplier is based on",
+                        "type": "number"
+                    },
+                    "components": {
+                        "description": "Sub components of this price",
+                        "type": "array"
+                    }
+                }
+            }
+        },
+        {
+            "name": "gsiPrediction",
+            "url": "https://corrently.p.rapidapi.com/gsi/prediction",
+            "description": "Retrieval the GreenPowerIndex (Gr\u00fcnstromIndex) for a given city (by zipcode) in Germany.\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "key",
+                    "type": "STRING",
+                    "description": "Any valid Stromkonto account (address).",
+                    "default": ""
+                },
+                {
+                    "name": "zip",
+                    "type": "STRING",
+                    "description": "Zipcode (Postleitzahl) of a city in Germany.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/gsi/prediction\"\nquerystring = {\"key\": \"\", \"zip\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/gsi/prediction\"\nquerystring = {\"key\": \"\", \"zip\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "forecast": {
+                        "description": "Prediction for the upcomming hours",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "epochtime": {
+                                    "description": "Timestamps in Seconds",
+                                    "type": "integer"
+                                },
+                                "timeStamp": {
+                                    "description": "Timestamp in Standard Milliseconds",
+                                    "type": "integer"
+                                },
+                                "gsi": {
+                                    "description": "Actual GreenPowerIndex for given Timestamp (between 0-100)",
+                                    "type": "integer"
+                                },
+                                "scaled": {
+                                    "description": "Indicates if scaling is in operation to predict values",
+                                    "type": "boolean"
+                                },
+                                "sci": {
+                                    "description": "Subindex just for Solar Energy",
+                                    "type": "integer"
+                                },
+                                "energyprice": {
+                                    "description": "Local/regional energyprice modification (cent per kWh or euro per MWh).",
+                                    "type": "number"
+                                },
+                                "co2_g_oekostrom": {
+                                    "description": "CO2 footprint in Gramm per kwh (only Green Power)",
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "location": {
+                        "description": "Standarized location info sourced for prediction",
+                        "type": "object",
+                        "properties": {
+                            "zip": {
+                                "type": "string",
+                                "description": "Zipcode (Postleitzahl)"
+                            },
+                            "city": {
+                                "type": "string",
+                                "description": "Pretty Print city name"
+                            }
+                        }
+                    },
+                    "matrix": {
+                        "description": "Device switching recommendation.",
+                        "type": "object",
+                        "properties": {
+                            "h0": {
+                                "type": "object",
+                                "description": "Indicates number of hours a device should run",
+                                "properties": {
+                                    "avg_1": {
+                                        "type": "string",
+                                        "description": "device should run in 1 hour"
+                                    },
+                                    "avg_2": {
+                                        "type": "string",
+                                        "description": "device should run in 2 hours"
+                                    },
+                                    "avg_3": {
+                                        "type": "string",
+                                        "description": "device should run in 3 hour"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "omMeters",
+            "url": "https://corrently.p.rapidapi.com/alternative/openmeter/meters",
+            "description": "Provides a list of available meterrs in the OpenMETER project ( https://www.openmeter.de/ ) which grants access for analytics as data discovery.\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/alternative/openmeter/meters\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corrently.p.rapidapi.com/alternative/openmeter/meters\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corrently.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "meterId": {
+                            "description": "identifier to be used in other methods like readings or activities.",
+                            "type": "string"
+                        },
+                        "manufacturerId": {
+                            "description": "DLMS manufacturerId",
+                            "type": "string"
+                        },
+                        "location": {
+                            "description": "Basic address information for geo coding",
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "Device type of the meter",
+                            "type": "string"
+                        },
+                        "measurementType": {
+                            "description": "Physical quantity being measured by the meter",
+                            "type": "string"
+                        },
+                        "loadProfileType": {
+                            "description": "Metering load profile type associated with the meter",
+                            "type": "string"
+                        },
+                        "scalingFactor": {
+                            "description": "Factor imposed on metered current AND voltage by a transducer",
+                            "type": "integer"
+                        },
+                        "currentScalingFactor": {
+                            "description": "Factor imposed on metered current by a transducer",
+                            "type": "integer"
+                        },
+                        "voltageScalingFactor": {
+                            "description": "Factor imposed on metered voltage by a transducer",
+                            "type": "integer"
+                        },
+                        "meta": {
+                            "description": "Statistical metadata for this household",
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

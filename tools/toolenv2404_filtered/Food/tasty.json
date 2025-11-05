@@ -1,0 +1,346 @@
+{
+    "product_id": "api_0355286f-accf-4e06-8ef8-515d63198a70",
+    "tool_description": "API to query data about recipe, plan, ingredients, etc... as on official site",
+    "home_url": "https://rapidapi.com/apidojo/api/tasty/",
+    "name": "Tasty",
+    "title": "Tasty",
+    "pricing": "FREEMIUM",
+    "tool_name": "Tasty",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 2219,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.7,
+        "__typename": "Score"
+    },
+    "host": "tasty.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "recipes/list",
+            "url": "https://tasty.p.rapidapi.com/recipes/list",
+            "description": "List recipes by option filters or name",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "size",
+                    "type": "NUMBER",
+                    "description": "Number of items returned per response",
+                    "default": "20"
+                },
+                {
+                    "name": "from",
+                    "type": "NUMBER",
+                    "description": "The offset of items to be ignored in response for paging",
+                    "default": "0"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Leave empty to sort by popular as default OR one of the following : approved_at:desc|approved_at:asc",
+                    "default": ""
+                },
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Name of food or, ingredients to search by",
+                    "default": ""
+                },
+                {
+                    "name": "tags",
+                    "type": "STRING",
+                    "description": "Get suitable values from /tags/list API",
+                    "default": "under_30_minutes"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tasty.p.rapidapi.com/recipes/list\"\nquerystring = {\"sort\": \"\", \"size\": \"20\", \"q\": \"\", \"tags\": \"under_30_minutes\", \"from\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tasty.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tasty.p.rapidapi.com/recipes/list\"\nquerystring = {\"sort\": \"\", \"size\": \"20\", \"q\": \"\", \"tags\": \"under_30_minutes\", \"from\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tasty.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "type": "integer"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "tips/list",
+            "url": "https://tasty.p.rapidapi.com/tips/list",
+            "description": "This endpoint is used to load tips (reviews)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "The value of recipe id returned in .../recipes/list .../feeds/list .../recipes/list-similarities endpoints",
+                    "default": "3562"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "size",
+                    "type": "NUMBER",
+                    "description": "Number of items returned per response",
+                    "default": "30"
+                },
+                {
+                    "name": "from",
+                    "type": "NUMBER",
+                    "description": "The offset of items to be ignored in response for paging",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tasty.p.rapidapi.com/tips/list\"\nquerystring = {\"id\": \"3562\", \"size\": \"30\", \"from\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tasty.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tasty.p.rapidapi.com/tips/list\"\nquerystring = {\"id\": \"3562\", \"size\": \"30\", \"from\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tasty.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "recipes/detail (Deprecated)",
+            "url": "https://tasty.p.rapidapi.com/recipes/detail",
+            "description": "Get  more information of recipe if available, such as : ingredients, nutrition info, preparation, etc...",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "The id value of any recipe returned in recipes/list API",
+                    "default": "5586"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://tasty.p.rapidapi.com/recipes/detail\"\nquerystring = {\"id\": \"5586\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tasty.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tasty.p.rapidapi.com/recipes/detail\"\nquerystring = {\"id\": \"5586\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tasty.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "feeds/list",
+            "url": "https://tasty.p.rapidapi.com/feeds/list",
+            "description": "List latest feeds about new food, recipes,etc...",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "vegetarian",
+                    "type": "BOOLEAN",
+                    "description": "List vegetarian food only",
+                    "default": "false"
+                },
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "The timezone of your location in format of +/- hhmm",
+                    "default": "+0700"
+                },
+                {
+                    "name": "from",
+                    "type": "NUMBER",
+                    "description": "The offset of items to be ignored in response for paging",
+                    "default": "0"
+                },
+                {
+                    "name": "size",
+                    "type": "NUMBER",
+                    "description": "Number of items returned per response",
+                    "default": "5"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://tasty.p.rapidapi.com/feeds/list\"\nquerystring = {\"vegetarian\": \"false\", \"timezone\": \"+0700\", \"from\": \"0\", \"size\": \"5\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tasty.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tasty.p.rapidapi.com/feeds/list\"\nquerystring = {\"vegetarian\": \"false\", \"timezone\": \"+0700\", \"from\": \"0\", \"size\": \"5\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tasty.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "tags/list",
+            "url": "https://tasty.p.rapidapi.com/tags/list",
+            "description": "List supported tags name for filtering in recipes/list API",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://tasty.p.rapidapi.com/tags/list\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tasty.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tasty.p.rapidapi.com/tags/list\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tasty.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "recipes/list-similarities",
+            "url": "https://tasty.p.rapidapi.com/recipes/list-similarities",
+            "description": "List similar recipes by specific recipe id",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "recipe_id",
+                    "type": "NUMBER",
+                    "description": "The id value of any recipe returned in recipes/list API",
+                    "default": "8138"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://tasty.p.rapidapi.com/recipes/list-similarities\"\nquerystring = {\"recipe_id\": \"8138\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tasty.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tasty.p.rapidapi.com/recipes/list-similarities\"\nquerystring = {\"recipe_id\": \"8138\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tasty.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "recipes/auto-complete",
+            "url": "https://tasty.p.rapidapi.com/recipes/auto-complete",
+            "description": "Get auto complete suggestions by name or ingredients",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "prefix",
+                    "type": "STRING",
+                    "description": "Food name or ingredient",
+                    "default": "chicken soup"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://tasty.p.rapidapi.com/recipes/auto-complete\"\nquerystring = {\"prefix\": \"chicken soup\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tasty.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tasty.p.rapidapi.com/recipes/auto-complete\"\nquerystring = {\"prefix\": \"chicken soup\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tasty.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "display": {
+                                    "type": "string"
+                                },
+                                "search_value": {
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "recipes/get-more-info",
+            "url": "https://tasty.p.rapidapi.com/recipes/get-more-info",
+            "description": "Get  more information of recipe if available, such as : ingredients, nutrition info, preparation, etc... This endpoint returns 404 status code, it means there is no more information to obtain.\n* .../recipes/list already returns ingredients, nutrition info, preparation, etc...",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "The id value of any recipe returned in recipes/list API",
+                    "default": "8138"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://tasty.p.rapidapi.com/recipes/get-more-info\"\nquerystring = {\"id\": \"8138\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tasty.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tasty.p.rapidapi.com/recipes/get-more-info\"\nquerystring = {\"id\": \"8138\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tasty.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

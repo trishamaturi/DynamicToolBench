@@ -1,0 +1,80 @@
+{
+    "product_id": "api_d22b6235-85bb-4e81-9854-29565a6ce330",
+    "tool_description": "Horse Racing and Golf odds from the UK's biggest bookmakers",
+    "home_url": "https://rapidapi.com/willmahoney/api/uk-betting-odds/",
+    "name": "UK Betting Odds",
+    "title": "UK Betting Odds",
+    "pricing": "FREEMIUM",
+    "tool_name": "UK Betting Odds",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 12,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.3,
+        "__typename": "Score"
+    },
+    "host": "uk-betting-odds.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Odds",
+            "url": "https://uk-betting-odds.p.rapidapi.com/v1/horse_racing/odds/",
+            "description": "Use the odds method to request the latest bookmaker odds for your chosen sport.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "SPORT",
+                    "type": "string",
+                    "description": "",
+                    "default": "horse_racing"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "event_ids",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "bookmakers",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "bet365,sky_bet"
+                },
+                {
+                    "name": "leagues",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "tracks",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://uk-betting-odds.p.rapidapi.com/v1/horse_racing/odds/\"\nquerystring = {\"event_ids\": \"\", \"bookmakers\": \"bet365,sky_bet\", \"leagues\": \"\", \"tracks\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"uk-betting-odds.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://uk-betting-odds.p.rapidapi.com/v1/{sport}/odds/\"\nquerystring = {\"event_ids\": \"\", \"bookmakers\": \"bet365,sky_bet\", \"leagues\": \"\", \"tracks\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"uk-betting-odds.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Events",
+            "url": "https://uk-betting-odds.p.rapidapi.com/v1/horse_racing/events/",
+            "description": "Use the events method to request the upcoming events for your chosen sport.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "SPORT",
+                    "type": "string",
+                    "description": "",
+                    "default": "horse_racing"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://uk-betting-odds.p.rapidapi.com/v1/horse_racing/events/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"uk-betting-odds.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://uk-betting-odds.p.rapidapi.com/v1/{sport}/events/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"uk-betting-odds.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

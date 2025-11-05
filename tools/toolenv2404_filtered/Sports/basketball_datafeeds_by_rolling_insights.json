@@ -1,0 +1,1062 @@
+{
+    "product_id": "api_a94b7e7c-e06c-456c-879e-e46323dec89e",
+    "tool_description": "Real-time Play by Play, Season Schedule, Weekly Schedules, Daily Schedules, Team Information, Team Stats, Player Information, Player Stats, Injuries and Depth Charts for the NBA.",
+    "home_url": "https://rapidapi.com/rolling-insights-rolling-insights-default/api/basketball-datafeeds-by-rolling-insights/",
+    "name": "Basketball - DataFeeds by Rolling Insights",
+    "title": "Basketball - DataFeeds by Rolling Insights",
+    "pricing": "FREEMIUM",
+    "tool_name": "Basketball - DataFeeds by Rolling Insights",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 470,
+        "avgSuccessRate": 11,
+        "popularityScore": 1.8,
+        "__typename": "Score"
+    },
+    "host": "basketball-datafeeds-by-rolling-insights.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Team Information",
+            "url": "https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/team-info/NBA",
+            "description": "This endpoint returns team information",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "sport",
+                    "type": "string",
+                    "description": "",
+                    "default": "NBA"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/team-info/NBA\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"basketball-datafeeds-by-rolling-insights.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/team-info/{sport}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"basketball-datafeeds-by-rolling-insights.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "NBA": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "team_id": {
+                                            "type": "integer"
+                                        },
+                                        "team": {
+                                            "type": "string"
+                                        },
+                                        "abbrv": {
+                                            "type": "string"
+                                        },
+                                        "arena": {
+                                            "type": "string"
+                                        },
+                                        "mascot": {
+                                            "type": "string"
+                                        },
+                                        "conf": {
+                                            "type": "string"
+                                        },
+                                        "location": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Player Injuries",
+            "url": "https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/injuries/NBA",
+            "description": "Returns a record of each player's injury on a team",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "sport",
+                    "type": "string",
+                    "description": "",
+                    "default": "NBA"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "team_id",
+                    "type": "STRING",
+                    "description": "Format: One specified team ID\nTeam ID is available in the Team Info endpoint",
+                    "default": "28"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/injuries/NBA\"\nquerystring = {\"team_id\": \"28\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"basketball-datafeeds-by-rolling-insights.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/injuries/{sport}\"\nquerystring = {\"team_id\": \"28\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"basketball-datafeeds-by-rolling-insights.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Daily Schedule",
+            "url": "https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/schedule/now/NBA",
+            "description": "Returns season schedule for the specified date or \"now\" returns current day's schedule. Daily schedule is changed at 10 AM ET.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "date",
+                    "type": "string",
+                    "description": "now returns current day's schedule. Daily schedule is changed at 10 AM ET.\n\nFormat: string now or YYYY-MM-DD",
+                    "default": "now"
+                },
+                {
+                    "name": "sport",
+                    "type": "string",
+                    "description": "",
+                    "default": "NBA"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "team_id",
+                    "type": "STRING",
+                    "description": "Format: One specified team ID\nTeam ID is available in the Team Info endpoint",
+                    "default": "28"
+                },
+                {
+                    "name": "game_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/schedule/now/NBA\"\nquerystring = {\"team_id\": \"28\", \"game_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"basketball-datafeeds-by-rolling-insights.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/schedule/{date}/{sport}\"\nquerystring = {\"team_id\": \"28\", \"game_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"basketball-datafeeds-by-rolling-insights.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "NBA": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Player Season Statistics",
+            "url": "https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/player-stats/{date}/NBA",
+            "description": "Returns Player Season Statistics",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "sport",
+                    "type": "string",
+                    "description": "",
+                    "default": "NBA"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "team_id",
+                    "type": "STRING",
+                    "description": "Format: One specified team ID\nTeam ID is available in the Team Info endpoint",
+                    "default": "28"
+                },
+                {
+                    "name": "player_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "321"
+                },
+                {
+                    "name": "date",
+                    "type": "string",
+                    "description": "Parameter can be omitted and request will return player stats for current season. Specify the beginning of sport season, ie: 2017-2018 season = 2017.\n\nFormat: YYYY",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/player-stats/{date}/NBA\"\nquerystring = {\"team_id\": \"28\", \"player_id\": \"321\", \"date\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"basketball-datafeeds-by-rolling-insights.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/player-stats/{date}/{sport}\"\nquerystring = {\"team_id\": \"28\", \"player_id\": \"321\", \"date\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"basketball-datafeeds-by-rolling-insights.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "NBA": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "player_id": {
+                                            "type": "integer"
+                                        },
+                                        "player": {
+                                            "type": "string"
+                                        },
+                                        "team": {
+                                            "type": "string"
+                                        },
+                                        "team_id": {
+                                            "type": "integer"
+                                        },
+                                        "regular_season": {
+                                            "type": "object",
+                                            "properties": {
+                                                "fouls": {
+                                                    "type": "integer"
+                                                },
+                                                "blocks": {
+                                                    "type": "integer"
+                                                },
+                                                "points": {
+                                                    "type": "integer"
+                                                },
+                                                "steals": {
+                                                    "type": "integer"
+                                                },
+                                                "assists": {
+                                                    "type": "integer"
+                                                },
+                                                "minutes": {
+                                                    "type": "integer"
+                                                },
+                                                "turnovers": {
+                                                    "type": "integer"
+                                                },
+                                                "games_played": {
+                                                    "type": "integer"
+                                                },
+                                                "total_rebounds": {
+                                                    "type": "integer"
+                                                },
+                                                "two_points_made": {
+                                                    "type": "integer"
+                                                },
+                                                "field_goals_made": {
+                                                    "type": "integer"
+                                                },
+                                                "free_throws_made": {
+                                                    "type": "integer"
+                                                },
+                                                "three_points_made": {
+                                                    "type": "integer"
+                                                },
+                                                "defensive_rebounds": {
+                                                    "type": "integer"
+                                                },
+                                                "offensive_rebounds": {
+                                                    "type": "integer"
+                                                },
+                                                "two_point_percentage": {
+                                                    "type": "number"
+                                                },
+                                                "two_points_attempted": {
+                                                    "type": "integer"
+                                                },
+                                                "field_goals_attempted": {
+                                                    "type": "integer"
+                                                },
+                                                "free_throws_attempted": {
+                                                    "type": "integer"
+                                                },
+                                                "three_points_attempted": {
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        },
+                                        "postseason": {
+                                            "type": "null"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Team Season Statistics",
+            "url": "https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/team-stats/{date}/NBA",
+            "description": "Returns statistics for teams",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "sport",
+                    "type": "string",
+                    "description": "",
+                    "default": "NBA"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "date",
+                    "type": "string",
+                    "description": "Parameter can be omitted and request will return player stats for current season. Specify the beginning of sport season, ie: 2017-2018 season = 2017.\n\nFormat: YYYY",
+                    "default": ""
+                },
+                {
+                    "name": "team_id",
+                    "type": "STRING",
+                    "description": "Format: One specified team ID\nTeam ID is available in the Team Info endpoint",
+                    "default": "28"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/team-stats/{date}/NBA\"\nquerystring = {\"date\": \"\", \"team_id\": \"28\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"basketball-datafeeds-by-rolling-insights.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/team-stats/{date}/{sport}\"\nquerystring = {\"date\": \"\", \"team_id\": \"28\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"basketball-datafeeds-by-rolling-insights.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "NBA": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Weekly Schedule",
+            "url": "https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/schedule-week/now/NBA",
+            "description": "Returns all events from the date specified plus 7 days in advance",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "date",
+                    "type": "string",
+                    "description": "Returns all events from the date specified plus 7 days in advance.\n\nFormat: now or YYYY-MM-DD",
+                    "default": "now"
+                },
+                {
+                    "name": "sport",
+                    "type": "string",
+                    "description": "",
+                    "default": "NBA"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/schedule-week/now/NBA\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"basketball-datafeeds-by-rolling-insights.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/schedule-week/{date}/{sport}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"basketball-datafeeds-by-rolling-insights.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Team Depth Charts",
+            "url": "https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/depth-charts/NBA",
+            "description": "Returns player depth charts for a team",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "sport",
+                    "type": "string",
+                    "description": "",
+                    "default": "NBA"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "team_id",
+                    "type": "STRING",
+                    "description": "Format: One specified team ID\nTeam ID is available in the Team Info endpoint",
+                    "default": "28"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/depth-charts/NBA\"\nquerystring = {\"team_id\": \"28\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"basketball-datafeeds-by-rolling-insights.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/depth-charts/{sport}\"\nquerystring = {\"team_id\": \"28\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"basketball-datafeeds-by-rolling-insights.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "NBA": {
+                                "type": "object",
+                                "properties": {
+                                    "Minnesota Timberwolves": {
+                                        "type": "object",
+                                        "properties": {
+                                            "C": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "1": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "2": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "3": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "PF": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "1": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "2": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "3": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "PG": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "1": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "2": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "SF": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "1": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "2": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "SG": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "1": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "2": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "team_id": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    },
+                                    "Indiana Pacers": {
+                                        "type": "object",
+                                        "properties": {
+                                            "C": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "1": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "2": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "3": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "PF": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "1": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "2": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "3": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "PG": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "1": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "2": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "3": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "SF": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "1": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "2": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "3": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "SG": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "1": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "2": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "3": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "team_id": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    },
+                                    "Utah Jazz": {
+                                        "type": "object",
+                                        "properties": {
+                                            "C": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "1": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "2": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "3": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "PF": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "1": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "2": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "3": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "PG": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "1": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "2": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "3": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "SF": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "1": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "2": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "3": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "SG": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "1": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "2": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "3": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "team_id": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Live Game Data",
+            "url": "https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/live/now/NBA",
+            "description": "This endpoint provides real-time game box scores.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "sport",
+                    "type": "string",
+                    "description": "",
+                    "default": "NBA"
+                },
+                {
+                    "name": "date",
+                    "type": "string",
+                    "description": "now returns current day's schedule. Daily schedule is changed at 10 AM ET.\n\nFormat: string now or YYYY-MM-DD",
+                    "default": "now"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "game_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "team_id",
+                    "type": "STRING",
+                    "description": "Format: One specified team ID\nTeam ID is available in the Team Info endpoint",
+                    "default": "28"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/live/now/NBA\"\nquerystring = {\"game_id\": \"\", \"team_id\": \"28\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"basketball-datafeeds-by-rolling-insights.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/live/{date}/{sport}\"\nquerystring = {\"game_id\": \"\", \"team_id\": \"28\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"basketball-datafeeds-by-rolling-insights.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Player Information",
+            "url": "https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/player-info/NBA",
+            "description": "This endpoint returns player demographic information",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "sport",
+                    "type": "string",
+                    "description": "",
+                    "default": "NBA"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/player-info/NBA\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"basketball-datafeeds-by-rolling-insights.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/player-info/{sport}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"basketball-datafeeds-by-rolling-insights.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Season Schedule",
+            "url": "https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/schedule-season/{date}/NBA",
+            "description": "Returns season schedule for the specified season. If omitted, returns the schedule for current season.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "sport",
+                    "type": "string",
+                    "description": "",
+                    "default": "NBA"
+                },
+                {
+                    "name": "date",
+                    "type": "string",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "team_id",
+                    "type": "STRING",
+                    "description": "Format: One specified team ID\nTeam ID is available in the Team Info endpoint",
+                    "default": "28"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/schedule-season/{date}/NBA\"\nquerystring = {\"team_id\": \"28\", \"date\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"basketball-datafeeds-by-rolling-insights.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://basketball-datafeeds-by-rolling-insights.p.rapidapi.com/schedule-season/{date}/{sport}\"\nquerystring = {\"team_id\": \"28\", \"date\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"basketball-datafeeds-by-rolling-insights.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

@@ -1,0 +1,86 @@
+{
+    "product_id": "api_60fe211e-4c48-4006-9abb-f3b612e9a6b4",
+    "tool_description": "This API provides access to a database of over 300,000 fights, as well as round by round stats, including strike numbers, for approximately 10,000 fights.",
+    "home_url": "https://rapidapi.com/ZackYoung/api/complete-mma-api/",
+    "name": "Complete MMA API",
+    "title": "Complete MMA API",
+    "pricing": "FREEMIUM",
+    "tool_name": "Complete MMA API",
+    "score": {
+        "avgServiceLevel": 99,
+        "avgLatency": 981,
+        "avgSuccessRate": 99,
+        "popularityScore": 8.2,
+        "__typename": "Score"
+    },
+    "host": "complete-mma-api.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Search Fighters",
+            "url": "https://complete-mma-api.p.rapidapi.com/search/fighter/Jon Jones",
+            "description": "Allows the user to search for a fighter by name in the database. Returns a list of the closest matches of the name, along with some information about the fighters returned, including their country, their weightclass, etc. to help the user determine the fighter they want.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "name",
+                    "type": "string",
+                    "description": "",
+                    "default": "Jon Jones"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Determines how many results are returned. Default value is 5 and max value is 20",
+                    "default": "5"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://complete-mma-api.p.rapidapi.com/search/fighter/Jon Jones\"\nquerystring = {\"limit\": \"5\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-mma-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://complete-mma-api.p.rapidapi.com/search/fighter/{name}\"\nquerystring = {\"limit\": \"5\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-mma-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Fight by ID",
+            "url": "https://complete-mma-api.p.rapidapi.com/fights/8fcdfee81cc604e3",
+            "description": "Gets stats for a fight, given the fight id. It returns, for each fighter, the fighter's name, their stats, and the result and method. Fight IDs can be found by using the Fighter by ID endpoint",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "fight_id",
+                    "type": "string",
+                    "description": "",
+                    "default": "8fcdfee81cc604e3"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://complete-mma-api.p.rapidapi.com/fights/8fcdfee81cc604e3\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-mma-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://complete-mma-api.p.rapidapi.com/fights/{fight_id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-mma-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Fighter by ID",
+            "url": "https://complete-mma-api.p.rapidapi.com/fighters/27944",
+            "description": "Given a fighter id, returns their total stats (significant strikes, takedowns etc.) as well as all of their fights. If a fight has a 'stats_id', there are stats available for that fight, which can be used at the 'Fights by ID' endpoint. Stats are generally available for all UFC fights, and some fights from other large promoters.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "fighter_id",
+                    "type": "string",
+                    "description": "",
+                    "default": "27944"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://complete-mma-api.p.rapidapi.com/fighters/27944\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-mma-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://complete-mma-api.p.rapidapi.com/fighters/{fighter_id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-mma-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

@@ -1,0 +1,229 @@
+{
+    "product_id": "api_5c4c377b-ecf9-44ec-8b3b-a26345d30ecd",
+    "tool_description": "Newslit is a next-generation news monitoring and research tool for PR professionals, investors, researchers, marketers, sales people, lawyers, and business owners. We continuously track the most comprehensive set of important news sources, and integrate social signals from thousands of top business influencers.",
+    "home_url": "https://rapidapi.com/newslit/api/news-briefs-read-only/",
+    "name": "News Briefs (Read Only)",
+    "title": "News Briefs (Read Only)",
+    "pricing": "FREE",
+    "tool_name": "News Briefs (Read Only)",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1483,
+        "avgSuccessRate": 100,
+        "popularityScore": 7.9,
+        "__typename": "Score"
+    },
+    "host": "news-briefs-read-only.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Brief by ID",
+            "url": "https://news-briefs-read-only.p.rapidapi.com/briefs/337651",
+            "description": "This endpoint returns details about the Brief specified by the requested ID.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "brief_id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "337651"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://news-briefs-read-only.p.rapidapi.com/briefs/337651\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"news-briefs-read-only.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://news-briefs-read-only.p.rapidapi.com/briefs/{brief_id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"news-briefs-read-only.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "topics": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "filters": {
+                                "type": "array"
+                            },
+                            "exclusions": {
+                                "type": "array"
+                            },
+                            "date_added": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "meta": {
+                        "type": "object",
+                        "properties": {
+                            "size": {
+                                "type": "integer"
+                            },
+                            "timestamp": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Brief Stories lookup",
+            "url": "https://news-briefs-read-only.p.rapidapi.com/briefs/337651/stories",
+            "description": "This endpoint returns stories from a Brief specified by the requested ID",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "brief_id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "337651"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Offset of first story in result (default 0)",
+                    "default": "0"
+                },
+                {
+                    "name": "count",
+                    "type": "NUMBER",
+                    "description": "Number of stories in response (default 10, max 50)",
+                    "default": "10"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://news-briefs-read-only.p.rapidapi.com/briefs/337651/stories\"\nquerystring = {\"offset\": \"0\", \"count\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"news-briefs-read-only.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://news-briefs-read-only.p.rapidapi.com/briefs/{brief_id}/stories\"\nquerystring = {\"offset\": \"0\", \"count\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"news-briefs-read-only.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "url": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "source": {
+                                    "type": "string"
+                                },
+                                "source_domain": {
+                                    "type": "string"
+                                },
+                                "author": {
+                                    "type": "string"
+                                },
+                                "publication_date": {
+                                    "type": "string"
+                                },
+                                "excerpt": {
+                                    "type": "string"
+                                },
+                                "image_url": {
+                                    "type": "string"
+                                },
+                                "language": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "meta": {
+                        "type": "object",
+                        "properties": {
+                            "size": {
+                                "type": "integer"
+                            },
+                            "offset": {
+                                "type": "integer"
+                            },
+                            "count": {
+                                "type": "integer"
+                            },
+                            "total_size": {
+                                "type": "integer"
+                            },
+                            "timestamp": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get all Briefs",
+            "url": "https://news-briefs-read-only.p.rapidapi.com/briefs",
+            "description": "List all owned briefs",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://news-briefs-read-only.p.rapidapi.com/briefs\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"news-briefs-read-only.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://news-briefs-read-only.p.rapidapi.com/briefs\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"news-briefs-read-only.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "topics": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "filters": {
+                                    "type": "array"
+                                },
+                                "exclusions": {
+                                    "type": "array"
+                                },
+                                "date_added": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "meta": {
+                        "type": "object",
+                        "properties": {
+                            "size": {
+                                "type": "integer"
+                            },
+                            "timestamp": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

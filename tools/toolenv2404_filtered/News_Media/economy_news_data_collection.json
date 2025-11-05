@@ -1,0 +1,310 @@
+{
+    "product_id": "api_9e787f1f-3ca5-4655-8eeb-f94ec4b0b1d5",
+    "tool_description": "Direct access to up-to-date, expert-selected global economic news. Ideal for financial analysis and economic trend monitoring. This API provides constant updates and precise data, essential for professionals and enthusiasts in the fast-evolving world of global economy.",
+    "home_url": "https://rapidapi.com/trw-trw-default/api/economy-news-data-collection/",
+    "name": "Economy News Data Collection",
+    "title": "Economy News Data Collection",
+    "pricing": "FREEMIUM",
+    "tool_name": "Economy News Data Collection",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 642,
+        "avgSuccessRate": 100,
+        "popularityScore": 6,
+        "__typename": "Score"
+    },
+    "host": "economy-news-data-collection.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "search term",
+            "url": "https://economy-news-data-collection.p.rapidapi.com/",
+            "description": "search term",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "### Defines a category among those available:\nExample:  \n- Banking\n- Business\n- Currency\n- DeFi\n- Economy\n- Energy\n- Fiat\n- Finance\n- Fund\n- Insurance\n- Job\n- Market\n- Real Estate\n- Startup\n- Tax\n- Trade\n- Transport\n- Venture Capital",
+                    "default": "fiat"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "## Country Selection for News Queries\n\nYou must select the country from which you want to collect news. The available countries are:\n- `es` for Spain\n- `fr` for France\n- `de` for Germany\n- `it` for Italy\n- `en` for UK\n- `nl` for Netherlands\n- `pl` for Poland\n- `ru` for Russia\n- `pt` for Portugal & Brazil",
+                    "default": "us"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "## Query Expressions with Keywords and Filters: Using Boolean Operators\n\n- **Combine keywords and filters** for precise searches.\n- **Boolean operators** (`AND`, `OR`, `NOT`) enable specific query refinements.\n\n### Examples:\n- `site:lavanguardia.com` - Searches within a specific domain.\n- `Tesla AND Elon` - Both keywords must be present.\n- `title:Tesla` - Filters by keyword in the title.\n- **Combined**: `site:ft.com AND title:(Tesla AND Elon)` - Searches articles with multiple conditions.",
+                    "default": "inflation"
+                },
+                {
+                    "name": "final",
+                    "type": "NUMBER",
+                    "description": "## Final Data-Time Delimiter\n- Defines the **final time delimiter** in Unix Time format (milliseconds).\n- **Example**:\n  - `1705878000000`\n- Defaults to **Now** if not specified.",
+                    "default": ""
+                },
+                {
+                    "name": "initial",
+                    "type": "NUMBER",
+                    "description": "## Initial Date-Time Limit Reference\n- Specify the **initial date-time limit** in Unix time (milliseconds).\n- **Example**:\n  - `1705791600000`\n- Defaults to **-1 month ago** if not specified.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://economy-news-data-collection.p.rapidapi.com/\"\nquerystring = {\"query\": \"inflation\", \"category\": \"fiat\", \"country\": \"us\", \"final\": \"\", \"initial\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"economy-news-data-collection.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://economy-news-data-collection.p.rapidapi.com/\"\nquerystring = {\"query\": \"inflation\", \"category\": \"fiat\", \"country\": \"us\", \"final\": \"\", \"initial\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"economy-news-data-collection.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string"
+                    },
+                    "properties": {
+                        "type": "object",
+                        "properties": {
+                            "response": {
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "properties": {
+                                        "type": "object",
+                                        "properties": {
+                                            "next_category": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "type": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "restResults": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "type": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "totalResults": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "type": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "next_ts": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "type": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "next_q": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "type": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "data": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "type": {
+                                                        "type": "string"
+                                                    },
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "type": {
+                                                                "type": "string"
+                                                            },
+                                                            "properties": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "value": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "site_region": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "site_language": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "domain": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "unique_visitors": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "language": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "site_type": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "rank": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "site_country": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "site": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "section": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "author": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "text": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "title": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "site_section": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "id": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "published": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "url": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "crawled": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "type": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "next_tsi": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "type": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

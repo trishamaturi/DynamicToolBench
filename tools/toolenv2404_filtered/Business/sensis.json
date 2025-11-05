@@ -1,0 +1,64 @@
+{
+    "product_id": "53aa4ed8e4b0b60946a2f2ca",
+    "tool_description": "SAPI provides a valuable service for developers seeking a business search API solution for Yellow Pages\u00ae and White Pages\u00ae business listings and advertising content.",
+    "home_url": "https://rapidapi.com/sapi/api/sensis/",
+    "name": "sensis",
+    "title": "sensis",
+    "pricing": "FREE",
+    "tool_name": "sensis",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 254545,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.1,
+        "__typename": "Score"
+    },
+    "host": "sapi-sensis.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "One Search",
+            "url": "https://sapi-sensis.p.rapidapi.com/oneSearch",
+            "description": "",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Combinations of \"what\" or \"where\", either of which are optional, and can optionally be separated by a join word. (required)",
+                    "default": ""
+                },
+                {
+                    "name": "mappable",
+                    "type": "BOOLEAN",
+                    "description": "A value of true means that only listings with geocode granularity of PROPERTY or INTERSECTION will be returned. This means that these listings can be reliably used by mapping or geographical applications.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "boundingBox",
+                    "type": "STRING",
+                    "description": "Bounding box to serve as a hint to disambiguate the \"what\" within the query, E.g. \"richmond\" exists in several states, so if the bounding box is in Victoria, then it is interpreted as \"Richmond Vic\". However, if the query does not contain a \"where\" part, the centre of the boundingBox is used as the search location.",
+                    "default": ""
+                },
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "Your CURRENT location as latitude,longitude, e.g. -37.7833,144.9667. It serves only as a hint to disambiguate the \"what\" within the query if the boundingBox is not provided. E.g. \"richmond\" exists in several states. So if your current location is in Victoria, then it is interpreted as \"Richmond Vic\". Note that unlike the boundingBox, this is never used to derive the search location.",
+                    "default": ""
+                },
+                {
+                    "name": "sortBy",
+                    "type": "STRING",
+                    "description": "Does not support DISTANCE or DISTANCE_ALL_PAGES. (You will get a misleading error message if you try.)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sapi-sensis.p.rapidapi.com/oneSearch\"\nquerystring = {\"query\": \"\", \"boundingBox\": \"\", \"location\": \"\", \"sortBy\": \"\", \"mappable\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sapi-sensis.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sapi-sensis.p.rapidapi.com/oneSearch\"\nquerystring = {\"query\": \"\", \"boundingBox\": \"\", \"location\": \"\", \"sortBy\": \"\", \"mappable\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sapi-sensis.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

@@ -1,0 +1,668 @@
+{
+    "product_id": "api_a027a968-467f-44d1-9a2c-1bd363f4faed",
+    "tool_description": "Next Generation Netflix Global Search",
+    "home_url": "https://rapidapi.com/unogs/api/unogsng/",
+    "name": "unogsNG",
+    "title": "unogsNG",
+    "pricing": "FREEMIUM",
+    "tool_name": "unogsNG",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 480,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.7,
+        "__typename": "Score"
+    },
+    "host": "unogsng.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Genres",
+            "url": "https://unogsng.p.rapidapi.com/genres",
+            "description": "Returns a list of Netflix genres",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/genres\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/genres\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "elapse": {
+                        "type": "number"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "genre": {
+                                    "type": "string"
+                                },
+                                "netflixid": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Countries",
+            "url": "https://unogsng.p.rapidapi.com/countries",
+            "description": "Returns list of available Netflix countries (includes uNoGS country id)",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/countries\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/countries\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "elapse": {
+                        "type": "number"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "country": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "countrycode": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Images",
+            "url": "https://unogsng.p.rapidapi.com/images",
+            "description": "Pull all the images associated with a particular title",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "netflixid",
+                    "type": "NUMBER",
+                    "description": "Netflix Title ID",
+                    "default": "81037848"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Starting Number of results (Default is 0)",
+                    "default": "3"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limit of returned items default/max 100",
+                    "default": "2"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/images\"\nquerystring = {\"offset\": \"3\", \"netflixid\": \"81037848\", \"limit\": \"2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/images\"\nquerystring = {\"offset\": \"3\", \"netflixid\": \"81037848\", \"limit\": \"2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Title Countries",
+            "url": "https://unogsng.p.rapidapi.com/titlecountries",
+            "description": "Get all countries associated with a particular Netflix ID",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "netflixid",
+                    "type": "NUMBER",
+                    "description": "Netflix ID",
+                    "default": "81043135"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/titlecountries\"\nquerystring = {\"netflixid\": \"81043135\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/titlecountries\"\nquerystring = {\"netflixid\": \"81043135\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Title Genres",
+            "url": "https://unogsng.p.rapidapi.com/titlegenres",
+            "description": "Get all genres associated with a particular Netflix ID",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "netflixid",
+                    "type": "NUMBER",
+                    "description": "Netflix ID",
+                    "default": "81043135"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/titlegenres\"\nquerystring = {\"netflixid\": \"81043135\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/titlegenres\"\nquerystring = {\"netflixid\": \"81043135\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Title Details",
+            "url": "https://unogsng.p.rapidapi.com/title",
+            "description": "Specific information for a given Netflix title",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "netflixid",
+                    "type": "NUMBER",
+                    "description": "A Netflix specific ID",
+                    "default": "81043135"
+                },
+                {
+                    "name": "imdbid",
+                    "type": "STRING",
+                    "description": "An IMDB ID",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/title\"\nquerystring = {\"netflixid\": \"81043135\", \"imdbid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/title\"\nquerystring = {\"netflixid\": \"81043135\", \"imdbid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Expiring",
+            "url": "https://unogsng.p.rapidapi.com/expiring",
+            "description": "Get list of expiring titles",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "countrylist",
+                    "type": "STRING",
+                    "description": "List of uNoGS country IDs separated by a ,",
+                    "default": "78,46"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Starting Number of results (Default is 0)",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limit of returned items default/max 100",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/expiring\"\nquerystring = {\"offset\": \"\", \"limit\": \"\", \"countrylist\": \"78,46\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/expiring\"\nquerystring = {\"offset\": \"\", \"limit\": \"\", \"countrylist\": \"78,46\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "People",
+            "url": "https://unogsng.p.rapidapi.com/people",
+            "description": "Search for Netflix People by name (returns person id for searches)",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Starting Number of results (Default is 0)",
+                    "default": ""
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "A persons name First Last or Both",
+                    "default": "Brad Pitt"
+                },
+                {
+                    "name": "netflixid",
+                    "type": "NUMBER",
+                    "description": "A Netflix title ID",
+                    "default": "70021641"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limit of returned items default/max 100",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/people\"\nquerystring = {\"offset\": \"\", \"name\": \"Brad Pitt\", \"netflixid\": \"70021641\", \"limit\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/people\"\nquerystring = {\"offset\": \"\", \"name\": \"Brad Pitt\", \"netflixid\": \"70021641\", \"limit\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "elapse": {
+                        "type": "number"
+                    },
+                    "results": {
+                        "items": {
+                            "properties": {
+                                "fullname": {
+                                    "type": "string"
+                                },
+                                "netflixid": {
+                                    "type": "integer"
+                                },
+                                "title": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "total": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Episodes",
+            "url": "https://unogsng.p.rapidapi.com/episodes",
+            "description": "Search for Netflix People by name (returns person id for searches)",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "seasonid",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "70051768"
+                },
+                {
+                    "name": "episodeid",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "70150654"
+                },
+                {
+                    "name": "netflixid",
+                    "type": "NUMBER",
+                    "description": "A Netflix title ID",
+                    "default": "70153392"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/episodes\"\nquerystring = {\"seasonid\": \"70051768\", \"episodeid\": \"70150654\", \"netflixid\": \"70153392\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/episodes\"\nquerystring = {\"seasonid\": \"70051768\", \"episodeid\": \"70150654\", \"netflixid\": \"70153392\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "items": {
+                    "properties": {
+                        "episodes": {
+                            "items": {
+                                "properties": {
+                                    "epid": {
+                                        "type": "integer"
+                                    },
+                                    "epnum": {
+                                        "type": "integer"
+                                    },
+                                    "img": {
+                                        "type": "string"
+                                    },
+                                    "seasid": {
+                                        "type": "integer"
+                                    },
+                                    "seasnum": {
+                                        "type": "integer"
+                                    },
+                                    "synopsis": {
+                                        "type": "string"
+                                    },
+                                    "title": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "season": {
+                            "type": "integer"
+                        }
+                    },
+                    "type": "object"
+                },
+                "type": "array"
+            }
+        },
+        {
+            "name": "Deleted",
+            "url": "https://unogsng.p.rapidapi.com/titlesdel",
+            "description": "Returns all title which have been deleted meeting a limited criteria",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0"
+                },
+                {
+                    "name": "netflixid",
+                    "type": "STRING",
+                    "description": "Netflix Title ID",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "returns anything deleted after this date",
+                    "default": "2019-12-01"
+                },
+                {
+                    "name": "countrylist",
+                    "type": "STRING",
+                    "description": "list of uNoGS country ID's separated by a ,",
+                    "default": "78"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/titlesdel\"\nquerystring = {\"offset\": \"0\", \"netflixid\": \"\", \"limit\": \"\", \"date\": \"2019-12-01\", \"countrylist\": \"78\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/titlesdel\"\nquerystring = {\"offset\": \"0\", \"netflixid\": \"\", \"limit\": \"\", \"date\": \"2019-12-01\", \"countrylist\": \"78\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "elapse": {
+                        "type": "number"
+                    },
+                    "total": {
+                        "type": "integer"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "deletedate": {
+                                    "type": "string"
+                                },
+                                "countrycode": {
+                                    "type": "string"
+                                },
+                                "netflixid": {
+                                    "type": "integer"
+                                },
+                                "title": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Search",
+            "url": "https://unogsng.p.rapidapi.com/search",
+            "description": "Search for Netflix titles based on a variety of parameters",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "start_year",
+                    "type": "NUMBER",
+                    "description": "A 4 digit year",
+                    "default": "1972"
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "movie or series",
+                    "default": ""
+                },
+                {
+                    "name": "audio",
+                    "type": "STRING",
+                    "description": "A valid language type",
+                    "default": "english"
+                },
+                {
+                    "name": "audiosubtitle_andor",
+                    "type": "STRING",
+                    "description": "and/or for audio and subtitles",
+                    "default": "and"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limit of returned items default/max 100",
+                    "default": "100"
+                },
+                {
+                    "name": "end_rating",
+                    "type": "NUMBER",
+                    "description": "imdb rating 0-10",
+                    "default": ""
+                },
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "any string you want to search (fulltext against the title)",
+                    "default": ""
+                },
+                {
+                    "name": "countrylist",
+                    "type": "STRING",
+                    "description": "list of uNoGS country ID's (from country endpoint) leave blank for all country search",
+                    "default": "78,46"
+                },
+                {
+                    "name": "country_andorunique",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "unique"
+                },
+                {
+                    "name": "orderby",
+                    "type": "STRING",
+                    "description": "orderby string (date,dateDesc,rating,title,type,runtime,filmyear,filmyearDesc)",
+                    "default": "rating"
+                },
+                {
+                    "name": "newdate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "returns all titles with a new date greater than this",
+                    "default": ""
+                },
+                {
+                    "name": "genrelist",
+                    "type": "STRING",
+                    "description": "list of Netflix genre id's (see genre endpoint for list)",
+                    "default": ""
+                },
+                {
+                    "name": "start_rating",
+                    "type": "STRING",
+                    "description": "imdb rating 0-10",
+                    "default": ""
+                },
+                {
+                    "name": "end_year",
+                    "type": "NUMBER",
+                    "description": "A 4 digit year",
+                    "default": "2019"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Starting Number of results (Default is 0)",
+                    "default": "0"
+                },
+                {
+                    "name": "subtitle",
+                    "type": "STRING",
+                    "description": "A valid language type",
+                    "default": "english"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/search\"\nquerystring = {\"start_year\": \"1972\", \"type\": \"\", \"audio\": \"english\", \"audiosubtitle_andor\": \"and\", \"limit\": \"100\", \"end_rating\": \"\", \"query\": \"\", \"countrylist\": \"78,46\", \"country_andorunique\": \"unique\", \"orderby\": \"rating\", \"newdate\": \"\", \"genrelist\": \"\", \"start_rating\": \"\", \"end_year\": \"2019\", \"offset\": \"0\", \"subtitle\": \"english\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unogsng.p.rapidapi.com/search\"\nquerystring = {\"start_year\": \"1972\", \"type\": \"\", \"audio\": \"english\", \"audiosubtitle_andor\": \"and\", \"limit\": \"100\", \"end_rating\": \"\", \"query\": \"\", \"countrylist\": \"78,46\", \"country_andorunique\": \"unique\", \"orderby\": \"rating\", \"newdate\": \"\", \"genrelist\": \"\", \"start_rating\": \"\", \"end_year\": \"2019\", \"offset\": \"0\", \"subtitle\": \"english\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unogsng.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "elapse": {
+                        "type": "number"
+                    },
+                    "results": {
+                        "items": {
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "total": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    ]
+}

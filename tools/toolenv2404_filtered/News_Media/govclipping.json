@@ -1,0 +1,279 @@
+{
+    "product_id": "api_cd821f46-e62f-45e4-9ce8-5cb677c2ca77",
+    "tool_description": "Clipping de referencia de fuentes oficiales del Estado Espa\u00f1ol",
+    "home_url": "https://rapidapi.com/gov-clipping-gov-clipping-default/api/govclipping/",
+    "name": "GovClipping",
+    "title": "GovClipping",
+    "pricing": "FREEMIUM",
+    "tool_name": "GovClipping",
+    "score": null,
+    "host": "govclipping.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Search articles",
+            "url": "https://govclipping.p.rapidapi.com/articles/search",
+            "description": "Filtra el contenido y encuentra lo que necesitas en nuestra base de datos actualizada de los \u00faltimos a\u00f1os\u200b. Mediante este API, podr\u00e1s realizar b\u00fasquedas tal y como se realizan en https://govclipping.com/search. Todos los par\u00e1metros son opcionales. Formato JSON.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "keywords_optional",
+                    "type": "STRING",
+                    "description": "Optional parameter, default value empty. Comma separated list of words to be searched on articles (OPERATOR OR). If at least one of the listed words is present on the article, the article will be returned.",
+                    "default": ""
+                },
+                {
+                    "name": "regions",
+                    "type": "ENUM",
+                    "description": "Optional parameter, default value **all**. Comma separated list of regions (=comunidades aut\u00f3nomas) to be searched.\n\nIf left empty, the endpoint will return the articles based published on all regions.\n\nValid entries are:\nandalucia: Andaluc\u00eda\naragon: Arag\u00f3n\nasturias: Asturias\nbaleares: Islas Baleares\ncanarias: Islas Canarias\ncantabria: Cantabria\ncastillalamancha: Castilla-La Mancha\ncastillayleon: Castilla y Le\u00f3n\ncatalunya: Catalu\u00f1a\nextremadura: Extremadura\ngalicia: Galicia\nlarioja: La Rioja\nmadrid: Comunidad de Madrid\nmurcia: Murcia\nnavarra: Navarra\npaisvasco: Pa\u00eds Vasco\nvalencia: Valencia",
+                    "default": ""
+                },
+                {
+                    "name": "published_date_end",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Optional parameter, default value Today.",
+                    "default": ""
+                },
+                {
+                    "name": "published_date_from",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Optional parameter, default value (Today - 6 days). The specified date cannot be greater than Today -29 days.",
+                    "default": ""
+                },
+                {
+                    "name": "keywords_excluded",
+                    "type": "STRING",
+                    "description": "Optional parameter, default value empty. Comma separated list of words to be excluded from the search. If one of the words listed on keywords_excluded is present on the article, the article won't be returned.",
+                    "default": ""
+                },
+                {
+                    "name": "categories",
+                    "type": "ENUM",
+                    "description": "Optional parameter, default value **all**. Comma separated list of categories.\nIf left empty, the endpoint will return the articles published on all categories available.\n\nValues are:\npress_release: notas de prensa\ngov_agreements: acuerdos de gobierno\nboa: boletin oficial auton\u00f3mico\ncitizen_participation: participaci\u00f3n ciudadana\ndraft_laws: audiencia e informaci\u00f3n p\u00fablica\npublic_projects: proyectos p\u00fablicos",
+                    "default": ""
+                },
+                {
+                    "name": "keywords_mandatory",
+                    "type": "STRING",
+                    "description": "Optional parameter, default value empty. Comma separated list of words that must appear on articles (OPERATOR AND). If all listed words are present on the article, the article will be returned.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/articles/search\"\nquerystring = {\"keywords_optional\": \"\", \"regions\": \"\", \"published_date_end\": \"\", \"published_date_from\": \"\", \"keywords_excluded\": \"\", \"categories\": \"\", \"keywords_mandatory\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/articles/search\"\nquerystring = {\"keywords_optional\": \"\", \"regions\": \"\", \"published_date_end\": \"\", \"published_date_from\": \"\", \"keywords_excluded\": \"\", \"categories\": \"\", \"keywords_mandatory\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Premium RSS: Articles published in Spain (all regions and all categories)",
+            "url": "https://govclipping.p.rapidapi.com/rss/premium/articles/es",
+            "description": "Obt\u00e9n toda la informaci\u00f3n completa de todas las Comunidades Aut\u00f3nomas de Espa\u00f1a de los \u00faltimos 3 d\u00edas.\n\n**Enlaces RSS Premium** (+ info: [GovClipping RSS](https://govclipping.com/rss))",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/rss/premium/articles/es\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/rss/premium/articles/es\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Free RSS: Articles by region",
+            "url": "https://govclipping.p.rapidapi.com/rss/articles/es/{region}",
+            "description": "Obt\u00e9n la informaci\u00f3n b\u00e1sica de los art\u00edculos publicados durante el d\u00eda de hoy en la Comunidad Aut\u00f3noma de Espa\u00f1a seleccionada.\n\n**Enlaces RSS gratuitos** (+ info: [GovClipping RSS](https://govclipping.com/rss))",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "region",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/rss/articles/es/{region}\"\nquerystring = {\"region\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/rss/articles/es/{region}\"\nquerystring = {\"region\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Free RSS: Articles published in Spain (all regions and all categories)",
+            "url": "https://govclipping.p.rapidapi.com/rss/articles/es",
+            "description": "Obt\u00e9n la informaci\u00f3n b\u00e1sica de todos los art\u00edculos publicados durante el d\u00eda de hoy en todas las Comunidades Aut\u00f3nomas de Espa\u00f1a.\n\n**Enlaces RSS gratuitos** (+ info: [GovClipping RSS](https://govclipping.com/rss))",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/rss/articles/es\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/rss/articles/es\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Premium API: Articles by region",
+            "url": "https://govclipping.p.rapidapi.com/premium/articles/es/{region}",
+            "description": "Obt\u00e9n toda la informaci\u00f3n completa de los art\u00edculos publicados en los \u00faltimos 7 d\u00edas en la Comunidad Aut\u00f3noma seleccionada.\n\n**Premium API for articles** (+ info: [API documentation](https://govclipping.com/api))",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "region",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/premium/articles/es/{region}\"\nquerystring = {\"region\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/premium/articles/es/{region}\"\nquerystring = {\"region\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Free API: Articles by region and category",
+            "url": "https://govclipping.p.rapidapi.com/articles/es/{region}/{category}",
+            "description": "Obt\u00e9n la informaci\u00f3n b\u00e1sica de todos los art\u00edculos publicados durante el d\u00eda de hoy en la Comunidad Aut\u00f3noma y categor\u00eda seleccionadas.\n\n**API de acceso gratuito** (+ info: [GovClipping API](https://govclipping.com/api))",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "category",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "region",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/articles/es/{region}/{category}\"\nquerystring = {\"category\": \"\", \"region\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/articles/es/{region}/{category}\"\nquerystring = {\"category\": \"\", \"region\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Free API: Articles by region",
+            "url": "https://govclipping.p.rapidapi.com/articles/es/{region}",
+            "description": "Obt\u00e9n la informaci\u00f3n b\u00e1sica de todos los art\u00edculos publicados durante el d\u00eda de hoy en la Comunidad Aut\u00f3noma seleccionada. Formato JSON.\n\n**API de acceso gratuito** (+ info: [GovClipping API](https://govclipping.com/api))",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "region",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/articles/es/{region}\"\nquerystring = {\"region\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/articles/es/{region}\"\nquerystring = {\"region\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Premium API: Articles by region and category",
+            "url": "https://govclipping.p.rapidapi.com/premium/articles/es/{region}/{category}",
+            "description": "Obt\u00e9n toda la informaci\u00f3n completa de los art\u00edculos publicados en los \u00faltimos 7 d\u00edas en la Comunidad Aut\u00f3noma y categor\u00eda seleccionadas.\n\n**Premium API for articles** (+ info: [API documentation](https://govclipping.com/api))",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "region",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "category",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/premium/articles/es/{region}/{category}\"\nquerystring = {\"region\": \"\", \"category\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/premium/articles/es/{region}/{category}\"\nquerystring = {\"region\": \"\", \"category\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Premium API: Articles published in Spain (all regions and all categories)",
+            "url": "https://govclipping.p.rapidapi.com/premium/articles/es",
+            "description": "Obt\u00e9n toda la informaci\u00f3n completa de todas las Comunidades Aut\u00f3nomas de Espa\u00f1a de los \u00faltimos 7 d\u00edas.\n\n**Premium API for articles** (+ info: [API documentation](https://govclipping.com/api))",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/premium/articles/es\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/premium/articles/es\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Free API: Articles published in Spain (all regions and all categories)",
+            "url": "https://govclipping.p.rapidapi.com/articles/es",
+            "description": "Obt\u00e9n la informaci\u00f3n b\u00e1sica de todos los art\u00edculos publicados durante el d\u00eda de hoy en todas las Comunidades Aut\u00f3nomas de Espa\u00f1a.\n\n**API de acceso gratuito** (+ info: [GovClipping API](https://govclipping.com/api))",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/articles/es\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/articles/es\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Premium RSS: Articles by region",
+            "url": "https://govclipping.p.rapidapi.com/rss/premium/articles/es/{region}",
+            "description": "Obt\u00e9n toda la informaci\u00f3n completa de los art\u00edculos publicados en los \u00faltimos 3 d\u00edas en la Comunidad Aut\u00f3noma seleccionada.\n\n**Enlaces RSS Premium** (+ info: [GovClipping RSS](https://govclipping.com/rss))",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "region",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/rss/premium/articles/es/{region}\"\nquerystring = {\"region\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/rss/premium/articles/es/{region}\"\nquerystring = {\"region\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Premium RSS: Articles by region and category",
+            "url": "https://govclipping.p.rapidapi.com/rss/premium/articles/es/{region}/{category}",
+            "description": "Obt\u00e9n toda la informaci\u00f3n completa de los art\u00edculos publicados en los \u00faltimos 3 d\u00edas en la Comunidad Aut\u00f3noma y categor\u00eda seleccionadas.\n\n**Enlaces RSS Premium** (+ info: [GovClipping RSS](https://govclipping.com/rss))",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "category",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "region",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/rss/premium/articles/es/{region}/{category}\"\nquerystring = {\"category\": \"\", \"region\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/rss/premium/articles/es/{region}/{category}\"\nquerystring = {\"category\": \"\", \"region\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Free RSS: Articles by region and category",
+            "url": "https://govclipping.p.rapidapi.com/rss/articles/es/{region}/{category}",
+            "description": "Obt\u00e9n la informaci\u00f3n b\u00e1sica de todos los art\u00edculos publicados durante el d\u00eda de hoy en la Comunidad Aut\u00f3noma y categor\u00eda seleccionadas.\n\n**Enlaces RSS gratuitos** (+ info: [GovClipping RSS](https://govclipping.com/rss))",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "region",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "category",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/rss/articles/es/{region}/{category}\"\nquerystring = {\"region\": \"\", \"category\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://govclipping.p.rapidapi.com/rss/articles/es/{region}/{category}\"\nquerystring = {\"region\": \"\", \"category\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"govclipping.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

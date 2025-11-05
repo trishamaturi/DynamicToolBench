@@ -1,0 +1,152 @@
+{
+    "product_id": "53aa507fe4b0596140340649",
+    "tool_description": "Classify unstructured data such as articles or text into predefined categories.",
+    "home_url": "https://rapidapi.com/twinword/api/text-classification/",
+    "name": "Text Classification",
+    "title": "Text Classification",
+    "pricing": "FREEMIUM",
+    "tool_name": "Text Classification",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 431,
+        "avgSuccessRate": 100,
+        "popularityScore": 8.5,
+        "__typename": "Score"
+    },
+    "host": "twinword-text-classification.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Classify (get)",
+            "url": "https://twinword-text-classification.p.rapidapi.com/classify/",
+            "description": "Classify text into product categories or contact us to customize and use your own category sets.  Enter some text to find its related product categories:",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "text",
+                    "type": "STRING",
+                    "description": "Enter some text to find related categories.",
+                    "default": "Protect your back with these ergonomic office chairs. These adjustable chairs are cushioned and molded to ensure comfort over long hours. Some options feature breathable backs that let air flow through to keep you cool and add to your comfort level on hot days."
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "Enter title of text (optional).",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://twinword-text-classification.p.rapidapi.com/classify/\"\nquerystring = {\"title\": \"\", \"text\": \"Protect your back with these ergonomic office chairs. These adjustable chairs are cushioned and molded to ensure comfort over long hours. Some options feature breathable backs that let air flow through to keep you cool and add to your comfort level on hot days.\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"twinword-text-classification.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://twinword-text-classification.p.rapidapi.com/classify/\"\nquerystring = {\"title\": \"\", \"text\": \"Protect your back with these ergonomic office chairs. These adjustable chairs are cushioned and molded to ensure comfort over long hours. Some options feature breathable backs that let air flow through to keep you cool and add to your comfort level on hot days.\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"twinword-text-classification.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "author": {
+                        "type": "string"
+                    },
+                    "categories": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "categories_scored": {
+                        "properties": {
+                            "Arm Chairs": {
+                                "type": "number"
+                            },
+                            "Arm Chairs, Recliners &amp; Sleeper Chairs": {
+                                "type": "number"
+                            },
+                            "Bean Bag Chairs": {
+                                "type": "number"
+                            },
+                            "Chairs": {
+                                "type": "number"
+                            },
+                            "Folding Chairs &amp; Stools": {
+                                "type": "number"
+                            },
+                            "Gaming Chairs": {
+                                "type": "number"
+                            },
+                            "Kneeling Chairs": {
+                                "type": "number"
+                            },
+                            "Office Chairs": {
+                                "type": "number"
+                            },
+                            "Rocking Chairs": {
+                                "type": "number"
+                            },
+                            "Slipper Chairs": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "email": {
+                        "format": "email",
+                        "type": "string"
+                    },
+                    "keywords": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "keywords_scored": {
+                        "properties": {
+                            "air": {
+                                "type": "integer"
+                            },
+                            "chair": {
+                                "type": "integer"
+                            },
+                            "comfort": {
+                                "type": "integer"
+                            },
+                            "cool": {
+                                "type": "integer"
+                            },
+                            "day": {
+                                "type": "integer"
+                            },
+                            "feature": {
+                                "type": "integer"
+                            },
+                            "flow": {
+                                "type": "integer"
+                            },
+                            "hot": {
+                                "type": "integer"
+                            },
+                            "level": {
+                                "type": "integer"
+                            },
+                            "option": {
+                                "type": "integer"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "result_code": {
+                        "format": "color",
+                        "type": "string"
+                    },
+                    "result_msg": {
+                        "type": "string"
+                    },
+                    "taxonomy_set": {
+                        "type": "string"
+                    },
+                    "version": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    ]
+}

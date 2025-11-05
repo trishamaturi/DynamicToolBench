@@ -1,0 +1,113 @@
+{
+    "product_id": "api_9f1c55b5-a4bd-4956-9674-fa8425b5bec9",
+    "tool_description": "Search for NPM repositories via search query",
+    "home_url": "https://rapidapi.com/paullyFIRE/api/npm-repository-search/",
+    "name": "NPM Repository Search",
+    "title": "NPM Repository Search",
+    "pricing": "FREE",
+    "tool_name": "NPM Repository Search",
+    "score": null,
+    "host": "npm-repository-search.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "NPM Search",
+            "url": "https://npm-repository-search.p.rapidapi.com/",
+            "description": "Search and query NPM packages",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "ranking",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "popularity, quality, maintenance, optimal"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://npm-repository-search.p.rapidapi.com/\"\nquerystring = {\"query\": \"\", \"page\": \"\", \"ranking\": \"popularity, quality, maintenance, optimal\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"npm-repository-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://npm-repository-search.p.rapidapi.com/\"\nquerystring = {\"query\": \"\", \"page\": \"\", \"ranking\": \"popularity, quality, maintenance, optimal\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"npm-repository-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string"
+                    },
+                    "page": {
+                        "type": "integer"
+                    },
+                    "pages": {
+                        "type": "integer"
+                    },
+                    "size": {
+                        "type": "integer"
+                    },
+                    "errors": [
+                        {
+                            "type": "object",
+                            "properties": {
+                                "msg": {
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "type": "string"
+                                },
+                                "param": {
+                                    "type": "string"
+                                },
+                                "location": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    ],
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "title": {
+                                    "type": "string"
+                                },
+                                "packageUrl": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "tags": {
+                                    "type": "array"
+                                },
+                                "author": {
+                                    "type": "string"
+                                },
+                                "authorUrl": {
+                                    "type": "string"
+                                },
+                                "version": {
+                                    "type": "string"
+                                },
+                                "versionPublishDate": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

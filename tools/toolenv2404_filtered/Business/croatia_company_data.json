@@ -1,0 +1,73 @@
+{
+    "product_id": "api_2d21c6e5-3da0-4f53-a594-7795daa88d94",
+    "tool_description": "Access to the official Croatian government business register with this API, ideal for KYB purposes",
+    "home_url": "https://rapidapi.com/appaio/api/croatia-company-data/",
+    "name": "Croatia Company Data",
+    "title": "Croatia Company Data",
+    "pricing": "FREE",
+    "tool_name": "Croatia Company Data",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1047,
+        "avgSuccessRate": 100,
+        "popularityScore": 7.1,
+        "__typename": "Score"
+    },
+    "host": "croatia-company-data.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Search by MBS or OIB",
+            "url": "https://croatia-company-data.p.rapidapi.com/default/HR/subjekt_detalji",
+            "description": "Search the Croatian company register by either MBS or OIB company identifiers (osobni identifikacijski broj)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "tipIdentifikatora",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "mbs"
+                },
+                {
+                    "name": "expand_relations",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "True"
+                },
+                {
+                    "name": "identifikator",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 80733282
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://croatia-company-data.p.rapidapi.com/default/HR/subjekt_detalji\"\nquerystring = {\"tipIdentifikatora\": \"mbs\", \"expand_relations\": \"True\", \"identifikator\": 80733282}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"croatia-company-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://croatia-company-data.p.rapidapi.com/default/HR/subjekt_detalji\"\nquerystring = {\"tipIdentifikatora\": \"mbs\", \"expand_relations\": \"True\", \"identifikator\": 80733282}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"croatia-company-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,282 @@
+{
+    "product_id": "api_e4064f0e-a5b8-48ab-bb4b-1730f720ac1f",
+    "tool_description": "Explore a vast array of location-based insights seamlessly with our Location Data API, designed to effortlessly retrieve business information, reviews, and captivating images via the Google Maps integration. Keep yourself in the loop with local trends and customer feedback to make informed decisions about the places you want to discover.\n\nFeel free to engage with us! Our API is a work in progress, and we are committed to constant improvement. Your questions and suggestions are not only welcom...",
+    "home_url": "https://rapidapi.com/opus-serve-opus-serve-default/api/google-maps-scraper4/",
+    "name": "Google Maps Scraper",
+    "title": "Google Maps Scraper",
+    "pricing": "FREEMIUM",
+    "tool_name": "Google Maps Scraper",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 5104,
+        "avgSuccessRate": 100,
+        "popularityScore": 9,
+        "__typename": "Score"
+    },
+    "host": "google-maps-scraper4.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Search",
+            "url": "https://google-maps-scraper4.p.rapidapi.com/search",
+            "description": "Search on Google Maps by term.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Dentist in usa"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "STRING",
+                    "description": "Parameter defines the result offset. It skips the given number of results. It's used for pagination. (e.g., 0 (default) is the first page of results, 20 is the 2nd page of results, 40 is the 3rd page of results, etc.).\n\n**Default:** 0\n\n**Important:** We recommend starting with 0 and increasing by 20 for the next page. There is no hard limit on the maximum offset number, but we recommend a maximum of 100 (page six) which is the same behavior as with the Google Maps web app. More than that, the result might be duplicated or irrelevant.",
+                    "default": "0"
+                },
+                {
+                    "name": "latitude",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "40.7455096"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Set the language of the results.\n[Suporte Languages](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes.)\n\n**Default:** en",
+                    "default": "en"
+                },
+                {
+                    "name": "longitude",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "-74.0083012"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://google-maps-scraper4.p.rapidapi.com/search\"\nquerystring = {\"offset\": \"0\", \"latitude\": \"40.7455096\", \"query\": \"Dentist in usa\", \"lang\": \"en\", \"longitude\": \"-74.0083012\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"google-maps-scraper4.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://google-maps-scraper4.p.rapidapi.com/search\"\nquerystring = {\"offset\": \"0\", \"latitude\": \"40.7455096\", \"query\": \"Dentist in usa\", \"lang\": \"en\", \"longitude\": \"-74.0083012\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"google-maps-scraper4.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "start_time": {
+                        "type": "string"
+                    },
+                    "finish_time": {
+                        "type": "string"
+                    },
+                    "search_parameters": {
+                        "type": "object",
+                        "properties": {
+                            "query": {
+                                "type": "string"
+                            },
+                            "lang": {
+                                "type": "string"
+                            },
+                            "latitude": {
+                                "type": "string"
+                            },
+                            "longitude": {
+                                "type": "string"
+                            },
+                            "offset": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "local_results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "offset": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Photos",
+            "url": "https://google-maps-scraper4.p.rapidapi.com/photos",
+            "description": "Get photos by data_id",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "data_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0x89c259a61c75684f:0x79d31adb123348d2"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Set the language of the results.\n[Suporte Languages](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes.)\n\n**Default:** en",
+                    "default": "en"
+                },
+                {
+                    "name": "token",
+                    "type": "STRING",
+                    "description": "Parameter defines the next page token. It is used for retrieving the next page results.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://google-maps-scraper4.p.rapidapi.com/photos\"\nquerystring = {\"lang\": \"en\", \"token\": \"\", \"data_id\": \"0x89c259a61c75684f:0x79d31adb123348d2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"google-maps-scraper4.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://google-maps-scraper4.p.rapidapi.com/photos\"\nquerystring = {\"lang\": \"en\", \"token\": \"\", \"data_id\": \"0x89c259a61c75684f:0x79d31adb123348d2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"google-maps-scraper4.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "start_time": {
+                        "type": "string"
+                    },
+                    "finish_time": {
+                        "type": "string"
+                    },
+                    "search_parameters": {
+                        "type": "object",
+                        "properties": {
+                            "data_id": {
+                                "type": "string"
+                            },
+                            "token": {
+                                "type": "string"
+                            },
+                            "lang": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "photos": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "photo_id": {
+                                    "type": "string"
+                                },
+                                "photo_url": {
+                                    "type": "string"
+                                },
+                                "photo_url_large": {
+                                    "type": "string"
+                                },
+                                "latitude": {
+                                    "type": "number"
+                                },
+                                "longitude": {
+                                    "type": "number"
+                                },
+                                "type": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "next_page_token": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Review",
+            "url": "https://google-maps-scraper4.p.rapidapi.com/review",
+            "description": "Get review by data_id",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "data_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0x8640e9c6139b087d:0xc40327b83770d11c"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "sort_by",
+                    "type": "STRING",
+                    "description": "**Allowed values:** newestFirst, qualityScore, ratingHigh or ratingLow",
+                    "default": ""
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Set the language of the results.\n[Suporte Languages](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes.)\n\n**Default:** en",
+                    "default": "en"
+                },
+                {
+                    "name": "token",
+                    "type": "STRING",
+                    "description": "Parameter defines the next page token. It is used for retrieving the next page results.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://google-maps-scraper4.p.rapidapi.com/review\"\nquerystring = {\"data_id\": \"0x8640e9c6139b087d:0xc40327b83770d11c\", \"sort_by\": \"\", \"lang\": \"en\", \"token\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"google-maps-scraper4.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://google-maps-scraper4.p.rapidapi.com/review\"\nquerystring = {\"data_id\": \"0x8640e9c6139b087d:0xc40327b83770d11c\", \"sort_by\": \"\", \"lang\": \"en\", \"token\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"google-maps-scraper4.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "start_time": {
+                        "type": "string"
+                    },
+                    "finish_time": {
+                        "type": "string"
+                    },
+                    "search_parameters": {
+                        "type": "object",
+                        "properties": {
+                            "data_id": {
+                                "type": "string"
+                            },
+                            "token": {
+                                "type": "string"
+                            },
+                            "lang": {
+                                "type": "string"
+                            },
+                            "sort_by": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "reviews": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "next_page_token": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    ]
+}

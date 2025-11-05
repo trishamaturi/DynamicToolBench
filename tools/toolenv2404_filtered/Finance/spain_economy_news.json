@@ -1,0 +1,144 @@
+{
+    "product_id": "api_e0b4e728-7bed-4649-b125-54a3976ba3d1",
+    "tool_description": "Direct access to up-to-date, expert-selected SPAIN economic news. Ideal for financial analysis and economic trend monitoring. This API provides constant updates and precise data, essential for professionals and enthusiasts in the fast-evolving SPAIN economy.",
+    "home_url": "https://rapidapi.com/trw-trw-default/api/spain-economy-news/",
+    "name": "SPAIN Economy News",
+    "title": "SPAIN Economy News",
+    "pricing": "FREEMIUM",
+    "tool_name": "SPAIN Economy News",
+    "score": null,
+    "host": "spain-economy-news.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Articles",
+            "url": "https://spain-economy-news.p.rapidapi.com/",
+            "description": "This method allows you to obtain articles by performing Boolean queries.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "## Category Definition\n- **Define a category** from the available options.\n- **Examples**:\n  - `banking`\n  - `business`\n  - `currency`\n  - `defi`\n  - `economy`\n  - `energy`\n  - `finance`\n  - `fiat`\n  - `fund`\n  - `industry`\n  - `insurance`\n  - `job`\n  - `market`\n  - `realstate`\n  - `startup`\n  - `tax`\n  - `trade`\n  - `transport`\n  - `venturecapital`",
+                    "default": "banking"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "initial",
+                    "type": "NUMBER",
+                    "description": "## Initial Date-Time Limit Reference\n- Specify the **initial date-time limit** in Unix time (milliseconds).\n- **Example**:\n  - `1705791600000`\n- Defaults to **-1 month ago** if not specified.",
+                    "default": ""
+                },
+                {
+                    "name": "final",
+                    "type": "NUMBER",
+                    "description": "## Final Data-Time Delimiter\n- Defines the **final time delimiter** in Unix Time format (milliseconds).\n- **Example**:\n  - `1705878000000`\n- Defaults to **Now** if not specified.",
+                    "default": ""
+                },
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "## Query Expressions with Keywords and Filters: Using Boolean Operators\n\n- **Combine keywords and filters** for precise searches.\n- **Boolean operators** (`AND`, `OR`, `NOT`) enable specific query refinements.\n\n### Examples:\n- `site:lavanguardia.com` - Searches within a specific domain.\n- `CaixaBank AND Hipoteca` - Both keywords must be present.\n- `title:CaixaBank` - Filters by keyword in the title.\n- **Combined**: `site:lavanguardia.com AND title:(CaixaBank AND Hipoteca)` - Searches articles with multiple conditions.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://spain-economy-news.p.rapidapi.com/\"\nquerystring = {\"initial\": \"\", \"final\": \"\", \"category\": \"banking\", \"query\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"spain-economy-news.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://spain-economy-news.p.rapidapi.com/\"\nquerystring = {\"initial\": \"\", \"final\": \"\", \"category\": \"banking\", \"query\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"spain-economy-news.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "response": {
+                        "type": "object",
+                        "properties": {
+                            "next_category": {
+                                "type": "string"
+                            },
+                            "restResults": {
+                                "type": "integer"
+                            },
+                            "totalResults": {
+                                "type": "integer"
+                            },
+                            "next_ts": {
+                                "type": "string"
+                            },
+                            "next_q": {
+                                "type": "string"
+                            },
+                            "data": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "type": "number"
+                                        },
+                                        "site_region": {
+                                            "type": "string"
+                                        },
+                                        "site_language": {
+                                            "type": "string"
+                                        },
+                                        "domain": {
+                                            "type": "string"
+                                        },
+                                        "unique_visitors": {
+                                            "type": "integer"
+                                        },
+                                        "language": {
+                                            "type": "string"
+                                        },
+                                        "site_type": {
+                                            "type": "string"
+                                        },
+                                        "rank": {
+                                            "type": "integer"
+                                        },
+                                        "site_country": {
+                                            "type": "string"
+                                        },
+                                        "site": {
+                                            "type": "string"
+                                        },
+                                        "section": {
+                                            "type": "string"
+                                        },
+                                        "author": {
+                                            "type": "string"
+                                        },
+                                        "text": {
+                                            "type": "string"
+                                        },
+                                        "title": {
+                                            "type": "string"
+                                        },
+                                        "site_section": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "published": {
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "crawled": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            },
+                            "next_tsi": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

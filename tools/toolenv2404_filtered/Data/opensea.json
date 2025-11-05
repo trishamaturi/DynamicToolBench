@@ -1,0 +1,401 @@
+{
+    "product_id": "api_18852723-4005-4a3c-91cd-ce9c1e5347ac",
+    "tool_description": "NFT API. OpenSea API is a tool that allows data in the OpenSea NFT marketplace to be accessed and integrated into applications and websites.",
+    "home_url": "https://rapidapi.com/Glavier/api/opensea13/",
+    "name": "OpenSea",
+    "title": "OpenSea",
+    "pricing": "FREEMIUM",
+    "tool_name": "OpenSea",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 171,
+        "avgSuccessRate": 98,
+        "popularityScore": 9,
+        "__typename": "Score"
+    },
+    "host": "opensea13.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Events",
+            "url": "https://opensea13.p.rapidapi.com/v2/events",
+            "description": "Get a list of events based on before and after timestamps.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The number of events to return. Must be between 1 and 50. Default: 50",
+                    "default": "50"
+                },
+                {
+                    "name": "event_type",
+                    "type": "ENUM",
+                    "description": "The type of event to filter by. If not provided, only sales will be returned.",
+                    "default": ""
+                },
+                {
+                    "name": "next",
+                    "type": "STRING",
+                    "description": "The cursor for the next page of results. This is returned from a previous request.",
+                    "default": ""
+                },
+                {
+                    "name": "before",
+                    "type": "STRING",
+                    "description": "Filter to only include events that occurred before the given timestamp. The Unix epoch timstamp must be in seconds.",
+                    "default": ""
+                },
+                {
+                    "name": "after",
+                    "type": "STRING",
+                    "description": "Filter to only include events that occurred at or after the given timestamp. The Unix epoch timstamp must be in seconds",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/v2/events\"\nquerystring = {\"limit\": \"50\", \"event_type\": \"\", \"next\": \"\", \"before\": \"\", \"after\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/v2/events\"\nquerystring = {\"limit\": \"50\", \"event_type\": \"\", \"next\": \"\", \"before\": \"\", \"after\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1 / Collections",
+            "url": "https://opensea13.p.rapidapi.com/collections/",
+            "description": "The `/collections/` endpoint provides a list of all the collections supported and vetted by OpenSea. To include all collections relevant to a user (including non-whitelisted ones), set the` owner` param.\n\nEach collection in the returned area has an attribute called `primary_asset_contracts` with info about the smart contracts belonging to that collection. For example, ERC-1155 contracts maybe have multiple collections all referencing the same contract, but many ERC-721 contracts may all belong to the same collection (dapp).\n\nYou can also use this endpoint to find which dapps an account uses, and how many items they own in each - all in one API call!",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "For pagination. Number of contracts offset from the beginning of the result list.",
+                    "default": "0"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "For pagination. Maximum number of contracts to return.",
+                    "default": "300"
+                },
+                {
+                    "name": "asset_owner",
+                    "type": "STRING",
+                    "description": "A wallet address. If specified, will return collections where the owner owns at least one asset belonging to smart contracts in the collection. The number of assets the account owns is shown as `owned_asset_count` for each collection.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/collections/\"\nquerystring = {\"offset\": \"0\", \"limit\": \"300\", \"asset_owner\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/collections/\"\nquerystring = {\"offset\": \"0\", \"limit\": \"300\", \"asset_owner\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Collections",
+            "url": "https://opensea13.p.rapidapi.com/v2/collections",
+            "description": "Get a list of OpenSea collections.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "chain",
+                    "type": "ENUM",
+                    "description": "The blockchain on which to filter the results.",
+                    "default": ""
+                },
+                {
+                    "name": "next",
+                    "type": "STRING",
+                    "description": "The cursor for the next page of results. This is returned from a previous request.",
+                    "default": ""
+                },
+                {
+                    "name": "include_hidden",
+                    "type": "BOOLEAN",
+                    "description": "If true, will return hidden collections. Default: false",
+                    "default": "false"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The number of collections to return. Must be between 1 and 100. Default: 100",
+                    "default": "100"
+                },
+                {
+                    "name": "creator_username",
+                    "type": "STRING",
+                    "description": "If set, will only return collections created by the given OpenSea username.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/v2/collections\"\nquerystring = {\"chain\": \"\", \"next\": \"\", \"include_hidden\": \"false\", \"limit\": \"100\", \"creator_username\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/v2/collections\"\nquerystring = {\"chain\": \"\", \"next\": \"\", \"include_hidden\": \"false\", \"limit\": \"100\", \"creator_username\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Contract",
+            "url": "https://opensea13.p.rapidapi.com/v2/contract",
+            "description": "Get a smart contract for a given chain and address.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "chain",
+                    "type": "ENUM",
+                    "description": "The blockchain on which to filter the results",
+                    "default": ""
+                },
+                {
+                    "name": "address",
+                    "type": "STRING",
+                    "description": "The public blockchain address",
+                    "default": "0xA82801Ddf9f5B974085e0450BeBDD95365F5C3ab"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/v2/contract\"\nquerystring = {\"chain\": \"\", \"address\": \"0xA82801Ddf9f5B974085e0450BeBDD95365F5C3ab\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/v2/contract\"\nquerystring = {\"chain\": \"\", \"address\": \"0xA82801Ddf9f5B974085e0450BeBDD95365F5C3ab\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Account",
+            "url": "https://opensea13.p.rapidapi.com/v2/account",
+            "description": "Get an OpenSea Account Profile including details such as bio, social media usernames, and profile image.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "address",
+                    "type": "STRING",
+                    "description": "The public blockchain address",
+                    "default": "0x04B4Bfaf35C7306574bd574A1ca2E5f43ad8F2f4"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/v2/account\"\nquerystring = {\"address\": \"0x04B4Bfaf35C7306574bd574A1ca2E5f43ad8F2f4\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/v2/account\"\nquerystring = {\"address\": \"0x04B4Bfaf35C7306574bd574A1ca2E5f43ad8F2f4\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1 / Collection Stats",
+            "url": "https://opensea13.p.rapidapi.com/collection_stats/",
+            "description": "Use this endpoint to fetch stats for a specific collection, including realtime floor price statistics.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "collection_slug",
+                    "type": "STRING",
+                    "description": "The collection slug",
+                    "default": "doodles-official"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/collection_stats/\"\nquerystring = {\"collection_slug\": \"doodles-official\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/collection_stats/\"\nquerystring = {\"collection_slug\": \"doodles-official\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Collection Stats",
+            "url": "https://opensea13.p.rapidapi.com/v2/collection_stats",
+            "description": "Get stats for a single collection.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "collection_slug",
+                    "type": "STRING",
+                    "description": "Unique string to identify a collection on OpenSea. This can be found by visiting the collection on the OpenSea website and noting the last path parameter.",
+                    "default": "doodles-official"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/v2/collection_stats\"\nquerystring = {\"collection_slug\": \"doodles-official\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/v2/collection_stats\"\nquerystring = {\"collection_slug\": \"doodles-official\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Single Contract",
+            "url": "https://opensea13.p.rapidapi.com/asset_contract/",
+            "description": "Used to fetch more in-depth information about an contract asset.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "asset_contract_address",
+                    "type": "STRING",
+                    "description": "Address of the contract",
+                    "default": "0x06012c8cf97bead5deae237070f9587f8e7a266d"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/asset_contract/\"\nquerystring = {\"asset_contract_address\": \"0x06012c8cf97bead5deae237070f9587f8e7a266d\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/asset_contract/\"\nquerystring = {\"asset_contract_address\": \"0x06012c8cf97bead5deae237070f9587f8e7a266d\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Assets",
+            "url": "https://opensea13.p.rapidapi.com/assets/",
+            "description": "To retrieve assets from our API, call the `/assets/` endpoint with the desired filter parameters.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "asset_contract_addresses",
+                    "type": "STRING",
+                    "description": "An array of contract addresses to search for (e.g. `?asset_contract_addresses=0x1...&asset_contract_addresses=0x2...`). Will return a list of assets with contracts matching any of the addresses in this array. If **token_ids** is also specified, then it will only return assets that match each `(address, token_id)` pairing, respecting order.",
+                    "default": ""
+                },
+                {
+                    "name": "order_direction",
+                    "type": "STRING",
+                    "description": "Can be `asc` for ascending or `desc` for descending",
+                    "default": "desc"
+                },
+                {
+                    "name": "include_orders",
+                    "type": "BOOLEAN",
+                    "description": "A flag determining if order information should be included in the response.",
+                    "default": "false"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limit. Defaults to 20, capped at 50.",
+                    "default": "20"
+                },
+                {
+                    "name": "collection_slug",
+                    "type": "STRING",
+                    "description": "Limit responses to members of a collection. Case sensitive and must match the collection slug exactly. Will return all assets from all contracts in a collection.",
+                    "default": "cryptopunks"
+                },
+                {
+                    "name": "cursor",
+                    "type": "STRING",
+                    "description": "A cursor pointing to the page to retrieve",
+                    "default": ""
+                },
+                {
+                    "name": "collection_editor",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "asset_contract_address",
+                    "type": "STRING",
+                    "description": "The NFT contract address for the assets",
+                    "default": ""
+                },
+                {
+                    "name": "owner",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "collection",
+                    "type": "STRING",
+                    "description": "Limit responses to members of a collection. Case sensitive and must match the collection slug exactly. Will return all assets from all contracts in a collection.",
+                    "default": ""
+                },
+                {
+                    "name": "token_ids",
+                    "type": "STRING",
+                    "description": "An array of token IDs to search for (e.g. `?token_ids=1&token_ids=209`). Will return a list of assets with token_id matching any of the IDs in this array.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/assets/\"\nquerystring = {\"asset_contract_addresses\": \"\", \"order_direction\": \"desc\", \"include_orders\": \"false\", \"limit\": \"20\", \"collection_slug\": \"cryptopunks\", \"cursor\": \"\", \"collection_editor\": \"\", \"asset_contract_address\": \"\", \"owner\": \"\", \"collection\": \"\", \"token_ids\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/assets/\"\nquerystring = {\"asset_contract_addresses\": \"\", \"order_direction\": \"desc\", \"include_orders\": \"false\", \"limit\": \"20\", \"collection_slug\": \"cryptopunks\", \"cursor\": \"\", \"collection_editor\": \"\", \"asset_contract_address\": \"\", \"owner\": \"\", \"collection\": \"\", \"token_ids\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Single Collection",
+            "url": "https://opensea13.p.rapidapi.com/collection/",
+            "description": "Used for retrieving more in-depth information about individual collections, including real time statistics like floor price.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "collection_slug",
+                    "type": "STRING",
+                    "description": "The collection slug of this collection that is used to uniquely link to this collection on OpenSea",
+                    "default": "doodles-official"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/collection/\"\nquerystring = {\"collection_slug\": \"doodles-official\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/collection/\"\nquerystring = {\"collection_slug\": \"doodles-official\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Bundles",
+            "url": "https://opensea13.p.rapidapi.com/bundles/",
+            "description": "Bundles are groups of items for sale on OpenSea. You can buy them all at once in one transaction, and you can create them without any transactions or gas, as long as you've already approved the assets inside.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "asset_contract_address",
+                    "type": "STRING",
+                    "description": "Contract address of all the assets in a bundle. Only works for homogenous bundles, not mixed ones.",
+                    "default": ""
+                },
+                {
+                    "name": "on_sale",
+                    "type": "BOOLEAN",
+                    "description": "If set to `true`, only show bundles currently on sale. If set to `false`, only show bundles that have been sold or cancelled.",
+                    "default": ""
+                },
+                {
+                    "name": "owner",
+                    "type": "STRING",
+                    "description": "Account address of the owner of a bundle (and all assets within)",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "For pagination: how many results to return",
+                    "default": "20"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "For pagination: the index of the result to start at (beginning with 0)",
+                    "default": "0"
+                },
+                {
+                    "name": "asset_contract_addresses",
+                    "type": "STRING",
+                    "description": "An array of contract addresses to search for (e.g. `?asset_contract_addresses=0x1...&asset_contract_addresses=0x2...`). Will return a list of bundles with assets having contracts that match ALL of the addresses in this array. Useful for querying for mixed bundles, e.g. ones with CryptoKitties AND CK Talisman statues.",
+                    "default": ""
+                },
+                {
+                    "name": "token_ids",
+                    "type": "STRING",
+                    "description": "A list of token IDs for showing only bundles with at least one of the token IDs in the list",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/bundles/\"\nquerystring = {\"asset_contract_address\": \"\", \"on_sale\": \"\", \"owner\": \"\", \"limit\": \"20\", \"offset\": \"0\", \"asset_contract_addresses\": \"\", \"token_ids\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://opensea13.p.rapidapi.com/bundles/\"\nquerystring = {\"asset_contract_address\": \"\", \"on_sale\": \"\", \"owner\": \"\", \"limit\": \"20\", \"offset\": \"0\", \"asset_contract_addresses\": \"\", \"token_ids\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"opensea13.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

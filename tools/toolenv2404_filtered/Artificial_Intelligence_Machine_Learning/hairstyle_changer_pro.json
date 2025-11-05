@@ -1,0 +1,97 @@
+{
+    "product_id": "api_b01d37ad-6fe5-494c-b7e3-fb3d58628bbc",
+    "tool_description": "Based on the stable diffusion model, it supports dozens of different hairstyles and colors, with each generated result being unique. It can simultaneously produce up to four result images for easy comparison and selection of the most suitable hairstyle.",
+    "home_url": "https://rapidapi.com/ailabapi-ailabapi-default/api/hairstyle-changer-pro/",
+    "name": "Hairstyle Changer Pro",
+    "title": "Hairstyle Changer Pro",
+    "pricing": "FREEMIUM",
+    "tool_name": "Hairstyle Changer Pro",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 227,
+        "avgSuccessRate": 90,
+        "popularityScore": 8.5,
+        "__typename": "Score"
+    },
+    "host": "hairstyle-changer-pro.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Retrieve Task Results by task_id",
+            "url": "https://hairstyle-changer-pro.p.rapidapi.com/api/rapidapi/query-async-task-result",
+            "description": "Retrieve asynchronous task results by `task_id`.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "task_id",
+                    "type": "STRING",
+                    "description": "Task id\uff1a`task_id`",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://hairstyle-changer-pro.p.rapidapi.com/api/rapidapi/query-async-task-result\"\nquerystring = {\"task_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hairstyle-changer-pro.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hairstyle-changer-pro.p.rapidapi.com/api/rapidapi/query-async-task-result\"\nquerystring = {\"task_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hairstyle-changer-pro.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "error_code": {
+                    "type": "integer",
+                    "description": "Status code."
+                },
+                "error_code_str": {
+                    "type": "string",
+                    "description": "Error Code."
+                },
+                "error_msg": {
+                    "type": "string",
+                    "description": "Error Message."
+                },
+                "error_detail": {
+                    "type": "object",
+                    "description": "Error Details.",
+                    "properties": {
+                        "status_code": {
+                            "type": "integer",
+                            "description": "Status Code."
+                        },
+                        "code": {
+                            "type": "string",
+                            "description": "Error Code. Compared to the error_code_str field: The code field is more precise."
+                        },
+                        "code_message": {
+                            "type": "string",
+                            "description": "The information represented by the Error Code(code)."
+                        },
+                        "message": {
+                            "type": "string",
+                            "description": "Supplementary information for the code_message field."
+                        }
+                    }
+                },
+                "task_status": {
+                    "type": "integer",
+                    "description": "Asynchronous task status.",
+                    "enum": {
+                        "0": "The task is queued.",
+                        "1": "Asynchronous processing.",
+                        "2": "Processing was successful."
+                    }
+                },
+                "data": {
+                    "type": "object",
+                    "description": "The content of the result data returned.",
+                    "properties": {
+                        "images": {
+                            "type": "array",
+                            "example": [
+                                "https://www.ailabtools.com/image1.png",
+                                "https://www.ailabtools.com/image1.png"
+                            ],
+                            "description": "Result URL address. Note: The URL address is a temporary address, valid for 24 hours, and will not be accessible after the expiration date."
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,868 @@
+{
+    "product_id": "api_c40fbd10-b9ae-4ce7-ab4e-b007e3f86dd5",
+    "tool_description": "Informaci\u00f3n complementaria para documentos oficiales en M\u00e9xico",
+    "home_url": "https://rapidapi.com/nokioxteam/api/documentos-mex1/",
+    "name": "Documentos Mex",
+    "title": "Documentos Mex",
+    "pricing": "FREEMIUM",
+    "tool_name": "Documentos Mex",
+    "score": null,
+    "host": "documentos-mex1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Validar INE - E",
+            "url": "https://documentos-mex1.p.rapidapi.com/Ine/ValidarIdTipoE",
+            "description": "Valida una credencial para votar de tipo E, indicando si esta vigente y si puede votar.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "cic",
+                    "type": "STRING",
+                    "description": "C\u00f3digo de Identificaci\u00f3n de la Credencial",
+                    "default": "216566967"
+                },
+                {
+                    "name": "idciudadano",
+                    "type": "STRING",
+                    "description": "Identificador Ciudadano",
+                    "default": "058286731"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Ine/ValidarIdTipoE\"\nquerystring = {\"cic\": \"216566967\", \"idciudadano\": \"058286731\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Ine/ValidarIdTipoE\"\nquerystring = {\"cic\": \"216566967\", \"idciudadano\": \"058286731\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "estaVigente": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "object",
+                        "properties": {
+                            "CIC": {
+                                "type": "string"
+                            },
+                            "Clave de elector": {
+                                "type": "string"
+                            },
+                            "N\u00famero de emisi\u00f3n": {
+                                "type": "string"
+                            },
+                            "Distrito Federal": {
+                                "type": "string"
+                            },
+                            "N\u00famero OCR": {
+                                "type": "string"
+                            },
+                            "A\u00f1o de registro": {
+                                "type": "string"
+                            },
+                            "A\u00f1o de emisi\u00f3n": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "motivo": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Afiliaci\u00f3n Politica",
+            "url": "https://documentos-mex1.p.rapidapi.com/Ine/VerificarAfiliacion",
+            "description": "Obtiene la afiliaci\u00f3n politica de una persona mediante su clave de elector.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "claveElector",
+                    "type": "STRING",
+                    "description": "Clave de Elector",
+                    "default": "RJPRSN85121707M000"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Ine/VerificarAfiliacion\"\nquerystring = {\"claveElector\": \"RJPRSN85121707M000\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Ine/VerificarAfiliacion\"\nquerystring = {\"claveElector\": \"RJPRSN85121707M000\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    },
+                    "militante": {
+                        "type": "string"
+                    },
+                    "partido": {
+                        "type": "string"
+                    },
+                    "miembroDesde": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "N\u00famero de Seguridad Social",
+            "url": "https://documentos-mex1.p.rapidapi.com/Imss/ExtraerNss",
+            "description": "Obtiene el n\u00famero de seguridad social de una persona mediante su CURP, as\u00ed como la unidad m\u00e9dica asignada y si cuenta con vigencia de derechos.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "curp",
+                    "type": "STRING",
+                    "description": "Clave Unica de Registro de Poblaci\u00f3n",
+                    "default": "LOSL821028HMCPNS05"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Imss/ExtraerNss\"\nquerystring = {\"curp\": \"LOSL821028HMCPNS05\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Imss/ExtraerNss\"\nquerystring = {\"curp\": \"LOSL821028HMCPNS05\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "datosPersonales": {
+                        "type": "object",
+                        "properties": {
+                            "curp": {
+                                "type": "string"
+                            },
+                            "nombre": {
+                                "type": "string"
+                            },
+                            "primerApellido": {
+                                "type": "string"
+                            },
+                            "segundoApellido": {
+                                "type": "string"
+                            },
+                            "fechaNacimiento": {
+                                "type": "string"
+                            },
+                            "sexo": {
+                                "type": "string"
+                            },
+                            "nss": {
+                                "type": "string"
+                            },
+                            "entidadNacimiento": {
+                                "type": "string"
+                            },
+                            "edadCumplida": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "unidadMedica": {
+                        "type": "object",
+                        "properties": {
+                            "clave": {
+                                "type": "integer"
+                            },
+                            "domicilio": {
+                                "type": "string"
+                            },
+                            "id": {
+                                "type": "integer"
+                            },
+                            "nombre": {
+                                "type": "string"
+                            },
+                            "telefono": {
+                                "type": "string"
+                            },
+                            "tipo": {
+                                "type": "string"
+                            },
+                            "latitud": {
+                                "type": "string"
+                            },
+                            "longitud": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "vigencia": {
+                        "type": "object",
+                        "properties": {
+                            "conDerechoInc": {
+                                "type": "string"
+                            },
+                            "conDerechoSm": {
+                                "type": "string"
+                            },
+                            "vigenteHasta": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Generar Curp",
+            "url": "https://documentos-mex1.p.rapidapi.com/Renapo/GenerarCurp",
+            "description": "Genera la Clave Unica de Registro de Poblacion mediante datos personales.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "SecondLastName",
+                    "type": "STRING",
+                    "description": "Apellido Materno",
+                    "default": "BAEZ"
+                },
+                {
+                    "name": "Day",
+                    "type": "NUMBER",
+                    "description": "D\u00eda de Nacimiento (sin ceros a la izquierda)",
+                    "default": "30"
+                },
+                {
+                    "name": "Month",
+                    "type": "NUMBER",
+                    "description": "Mes de Nacimiento (sin ceros a la izquierda)",
+                    "default": "6"
+                },
+                {
+                    "name": "Names",
+                    "type": "STRING",
+                    "description": "Nombres",
+                    "default": "JUAN CARLOS"
+                },
+                {
+                    "name": "Genre",
+                    "type": "STRING",
+                    "description": "Hombre: H\nMujer: M",
+                    "default": "H"
+                },
+                {
+                    "name": "Year",
+                    "type": "NUMBER",
+                    "description": "A\u00f1o de Nacimiento",
+                    "default": "1983"
+                },
+                {
+                    "name": "FirstLastName",
+                    "type": "STRING",
+                    "description": "Apellido Paterno",
+                    "default": "POZOS"
+                },
+                {
+                    "name": "State",
+                    "type": "NUMBER",
+                    "description": "Estado de Nacimiento  (sin ceros a la izquierda). Para ver una lista de los estados y su correspondencia ejecute el m\u00e9todo \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Obtener Estados\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"",
+                    "default": "9"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Renapo/GenerarCurp\"\nquerystring = {\"SecondLastName\": \"BAEZ\", \"Day\": \"30\", \"Month\": \"6\", \"Names\": \"JUAN CARLOS\", \"Genre\": \"H\", \"Year\": \"1983\", \"FirstLastName\": \"POZOS\", \"State\": \"9\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Renapo/GenerarCurp\"\nquerystring = {\"SecondLastName\": \"BAEZ\", \"Day\": \"30\", \"Month\": \"6\", \"Names\": \"JUAN CARLOS\", \"Genre\": \"H\", \"Year\": \"1983\", \"FirstLastName\": \"POZOS\", \"State\": \"9\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "curp": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Cedula Profesional por Id",
+            "url": "https://documentos-mex1.p.rapidapi.com/Sep/VerificarPorCedula",
+            "description": "Obtiene los datos personales de una persona asociada a un n\u00famero de cedula profesional.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "cedula",
+                    "type": "STRING",
+                    "description": "N\u00famero de cedula",
+                    "default": "10935172"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Sep/VerificarPorCedula\"\nquerystring = {\"cedula\": \"10935172\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Sep/VerificarPorCedula\"\nquerystring = {\"cedula\": \"10935172\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "nombre": {
+                        "type": "string"
+                    },
+                    "apellidoPaterno": {
+                        "type": "string"
+                    },
+                    "apellidoMaterno": {
+                        "type": "string"
+                    },
+                    "titulo": {
+                        "type": "string"
+                    },
+                    "genero": {
+                        "type": "string"
+                    },
+                    "cedula": {
+                        "type": "string"
+                    },
+                    "escuela": {
+                        "type": "string"
+                    },
+                    "a\u00f1oRegistro": {
+                        "type": "integer"
+                    },
+                    "tipo": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Obtener Estados ID",
+            "url": "https://documentos-mex1.p.rapidapi.com/Renapo/ObtenerEstados",
+            "description": "Obtiene los estados de la rep\u00fablica y su correspondiente valor num\u00e9rico para el m\u00e9todo \"Generar Curp\"",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Renapo/ObtenerEstados\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Renapo/ObtenerEstados\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "Aguascalientes": {
+                        "type": "integer"
+                    },
+                    "Baja_California": {
+                        "type": "integer"
+                    },
+                    "Baja_California_Sur": {
+                        "type": "integer"
+                    },
+                    "Campeche": {
+                        "type": "integer"
+                    },
+                    "Chiapas": {
+                        "type": "integer"
+                    },
+                    "Chihuahua": {
+                        "type": "integer"
+                    },
+                    "Coahuila": {
+                        "type": "integer"
+                    },
+                    "Colima": {
+                        "type": "integer"
+                    },
+                    "Distrito_Federal": {
+                        "type": "integer"
+                    },
+                    "Durango": {
+                        "type": "integer"
+                    },
+                    "Guanajuato": {
+                        "type": "integer"
+                    },
+                    "Guerrero": {
+                        "type": "integer"
+                    },
+                    "Hidalgo": {
+                        "type": "integer"
+                    },
+                    "Jalisco": {
+                        "type": "integer"
+                    },
+                    "Mexico": {
+                        "type": "integer"
+                    },
+                    "Morelos": {
+                        "type": "integer"
+                    },
+                    "Michoacan": {
+                        "type": "integer"
+                    },
+                    "Nayarit": {
+                        "type": "integer"
+                    },
+                    "Nuevo_Leon": {
+                        "type": "integer"
+                    },
+                    "Oaxaca": {
+                        "type": "integer"
+                    },
+                    "Puebla": {
+                        "type": "integer"
+                    },
+                    "Queretaro": {
+                        "type": "integer"
+                    },
+                    "Quintana_Roo": {
+                        "type": "integer"
+                    },
+                    "San_Luis_Potosi": {
+                        "type": "integer"
+                    },
+                    "Sinaloa": {
+                        "type": "integer"
+                    },
+                    "Sonora": {
+                        "type": "integer"
+                    },
+                    "Tabasco": {
+                        "type": "integer"
+                    },
+                    "Tamaulipas": {
+                        "type": "integer"
+                    },
+                    "Tlaxcala": {
+                        "type": "integer"
+                    },
+                    "Veracruz": {
+                        "type": "integer"
+                    },
+                    "Yucatan": {
+                        "type": "integer"
+                    },
+                    "Zacatecas": {
+                        "type": "integer"
+                    },
+                    "Extranjero": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Validar INE - C",
+            "url": "https://documentos-mex1.p.rapidapi.com/Ine/ValidarIdTipoC",
+            "description": "Valida una credencial para votar de tipo C, indicando si esta vigente y si puede votar.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "ClaveElector",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "MLVLCR80042609M900"
+                },
+                {
+                    "name": "Ocr",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0978119955657"
+                },
+                {
+                    "name": "NumeroEmision",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "00"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Ine/ValidarIdTipoC\"\nquerystring = {\"ClaveElector\": \"MLVLCR80042609M900\", \"Ocr\": \"0978119955657\", \"NumeroEmision\": \"00\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Ine/ValidarIdTipoC\"\nquerystring = {\"ClaveElector\": \"MLVLCR80042609M900\", \"Ocr\": \"0978119955657\", \"NumeroEmision\": \"00\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "estaVigente": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "object"
+                    },
+                    "motivo": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Verificar REPEP",
+            "url": "https://documentos-mex1.p.rapidapi.com/Profeco/VerificarRepep",
+            "description": "Verifica que un n\u00famero de tel\u00e9fono este registrado en el Registro P\u00fablico Para Evitar Publicidad, que es un mecanismo para la protecci\u00f3n de los derechos de los consumidores a no ser molestados con publicidad no deseada y su informaci\u00f3n no sea utilizada con fines mercadot\u00e9cnicos o publicitarios, mediante llamadas telef\u00f3nicas y mensajes de texto.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "numeroTelefonico",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "5514559123"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Profeco/VerificarRepep\"\nquerystring = {\"numeroTelefonico\": \"5514559123\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Profeco/VerificarRepep\"\nquerystring = {\"numeroTelefonico\": \"5514559123\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "estado": {
+                        "type": "string"
+                    },
+                    "detalles": {
+                        "type": "object",
+                        "properties": {
+                            "estatus": {
+                                "type": "string"
+                            },
+                            "fechaRegistro": {
+                                "type": "string"
+                            },
+                            "entidad": {
+                                "type": "string"
+                            },
+                            "codigoArea": {
+                                "type": "string"
+                            },
+                            "telefono": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Detalles de Credito",
+            "url": "https://documentos-mex1.p.rapidapi.com/Infonavit/DetallesCredito",
+            "description": "Obtiene los detalles de un cr\u00e9dito infonavit mediante el n\u00famero de cr\u00e9dito",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "numeroCredito",
+                    "type": "STRING",
+                    "description": "N\u00famero de Cr\u00e9dito Infonavit",
+                    "default": "2312190507"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Infonavit/DetallesCredito\"\nquerystring = {\"numeroCredito\": \"2312190507\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Infonavit/DetallesCredito\"\nquerystring = {\"numeroCredito\": \"2312190507\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "patron": {
+                        "type": "string"
+                    },
+                    "patronRfc": {
+                        "type": "string"
+                    },
+                    "patronLocalidad": {
+                        "type": "string"
+                    },
+                    "numeroCredito": {
+                        "type": "integer"
+                    },
+                    "trabajadorNombre": {
+                        "type": "string"
+                    },
+                    "trabajadorNss": {
+                        "type": "integer"
+                    },
+                    "trabajadorRfc": {
+                        "type": "string"
+                    },
+                    "montoDescuento": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Oficios y Categorias",
+            "url": "https://documentos-mex1.p.rapidapi.com/Oficios/ObtenerCategorias",
+            "description": "Obtiene un listado de categorias para agrupar oficios: carpinteria, limpieza, mudanzas y fletes, herreros, etc",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Oficios/ObtenerCategorias\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Oficios/ObtenerCategorias\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Verificar Placa",
+            "url": "https://documentos-mex1.p.rapidapi.com/Repuve/VerificarPlaca",
+            "description": "Verifica en el registro p\u00fablico vehicular si un vehiculo cuenta con reporte de robo.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "placa",
+                    "type": "STRING",
+                    "description": "N\u00famero de placa con guiones o sin guiones",
+                    "default": "HLE776A"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Repuve/VerificarPlaca\"\nquerystring = {\"placa\": \"HLE776A\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Repuve/VerificarPlaca\"\nquerystring = {\"placa\": \"HLE776A\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "detalles": {
+                        "type": "object",
+                        "properties": {
+                            "Marca": {
+                                "type": "string"
+                            },
+                            "Modelo": {
+                                "type": "string"
+                            },
+                            "A\u00f1o Modelo": {
+                                "type": "string"
+                            },
+                            "Clase": {
+                                "type": "string"
+                            },
+                            "Tipo": {
+                                "type": "string"
+                            },
+                            "N\u00famero de Identificaci\u00f3n Vehicular (NIV)": {
+                                "type": "string"
+                            },
+                            "N\u00famero de Constancia de Inscripcin (NCI)": {
+                                "type": "string"
+                            },
+                            "Placa": {
+                                "type": "string"
+                            },
+                            "Nmero de puertas": {
+                                "type": "string"
+                            },
+                            "Pas de origen": {
+                                "type": "string"
+                            },
+                            "Versin": {
+                                "type": "string"
+                            },
+                            "Desplazamiento (cc/L)": {
+                                "type": "string"
+                            },
+                            "Nmero de cilindros": {
+                                "type": "string"
+                            },
+                            "N\u00famero de ejes": {
+                                "type": "string"
+                            },
+                            "Planta de ensamble": {
+                                "type": "string"
+                            },
+                            "Datos complementarios": {
+                                "type": "string"
+                            },
+                            "Instituci\u00f3n que lo inscribi\u00f3": {
+                                "type": "string"
+                            },
+                            "Fecha de inscripci\u00f3n": {
+                                "type": "string"
+                            },
+                            "Fecha de emplacado": {
+                                "type": "string"
+                            },
+                            "Fecha de \u00faltima actualizacin": {
+                                "type": "string"
+                            },
+                            "Folio de Constancia de Inscripci\u00f3n": {
+                                "type": "string"
+                            },
+                            "Observaciones": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "reportado": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Obtener Estados Acronimo",
+            "url": "https://documentos-mex1.p.rapidapi.com/Renapo/ObtenerEstadosAcronimo",
+            "description": "Obtiene la lista de entidades federativas de la rep\u00fablica mexicana y su acr\u00f3nimo",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Renapo/ObtenerEstadosAcronimo\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Renapo/ObtenerEstadosAcronimo\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "Aguascalientes": {
+                        "type": "string"
+                    },
+                    "Baja_California": {
+                        "type": "string"
+                    },
+                    "Baja_California_Sur": {
+                        "type": "string"
+                    },
+                    "Campeche": {
+                        "type": "string"
+                    },
+                    "Chiapas": {
+                        "type": "string"
+                    },
+                    "Chihuahua": {
+                        "type": "string"
+                    },
+                    "Coahuila": {
+                        "type": "string"
+                    },
+                    "Colima": {
+                        "type": "string"
+                    },
+                    "Distrito_Federal": {
+                        "type": "string"
+                    },
+                    "Durango": {
+                        "type": "string"
+                    },
+                    "Guanajuato": {
+                        "type": "string"
+                    },
+                    "Guerrero": {
+                        "type": "string"
+                    },
+                    "Hidalgo": {
+                        "type": "string"
+                    },
+                    "Jalisco": {
+                        "type": "string"
+                    },
+                    "Mexico": {
+                        "type": "string"
+                    },
+                    "Morelos": {
+                        "type": "string"
+                    },
+                    "Michoacan": {
+                        "type": "string"
+                    },
+                    "Nayarit": {
+                        "type": "string"
+                    },
+                    "Nuevo_Leon": {
+                        "type": "string"
+                    },
+                    "Oaxaca": {
+                        "type": "string"
+                    },
+                    "Puebla": {
+                        "type": "string"
+                    },
+                    "Queretaro": {
+                        "type": "string"
+                    },
+                    "Quintana_Roo": {
+                        "type": "string"
+                    },
+                    "San_Luis_Potosi": {
+                        "type": "string"
+                    },
+                    "Sinaloa": {
+                        "type": "string"
+                    },
+                    "Sonora": {
+                        "type": "string"
+                    },
+                    "Tabasco": {
+                        "type": "string"
+                    },
+                    "Tamaulipas": {
+                        "type": "string"
+                    },
+                    "Tlaxcala": {
+                        "type": "string"
+                    },
+                    "Veracruz": {
+                        "type": "string"
+                    },
+                    "Yucatan": {
+                        "type": "string"
+                    },
+                    "Zacatecas": {
+                        "type": "string"
+                    },
+                    "Extranjero": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Generar RFC",
+            "url": "https://documentos-mex1.p.rapidapi.com/Sat/GenerarRfc",
+            "description": "Genera el Registro Federal de Contribuyentes de una persona fisica con homoclave mediante sus datos personales.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "Day",
+                    "type": "NUMBER",
+                    "description": "D\u00eda de Nacimiento (sin ceros a la izquierda)",
+                    "default": "28"
+                },
+                {
+                    "name": "Month",
+                    "type": "NUMBER",
+                    "description": "Mes de Nacimiento (sin ceros a la izquierda)",
+                    "default": "10"
+                },
+                {
+                    "name": "Name",
+                    "type": "STRING",
+                    "description": "Nombres",
+                    "default": "LUIS FERNANDO"
+                },
+                {
+                    "name": "FirstLastName",
+                    "type": "STRING",
+                    "description": "Apellido Paterno",
+                    "default": "LOPEZ"
+                },
+                {
+                    "name": "SecondLastName",
+                    "type": "STRING",
+                    "description": "Apellido Materno",
+                    "default": "SANCHEZ"
+                },
+                {
+                    "name": "Year",
+                    "type": "NUMBER",
+                    "description": "A\u00f1o de Nacimiento",
+                    "default": "1982"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Sat/GenerarRfc\"\nquerystring = {\"Day\": \"28\", \"Month\": \"10\", \"Name\": \"LUIS FERNANDO\", \"FirstLastName\": \"LOPEZ\", \"SecondLastName\": \"SANCHEZ\", \"Year\": \"1982\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://documentos-mex1.p.rapidapi.com/Sat/GenerarRfc\"\nquerystring = {\"Day\": \"28\", \"Month\": \"10\", \"Name\": \"LUIS FERNANDO\", \"FirstLastName\": \"LOPEZ\", \"SecondLastName\": \"SANCHEZ\", \"Year\": \"1982\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"documentos-mex1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "rfc": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,922 @@
+{
+    "product_id": "api_c233e4de-3a3e-40ef-8e45-e11c94c547f4",
+    "tool_description": "Asos API helps to query for all information about categories, products, and reviews as on official Asos websites",
+    "home_url": "https://rapidapi.com/apimaker/api/asos-data-feed/",
+    "name": "Asos Data Feed",
+    "title": "Asos Data Feed",
+    "pricing": "FREEMIUM",
+    "tool_name": "Asos Data Feed",
+    "score": null,
+    "host": "asos-data-feed.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/search",
+            "url": "https://asos-data-feed.p.rapidapi.com/search",
+            "description": "Search for products with filters",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "`US`, `GB`, `IN`, etc.\nOther available country code you can get from `/countries` endpoint.",
+                    "default": "US"
+                },
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Search for items and brands",
+                    "default": "black dress"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "priceMax",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "sizeSchema",
+                    "type": "STRING",
+                    "description": "Data from `/countries` endpoint.",
+                    "default": ""
+                },
+                {
+                    "name": "filter",
+                    "type": "STRING",
+                    "description": "Filter option.\n*Format: filter[range]=new_season,sale&filter[size]=98*\nThe filters are unique and generated for you `q` parameter, then  returned right in the response.\n",
+                    "default": ""
+                },
+                {
+                    "name": "priceMin",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Page number of search results.",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "Data from `/countries` endpoint.",
+                    "default": ""
+                },
+                {
+                    "name": "brand",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Data from `/countries` endpoint.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://asos-data-feed.p.rapidapi.com/search\"\nquerystring = {\"priceMax\": \"\", \"country\": \"US\", \"sizeSchema\": \"\", \"filter\": \"\", \"priceMin\": \"\", \"page\": \"\", \"currency\": \"\", \"brand\": \"\", \"q\": \"black dress\", \"lang\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"asos-data-feed.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://asos-data-feed.p.rapidapi.com/search\"\nquerystring = {\"priceMax\": \"\", \"country\": \"US\", \"sizeSchema\": \"\", \"filter\": \"\", \"priceMin\": \"\", \"page\": \"\", \"currency\": \"\", \"brand\": \"\", \"q\": \"black dress\", \"lang\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"asos-data-feed.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "searchTerm": {
+                        "type": "string"
+                    },
+                    "itemCount": {
+                        "type": "integer"
+                    },
+                    "products": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "facets": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "facetValues": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "count": {
+                                                "type": "integer"
+                                            },
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "isSelected": {
+                                                "type": "boolean"
+                                            }
+                                        }
+                                    }
+                                },
+                                "displayStyle": {
+                                    "type": "string"
+                                },
+                                "facetType": {
+                                    "type": "string"
+                                },
+                                "hasSelectedValues": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "/product/reviews",
+            "url": "https://asos-data-feed.p.rapidapi.com/product/reviews",
+            "description": "Product reviews.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "`US`, `GB`, `IN`, etc.\nOther available country code you can get from `/countries` endpoint.",
+                    "default": "US"
+                },
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "202828450"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://asos-data-feed.p.rapidapi.com/product/reviews\"\nquerystring = {\"offset\": \"\", \"country\": \"US\", \"lang\": \"\", \"id\": \"202828450\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"asos-data-feed.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://asos-data-feed.p.rapidapi.com/product/reviews\"\nquerystring = {\"offset\": \"\", \"country\": \"US\", \"lang\": \"\", \"id\": \"202828450\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"asos-data-feed.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "totalResults": {
+                        "type": "integer"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "productId": {
+                                    "type": "string"
+                                },
+                                "authorId": {
+                                    "type": "string"
+                                },
+                                "contentLocale": {
+                                    "type": "string"
+                                },
+                                "rating": {
+                                    "type": "integer"
+                                },
+                                "isRatingsOnly": {
+                                    "type": "boolean"
+                                },
+                                "isRecommended": {
+                                    "type": "boolean"
+                                },
+                                "secondaryRatings": {
+                                    "type": "object"
+                                },
+                                "secondaryRatingsOrder": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "submissionTime": {
+                                    "type": "string"
+                                },
+                                "submissionRecency": {
+                                    "type": "string"
+                                },
+                                "reviewText": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "userNickname": {
+                                    "type": "string"
+                                },
+                                "isSyndicated": {
+                                    "type": "boolean"
+                                },
+                                "syndicationSource": {
+                                    "type": "null"
+                                },
+                                "badges": {
+                                    "type": "object",
+                                    "properties": {
+                                        "verifiedPurchaser": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "contentType": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "badgesOrder": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "contextDataValues": {
+                                    "type": "array"
+                                },
+                                "contextDataValuesOrder": {
+                                    "type": "array"
+                                },
+                                "additionalFieldsOrder": {
+                                    "type": "array"
+                                },
+                                "additionalFields": {
+                                    "type": "array"
+                                },
+                                "photos": {
+                                    "type": "array"
+                                },
+                                "videos": {
+                                    "type": "array"
+                                },
+                                "ratingRange": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "includes": {
+                        "type": "object",
+                        "properties": {
+                            "products": {
+                                "type": "object",
+                                "properties": {
+                                    "202828450": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "filteredReviewStatistics": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "ratingDistribution": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "ratingsValue": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "count": {
+                                                                    "type": "integer"
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "contextDataDistributionOrder": {
+                                                        "type": "array"
+                                                    },
+                                                    "contextDataDistribution": {
+                                                        "type": "array"
+                                                    },
+                                                    "recommendedCount": {
+                                                        "type": "integer"
+                                                    },
+                                                    "averageOverallRating": {
+                                                        "type": "integer"
+                                                    },
+                                                    "averageOverallStarRating": {
+                                                        "type": "integer"
+                                                    },
+                                                    "notRecommendedCount": {
+                                                        "type": "integer"
+                                                    },
+                                                    "totalReviewCount": {
+                                                        "type": "integer"
+                                                    },
+                                                    "ratingsOnlyReviewCount": {
+                                                        "type": "integer"
+                                                    },
+                                                    "secondaryRatingsAveragesOrder": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "secondaryRatingsAverages": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "Fit": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "averageRating": {
+                                                                        "type": "integer"
+                                                                    },
+                                                                    "valueRange": {
+                                                                        "type": "integer"
+                                                                    },
+                                                                    "displayType": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "minLabel": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "maxLabel": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "label": {
+                                                                        "type": "string"
+                                                                    }
+                                                                }
+                                                            },
+                                                            "Quality_1": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "averageRating": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "valueRange": {
+                                                                        "type": "integer"
+                                                                    },
+                                                                    "displayType": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "minLabel": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "maxLabel": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "label": {
+                                                                        "type": "string"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "overallRatingRange": {
+                                                        "type": "integer"
+                                                    },
+                                                    "percentageRecommended": {
+                                                        "type": "integer"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "productsOrder": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "/product/details",
+            "url": "https://asos-data-feed.p.rapidapi.com/product/details",
+            "description": "Get information about the product by id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "`US`, `GB`, `IN`, etc.\nOther available country code you can get from `/countries` endpoint.",
+                    "default": "US"
+                },
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "22714749"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "sizeSchema",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://asos-data-feed.p.rapidapi.com/product/details\"\nquerystring = {\"country\": \"US\", \"lang\": \"\", \"currency\": \"\", \"id\": \"22714749\", \"sizeSchema\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"asos-data-feed.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://asos-data-feed.p.rapidapi.com/product/details\"\nquerystring = {\"country\": \"US\", \"lang\": \"\", \"currency\": \"\", \"id\": \"22714749\", \"sizeSchema\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"asos-data-feed.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "alternateNames": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "locale": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "localisedData": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "locale": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "pdpUrl": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "gender": {
+                        "type": "string"
+                    },
+                    "productCode": {
+                        "type": "string"
+                    },
+                    "pdpLayout": {
+                        "type": "string"
+                    },
+                    "brand": {
+                        "type": "object",
+                        "properties": {
+                            "brandId": {
+                                "type": "integer"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "sizeGuide": {
+                        "type": "null"
+                    },
+                    "sizeGuideApiUrl": {
+                        "type": "null"
+                    },
+                    "isNoSize": {
+                        "type": "boolean"
+                    },
+                    "isOneSize": {
+                        "type": "boolean"
+                    },
+                    "isInStock": {
+                        "type": "boolean"
+                    },
+                    "countryOfManufacture": {
+                        "type": "null"
+                    },
+                    "hasVariantsWithProp65Risk": {
+                        "type": "boolean"
+                    },
+                    "webCategories": {
+                        "type": "array"
+                    },
+                    "variants": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "sizeId": {
+                                    "type": "integer"
+                                },
+                                "brandSize": {
+                                    "type": "string"
+                                },
+                                "sizeDescription": {
+                                    "type": "string"
+                                },
+                                "displaySizeText": {
+                                    "type": "string"
+                                },
+                                "sizeOrder": {
+                                    "type": "integer"
+                                },
+                                "sku": {
+                                    "type": "string"
+                                },
+                                "isLowInStock": {
+                                    "type": "boolean"
+                                },
+                                "isInStock": {
+                                    "type": "boolean"
+                                },
+                                "isAvailable": {
+                                    "type": "boolean"
+                                },
+                                "colourWayId": {
+                                    "type": "integer"
+                                },
+                                "colourCode": {
+                                    "type": "string"
+                                },
+                                "colour": {
+                                    "type": "string"
+                                },
+                                "price": {
+                                    "type": "object",
+                                    "properties": {
+                                        "current": {
+                                            "type": "object",
+                                            "properties": {
+                                                "value": {
+                                                    "type": "integer"
+                                                },
+                                                "text": {
+                                                    "type": "string"
+                                                },
+                                                "versionId": {
+                                                    "type": "string"
+                                                },
+                                                "conversionId": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "previous": {
+                                            "type": "object",
+                                            "properties": {
+                                                "value": {
+                                                    "type": "integer"
+                                                },
+                                                "text": {
+                                                    "type": "string"
+                                                },
+                                                "versionId": {
+                                                    "type": "string"
+                                                },
+                                                "conversionId": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "rrp": {
+                                            "type": "object",
+                                            "properties": {
+                                                "value": {
+                                                    "type": "null"
+                                                },
+                                                "text": {
+                                                    "type": "null"
+                                                },
+                                                "versionId": {
+                                                    "type": "string"
+                                                },
+                                                "conversionId": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "xrp": {
+                                            "type": "object",
+                                            "properties": {
+                                                "value": {
+                                                    "type": "number"
+                                                },
+                                                "text": {
+                                                    "type": "string"
+                                                },
+                                                "versionId": {
+                                                    "type": "string"
+                                                },
+                                                "conversionId": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "currency": {
+                                            "type": "string"
+                                        },
+                                        "isMarkedDown": {
+                                            "type": "boolean"
+                                        },
+                                        "isOutletPrice": {
+                                            "type": "boolean"
+                                        },
+                                        "startDateTime": {
+                                            "type": "string"
+                                        },
+                                        "wasPriceStartDate": {
+                                            "type": "null"
+                                        }
+                                    }
+                                },
+                                "isPrimary": {
+                                    "type": "boolean"
+                                },
+                                "isProp65Risk": {
+                                    "type": "boolean"
+                                },
+                                "ean": {
+                                    "type": "null"
+                                },
+                                "seller": {
+                                    "type": "null"
+                                }
+                            }
+                        }
+                    },
+                    "media": {
+                        "type": "object",
+                        "properties": {
+                            "images": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "catwalk": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "colourWayId": {
+                                            "type": "integer"
+                                        },
+                                        "colourCode": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "spinset": {
+                                "type": "array"
+                            },
+                            "swatchSprite": {
+                                "type": "array"
+                            }
+                        }
+                    },
+                    "badges": {
+                        "type": "array"
+                    },
+                    "info": {
+                        "type": "object",
+                        "properties": {
+                            "aboutMe": {
+                                "type": "string"
+                            },
+                            "sizeAndFit": {
+                                "type": "string"
+                            },
+                            "careInfo": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "associatedProductGroups": {
+                        "type": "array"
+                    },
+                    "shippingRestriction": {
+                        "type": "null"
+                    },
+                    "price": {
+                        "type": "object",
+                        "properties": {
+                            "current": {
+                                "type": "object",
+                                "properties": {
+                                    "value": {
+                                        "type": "integer"
+                                    },
+                                    "text": {
+                                        "type": "string"
+                                    },
+                                    "versionId": {
+                                        "type": "string"
+                                    },
+                                    "conversionId": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "previous": {
+                                "type": "object",
+                                "properties": {
+                                    "value": {
+                                        "type": "integer"
+                                    },
+                                    "text": {
+                                        "type": "string"
+                                    },
+                                    "versionId": {
+                                        "type": "string"
+                                    },
+                                    "conversionId": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "rrp": {
+                                "type": "object",
+                                "properties": {
+                                    "value": {
+                                        "type": "null"
+                                    },
+                                    "text": {
+                                        "type": "null"
+                                    },
+                                    "versionId": {
+                                        "type": "string"
+                                    },
+                                    "conversionId": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "xrp": {
+                                "type": "object",
+                                "properties": {
+                                    "value": {
+                                        "type": "number"
+                                    },
+                                    "text": {
+                                        "type": "string"
+                                    },
+                                    "versionId": {
+                                        "type": "string"
+                                    },
+                                    "conversionId": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "currency": {
+                                "type": "string"
+                            },
+                            "isMarkedDown": {
+                                "type": "boolean"
+                            },
+                            "isOutletPrice": {
+                                "type": "boolean"
+                            },
+                            "startDateTime": {
+                                "type": "string"
+                            },
+                            "wasPriceStartDate": {
+                                "type": "null"
+                            }
+                        }
+                    },
+                    "isDeadProduct": {
+                        "type": "boolean"
+                    },
+                    "rating": {
+                        "type": "object",
+                        "properties": {
+                            "averageOverallRating": {
+                                "type": "integer"
+                            },
+                            "averageOverallStarRating": {
+                                "type": "integer"
+                            },
+                            "totalReviewCount": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "productType": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "plpIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "type": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "/countries",
+            "url": "https://asos-data-feed.p.rapidapi.com/countries",
+            "description": "Countries that Asos supports selling products",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://asos-data-feed.p.rapidapi.com/countries\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"asos-data-feed.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://asos-data-feed.p.rapidapi.com/countries\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"asos-data-feed.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object"
+                }
+            }
+        }
+    ]
+}

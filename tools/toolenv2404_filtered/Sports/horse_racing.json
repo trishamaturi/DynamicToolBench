@@ -1,0 +1,332 @@
+{
+    "product_id": "api_3dc20e0a-ef14-445d-8e5b-b2f32562bcd5",
+    "tool_description": "Horse racing API - UK & Ireland races. Racecards, results, stats, Odds comparator and more. ",
+    "home_url": "https://rapidapi.com/ortegalex/api/horse-racing/",
+    "name": "Horse Racing",
+    "title": "Horse Racing",
+    "pricing": "FREEMIUM",
+    "tool_name": "Horse Racing",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 575,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.8,
+        "__typename": "Score"
+    },
+    "host": "horse-racing.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Race detail info",
+            "url": "https://horse-racing.p.rapidapi.com/race/207660",
+            "description": "**Get racecard detailed info** and **Odds comparator**\nHorses, Jockeys, Trainers, Form, OR, Owner, Sire, Dam, Age, Weight and more information.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id_race",
+                    "type": "string",
+                    "description": "",
+                    "default": "207660"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://horse-racing.p.rapidapi.com/race/207660\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horse-racing.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://horse-racing.p.rapidapi.com/race/{id_race}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horse-racing.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "items": {
+                    "properties": {
+                        "age": {
+                            "type": "string"
+                        },
+                        "bookie": {
+                            "type": "string"
+                        },
+                        "form": {
+                            "type": "string"
+                        },
+                        "horse": {
+                            "type": "string"
+                        },
+                        "jockey": {
+                            "type": "string"
+                        },
+                        "last_ran_days_ago": {
+                            "type": "string"
+                        },
+                        "non_runner": {
+                            "type": "string"
+                        },
+                        "number": {
+                            "type": "string"
+                        },
+                        "odd": {
+                            "type": "string"
+                        },
+                        "position": {
+                            "type": "string"
+                        },
+                        "sp": {
+                            "type": "string"
+                        },
+                        "trainer": {
+                            "type": "string"
+                        },
+                        "url_bookie": {
+                            "type": "string"
+                        },
+                        "weight": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "type": "array"
+            }
+        },
+        {
+            "name": "Query races",
+            "url": "https://horse-racing.p.rapidapi.com/query-races",
+            "description": "The best way to search races.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "order_by_date",
+                    "type": "ENUM",
+                    "description": "Results ordered by date race ascending or descending.",
+                    "default": ""
+                },
+                {
+                    "name": "date_to",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "class_to",
+                    "type": "NUMBER",
+                    "description": "Maximum race class.",
+                    "default": ""
+                },
+                {
+                    "name": "distance_to",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "distance_from",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "id_horse",
+                    "type": "NUMBER",
+                    "description": "Horse id. If you populate this field the query search races where this horse run.",
+                    "default": ""
+                },
+                {
+                    "name": "course",
+                    "type": "STRING",
+                    "description": "Like Cheltenham, Ascot, Newmarket ....",
+                    "default": ""
+                },
+                {
+                    "name": "class_from",
+                    "type": "NUMBER",
+                    "description": "Minimum race class.",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "date_from",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Race name or a text on the race name. Like \\\"Novice\\\", \\\"Handicap chase\\\", \\\"Hurdle\\\", ....",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://horse-racing.p.rapidapi.com/query-races\"\nquerystring = {\"order_by_date\": \"\", \"date_to\": \"\", \"class_to\": \"\", \"distance_to\": \"\", \"distance_from\": \"\", \"id_horse\": \"\", \"course\": \"\", \"class_from\": \"\", \"page\": \"\", \"date_from\": \"\", \"name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horse-racing.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://horse-racing.p.rapidapi.com/query-races\"\nquerystring = {\"order_by_date\": \"\", \"date_to\": \"\", \"class_to\": \"\", \"distance_to\": \"\", \"distance_from\": \"\", \"id_horse\": \"\", \"course\": \"\", \"class_from\": \"\", \"page\": \"\", \"date_from\": \"\", \"name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horse-racing.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Horse Stats",
+            "url": "https://horse-racing.p.rapidapi.com/horse-stats/230380",
+            "description": "Get horse results history.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id_horse",
+                    "type": "string",
+                    "description": "",
+                    "default": "230380"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://horse-racing.p.rapidapi.com/horse-stats/230380\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horse-racing.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://horse-racing.p.rapidapi.com/horse-stats/{id_horse}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horse-racing.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Query horses",
+            "url": "https://horse-racing.p.rapidapi.com/query-horses",
+            "description": "Search horses by name. \nOnce you get \"*id_horse*\" from this query, you can get horses stats from \"**Horse stats**\" endpoint.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Minimum 3 characters",
+                    "default": "ZANAHIYR"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://horse-racing.p.rapidapi.com/query-horses\"\nquerystring = {\"name\": \"ZANAHIYR\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horse-racing.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://horse-racing.p.rapidapi.com/query-horses\"\nquerystring = {\"name\": \"ZANAHIYR\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horse-racing.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Racecards",
+            "url": "https://horse-racing.p.rapidapi.com/racecards",
+            "description": "Get races list.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2020-03-12"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://horse-racing.p.rapidapi.com/racecards\"\nquerystring = {\"date\": \"2020-03-12\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horse-racing.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://horse-racing.p.rapidapi.com/racecards\"\nquerystring = {\"date\": \"2020-03-12\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horse-racing.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Results",
+            "url": "https://horse-racing.p.rapidapi.com/results",
+            "description": "Get results by date.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2020-03-13"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://horse-racing.p.rapidapi.com/results\"\nquerystring = {\"date\": \"2020-03-13\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horse-racing.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://horse-racing.p.rapidapi.com/results\"\nquerystring = {\"date\": \"2020-03-13\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horse-racing.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Jockeys win rate",
+            "url": "https://horse-racing.p.rapidapi.com/jockeys-win-rate",
+            "description": "Get Jockeys stats in the last days.\nRuns, Wins and Win Rate in %.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "last_days",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "7"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://horse-racing.p.rapidapi.com/jockeys-win-rate\"\nquerystring = {\"last_days\": \"7\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horse-racing.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://horse-racing.p.rapidapi.com/jockeys-win-rate\"\nquerystring = {\"last_days\": \"7\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horse-racing.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Trainers win rate",
+            "url": "https://horse-racing.p.rapidapi.com/trainers-win-rate",
+            "description": "Get Trainers stats in the last days.\nRuns, Wins and Win Rate in %.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "last_days",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "7"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://horse-racing.p.rapidapi.com/trainers-win-rate\"\nquerystring = {\"last_days\": \"7\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horse-racing.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://horse-racing.p.rapidapi.com/trainers-win-rate\"\nquerystring = {\"last_days\": \"7\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horse-racing.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

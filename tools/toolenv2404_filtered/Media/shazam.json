@@ -1,0 +1,220 @@
+{
+    "product_id": "api_71113130-1629-476d-a3b0-396750a38179",
+    "tool_description": "Shazam API helps you to recognize any song from a music file, can fetch data from https://www.shazam.com/, extract information related to artist, track or give top songs by country.",
+    "home_url": "https://rapidapi.com/yashmakan261/api/shazam8/",
+    "name": "Shazam",
+    "title": "Shazam",
+    "pricing": "FREEMIUM",
+    "tool_name": "Shazam",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 10,
+        "avgSuccessRate": 100,
+        "popularityScore": 8.9,
+        "__typename": "Score"
+    },
+    "host": "shazam8.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Artist Top Tracks",
+            "url": "https://shazam8.p.rapidapi.com/artist/top_track",
+            "description": "This endpoint will return the top tracks of the artist",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "5"
+                },
+                {
+                    "name": "artist_id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "40543550"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://shazam8.p.rapidapi.com/artist/top_track\"\nquerystring = {\"limit\": \"5\", \"artist_id\": \"40543550\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shazam8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shazam8.p.rapidapi.com/artist/top_track\"\nquerystring = {\"limit\": \"5\", \"artist_id\": \"40543550\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shazam8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Top Track by City",
+            "url": "https://shazam8.p.rapidapi.com/track/top/city",
+            "description": "This endpoint will give the top song in specific city",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "city_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Moscow"
+                },
+                {
+                    "name": "country_code",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "RU"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "2"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://shazam8.p.rapidapi.com/track/top/city\"\nquerystring = {\"city_name\": \"Moscow\", \"country_code\": \"RU\", \"limit\": \"2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shazam8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shazam8.p.rapidapi.com/track/top/city\"\nquerystring = {\"city_name\": \"Moscow\", \"country_code\": \"RU\", \"limit\": \"2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shazam8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Top Track by Country",
+            "url": "https://shazam8.p.rapidapi.com/track/top/country",
+            "description": "This endpoint will return the top tracks from a specific country",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "2"
+                },
+                {
+                    "name": "country_code",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "RU"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://shazam8.p.rapidapi.com/track/top/country\"\nquerystring = {\"limit\": \"2\", \"country_code\": \"RU\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shazam8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shazam8.p.rapidapi.com/track/top/country\"\nquerystring = {\"limit\": \"2\", \"country_code\": \"RU\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shazam8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Track Recommendations",
+            "url": "https://shazam8.p.rapidapi.com/track/recommedations",
+            "description": "This endpoint will return the recommendation or similar songs of the given track.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "track_id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "296831279"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "4"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://shazam8.p.rapidapi.com/track/recommedations\"\nquerystring = {\"track_id\": \"296831279\", \"limit\": \"4\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shazam8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shazam8.p.rapidapi.com/track/recommedations\"\nquerystring = {\"track_id\": \"296831279\", \"limit\": \"4\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shazam8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Search Track",
+            "url": "https://shazam8.p.rapidapi.com/track/search",
+            "description": "This endpoint will search for the name of any song and return similar songs with the name.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "5"
+                },
+                {
+                    "name": "track",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Love Yourself"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://shazam8.p.rapidapi.com/track/search\"\nquerystring = {\"limit\": \"5\", \"track\": \"Love Yourself\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shazam8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shazam8.p.rapidapi.com/track/search\"\nquerystring = {\"limit\": \"5\", \"track\": \"Love Yourself\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shazam8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Track Info",
+            "url": "https://shazam8.p.rapidapi.com/track/info",
+            "description": "This endpoint will return info of any track from shazam.com",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "track_id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "296831279"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://shazam8.p.rapidapi.com/track/info\"\nquerystring = {\"track_id\": \"296831279\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shazam8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shazam8.p.rapidapi.com/track/info\"\nquerystring = {\"track_id\": \"296831279\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shazam8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Artist Search",
+            "url": "https://shazam8.p.rapidapi.com/artist/search",
+            "description": "This endpoint let you search for an artist by their name. You can get a list of artists from its name.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "5"
+                },
+                {
+                    "name": "artist",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Justin Bieber"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://shazam8.p.rapidapi.com/artist/search\"\nquerystring = {\"limit\": \"5\", \"artist\": \"Justin Bieber\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shazam8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shazam8.p.rapidapi.com/artist/search\"\nquerystring = {\"limit\": \"5\", \"artist\": \"Justin Bieber\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shazam8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Artist Info",
+            "url": "https://shazam8.p.rapidapi.com/artist/info",
+            "description": "This endpoint will extract information of any artist from https://www.shazam.com.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "artist_id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "40543550"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://shazam8.p.rapidapi.com/artist/info\"\nquerystring = {\"artist_id\": \"40543550\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shazam8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shazam8.p.rapidapi.com/artist/info\"\nquerystring = {\"artist_id\": \"40543550\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shazam8.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

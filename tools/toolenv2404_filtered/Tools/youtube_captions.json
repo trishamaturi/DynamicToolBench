@@ -1,0 +1,122 @@
+{
+    "product_id": "api_3a85bdd7-0c79-451c-882c-da6b4fc25282",
+    "tool_description": "Whether you're building a language learning app, creating subtitled videos, or need to analyze captions for research purposes, our API has got you covered. It's time to make it happen!\n\nNew update - You can now generate caption even if the video has not caption on youtube. (Endpoint: create-transcript)",
+    "home_url": "https://rapidapi.com/belchiorarkad-FqvHs2EDOtP/api/youtube-captions/",
+    "name": "Youtube Captions",
+    "title": "Youtube Captions",
+    "pricing": "FREEMIUM",
+    "tool_name": "Youtube Captions",
+    "score": {
+        "avgServiceLevel": 65,
+        "avgLatency": 4316,
+        "avgSuccessRate": 62,
+        "popularityScore": 8.9,
+        "__typename": "Score"
+    },
+    "host": "youtube-captions.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Only Caption",
+            "url": "https://youtube-captions.p.rapidapi.com/onlycaption",
+            "description": "This endpoint returns a caption.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "videoId",
+                    "type": "STRING",
+                    "description": "only the id. ex: ZGNj5lOtNnI",
+                    "default": "zTno7joCgx8"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://youtube-captions.p.rapidapi.com/onlycaption\"\nquerystring = {\"videoId\": \"zTno7joCgx8\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"youtube-captions.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://youtube-captions.p.rapidapi.com/onlycaption\"\nquerystring = {\"videoId\": \"zTno7joCgx8\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"youtube-captions.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Generate Captions for Any YT Video",
+            "url": "https://youtube-captions.p.rapidapi.com/create-transcript",
+            "description": "This endpoint generates a transcript for a given YouTube video, regardless of whether the video has captions or not.\n\nRequest:\nThe request should include two query parameters:\n\nvideoUrl: A URL for the YouTube video to transcribe.\nresponseFormat (optional): The desired format of the transcript response from the OpenAI API. Default is text.\nExample: /create-transcript?videoUrl=https://www.youtube.com/watch?v=dQw4w9WgXcQ&responseFormat=srt\n\nOperation:\nOn receiving a request, the server first retrieves the video information from YouTube to check its duration. If the video is longer than 12 minutes, the server responds with a 400 status code and an error message indicating that the video length exceeds the limit.\n\n\nThis operation is done independently of any existing captions on the YouTube video, ensuring that it provides a more accurate and reliable transcription even for videos that do not have captions or have inaccurate ones.\n\nResponse:\nIf the transcription is successful, the server responds with a JSON object containing the transcription data received from the OpenAI API.\n\nIf an error occurs at any point in the process, the server responds with a 500 status code and an error message indicating what went wrong.\n\nEnjoy",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "videoUrl",
+                    "type": "STRING",
+                    "description": "The entire Youtube URL: i.e: https://www.youtube.com/watch?v=T8vnDMyQcfo&pp=ygUUZnJhbmsgc2luYXRyYSBzcGVlY2g%3D",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "responseFormat",
+                    "type": "STRING",
+                    "description": "text| srt",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://youtube-captions.p.rapidapi.com/create-transcript\"\nquerystring = {\"videoUrl\": \"\", \"responseFormat\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"youtube-captions.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://youtube-captions.p.rapidapi.com/create-transcript\"\nquerystring = {\"videoUrl\": \"\", \"responseFormat\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"youtube-captions.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Caption v3",
+            "url": "https://youtube-captions.p.rapidapi.com/transcript3",
+            "description": "## Endpoint: Video Transcript Version #3\n\nThis endpoint retrieves the transcript of a video identified by its unique ID.\n\n### Request\n\n- **Method:** GET\n- **URL:** /transcript3\n- **Query Parameters:** \n  - `videoId`: The unique identifier of the video.\n  \n### Response\n\n- **Status Codes:**\n  - 200 OK: Successfully retrieved the transcript.\n  - 400 Bad Request: If videoId is missing in the request query.\n  - 500 Internal Server Error: If there's an unexpected error during the transcript retrieval process.\n\n- **Response Body (JSON):**\n  - If successful, the response will contain the transcript data.\n  - If unsuccessful due to missing videoId, the response will include a message indicating the omission.\n  - If there's an error during the retrieval process, the response will contain an error message.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "videoId",
+                    "type": "STRING",
+                    "description": "Only the id. i.e: ZGNj5lOtNnI",
+                    "default": "zTno7joCgx8"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://youtube-captions.p.rapidapi.com/transcript3\"\nquerystring = {\"videoId\": \"zTno7joCgx8\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"youtube-captions.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://youtube-captions.p.rapidapi.com/transcript3\"\nquerystring = {\"videoId\": \"zTno7joCgx8\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"youtube-captions.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get Caption v2",
+            "url": "https://youtube-captions.p.rapidapi.com/transcript2",
+            "description": "This is the second version to get the video Transcript/Caption for a Youtube video.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "videoId",
+                    "type": "STRING",
+                    "description": "Only the id. i.e: ZGNj5lOtNnI",
+                    "default": "zTno7joCgx8"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://youtube-captions.p.rapidapi.com/transcript2\"\nquerystring = {\"videoId\": \"zTno7joCgx8\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"youtube-captions.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://youtube-captions.p.rapidapi.com/transcript2\"\nquerystring = {\"videoId\": \"zTno7joCgx8\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"youtube-captions.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get Caption",
+            "url": "https://youtube-captions.p.rapidapi.com/transcript",
+            "description": "This is the first option to get the caption/transcription.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "videoId",
+                    "type": "STRING",
+                    "description": "Only Id. i.e: ZGNj5lOtNnI",
+                    "default": "zTno7joCgx8"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://youtube-captions.p.rapidapi.com/transcript\"\nquerystring = {\"videoId\": \"zTno7joCgx8\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"youtube-captions.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://youtube-captions.p.rapidapi.com/transcript\"\nquerystring = {\"videoId\": \"zTno7joCgx8\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"youtube-captions.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

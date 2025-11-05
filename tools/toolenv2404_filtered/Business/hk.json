@@ -1,0 +1,78 @@
+{
+    "product_id": "api_c9d46298-9132-48ca-abad-2e339795ffe7",
+    "tool_description": "hk",
+    "home_url": "https://rapidapi.com/synque-synque-default/api/hk4/",
+    "name": "hk",
+    "title": "hk",
+    "pricing": "PAID",
+    "tool_name": "hk",
+    "score": null,
+    "host": "hk4.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Place Search",
+            "url": "https://hk4.p.rapidapi.com/places/search",
+            "description": "Search for places in the FSQ Places database using a location and querying by name, category name, taste label, or chain name. For example, search for \"coffee\" to get back a list of recommended coffee shops.\n\nYou must pass a location with your request by using one of the following options:\n\nll & radius (circular boundary)\nnear (geocodable locality)\nne & sw (rectangular boundary)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "radius",
+                    "type": "STRING",
+                    "description": "Defines the distance (in meters) within which to bias place results. The maximum allowed radius is 100,000 meters.\n\n",
+                    "default": "20"
+                },
+                {
+                    "name": "ll",
+                    "type": "STRING",
+                    "description": "The latitude/longitude around which to retrieve place information. This must be specified as latitude,longitude (e.g., ll=41.8781,-87.6298). One of ll, ne and sw, or near must be specified.\n\n",
+                    "default": "22.3340746,114.1468334"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://hk4.p.rapidapi.com/places/search\"\nquerystring = {\"radius\": \"20\", \"ll\": \"22.3340746,114.1468334\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hk4.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hk4.p.rapidapi.com/places/search\"\nquerystring = {\"radius\": \"20\", \"ll\": \"22.3340746,114.1468334\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hk4.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "context": {
+                        "type": "object",
+                        "properties": {
+                            "geo_bounds": {
+                                "type": "object",
+                                "properties": {
+                                    "circle": {
+                                        "type": "object",
+                                        "properties": {
+                                            "center": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "latitude": {
+                                                        "type": "number"
+                                                    },
+                                                    "longitude": {
+                                                        "type": "number"
+                                                    }
+                                                }
+                                            },
+                                            "radius": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

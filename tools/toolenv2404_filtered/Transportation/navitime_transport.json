@@ -1,0 +1,820 @@
+{
+    "product_id": "api_bfeabfaa-bf1a-4276-b5b0-da44007dffd4",
+    "tool_description": "\u6700\u5bc4\u99c5\u3092\u6240\u8981\u6642\u9593\u3084\u8ddd\u96e2\u3068\u3068\u3082\u306b\u51fa\u529b\u3057\u307e\u3059\u3002\u8def\u7dda\u3084\u4ea4\u901a\u6a5f\u95a2\u4f1a\u793e\u306e\u691c\u7d22API\u3082\u5229\u7528\u53ef\u80fd\u3067\u3059\u3002",
+    "home_url": "https://rapidapi.com/navitimejapan-navitimejapan/api/navitime-transport/",
+    "name": "NAVITIME Transport",
+    "title": "NAVITIME Transport",
+    "pricing": "FREEMIUM",
+    "tool_name": "NAVITIME Transport",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 453,
+        "avgSuccessRate": 99,
+        "popularityScore": 9.2,
+        "__typename": "Score"
+    },
+    "host": "navitime-transport.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "transport_link/autocomplete",
+            "url": "https://navitime-transport.p.rapidapi.com/transport_link/autocomplete",
+            "description": "\u6307\u5b9a\u3057\u305f\u30ef\u30fc\u30c9\u306b\u5bfe\u3059\u308b\u8def\u7dda\u540d\u306e\u81ea\u52d5\u88dc\u5b8c\u5019\u88dc\u3092\u53d6\u5f97\u3057\u307e\u3059\u3002",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "word",
+                    "type": "STRING",
+                    "description": "Search word.",
+                    "default": "\u3068\u3046\uff4b"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "Radius of search distances.\n(Maximum value: 100,000, Default value: 10,000)\nThe unit is \\\\\\\"meters\\\\\\\".\n\nAvailable only when 'coord' is specified.",
+                    "default": "10000"
+                },
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude.\n(wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "word_match",
+                    "type": "STRING",
+                    "description": "Search method.\n(prefix, partial)",
+                    "default": "prefix"
+                },
+                {
+                    "name": "coord",
+                    "type": "STRING",
+                    "description": "Latitude and longitude of the reference point to be searched.",
+                    "default": "35.689457,139.691935"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_link/autocomplete\"\nquerystring = {\"radius\": \"10000\", \"datum\": \"wgs84\", \"word_match\": \"prefix\", \"coord\": \"35.689457,139.691935\", \"word\": \"\u3068\u3046\uff4b\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_link/autocomplete\"\nquerystring = {\"radius\": \"10000\", \"datum\": \"wgs84\", \"word_match\": \"prefix\", \"coord\": \"35.689457,139.691935\", \"word\": \"\u3068\u3046\uff4b\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "transport_node/autocomplete",
+            "url": "https://navitime-transport.p.rapidapi.com/transport_node/autocomplete",
+            "description": "\u6307\u5b9a\u3057\u305f\u30ef\u30fc\u30c9\u306b\u5bfe\u3059\u308b\u99c5\u540d\u306e\u81ea\u52d5\u88dc\u5b8c\u5019\u88dc\u3092\u53d6\u5f97\u3057\u307e\u3059\u3002",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "word",
+                    "type": "STRING",
+                    "description": "Search word.",
+                    "default": "\u3068\u3046\uff4b"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "Radius of search distances.\n(Maximum value: 100,000, Default value: 10,000)\nThe unit is \\\\\\\"meters\\\\\\\".\n\nAvailable only when 'coord' is specified.",
+                    "default": "10000"
+                },
+                {
+                    "name": "link",
+                    "type": "STRING",
+                    "description": "Route ID.\nCan be specified multiple times, separated by a period.",
+                    "default": ""
+                },
+                {
+                    "name": "word_match",
+                    "type": "STRING",
+                    "description": "Search method.\n(prefix, partial)",
+                    "default": "prefix"
+                },
+                {
+                    "name": "coord",
+                    "type": "STRING",
+                    "description": "Latitude and longitude of the reference point to be searched.",
+                    "default": "35.689457,139.691935"
+                },
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude.\n(wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data.\n(degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_node/autocomplete\"\nquerystring = {\"radius\": \"10000\", \"link\": \"\", \"word\": \"\u3068\u3046\uff4b\", \"word_match\": \"prefix\", \"coord\": \"35.689457,139.691935\", \"datum\": \"wgs84\", \"coord_unit\": \"degree\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_node/autocomplete\"\nquerystring = {\"radius\": \"10000\", \"link\": \"\", \"word\": \"\u3068\u3046\uff4b\", \"word_match\": \"prefix\", \"coord\": \"35.689457,139.691935\", \"datum\": \"wgs84\", \"coord_unit\": \"degree\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "transport_node/gateway",
+            "url": "https://navitime-transport.p.rapidapi.com/transport_node/gateway",
+            "description": "\u99c5ID\u306a\u3069\u3092\u6307\u5b9a\u3057\u3066\u99c5\u51fa\u53e3\u306e\u60c5\u5831\u3092\u53d6\u5f97\u3057\u307e\u3059\u3002",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "link",
+                    "type": "STRING",
+                    "description": "Route ID.",
+                    "default": "00000768"
+                },
+                {
+                    "name": "direction",
+                    "type": "STRING",
+                    "description": "Up and down classification of lines.",
+                    "default": "up"
+                },
+                {
+                    "name": "node",
+                    "type": "STRING",
+                    "description": "Node ID.",
+                    "default": "00007820"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limits the number of response data. (Minimum value: 1, Maximum value: 100, Default value: 10)",
+                    "default": "10"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Skips a given number of first data.\n(Minimum value: 0, Maximum value: 1000, Default value: 0)",
+                    "default": "0"
+                },
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude.\n(wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data.\n(degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_node/gateway\"\nquerystring = {\"link\": \"00000768\", \"direction\": \"up\", \"limit\": \"10\", \"offset\": \"0\", \"node\": \"00007820\", \"datum\": \"wgs84\", \"coord_unit\": \"degree\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_node/gateway\"\nquerystring = {\"link\": \"00000768\", \"direction\": \"up\", \"limit\": \"10\", \"offset\": \"0\", \"node\": \"00007820\", \"datum\": \"wgs84\", \"coord_unit\": \"degree\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "transport_company_address",
+            "url": "https://navitime-transport.p.rapidapi.com/transport_company/address",
+            "description": "\u4ea4\u901a\u6a5f\u95a2\u4f1a\u793e\u30a8\u30ea\u30a2\u691c\u7d22\n\u4f4f\u6240\u30b3\u30fc\u30c9\u306b\u5408\u81f4\u3059\u308b\u4ea4\u901a\u6a5f\u95a2\u4f1a\u793e\u306e\u4e00\u89a7\u3092\u53d6\u5f97\u3057\u307e\u3059\u3002",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "address",
+                    "type": "STRING",
+                    "description": "Address Code. Only the prefecture level (2 digits) can be specified.",
+                    "default": "13"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Skips a given number of first data. (Minimum value: 0, Maximum value: 1000, Default value: 0)",
+                    "default": "0"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limits the number of response data. (Minimum value: 1, Maximum value: 100, Default value: 10)",
+                    "default": "10"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_company/address\"\nquerystring = {\"address\": \"13\", \"offset\": \"0\", \"limit\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_company/address\"\nquerystring = {\"address\": \"13\", \"offset\": \"0\", \"limit\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "count": {
+                        "properties": {
+                            "limit": {
+                                "type": "integer"
+                            },
+                            "offset": {
+                                "type": "integer"
+                            },
+                            "total": {
+                                "type": "integer"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "items": {
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "links": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "transport_link_id",
+            "url": "https://navitime-transport.p.rapidapi.com/transport_link/id",
+            "description": "Return lists of train line's information from the train line ID of request parameters.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Route ID. Can be specified multiple times, separated by a period.",
+                    "default": "00000769"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "options",
+                    "type": "STRING",
+                    "description": "Additional output information. (node: list of stations that belong to a line)",
+                    "default": ""
+                },
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data. (degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                },
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude. (wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Sorting order of additional information . (up: inbound line, down: outbound line)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_link/id\"\nquerystring = {\"options\": \"\", \"id\": \"00000769\", \"coord_unit\": \"degree\", \"datum\": \"wgs84\", \"sort\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_link/id\"\nquerystring = {\"options\": \"\", \"id\": \"00000769\", \"coord_unit\": \"degree\", \"datum\": \"wgs84\", \"sort\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "transport_company_id",
+            "url": "https://navitime-transport.p.rapidapi.com/transport_company/id",
+            "description": "Return public transport company's information from the public transport company ID of request parameters.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Transportation company ID.",
+                    "default": "00000004"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "options",
+                    "type": "STRING",
+                    "description": "Additional output information. (link: list of stations that belong to a company(default))",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_company/id\"\nquerystring = {\"options\": \"\", \"id\": \"00000004\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_company/id\"\nquerystring = {\"options\": \"\", \"id\": \"00000004\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "transport_node",
+            "url": "https://navitime-transport.p.rapidapi.com/transport_node",
+            "description": "Return lists of stations corresponding to the keyword or an address specified by request parameters.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "word",
+                    "type": "STRING",
+                    "description": "Search word.  When multiple conditions are specified, the search is performed in the order of AND condition and OR condition. Truncate after 51 characters.",
+                    "default": "\u6771\u4eac"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data. (degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                },
+                {
+                    "name": "options",
+                    "type": "STRING",
+                    "description": "Additional output information. (detail: detailed information on stations)",
+                    "default": ""
+                },
+                {
+                    "name": "address",
+                    "type": "STRING",
+                    "description": "Address Code. Can be specified multiple times, separated by a period.",
+                    "default": ""
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Skips a given number of first data. (Minimum value: 0, Maximum value: 1000, Default value: 0)",
+                    "default": "0"
+                },
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude. (wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limits the number of response data. (Minimum value: 1, Maximum value: 100, Default value: 10)",
+                    "default": "10"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_node\"\nquerystring = {\"coord_unit\": \"degree\", \"options\": \"\", \"address\": \"\", \"word\": \"\u6771\u4eac\", \"offset\": \"0\", \"datum\": \"wgs84\", \"limit\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_node\"\nquerystring = {\"coord_unit\": \"degree\", \"options\": \"\", \"address\": \"\", \"word\": \"\u6771\u4eac\", \"offset\": \"0\", \"datum\": \"wgs84\", \"limit\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "transport_link",
+            "url": "https://navitime-transport.p.rapidapi.com/transport_link",
+            "description": "Return lists of train lines from the keywords of request parameters.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "word",
+                    "type": "STRING",
+                    "description": "Route name.",
+                    "default": "\u5c0f\u7530\u6025"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Sorting order of additional information . (up: inbound line, down: outbound line)",
+                    "default": ""
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Skips a given number of first data. (Minimum value: 0, Maximum value: 1000, Default value: 0)",
+                    "default": "0"
+                },
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data. (degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limits the number of response data. (Minimum value: 1, Maximum value: 100, Default value: 10)",
+                    "default": "10"
+                },
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude. (wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "options",
+                    "type": "STRING",
+                    "description": "Additional output information. (node: list of stations that belong to a line)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_link\"\nquerystring = {\"sort\": \"\", \"offset\": \"0\", \"coord_unit\": \"degree\", \"limit\": \"10\", \"word\": \"\u5c0f\u7530\u6025\", \"datum\": \"wgs84\", \"options\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_link\"\nquerystring = {\"sort\": \"\", \"offset\": \"0\", \"coord_unit\": \"degree\", \"limit\": \"10\", \"word\": \"\u5c0f\u7530\u6025\", \"datum\": \"wgs84\", \"options\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "transport_node_around",
+            "url": "https://navitime-transport.p.rapidapi.com/transport_node/around",
+            "description": "Return lists of stations (including entrance informations) from the specified latitude and longitude of request parameters based on walking distance.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "coord",
+                    "type": "STRING",
+                    "description": "Latitude and longitude.",
+                    "default": "35.689457,139.691935"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limits the number of response data. (Minimum value: 1, Maximum value: 30, Default value: 10)",
+                    "default": "10"
+                },
+                {
+                    "name": "term",
+                    "type": "NUMBER",
+                    "description": "Range of search times. (Minimum value: 1, Maximum value: 1440, Default value: 60) The unit is \"minutes\".  Searches for the nearest station that can be reached within a specified number of minutes.  If there are few stations or bus stops in the vicinity, it may take a long time to search or an error may occur. In this case, it may be improved by reducing the time of the term.",
+                    "default": "60"
+                },
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude. (wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data. (degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                },
+                {
+                    "name": "walk_speed",
+                    "type": "NUMBER",
+                    "description": "Walking speed. (Minimum value: 3, Maximum value: 8, Default value: 5) Unit is \"km/h\".  Small numbers are valid up to the first place.",
+                    "default": "5"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_node/around\"\nquerystring = {\"limit\": \"10\", \"term\": \"60\", \"datum\": \"wgs84\", \"coord\": \"35.689457,139.691935\", \"coord_unit\": \"degree\", \"walk_speed\": \"5\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_node/around\"\nquerystring = {\"limit\": \"10\", \"term\": \"60\", \"datum\": \"wgs84\", \"coord\": \"35.689457,139.691935\", \"coord_unit\": \"degree\", \"walk_speed\": \"5\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "transport_link_address",
+            "url": "https://navitime-transport.p.rapidapi.com/transport_link/address",
+            "description": "Return lists of train line from the address code of request parameters.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "address",
+                    "type": "STRING",
+                    "description": "Address Code. Only the prefecture level (2 digits) can be specified.",
+                    "default": "13"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "options",
+                    "type": "STRING",
+                    "description": "Additional output information. (node: list of stations that belong to a line)",
+                    "default": ""
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Skips a given number of first data. (Minimum value: 0, Maximum value: 1000, Default value: 0)",
+                    "default": "0"
+                },
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data. (degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                },
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude. (wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Sorting order of additional information . (up: inbound line, down: outbound line)",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limits the number of response data. (Minimum value: 1, Maximum value: 100, Default value: 10)",
+                    "default": "10"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_link/address\"\nquerystring = {\"options\": \"\", \"offset\": \"0\", \"coord_unit\": \"degree\", \"datum\": \"wgs84\", \"sort\": \"\", \"address\": \"13\", \"limit\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_link/address\"\nquerystring = {\"options\": \"\", \"offset\": \"0\", \"coord_unit\": \"degree\", \"datum\": \"wgs84\", \"sort\": \"\", \"address\": \"13\", \"limit\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "transport_link_company",
+            "url": "https://navitime-transport.p.rapidapi.com/transport_link/company",
+            "description": "Return lists of train lines from the public transport company ID of request parameters.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "company",
+                    "type": "STRING",
+                    "description": "Transportation company ID.",
+                    "default": "00000004"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data. (degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                },
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude. (wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "options",
+                    "type": "STRING",
+                    "description": "Additional output information. (node: list of stations that belong to a line)",
+                    "default": ""
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Sorting order of additional information . (up: inbound line, down: outbound line)",
+                    "default": ""
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Skips a given number of first data. (Minimum value: 0, Maximum value: 1000, Default value: 0)",
+                    "default": "0"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limits the number of response data. (Minimum value: 1, Maximum value: 100, Default value: 10)",
+                    "default": "10"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_link/company\"\nquerystring = {\"company\": \"00000004\", \"coord_unit\": \"degree\", \"datum\": \"wgs84\", \"options\": \"\", \"sort\": \"\", \"offset\": \"0\", \"limit\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_link/company\"\nquerystring = {\"company\": \"00000004\", \"coord_unit\": \"degree\", \"datum\": \"wgs84\", \"options\": \"\", \"sort\": \"\", \"offset\": \"0\", \"limit\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "transport_node_id",
+            "url": "https://navitime-transport.p.rapidapi.com/transport_node/id",
+            "description": "Return station's information from the station ID of request parameters.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Node ID.  Can be specified multiple times, separated by a period.",
+                    "default": "00005077"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude. (wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data. (degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                },
+                {
+                    "name": "options",
+                    "type": "STRING",
+                    "description": "Additional output information. (detail: detailed information on stations)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_node/id\"\nquerystring = {\"id\": \"00005077\", \"datum\": \"wgs84\", \"coord_unit\": \"degree\", \"options\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-transport.p.rapidapi.com/transport_node/id\"\nquerystring = {\"id\": \"00005077\", \"datum\": \"wgs84\", \"coord_unit\": \"degree\", \"options\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-transport.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

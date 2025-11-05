@@ -1,0 +1,264 @@
+{
+    "product_id": "5c1e464de4b0a62b0424f51a",
+    "tool_description": "The Axesso Amazon Data Service API returns detailed Amazon product information including product title, manufacturer, reviews, size selection, price, reviews and many more. Additionally, the API supports product recommendations as provided by Amazon and invoke keyword searches to find up to 20 products per page relating to the searchterm. This service is comparable to the Amazon Product Advertising API, but presented in a more condensed manner. The usage requires a API Key in production mode....",
+    "home_url": "https://rapidapi.com/axesso/api/axesso-amazon-data-service1/",
+    "name": "Axesso - Amazon Data Service",
+    "title": "Axesso - Amazon Data Service",
+    "pricing": "FREEMIUM",
+    "tool_name": "Axesso - Amazon Data Service",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 4825,
+        "avgSuccessRate": 94,
+        "popularityScore": 9.8,
+        "__typename": "Score"
+    },
+    "host": "axesso-axesso-amazon-data-service-v1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "lookupProduct",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-lookup-product",
+            "description": "request product information",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "url used for the lookup",
+                    "default": "https://www.amazon.com/dp/B0CFN6GRTH/"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "merchant",
+                    "type": "STRING",
+                    "description": "merchant id",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-lookup-product\"\nquerystring = {\"merchant\": \"\", \"url\": \"https://www.amazon.com/dp/B0CFN6GRTH/\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"axesso-axesso-amazon-data-service-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-lookup-product\"\nquerystring = {\"merchant\": \"\", \"url\": \"https://www.amazon.com/dp/B0CFN6GRTH/\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"axesso-axesso-amazon-data-service-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "lookupReviews",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-lookup-reviews",
+            "description": "Lookup reviews from a product",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Parameter used for pagination",
+                    "default": "1"
+                },
+                {
+                    "name": "domainCode",
+                    "type": "STRING",
+                    "description": "domain code to use",
+                    "default": "com"
+                },
+                {
+                    "name": "asin",
+                    "type": "STRING",
+                    "description": "asin used for the lookup",
+                    "default": "B07YLDNTKB"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "sortBy",
+                    "type": "STRING",
+                    "description": "Sorting of review results",
+                    "default": "recent"
+                },
+                {
+                    "name": "filters",
+                    "type": "STRING",
+                    "description": "Semicolon seperated list of filters",
+                    "default": "reviewerType=avp_only_reviews;filterByStar=five_star"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-lookup-reviews\"\nquerystring = {\"page\": \"1\", \"domainCode\": \"com\", \"asin\": \"B07YLDNTKB\", \"sortBy\": \"recent\", \"filters\": \"reviewerType=avp_only_reviews;filterByStar=five_star\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"axesso-axesso-amazon-data-service-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-lookup-reviews\"\nquerystring = {\"page\": \"1\", \"domainCode\": \"com\", \"asin\": \"B07YLDNTKB\", \"sortBy\": \"recent\", \"filters\": \"reviewerType=avp_only_reviews;filterByStar=five_star\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"axesso-axesso-amazon-data-service-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "lookupSellerPrices",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/v2/amz/amazon-lookup-prices",
+            "description": "Lookup offer from different seller for the specified product",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Number of pages to return",
+                    "default": "1"
+                },
+                {
+                    "name": "asin",
+                    "type": "STRING",
+                    "description": "asin to lookup",
+                    "default": "B07QFC6LN6"
+                },
+                {
+                    "name": "domainCode",
+                    "type": "STRING",
+                    "description": "e.g. com / de / fr / co.uk",
+                    "default": "com"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/v2/amz/amazon-lookup-prices\"\nquerystring = {\"page\": \"1\", \"asin\": \"B07QFC6LN6\", \"domainCode\": \"com\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"axesso-axesso-amazon-data-service-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/v2/amz/amazon-lookup-prices\"\nquerystring = {\"page\": \"1\", \"asin\": \"B07QFC6LN6\", \"domainCode\": \"com\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"axesso-axesso-amazon-data-service-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "lookupBestSeller",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-best-sellers-list",
+            "description": "Lookup best seller list by providing url and page.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Parameter used for pagination",
+                    "default": "1"
+                },
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "url used for the lookup",
+                    "default": "https://www.amazon.com/gp/movers-and-shakers/toys-and-games"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-best-sellers-list\"\nquerystring = {\"page\": \"1\", \"url\": \"https://www.amazon.com/gp/movers-and-shakers/toys-and-games\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"axesso-axesso-amazon-data-service-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-best-sellers-list\"\nquerystring = {\"page\": \"1\", \"url\": \"https://www.amazon.com/gp/movers-and-shakers/toys-and-games\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"axesso-axesso-amazon-data-service-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "lookupSeller",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-lookup-seller",
+            "description": "Lookup seller details based on sellerid and domain",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "sellerId",
+                    "type": "STRING",
+                    "description": "id of the seller used for the lookup",
+                    "default": "AD97MR4NOW5CD"
+                },
+                {
+                    "name": "domainCode",
+                    "type": "STRING",
+                    "description": "Domain code of the amazon page",
+                    "default": "com"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-lookup-seller\"\nquerystring = {\"sellerId\": \"AD97MR4NOW5CD\", \"domainCode\": \"com\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"axesso-axesso-amazon-data-service-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-lookup-seller\"\nquerystring = {\"sellerId\": \"AD97MR4NOW5CD\", \"domainCode\": \"com\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"axesso-axesso-amazon-data-service-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "searchByKeywordAsin",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-search-by-keyword-asin",
+            "description": "Search products by keyword, returning all asins for the specified page.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "keyword",
+                    "type": "STRING",
+                    "description": "keyword used for the search",
+                    "default": "Jeans"
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Parameter for Pagination",
+                    "default": "1"
+                },
+                {
+                    "name": "domainCode",
+                    "type": "STRING",
+                    "description": "e.g. com / de / fr / co.uk",
+                    "default": "com"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "withCache",
+                    "type": "BOOLEAN",
+                    "description": "If true, proxy for same searchterm will be cached and used for next page. Might increase the response quality.",
+                    "default": "true"
+                },
+                {
+                    "name": "sortBy",
+                    "type": "STRING",
+                    "description": "sorting for the search results",
+                    "default": "relevanceblender"
+                },
+                {
+                    "name": "excludeSponsored",
+                    "type": "STRING",
+                    "description": "Set true to exclude sponsored products",
+                    "default": "false"
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "Pass the amazon category which should used for the search. Valid category list can found on the amazon website on the search selection box. **Important: If the passed category is not a valid amazon category, the response will be empty**",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-search-by-keyword-asin\"\nquerystring = {\"withCache\": \"true\", \"keyword\": \"Jeans\", \"page\": \"1\", \"sortBy\": \"relevanceblender\", \"excludeSponsored\": \"false\", \"domainCode\": \"com\", \"category\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"axesso-axesso-amazon-data-service-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-search-by-keyword-asin\"\nquerystring = {\"withCache\": \"true\", \"keyword\": \"Jeans\", \"page\": \"1\", \"sortBy\": \"relevanceblender\", \"excludeSponsored\": \"false\", \"domainCode\": \"com\", \"category\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"axesso-axesso-amazon-data-service-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "lookupSellerProducts",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-seller-products",
+            "description": "Lookup all products for a given seller page by page.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "sellerId",
+                    "type": "STRING",
+                    "description": "seller id used for the lookup",
+                    "default": "AD97MR4NOW5CD"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Parameter used for pagination",
+                    "default": "1"
+                },
+                {
+                    "name": "domainCode",
+                    "type": "STRING",
+                    "description": "domain code of the amazon page",
+                    "default": "com"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-seller-products\"\nquerystring = {\"sellerId\": \"AD97MR4NOW5CD\", \"page\": \"1\", \"domainCode\": \"com\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"axesso-axesso-amazon-data-service-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-seller-products\"\nquerystring = {\"sellerId\": \"AD97MR4NOW5CD\", \"page\": \"1\", \"domainCode\": \"com\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"axesso-axesso-amazon-data-service-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

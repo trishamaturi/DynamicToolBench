@@ -1,0 +1,2799 @@
+{
+    "product_id": "api_31adbc7a-8a2f-42b0-8351-51ef0e1b693d",
+    "tool_description": "Units and currency rate conversion, calculation automation, and ISO 3166-1, ISO 3166-2 and ISO 4217 APIs",
+    "home_url": "https://rapidapi.com/fmeurou/api/geophysics/",
+    "name": "Geophysics",
+    "title": "Geophysics",
+    "pricing": "FREEMIUM",
+    "tool_name": "Geophysics",
+    "score": null,
+    "host": "geophysics.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "units_dimensions_custom_list",
+            "url": "https://geophysics.p.rapidapi.com/units/{system_name}/dimensions/custom/",
+            "description": "List custom dimensions",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "system_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "A page number within the paginated result set.",
+                    "default": ""
+                },
+                {
+                    "name": "code",
+                    "type": "STRING",
+                    "description": "Filter on unit code",
+                    "default": ""
+                },
+                {
+                    "name": "page_size",
+                    "type": "NUMBER",
+                    "description": "Number of results to return per page.",
+                    "default": ""
+                },
+                {
+                    "name": "unit_system",
+                    "type": "STRING",
+                    "description": "Filter on unit system",
+                    "default": ""
+                },
+                {
+                    "name": "user",
+                    "type": "BOOLEAN",
+                    "description": "Filter on user rates",
+                    "default": true
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Filter on unit name",
+                    "default": ""
+                },
+                {
+                    "name": "ordering",
+                    "type": "STRING",
+                    "description": "Sort on code, name, relation, symbol, alias. Prefix with - for descending sort",
+                    "default": ""
+                },
+                {
+                    "name": "relation",
+                    "type": "STRING",
+                    "description": "Filter on relation to base units",
+                    "default": ""
+                },
+                {
+                    "name": "key",
+                    "type": "STRING",
+                    "description": "Filter on user defined category",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/dimensions/custom/\"\nquerystring = {\"page\": \"\", \"code\": \"\", \"page_size\": \"\", \"unit_system\": \"\", \"user\": true, \"name\": \"\", \"ordering\": \"\", \"system_name\": \"\", \"relation\": \"\", \"key\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/dimensions/custom/\"\nquerystring = {\"page\": \"\", \"code\": \"\", \"page_size\": \"\", \"unit_system\": \"\", \"user\": true, \"name\": \"\", \"ordering\": \"\", \"system_name\": \"\", \"relation\": \"\", \"key\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "code",
+                    "name",
+                    "relation"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "title": "ID of the CustomUnit",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "user": {
+                        "title": "Owner of the unit",
+                        "type": "string"
+                    },
+                    "key": {
+                        "title": "Categorization field (e.g.: customer ID)",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 255
+                    },
+                    "unit_system": {
+                        "title": "Unit system of the unit",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "code": {
+                        "title": "Technical name of the unit (e.g.: myUnit)",
+                        "type": "string",
+                        "format": "slug",
+                        "pattern": "^[-a-zA-Z0-9_]+$",
+                        "maxLength": 50,
+                        "minLength": 1
+                    },
+                    "name": {
+                        "title": "Human readable name (e.g.: My Unit)",
+                        "type": "string",
+                        "maxLength": 255,
+                        "minLength": 1
+                    },
+                    "relation": {
+                        "title": "Relation to an existing unit (e.g.: 12 kg*m/s)",
+                        "type": "string",
+                        "maxLength": 255,
+                        "minLength": 1
+                    }
+                }
+            }
+        },
+        {
+            "name": "units_custom_list",
+            "url": "https://geophysics.p.rapidapi.com/units/{system_name}/custom/",
+            "description": "List units",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "system_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page_size",
+                    "type": "NUMBER",
+                    "description": "Number of results to return per page.",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "A page number within the paginated result set.",
+                    "default": ""
+                },
+                {
+                    "name": "unit_system",
+                    "type": "STRING",
+                    "description": "Filter on unit system",
+                    "default": ""
+                },
+                {
+                    "name": "relation",
+                    "type": "STRING",
+                    "description": "Filter on relation to base units",
+                    "default": ""
+                },
+                {
+                    "name": "key",
+                    "type": "STRING",
+                    "description": "Filter on user defined category",
+                    "default": ""
+                },
+                {
+                    "name": "user",
+                    "type": "BOOLEAN",
+                    "description": "Filter on user rates",
+                    "default": true
+                },
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "Filter on unit symbol",
+                    "default": ""
+                },
+                {
+                    "name": "code",
+                    "type": "STRING",
+                    "description": "Filter on unit code",
+                    "default": ""
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Filter on unit name",
+                    "default": ""
+                },
+                {
+                    "name": "alias",
+                    "type": "STRING",
+                    "description": "Filter on unit alias",
+                    "default": ""
+                },
+                {
+                    "name": "ordering",
+                    "type": "STRING",
+                    "description": "Sort on code, name, relation, symbol, alias. Prefix with - for descending sort",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/custom/\"\nquerystring = {\"page_size\": \"\", \"page\": \"\", \"unit_system\": \"\", \"relation\": \"\", \"key\": \"\", \"user\": true, \"symbol\": \"\", \"code\": \"\", \"name\": \"\", \"alias\": \"\", \"system_name\": \"\", \"ordering\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/custom/\"\nquerystring = {\"page_size\": \"\", \"page\": \"\", \"unit_system\": \"\", \"relation\": \"\", \"key\": \"\", \"user\": true, \"symbol\": \"\", \"code\": \"\", \"name\": \"\", \"alias\": \"\", \"system_name\": \"\", \"ordering\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "code",
+                    "name",
+                    "relation"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "title": "ID of the CustomUnit",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "user": {
+                        "title": "Owner of the unit",
+                        "type": "string"
+                    },
+                    "key": {
+                        "title": "Categorization field (e.g.: customer ID)",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 255
+                    },
+                    "unit_system": {
+                        "title": "Unit system of the unit",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "code": {
+                        "title": "Technical name of the unit (e.g.: myUnit)",
+                        "type": "string",
+                        "format": "slug",
+                        "pattern": "^[-a-zA-Z0-9_]+$",
+                        "maxLength": 50,
+                        "minLength": 1
+                    },
+                    "name": {
+                        "title": "Human readable name (e.g.: My Unit)",
+                        "type": "string",
+                        "maxLength": 255,
+                        "minLength": 1
+                    },
+                    "relation": {
+                        "title": "Relation to an existing unit (e.g.: 12 kg*m/s)",
+                        "type": "string",
+                        "maxLength": 255,
+                        "minLength": 1
+                    },
+                    "symbol": {
+                        "title": "Symbol to use in a formula (e.g.: myu)",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 20
+                    },
+                    "alias": {
+                        "title": "Other code for this unit (e.g.: mybu)",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 20
+                    },
+                    "dimension": {
+                        "title": "Optional dimension. Will create a new dimension with the given name if it doesn't exist. Will check the dimensionality of the unit against the dimensionality of the dimension if it exists.",
+                        "type": "string",
+                        "minLength": 1
+                    }
+                }
+            }
+        },
+        {
+            "name": "units_dimensions",
+            "url": "https://geophysics.p.rapidapi.com/units/{system_name}/dimensions/",
+            "description": "List Dimensions of a UnitSystem",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "system_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "ordering",
+                    "type": "STRING",
+                    "description": "Sort on name Prefix with - for descending sort",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "language",
+                    "default": ""
+                },
+                {
+                    "name": "user custom key",
+                    "type": "STRING",
+                    "description": "key",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/dimensions/\"\nquerystring = {\"ordering\": \"\", \"system_name\": \"\", \"language\": \"\", \"user custom key\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/dimensions/\"\nquerystring = {\"ordering\": \"\", \"system_name\": \"\", \"language\": \"\", \"user custom key\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "code",
+                    "name",
+                    "dimension",
+                    "base_unit"
+                ],
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "title": "technical name of the unit (enclosed in brackets)",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "name": {
+                        "title": "Human readable name of the unit",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "dimension": {
+                        "title": "Mathematical expression of the dimension",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "base_unit": {
+                        "required": [
+                            "code",
+                            "name"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "title": "Technical name of the unit",
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            "name": {
+                                "title": "Human readable name of the unit",
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            "dimensions": {
+                                "description": "\nGet dimension of unit\n:param obj: Unit instance\n",
+                                "type": "array",
+                                "items": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "units_units_read",
+            "url": "https://geophysics.p.rapidapi.com/units/{system_name}/units/{unit_name}/",
+            "description": "Get unit information for unit in unit system",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "system_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "unit_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "key",
+                    "type": "STRING",
+                    "description": "key",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "language",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/units/{unit_name}/\"\nquerystring = {\"key\": \"\", \"system_name\": \"\", \"unit_name\": \"\", \"language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/units/{unit_name}/\"\nquerystring = {\"key\": \"\", \"system_name\": \"\", \"unit_name\": \"\", \"language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "code",
+                    "name"
+                ],
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "title": "Technical name of the unit",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "name": {
+                        "title": "Human readable name of the unit",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "dimensions": {
+                        "description": "\nGet dimension of unit\n:param obj: Unit instance\n",
+                        "type": "array",
+                        "items": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "currencies_get_countries",
+            "url": "https://geophysics.p.rapidapi.com/currencies/{code}/countries/",
+            "description": "Get all countries for the currency\n:param request: HTTP request\n:param code: Currency id\n:return: List of countries",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/currencies/{code}/countries/\"\nquerystring = {\"code\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/currencies/{code}/countries/\"\nquerystring = {\"code\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "alpha_2"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "ISO 3166 Country name",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "numeric": {
+                        "title": "ISO numeric value",
+                        "type": "integer"
+                    },
+                    "alpha_2": {
+                        "title": "ISO alpha-2 representation",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "alpha_3": {
+                        "title": "ISO alpha-3 representation",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "translated_name": {
+                        "title": "Translated country name",
+                        "description": "\nTranslate country name\n:param obj: Country\n:return: translated name\n",
+                        "type": "string",
+                        "minLength": 1
+                    }
+                }
+            }
+        },
+        {
+            "name": "units_dimensions_custom_read",
+            "url": "https://geophysics.p.rapidapi.com/units/{system_name}/dimensions/custom/{id}/",
+            "description": "Custom Dimensions API",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "A unique integer value identifying this custom dimension.",
+                    "default": ""
+                },
+                {
+                    "name": "system_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/dimensions/custom/{id}/\"\nquerystring = {\"id\": \"\", \"system_name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/dimensions/custom/{id}/\"\nquerystring = {\"id\": \"\", \"system_name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "code",
+                    "name",
+                    "relation"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "title": "ID of the CustomUnit",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "user": {
+                        "title": "Owner of the unit",
+                        "type": "string"
+                    },
+                    "key": {
+                        "title": "Categorization field (e.g.: customer ID)",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 255
+                    },
+                    "unit_system": {
+                        "title": "Unit system of the unit",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "code": {
+                        "title": "Technical name of the unit (e.g.: myUnit)",
+                        "type": "string",
+                        "format": "slug",
+                        "pattern": "^[-a-zA-Z0-9_]+$",
+                        "maxLength": 50,
+                        "minLength": 1
+                    },
+                    "name": {
+                        "title": "Human readable name (e.g.: My Unit)",
+                        "type": "string",
+                        "maxLength": 255,
+                        "minLength": 1
+                    },
+                    "relation": {
+                        "title": "Relation to an existing unit (e.g.: 12 kg*m/s)",
+                        "type": "string",
+                        "maxLength": 255,
+                        "minLength": 1
+                    }
+                }
+            }
+        },
+        {
+            "name": "countries_provinces",
+            "url": "https://geophysics.p.rapidapi.com/countries/{alpha_2}/provinces/",
+            "description": "Send provinces for a specific country",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "alpha_2",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/provinces/\"\nquerystring = {\"alpha_2\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/provinces/\"\nquerystring = {\"alpha_2\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "countries_languages",
+            "url": "https://geophysics.p.rapidapi.com/countries/{alpha_2}/languages/",
+            "description": "Send languages for a specific country",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "alpha_2",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/languages/\"\nquerystring = {\"alpha_2\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/languages/\"\nquerystring = {\"alpha_2\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "countries_currencies",
+            "url": "https://geophysics.p.rapidapi.com/countries/{alpha_2}/currencies/",
+            "description": "Send timezones for a specific country",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "alpha_2",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/currencies/\"\nquerystring = {\"alpha_2\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/currencies/\"\nquerystring = {\"alpha_2\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "countries_subdivisions_children",
+            "url": "https://geophysics.p.rapidapi.com/countries/{alpha_2}/subdivisions/{code}/children/",
+            "description": "Retrieve a Country based on its alpha 2 code\n:param alpha_2: ISO 3166-1 alpha_2 code\n:param code: ISO 3166-2 code",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "alpha_2",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "Search term",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "language",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/subdivisions/{code}/children/\"\nquerystring = {\"search\": \"\", \"code\": \"\", \"alpha_2\": \"\", \"language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/subdivisions/{code}/children/\"\nquerystring = {\"search\": \"\", \"code\": \"\", \"alpha_2\": \"\", \"language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "name",
+                    "code",
+                    "type",
+                    "country_code"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "ISO-3166-2 Country subdivision name",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "code": {
+                        "title": "ISO 3166-2 code value",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "type": {
+                        "title": "subdivision type",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "country_code": {
+                        "title": "ISO 3166-1 country code",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "translated_name": {
+                        "title": "Translated country subdivision name",
+                        "description": "\nTranslate country subdivision name\n:param obj: CountrySubdivision\n:return: translated name\n",
+                        "type": "string",
+                        "minLength": 1
+                    }
+                }
+            }
+        },
+        {
+            "name": "countries_list",
+            "url": "https://geophysics.p.rapidapi.com/countries/",
+            "description": "List countries. this view is not paginated",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "ordering",
+                    "type": "STRING",
+                    "description": "Sort on name, alpha_2, alpha_3, numeric. Prefix with - for descending sort",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "language",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/\"\nquerystring = {\"ordering\": \"\", \"language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/\"\nquerystring = {\"ordering\": \"\", \"language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "alpha_2"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "ISO 3166 Country name",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "numeric": {
+                        "title": "ISO numeric value",
+                        "type": "integer"
+                    },
+                    "alpha_2": {
+                        "title": "ISO alpha-2 representation",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "alpha_3": {
+                        "title": "ISO alpha-3 representation",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "translated_name": {
+                        "title": "Translated country name",
+                        "description": "\nTranslate country name\n:param obj: Country\n:return: translated name\n",
+                        "type": "string",
+                        "minLength": 1
+                    }
+                }
+            }
+        },
+        {
+            "name": "units_units_list_per_dimension",
+            "url": "https://geophysics.p.rapidapi.com/units/{system_name}/units/per_dimension/",
+            "description": "List Units grouped by dimension, filter on key, translated",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "system_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "language",
+                    "default": ""
+                },
+                {
+                    "name": "key",
+                    "type": "STRING",
+                    "description": "key",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/units/per_dimension/\"\nquerystring = {\"language\": \"\", \"key\": \"\", \"system_name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/units/per_dimension/\"\nquerystring = {\"language\": \"\", \"key\": \"\", \"system_name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "code",
+                    "name",
+                    "dimension",
+                    "base_unit"
+                ],
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "title": "technical name of the unit (enclosed in brackets)",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "name": {
+                        "title": "Human readable name of the unit",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "dimension": {
+                        "title": "Mathematical expression of the dimension",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "base_unit": {
+                        "required": [
+                            "code",
+                            "name"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "title": "Technical name of the unit",
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            "name": {
+                                "title": "Human readable name of the unit",
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            "dimensions": {
+                                "description": "\nGet dimension of unit\n:param obj: Unit instance\n",
+                                "type": "array",
+                                "items": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "units": {
+                        "required": [
+                            "code",
+                            "name"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "title": "Technical name of the unit",
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            "name": {
+                                "title": "Human readable name of the unit",
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            "dimensions": {
+                                "description": "\nGet dimension of unit\n:param obj: Unit instance\n",
+                                "type": "array",
+                                "items": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "countries_reverse_geocode",
+            "url": "https://geophysics.p.rapidapi.com/countries/reverse/",
+            "description": "Find country by reverse geocoding (giving latitude and longitude)",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "geocoder",
+                    "type": "STRING",
+                    "description": "Geocoder type",
+                    "default": ""
+                },
+                {
+                    "name": "longitude",
+                    "type": "STRING",
+                    "description": "Longitude",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "language",
+                    "default": ""
+                },
+                {
+                    "name": "latitude",
+                    "type": "STRING",
+                    "description": "Latitude",
+                    "default": ""
+                },
+                {
+                    "name": "geocoder_api_key",
+                    "type": "STRING",
+                    "description": "Geocoder API key",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/reverse/\"\nquerystring = {\"geocoder\": \"\", \"longitude\": \"\", \"language\": \"\", \"latitude\": \"\", \"geocoder_api_key\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/reverse/\"\nquerystring = {\"geocoder\": \"\", \"longitude\": \"\", \"language\": \"\", \"latitude\": \"\", \"geocoder_api_key\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "location",
+                    "street_number",
+                    "street",
+                    "postal_code",
+                    "locality",
+                    "subdivision_label",
+                    "confidence"
+                ],
+                "type": "object",
+                "properties": {
+                    "location": {
+                        "required": [
+                            "lat",
+                            "lng"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "lat": {
+                                "title": "latitude",
+                                "type": "number"
+                            },
+                            "lng": {
+                                "title": "longitude",
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "street_number": {
+                        "title": "Street number",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "street": {
+                        "title": "Street name",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "postal_code": {
+                        "title": "Postal code",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "locality": {
+                        "title": "Locality or city name",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "county": {
+                        "title": "County object",
+                        "type": "string"
+                    },
+                    "county_label": {
+                        "title": "County name",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "subdivision": {
+                        "title": "CountrySubdivision object",
+                        "type": "string"
+                    },
+                    "subdivision_label": {
+                        "title": "CountrySubdivision label",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "country": {
+                        "title": "Country object",
+                        "type": "string"
+                    },
+                    "confidence": {
+                        "title": "Confidence",
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        {
+            "name": "countries_geocode",
+            "url": "https://geophysics.p.rapidapi.com/countries/geocode/",
+            "description": "Find country by geocoding (giving address or POI)",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "geocoder",
+                    "type": "STRING",
+                    "description": "Geocoder type",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "language",
+                    "default": ""
+                },
+                {
+                    "name": "address",
+                    "type": "STRING",
+                    "description": "Address to look for",
+                    "default": ""
+                },
+                {
+                    "name": "geocoder_api_key",
+                    "type": "STRING",
+                    "description": "Geocoder API key",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/geocode/\"\nquerystring = {\"geocoder\": \"\", \"language\": \"\", \"address\": \"\", \"geocoder_api_key\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/geocode/\"\nquerystring = {\"geocoder\": \"\", \"language\": \"\", \"address\": \"\", \"geocoder_api_key\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "location",
+                    "street_number",
+                    "street",
+                    "postal_code",
+                    "locality",
+                    "subdivision_label",
+                    "confidence"
+                ],
+                "type": "object",
+                "properties": {
+                    "location": {
+                        "required": [
+                            "lat",
+                            "lng"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "lat": {
+                                "title": "latitude",
+                                "type": "number"
+                            },
+                            "lng": {
+                                "title": "longitude",
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "street_number": {
+                        "title": "Street number",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "street": {
+                        "title": "Street name",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "postal_code": {
+                        "title": "Postal code",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "locality": {
+                        "title": "Locality or city name",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "county": {
+                        "title": "County object",
+                        "type": "string"
+                    },
+                    "county_label": {
+                        "title": "County name",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "subdivision": {
+                        "title": "CountrySubdivision object",
+                        "type": "string"
+                    },
+                    "subdivision_label": {
+                        "title": "CountrySubdivision label",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "country": {
+                        "title": "Country object",
+                        "type": "string"
+                    },
+                    "confidence": {
+                        "title": "Confidence",
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        {
+            "name": "currencies_get_rates",
+            "url": "https://geophysics.p.rapidapi.com/currencies/{code}/rates/",
+            "description": "Get conversion rates for the currency\n:param request: HTTP request\n:param code: Currency id\n:param key: optional custom key\n:param base_currency: optional base currency, defaults to EUR\n:param from_date: optional limit results to rates range in time\n:param to_date: optional limit results to rates range in time\n:return: List of rates",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "to_date",
+                    "type": "STRING",
+                    "description": "To date (YYYY-MM-DD)",
+                    "default": ""
+                },
+                {
+                    "name": "from_date",
+                    "type": "STRING",
+                    "description": "From date (YYYY-MM-DD)",
+                    "default": ""
+                },
+                {
+                    "name": "key",
+                    "type": "STRING",
+                    "description": "custom key",
+                    "default": ""
+                },
+                {
+                    "name": "base",
+                    "type": "STRING",
+                    "description": "Base currency (defaults to EUR)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/currencies/{code}/rates/\"\nquerystring = {\"to_date\": \"\", \"from_date\": \"\", \"code\": \"\", \"key\": \"\", \"base\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/currencies/{code}/rates/\"\nquerystring = {\"to_date\": \"\", \"from_date\": \"\", \"code\": \"\", \"key\": \"\", \"base\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "currency",
+                    "value_date"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "title": "ID of the rate",
+                        "type": "string"
+                    },
+                    "user": {
+                        "title": "Owner of the rate",
+                        "type": "string"
+                    },
+                    "key": {
+                        "title": "User defined categorization key",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 255,
+                        "minLength": 1
+                    },
+                    "currency": {
+                        "title": "Currency to convert from",
+                        "type": "string",
+                        "maxLength": 3,
+                        "minLength": 1
+                    },
+                    "base_currency": {
+                        "title": "Currency to convert to",
+                        "type": "string",
+                        "default": "EUR",
+                        "maxLength": 3,
+                        "minLength": 1
+                    },
+                    "value_date": {
+                        "title": "Date of value",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "value": {
+                        "title": "Rate conversion factor",
+                        "type": "number"
+                    }
+                }
+            }
+        },
+        {
+            "name": "countries_geocoders",
+            "url": "https://geophysics.p.rapidapi.com/countries/geocoders/",
+            "description": "Return a list of available geocoders.\nAs defined in settings.GEOCODING_SERVICE_SETTINGS",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/geocoders/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/geocoders/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "countries_subdivisions_read",
+            "url": "https://geophysics.p.rapidapi.com/countries/{alpha_2}/subdivisions/{code}/",
+            "description": "Retrieve a Country based on its alpha 2 code\n:param alpha_2: ISO 3166-1 alpha_2 code\n:param code: ISO 3166-2 code",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "alpha_2",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "language",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/subdivisions/{code}/\"\nquerystring = {\"code\": \"\", \"language\": \"\", \"alpha_2\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/subdivisions/{code}/\"\nquerystring = {\"code\": \"\", \"language\": \"\", \"alpha_2\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "name",
+                    "code",
+                    "type",
+                    "country_code"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "ISO-3166-2 Country subdivision name",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "code": {
+                        "title": "ISO 3166-2 code value",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "type": {
+                        "title": "subdivision type",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "country_code": {
+                        "title": "ISO 3166-1 country code",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "translated_name": {
+                        "title": "Translated country subdivision name",
+                        "description": "\nTranslate country subdivision name\n:param obj: CountrySubdivision\n:return: translated name\n",
+                        "type": "string",
+                        "minLength": 1
+                    }
+                }
+            }
+        },
+        {
+            "name": "units_read",
+            "url": "https://geophysics.p.rapidapi.com/units/{system_name}/",
+            "description": "Retrieve UnitSystem",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "system_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "language",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/\"\nquerystring = {\"language\": \"\", \"system_name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/\"\nquerystring = {\"language\": \"\", \"system_name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "system_name"
+                ],
+                "type": "object",
+                "properties": {
+                    "system_name": {
+                        "title": "System name",
+                        "type": "string",
+                        "minLength": 1
+                    }
+                }
+            }
+        },
+        {
+            "name": "units_units_list",
+            "url": "https://geophysics.p.rapidapi.com/units/{system_name}/units/",
+            "description": "List Units, ordered, filtered by key or dimension,\ntranslated in language",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "system_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "ordering",
+                    "type": "STRING",
+                    "description": "Sort on fields name or code. Prefix with - for descending sort",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "language",
+                    "default": ""
+                },
+                {
+                    "name": "key",
+                    "type": "STRING",
+                    "description": "key",
+                    "default": ""
+                },
+                {
+                    "name": "dimension",
+                    "type": "STRING",
+                    "description": "Unit dimension",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/units/\"\nquerystring = {\"ordering\": \"\", \"language\": \"\", \"key\": \"\", \"dimension\": \"\", \"system_name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/units/\"\nquerystring = {\"ordering\": \"\", \"language\": \"\", \"key\": \"\", \"dimension\": \"\", \"system_name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "code",
+                    "name"
+                ],
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "title": "Technical name of the unit",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "name": {
+                        "title": "Human readable name of the unit",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "dimensions": {
+                        "description": "\nGet dimension of unit\n:param obj: Unit instance\n",
+                        "type": "array",
+                        "items": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "languages_list",
+            "url": "https://geophysics.p.rapidapi.com/languages/",
+            "description": "GET handler\n:param request: HTTPRequest",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/languages/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/languages/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "watch_read",
+            "url": "https://geophysics.p.rapidapi.com/watch/{converter_id}/",
+            "description": "GET handler\n:param request: HTTPRequest\n:param converter_id: ID of the converter\n:param args: list of arguments\n:param kwargs: dict of arguments",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "converter_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/watch/{converter_id}/\"\nquerystring = {\"converter_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/watch/{converter_id}/\"\nquerystring = {\"converter_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "id",
+                    "status"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "title": "Batch unique identifier",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "status": {
+                        "title": "Status of the batch",
+                        "type": "string",
+                        "minLength": 1
+                    }
+                }
+            }
+        },
+        {
+            "name": "countries_colors",
+            "url": "https://geophysics.p.rapidapi.com/countries/{alpha_2}/colors/",
+            "description": "Get existing flag colors",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "alpha_2",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/colors/\"\nquerystring = {\"alpha_2\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/colors/\"\nquerystring = {\"alpha_2\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "countries_timezones",
+            "url": "https://geophysics.p.rapidapi.com/countries/{alpha_2}/timezones/",
+            "description": "Send timezones for a specific country",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "alpha_2",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/timezones/\"\nquerystring = {\"alpha_2\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/timezones/\"\nquerystring = {\"alpha_2\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "currencies_list",
+            "url": "https://geophysics.p.rapidapi.com/currencies/",
+            "description": "List of currencies",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "A page number within the paginated result set.",
+                    "default": ""
+                },
+                {
+                    "name": "page_size",
+                    "type": "NUMBER",
+                    "description": "Number of results to return per page.",
+                    "default": ""
+                },
+                {
+                    "name": "ordering",
+                    "type": "STRING",
+                    "description": "Sort on code, name, currency_name, exponent, number, value. Prefix with - for descending sort",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/currencies/\"\nquerystring = {\"page\": \"\", \"page_size\": \"\", \"ordering\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/currencies/\"\nquerystring = {\"page\": \"\", \"page_size\": \"\", \"ordering\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "title": "ISO-4217 code of the currency",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "name": {
+                        "title": "Human readable name of the currency",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "currency_name": {
+                        "title": "name of the currency",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "exponent": {
+                        "title": "ISO-4217 exponent",
+                        "type": "integer"
+                    },
+                    "number": {
+                        "title": "ISO-4217 numeric identifier",
+                        "type": "integer"
+                    },
+                    "value": {
+                        "title": "Value",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "symbol": {
+                        "title": "Symbol of the currency",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "units_units_compatible_units",
+            "url": "https://geophysics.p.rapidapi.com/units/{system_name}/units/{unit_name}/compatible/",
+            "description": "List compatible Units",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "system_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "unit_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "ordering",
+                    "type": "STRING",
+                    "description": "Sort on fields name or code. Prefix with - for descending sort",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "language",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/units/{unit_name}/compatible/\"\nquerystring = {\"system_name\": \"\", \"ordering\": \"\", \"unit_name\": \"\", \"language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/units/{unit_name}/compatible/\"\nquerystring = {\"system_name\": \"\", \"ordering\": \"\", \"unit_name\": \"\", \"language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "code",
+                    "name"
+                ],
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "title": "Technical name of the unit",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "name": {
+                        "title": "Human readable name of the unit",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "dimensions": {
+                        "description": "\nGet dimension of unit\n:param obj: Unit instance\n",
+                        "type": "array",
+                        "items": {
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "rates_stats",
+            "url": "https://geophysics.p.rapidapi.com/rates/stats/",
+            "description": "stats on rates",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "A page number within the paginated result set.",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "Filter by currency",
+                    "default": ""
+                },
+                {
+                    "name": "lower_bound",
+                    "type": "NUMBER",
+                    "description": "Filter rates with a value higher than value",
+                    "default": ""
+                },
+                {
+                    "name": "user",
+                    "type": "BOOLEAN",
+                    "description": "Filter on user rates",
+                    "default": true
+                },
+                {
+                    "name": "key",
+                    "type": "STRING",
+                    "description": "Filter on user defined category",
+                    "default": ""
+                },
+                {
+                    "name": "higher_bound",
+                    "type": "NUMBER",
+                    "description": "Filter rates with a value lower than value",
+                    "default": ""
+                },
+                {
+                    "name": "to_obj",
+                    "type": "STRING",
+                    "description": "Filter rates with value date before date",
+                    "default": ""
+                },
+                {
+                    "name": "value",
+                    "type": "NUMBER",
+                    "description": "Filter rates with a specific value",
+                    "default": ""
+                },
+                {
+                    "name": "key_isnull",
+                    "type": "STRING",
+                    "description": "ONly show results with no category",
+                    "default": ""
+                },
+                {
+                    "name": "period",
+                    "type": "STRING",
+                    "description": "period to aggregate on: month, week, year, defaults to month",
+                    "default": ""
+                },
+                {
+                    "name": "base_currency_latest_values",
+                    "type": "STRING",
+                    "description": "Base currency to filter on, limits results to latest values",
+                    "default": ""
+                },
+                {
+                    "name": "currency_latest_values",
+                    "type": "STRING",
+                    "description": "Currency to filter on, limits results to latest values",
+                    "default": ""
+                },
+                {
+                    "name": "from_obj",
+                    "type": "STRING",
+                    "description": "Filter rates with value date after date",
+                    "default": ""
+                },
+                {
+                    "name": "value_date",
+                    "type": "STRING",
+                    "description": "Filter on date of the rate",
+                    "default": ""
+                },
+                {
+                    "name": "page_size",
+                    "type": "NUMBER",
+                    "description": "Number of results to return per page.",
+                    "default": ""
+                },
+                {
+                    "name": "base_currency",
+                    "type": "STRING",
+                    "description": "Filter by base currency",
+                    "default": ""
+                },
+                {
+                    "name": "key_or_null",
+                    "type": "STRING",
+                    "description": "Show rates with defined category or no category",
+                    "default": ""
+                },
+                {
+                    "name": "ordering",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/rates/stats/\"\nquerystring = {\"page\": \"\", \"currency\": \"\", \"lower_bound\": \"\", \"user\": true, \"key\": \"\", \"higher_bound\": \"\", \"to_obj\": \"\", \"value\": \"\", \"key_isnull\": \"\", \"period\": \"\", \"base_currency_latest_values\": \"\", \"currency_latest_values\": \"\", \"from_obj\": \"\", \"value_date\": \"\", \"page_size\": \"\", \"base_currency\": \"\", \"key_or_null\": \"\", \"ordering\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/rates/stats/\"\nquerystring = {\"page\": \"\", \"currency\": \"\", \"lower_bound\": \"\", \"user\": true, \"key\": \"\", \"higher_bound\": \"\", \"to_obj\": \"\", \"value\": \"\", \"key_isnull\": \"\", \"period\": \"\", \"base_currency_latest_values\": \"\", \"currency_latest_values\": \"\", \"from_obj\": \"\", \"value_date\": \"\", \"page_size\": \"\", \"base_currency\": \"\", \"key_or_null\": \"\", \"ordering\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "title": "User defined categorization key",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "period": {
+                        "title": "Period over which to aggregate",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "from_date": {
+                        "title": "start aggregation date",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "to_date": {
+                        "title": "end aggregation date",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "currency": {
+                                    "title": "Currency to convert from",
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "base_currency": {
+                                    "title": "Currency to convert to",
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "period": {
+                                    "title": "Period over which to aggregate",
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "avg": {
+                                    "title": "Average value",
+                                    "type": "number"
+                                },
+                                "max": {
+                                    "title": "Max value",
+                                    "type": "number"
+                                },
+                                "min": {
+                                    "title": "Min value",
+                                    "type": "number"
+                                },
+                                "std_dev": {
+                                    "title": "Standard deviation",
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "units_units_custom_read",
+            "url": "https://geophysics.p.rapidapi.com/units/{system_name}/units/custom/{id}/",
+            "description": "Custom Units API",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "A unique integer value identifying this custom unit.",
+                    "default": ""
+                },
+                {
+                    "name": "system_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/units/custom/{id}/\"\nquerystring = {\"id\": \"\", \"system_name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/units/custom/{id}/\"\nquerystring = {\"id\": \"\", \"system_name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "code",
+                    "name",
+                    "relation"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "title": "ID of the CustomUnit",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "user": {
+                        "title": "Owner of the unit",
+                        "type": "string"
+                    },
+                    "key": {
+                        "title": "Categorization field (e.g.: customer ID)",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 255
+                    },
+                    "unit_system": {
+                        "title": "Unit system of the unit",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "code": {
+                        "title": "Technical name of the unit (e.g.: myUnit)",
+                        "type": "string",
+                        "format": "slug",
+                        "pattern": "^[-a-zA-Z0-9_]+$",
+                        "maxLength": 50,
+                        "minLength": 1
+                    },
+                    "name": {
+                        "title": "Human readable name (e.g.: My Unit)",
+                        "type": "string",
+                        "maxLength": 255,
+                        "minLength": 1
+                    },
+                    "relation": {
+                        "title": "Relation to an existing unit (e.g.: 12 kg*m/s)",
+                        "type": "string",
+                        "maxLength": 255,
+                        "minLength": 1
+                    },
+                    "symbol": {
+                        "title": "Symbol to use in a formula (e.g.: myu)",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 20
+                    },
+                    "alias": {
+                        "title": "Other code for this unit (e.g.: mybu)",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 20
+                    },
+                    "dimension": {
+                        "title": "Optional dimension. Will create a new dimension with the given name if it doesn't exist. Will check the dimensionality of the unit against the dimensionality of the dimension if it exists.",
+                        "type": "string",
+                        "minLength": 1
+                    }
+                }
+            }
+        },
+        {
+            "name": "countries_read",
+            "url": "https://geophysics.p.rapidapi.com/countries/{alpha_2}/",
+            "description": "Retrieve a Country based on its alpha 2 code",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "alpha_2",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "language",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/\"\nquerystring = {\"language\": \"\", \"alpha_2\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/\"\nquerystring = {\"language\": \"\", \"alpha_2\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "currencies"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "ISO-3306 Country name",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "numeric": {
+                        "title": "ISO-3306 numeric value",
+                        "type": "integer"
+                    },
+                    "alpha_2": {
+                        "title": "ISO alpha-2 representation",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "alpha_3": {
+                        "title": "ISO alpha-3 representation",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "region": {
+                        "title": "Geographic region of the country",
+                        "description": "\nCountry region wrapper\n:param obj: Country\n",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "subregion": {
+                        "title": "Geographic subregion of the country",
+                        "description": "\nCountry subregien wrapper\n:param obj: Country\n",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "tld": {
+                        "title": "Top Domain Level of the country",
+                        "description": "\nCountry TLD wrapper\n:param obj: Country\n",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "capital": {
+                        "title": "Name of the capital city",
+                        "description": "\nCountry capital wrapper\n:param obj: Country\n",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "unit_system": {
+                        "title": "Main unit system for this country",
+                        "description": "\nCountry Unit system wrapper\n:param obj: Country\n",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "translated_name": {
+                        "title": "Country translated name",
+                        "description": "\nCountry translation wrapper\n:param obj: Country\n",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "currencies": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "title": "ISO-4217 code of the currency",
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "name": {
+                                    "title": "Human readable name of the currency",
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "currency_name": {
+                                    "title": "name of the currency",
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "exponent": {
+                                    "title": "ISO-4217 exponent",
+                                    "type": "integer"
+                                },
+                                "number": {
+                                    "title": "ISO-4217 numeric identifier",
+                                    "type": "integer"
+                                },
+                                "value": {
+                                    "title": "Value",
+                                    "type": "string",
+                                    "minLength": 1
+                                },
+                                "symbol": {
+                                    "title": "Symbol of the currency",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "countries_subdivisions_parent",
+            "url": "https://geophysics.p.rapidapi.com/countries/{alpha_2}/subdivisions/{code}/parent/",
+            "description": "Retrieve a Country based on its alpha 2 code\n:param alpha_2: ISO 3166-1 alpha_2 code\n:param code: ISO 3166-2 code",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "alpha_2",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "code",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "language",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/subdivisions/{code}/parent/\"\nquerystring = {\"alpha_2\": \"\", \"code\": \"\", \"language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/subdivisions/{code}/parent/\"\nquerystring = {\"alpha_2\": \"\", \"code\": \"\", \"language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "name",
+                    "code",
+                    "type",
+                    "country_code"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "ISO-3166-2 Country subdivision name",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "code": {
+                        "title": "ISO 3166-2 code value",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "type": {
+                        "title": "subdivision type",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "country_code": {
+                        "title": "ISO 3166-1 country code",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "translated_name": {
+                        "title": "Translated country subdivision name",
+                        "description": "\nTranslate country subdivision name\n:param obj: CountrySubdivision\n:return: translated name\n",
+                        "type": "string",
+                        "minLength": 1
+                    }
+                }
+            }
+        },
+        {
+            "name": "countries_subdivisions_list",
+            "url": "https://geophysics.p.rapidapi.com/countries/{alpha_2}/subdivisions/",
+            "description": "List country subdivisions. this view is not paginated\n:param request: HTTP request\n:param alpha_2: Country ISO 3166-1 alpha_2 code",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "alpha_2",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "language",
+                    "default": ""
+                },
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "Search term",
+                    "default": ""
+                },
+                {
+                    "name": "ordering",
+                    "type": "STRING",
+                    "description": "Sort on name, code, type. Prefix with - for descending sort",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/subdivisions/\"\nquerystring = {\"alpha_2\": \"\", \"language\": \"\", \"search\": \"\", \"ordering\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/subdivisions/\"\nquerystring = {\"alpha_2\": \"\", \"language\": \"\", \"search\": \"\", \"ordering\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "name",
+                    "code",
+                    "type",
+                    "country_code"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "ISO-3166-2 Country subdivision name",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "code": {
+                        "title": "ISO 3166-2 code value",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "type": {
+                        "title": "subdivision type",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "country_code": {
+                        "title": "ISO 3166-1 country code",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "translated_name": {
+                        "title": "Translated country subdivision name",
+                        "description": "\nTranslate country subdivision name\n:param obj: CountrySubdivision\n:return: translated name\n",
+                        "type": "string",
+                        "minLength": 1
+                    }
+                }
+            }
+        },
+        {
+            "name": "rates_read",
+            "url": "https://geophysics.p.rapidapi.com/rates/{id}/",
+            "description": "Rate API",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "A unique integer value identifying this rate.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/rates/{id}/\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/rates/{id}/\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "currency",
+                    "value_date"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "title": "ID of the rate",
+                        "type": "string"
+                    },
+                    "user": {
+                        "title": "Owner of the rate",
+                        "type": "string"
+                    },
+                    "key": {
+                        "title": "User defined categorization key",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 255,
+                        "minLength": 1
+                    },
+                    "currency": {
+                        "title": "Currency to convert from",
+                        "type": "string",
+                        "maxLength": 3,
+                        "minLength": 1
+                    },
+                    "base_currency": {
+                        "title": "Currency to convert to",
+                        "type": "string",
+                        "default": "EUR",
+                        "maxLength": 3,
+                        "minLength": 1
+                    },
+                    "value_date": {
+                        "title": "Date of value",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "value": {
+                        "title": "Rate conversion factor",
+                        "type": "number"
+                    }
+                }
+            }
+        },
+        {
+            "name": "currencies_read",
+            "url": "https://geophysics.p.rapidapi.com/currencies/{code}/",
+            "description": "Retrieve single record based on iso4217 code",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/currencies/{code}/\"\nquerystring = {\"code\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/currencies/{code}/\"\nquerystring = {\"code\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "title": "ISO-4217 code of the currency",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "name": {
+                        "title": "Human readable name of the currency",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "currency_name": {
+                        "title": "name of the currency",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "exponent": {
+                        "title": "ISO-4217 exponent",
+                        "type": "integer"
+                    },
+                    "number": {
+                        "title": "ISO-4217 numeric identifier",
+                        "type": "integer"
+                    },
+                    "value": {
+                        "title": "Value",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "symbol": {
+                        "title": "Symbol of the currency",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "countries_borders",
+            "url": "https://geophysics.p.rapidapi.com/countries/{alpha_2}/borders/",
+            "description": "Send borders for a specific country",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "alpha_2",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/borders/\"\nquerystring = {\"alpha_2\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/countries/{alpha_2}/borders/\"\nquerystring = {\"alpha_2\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "units_units_custom_list",
+            "url": "https://geophysics.p.rapidapi.com/units/{system_name}/units/custom/",
+            "description": "List units",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "system_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "ordering",
+                    "type": "STRING",
+                    "description": "Sort on code, name, relation, symbol, alias. Prefix with - for descending sort",
+                    "default": ""
+                },
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "Filter on unit symbol",
+                    "default": ""
+                },
+                {
+                    "name": "user",
+                    "type": "BOOLEAN",
+                    "description": "Filter on user rates",
+                    "default": true
+                },
+                {
+                    "name": "relation",
+                    "type": "STRING",
+                    "description": "Filter on relation to base units",
+                    "default": ""
+                },
+                {
+                    "name": "key",
+                    "type": "STRING",
+                    "description": "Filter on user defined category",
+                    "default": ""
+                },
+                {
+                    "name": "unit_system",
+                    "type": "STRING",
+                    "description": "Filter on unit system",
+                    "default": ""
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Filter on unit name",
+                    "default": ""
+                },
+                {
+                    "name": "code",
+                    "type": "STRING",
+                    "description": "Filter on unit code",
+                    "default": ""
+                },
+                {
+                    "name": "page_size",
+                    "type": "NUMBER",
+                    "description": "Number of results to return per page.",
+                    "default": ""
+                },
+                {
+                    "name": "alias",
+                    "type": "STRING",
+                    "description": "Filter on unit alias",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "A page number within the paginated result set.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/units/custom/\"\nquerystring = {\"system_name\": \"\", \"ordering\": \"\", \"symbol\": \"\", \"user\": true, \"relation\": \"\", \"key\": \"\", \"unit_system\": \"\", \"name\": \"\", \"code\": \"\", \"page_size\": \"\", \"alias\": \"\", \"page\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/units/custom/\"\nquerystring = {\"system_name\": \"\", \"ordering\": \"\", \"symbol\": \"\", \"user\": true, \"relation\": \"\", \"key\": \"\", \"unit_system\": \"\", \"name\": \"\", \"code\": \"\", \"page_size\": \"\", \"alias\": \"\", \"page\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "code",
+                    "name",
+                    "relation"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "title": "ID of the CustomUnit",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "user": {
+                        "title": "Owner of the unit",
+                        "type": "string"
+                    },
+                    "key": {
+                        "title": "Categorization field (e.g.: customer ID)",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 255
+                    },
+                    "unit_system": {
+                        "title": "Unit system of the unit",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "code": {
+                        "title": "Technical name of the unit (e.g.: myUnit)",
+                        "type": "string",
+                        "format": "slug",
+                        "pattern": "^[-a-zA-Z0-9_]+$",
+                        "maxLength": 50,
+                        "minLength": 1
+                    },
+                    "name": {
+                        "title": "Human readable name (e.g.: My Unit)",
+                        "type": "string",
+                        "maxLength": 255,
+                        "minLength": 1
+                    },
+                    "relation": {
+                        "title": "Relation to an existing unit (e.g.: 12 kg*m/s)",
+                        "type": "string",
+                        "maxLength": 255,
+                        "minLength": 1
+                    },
+                    "symbol": {
+                        "title": "Symbol to use in a formula (e.g.: myu)",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 20
+                    },
+                    "alias": {
+                        "title": "Other code for this unit (e.g.: mybu)",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 20
+                    },
+                    "dimension": {
+                        "title": "Optional dimension. Will create a new dimension with the given name if it doesn't exist. Will check the dimensionality of the unit against the dimensionality of the dimension if it exists.",
+                        "type": "string",
+                        "minLength": 1
+                    }
+                }
+            }
+        },
+        {
+            "name": "units_custom_read",
+            "url": "https://geophysics.p.rapidapi.com/units/{system_name}/custom/{id}/",
+            "description": "Custom Units API",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "system_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "A unique integer value identifying this custom unit.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/custom/{id}/\"\nquerystring = {\"system_name\": \"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/{system_name}/custom/{id}/\"\nquerystring = {\"system_name\": \"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "code",
+                    "name",
+                    "relation"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "title": "ID of the CustomUnit",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "user": {
+                        "title": "Owner of the unit",
+                        "type": "string"
+                    },
+                    "key": {
+                        "title": "Categorization field (e.g.: customer ID)",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 255
+                    },
+                    "unit_system": {
+                        "title": "Unit system of the unit",
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "code": {
+                        "title": "Technical name of the unit (e.g.: myUnit)",
+                        "type": "string",
+                        "format": "slug",
+                        "pattern": "^[-a-zA-Z0-9_]+$",
+                        "maxLength": 50,
+                        "minLength": 1
+                    },
+                    "name": {
+                        "title": "Human readable name (e.g.: My Unit)",
+                        "type": "string",
+                        "maxLength": 255,
+                        "minLength": 1
+                    },
+                    "relation": {
+                        "title": "Relation to an existing unit (e.g.: 12 kg*m/s)",
+                        "type": "string",
+                        "maxLength": 255,
+                        "minLength": 1
+                    },
+                    "symbol": {
+                        "title": "Symbol to use in a formula (e.g.: myu)",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 20
+                    },
+                    "alias": {
+                        "title": "Other code for this unit (e.g.: mybu)",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 20
+                    },
+                    "dimension": {
+                        "title": "Optional dimension. Will create a new dimension with the given name if it doesn't exist. Will check the dimensionality of the unit against the dimensionality of the dimension if it exists.",
+                        "type": "string",
+                        "minLength": 1
+                    }
+                }
+            }
+        },
+        {
+            "name": "units_list",
+            "url": "https://geophysics.p.rapidapi.com/units/",
+            "description": "List UnitSystems",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "ordering",
+                    "type": "STRING",
+                    "description": "Sort on name Prefix with - for descending sort",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "language",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/\"\nquerystring = {\"ordering\": \"\", \"language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/units/\"\nquerystring = {\"ordering\": \"\", \"language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "system_name"
+                ],
+                "type": "object",
+                "properties": {
+                    "system_name": {
+                        "title": "System name",
+                        "type": "string",
+                        "minLength": 1
+                    }
+                }
+            }
+        },
+        {
+            "name": "rates_list",
+            "url": "https://geophysics.p.rapidapi.com/rates/",
+            "description": "List rates",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "Filter by currency",
+                    "default": ""
+                },
+                {
+                    "name": "higher_bound",
+                    "type": "NUMBER",
+                    "description": "Filter rates with a value lower than value",
+                    "default": ""
+                },
+                {
+                    "name": "key",
+                    "type": "STRING",
+                    "description": "Filter on user defined category",
+                    "default": ""
+                },
+                {
+                    "name": "key_isnull",
+                    "type": "STRING",
+                    "description": "ONly show results with no category",
+                    "default": ""
+                },
+                {
+                    "name": "value_date",
+                    "type": "STRING",
+                    "description": "Filter on date of the rate",
+                    "default": ""
+                },
+                {
+                    "name": "key_or_null",
+                    "type": "STRING",
+                    "description": "Show rates with defined category or no category",
+                    "default": ""
+                },
+                {
+                    "name": "lower_bound",
+                    "type": "NUMBER",
+                    "description": "Filter rates with a value higher than value",
+                    "default": ""
+                },
+                {
+                    "name": "value",
+                    "type": "NUMBER",
+                    "description": "Filter rates with a specific value",
+                    "default": ""
+                },
+                {
+                    "name": "base_currency_latest_values",
+                    "type": "STRING",
+                    "description": "Base currency to filter on, limits results to latest values",
+                    "default": ""
+                },
+                {
+                    "name": "base_currency",
+                    "type": "STRING",
+                    "description": "Filter by base currency",
+                    "default": ""
+                },
+                {
+                    "name": "ordering",
+                    "type": "STRING",
+                    "description": "Sort on currency, base_currency, value_date, value. Prefix with - for descending sort",
+                    "default": ""
+                },
+                {
+                    "name": "currency_latest_values",
+                    "type": "STRING",
+                    "description": "Currency to filter on, limits results to latest values",
+                    "default": ""
+                },
+                {
+                    "name": "from_obj",
+                    "type": "STRING",
+                    "description": "Filter rates with value date after date",
+                    "default": ""
+                },
+                {
+                    "name": "page_size",
+                    "type": "NUMBER",
+                    "description": "Number of results to return per page.",
+                    "default": ""
+                },
+                {
+                    "name": "to_obj",
+                    "type": "STRING",
+                    "description": "Filter rates with value date before date",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "A page number within the paginated result set.",
+                    "default": ""
+                },
+                {
+                    "name": "user",
+                    "type": "BOOLEAN",
+                    "description": "Filter on user rates",
+                    "default": true
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/rates/\"\nquerystring = {\"currency\": \"\", \"higher_bound\": \"\", \"key\": \"\", \"key_isnull\": \"\", \"value_date\": \"\", \"key_or_null\": \"\", \"lower_bound\": \"\", \"value\": \"\", \"base_currency_latest_values\": \"\", \"base_currency\": \"\", \"ordering\": \"\", \"currency_latest_values\": \"\", \"from_obj\": \"\", \"page_size\": \"\", \"to_obj\": \"\", \"page\": \"\", \"user\": true}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geophysics.p.rapidapi.com/rates/\"\nquerystring = {\"currency\": \"\", \"higher_bound\": \"\", \"key\": \"\", \"key_isnull\": \"\", \"value_date\": \"\", \"key_or_null\": \"\", \"lower_bound\": \"\", \"value\": \"\", \"base_currency_latest_values\": \"\", \"base_currency\": \"\", \"ordering\": \"\", \"currency_latest_values\": \"\", \"from_obj\": \"\", \"page_size\": \"\", \"to_obj\": \"\", \"page\": \"\", \"user\": true}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geophysics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "currency",
+                    "value_date"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "title": "ID of the rate",
+                        "type": "string"
+                    },
+                    "user": {
+                        "title": "Owner of the rate",
+                        "type": "string"
+                    },
+                    "key": {
+                        "title": "User defined categorization key",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "maxLength": 255,
+                        "minLength": 1
+                    },
+                    "currency": {
+                        "title": "Currency to convert from",
+                        "type": "string",
+                        "maxLength": 3,
+                        "minLength": 1
+                    },
+                    "base_currency": {
+                        "title": "Currency to convert to",
+                        "type": "string",
+                        "default": "EUR",
+                        "maxLength": 3,
+                        "minLength": 1
+                    },
+                    "value_date": {
+                        "title": "Date of value",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "value": {
+                        "title": "Rate conversion factor",
+                        "type": "number"
+                    }
+                }
+            }
+        }
+    ]
+}

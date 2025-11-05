@@ -1,0 +1,311 @@
+{
+    "product_id": "api_2afa069a-29fb-4562-80d7-7ee90d12d514",
+    "tool_description": "Search products on Alibaba.com. Harness the power of our search endpoints to refine your search and find exactly what you\u2019re looking for.",
+    "home_url": "https://rapidapi.com/krmts-krmts-default/api/alibaba-ecommerce/",
+    "name": "Alibaba eCommerce",
+    "title": "Alibaba eCommerce",
+    "pricing": "FREEMIUM",
+    "tool_name": "Alibaba eCommerce",
+    "score": {
+        "avgServiceLevel": 95,
+        "avgLatency": 3404,
+        "avgSuccessRate": 95,
+        "popularityScore": 8.6,
+        "__typename": "Score"
+    },
+    "host": "alibaba-ecommerce.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "v1/product-details",
+            "url": "https://alibaba-ecommerce.p.rapidapi.com/api/v1/product-details/",
+            "description": "Query Alibaba product details such as title, prices, images and more\nReturns information about the requested product from Alibaba with all configurations and discounts.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "https://www.alibaba.com/product-detail/XF-parts-Excavator-Controller-for-Computer_1600936437663.html"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://alibaba-ecommerce.p.rapidapi.com/api/v1/product-details/\"\nquerystring = {\"url\": \"https://www.alibaba.com/product-detail/XF-parts-Excavator-Controller-for-Computer_1600936437663.html\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"alibaba-ecommerce.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://alibaba-ecommerce.p.rapidapi.com/api/v1/product-details/\"\nquerystring = {\"url\": \"https://www.alibaba.com/product-detail/XF-parts-Excavator-Controller-for-Computer_1600936437663.html\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"alibaba-ecommerce.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "meta": {
+                        "type": "object",
+                        "properties": {
+                            "version": {
+                                "type": "string"
+                            },
+                            "status": {
+                                "type": "integer"
+                            },
+                            "url": {
+                                "type": "string"
+                            },
+                            "data": {
+                                "type": "object",
+                                "properties": {
+                                    "info": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "sku": {
+                                                "type": "string"
+                                            },
+                                            "mpn": {
+                                                "type": "string"
+                                            },
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "brand": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "prices": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "price": {
+                                                        "type": "string"
+                                                    },
+                                                    "min.price": {
+                                                        "type": "string"
+                                                    },
+                                                    "max.price": {
+                                                        "type": "string"
+                                                    },
+                                                    "currency": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "rating": {
+                                                "type": "string"
+                                            },
+                                            "sellerInfo": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "seller": {
+                                                        "type": "string"
+                                                    },
+                                                    "seller_url": {
+                                                        "type": "string"
+                                                    },
+                                                    "seller_location": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "images": {
+                                        "type": "object",
+                                        "properties": {
+                                            "img1": {
+                                                "type": "string"
+                                            },
+                                            "img2": {
+                                                "type": "string"
+                                            },
+                                            "img3": {
+                                                "type": "string"
+                                            },
+                                            "img4": {
+                                                "type": "string"
+                                            },
+                                            "img5": {
+                                                "type": "string"
+                                            },
+                                            "img6": {
+                                                "type": "string"
+                                            },
+                                            "img7": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "v1/fast-search",
+            "url": "https://alibaba-ecommerce.p.rapidapi.com/api/v1/search/",
+            "description": "FAST search for products on Alibaba.com but at the expense of the number of products found.\nIf you need a full search, please use v1/search",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "Search query",
+                    "default": "USB"
+                },
+                {
+                    "name": "fast",
+                    "type": "NUMBER",
+                    "description": "For correct operation it is not recommended to change",
+                    "default": "1"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "min_order",
+                    "type": "NUMBER",
+                    "description": "Min. order stands for Minimum Order. In practice, it means that if you want to buy a particular product from a supplier, you must purchase at least the minimum order quantity specified. Therefore, if you indicated 1 for Min. order - products with Min. order 2 and more will not be shown",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Search page number",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://alibaba-ecommerce.p.rapidapi.com/api/v1/search/\"\nquerystring = {\"min_order\": \"\", \"page\": \"1\", \"search\": \"USB\", \"fast\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"alibaba-ecommerce.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://alibaba-ecommerce.p.rapidapi.com/api/v1/search/\"\nquerystring = {\"min_order\": \"\", \"page\": \"1\", \"search\": \"USB\", \"fast\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"alibaba-ecommerce.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "meta": {
+                        "type": "object",
+                        "properties": {
+                            "version": {
+                                "type": "string"
+                            },
+                            "status": {
+                                "type": "integer"
+                            },
+                            "page": {
+                                "type": "string"
+                            },
+                            "search": {
+                                "type": "string"
+                            },
+                            "min. order": {
+                                "type": "string"
+                            },
+                            "Products": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "title": {
+                                            "type": "string"
+                                        },
+                                        "price": {
+                                            "type": "string"
+                                        },
+                                        "image": {
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "v1/search",
+            "url": "https://alibaba-ecommerce.p.rapidapi.com/api/v1/search/",
+            "description": "Search products on Alibaba.com using parameters to filter and sort your results.\nIf you need a fast search, please use v1/fast-search",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "Search query",
+                    "default": "USB"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "min_order",
+                    "type": "NUMBER",
+                    "description": "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Min. order\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" stands for \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Minimum Order.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" In practice, it means that if you want to buy a particular product from a supplier, you must purchase at least the minimum order quantity specified. Therefore, if you indicated 1 for \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Min. order\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" - products with \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Min. order\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" 2 and more will not be shown",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Search page number",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://alibaba-ecommerce.p.rapidapi.com/api/v1/search/\"\nquerystring = {\"min_order\": \"\", \"page\": \"1\", \"search\": \"USB\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"alibaba-ecommerce.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://alibaba-ecommerce.p.rapidapi.com/api/v1/search/\"\nquerystring = {\"min_order\": \"\", \"page\": \"1\", \"search\": \"USB\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"alibaba-ecommerce.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "meta": {
+                        "type": "object",
+                        "properties": {
+                            "version": {
+                                "type": "string"
+                            },
+                            "status": {
+                                "type": "integer"
+                            },
+                            "page": {
+                                "type": "string"
+                            },
+                            "search": {
+                                "type": "string"
+                            },
+                            "min. order": {
+                                "type": "string"
+                            },
+                            "Products": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "title": {
+                                            "type": "string"
+                                        },
+                                        "price": {
+                                            "type": "string"
+                                        },
+                                        "image": {
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

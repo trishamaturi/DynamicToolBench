@@ -1,0 +1,317 @@
+{
+    "product_id": "api_463a7d59-df93-48dd-aff5-4edb20b0218a",
+    "tool_description": "Discover Alfred Dagenais' user-friendly Horoscope API, offering seamless astrology integration in English, French, and Spanish. Elevate your project with cosmic insights and enjoy a multilingual, JSON-based experience that's out of this world!",
+    "home_url": "https://rapidapi.com/alfreddagenais/api/horoskopos/",
+    "name": "Horoskopos",
+    "title": "Horoskopos",
+    "pricing": "FREEMIUM",
+    "tool_name": "Horoskopos",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 307,
+        "avgSuccessRate": 100,
+        "popularityScore": 7.7,
+        "__typename": "Score"
+    },
+    "host": "horoskopos.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "GetPrediction",
+            "url": "https://horoskopos.p.rapidapi.com/zodiac-signs/prediction",
+            "description": "Prediction Zodia Sign from day",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "sign",
+                    "type": "STRING",
+                    "description": "Sign name <code>e.g.: aries</code>",
+                    "default": "aries"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "period",
+                    "type": "STRING",
+                    "description": "Period timeframe <code>e.g.: week</code>",
+                    "default": "day"
+                },
+                {
+                    "name": "day",
+                    "type": "STRING",
+                    "description": "Day timeframe <code>e.g.: tomorrow</code>",
+                    "default": "today"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language Code for translation",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://horoskopos.p.rapidapi.com/zodiac-signs/prediction\"\nquerystring = {\"period\": \"day\", \"day\": \"today\", \"sign\": \"aries\", \"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horoskopos.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://horoskopos.p.rapidapi.com/zodiac-signs/prediction\"\nquerystring = {\"period\": \"day\", \"day\": \"today\", \"sign\": \"aries\", \"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horoskopos.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    },
+                    "period": {
+                        "type": "string"
+                    },
+                    "date": {
+                        "type": "object",
+                        "properties": {
+                            "dateTime": {
+                                "type": "string"
+                            },
+                            "day": {
+                                "type": "integer"
+                            },
+                            "month": {
+                                "type": "integer"
+                            },
+                            "timeframe": {
+                                "type": "string"
+                            },
+                            "week": {
+                                "type": "integer"
+                            },
+                            "year": {
+                                "type": "integer"
+                            }
+                        },
+                        "required": [
+                            "dateTime",
+                            "day",
+                            "month",
+                            "timeframe",
+                            "week",
+                            "year"
+                        ]
+                    },
+                    "zodiacSign": {
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "code",
+                            "name"
+                        ]
+                    },
+                    "languageCode": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "message",
+                    "period",
+                    "date",
+                    "zodiacSign",
+                    "languageCode"
+                ]
+            }
+        },
+        {
+            "name": "GetNow",
+            "url": "https://horoskopos.p.rapidapi.com/zodiac-signs/now",
+            "description": "Get Zodiac Sign of the current day",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "Current timezone for the date time needed (check the list https://www.php.net/manual/en/timezones.php)",
+                    "default": ""
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language Code for translation",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://horoskopos.p.rapidapi.com/zodiac-signs/now\"\nquerystring = {\"timezone\": \"\", \"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horoskopos.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://horoskopos.p.rapidapi.com/zodiac-signs/now\"\nquerystring = {\"timezone\": \"\", \"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horoskopos.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GetElementBySign",
+            "url": "https://horoskopos.p.rapidapi.com/chinese-zodiac/element-by-sign",
+            "description": "Get element associated with a Chinese zodiac sign",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "sign",
+                    "type": "STRING",
+                    "description": "Chinese zodiac sign <code>e.g.: ox</code>",
+                    "default": "ox"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language Code for translation",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://horoskopos.p.rapidapi.com/chinese-zodiac/element-by-sign\"\nquerystring = {\"lang\": \"en\", \"sign\": \"ox\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horoskopos.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://horoskopos.p.rapidapi.com/chinese-zodiac/element-by-sign\"\nquerystring = {\"lang\": \"en\", \"sign\": \"ox\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horoskopos.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GetCompatibility",
+            "url": "https://horoskopos.p.rapidapi.com/zodiac-signs/compatibility",
+            "description": "Compatibility Zodia Sign from date",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "sign1",
+                    "type": "STRING",
+                    "description": "Sign 1 name <code>e.g.: aries</code>",
+                    "default": ""
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language Code for translation",
+                    "default": "en"
+                },
+                {
+                    "name": "date2",
+                    "type": "STRING",
+                    "description": "Complete Date format <code>e.g.: 1979-12-06</code>",
+                    "default": ""
+                },
+                {
+                    "name": "sign2",
+                    "type": "STRING",
+                    "description": "Sign 2 name <code>e.g.: sagittarius</code>",
+                    "default": ""
+                },
+                {
+                    "name": "date1",
+                    "type": "STRING",
+                    "description": "Complete Date format <code>e.g.: 1987-04-06</code>",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://horoskopos.p.rapidapi.com/zodiac-signs/compatibility\"\nquerystring = {\"sign1\": \"\", \"lang\": \"en\", \"date2\": \"\", \"sign2\": \"\", \"date1\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horoskopos.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://horoskopos.p.rapidapi.com/zodiac-signs/compatibility\"\nquerystring = {\"sign1\": \"\", \"lang\": \"en\", \"date2\": \"\", \"sign2\": \"\", \"date1\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horoskopos.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GetSearch",
+            "url": "https://horoskopos.p.rapidapi.com/zodiac-signs/search",
+            "description": "Search Zodia Sign from date",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "month",
+                    "type": "NUMBER",
+                    "description": "Month of the date <code>e.g.: 4</code>",
+                    "default": ""
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language Code for translation",
+                    "default": "en"
+                },
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "Complete Date format <code>e.g.: 1987-04-06</code>",
+                    "default": ""
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "Year of the date <code>e.g.: 2021</code>",
+                    "default": ""
+                },
+                {
+                    "name": "day",
+                    "type": "NUMBER",
+                    "description": "Day of the date <code>e.g.: 6</code>",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://horoskopos.p.rapidapi.com/zodiac-signs/search\"\nquerystring = {\"month\": \"\", \"lang\": \"en\", \"date\": \"\", \"year\": \"\", \"day\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horoskopos.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://horoskopos.p.rapidapi.com/zodiac-signs/search\"\nquerystring = {\"month\": \"\", \"lang\": \"en\", \"date\": \"\", \"year\": \"\", \"day\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horoskopos.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GetCurrent",
+            "url": "https://horoskopos.p.rapidapi.com/zodiac-signs/",
+            "description": "Get Zodiac Sign of the current day",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "Current timezone for the date time needed (check the list https://www.php.net/manual/en/timezones.php)",
+                    "default": ""
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language Code for translation",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://horoskopos.p.rapidapi.com/zodiac-signs/\"\nquerystring = {\"timezone\": \"\", \"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horoskopos.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://horoskopos.p.rapidapi.com/zodiac-signs/\"\nquerystring = {\"timezone\": \"\", \"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horoskopos.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GetToday",
+            "url": "https://horoskopos.p.rapidapi.com/zodiac-signs/today",
+            "description": "Get Zodiac Sign of the current day",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language Code for translation",
+                    "default": "en"
+                },
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "Current timezone for the date time needed (check the list https://www.php.net/manual/en/timezones.php)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://horoskopos.p.rapidapi.com/zodiac-signs/today\"\nquerystring = {\"lang\": \"en\", \"timezone\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horoskopos.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://horoskopos.p.rapidapi.com/zodiac-signs/today\"\nquerystring = {\"lang\": \"en\", \"timezone\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"horoskopos.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

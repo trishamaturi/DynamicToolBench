@@ -1,0 +1,96 @@
+{
+    "product_id": "api_8baca692-b558-4e12-97a1-7c971d5b5f84",
+    "tool_description": "Soccer odds for all inplay events",
+    "home_url": "https://rapidapi.com/bodill/api/bet365-soccer/",
+    "name": "bet365-soccer",
+    "title": "bet365-soccer",
+    "pricing": "FREEMIUM",
+    "tool_name": "bet365-soccer",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 409,
+        "avgSuccessRate": 100,
+        "popularityScore": 8.1,
+        "__typename": "Score"
+    },
+    "host": "bet365-soccer.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "inplay",
+            "url": "https://bet365-soccer.p.rapidapi.com/v1/soccer/bet365/inplay",
+            "description": "get in play events for soccer",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://bet365-soccer.p.rapidapi.com/v1/soccer/bet365/inplay\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet365-soccer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bet365-soccer.p.rapidapi.com/v1/soccer/bet365/inplay\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet365-soccer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "items": {
+                    "properties": {
+                        "date": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "org_id": {
+                            "type": "string"
+                        },
+                        "tournament_name": {
+                            "type": "string"
+                        },
+                        "uid": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "type": "array"
+            }
+        },
+        {
+            "name": "implay odds",
+            "url": "https://bet365-soccer.p.rapidapi.com/v1/soccer/bet365/inplayodds",
+            "description": "Match Result 1x2, Double Chance, Both Teams to Score, Draw No Bet, Europien Handicap, Asian handicap, Total Goals - Over/Under,  Corect score,  Half Time/Full Time",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "uid",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "51169090"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://bet365-soccer.p.rapidapi.com/v1/soccer/bet365/inplayodds\"\nquerystring = {\"uid\": \"51169090\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet365-soccer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bet365-soccer.p.rapidapi.com/v1/soccer/bet365/inplayodds\"\nquerystring = {\"uid\": \"51169090\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bet365-soccer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "items": {
+                    "properties": {
+                        "duration": {
+                            "type": "string"
+                        },
+                        "hc": {
+                            "type": "string"
+                        },
+                        "odd": {
+                            "type": "string"
+                        },
+                        "score": {
+                            "type": "string"
+                        },
+                        "type": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "type": "array"
+            }
+        }
+    ]
+}

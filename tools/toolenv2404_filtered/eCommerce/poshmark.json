@@ -1,0 +1,886 @@
+{
+    "product_id": "api_ebf70eee-548b-4a6d-9174-5029fb1899de",
+    "tool_description": "Search and get info about user, closet, listing from US, CA, IN, AU. If you need a custom plan or some other data feel free to write to me.",
+    "home_url": "https://rapidapi.com/apimaker/api/poshmark/",
+    "name": "Poshmark",
+    "title": "Poshmark",
+    "pricing": "FREEMIUM",
+    "tool_name": "Poshmark",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 147,
+        "avgSuccessRate": 100,
+        "popularityScore": 7.9,
+        "__typename": "Score"
+    },
+    "host": "poshmark.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Search",
+            "url": "https://poshmark.p.rapidapi.com/search",
+            "description": "Search for a listing.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Nike Air Max"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "com, ca, in, com.au",
+                    "default": "com"
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Pagination cursor. Get from a response at `next_page` field.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://poshmark.p.rapidapi.com/search\"\nquerystring = {\"domain\": \"com\", \"page\": \"\", \"query\": \"Nike Air Max\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"poshmark.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://poshmark.p.rapidapi.com/search\"\nquerystring = {\"domain\": \"com\", \"page\": \"\", \"query\": \"Nike Air Max\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"poshmark.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "data": {
+                        "items": {
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "next_page": {
+                        "type": "integer"
+                    },
+                    "totalResultCount": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Following Tab",
+            "url": "https://poshmark.p.rapidapi.com/following",
+            "description": "User Following Tab",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "username",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "thebandteeshop"
+                },
+                {
+                    "name": "next_max_id",
+                    "type": "NUMBER",
+                    "description": "Use it for pagination.",
+                    "default": ""
+                },
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "`https://poshmark.ca/user/thebandteeshop/shares`",
+                    "default": ""
+                },
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "com, ca, in, com.au",
+                    "default": "com"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://poshmark.p.rapidapi.com/following\"\nquerystring = {\"username\": \"thebandteeshop\", \"next_max_id\": \"\", \"url\": \"\", \"domain\": \"com\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"poshmark.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://poshmark.p.rapidapi.com/following\"\nquerystring = {\"username\": \"thebandteeshop\", \"next_max_id\": \"\", \"url\": \"\", \"domain\": \"com\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"poshmark.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Followers Tab",
+            "url": "https://poshmark.p.rapidapi.com/followers",
+            "description": "User Followers Tab",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "`https://poshmark.ca/user/thebandteeshop/shares`",
+                    "default": ""
+                },
+                {
+                    "name": "next_max_id",
+                    "type": "NUMBER",
+                    "description": "Use it for pagination.",
+                    "default": ""
+                },
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "com, ca, in, com.au",
+                    "default": "com"
+                },
+                {
+                    "name": "username",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "thebandteeshop"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://poshmark.p.rapidapi.com/followers\"\nquerystring = {\"url\": \"\", \"next_max_id\": \"\", \"domain\": \"com\", \"username\": \"thebandteeshop\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"poshmark.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://poshmark.p.rapidapi.com/followers\"\nquerystring = {\"url\": \"\", \"next_max_id\": \"\", \"domain\": \"com\", \"username\": \"thebandteeshop\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"poshmark.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Shares Tab",
+            "url": "https://poshmark.p.rapidapi.com/shares",
+            "description": "User Shares Tab",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "next_max_id",
+                    "type": "NUMBER",
+                    "description": "Use it for pagination.",
+                    "default": ""
+                },
+                {
+                    "name": "username",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "thebandteeshop"
+                },
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "com, ca, in, com.au",
+                    "default": "com"
+                },
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "`https://poshmark.ca/user/thebandteeshop/shares`",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://poshmark.p.rapidapi.com/shares\"\nquerystring = {\"next_max_id\": \"\", \"username\": \"thebandteeshop\", \"domain\": \"com\", \"url\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"poshmark.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://poshmark.p.rapidapi.com/shares\"\nquerystring = {\"next_max_id\": \"\", \"username\": \"thebandteeshop\", \"domain\": \"com\", \"url\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"poshmark.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Details about the User",
+            "url": "https://poshmark.p.rapidapi.com/user",
+            "description": "Retrieve details about the User.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "username",
+                    "type": "STRING",
+                    "description": "Get details about the User.\nSee response example for details!",
+                    "default": "atlanticfinds"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "com, ca, in, com.au",
+                    "default": "com"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://poshmark.p.rapidapi.com/user\"\nquerystring = {\"username\": \"atlanticfinds\", \"domain\": \"com\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"poshmark.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://poshmark.p.rapidapi.com/user\"\nquerystring = {\"username\": \"atlanticfinds\", \"domain\": \"com\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"poshmark.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "aggregates": {
+                        "properties": {
+                            "brands_following_count": {
+                                "type": "integer"
+                            },
+                            "buyer_5_star_rating_comment_count": {
+                                "type": "integer"
+                            },
+                            "comments": {
+                                "type": "integer"
+                            },
+                            "created_at": {
+                                "type": "string"
+                            },
+                            "discovered_users": {
+                                "type": "integer"
+                            },
+                            "follower_actions": {
+                                "type": "integer"
+                            },
+                            "followers": {
+                                "type": "integer"
+                            },
+                            "following": {
+                                "type": "integer"
+                            },
+                            "following_actions": {
+                                "type": "integer"
+                            },
+                            "invites": {
+                                "type": "integer"
+                            },
+                            "last_active_date": {
+                                "type": "string"
+                            },
+                            "last_viewed_notification_number": {
+                                "type": "integer"
+                            },
+                            "likes": {
+                                "type": "integer"
+                            },
+                            "own_shares": {
+                                "type": "integer"
+                            },
+                            "posts": {
+                                "type": "integer"
+                            },
+                            "referrals": {
+                                "type": "integer"
+                            },
+                            "resale_posts": {
+                                "type": "integer"
+                            },
+                            "seller_5_star_rating_comment_count": {
+                                "type": "integer"
+                            },
+                            "seller_orders_shipped": {
+                                "type": "integer"
+                            },
+                            "shares": {
+                                "type": "integer"
+                            },
+                            "total_comments": {
+                                "type": "integer"
+                            },
+                            "total_hidden_comments": {
+                                "type": "integer"
+                            },
+                            "total_posts": {
+                                "type": "integer"
+                            },
+                            "user_score": {
+                                "type": "integer"
+                            },
+                            "vacation_hold_enabled": {
+                                "type": "boolean"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "cover_shot": {
+                        "properties": {
+                            "content_type": {
+                                "type": "string"
+                            },
+                            "created_at": {
+                                "type": "string"
+                            },
+                            "id": {
+                                "type": "string"
+                            },
+                            "path": {
+                                "type": "string"
+                            },
+                            "path_small": {
+                                "type": "string"
+                            },
+                            "path_thumb": {
+                                "type": "string"
+                            },
+                            "picture_filename": {
+                                "type": "string"
+                            },
+                            "url": {
+                                "type": "string"
+                            },
+                            "url_small": {
+                                "type": "string"
+                            },
+                            "url_thumb": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "display_handle": {
+                        "type": "string"
+                    },
+                    "first_name": {
+                        "type": "string"
+                    },
+                    "full_name": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "identity_verification_state": {
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "type": "string"
+                    },
+                    "picture_url": {
+                        "type": "string"
+                    },
+                    "previous_usernames": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "search_visibility": {
+                        "type": "boolean"
+                    },
+                    "short_url": {
+                        "type": "null"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "username": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Details about listing",
+            "url": "https://poshmark.p.rapidapi.com/listing",
+            "description": "Details about listing by id or URL.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "com, ca, in, com.au",
+                    "default": "com"
+                },
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "`https://poshmark.com/listing/Vintage-Levis-Custom-Made-Orange-Tab-ReDone-Jean-5b7f07e33c98440e93f90618`",
+                    "default": ""
+                },
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Listing id, you can get from `/closet` or from `URL`\n\n`https://poshmark.com/listing/Nike-Air-Max-Flyknit-Zoom-Gray-Sneakers-Size-8-600f17e6bcdb2f92469ce851` => `600f17e6bcdb2f92469ce851`",
+                    "default": "600f17e6bcdb2f92469ce851"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://poshmark.p.rapidapi.com/listing\"\nquerystring = {\"domain\": \"com\", \"url\": \"\", \"id\": \"600f17e6bcdb2f92469ce851\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"poshmark.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://poshmark.p.rapidapi.com/listing\"\nquerystring = {\"domain\": \"com\", \"url\": \"\", \"id\": \"600f17e6bcdb2f92469ce851\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"poshmark.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "brand": {
+                        "type": "string"
+                    },
+                    "brand_id": {
+                        "type": "string"
+                    },
+                    "brand_obj": {
+                        "properties": {
+                            "canonical_name": {
+                                "type": "string"
+                            },
+                            "id": {
+                                "type": "string"
+                            },
+                            "slug": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "catalog": {
+                        "properties": {
+                            "category": {
+                                "type": "string"
+                            },
+                            "category_feature_objs": {
+                                "items": {
+                                    "properties": {
+                                        "display": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "slug": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "category_features": {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            "category_obj": {
+                                "properties": {
+                                    "display": {
+                                        "type": "string"
+                                    },
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "slug": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "department": {
+                                "type": "string"
+                            },
+                            "department_obj": {
+                                "properties": {
+                                    "display": {
+                                        "type": "string"
+                                    },
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "slug": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "category": {
+                        "type": "string"
+                    },
+                    "category_features": {
+                        "items": {
+                            "properties": {
+                                "display": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "string"
+                                },
+                                "slug": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "category_v2": {
+                        "properties": {
+                            "display": {
+                                "type": "string"
+                            },
+                            "id": {
+                                "type": "string"
+                            },
+                            "slug": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "colors": {
+                        "items": {
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "rgb": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "comments": {
+                        "type": "object"
+                    },
+                    "cover_shot": {
+                        "properties": {
+                            "content_type": {
+                                "type": "string"
+                            },
+                            "created_at": {
+                                "type": "string"
+                            },
+                            "creator_id": {
+                                "type": "string"
+                            },
+                            "id": {
+                                "type": "string"
+                            },
+                            "md5_hash": {
+                                "type": "string"
+                            },
+                            "path": {
+                                "type": "string"
+                            },
+                            "path_large": {
+                                "type": "string"
+                            },
+                            "path_small": {
+                                "type": "string"
+                            },
+                            "picture": {
+                                "type": "string"
+                            },
+                            "storage_location": {
+                                "type": "string"
+                            },
+                            "url": {
+                                "type": "string"
+                            },
+                            "url_large": {
+                                "type": "string"
+                            },
+                            "url_small": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "creator_display_handle": {
+                        "type": "string"
+                    },
+                    "creator_full_name": {
+                        "type": "string"
+                    },
+                    "creator_id": {
+                        "type": "string"
+                    },
+                    "creator_picture_url": {
+                        "type": "string"
+                    },
+                    "creator_username": {
+                        "type": "string"
+                    },
+                    "department": {
+                        "properties": {
+                            "display": {
+                                "type": "string"
+                            },
+                            "id": {
+                                "type": "string"
+                            },
+                            "slug": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "first_available_at": {
+                        "type": "string"
+                    },
+                    "first_published_at": {
+                        "type": "string"
+                    },
+                    "has_offer": {
+                        "type": "boolean"
+                    },
+                    "has_seller_offer": {
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "inventory": {
+                        "properties": {
+                            "multi_item": {
+                                "type": "boolean"
+                            },
+                            "size_quantities": {
+                                "items": {
+                                    "properties": {
+                                        "quantity_available": {
+                                            "type": "integer"
+                                        },
+                                        "quantity_reserved": {
+                                            "type": "integer"
+                                        },
+                                        "quantity_sold": {
+                                            "type": "integer"
+                                        },
+                                        "size_id": {
+                                            "type": "string"
+                                        },
+                                        "size_obj": {
+                                            "properties": {
+                                                "display": {
+                                                    "type": "string"
+                                                },
+                                                "display_with_size_set": {
+                                                    "type": "string"
+                                                },
+                                                "display_with_size_system": {
+                                                    "type": "string"
+                                                },
+                                                "display_with_system_and_set": {
+                                                    "type": "string"
+                                                },
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "size_system": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "size_ref": {
+                                            "type": "integer"
+                                        },
+                                        "size_set_tags": {
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "size_system": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "type": "array"
+                            },
+                            "size_quantity_revision": {
+                                "type": "integer"
+                            },
+                            "status": {
+                                "type": "string"
+                            },
+                            "status_changed_at": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "likes": {
+                        "type": "object"
+                    },
+                    "original_price_amount": {
+                        "properties": {
+                            "currency_code": {
+                                "type": "string"
+                            },
+                            "currency_symbol": {
+                                "type": "string"
+                            },
+                            "val": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "picture_url": {
+                        "type": "string"
+                    },
+                    "pictures": {
+                        "items": {
+                            "properties": {
+                                "content_type": {
+                                    "type": "string"
+                                },
+                                "created_at": {
+                                    "type": "string"
+                                },
+                                "creator_id": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "string"
+                                },
+                                "md5_hash": {
+                                    "type": "string"
+                                },
+                                "path": {
+                                    "type": "string"
+                                },
+                                "path_large": {
+                                    "type": "string"
+                                },
+                                "path_small": {
+                                    "type": "string"
+                                },
+                                "picture": {
+                                    "type": "string"
+                                },
+                                "storage_location": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string"
+                                },
+                                "url_large": {
+                                    "type": "string"
+                                },
+                                "url_small": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "price_amount": {
+                        "properties": {
+                            "currency_code": {
+                                "type": "string"
+                            },
+                            "currency_symbol": {
+                                "type": "string"
+                            },
+                            "val": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "publish_count": {
+                        "type": "integer"
+                    },
+                    "size_obj": {
+                        "properties": {
+                            "display": {
+                                "type": "string"
+                            },
+                            "display_with_size_set": {
+                                "type": "string"
+                            },
+                            "display_with_size_system": {
+                                "type": "string"
+                            },
+                            "display_with_system_and_set": {
+                                "type": "string"
+                            },
+                            "id": {
+                                "type": "string"
+                            },
+                            "size_system": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "stats": {
+                        "properties": {
+                            "comments": {
+                                "type": "integer"
+                            },
+                            "likes": {
+                                "type": "integer"
+                            },
+                            "shares": {
+                                "type": "integer"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "status_changed_at": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "updated_at": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Listings (Closet)",
+            "url": "https://poshmark.p.rapidapi.com/closet",
+            "description": "Listings (Closet) by username or url",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "`https://poshmark.com/closet/atlanticfinds`",
+                    "default": ""
+                },
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "com, ca, in, com.au",
+                    "default": "com"
+                },
+                {
+                    "name": "username",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "atlanticfinds"
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Pagination cursor. Get from a response at `next_page` field.",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://poshmark.p.rapidapi.com/closet\"\nquerystring = {\"url\": \"\", \"domain\": \"com\", \"username\": \"atlanticfinds\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"poshmark.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://poshmark.p.rapidapi.com/closet\"\nquerystring = {\"url\": \"\", \"domain\": \"com\", \"username\": \"atlanticfinds\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"poshmark.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "data": {
+                        "items": {
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "next_page": {
+                        "type": "integer"
+                    },
+                    "totalResultCount": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    ]
+}

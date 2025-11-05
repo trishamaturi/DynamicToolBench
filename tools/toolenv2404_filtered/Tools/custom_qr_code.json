@@ -1,0 +1,58 @@
+{
+    "product_id": "53aa38d6e4b0a9b1348d999f",
+    "tool_description": "Our WebService API lets you create QR Code inside your own system of information (application, industrial platform, website..).\r\nIt is a solution for computer developpers that grants them the possibility to create QR Codes inside their own mechanism",
+    "home_url": "https://rapidapi.com/unitag/api/custom-qr-code/",
+    "name": "Custom QR Code",
+    "title": "Custom QR Code",
+    "pricing": "FREEMIUM",
+    "tool_name": "Custom QR Code",
+    "score": {
+        "avgServiceLevel": 12,
+        "avgLatency": 56880,
+        "avgSuccessRate": 12,
+        "popularityScore": 2,
+        "__typename": "Score"
+    },
+    "host": "unitag-qr-code-generation.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Generate a QR Code image",
+            "url": "https://unitag-qr-code-generation.p.rapidapi.com/api",
+            "description": "The \"data\" parameter describes the content of the QR Code, while the \"setting\" parameter describes its design. Both are documented here: https://github.com/unitag/QRCODES-API/blob/master/documentation.md",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "setting",
+                    "type": "STRING",
+                    "description": "Design of the generated QR Code, documented here: Content of the QR Code, documented here: https://github.com/unitag/QRCODES-API/blob/master/documentation.md#setting-object",
+                    "default": "{\"LAYOUT\":{\"COLORBG\":\"ffffff\",\"GRADIENT_TYPE\":\"NO_GR\",\"COLOR1\":\"000000\"},\"EYES\":{\"EYE_TYPE\":\"Simple\"},\"E\":\"M\",\"BODY_TYPE\":0}"
+                },
+                {
+                    "name": "data",
+                    "type": "STRING",
+                    "description": "Content of the generated QR Code, documented here: https://github.com/unitag/QRCODES-API/blob/master/documentation.md#data-object",
+                    "default": "{\"TYPE\":\"text\",\"DATA\":{\"TEXT\":\"Hello World!\"}}"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "size",
+                    "type": "NUMBER",
+                    "description": "Size of the output image in pixels (up to 3000, 400 by default). Warning: the parameter must be named SIZE (uppercase), although Mashape appears to force lowercase.",
+                    "default": ""
+                },
+                {
+                    "name": "t",
+                    "type": "STRING",
+                    "description": "Format of the output image: PNG (default), JPEG, SVG or PDF.  Warning: the parameter must be named T (uppercase), although Mashape appears to force lowercase.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://unitag-qr-code-generation.p.rapidapi.com/api\"\nquerystring = {\"setting\": \"{\\\"LAYOUT\\\":{\\\"COLORBG\\\":\\\"ffffff\\\",\\\"GRADIENT_TYPE\\\":\\\"NO_GR\\\",\\\"COLOR1\\\":\\\"000000\\\"},\\\"EYES\\\":{\\\"EYE_TYPE\\\":\\\"Simple\\\"},\\\"E\\\":\\\"M\\\",\\\"BODY_TYPE\\\":0}\", \"data\": \"{\\\"TYPE\\\":\\\"text\\\",\\\"DATA\\\":{\\\"TEXT\\\":\\\"Hello World!\\\"}}\", \"size\": \"\", \"t\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unitag-qr-code-generation.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unitag-qr-code-generation.p.rapidapi.com/api\"\nquerystring = {\"setting\": \"{\\\"LAYOUT\\\":{\\\"COLORBG\\\":\\\"ffffff\\\",\\\"GRADIENT_TYPE\\\":\\\"NO_GR\\\",\\\"COLOR1\\\":\\\"000000\\\"},\\\"EYES\\\":{\\\"EYE_TYPE\\\":\\\"Simple\\\"},\\\"E\\\":\\\"M\\\",\\\"BODY_TYPE\\\":0}\", \"data\": \"{\\\"TYPE\\\":\\\"text\\\",\\\"DATA\\\":{\\\"TEXT\\\":\\\"Hello World!\\\"}}\", \"size\": \"\", \"t\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unitag-qr-code-generation.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

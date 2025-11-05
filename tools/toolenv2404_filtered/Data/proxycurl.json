@@ -1,0 +1,663 @@
+{
+    "product_id": "api_e8a1fe88-f060-4cd3-937e-326f28acc8e7",
+    "tool_description": "Pull rich and fresh data on people and companies.",
+    "home_url": "https://rapidapi.com/nubela-co-nubela-co-default/api/proxycurl/",
+    "name": "Proxycurl",
+    "title": "Proxycurl",
+    "pricing": "FREEMIUM",
+    "tool_name": "Proxycurl",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 644,
+        "avgSuccessRate": 100,
+        "popularityScore": 6.4,
+        "__typename": "Score"
+    },
+    "host": "proxycurl.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Company Profile Endpoint",
+            "url": "https://proxycurl.p.rapidapi.com/api/linkedin/company",
+            "description": "Cost: 1 credit / successful request.\nGet structured data of a Company Profile",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "\n    URL of the LinkedIn Company Profile to crawl.\n\n    URL should be in the format of `https://www.linkedin.com/company/<public_identifier>`\n    ",
+                    "default": "https://www.linkedin.com/company/apple/"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "resolve_numeric_id",
+                    "type": "STRING",
+                    "description": "\n    Enable support for Company Profile URLs with numerical IDs that you most frequently fetch from Sales Navigator. \n    We achieve this by resolving numerical IDs into vanity IDs with cached company profiles from [LinkDB](https://nubela.co/proxycurl/linkdb). \n    For example, we will turn `https://www.linkedin.com/company/1234567890` to `https://www.linkedin.com/company/acme-corp` -- for which the API endpoint only supports the latter.\n    \n    This parameter accepts the following values:\n    - `false` (default value) - Will not resolve numerical IDs.\n    - `true` - Enable support for Company Profile URLs with numerical IDs. \n    Costs an extra `2` credit on top of the base cost of the endpoint.\n    ",
+                    "default": "true"
+                },
+                {
+                    "name": "exit_data",
+                    "type": "STRING",
+                    "description": "\n    Returns a list of investment portfolio exits.\n\n    Default value is `\\\\\\\"exclude\\\\\\\"`.\n    The other acceptable value is `\\\\\\\"include\\\\\\\"`, which will include these categories (if available) for `1` extra credit.\n    ",
+                    "default": "include"
+                },
+                {
+                    "name": "funding_data",
+                    "type": "STRING",
+                    "description": "\n    Returns a list of funding rounds that this company has received.\n\n    Default value is `\\\\\\\"exclude\\\\\\\"`.\n    The other acceptable value is `\\\\\\\"include\\\\\\\"`, which will include these categories (if available) for `1` extra credit.\n    ",
+                    "default": "include"
+                },
+                {
+                    "name": "acquisitions",
+                    "type": "STRING",
+                    "description": "\n    Provides further enriched data on acquisitions made by this company from external sources.\n\n    Default value is `\\\\\\\"exclude\\\\\\\"`.\n    The other acceptable value is `\\\\\\\"include\\\\\\\"`, which will include these acquisition data (if available) for `1` extra credit.\n    ",
+                    "default": "include"
+                },
+                {
+                    "name": "use_cache",
+                    "type": "STRING",
+                    "description": "`if-present` The default behavior. Fetches profile from cache regardless of age of profile. If profile is not available in cache, API will attempt to source profile externally.\n\n`if-recent` API will make a best effort to return a fresh profile no older than 29 days.Costs an extra `1` credit on top of the cost of the base endpoint.",
+                    "default": "if-present"
+                },
+                {
+                    "name": "categories",
+                    "type": "STRING",
+                    "description": "\n    Appends categories data of this company.\n\n    Default value is `\\\\\\\"exclude\\\\\\\"`.\n    The other acceptable value is `\\\\\\\"include\\\\\\\"`, which will include these categories (if available) for `1` extra credit.\n    ",
+                    "default": "include"
+                },
+                {
+                    "name": "extra",
+                    "type": "STRING",
+                    "description": "\n    Enriches the Company Profile with extra details from external sources. Details include Crunchbase ranking, contact email, phone number, Facebook account, Twitter account, funding rounds and amount, IPO status, investor information, etc.\n    \n    Default value is `\\\\\\\"exclude\\\\\\\"`.\n    The other acceptable value is `\\\\\\\"include\\\\\\\"`, which will include these extra details (if available) for `1` extra credit.\n    ",
+                    "default": "include"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/company\"\nquerystring = {\"url\": \"https://www.linkedin.com/company/apple/\", \"resolve_numeric_id\": \"true\", \"exit_data\": \"include\", \"funding_data\": \"include\", \"acquisitions\": \"include\", \"use_cache\": \"if-present\", \"categories\": \"include\", \"extra\": \"include\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/company\"\nquerystring = {\"url\": \"https://www.linkedin.com/company/apple/\", \"resolve_numeric_id\": \"true\", \"exit_data\": \"include\", \"funding_data\": \"include\", \"acquisitions\": \"include\", \"use_cache\": \"if-present\", \"categories\": \"include\", \"extra\": \"include\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Person Profile Picture Endpoint",
+            "url": "https://proxycurl.p.rapidapi.com/api/linkedin/person/profile-picture",
+            "description": "Cost: 0 credit / successful request.\nGet the profile picture of a person.\n\nProfile pictures are served from cached people profiles found within [LinkDB](https://nubela.co/proxycurl/linkdb).\nIf the profile does not exist within [LinkDB](https://nubela.co/proxycurl/linkdb), then the API will return a `404` status code.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "linkedin_person_profile_url",
+                    "type": "STRING",
+                    "description": "\n    LinkedIn Profile URL of the person that you are trying to get the profile picture of.\n    ",
+                    "default": "https://www.linkedin.com/in/williamhgates/"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/person/profile-picture\"\nquerystring = {\"linkedin_person_profile_url\": \"https://www.linkedin.com/in/williamhgates/\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/person/profile-picture\"\nquerystring = {\"linkedin_person_profile_url\": \"https://www.linkedin.com/in/williamhgates/\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Person Lookup Endpoint",
+            "url": "https://proxycurl.p.rapidapi.com/api/linkedin/profile/resolve",
+            "description": "Cost: 2 credits / successful request.\nResolve LinkedIn Profile",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "first_name",
+                    "type": "STRING",
+                    "description": "First name of the user",
+                    "default": "Bill"
+                },
+                {
+                    "name": "company_domain",
+                    "type": "STRING",
+                    "description": "Company name or domain",
+                    "default": "gatesfoundation.org"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "Title that user is holding at his/her current job",
+                    "default": "Co-chair"
+                },
+                {
+                    "name": "last_name",
+                    "type": "STRING",
+                    "description": "Last name of the user",
+                    "default": "Gates"
+                },
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "\n    The location of this user.\n\n    Name of country, city or state.\n    ",
+                    "default": "Seattle"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/profile/resolve\"\nquerystring = {\"first_name\": \"Bill\", \"title\": \"Co-chair\", \"company_domain\": \"gatesfoundation.org\", \"last_name\": \"Gates\", \"location\": \"Seattle\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/profile/resolve\"\nquerystring = {\"first_name\": \"Bill\", \"title\": \"Co-chair\", \"company_domain\": \"gatesfoundation.org\", \"last_name\": \"Gates\", \"location\": \"Seattle\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Role Lookup Endpoint",
+            "url": "https://proxycurl.p.rapidapi.com/api/find/company/role",
+            "description": "Cost: 3 credits / successful request.\nFinds the closest (person) profile with a given role in a Company.\nFor example, you can use this endpoint to find the \"CTO\" of \"Apple\".\nThis API endpoint returns only one result that is the closest match.\n\nThere is also a [role search](https://nubela.co/blog/search-employees-with-employee-listing-api/)\nunder the Employee Listing Endpoint if you require:\n\n* precision on the target company\n* a list of employees that matches a role (instead of one result).",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "role",
+                    "type": "STRING",
+                    "description": "Role of the profile that you are lookin up",
+                    "default": "ceo"
+                },
+                {
+                    "name": "company_name",
+                    "type": "STRING",
+                    "description": "Name of the company that you are searching for",
+                    "default": "nubela"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/find/company/role\"\nquerystring = {\"role\": \"ceo\", \"company_name\": \"nubela\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/find/company/role\"\nquerystring = {\"role\": \"ceo\", \"company_name\": \"nubela\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Reveal Endpoint",
+            "url": "https://proxycurl.p.rapidapi.com/api/reveal/company",
+            "description": "Cost: 2 credits / successful request.\nDeanonymize an IPv4 address and associate the Company behind the IPv4 address.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "ip",
+                    "type": "STRING",
+                    "description": "\n    The target IPv4 address.\n    ",
+                    "default": "8.8.8.8"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "role",
+                    "type": "STRING",
+                    "description": "\n    Lookup and append an employee of a certain role of the company.\n    Within the same API call, You can choose to lookup a person with a given role within this organisation that you might want to reach out to.\n    ",
+                    "default": "ceo"
+                },
+                {
+                    "name": "role_personal_email",
+                    "type": "STRING",
+                    "description": "\n    Append personal email addresses to the response if the system finds a relevant person profile.\n    ",
+                    "default": "include"
+                },
+                {
+                    "name": "role_contact_number",
+                    "type": "STRING",
+                    "description": "\n    Append personal contact numbers to the response if the system finds a relevant person profile.\n    ",
+                    "default": "include"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/reveal/company\"\nquerystring = {\"role\": \"ceo\", \"role_personal_email\": \"include\", \"ip\": \"8.8.8.8\", \"role_contact_number\": \"include\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/reveal/company\"\nquerystring = {\"role\": \"ceo\", \"role_personal_email\": \"include\", \"ip\": \"8.8.8.8\", \"role_contact_number\": \"include\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Person Profile Endpoint",
+            "url": "https://proxycurl.p.rapidapi.com/api/v2/linkedin",
+            "description": "Cost: 1 credit / successful request.\nGet structured data of a Personal Profile",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "\n    URL of the LinkedIn Profile to crawl.\n\n    URL should be in the format of `https://www.linkedin.com/in/<public-identifier>`\n    ",
+                    "default": "https://www.linkedin.com/in/johnrmarty/"
+                },
+                {
+                    "name": "fallback_to_cache",
+                    "type": "STRING",
+                    "description": "\n    Tweaks the fallback behavior if an error arises from fetching a fresh profile.\n    \n    This parameter accepts the following values:\n    * `on-error` (default value) - Fallback to reading the profile from cache if an error arises.\n    * `never` - Do not ever read profile from cache.\n    ",
+                    "default": "on-error"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "personal_contact_number",
+                    "type": "STRING",
+                    "description": "\n    Enriches the Person Profile with personal numbers from external sources.\n\n    This parameter accepts the following values:\n    - `exclude` (default value) - Does not provide personal numbers data field.\n    - `include` - Append personal numbers data to the person profile object. Costs an extra `1` credit per email returned on top of the cost of the base endpoint (if data is available).\n    ",
+                    "default": "include"
+                },
+                {
+                    "name": "github_profile_id",
+                    "type": "STRING",
+                    "description": "\n    Enriches the Person Profile with Github Id from external sources.\n\n    This parameter accepts the following values:\n    - `exclude` (default value) - Does not provide Github Id data field.\n    - `include` - Append Github Id data to the person profile object. Costs an extra `1` credit on top of the cost of the base endpoint (if data is available).\n    ",
+                    "default": "include"
+                },
+                {
+                    "name": "personal_email",
+                    "type": "STRING",
+                    "description": "\n    Enriches the Person Profile with personal emails from external sources.\n\n    This parameter accepts the following values:\n    - `exclude` (default value) - Does not provide personal emails data field.\n    - `include` - Append personal emails data to the person profile object. Costs an extra `1` credit per email returned on top of the cost of the base endpoint (if data is available).\n    ",
+                    "default": "include"
+                },
+                {
+                    "name": "use_cache",
+                    "type": "STRING",
+                    "description": "`if-present` The default behavior. Fetches profile from cache regardless of age of profile. If profile is not available in cache, API will attempt to source profile externally.\n\n`if-recent` API will make a best effort to return a fresh profile no older than 29 days.Costs an extra `1` credit on top of the cost of the base endpoint.",
+                    "default": "if-present"
+                },
+                {
+                    "name": "facebook_profile_id",
+                    "type": "STRING",
+                    "description": "\n    Enriches the Person Profile with Facebook Id from external sources.\n\n    This parameter accepts the following values:\n    - `exclude` (default value) - Does not provide Facebook Id data field.\n    - `include` - Append Facebook Id data to the person profile object. Costs an extra `1` credit on top of the cost of the base endpoint (if data is available).\n    ",
+                    "default": "include"
+                },
+                {
+                    "name": "inferred_salary",
+                    "type": "STRING",
+                    "description": "\n    Include inferred salary range from external sources.\n\n    This parameter accepts the following values:\n    - `exclude` (default value) - Does not provide inferred salary data field.\n    - `include` - Append inferred salary range data to the person profile object. Costs an extra `1` credit on top of the cost of the base endpoint (if data is available).\n    ",
+                    "default": "include"
+                },
+                {
+                    "name": "extra",
+                    "type": "STRING",
+                    "description": "\n    Enriches the Person Profile with extra details from external sources. Extra details include gender, birth date, industry and interests.\n\n    This parameter accepts the following values:\n    - `exclude` (default value) - Does not provide extra data field.\n    - `include` - Append extra data to the person profile object. Costs an extra `1` credit on top of the cost of the base endpoint (if data is available).\n    ",
+                    "default": "include"
+                },
+                {
+                    "name": "twitter_profile_id",
+                    "type": "STRING",
+                    "description": "\n    Enriches the Person Profile with Twitter Id from external sources.\n\n    This parameter accepts the following values:\n    - `exclude` (default value) - Does not provide Twitter Id data field.\n    - `include` - Append Twitter Id data to the person profile object. Costs an extra `1` credit on top of the cost of the base endpoint (if data is available).\n    ",
+                    "default": "include"
+                },
+                {
+                    "name": "skills",
+                    "type": "STRING",
+                    "description": "\n    Include skills data from external sources.\n\n    This parameter accepts the following values:\n    - `exclude` (default value) - Does not provide skills data field.\n    - `include` - Append skills data to the person profile object. Costs an extra `1` credit on top of the cost of the base endpoint (if data is available).\n    ",
+                    "default": "include"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/v2/linkedin\"\nquerystring = {\"personal_contact_number\": \"include\", \"github_profile_id\": \"include\", \"personal_email\": \"include\", \"use_cache\": \"if-present\", \"facebook_profile_id\": \"include\", \"inferred_salary\": \"include\", \"extra\": \"include\", \"twitter_profile_id\": \"include\", \"url\": \"https://www.linkedin.com/in/johnrmarty/\", \"fallback_to_cache\": \"on-error\", \"skills\": \"include\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/v2/linkedin\"\nquerystring = {\"personal_contact_number\": \"include\", \"github_profile_id\": \"include\", \"personal_email\": \"include\", \"use_cache\": \"if-present\", \"facebook_profile_id\": \"include\", \"inferred_salary\": \"include\", \"extra\": \"include\", \"twitter_profile_id\": \"include\", \"url\": \"https://www.linkedin.com/in/johnrmarty/\", \"fallback_to_cache\": \"on-error\", \"skills\": \"include\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Personal Contact Number Lookup Endpoint",
+            "url": "https://proxycurl.p.rapidapi.com/api/contact-api/personal-contact",
+            "description": "Cost: 1 credit / contact number returned.\nGiven an LinkedIn profile, returns a list of personal contact numbers belonging to this identity.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "linkedin_profile_url",
+                    "type": "STRING",
+                    "description": "\n    LinkedIn Profile URL of the person you want to extract personal contact numbers from.\n    ",
+                    "default": "https://linkedin.com/in/test-phone-number"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/contact-api/personal-contact\"\nquerystring = {\"linkedin_profile_url\": \"https://linkedin.com/in/test-phone-number\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/contact-api/personal-contact\"\nquerystring = {\"linkedin_profile_url\": \"https://linkedin.com/in/test-phone-number\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Reverse Work Email Lookup Endpoint",
+            "url": "https://proxycurl.p.rapidapi.com/api/linkedin/profile/resolve/email",
+            "description": "Cost: 3 credits / successful request.\nResolve LinkedIn Profile from a work email address",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "work_email",
+                    "type": "STRING",
+                    "description": "Work email address of the user",
+                    "default": "danial@nubela.co"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/profile/resolve/email\"\nquerystring = {\"work_email\": \"danial@nubela.co\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/profile/resolve/email\"\nquerystring = {\"work_email\": \"danial@nubela.co\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Work Email Lookup Endpoint",
+            "url": "https://proxycurl.p.rapidapi.com/api/linkedin/profile/email",
+            "description": "Cost: 3 credits / request.\nLookup work email address of a LinkedIn Person Profile.\n\nEmail addresses returned are verified to not be role-based or catch-all emails. Email addresses\nreturned by our API endpoint come with a 95+% deliverability guarantee\n\n**Endpoint behavior**\n\n*This endpoint* **_may not_** *return results immediately.*\n\nIf you provided a webhook in your request parameter, our application will call your webhook with\nthe result once. See `Webhook request` below.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "linkedin_profile_url",
+                    "type": "STRING",
+                    "description": "\n    Linkedin Profile URL of the person you want to\n    extract work email address from.\n    ",
+                    "default": "https://sg.linkedin.com/in/williamhgates"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "callback_url",
+                    "type": "STRING",
+                    "description": "\n    Webhook to notify your application when\n    the request has finished processing.\n    ",
+                    "default": "https://webhook.site/29e12f17-d5a2-400a-9d08-42ee9d83600a"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/profile/email\"\nquerystring = {\"callback_url\": \"https://webhook.site/29e12f17-d5a2-400a-9d08-42ee9d83600a\", \"linkedin_profile_url\": \"https://sg.linkedin.com/in/williamhgates\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/profile/email\"\nquerystring = {\"callback_url\": \"https://webhook.site/29e12f17-d5a2-400a-9d08-42ee9d83600a\", \"linkedin_profile_url\": \"https://sg.linkedin.com/in/williamhgates\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Company Profile Picture Endpoint",
+            "url": "https://proxycurl.p.rapidapi.com/api/linkedin/company/profile-picture",
+            "description": "Cost: 0 credit / successful request.\nGet the profile picture of a company.\n\nProfile pictures are served from cached company profiles found within [LinkDB](https://nubela.co/proxycurl/linkdb).\nIf the profile does not exist within [LinkDB](https://nubela.co/proxycurl/linkdb), then the API will return a `404` status code.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "linkedin_company_profile_url",
+                    "type": "STRING",
+                    "description": "\n    LinkedIn Profile URL of the company that you are trying to get the profile picture of.\n    ",
+                    "default": "https://www.linkedin.com/company/apple/"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/company/profile-picture\"\nquerystring = {\"linkedin_company_profile_url\": \"https://www.linkedin.com/company/apple/\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/company/profile-picture\"\nquerystring = {\"linkedin_company_profile_url\": \"https://www.linkedin.com/company/apple/\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Personal Email Lookup Endpoint",
+            "url": "https://proxycurl.p.rapidapi.com/api/contact-api/personal-email",
+            "description": "Cost: 1 credit / email returned.\nGiven an LinkedIn profile, returns a list of personal emails belonging to this identity. Emails are verified to be deliverable.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "linkedin_profile_url",
+                    "type": "STRING",
+                    "description": "\n    LinkedIn Profile URL of the person you want to extract personal email addresses from.\n    ",
+                    "default": "https://linkedin.com/in/steven-goh-6738131b"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "email_validation",
+                    "type": "STRING",
+                    "description": "\n    Perform deliverability validation on each email. (Costs 1 extra credit per email found).\n    \n    Takes the following values:\n     * include - Perform email validation.\n     * exclude (default) - Do not perform email validation.\n    ",
+                    "default": "include"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/contact-api/personal-email\"\nquerystring = {\"email_validation\": \"include\", \"linkedin_profile_url\": \"https://linkedin.com/in/steven-goh-6738131b\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/contact-api/personal-email\"\nquerystring = {\"email_validation\": \"include\", \"linkedin_profile_url\": \"https://linkedin.com/in/steven-goh-6738131b\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Employee Search API Endpoint",
+            "url": "https://proxycurl.p.rapidapi.com/api/linkedin/company/employee/search/",
+            "description": "Cost: 10 credits / successful request.\nSearch employees of a target by their job title.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "keyword_regex",
+                    "type": "STRING",
+                    "description": "\n    Job title keyword to search for in regular expression format.\n    ",
+                    "default": "[Cc][Ee][Oo]"
+                },
+                {
+                    "name": "linkedin_company_profile_url",
+                    "type": "STRING",
+                    "description": "\n    LinkedIn Profile URL of the target company.\n    ",
+                    "default": "https://www.linkedin.com/company/microsoft/"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page_size",
+                    "type": "STRING",
+                    "description": "\n    Tune the maximum results returned per API call.\n    The default value of this parameter is `200000`.\n    Accepted values for this parameter is an integer ranging from `1` to `200000`.\n    ",
+                    "default": "1000"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/company/employee/search/\"\nquerystring = {\"page_size\": \"1000\", \"keyword_regex\": \"[Cc][Ee][Oo]\", \"linkedin_company_profile_url\": \"https://www.linkedin.com/company/microsoft/\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/company/employee/search/\"\nquerystring = {\"page_size\": \"1000\", \"keyword_regex\": \"[Cc][Ee][Oo]\", \"linkedin_company_profile_url\": \"https://www.linkedin.com/company/microsoft/\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Employee Count Endpoint",
+            "url": "https://proxycurl.p.rapidapi.com/api/linkedin/company/employees/count/",
+            "description": "Cost: 1 credit / successful request.\nGet a number of total employees of a Company.\n\nGet an employee count of this company from various sources.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "\n    URL of the LinkedIn Company Profile to target.\n\n    URL should be in the format of `https://www.linkedin.com/company/<public_identifier>`\n    ",
+                    "default": "https://www.linkedin.com/company/apple/"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "employment_status",
+                    "type": "STRING",
+                    "description": "\n    Parameter to tell the API to filter past or current employees.\n\n    Valid values are `current`, `past`, and `all`:\n\n    * `current` (default) : count current employees\n    * `past` : count past employees\n    * `all` : count current & past employees\n    ",
+                    "default": "current"
+                },
+                {
+                    "name": "linkedin_employee_count",
+                    "type": "STRING",
+                    "description": "\n    Option to include a scraped employee count value from the target company's LinkedIn profile.\n\n    Valid values are `include` and `exclude`:\n\n    * `exclude` (default) : To exclude the scraped employee count.\n    * `include` : To include the scraped employee count.\n\n    Costs an extra `1` credit on top of the base cost of the endpoint.\n    ",
+                    "default": "include"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/company/employees/count/\"\nquerystring = {\"employment_status\": \"current\", \"url\": \"https://www.linkedin.com/company/apple/\", \"linkedin_employee_count\": \"include\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/company/employees/count/\"\nquerystring = {\"employment_status\": \"current\", \"url\": \"https://www.linkedin.com/company/apple/\", \"linkedin_employee_count\": \"include\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Disposable Email Address Check Endpoint",
+            "url": "https://proxycurl.p.rapidapi.com/api/disposable-email",
+            "description": "Cost: 0 credit / request.\nGiven an email address, checks if the email address belongs to a disposable email service.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "email",
+                    "type": "STRING",
+                    "description": "Email address to check",
+                    "default": "steven@nubela.co"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/disposable-email\"\nquerystring = {\"email\": \"steven@nubela.co\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/disposable-email\"\nquerystring = {\"email\": \"steven@nubela.co\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Jobs Listing Endpoint",
+            "url": "https://proxycurl.p.rapidapi.com/api/v2/linkedin/company/job",
+            "description": "Cost: 2 credits / successful request.\nList jobs posted by a company on LinkedIn",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "search_id",
+                    "type": "STRING",
+                    "description": "\n    The `search_id` of the company on LinkedIn.\n    You can get the `search_id` of a LinkedIn company via\n    [Company Profile API](#company-api-company-profile-endpoint).\n    ",
+                    "default": "1035"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/v2/linkedin/company/job\"\nquerystring = {\"search_id\": \"1035\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/v2/linkedin/company/job\"\nquerystring = {\"search_id\": \"1035\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Employee Listing Endpoint",
+            "url": "https://proxycurl.p.rapidapi.com/api/linkedin/company/employees/",
+            "description": "Cost: 3 credits / employee returned.\nGet a list of employees of a Company.\n\nThis API endpoint is limited by LinkDB which is populated with profiles in the US, UK, Canada, Israel, Australia, Ireland, New Zealand and Singapore.\nAs such, this endpoint is best used to list employees working in companies based in those locations only.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "\n    URL of the LinkedIn Company Profile to target.\n\n    URL should be in the format of `https://www.linkedin.com/company/<public_identifier>`\n    ",
+                    "default": "https://www.linkedin.com/company/microsoft"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "resolve_numeric_id",
+                    "type": "STRING",
+                    "description": "\n    Enable support for Company Profile URLs with numerical IDs that you most frequently fetch from Sales Navigator. \n    We achieve this by resolving numerical IDs into vanity IDs with cached company profiles from [LinkDB](https://nubela.co/proxycurl/linkdb). \n    For example, we will turn `https://www.linkedin.com/company/1234567890` to `https://www.linkedin.com/company/acme-corp` -- for which the API endpoint only supports the latter.\n    \n    This parameter accepts the following values:\n    - `false` (default value) - Will not resolve numerical IDs.\n    - `true` - Enable support for Company Profile URLs with numerical IDs. \n    Costs an extra `2` credit on top of the base cost of the endpoint.\n    ",
+                    "default": "false"
+                },
+                {
+                    "name": "role_search",
+                    "type": "STRING",
+                    "description": "\n    Filter employees by their title by matching the employee's title against a *regular expression*.\n\n    The default value of this parameter is `null`.\n\n    The accepted value is a *regular expression* (regex).\n\n    (The base cost of calling this API endpoint with this parameter would be `10` credits.\n    Each employee matched and returned would cost `6` credits per employee returned.)\n    ",
+                    "default": "[Ff][Oo][Uu][Nn][Dd][Ee][Rr]"
+                },
+                {
+                    "name": "employment_status",
+                    "type": "STRING",
+                    "description": "\n    Parameter to tell the API to return past or current employees.\n\n    Valid values are `current`, `past`, and `all`:\n\n    * `current` (default) : lists current employees\n    * `past` : lists past employees\n    * `all` : lists current & past employees\n    ",
+                    "default": "current"
+                },
+                {
+                    "name": "page_size",
+                    "type": "STRING",
+                    "description": "\n    Tune the maximum results returned per API call.\n\n    The default value of this parameter is `200000`.\n\n    Accepted values for this parameter is an integer ranging from `1` to `200000`.\n\n    When `enrich_profiles=enrich`, this parameter accepts value ranging from `1` to `100`.\n    ",
+                    "default": "100"
+                },
+                {
+                    "name": "enrich_profiles",
+                    "type": "STRING",
+                    "description": "\n    Get the full profile of employees instead of only their profile urls.\n\n    Each request respond with a streaming response of profiles.\n\n    The valid values are:\n    \n    * `skip` (default): lists employee's profile url\n    * `enrich`: lists full profile of employees\n\n    Calling this API endpoint with this parameter would add `1` credit per employee returned.\n    ",
+                    "default": "enrich"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/company/employees/\"\nquerystring = {\"resolve_numeric_id\": \"false\", \"role_search\": \"[Ff][Oo][Uu][Nn][Dd][Ee][Rr]\", \"url\": \"https://www.linkedin.com/company/microsoft\", \"employment_status\": \"current\", \"page_size\": \"100\", \"enrich_profiles\": \"enrich\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/company/employees/\"\nquerystring = {\"resolve_numeric_id\": \"false\", \"role_search\": \"[Ff][Oo][Uu][Nn][Dd][Ee][Rr]\", \"url\": \"https://www.linkedin.com/company/microsoft\", \"employment_status\": \"current\", \"page_size\": \"100\", \"enrich_profiles\": \"enrich\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Company Lookup Endpoint",
+            "url": "https://proxycurl.p.rapidapi.com/api/linkedin/company/resolve",
+            "description": "Cost: 2 credits / successful request.\nResolve Company LinkedIn Profile from company name,\n    domain name and location.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "company_name",
+                    "type": "STRING",
+                    "description": "Company Name\nRequires either `company_domain` or `company_name`",
+                    "default": "Accenture"
+                },
+                {
+                    "name": "company_location",
+                    "type": "STRING",
+                    "description": "\n    The location / region of company.\n    ISO 3166-1 alpha-2 codes\n    ",
+                    "default": "sg"
+                },
+                {
+                    "name": "company_domain",
+                    "type": "STRING",
+                    "description": "Company website or Company domain\nRequires either `company_domain` or `company_name`",
+                    "default": "accenture.com"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/company/resolve\"\nquerystring = {\"company_name\": \"Accenture\", \"company_location\": \"sg\", \"company_domain\": \"accenture.com\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/company/resolve\"\nquerystring = {\"company_name\": \"Accenture\", \"company_location\": \"sg\", \"company_domain\": \"accenture.com\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "View Credit Balance Endpoint",
+            "url": "https://proxycurl.p.rapidapi.com/api/credit-balance",
+            "description": "Cost: 0 credit / successful request.\nGet your current credit(s) balance",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/credit-balance\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/credit-balance\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Job Profile Endpoint",
+            "url": "https://proxycurl.p.rapidapi.com/api/linkedin/job",
+            "description": "Cost: 2 credits / successful request.\nGet structured data of a LinkedIn Job Profile",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "\n    URL of the LinkedIn Job Profile to target.\n\n    URL should be in the format of\n    `https://www.linkedin.com/jobs/view/<job_id>`.\n    [Jobs Listing Endpoint](#jobs-api-jobs-listing-endpoint)\n    can be used to retrieve a job URL.\n    ",
+                    "default": "https://www.linkedin.com/jobs/view/3046202003/"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/job\"\nquerystring = {\"url\": \"https://www.linkedin.com/jobs/view/3046202003/\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/job\"\nquerystring = {\"url\": \"https://www.linkedin.com/jobs/view/3046202003/\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "School Profile Endpoint",
+            "url": "https://proxycurl.p.rapidapi.com/api/linkedin/school",
+            "description": "Cost: 1 credit / successful request.\nGet structured data of a LinkedIn School Profile",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "\n    URL of the LinkedIn School Profile to crawl.\n\n    URL should be in the format of `https://www.linkedin.com/school/<public_identifier>`\n    ",
+                    "default": "https://www.linkedin.com/school/national-university-of-singapore"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "use_cache",
+                    "type": "STRING",
+                    "description": "`if-present` The default behavior. Fetches profile from cache regardless of age of profile. If profile is not available in cache, API will attempt to source profile externally.\n\n`if-recent` API will make a best effort to return a fresh profile no older than 29 days.Costs an extra `1` credit on top of the cost of the base endpoint.",
+                    "default": "if-present"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/school\"\nquerystring = {\"url\": \"https://www.linkedin.com/school/national-university-of-singapore\", \"use_cache\": \"if-present\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://proxycurl.p.rapidapi.com/api/linkedin/school\"\nquerystring = {\"url\": \"https://www.linkedin.com/school/national-university-of-singapore\", \"use_cache\": \"if-present\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"proxycurl.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

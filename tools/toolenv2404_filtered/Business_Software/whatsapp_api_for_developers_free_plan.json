@@ -1,0 +1,3365 @@
+{
+    "product_id": "api_fd91a2ba-6522-4931-9a14-133934b39992",
+    "tool_description": "Integrate WhatsApp without limits to your own services or apps! Groups & Channels, Technical support & Guides. API works stably and does not crash during updates",
+    "home_url": "https://rapidapi.com/hello-aFgIk1gDq/api/whatsapp-api-for-developers-free-plan/",
+    "name": "WhatsApp API for developers / Free plan",
+    "title": "WhatsApp API for developers / Free plan",
+    "pricing": "FREE",
+    "tool_name": "WhatsApp API for developers / Free plan",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 60460,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.1,
+        "__typename": "Score"
+    },
+    "host": "whatsapp-api-for-developers-free-plan.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "getGroups",
+            "url": "https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/groups",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Offset of objects to return",
+                    "default": ""
+                },
+                {
+                    "name": "count",
+                    "type": "NUMBER",
+                    "description": "Count of objects to return",
+                    "default": 100
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/groups\"\nquerystring = {\"offset\": \"\", \"count\": 100}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/groups\"\nquerystring = {\"offset\": \"\", \"count\": 100}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "title": "List of groups",
+                "type": "object",
+                "allOf": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "groups": {
+                                "title": "Groups",
+                                "type": "array",
+                                "items": {
+                                    "title": "Group",
+                                    "type": "object",
+                                    "required": [
+                                        "id",
+                                        "type",
+                                        "name",
+                                        "participants"
+                                    ],
+                                    "allOf": [
+                                        {
+                                            "title": "Chat",
+                                            "type": "object",
+                                            "required": [
+                                                "id",
+                                                "type"
+                                            ],
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string",
+                                                    "description": "Chat ID",
+                                                    "pattern": "^[\\d-]{10,31}@[\\w\\.]{1,}$"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "description": "Chat name"
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "description": "Chat type",
+                                                    "enum": [
+                                                        "group",
+                                                        "contact",
+                                                        "broadcast"
+                                                    ]
+                                                },
+                                                "timestamp": {
+                                                    "type": "integer",
+                                                    "description": "Chat timestamp"
+                                                },
+                                                "chat_pic": {
+                                                    "type": "string",
+                                                    "description": "Chat picture URL"
+                                                },
+                                                "pin": {
+                                                    "type": "boolean",
+                                                    "description": "Is chat pinned"
+                                                },
+                                                "mute": {
+                                                    "type": "boolean",
+                                                    "description": "Is chat muted"
+                                                },
+                                                "mute_until": {
+                                                    "type": "integer",
+                                                    "description": "Chat mute until"
+                                                },
+                                                "archive": {
+                                                    "type": "boolean",
+                                                    "description": "Is chat archived"
+                                                },
+                                                "unread": {
+                                                    "type": "integer",
+                                                    "description": "Unread messages count"
+                                                },
+                                                "unread_mention": {
+                                                    "type": "boolean",
+                                                    "description": "Is chat unread mention"
+                                                },
+                                                "read_only": {
+                                                    "type": "boolean",
+                                                    "description": "Is chat read only"
+                                                },
+                                                "not_spam": {
+                                                    "type": "boolean",
+                                                    "description": "Is chat not spam"
+                                                },
+                                                "last_message": {
+                                                    "title": "Message",
+                                                    "required": [
+                                                        "id",
+                                                        "type",
+                                                        "chat_id",
+                                                        "from_me",
+                                                        "timestamp"
+                                                    ],
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string",
+                                                            "description": "Message ID"
+                                                        },
+                                                        "type": {
+                                                            "default": "text",
+                                                            "type": "string",
+                                                            "description": "Message type",
+                                                            "enum": [
+                                                                "text",
+                                                                "image",
+                                                                "video",
+                                                                "gif",
+                                                                "audio",
+                                                                "voice",
+                                                                "document",
+                                                                "location",
+                                                                "live_location",
+                                                                "contact",
+                                                                "contact_list",
+                                                                "sticker",
+                                                                "system",
+                                                                "call",
+                                                                "unknown",
+                                                                "action",
+                                                                "group_invite",
+                                                                "product",
+                                                                "interactive",
+                                                                "reply",
+                                                                "poll",
+                                                                "hsm"
+                                                            ]
+                                                        },
+                                                        "subtype": {
+                                                            "type": "string",
+                                                            "description": "Message subtype"
+                                                        },
+                                                        "chat_id": {
+                                                            "type": "string",
+                                                            "description": "Chat ID"
+                                                        },
+                                                        "from": {
+                                                            "description": "WhatsApp ID of the sender",
+                                                            "type": "string"
+                                                        },
+                                                        "from_me": {
+                                                            "type": "boolean",
+                                                            "description": "Is message from me"
+                                                        },
+                                                        "from_name": {
+                                                            "type": "string",
+                                                            "description": "Pushname of the sender"
+                                                        },
+                                                        "timestamp": {
+                                                            "type": "number",
+                                                            "description": "Message timestamp"
+                                                        },
+                                                        "status": {
+                                                            "type": "string",
+                                                            "description": "Message ack status",
+                                                            "enum": [
+                                                                "failed",
+                                                                "pending",
+                                                                "sent",
+                                                                "delivered",
+                                                                "read",
+                                                                "played",
+                                                                "deleted"
+                                                            ],
+                                                            "x-enum-descriptions": [
+                                                                "Message failed to send (Red error triangle in WhatsApp Mobile)",
+                                                                "Message pending to send (One clock in WhatsApp Mobile)",
+                                                                "Message received by WhatsApp server (One checkmark in WhatsApp Mobile)",
+                                                                "Message delivered to recipient (Two checkmarks in WhatsApp Mobile)",
+                                                                "Message read by recipient (Two blue checkmarks in WhatsApp Mobile)",
+                                                                "Voice-message played by recipient (Two blue checkmarks in WhatsApp Mobile)",
+                                                                "Message deleted by the user"
+                                                            ]
+                                                        },
+                                                        "text": {
+                                                            "title": "Content text message",
+                                                            "description": "",
+                                                            "type": "object",
+                                                            "allOf": [
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "image": {
+                                                            "title": "Content image message",
+                                                            "type": "object",
+                                                            "required": [
+                                                                "id"
+                                                            ],
+                                                            "allOf": [
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "video": {
+                                                            "title": "Content video message",
+                                                            "type": "object",
+                                                            "required": [
+                                                                "id"
+                                                            ],
+                                                            "allOf": [
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "gif": {
+                                                            "title": "Content video message",
+                                                            "type": "object",
+                                                            "required": [
+                                                                "id"
+                                                            ],
+                                                            "allOf": [
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "audio": {
+                                                            "title": "Content audio message",
+                                                            "type": "object",
+                                                            "required": [
+                                                                "id"
+                                                            ],
+                                                            "allOf": [
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "voice": {
+                                                            "title": "Content audio message",
+                                                            "type": "object",
+                                                            "required": [
+                                                                "id"
+                                                            ],
+                                                            "allOf": [
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "document": {
+                                                            "title": "Content document message",
+                                                            "type": "object",
+                                                            "required": [
+                                                                "id"
+                                                            ],
+                                                            "allOf": [
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "sticker": {
+                                                            "title": "Content sticker message",
+                                                            "type": "object",
+                                                            "required": [
+                                                                "id"
+                                                            ],
+                                                            "allOf": [
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "location": {
+                                                            "title": "Content location message",
+                                                            "type": "object",
+                                                            "required": [
+                                                                "latitude",
+                                                                "longitude"
+                                                            ],
+                                                            "allOf": [
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "live_location": {
+                                                            "title": "Content live location message",
+                                                            "type": "object",
+                                                            "required": [
+                                                                "latitude",
+                                                                "longitude"
+                                                            ],
+                                                            "allOf": [
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "contact": {
+                                                            "title": "Content contact message",
+                                                            "type": "object",
+                                                            "allOf": [
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "contact_list": {
+                                                            "title": "Content contacts message",
+                                                            "type": "object",
+                                                            "allOf": [
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "interactive": {
+                                                            "title": "Message content interactive",
+                                                            "type": "object",
+                                                            "allOf": [
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "system": {
+                                                            "title": "Message content interactive",
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "body": {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            }
+                                                        },
+                                                        "order": {
+                                                            "title": "Message content order",
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "catalog_id": {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                "product_items": {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                "text": {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            }
+                                                        },
+                                                        "product_items": {
+                                                            "title": "Message content product items",
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "type": {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            }
+                                                        },
+                                                        "action": {
+                                                            "title": "Message action",
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "target": {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                "type": {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                "emoji": {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            }
+                                                        },
+                                                        "context": {
+                                                            "title": "Message context",
+                                                            "description": "",
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "forwarded": {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                "forwarding_score": {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                "mentions": {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                "quoted_id": {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                "quoted_type": {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                "quoted_content": {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                "quoted_author": {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            }
+                                                        },
+                                                        "reactions": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "description": "**Omitted**"
+                                                            },
+                                                            "description": "Reactions for message"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "description": "Group name"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "description": "Group description"
+                                                },
+                                                "participants": {
+                                                    "type": "array",
+                                                    "description": "Group participants",
+                                                    "items": {
+                                                        "title": "Participant",
+                                                        "type": "object",
+                                                        "required": [
+                                                            "id",
+                                                            "rank"
+                                                        ],
+                                                        "properties": {
+                                                            "id": {
+                                                                "description": "**Omitted**"
+                                                            },
+                                                            "rank": {
+                                                                "description": "**Omitted**"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "created_at": {
+                                                    "type": "integer",
+                                                    "description": "Group creation timestamp"
+                                                },
+                                                "created_by": {
+                                                    "type": "string",
+                                                    "description": "Contact ID",
+                                                    "pattern": "^([\\d]{7,15})?$"
+                                                },
+                                                "suspended": {
+                                                    "type": "boolean",
+                                                    "description": "Is group suspended"
+                                                },
+                                                "terminated": {
+                                                    "type": "boolean",
+                                                    "description": "Is group terminated"
+                                                },
+                                                "is_parent": {
+                                                    "type": "boolean",
+                                                    "description": "Is group parent"
+                                                },
+                                                "is_default_subgroup": {
+                                                    "type": "boolean",
+                                                    "description": "Is group default subgroup"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "title": "Iterator parameters",
+                        "type": "object",
+                        "properties": {
+                            "count": {
+                                "type": "integer",
+                                "format": "int32",
+                                "description": "Count of requested chats",
+                                "default": 20,
+                                "minimum": -2147483648,
+                                "maximum": 2147483647
+                            },
+                            "total": {
+                                "type": "integer",
+                                "format": "int32",
+                                "description": "Total number of returned chats",
+                                "minimum": -2147483648,
+                                "maximum": 2147483647
+                            },
+                            "offset": {
+                                "type": "integer",
+                                "format": "int32",
+                                "description": "Offset of requested chats",
+                                "default": 0,
+                                "minimum": -2147483648,
+                                "maximum": 2147483647
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "getGroupInvite",
+            "url": "https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/groups/{GroupID}/invite",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "GroupID",
+                    "type": "STRING",
+                    "description": "Group ID",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/groups/{GroupID}/invite\"\nquerystring = {\"GroupID\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/groups/{GroupID}/invite\"\nquerystring = {\"GroupID\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getGroup",
+            "url": "https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/groups/{GroupID}",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "GroupID",
+                    "type": "STRING",
+                    "description": "Group ID",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/groups/{GroupID}\"\nquerystring = {\"GroupID\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/groups/{GroupID}\"\nquerystring = {\"GroupID\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "title": "Group",
+                "type": "object",
+                "required": [
+                    "id",
+                    "type",
+                    "name",
+                    "participants"
+                ],
+                "allOf": [
+                    {
+                        "title": "Chat",
+                        "type": "object",
+                        "required": [
+                            "id",
+                            "type"
+                        ],
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "description": "Chat ID",
+                                "pattern": "^[\\d-]{10,31}@[\\w\\.]{1,}$"
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "Chat name"
+                            },
+                            "type": {
+                                "type": "string",
+                                "description": "Chat type",
+                                "enum": [
+                                    "group",
+                                    "contact",
+                                    "broadcast"
+                                ]
+                            },
+                            "timestamp": {
+                                "type": "integer",
+                                "description": "Chat timestamp"
+                            },
+                            "chat_pic": {
+                                "type": "string",
+                                "description": "Chat picture URL"
+                            },
+                            "pin": {
+                                "type": "boolean",
+                                "description": "Is chat pinned"
+                            },
+                            "mute": {
+                                "type": "boolean",
+                                "description": "Is chat muted"
+                            },
+                            "mute_until": {
+                                "type": "integer",
+                                "description": "Chat mute until"
+                            },
+                            "archive": {
+                                "type": "boolean",
+                                "description": "Is chat archived"
+                            },
+                            "unread": {
+                                "type": "integer",
+                                "description": "Unread messages count"
+                            },
+                            "unread_mention": {
+                                "type": "boolean",
+                                "description": "Is chat unread mention"
+                            },
+                            "read_only": {
+                                "type": "boolean",
+                                "description": "Is chat read only"
+                            },
+                            "not_spam": {
+                                "type": "boolean",
+                                "description": "Is chat not spam"
+                            },
+                            "last_message": {
+                                "title": "Message",
+                                "required": [
+                                    "id",
+                                    "type",
+                                    "chat_id",
+                                    "from_me",
+                                    "timestamp"
+                                ],
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "description": "Message ID"
+                                    },
+                                    "type": {
+                                        "default": "text",
+                                        "type": "string",
+                                        "description": "Message type",
+                                        "enum": [
+                                            "text",
+                                            "image",
+                                            "video",
+                                            "gif",
+                                            "audio",
+                                            "voice",
+                                            "document",
+                                            "location",
+                                            "live_location",
+                                            "contact",
+                                            "contact_list",
+                                            "sticker",
+                                            "system",
+                                            "call",
+                                            "unknown",
+                                            "action",
+                                            "group_invite",
+                                            "product",
+                                            "interactive",
+                                            "reply",
+                                            "poll",
+                                            "hsm"
+                                        ]
+                                    },
+                                    "subtype": {
+                                        "type": "string",
+                                        "description": "Message subtype"
+                                    },
+                                    "chat_id": {
+                                        "type": "string",
+                                        "description": "Chat ID"
+                                    },
+                                    "from": {
+                                        "description": "WhatsApp ID of the sender",
+                                        "type": "string"
+                                    },
+                                    "from_me": {
+                                        "type": "boolean",
+                                        "description": "Is message from me"
+                                    },
+                                    "from_name": {
+                                        "type": "string",
+                                        "description": "Pushname of the sender"
+                                    },
+                                    "timestamp": {
+                                        "type": "number",
+                                        "description": "Message timestamp"
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "description": "Message ack status",
+                                        "enum": [
+                                            "failed",
+                                            "pending",
+                                            "sent",
+                                            "delivered",
+                                            "read",
+                                            "played",
+                                            "deleted"
+                                        ],
+                                        "x-enum-descriptions": [
+                                            "Message failed to send (Red error triangle in WhatsApp Mobile)",
+                                            "Message pending to send (One clock in WhatsApp Mobile)",
+                                            "Message received by WhatsApp server (One checkmark in WhatsApp Mobile)",
+                                            "Message delivered to recipient (Two checkmarks in WhatsApp Mobile)",
+                                            "Message read by recipient (Two blue checkmarks in WhatsApp Mobile)",
+                                            "Voice-message played by recipient (Two blue checkmarks in WhatsApp Mobile)",
+                                            "Message deleted by the user"
+                                        ]
+                                    },
+                                    "text": {
+                                        "title": "Content text message",
+                                        "description": "",
+                                        "type": "object",
+                                        "allOf": [
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            }
+                                        ]
+                                    },
+                                    "image": {
+                                        "title": "Content image message",
+                                        "type": "object",
+                                        "required": [
+                                            "id"
+                                        ],
+                                        "allOf": [
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            }
+                                        ]
+                                    },
+                                    "video": {
+                                        "title": "Content video message",
+                                        "type": "object",
+                                        "required": [
+                                            "id"
+                                        ],
+                                        "allOf": [
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            }
+                                        ]
+                                    },
+                                    "gif": {
+                                        "title": "Content video message",
+                                        "type": "object",
+                                        "required": [
+                                            "id"
+                                        ],
+                                        "allOf": [
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            }
+                                        ]
+                                    },
+                                    "audio": {
+                                        "title": "Content audio message",
+                                        "type": "object",
+                                        "required": [
+                                            "id"
+                                        ],
+                                        "allOf": [
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            }
+                                        ]
+                                    },
+                                    "voice": {
+                                        "title": "Content audio message",
+                                        "type": "object",
+                                        "required": [
+                                            "id"
+                                        ],
+                                        "allOf": [
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            }
+                                        ]
+                                    },
+                                    "document": {
+                                        "title": "Content document message",
+                                        "type": "object",
+                                        "required": [
+                                            "id"
+                                        ],
+                                        "allOf": [
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            }
+                                        ]
+                                    },
+                                    "sticker": {
+                                        "title": "Content sticker message",
+                                        "type": "object",
+                                        "required": [
+                                            "id"
+                                        ],
+                                        "allOf": [
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            }
+                                        ]
+                                    },
+                                    "location": {
+                                        "title": "Content location message",
+                                        "type": "object",
+                                        "required": [
+                                            "latitude",
+                                            "longitude"
+                                        ],
+                                        "allOf": [
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            }
+                                        ]
+                                    },
+                                    "live_location": {
+                                        "title": "Content live location message",
+                                        "type": "object",
+                                        "required": [
+                                            "latitude",
+                                            "longitude"
+                                        ],
+                                        "allOf": [
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            }
+                                        ]
+                                    },
+                                    "contact": {
+                                        "title": "Content contact message",
+                                        "type": "object",
+                                        "allOf": [
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            }
+                                        ]
+                                    },
+                                    "contact_list": {
+                                        "title": "Content contacts message",
+                                        "type": "object",
+                                        "allOf": [
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            }
+                                        ]
+                                    },
+                                    "interactive": {
+                                        "title": "Message content interactive",
+                                        "type": "object",
+                                        "allOf": [
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            },
+                                            {
+                                                "description": "**Omitted**"
+                                            }
+                                        ]
+                                    },
+                                    "system": {
+                                        "title": "Message content interactive",
+                                        "type": "object",
+                                        "properties": {
+                                            "body": {
+                                                "description": "**Omitted**"
+                                            }
+                                        }
+                                    },
+                                    "order": {
+                                        "title": "Message content order",
+                                        "type": "object",
+                                        "properties": {
+                                            "catalog_id": {
+                                                "description": "**Omitted**"
+                                            },
+                                            "product_items": {
+                                                "description": "**Omitted**"
+                                            },
+                                            "text": {
+                                                "description": "**Omitted**"
+                                            }
+                                        }
+                                    },
+                                    "product_items": {
+                                        "title": "Message content product items",
+                                        "type": "object",
+                                        "properties": {
+                                            "type": {
+                                                "description": "**Omitted**"
+                                            }
+                                        }
+                                    },
+                                    "action": {
+                                        "title": "Message action",
+                                        "type": "object",
+                                        "properties": {
+                                            "target": {
+                                                "description": "**Omitted**"
+                                            },
+                                            "type": {
+                                                "description": "**Omitted**"
+                                            },
+                                            "emoji": {
+                                                "description": "**Omitted**"
+                                            }
+                                        }
+                                    },
+                                    "context": {
+                                        "title": "Message context",
+                                        "description": "",
+                                        "type": "object",
+                                        "properties": {
+                                            "forwarded": {
+                                                "description": "**Omitted**"
+                                            },
+                                            "forwarding_score": {
+                                                "description": "**Omitted**"
+                                            },
+                                            "mentions": {
+                                                "description": "**Omitted**"
+                                            },
+                                            "quoted_id": {
+                                                "description": "**Omitted**"
+                                            },
+                                            "quoted_type": {
+                                                "description": "**Omitted**"
+                                            },
+                                            "quoted_content": {
+                                                "description": "**Omitted**"
+                                            },
+                                            "quoted_author": {
+                                                "description": "**Omitted**"
+                                            }
+                                        }
+                                    },
+                                    "reactions": {
+                                        "type": "array",
+                                        "items": {
+                                            "description": "**Omitted**"
+                                        },
+                                        "description": "Reactions for message"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "Group name"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Group description"
+                            },
+                            "participants": {
+                                "type": "array",
+                                "description": "Group participants",
+                                "items": {
+                                    "title": "Participant",
+                                    "type": "object",
+                                    "required": [
+                                        "id",
+                                        "rank"
+                                    ],
+                                    "properties": {
+                                        "id": {
+                                            "description": "**Omitted**"
+                                        },
+                                        "rank": {
+                                            "description": "**Omitted**"
+                                        }
+                                    }
+                                }
+                            },
+                            "created_at": {
+                                "type": "integer",
+                                "description": "Group creation timestamp"
+                            },
+                            "created_by": {
+                                "type": "string",
+                                "description": "Contact ID",
+                                "pattern": "^([\\d]{7,15})?$"
+                            },
+                            "suspended": {
+                                "type": "boolean",
+                                "description": "Is group suspended"
+                            },
+                            "terminated": {
+                                "type": "boolean",
+                                "description": "Is group terminated"
+                            },
+                            "is_parent": {
+                                "type": "boolean",
+                                "description": "Is group parent"
+                            },
+                            "is_default_subgroup": {
+                                "type": "boolean",
+                                "description": "Is group default subgroup"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "getChats",
+            "url": "https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/chats",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "count",
+                    "type": "NUMBER",
+                    "description": "Count of objects to return",
+                    "default": 100
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Offset of objects to return",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/chats\"\nquerystring = {\"count\": 100, \"offset\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/chats\"\nquerystring = {\"count\": 100, \"offset\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "title": "List of chats",
+                "type": "object",
+                "allOf": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "chats": {
+                                "title": "Chats",
+                                "type": "array",
+                                "items": {
+                                    "title": "Chat",
+                                    "type": "object",
+                                    "required": [
+                                        "id",
+                                        "type"
+                                    ],
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "description": "Chat ID",
+                                            "pattern": "^[\\d-]{10,31}@[\\w\\.]{1,}$"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "description": "Chat name"
+                                        },
+                                        "type": {
+                                            "type": "string",
+                                            "description": "Chat type",
+                                            "enum": [
+                                                "group",
+                                                "contact",
+                                                "broadcast"
+                                            ]
+                                        },
+                                        "timestamp": {
+                                            "type": "integer",
+                                            "description": "Chat timestamp"
+                                        },
+                                        "chat_pic": {
+                                            "type": "string",
+                                            "description": "Chat picture URL"
+                                        },
+                                        "pin": {
+                                            "type": "boolean",
+                                            "description": "Is chat pinned"
+                                        },
+                                        "mute": {
+                                            "type": "boolean",
+                                            "description": "Is chat muted"
+                                        },
+                                        "mute_until": {
+                                            "type": "integer",
+                                            "description": "Chat mute until"
+                                        },
+                                        "archive": {
+                                            "type": "boolean",
+                                            "description": "Is chat archived"
+                                        },
+                                        "unread": {
+                                            "type": "integer",
+                                            "description": "Unread messages count"
+                                        },
+                                        "unread_mention": {
+                                            "type": "boolean",
+                                            "description": "Is chat unread mention"
+                                        },
+                                        "read_only": {
+                                            "type": "boolean",
+                                            "description": "Is chat read only"
+                                        },
+                                        "not_spam": {
+                                            "type": "boolean",
+                                            "description": "Is chat not spam"
+                                        },
+                                        "last_message": {
+                                            "title": "Message",
+                                            "required": [
+                                                "id",
+                                                "type",
+                                                "chat_id",
+                                                "from_me",
+                                                "timestamp"
+                                            ],
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string",
+                                                    "description": "Message ID"
+                                                },
+                                                "type": {
+                                                    "default": "text",
+                                                    "type": "string",
+                                                    "description": "Message type",
+                                                    "enum": [
+                                                        "text",
+                                                        "image",
+                                                        "video",
+                                                        "gif",
+                                                        "audio",
+                                                        "voice",
+                                                        "document",
+                                                        "location",
+                                                        "live_location",
+                                                        "contact",
+                                                        "contact_list",
+                                                        "sticker",
+                                                        "system",
+                                                        "call",
+                                                        "unknown",
+                                                        "action",
+                                                        "group_invite",
+                                                        "product",
+                                                        "interactive",
+                                                        "reply",
+                                                        "poll",
+                                                        "hsm"
+                                                    ]
+                                                },
+                                                "subtype": {
+                                                    "type": "string",
+                                                    "description": "Message subtype"
+                                                },
+                                                "chat_id": {
+                                                    "type": "string",
+                                                    "description": "Chat ID"
+                                                },
+                                                "from": {
+                                                    "description": "WhatsApp ID of the sender",
+                                                    "type": "string"
+                                                },
+                                                "from_me": {
+                                                    "type": "boolean",
+                                                    "description": "Is message from me"
+                                                },
+                                                "from_name": {
+                                                    "type": "string",
+                                                    "description": "Pushname of the sender"
+                                                },
+                                                "timestamp": {
+                                                    "type": "number",
+                                                    "description": "Message timestamp"
+                                                },
+                                                "status": {
+                                                    "type": "string",
+                                                    "description": "Message ack status",
+                                                    "enum": [
+                                                        "failed",
+                                                        "pending",
+                                                        "sent",
+                                                        "delivered",
+                                                        "read",
+                                                        "played",
+                                                        "deleted"
+                                                    ],
+                                                    "x-enum-descriptions": [
+                                                        "Message failed to send (Red error triangle in WhatsApp Mobile)",
+                                                        "Message pending to send (One clock in WhatsApp Mobile)",
+                                                        "Message received by WhatsApp server (One checkmark in WhatsApp Mobile)",
+                                                        "Message delivered to recipient (Two checkmarks in WhatsApp Mobile)",
+                                                        "Message read by recipient (Two blue checkmarks in WhatsApp Mobile)",
+                                                        "Voice-message played by recipient (Two blue checkmarks in WhatsApp Mobile)",
+                                                        "Message deleted by the user"
+                                                    ]
+                                                },
+                                                "text": {
+                                                    "title": "Content text message",
+                                                    "description": "",
+                                                    "type": "object",
+                                                    "allOf": [
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    ]
+                                                },
+                                                "image": {
+                                                    "title": "Content image message",
+                                                    "type": "object",
+                                                    "required": [
+                                                        "id"
+                                                    ],
+                                                    "allOf": [
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    ]
+                                                },
+                                                "video": {
+                                                    "title": "Content video message",
+                                                    "type": "object",
+                                                    "required": [
+                                                        "id"
+                                                    ],
+                                                    "allOf": [
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    ]
+                                                },
+                                                "gif": {
+                                                    "title": "Content video message",
+                                                    "type": "object",
+                                                    "required": [
+                                                        "id"
+                                                    ],
+                                                    "allOf": [
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    ]
+                                                },
+                                                "audio": {
+                                                    "title": "Content audio message",
+                                                    "type": "object",
+                                                    "required": [
+                                                        "id"
+                                                    ],
+                                                    "allOf": [
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    ]
+                                                },
+                                                "voice": {
+                                                    "title": "Content audio message",
+                                                    "type": "object",
+                                                    "required": [
+                                                        "id"
+                                                    ],
+                                                    "allOf": [
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    ]
+                                                },
+                                                "document": {
+                                                    "title": "Content document message",
+                                                    "type": "object",
+                                                    "required": [
+                                                        "id"
+                                                    ],
+                                                    "allOf": [
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    ]
+                                                },
+                                                "sticker": {
+                                                    "title": "Content sticker message",
+                                                    "type": "object",
+                                                    "required": [
+                                                        "id"
+                                                    ],
+                                                    "allOf": [
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    ]
+                                                },
+                                                "location": {
+                                                    "title": "Content location message",
+                                                    "type": "object",
+                                                    "required": [
+                                                        "latitude",
+                                                        "longitude"
+                                                    ],
+                                                    "allOf": [
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    ]
+                                                },
+                                                "live_location": {
+                                                    "title": "Content live location message",
+                                                    "type": "object",
+                                                    "required": [
+                                                        "latitude",
+                                                        "longitude"
+                                                    ],
+                                                    "allOf": [
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    ]
+                                                },
+                                                "contact": {
+                                                    "title": "Content contact message",
+                                                    "type": "object",
+                                                    "allOf": [
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    ]
+                                                },
+                                                "contact_list": {
+                                                    "title": "Content contacts message",
+                                                    "type": "object",
+                                                    "allOf": [
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    ]
+                                                },
+                                                "interactive": {
+                                                    "title": "Message content interactive",
+                                                    "type": "object",
+                                                    "allOf": [
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    ]
+                                                },
+                                                "system": {
+                                                    "title": "Message content interactive",
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "body": {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    }
+                                                },
+                                                "order": {
+                                                    "title": "Message content order",
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "catalog_id": {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        "product_items": {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        "text": {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    }
+                                                },
+                                                "product_items": {
+                                                    "title": "Message content product items",
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "type": {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    }
+                                                },
+                                                "action": {
+                                                    "title": "Message action",
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "target": {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        "type": {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        "emoji": {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    }
+                                                },
+                                                "context": {
+                                                    "title": "Message context",
+                                                    "description": "",
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "forwarded": {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        "forwarding_score": {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        "mentions": {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        "quoted_id": {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        "quoted_type": {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        "quoted_content": {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        "quoted_author": {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    }
+                                                },
+                                                "reactions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "description": "**Omitted**"
+                                                    },
+                                                    "description": "Reactions for message"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "title": "Iterator parameters",
+                        "type": "object",
+                        "properties": {
+                            "count": {
+                                "type": "integer",
+                                "format": "int32",
+                                "description": "Count of requested chats",
+                                "default": 20,
+                                "minimum": -2147483648,
+                                "maximum": 2147483647
+                            },
+                            "total": {
+                                "type": "integer",
+                                "format": "int32",
+                                "description": "Total number of returned chats",
+                                "minimum": -2147483648,
+                                "maximum": 2147483647
+                            },
+                            "offset": {
+                                "type": "integer",
+                                "format": "int32",
+                                "description": "Offset of requested chats",
+                                "default": 0,
+                                "minimum": -2147483648,
+                                "maximum": 2147483647
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "getChat",
+            "url": "https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/chats/{ChatID}",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "ChatID",
+                    "type": "STRING",
+                    "description": "Chat ID",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/chats/{ChatID}\"\nquerystring = {\"ChatID\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/chats/{ChatID}\"\nquerystring = {\"ChatID\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "title": "Chat",
+                "type": "object",
+                "required": [
+                    "id",
+                    "type"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Chat ID",
+                        "pattern": "^[\\d-]{10,31}@[\\w\\.]{1,}$"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Chat name"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Chat type",
+                        "enum": [
+                            "group",
+                            "contact",
+                            "broadcast"
+                        ]
+                    },
+                    "timestamp": {
+                        "type": "integer",
+                        "description": "Chat timestamp"
+                    },
+                    "chat_pic": {
+                        "type": "string",
+                        "description": "Chat picture URL"
+                    },
+                    "pin": {
+                        "type": "boolean",
+                        "description": "Is chat pinned"
+                    },
+                    "mute": {
+                        "type": "boolean",
+                        "description": "Is chat muted"
+                    },
+                    "mute_until": {
+                        "type": "integer",
+                        "description": "Chat mute until"
+                    },
+                    "archive": {
+                        "type": "boolean",
+                        "description": "Is chat archived"
+                    },
+                    "unread": {
+                        "type": "integer",
+                        "description": "Unread messages count"
+                    },
+                    "unread_mention": {
+                        "type": "boolean",
+                        "description": "Is chat unread mention"
+                    },
+                    "read_only": {
+                        "type": "boolean",
+                        "description": "Is chat read only"
+                    },
+                    "not_spam": {
+                        "type": "boolean",
+                        "description": "Is chat not spam"
+                    },
+                    "last_message": {
+                        "title": "Message",
+                        "required": [
+                            "id",
+                            "type",
+                            "chat_id",
+                            "from_me",
+                            "timestamp"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "description": "Message ID"
+                            },
+                            "type": {
+                                "default": "text",
+                                "type": "string",
+                                "description": "Message type",
+                                "enum": [
+                                    "text",
+                                    "image",
+                                    "video",
+                                    "gif",
+                                    "audio",
+                                    "voice",
+                                    "document",
+                                    "location",
+                                    "live_location",
+                                    "contact",
+                                    "contact_list",
+                                    "sticker",
+                                    "system",
+                                    "call",
+                                    "unknown",
+                                    "action",
+                                    "group_invite",
+                                    "product",
+                                    "interactive",
+                                    "reply",
+                                    "poll",
+                                    "hsm"
+                                ]
+                            },
+                            "subtype": {
+                                "type": "string",
+                                "description": "Message subtype"
+                            },
+                            "chat_id": {
+                                "type": "string",
+                                "description": "Chat ID"
+                            },
+                            "from": {
+                                "description": "WhatsApp ID of the sender",
+                                "type": "string"
+                            },
+                            "from_me": {
+                                "type": "boolean",
+                                "description": "Is message from me"
+                            },
+                            "from_name": {
+                                "type": "string",
+                                "description": "Pushname of the sender"
+                            },
+                            "timestamp": {
+                                "type": "number",
+                                "description": "Message timestamp"
+                            },
+                            "status": {
+                                "type": "string",
+                                "description": "Message ack status",
+                                "enum": [
+                                    "failed",
+                                    "pending",
+                                    "sent",
+                                    "delivered",
+                                    "read",
+                                    "played",
+                                    "deleted"
+                                ],
+                                "x-enum-descriptions": [
+                                    "Message failed to send (Red error triangle in WhatsApp Mobile)",
+                                    "Message pending to send (One clock in WhatsApp Mobile)",
+                                    "Message received by WhatsApp server (One checkmark in WhatsApp Mobile)",
+                                    "Message delivered to recipient (Two checkmarks in WhatsApp Mobile)",
+                                    "Message read by recipient (Two blue checkmarks in WhatsApp Mobile)",
+                                    "Voice-message played by recipient (Two blue checkmarks in WhatsApp Mobile)",
+                                    "Message deleted by the user"
+                                ]
+                            },
+                            "text": {
+                                "title": "Content text message",
+                                "description": "",
+                                "type": "object",
+                                "allOf": [
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    }
+                                ]
+                            },
+                            "image": {
+                                "title": "Content image message",
+                                "type": "object",
+                                "required": [
+                                    "id"
+                                ],
+                                "allOf": [
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    }
+                                ]
+                            },
+                            "video": {
+                                "title": "Content video message",
+                                "type": "object",
+                                "required": [
+                                    "id"
+                                ],
+                                "allOf": [
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    }
+                                ]
+                            },
+                            "gif": {
+                                "title": "Content video message",
+                                "type": "object",
+                                "required": [
+                                    "id"
+                                ],
+                                "allOf": [
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    }
+                                ]
+                            },
+                            "audio": {
+                                "title": "Content audio message",
+                                "type": "object",
+                                "required": [
+                                    "id"
+                                ],
+                                "allOf": [
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    }
+                                ]
+                            },
+                            "voice": {
+                                "title": "Content audio message",
+                                "type": "object",
+                                "required": [
+                                    "id"
+                                ],
+                                "allOf": [
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    }
+                                ]
+                            },
+                            "document": {
+                                "title": "Content document message",
+                                "type": "object",
+                                "required": [
+                                    "id"
+                                ],
+                                "allOf": [
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    }
+                                ]
+                            },
+                            "sticker": {
+                                "title": "Content sticker message",
+                                "type": "object",
+                                "required": [
+                                    "id"
+                                ],
+                                "allOf": [
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    }
+                                ]
+                            },
+                            "location": {
+                                "title": "Content location message",
+                                "type": "object",
+                                "required": [
+                                    "latitude",
+                                    "longitude"
+                                ],
+                                "allOf": [
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    }
+                                ]
+                            },
+                            "live_location": {
+                                "title": "Content live location message",
+                                "type": "object",
+                                "required": [
+                                    "latitude",
+                                    "longitude"
+                                ],
+                                "allOf": [
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    }
+                                ]
+                            },
+                            "contact": {
+                                "title": "Content contact message",
+                                "type": "object",
+                                "allOf": [
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    }
+                                ]
+                            },
+                            "contact_list": {
+                                "title": "Content contacts message",
+                                "type": "object",
+                                "allOf": [
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    }
+                                ]
+                            },
+                            "interactive": {
+                                "title": "Message content interactive",
+                                "type": "object",
+                                "allOf": [
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    }
+                                ]
+                            },
+                            "system": {
+                                "title": "Message content interactive",
+                                "type": "object",
+                                "properties": {
+                                    "body": {
+                                        "description": "**Omitted**"
+                                    }
+                                }
+                            },
+                            "order": {
+                                "title": "Message content order",
+                                "type": "object",
+                                "properties": {
+                                    "catalog_id": {
+                                        "description": "**Omitted**"
+                                    },
+                                    "product_items": {
+                                        "description": "**Omitted**"
+                                    },
+                                    "text": {
+                                        "description": "**Omitted**"
+                                    }
+                                }
+                            },
+                            "product_items": {
+                                "title": "Message content product items",
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "description": "**Omitted**"
+                                    }
+                                }
+                            },
+                            "action": {
+                                "title": "Message action",
+                                "type": "object",
+                                "properties": {
+                                    "target": {
+                                        "description": "**Omitted**"
+                                    },
+                                    "type": {
+                                        "description": "**Omitted**"
+                                    },
+                                    "emoji": {
+                                        "description": "**Omitted**"
+                                    }
+                                }
+                            },
+                            "context": {
+                                "title": "Message context",
+                                "description": "",
+                                "type": "object",
+                                "properties": {
+                                    "forwarded": {
+                                        "description": "**Omitted**"
+                                    },
+                                    "forwarding_score": {
+                                        "description": "**Omitted**"
+                                    },
+                                    "mentions": {
+                                        "description": "**Omitted**"
+                                    },
+                                    "quoted_id": {
+                                        "description": "**Omitted**"
+                                    },
+                                    "quoted_type": {
+                                        "description": "**Omitted**"
+                                    },
+                                    "quoted_content": {
+                                        "description": "**Omitted**"
+                                    },
+                                    "quoted_author": {
+                                        "description": "**Omitted**"
+                                    }
+                                }
+                            },
+                            "reactions": {
+                                "type": "array",
+                                "items": {
+                                    "description": "**Omitted**"
+                                },
+                                "description": "Reactions for message"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "getGroupIcon",
+            "url": "https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/groups/{GroupID}/icon",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "GroupID",
+                    "type": "STRING",
+                    "description": "Group ID",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/groups/{GroupID}/icon\"\nquerystring = {\"GroupID\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/groups/{GroupID}/icon\"\nquerystring = {\"GroupID\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getMedia",
+            "url": "https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/media/{MediaID}",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "MediaID",
+                    "type": "STRING",
+                    "description": "Media ID",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/media/{MediaID}\"\nquerystring = {\"MediaID\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/media/{MediaID}\"\nquerystring = {\"MediaID\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "format": "binary",
+                "type": "string"
+            }
+        },
+        {
+            "name": "loginUserRowData",
+            "url": "https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/users/login/rowdata",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/users/login/rowdata\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/users/login/rowdata\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getMessage",
+            "url": "https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/messages/{MessageID}",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "MessageID",
+                    "type": "STRING",
+                    "description": "Message ID",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/messages/{MessageID}\"\nquerystring = {\"MessageID\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/messages/{MessageID}\"\nquerystring = {\"MessageID\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "loginUserImage",
+            "url": "https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/users/login/image",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/users/login/image\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/users/login/image\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "loginUser",
+            "url": "https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/users/login",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/users/login\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/users/login\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getMessagesByChatID",
+            "url": "https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/messages/list/{ChatID}",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "ChatID",
+                    "type": "STRING",
+                    "description": "Chat ID",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "time_to",
+                    "type": "NUMBER",
+                    "description": "Timestamp up to which to get objects",
+                    "default": ""
+                },
+                {
+                    "name": "from_me",
+                    "type": "BOOLEAN",
+                    "description": "If true, only return messages sent by the authenticated user. If false, only return messages sent by other users.",
+                    "default": true
+                },
+                {
+                    "name": "time_from",
+                    "type": "NUMBER",
+                    "description": "Timestamp from which to get objects",
+                    "default": ""
+                },
+                {
+                    "name": "count",
+                    "type": "NUMBER",
+                    "description": "Count of objects to return",
+                    "default": 100
+                },
+                {
+                    "name": "normal_types",
+                    "type": "BOOLEAN",
+                    "description": "If false, include system messages",
+                    "default": true
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Offset of objects to return",
+                    "default": ""
+                },
+                {
+                    "name": "author",
+                    "type": "STRING",
+                    "description": "To filter by author (Contact ID)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/messages/list/{ChatID}\"\nquerystring = {\"ChatID\": \"\", \"time_to\": \"\", \"from_me\": true, \"time_from\": \"\", \"count\": 100, \"normal_types\": true, \"offset\": \"\", \"author\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/messages/list/{ChatID}\"\nquerystring = {\"ChatID\": \"\", \"time_to\": \"\", \"from_me\": true, \"time_from\": \"\", \"count\": 100, \"normal_types\": true, \"offset\": \"\", \"author\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getMessages",
+            "url": "https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/messages/list",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "count",
+                    "type": "NUMBER",
+                    "description": "Count of objects to return",
+                    "default": 100
+                },
+                {
+                    "name": "normal_types",
+                    "type": "BOOLEAN",
+                    "description": "If false, include system messages",
+                    "default": true
+                },
+                {
+                    "name": "author",
+                    "type": "STRING",
+                    "description": "To filter by author (Contact ID)",
+                    "default": ""
+                },
+                {
+                    "name": "time_to",
+                    "type": "NUMBER",
+                    "description": "Timestamp up to which to get objects",
+                    "default": ""
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Offset of objects to return",
+                    "default": ""
+                },
+                {
+                    "name": "time_from",
+                    "type": "NUMBER",
+                    "description": "Timestamp from which to get objects",
+                    "default": ""
+                },
+                {
+                    "name": "from_me",
+                    "type": "BOOLEAN",
+                    "description": "If true, only return messages sent by the authenticated user. If false, only return messages sent by other users.",
+                    "default": true
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/messages/list\"\nquerystring = {\"count\": 100, \"normal_types\": true, \"author\": \"\", \"time_to\": \"\", \"offset\": \"\", \"time_from\": \"\", \"from_me\": true}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/messages/list\"\nquerystring = {\"count\": 100, \"normal_types\": true, \"author\": \"\", \"time_to\": \"\", \"offset\": \"\", \"time_from\": \"\", \"from_me\": true}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "title": "List of messages",
+                "type": "object",
+                "properties": {
+                    "messages": {
+                        "title": "Messages",
+                        "type": "array",
+                        "items": {
+                            "title": "Message",
+                            "required": [
+                                "id",
+                                "type",
+                                "chat_id",
+                                "from_me",
+                                "timestamp"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "description": "Message ID"
+                                },
+                                "type": {
+                                    "default": "text",
+                                    "type": "string",
+                                    "description": "Message type",
+                                    "enum": [
+                                        "text",
+                                        "image",
+                                        "video",
+                                        "gif",
+                                        "audio",
+                                        "voice",
+                                        "document",
+                                        "location",
+                                        "live_location",
+                                        "contact",
+                                        "contact_list",
+                                        "sticker",
+                                        "system",
+                                        "call",
+                                        "unknown",
+                                        "action",
+                                        "group_invite",
+                                        "product",
+                                        "interactive",
+                                        "reply",
+                                        "poll",
+                                        "hsm"
+                                    ]
+                                },
+                                "subtype": {
+                                    "type": "string",
+                                    "description": "Message subtype"
+                                },
+                                "chat_id": {
+                                    "type": "string",
+                                    "description": "Chat ID"
+                                },
+                                "from": {
+                                    "description": "WhatsApp ID of the sender",
+                                    "type": "string"
+                                },
+                                "from_me": {
+                                    "type": "boolean",
+                                    "description": "Is message from me"
+                                },
+                                "from_name": {
+                                    "type": "string",
+                                    "description": "Pushname of the sender"
+                                },
+                                "timestamp": {
+                                    "type": "number",
+                                    "description": "Message timestamp"
+                                },
+                                "status": {
+                                    "type": "string",
+                                    "description": "Message ack status",
+                                    "enum": [
+                                        "failed",
+                                        "pending",
+                                        "sent",
+                                        "delivered",
+                                        "read",
+                                        "played",
+                                        "deleted"
+                                    ],
+                                    "x-enum-descriptions": [
+                                        "Message failed to send (Red error triangle in WhatsApp Mobile)",
+                                        "Message pending to send (One clock in WhatsApp Mobile)",
+                                        "Message received by WhatsApp server (One checkmark in WhatsApp Mobile)",
+                                        "Message delivered to recipient (Two checkmarks in WhatsApp Mobile)",
+                                        "Message read by recipient (Two blue checkmarks in WhatsApp Mobile)",
+                                        "Voice-message played by recipient (Two blue checkmarks in WhatsApp Mobile)",
+                                        "Message deleted by the user"
+                                    ]
+                                },
+                                "text": {
+                                    "title": "Content text message",
+                                    "description": "",
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        }
+                                    ]
+                                },
+                                "image": {
+                                    "title": "Content image message",
+                                    "type": "object",
+                                    "required": [
+                                        "id"
+                                    ],
+                                    "allOf": [
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        }
+                                    ]
+                                },
+                                "video": {
+                                    "title": "Content video message",
+                                    "type": "object",
+                                    "required": [
+                                        "id"
+                                    ],
+                                    "allOf": [
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        }
+                                    ]
+                                },
+                                "gif": {
+                                    "title": "Content video message",
+                                    "type": "object",
+                                    "required": [
+                                        "id"
+                                    ],
+                                    "allOf": [
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        }
+                                    ]
+                                },
+                                "audio": {
+                                    "title": "Content audio message",
+                                    "type": "object",
+                                    "required": [
+                                        "id"
+                                    ],
+                                    "allOf": [
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        }
+                                    ]
+                                },
+                                "voice": {
+                                    "title": "Content audio message",
+                                    "type": "object",
+                                    "required": [
+                                        "id"
+                                    ],
+                                    "allOf": [
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        }
+                                    ]
+                                },
+                                "document": {
+                                    "title": "Content document message",
+                                    "type": "object",
+                                    "required": [
+                                        "id"
+                                    ],
+                                    "allOf": [
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        }
+                                    ]
+                                },
+                                "sticker": {
+                                    "title": "Content sticker message",
+                                    "type": "object",
+                                    "required": [
+                                        "id"
+                                    ],
+                                    "allOf": [
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        }
+                                    ]
+                                },
+                                "location": {
+                                    "title": "Content location message",
+                                    "type": "object",
+                                    "required": [
+                                        "latitude",
+                                        "longitude"
+                                    ],
+                                    "allOf": [
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        }
+                                    ]
+                                },
+                                "live_location": {
+                                    "title": "Content live location message",
+                                    "type": "object",
+                                    "required": [
+                                        "latitude",
+                                        "longitude"
+                                    ],
+                                    "allOf": [
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        }
+                                    ]
+                                },
+                                "contact": {
+                                    "title": "Content contact message",
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        }
+                                    ]
+                                },
+                                "contact_list": {
+                                    "title": "Content contacts message",
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        }
+                                    ]
+                                },
+                                "interactive": {
+                                    "title": "Message content interactive",
+                                    "type": "object",
+                                    "allOf": [
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        },
+                                        {
+                                            "description": "**Omitted**"
+                                        }
+                                    ]
+                                },
+                                "system": {
+                                    "title": "Message content interactive",
+                                    "type": "object",
+                                    "properties": {
+                                        "body": {
+                                            "description": "**Omitted**"
+                                        }
+                                    }
+                                },
+                                "order": {
+                                    "title": "Message content order",
+                                    "type": "object",
+                                    "properties": {
+                                        "catalog_id": {
+                                            "description": "**Omitted**"
+                                        },
+                                        "product_items": {
+                                            "description": "**Omitted**"
+                                        },
+                                        "text": {
+                                            "description": "**Omitted**"
+                                        }
+                                    }
+                                },
+                                "product_items": {
+                                    "title": "Message content product items",
+                                    "type": "object",
+                                    "properties": {
+                                        "type": {
+                                            "description": "**Omitted**"
+                                        }
+                                    }
+                                },
+                                "action": {
+                                    "title": "Message action",
+                                    "type": "object",
+                                    "properties": {
+                                        "target": {
+                                            "description": "**Omitted**"
+                                        },
+                                        "type": {
+                                            "description": "**Omitted**"
+                                        },
+                                        "emoji": {
+                                            "description": "**Omitted**"
+                                        }
+                                    }
+                                },
+                                "context": {
+                                    "title": "Message context",
+                                    "description": "",
+                                    "type": "object",
+                                    "properties": {
+                                        "forwarded": {
+                                            "description": "**Omitted**"
+                                        },
+                                        "forwarding_score": {
+                                            "description": "**Omitted**"
+                                        },
+                                        "mentions": {
+                                            "description": "**Omitted**"
+                                        },
+                                        "quoted_id": {
+                                            "description": "**Omitted**"
+                                        },
+                                        "quoted_type": {
+                                            "description": "**Omitted**"
+                                        },
+                                        "quoted_content": {
+                                            "description": "**Omitted**"
+                                        },
+                                        "quoted_author": {
+                                            "description": "**Omitted**"
+                                        }
+                                    }
+                                },
+                                "reactions": {
+                                    "type": "array",
+                                    "items": {
+                                        "description": "**Omitted**"
+                                    },
+                                    "description": "Reactions for message"
+                                }
+                            }
+                        }
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Count of requested messages",
+                        "default": 100,
+                        "minimum": -2147483648,
+                        "maximum": 2147483647
+                    },
+                    "total": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Total number of returned messages",
+                        "minimum": -2147483648,
+                        "maximum": 2147483647
+                    },
+                    "offset": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Offset of requested messages",
+                        "default": 0,
+                        "minimum": -2147483648,
+                        "maximum": 2147483647
+                    }
+                }
+            }
+        },
+        {
+            "name": "getContact",
+            "url": "https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/contacts/{ContactID}",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "ContactID",
+                    "type": "STRING",
+                    "description": "Contact ID",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/contacts/{ContactID}\"\nquerystring = {\"ContactID\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/contacts/{ContactID}\"\nquerystring = {\"ContactID\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getContacts",
+            "url": "https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/contacts",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Offset of objects to return",
+                    "default": ""
+                },
+                {
+                    "name": "count",
+                    "type": "NUMBER",
+                    "description": "Count of objects to return",
+                    "default": 100
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/contacts\"\nquerystring = {\"offset\": \"\", \"count\": 100}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/contacts\"\nquerystring = {\"offset\": \"\", \"count\": 100}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "title": "List of contacts",
+                "type": "object",
+                "allOf": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "contacts": {
+                                "title": "Contacts",
+                                "type": "array",
+                                "items": {
+                                    "title": "WA Contact",
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "description": "WA ID"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "description": "Contact title from contact book"
+                                        },
+                                        "pushname": {
+                                            "type": "string",
+                                            "description": "Account name from WA or WA Business name"
+                                        },
+                                        "is_business": {
+                                            "type": "boolean",
+                                            "description": "Is a business account"
+                                        },
+                                        "profile_pic": {
+                                            "type": "string",
+                                            "description": "Profile picture URL"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "description": "Contact status"
+                                        }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "name"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "title": "Iterator parameters",
+                        "type": "object",
+                        "properties": {
+                            "count": {
+                                "type": "integer",
+                                "format": "int32",
+                                "description": "Count of requested chats",
+                                "default": 20,
+                                "minimum": -2147483648,
+                                "maximum": 2147483647
+                            },
+                            "total": {
+                                "type": "integer",
+                                "format": "int32",
+                                "description": "Total number of returned chats",
+                                "minimum": -2147483648,
+                                "maximum": 2147483647
+                            },
+                            "offset": {
+                                "type": "integer",
+                                "format": "int32",
+                                "description": "Offset of requested chats",
+                                "default": 0,
+                                "minimum": -2147483648,
+                                "maximum": 2147483647
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "checkHealth",
+            "url": "https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/health",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/health\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/health\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "title": "Health response",
+                "type": "object",
+                "properties": {
+                    "start_at": {
+                        "type": "number",
+                        "description": "Date timestamp when channel started on the server."
+                    },
+                    "uptime": {
+                        "type": "number",
+                        "description": "Seconds have passed since the start of the instance."
+                    },
+                    "status": {
+                        "title": "Channel status",
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "type": "number",
+                                "description": "Status code"
+                            },
+                            "text": {
+                                "type": "string",
+                                "description": "Status text",
+                                "enum": [
+                                    "NOT_INIT",
+                                    "INIT",
+                                    "LAUNCH",
+                                    "QR",
+                                    "AUTH",
+                                    "ERROR"
+                                ],
+                                "x-enum-descriptions": [
+                                    "Not initialized",
+                                    "Initialized",
+                                    "Launched",
+                                    "Scan QR code",
+                                    "Authorize",
+                                    "Error"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "code",
+                            "text"
+                        ]
+                    },
+                    "user": {
+                        "title": "WA Contact",
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "description": "WA ID"
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "Contact title from contact book"
+                            },
+                            "pushname": {
+                                "type": "string",
+                                "description": "Account name from WA or WA Business name"
+                            },
+                            "is_business": {
+                                "type": "boolean",
+                                "description": "Is a business account"
+                            },
+                            "profile_pic": {
+                                "type": "string",
+                                "description": "Profile picture URL"
+                            },
+                            "status": {
+                                "type": "string",
+                                "description": "Contact status"
+                            }
+                        },
+                        "required": [
+                            "id",
+                            "name"
+                        ]
+                    }
+                },
+                "required": [
+                    "start_at",
+                    "uptime",
+                    "status"
+                ]
+            }
+        },
+        {
+            "name": "getChannelSettings",
+            "url": "https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/settings",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/settings\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/settings\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "title": "Channel Settings",
+                "type": "object",
+                "properties": {
+                    "callback_backoff_delay_ms": {
+                        "description": "Backoff delay for a failed callback in milliseconds This setting is used to configure the amount of time the backoff delays before retrying a failed callback. The backoff delay increases linearly by this value each time a callback fails to get a HTTPS 200 OK response. The backoff delay is capped by the max_callback_backoff_delay_ms setting.",
+                        "default": 3000,
+                        "type": "number"
+                    },
+                    "max_callback_backoff_delay_ms": {
+                        "description": "Maximum delay for a failed callback in milliseconds",
+                        "default": 900000,
+                        "type": "number"
+                    },
+                    "callback_persist": {
+                        "description": "Stores callbacks on disk until they are successfully acknowledged by the Webhook or not. Restart required.",
+                        "default": true,
+                        "type": "boolean"
+                    },
+                    "media": {
+                        "title": "Media",
+                        "required": [
+                            "auto_download"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "auto_download": {
+                                "description": "An array specifying which types of media to automatically download.",
+                                "type": "array",
+                                "items": {
+                                    "enum": [
+                                        "image",
+                                        "audio",
+                                        "voice",
+                                        "video",
+                                        "document"
+                                    ],
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "webhooks": {
+                        "title": "Webhooks",
+                        "type": "array",
+                        "items": {
+                            "title": "Webhook",
+                            "type": "object",
+                            "required": [
+                                "url"
+                            ],
+                            "properties": {
+                                "url": {
+                                    "description": "Inbound and outbound notifications are routed to this URL.",
+                                    "type": "string"
+                                },
+                                "events": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "message",
+                                                    "ack",
+                                                    "chat",
+                                                    "status",
+                                                    "service"
+                                                ]
+                                            },
+                                            "method": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "post",
+                                                    "put",
+                                                    "delete",
+                                                    "patch"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "default": [
+                                        {
+                                            "type": "message",
+                                            "method": "put"
+                                        }
+                                    ],
+                                    "description": "Tracked events. <br/>\"message\" - got new message;<br/>\"ack\" - got message status;<br/>\"chat\" - got chat/dialog update;<br/>\"status\" - instance status changed;<br/>\"service\" - special notifications"
+                                },
+                                "mode": {
+                                    "type": "string",
+                                    "default": "body",
+                                    "enum": [
+                                        "body",
+                                        "path",
+                                        "method"
+                                    ],
+                                    "description": "Request method for sending hook."
+                                }
+                            }
+                        }
+                    },
+                    "on_call_pager": {
+                        "description": "Set to valid WhatsApp Group with users who wish to see alerts for critical errors and messages.",
+                        "type": "string"
+                    },
+                    "pass_through": {
+                        "description": "When true, removes messages from the local database after they are delivered to or read by the recipient. When false, saves all messages on local storage until they are explicitly deleted. When messages are sent, they are stored in a local database. This database is used as the application's history. Since the business keeps its own history, you can specify whether you want message pass_through or not. Restart required.",
+                        "default": true,
+                        "type": "boolean"
+                    },
+                    "sent_status": {
+                        "description": "Receive a notification that a message is sent to server. When true, you will receive a message indicating that a message has been sent. If false (default), you will not receive notification.",
+                        "default": false,
+                        "type": "boolean"
+                    },
+                    "proxy": {
+                        "description": "Set to valid WhatsApp Group with users who wish to see alerts for critical errors and messages.",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "getLimits",
+            "url": "https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/limits",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/limits\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whatsapp-api-for-developers-free-plan.p.rapidapi.com/limits\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whatsapp-api-for-developers-free-plan.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "title": "Trial limits",
+                "type": "object",
+                "properties": {
+                    "messages": {
+                        "type": "integer",
+                        "description": "Maximum number of messages that can be sent"
+                    },
+                    "chats": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "description": "Chat ID",
+                            "pattern": "^[\\d-]{10,31}@[\\w\\.]{1,}$"
+                        },
+                        "description": "List of chat IDs that can be used"
+                    },
+                    "checks": {
+                        "type": "integer",
+                        "description": "Maximum number of check phone numbers"
+                    }
+                },
+                "required": [
+                    "messages",
+                    "chats",
+                    "checks"
+                ]
+            }
+        }
+    ]
+}

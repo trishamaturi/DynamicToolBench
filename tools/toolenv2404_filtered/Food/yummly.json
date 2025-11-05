@@ -1,0 +1,524 @@
+{
+    "product_id": "api_055ca92e-1a9a-4195-9f7a-8903ce495038",
+    "tool_description": "API to query data about recipe, plan, ingredients, etc... as on official site",
+    "home_url": "https://rapidapi.com/apidojo/api/yummly2/",
+    "name": "Yummly",
+    "title": "Yummly",
+    "pricing": "FREEMIUM",
+    "tool_name": "Yummly",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 3376,
+        "avgSuccessRate": 99,
+        "popularityScore": 9.6,
+        "__typename": "Score"
+    },
+    "host": "yummly2.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "feeds/list",
+            "url": "https://yummly2.p.rapidapi.com/feeds/list",
+            "description": "List feeds by category",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "start",
+                    "type": "NUMBER",
+                    "description": "The offset of items to be ignored in response for paging",
+                    "default": "0"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of items returned per response",
+                    "default": "24"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "tag",
+                    "type": "STRING",
+                    "description": "The value of browse-categories/display/tag returned in categories/list API",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://yummly2.p.rapidapi.com/feeds/list\"\nquerystring = {\"start\": \"0\", \"tag\": \"\", \"limit\": \"24\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yummly2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://yummly2.p.rapidapi.com/feeds/list\"\nquerystring = {\"start\": \"0\", \"tag\": \"\", \"limit\": \"24\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yummly2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "reviews/list",
+            "url": "https://yummly2.p.rapidapi.com/reviews/list",
+            "description": "List reviews, feedback from other users",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "The offset of items to be ignored in response for paging",
+                    "default": "0"
+                },
+                {
+                    "name": "globalId",
+                    "type": "STRING",
+                    "description": "The value of globalId field returned in feeds/list and feeds/search API",
+                    "default": "a8d6747a-bfaa-46a7-92fb-892e3f76b264"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of items returned per response",
+                    "default": "20"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://yummly2.p.rapidapi.com/reviews/list\"\nquerystring = {\"offset\": \"0\", \"globalId\": \"a8d6747a-bfaa-46a7-92fb-892e3f76b264\", \"limit\": \"20\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yummly2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://yummly2.p.rapidapi.com/reviews/list\"\nquerystring = {\"offset\": \"0\", \"globalId\": \"a8d6747a-bfaa-46a7-92fb-892e3f76b264\", \"limit\": \"20\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yummly2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "categories/list",
+            "url": "https://yummly2.p.rapidapi.com/categories/list",
+            "description": "List all categories of recipes",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://yummly2.p.rapidapi.com/categories/list\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yummly2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://yummly2.p.rapidapi.com/categories/list\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yummly2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "feeds/list-similarities",
+            "url": "https://yummly2.p.rapidapi.com/feeds/list-similarities",
+            "description": "List similar recipes by name and author",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of id field returned in feeds/list and feeds/search API",
+                    "default": "15-Minute-Baked-Salmon-with-Lemon-9029477"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of items returned per response",
+                    "default": "18"
+                },
+                {
+                    "name": "start",
+                    "type": "NUMBER",
+                    "description": "The offset of items to be ignored in response for paging",
+                    "default": "0"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "apiFeedType",
+                    "type": "STRING",
+                    "description": "The value of apiFeedType field returned in feeds/list and feeds/search API",
+                    "default": "moreFrom"
+                },
+                {
+                    "name": "authorId",
+                    "type": "STRING",
+                    "description": "The value of authorId field returned in feeds/list and feeds/search API",
+                    "default": "Yummly"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://yummly2.p.rapidapi.com/feeds/list-similarities\"\nquerystring = {\"apiFeedType\": \"moreFrom\", \"id\": \"15-Minute-Baked-Salmon-with-Lemon-9029477\", \"limit\": \"18\", \"start\": \"0\", \"authorId\": \"Yummly\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yummly2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://yummly2.p.rapidapi.com/feeds/list-similarities\"\nquerystring = {\"apiFeedType\": \"moreFrom\", \"id\": \"15-Minute-Baked-Salmon-with-Lemon-9029477\", \"limit\": \"18\", \"start\": \"0\", \"authorId\": \"Yummly\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yummly2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "feeds/search",
+            "url": "https://yummly2.p.rapidapi.com/feeds/search",
+            "description": "Search for recipes by name and option filters",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "start",
+                    "type": "NUMBER",
+                    "description": "The offset of items to be ignored in response for paging",
+                    "default": "0"
+                },
+                {
+                    "name": "maxResult",
+                    "type": "NUMBER",
+                    "description": "Number of items returned per response",
+                    "default": "18"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "FIBTGMax",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "CAMax",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "CHOLEMax",
+                    "type": "NUMBER",
+                    "description": "Range from 0 to 1",
+                    "default": ""
+                },
+                {
+                    "name": "allowedAttribute",
+                    "type": "STRING",
+                    "description": "The value of id field returned in tags/list (separated by comma for multiple value)",
+                    "default": "diet-lacto-vegetarian,diet-low-fodmap"
+                },
+                {
+                    "name": "sweetMax",
+                    "type": "NUMBER",
+                    "description": "How much sweet the meal is, such as 0.8 (0 to 1)",
+                    "default": ""
+                },
+                {
+                    "name": "KMax",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "NAMax",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Food name or ingredient",
+                    "default": "chicken soup"
+                },
+                {
+                    "name": "ENERC_KCALMax",
+                    "type": "NUMBER",
+                    "description": "Range from 0 to 1000",
+                    "default": ""
+                },
+                {
+                    "name": "FEMax",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "FAT_KCALMax",
+                    "type": "NUMBER",
+                    "description": "Range from 0 to 1000",
+                    "default": "1000"
+                },
+                {
+                    "name": "maxTotalTimeInSeconds",
+                    "type": "NUMBER",
+                    "description": "the time (in seconds) it takes to complete the dish",
+                    "default": "7200"
+                },
+                {
+                    "name": "piquantMax",
+                    "type": "NUMBER",
+                    "description": "How much piquant the meal is, such as 0.8 (0 to 1)",
+                    "default": ""
+                },
+                {
+                    "name": "VITA_IUMax",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "VITCMax",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "meatyMax",
+                    "type": "NUMBER",
+                    "description": "How much meaty the meal is, such as 0.8 (0 to 1)",
+                    "default": ""
+                },
+                {
+                    "name": "FASATMax",
+                    "type": "NUMBER",
+                    "description": "Range from 0 to 50",
+                    "default": ""
+                },
+                {
+                    "name": "sweetMin",
+                    "type": "NUMBER",
+                    "description": "How much sweet the meal is, such as 0.8 (0 to 1)",
+                    "default": ""
+                },
+                {
+                    "name": "piquantMin",
+                    "type": "NUMBER",
+                    "description": "How much piquant the meal is, such as 0.8 (0 to 1)",
+                    "default": ""
+                },
+                {
+                    "name": "FATMax",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "sourMin",
+                    "type": "NUMBER",
+                    "description": "How much sour the meal is, such as 0.8 (0 to 1)",
+                    "default": ""
+                },
+                {
+                    "name": "meatyMin",
+                    "type": "NUMBER",
+                    "description": "How much meaty the meal is, such as 0.2 (0 to 1)",
+                    "default": ""
+                },
+                {
+                    "name": "sourMax",
+                    "type": "NUMBER",
+                    "description": "How much sour the meal is, such as 0.8 (0 to 1)",
+                    "default": ""
+                },
+                {
+                    "name": "CHOCDFMax",
+                    "type": "NUMBER",
+                    "description": "Range from 0 to 100",
+                    "default": ""
+                },
+                {
+                    "name": "saltyMin",
+                    "type": "NUMBER",
+                    "description": "How much salty the meal is, such as 0.8 (0 to 1)",
+                    "default": ""
+                },
+                {
+                    "name": "SUGARMax",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "PROCNTMax",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "saltyMax",
+                    "type": "NUMBER",
+                    "description": "How much salty the meal is, such as 0.8 (0 to 1)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://yummly2.p.rapidapi.com/feeds/search\"\nquerystring = {\"FIBTGMax\": \"\", \"CAMax\": \"\", \"CHOLEMax\": \"\", \"allowedAttribute\": \"diet-lacto-vegetarian,diet-low-fodmap\", \"sweetMax\": \"\", \"KMax\": \"\", \"NAMax\": \"\", \"start\": \"0\", \"q\": \"chicken soup\", \"ENERC_KCALMax\": \"\", \"maxResult\": \"18\", \"FEMax\": \"\", \"FAT_KCALMax\": \"1000\", \"maxTotalTimeInSeconds\": \"7200\", \"piquantMax\": \"\", \"VITA_IUMax\": \"\", \"VITCMax\": \"\", \"meatyMax\": \"\", \"FASATMax\": \"\", \"sweetMin\": \"\", \"piquantMin\": \"\", \"FATMax\": \"\", \"sourMin\": \"\", \"meatyMin\": \"\", \"sourMax\": \"\", \"CHOCDFMax\": \"\", \"saltyMin\": \"\", \"SUGARMax\": \"\", \"PROCNTMax\": \"\", \"saltyMax\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yummly2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://yummly2.p.rapidapi.com/feeds/search\"\nquerystring = {\"FIBTGMax\": \"\", \"CAMax\": \"\", \"CHOLEMax\": \"\", \"allowedAttribute\": \"diet-lacto-vegetarian,diet-low-fodmap\", \"sweetMax\": \"\", \"KMax\": \"\", \"NAMax\": \"\", \"start\": \"0\", \"q\": \"chicken soup\", \"ENERC_KCALMax\": \"\", \"maxResult\": \"18\", \"FEMax\": \"\", \"FAT_KCALMax\": \"1000\", \"maxTotalTimeInSeconds\": \"7200\", \"piquantMax\": \"\", \"VITA_IUMax\": \"\", \"VITCMax\": \"\", \"meatyMax\": \"\", \"FASATMax\": \"\", \"sweetMin\": \"\", \"piquantMin\": \"\", \"FATMax\": \"\", \"sourMin\": \"\", \"meatyMin\": \"\", \"sourMax\": \"\", \"CHOCDFMax\": \"\", \"saltyMin\": \"\", \"SUGARMax\": \"\", \"PROCNTMax\": \"\", \"saltyMax\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yummly2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "feeds/auto-complete",
+            "url": "https://yummly2.p.rapidapi.com/feeds/auto-complete",
+            "description": "Get auto complete suggestions by name or ingredients, etc...",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Food name or ingredient",
+                    "default": "chicken soup"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://yummly2.p.rapidapi.com/feeds/auto-complete\"\nquerystring = {\"q\": \"chicken soup\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yummly2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://yummly2.p.rapidapi.com/feeds/auto-complete\"\nquerystring = {\"q\": \"chicken soup\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yummly2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "tags/list",
+            "url": "https://yummly2.p.rapidapi.com/tags/list",
+            "description": "List all tags in which recipes are group together",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://yummly2.p.rapidapi.com/tags/list\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yummly2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://yummly2.p.rapidapi.com/tags/list\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yummly2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

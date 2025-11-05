@@ -1,0 +1,344 @@
+{
+    "product_id": "api_ae076ea1-581d-4aad-ae96-c3e2c7566eb7",
+    "tool_description": "The ISBNdb database includes over 36 million unique ISBNs with up to 19 data points per book. API is only available through a paid subscription on our website, isbndb.com. If you want to explore our API, please visit isbndb.com; we offer a free 7-day trial to new subscribers. ",
+    "home_url": "https://rapidapi.com/ISBNdb/api/book-database1/",
+    "name": "Book Database",
+    "title": "Book Database",
+    "pricing": "FREE",
+    "tool_name": "Book Database",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 109,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.4,
+        "__typename": "Score"
+    },
+    "host": "book-database1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "getBookDetails",
+            "url": "https://book-database1.p.rapidapi.com/book/{isbn}",
+            "description": "The book ISBN was found in the database\n\nExample Value | Model\n\n{\n  \"book\": {\n    \"title\": \"string\",\n    \"title_long\": \"string\",\n    \"isbn\": \"string\",\n    \"isbn13\": \"string\",\n    \"dewey_decimal\": \"string\",\n    \"binding\": \"string\",\n    \"publisher\": \"string\",\n    \"language\": \"string\",\n    \"date_published\": \"2024-01-10T10:39:55.817Z\",\n    \"edition\": \"string\",\n    \"pages\": 0,\n    \"dimensions\": \"string\",\n    \"overview\": \"string\",\n    \"image\": \"string\",\n    \"msrp\": 0,\n    \"excerpt\": \"string\",\n    \"synopsis\": \"string\",\n    \"authors\": [\n      \"string\"\n    ],\n    \"subjects\": [\n      \"string\"\n    ],\n    \"reviews\": [\n      \"string\"\n    ],\n    \"prices\": [\n      {\n        \"condition\": \"string\",\n        \"merchant\": \"string\",\n        \"merchant_logo\": \"string\",\n        \"merchant_logo_offset\": {\n          \"x\": \"string\",\n          \"y\": \"string\"\n        },\n        \"shipping\": \"string\",\n        \"price\": \"string\",\n        \"total\": \"string\",\n        \"link\": \"string\"\n      }\n    ],\n    \"related\": {\n      \"type\": \"string\"\n    },\n    \"other_isbns\": [\n      {\n        \"isbn\": \"string\",\n        \"binding\": \"string\"\n      }\n    ]\n  }\n}",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "isbn",
+                    "type": "string",
+                    "description": "an ISBN 10 or ISBN 13 in the Books database",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "with_prices",
+                    "type": "STRING",
+                    "description": "indicate if shows Real Time Prices. Only with the Pro plan\n\nAvailable values : 1, 0",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://book-database1.p.rapidapi.com/book/{isbn}\"\nquerystring = {\"isbn\": \"\", \"with_prices\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-database1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://book-database1.p.rapidapi.com/book/{isbn}\"\nquerystring = {\"isbn\": \"\", \"with_prices\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-database1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "searchBooks",
+            "url": "https://book-database1.p.rapidapi.com/books/string",
+            "description": "The query string found results in the books's database",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "string",
+                    "description": "a list of ISBN 10 or ISBN 13 in the Books database",
+                    "default": "string"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "edition",
+                    "type": "NUMBER",
+                    "description": "Filter books by edition",
+                    "default": "11"
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "Filter books by year of publication",
+                    "default": "2024"
+                },
+                {
+                    "name": "column",
+                    "type": "STRING",
+                    "description": "Search limited to this column:\n\n**``** - Empty value search in every column\n**title** - Only searches in Books Title\n**author** - Only searches books by the given Author\n**date_published** - Only searches books in a given year, e.g. 1998\n**subjects** - Only searches books by the given subject, e.g. physics\nAvailable values : , title, author, date_published, subjects",
+                    "default": "title"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "NUMBER",
+                    "description": "How many items should be returned per page, maximum of 1,000",
+                    "default": "20"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://book-database1.p.rapidapi.com/books/string\"\nquerystring = {\"edition\": \"11\", \"year\": \"2024\", \"column\": \"title\", \"pageSize\": \"20\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-database1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://book-database1.p.rapidapi.com/books/{query}\"\nquerystring = {\"edition\": \"11\", \"year\": \"2024\", \"column\": \"title\", \"pageSize\": \"20\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-database1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "searchSubjects",
+            "url": "https://book-database1.p.rapidapi.com/subjects/{query}",
+            "description": "The query string found results in the subject's database",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "string",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them",
+                    "default": "page"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "STRING",
+                    "description": "How many items should be returned per page, maximum of 1,000",
+                    "default": "pageSize"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://book-database1.p.rapidapi.com/subjects/{query}\"\nquerystring = {\"query\": \"\", \"page\": \"page\", \"pageSize\": \"pageSize\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-database1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://book-database1.p.rapidapi.com/subjects/{query}\"\nquerystring = {\"query\": \"\", \"page\": \"page\", \"pageSize\": \"pageSize\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-database1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "getSubjectDetails",
+            "url": "https://book-database1.p.rapidapi.com/subject/{name}",
+            "description": "The subject was found in the database\n**Example Value** | Model\n\n\t\nThe subject was found in the database\n\nExample Value\nModel\n{\n  \"subject\": \"string\",\n  \"parent\": \"string\"\n}",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "name",
+                    "type": "string",
+                    "description": "A subject in the Subject's database",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://book-database1.p.rapidapi.com/subject/{name}\"\nquerystring = {\"name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-database1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://book-database1.p.rapidapi.com/subject/{name}\"\nquerystring = {\"name\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-database1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "getStatusISBNdbDB",
+            "url": "https://book-database1.p.rapidapi.com/stats",
+            "description": "Returns a status object about the ISBNDB database.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://book-database1.p.rapidapi.com/stats\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-database1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://book-database1.p.rapidapi.com/stats\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-database1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "searchAllIsbndbDB",
+            "url": "https://book-database1.p.rapidapi.com/search/subjects",
+            "description": "Results were found in the requested database",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "index",
+                    "type": "string",
+                    "description": "Only this values are valids: subjects, publishers, authors y books\n\nAvailable values : subjects, publishers, authors, books",
+                    "default": "subjects"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "text",
+                    "type": "STRING",
+                    "description": "A string to search for determinated index database",
+                    "default": "text"
+                },
+                {
+                    "name": "publisher",
+                    "type": "STRING",
+                    "description": "The name of a publisher in the Publisher's database",
+                    "default": "publisher"
+                },
+                {
+                    "name": "isbn",
+                    "type": "STRING",
+                    "description": "an ISBN 10 in the Books database",
+                    "default": "isbn"
+                },
+                {
+                    "name": "isbn13",
+                    "type": "STRING",
+                    "description": "an ISBN 13 in the Books database",
+                    "default": "isbn13"
+                },
+                {
+                    "name": "subject",
+                    "type": "STRING",
+                    "description": "A subject in the Subject's database",
+                    "default": "subject"
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them",
+                    "default": "page"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "STRING",
+                    "description": "How many items should be returned per page, maximum of 1,000",
+                    "default": "pageSize"
+                },
+                {
+                    "name": "author",
+                    "type": "STRING",
+                    "description": "The name of an author in the Author's database",
+                    "default": "author"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://book-database1.p.rapidapi.com/search/subjects\"\nquerystring = {\"text\": \"text\", \"publisher\": \"publisher\", \"isbn\": \"isbn\", \"isbn13\": \"isbn13\", \"subject\": \"subject\", \"page\": \"page\", \"pageSize\": \"pageSize\", \"author\": \"author\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-database1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://book-database1.p.rapidapi.com/search/{index}\"\nquerystring = {\"text\": \"text\", \"publisher\": \"publisher\", \"isbn\": \"isbn\", \"isbn13\": \"isbn13\", \"subject\": \"subject\", \"page\": \"page\", \"pageSize\": \"pageSize\", \"author\": \"author\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-database1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "searchPublisher",
+            "url": "https://book-database1.p.rapidapi.com/publishers/{query}",
+            "description": "The query string found results in the publisher's database",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "string",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "pageSize",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "pageSize"
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "page"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://book-database1.p.rapidapi.com/publishers/{query}\"\nquerystring = {\"pageSize\": \"pageSize\", \"page\": \"page\", \"query\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-database1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://book-database1.p.rapidapi.com/publishers/{query}\"\nquerystring = {\"pageSize\": \"pageSize\", \"page\": \"page\", \"query\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-database1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "getPublisherDetails",
+            "url": "https://book-database1.p.rapidapi.com/publisher/Holt",
+            "description": "The publisher name was found in the database\n**Example Value** | Model\n{\n  \"name\": \"string\",\n  \"books\": [\n    {\n      \"isbn\": \"string\"\n    }\n  ]\n}",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "name",
+                    "type": "string",
+                    "description": "The name of a publisher in the Publisher's database",
+                    "default": "Holt"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "pageSize",
+                    "type": "NUMBER",
+                    "description": "How many items should be returned per page, maximum of 1,000",
+                    "default": "20"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://book-database1.p.rapidapi.com/publisher/Holt\"\nquerystring = {\"pageSize\": \"20\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-database1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://book-database1.p.rapidapi.com/publisher/{name}\"\nquerystring = {\"pageSize\": \"20\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-database1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "searchAuthors",
+            "url": "https://book-database1.p.rapidapi.com/authors/query",
+            "description": "The query string found results in the author's database\n**Example Value** | Model\n\n{\n  \"total\": 0,\n  \"authors\": [\n    \"string\"\n  ]\n}",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "string",
+                    "description": "A string to search for in the Author\u2019s database",
+                    "default": "query"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them",
+                    "default": "page"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "STRING",
+                    "description": "How many items should be returned per page, maximum of 1,000",
+                    "default": "pageSize"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://book-database1.p.rapidapi.com/authors/query\"\nquerystring = {\"page\": \"page\", \"pageSize\": \"pageSize\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-database1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://book-database1.p.rapidapi.com/authors/{query}\"\nquerystring = {\"page\": \"page\", \"pageSize\": \"pageSize\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-database1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "getsAuthorDetails",
+            "url": "https://book-database1.p.rapidapi.com/author/name",
+            "description": "The author name was found in the database\n**Example Value** | Model\n\n{\n  \"author\": \"string\",\n  \"books\": [\n    {\n      \"book\": {\n        \"title\": \"string\",\n        \"title_long\": \"string\",\n        \"isbn\": \"string\",\n        \"isbn13\": \"string\",\n        \"dewey_decimal\": \"string\",\n        \"binding\": \"string\",\n        \"publisher\": \"string\",\n        \"language\": \"string\",\n        \"date_published\": \"2024-01-10T10:53:38.475Z\",\n        \"edition\": \"string\",\n        \"pages\": 0,\n        \"dimensions\": \"string\",\n        \"overview\": \"string\",\n        \"image\": \"string\",\n        \"msrp\": 0,\n        \"excerpt\": \"string\",\n        \"synopsis\": \"string\",\n        \"authors\": [\n          \"string\"\n        ],\n        \"subjects\": [\n          \"string\"\n        ],\n        \"reviews\": [\n          \"string\"\n        ],\n        \"prices\": [\n          {\n            \"condition\": \"string\",\n            \"merchant\": \"string\",\n            \"merchant_logo\": \"string\",\n            \"merchant_logo_offset\": {\n              \"x\": \"string\",\n              \"y\": \"string\"\n            },\n            \"shipping\": \"string\",\n            \"price\": \"string\",\n            \"total\": \"string\",\n            \"link\": \"string\"\n          }\n        ],\n        \"related\": {\n          \"type\": \"string\"\n        },\n        \"other_isbns\": [\n          {\n            \"isbn\": \"string\",\n            \"binding\": \"string\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "name",
+                    "type": "string",
+                    "description": "The name of an author in the Author's database",
+                    "default": "name"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "pageSize",
+                    "type": "NUMBER",
+                    "description": "How many items should be returned per page, maximum of 1,000",
+                    "default": "20"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "The number of page to retrieve, please note the API will not return more than 10,000 results no matter how you paginate them",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://book-database1.p.rapidapi.com/author/name\"\nquerystring = {\"pageSize\": \"20\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-database1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://book-database1.p.rapidapi.com/author/{name}\"\nquerystring = {\"pageSize\": \"20\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-database1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

@@ -1,0 +1,73 @@
+{
+    "product_id": "api_7e9f6d17-e976-4b0b-87a8-42a6bdd4f626",
+    "tool_description": "This API provides an easy method for accessing amazon products analytics (price, rank, sales,  etc) in a JSON format.",
+    "home_url": "https://rapidapi.com/costingh/api/json-data-scraper/",
+    "name": "json-data-scraper",
+    "title": "json-data-scraper",
+    "pricing": "FREEMIUM",
+    "tool_name": "json-data-scraper",
+    "score": null,
+    "host": "json-data-scraper.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get offers of an Amazon product",
+            "url": "https://json-data-scraper.p.rapidapi.com/products/B07SF86V5Y/offers",
+            "description": "Get offers of an Amazon product",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "productId",
+                    "type": "string",
+                    "description": "",
+                    "default": "B07SF86V5Y"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "api_key",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "f871cacba1afede62474516ccfae136d"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://json-data-scraper.p.rapidapi.com/products/B07SF86V5Y/offers\"\nquerystring = {\"api_key\": \"f871cacba1afede62474516ccfae136d\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"json-data-scraper.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://json-data-scraper.p.rapidapi.com/products/{productid}/offers\"\nquerystring = {\"api_key\": \"f871cacba1afede62474516ccfae136d\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"json-data-scraper.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "item": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "brand": {
+                                "type": "string"
+                            },
+                            "product_information": {
+                                "type": "object"
+                            },
+                            "image": {
+                                "type": "string"
+                            },
+                            "average_rating": {
+                                "type": "null"
+                            },
+                            "total_reviews": {
+                                "type": "null"
+                            }
+                        }
+                    },
+                    "listings": {
+                        "type": "array"
+                    },
+                    "pagination": {
+                        "type": "array"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,1149 @@
+{
+    "product_id": "api_a617101b-0190-4456-a932-cee1c3bc5471",
+    "tool_description": "Hi",
+    "home_url": "https://rapidapi.com/steverapid/api/hello-openapi/",
+    "name": "Hello OpenAPI",
+    "title": "Hello OpenAPI",
+    "pricing": "FREEMIUM",
+    "tool_name": "Hello OpenAPI",
+    "score": null,
+    "host": "hello-openapi.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "getStoreExtended",
+            "url": "https://hello-openapi.p.rapidapi.com/Store/{store_id}/InfoExtended/",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "store_id",
+                    "type": "STRING",
+                    "description": "Id of the Store",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "partner_code",
+                    "type": "STRING",
+                    "description": "the partner code, if this parameter is set then 'store_id' is the partner store ID, if 'partner_code' is not set then 'store_id' is the Movylo store ID",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/InfoExtended/\"\nquerystring = {\"partner_code\": \"\", \"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/InfoExtended/\"\nquerystring = {\"partner_code\": \"\", \"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "allOf": [
+                    {
+                        "example": {
+                            "account_id": 32942,
+                            "country": "US",
+                            "creation_date": "2020-01-02",
+                            "currency": "USD",
+                            "expiration_date": "2021-01-03",
+                            "store_id": 42671,
+                            "store_name": "My fancy Store",
+                            "store_name_url": "my-fancy-store"
+                        },
+                        "properties": {
+                            "account_id": {
+                                "description": "The id of the merchant account who owns of the store, required for creation then read only",
+                                "type": "string"
+                            },
+                            "code": {
+                                "description": "The affiliation code (if any), set in creation then read only",
+                                "type": "string"
+                            },
+                            "country": {
+                                "description": "The country code (in the two-letter ISO standard 3166-1 alpha-2)",
+                                "type": "string"
+                            },
+                            "creation_date": {
+                                "description": "The creation date in the format 'yyyy-mm-dd', read only",
+                                "type": "string"
+                            },
+                            "currency": {
+                                "description": "The currency code (in the three-letter ISO standard ISO 4217)",
+                                "type": "string"
+                            },
+                            "expiration_date": {
+                                "description": "The expiration date in the format 'yyyy-mm-dd', ignored for creation; use it to temporary suspend a store that can be re-activated calling the 'Set Plan' API",
+                                "type": "string"
+                            },
+                            "external_store_id": {
+                                "description": "The Movylo partner Store Id (if any), set in creation then read only",
+                                "type": "string"
+                            },
+                            "partner_code": {
+                                "description": "The Movylo partner code (if any), if provided you must use it when you create the store",
+                                "type": "string"
+                            },
+                            "plan_id": {
+                                "description": "The plan id of the store",
+                                "type": "string"
+                            },
+                            "store_id": {
+                                "description": "The id of the store, ignored for creation but required for update",
+                                "type": "string"
+                            },
+                            "store_name": {
+                                "description": "The name of the store, required for creation (must be equal-less than 25 characters)",
+                                "type": "string"
+                            },
+                            "store_name_url": {
+                                "description": "The 'urlified' name of the store, used to assemble the store frontend url, read only",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                ],
+                "example": {
+                    "account_id": 32942,
+                    "country": "US",
+                    "creation_date": "2020-01-02",
+                    "currency": "USD",
+                    "customers_max": 100,
+                    "customers_total": 56,
+                    "expiration_date": "2021-01-03",
+                    "store_id": 42671,
+                    "store_name": "My fancy Store",
+                    "store_name_url": "my-fancy-store",
+                    "store_url": "my-fancy-store.partner-engage-local.com"
+                },
+                "properties": {
+                    "customers_max": {
+                        "description": "the maximum number of managed customers (depending from the plan)",
+                        "type": "string"
+                    },
+                    "customers_total": {
+                        "description": "the current number of managed customers",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "contact email of the store",
+                        "type": "string"
+                    },
+                    "paypal_account": {
+                        "description": "paypal account",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "contact phone of the store",
+                        "type": "string"
+                    },
+                    "store_locations": {
+                        "description": "list of store locations",
+                        "items": {
+                            "properties": {
+                                "address": {
+                                    "type": "string"
+                                },
+                                "info": {
+                                    "type": "string"
+                                },
+                                "latitude": {
+                                    "type": "string"
+                                },
+                                "longitude": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "type": "array"
+                    },
+                    "store_url": {
+                        "description": "the url of the store frontend url",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "getMerchant",
+            "url": "https://hello-openapi.p.rapidapi.com/Merchant/thisisdefault/",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "account_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "thisisdefault"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "partner_code",
+                    "type": "STRING",
+                    "description": "the partner code, if this parameter is set then `account_id` is the partner `account ID` if `partner_code` is not set then `account_id` is the Movylo merchant account ID",
+                    "default": ""
+                },
+                {
+                    "name": "event_code",
+                    "type": "STRING",
+                    "description": "the event codes, if this parameter is set then `account_id` is the partner `account ID` if `partner_code` is not set then `account_id` is the Movylo merchant account ID",
+                    "default": "\"done_sign_up\""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Merchant/thisisdefault/\"\nquerystring = {\"partner_code\": \"\", \"event_code\": \"\\\"done_sign_up\\\"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Merchant/{account_id}/\"\nquerystring = {\"partner_code\": \"\", \"event_code\": \"\\\"done_sign_up\\\"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getStores",
+            "url": "https://hello-openapi.p.rapidapi.com/Stores/Search/",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "search_string",
+                    "type": "STRING",
+                    "description": "string to perform store search by name",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Stores/Search/\"\nquerystring = {\"search_string\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Stores/Search/\"\nquerystring = {\"search_string\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getStoreInfoPages",
+            "url": "https://hello-openapi.p.rapidapi.com/Store/{store_id}/InfoPages/",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "store_id",
+                    "type": "STRING",
+                    "description": "Id of the Store",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "partner_code",
+                    "type": "STRING",
+                    "description": "the partner code, if this parameter is set then 'store_id' is the partner store ID, if 'partner_code' is not set then 'store_id' is the Movylo store ID",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/InfoPages/\"\nquerystring = {\"store_id\": \"\", \"partner_code\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/InfoPages/\"\nquerystring = {\"store_id\": \"\", \"partner_code\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "about_page": {
+                        "description": "the \"About\" page of the store, in HTML",
+                        "type": "string"
+                    },
+                    "contact_page": {
+                        "description": "the \"Contact us\" page of the store, in HTML",
+                        "type": "string"
+                    },
+                    "privacy_page": {
+                        "description": "the \"Privacy\" page of the store, in HTML",
+                        "type": "string"
+                    },
+                    "tos_page": {
+                        "description": "the \"Terms of service\" page of the store, in HTML",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "getCustomerStats",
+            "url": "https://hello-openapi.p.rapidapi.com/Store/{store_id}/Customer/{account_id}/Stats/",
+            "description": "Get the customer's stats",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "account_id",
+                    "type": "NUMBER",
+                    "description": "Id of the Store's customer account",
+                    "default": ""
+                },
+                {
+                    "name": "store_id",
+                    "type": "NUMBER",
+                    "description": "Id of the Movylo store where the customer is",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Customer/{account_id}/Stats/\"\nquerystring = {\"account_id\": \"\", \"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Customer/{account_id}/Stats/\"\nquerystring = {\"account_id\": \"\", \"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getCustomerLoyaltyPoints",
+            "url": "https://hello-openapi.p.rapidapi.com/Store/{store_id}/Loyalty/Customer/{account_id}/",
+            "description": "Get loyalty points of a customer by the store_id and the account_id",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "account_id",
+                    "type": "NUMBER",
+                    "description": "Id of the customer within the Movylo store",
+                    "default": ""
+                },
+                {
+                    "name": "store_id",
+                    "type": "NUMBER",
+                    "description": "Id of the Movylo store where the customer is",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Loyalty/Customer/{account_id}/\"\nquerystring = {\"account_id\": \"\", \"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Loyalty/Customer/{account_id}/\"\nquerystring = {\"account_id\": \"\", \"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getStoreOrders",
+            "url": "https://hello-openapi.p.rapidapi.com/Store/{store_id}/Orders/",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "store_id",
+                    "type": "STRING",
+                    "description": "Id of the Store",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "partner_code",
+                    "type": "STRING",
+                    "description": "the partner code, if this parameter is set then 'store_id' is the partner store ID, if 'partner_code' is not set then 'store_id' is the Movylo store ID",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Orders/\"\nquerystring = {\"partner_code\": \"\", \"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Orders/\"\nquerystring = {\"partner_code\": \"\", \"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getLoyaltyReward",
+            "url": "https://hello-openapi.p.rapidapi.com/Store/{store_id}/Loyalty/Rewards/",
+            "description": "Get loyalty rewards list",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "store_id",
+                    "type": "NUMBER",
+                    "description": "Id of the Movylo store where the customer is",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Loyalty/Rewards/\"\nquerystring = {\"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Loyalty/Rewards/\"\nquerystring = {\"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getCustomers",
+            "url": "https://hello-openapi.p.rapidapi.com/Store/{store_id}/Customer/",
+            "description": "Get customers by the customer account_id or by a search string (on fields 'email', 'phone', 'first_name', 'last_name' and 'loyalty_code')",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "store_id",
+                    "type": "NUMBER",
+                    "description": "Id of the Movylo store where the customer is",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "account_id",
+                    "type": "NUMBER",
+                    "description": "Id of the Store's customer account, if 'search_string' is not used only the customer with this account id will be returned otherwise this will be ignored and will be performed a search",
+                    "default": ""
+                },
+                {
+                    "name": "search_string",
+                    "type": "STRING",
+                    "description": "string to perform customer search, search is performed on fields 'email', 'phone', 'first_name', 'last_name' and 'loyalty_code' if this field is set will be performed a serach and the 'account_id' field will be ignored",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Customer/\"\nquerystring = {\"store_id\": \"\", \"account_id\": \"\", \"search_string\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Customer/\"\nquerystring = {\"store_id\": \"\", \"account_id\": \"\", \"search_string\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getMoreMerchant",
+            "url": "https://hello-openapi.p.rapidapi.com/Merchant/",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "account_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "thisisdefault"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "event_code",
+                    "type": "STRING",
+                    "description": "the event codes, if this parameter is set then `account_id` is the partner `account ID` if `partner_code` is not set then `account_id` is the Movylo merchant account ID",
+                    "default": "\"done_sign_up\""
+                },
+                {
+                    "name": "partner_code",
+                    "type": "STRING",
+                    "description": "the partner code, if this parameter is set then `account_id` is the partner `account ID` if `partner_code` is not set then `account_id` is the Movylo merchant account ID",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Merchant/\"\nquerystring = {\"account_id\": \"thisisdefault\", \"event_code\": \"\\\"done_sign_up\\\"\", \"partner_code\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Merchant/\"\nquerystring = {\"account_id\": \"thisisdefault\", \"event_code\": \"\\\"done_sign_up\\\"\", \"partner_code\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getCustomerCoupons",
+            "url": "https://hello-openapi.p.rapidapi.com/Store/{store_id}/Customer/{account_id}/Coupons/",
+            "description": "Get the customer's coupons",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "account_id",
+                    "type": "NUMBER",
+                    "description": "Id of the Store's customer account",
+                    "default": ""
+                },
+                {
+                    "name": "store_id",
+                    "type": "NUMBER",
+                    "description": "Id of the Movylo store where the customer is",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Customer/{account_id}/Coupons/\"\nquerystring = {\"account_id\": \"\", \"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Customer/{account_id}/Coupons/\"\nquerystring = {\"account_id\": \"\", \"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "array": {
+                        "items": {
+                            "properties": {
+                                "amount": {
+                                    "description": "the amount of the order (only for type 'ORDER')",
+                                    "type": "string"
+                                },
+                                "code": {
+                                    "description": "the coupon code",
+                                    "type": "string"
+                                },
+                                "creation_date": {
+                                    "description": "the coupon creation date in the format 'yyyy-mm-dd'",
+                                    "type": "string"
+                                },
+                                "currency": {
+                                    "description": "the currency (only for type 'ORDER' and 'DISCOUNT'->'ABSOLUTE')",
+                                    "type": "string"
+                                },
+                                "expiration_date": {
+                                    "description": "the coupon expiration date in the format 'yyyy-mm-dd'",
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "description": "Status of the coupon:\n * `BOOKED` - for coupon type 'ORDER', it means the coupon is  reserved but not paid yet\n * `PAID` - for coupon type 'ORDER', it means the coupon is paid but not get/used yet\n * `VALID` - for coupon type 'DISCOUNT' and 'REWARD', it means the coupon is not used yet\n * `REDEEMED` - for all coupon types, it means the coupon is paid and already used, not valid anymore\n * `UNKNOWN` - the order is expired\n",
+                                    "enum": [
+                                        "BOOKED",
+                                        "PAID",
+                                        "VALID",
+                                        "REDEEMED",
+                                        "UNKNOWN"
+                                    ],
+                                    "type": "string"
+                                },
+                                "store_name": {
+                                    "description": "the store name the coupon is related to",
+                                    "type": "string"
+                                },
+                                "sub_type": {
+                                    "description": "The coupon sub_type, only for coupon of type 'DISCOUNT':\n * `ABSOLUTE` - the discount in in absolute terms\n * `PERCENTAGE` - the the discount is in percentage terms\n",
+                                    "enum": [
+                                        "ABSOLUTE",
+                                        "PERCENTAGE"
+                                    ],
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "description": "the coupon object",
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "description": "Status of the coupon:\n * `ORDER` - the coupon is related to a purchase\n * `DISCOUNT` - the coupon is a percentage discount (i.e. 25% discount) or absolute discount (i.e. $5 discount)\n * `REWARD` - the coupon is a gift for the consumer\n",
+                                    "enum": [
+                                        "ORDER",
+                                        "DISCOUNT",
+                                        "REWARD"
+                                    ],
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "description": "the value of the coupon",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "getCouponStatus",
+            "url": "https://hello-openapi.p.rapidapi.com/Store/{store_id}/Coupon/{coupon_code}/",
+            "description": "Check a coupons status by the store_id and the coupon code",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "store_id",
+                    "type": "NUMBER",
+                    "description": "Id of the Movylo store where the customer is",
+                    "default": ""
+                },
+                {
+                    "name": "coupon_code",
+                    "type": "STRING",
+                    "description": "code of the coupon to check",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Coupon/{coupon_code}/\"\nquerystring = {\"store_id\": \"\", \"coupon_code\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Coupon/{coupon_code}/\"\nquerystring = {\"store_id\": \"\", \"coupon_code\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "example": {
+                    "discount": {
+                        "amount": "28.90",
+                        "code": "JNF0N8QEM",
+                        "currency": "USD",
+                        "customer": {
+                            "address": "15 Birch Pond",
+                            "city": "Saugus",
+                            "country": "United States",
+                            "email": "bill@example.com",
+                            "first_name": "Bill",
+                            "id_account": "154",
+                            "last_name": "Baily",
+                            "loyalty_code": "YDFUZ",
+                            "loyalty_points": "1",
+                            "state": "MA",
+                            "zip": "01903"
+                        },
+                        "date": "2018-04-24 17:37:13",
+                        "description": "Dinner for two",
+                        "order_id": "284",
+                        "status": "BOOKED",
+                        "status_description": "The Product hasnt been paid yet"
+                    },
+                    "type": "ORDER"
+                },
+                "properties": {
+                    "data": {
+                        "properties": {
+                            "data": {
+                                "description": "the coupon data",
+                                "properties": {
+                                    "amount": {
+                                        "description": "the amount of the order (only for type 'ORDER')",
+                                        "type": "string"
+                                    },
+                                    "code": {
+                                        "description": "the coupon code",
+                                        "type": "string"
+                                    },
+                                    "currency": {
+                                        "description": "the currency (only for type 'ORDER' and 'ABSOLUTE' 'DISCOUNT')",
+                                        "type": "string"
+                                    },
+                                    "customer": {
+                                        "example": {
+                                            "address": "2590 Wallace St",
+                                            "birth_date": "1973-12-06",
+                                            "city": "Oakland",
+                                            "country": "United States",
+                                            "email": "tom@example.com",
+                                            "first_name": "Tom",
+                                            "gender": "m",
+                                            "last_name": "Brunch",
+                                            "phone": "+1999666333",
+                                            "state": "CA",
+                                            "zip": 94606
+                                        },
+                                        "properties": {
+                                            "account_id": {
+                                                "description": "the id of the customer account, not used for creation",
+                                                "type": "integer"
+                                            },
+                                            "address": {
+                                                "description": "address of the customer",
+                                                "type": "string"
+                                            },
+                                            "birth_date": {
+                                                "description": "birth date of the customer (in the format 'yyyy-mm-dd')",
+                                                "type": "string"
+                                            },
+                                            "city": {
+                                                "description": "city of the customer",
+                                                "type": "string"
+                                            },
+                                            "country": {
+                                                "description": "country of the customer",
+                                                "type": "string"
+                                            },
+                                            "device_id": {
+                                                "type": "string"
+                                            },
+                                            "device_token": {
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "description": "email of the customer, unique within the store, required if 'phone' is not set",
+                                                "type": "string"
+                                            },
+                                            "first_name": {
+                                                "description": "first name of the customer",
+                                                "type": "string"
+                                            },
+                                            "gender": {
+                                                "description": "gender of the customer ('m' or 'f')",
+                                                "type": "string"
+                                            },
+                                            "last_name": {
+                                                "description": "last name of the customer",
+                                                "type": "string"
+                                            },
+                                            "loyalty_code": {
+                                                "description": "code of the loyalty customer membership (can't be written but only read)",
+                                                "type": "string"
+                                            },
+                                            "loyalty_points": {
+                                                "description": "number of loyalty points (can't be written but only read)",
+                                                "type": "integer"
+                                            },
+                                            "phone": {
+                                                "description": "phone of the customer, unique within the store, required if 'email' is not set",
+                                                "type": "string"
+                                            },
+                                            "source": {
+                                                "description": "number of loyalty points (can't be written but only read)",
+                                                "type": "integer"
+                                            },
+                                            "state": {
+                                                "description": "state of the customer",
+                                                "type": "string"
+                                            },
+                                            "zip": {
+                                                "description": "zip code of the customer",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "email",
+                                            "phone"
+                                        ],
+                                        "type": "object"
+                                    },
+                                    "date": {
+                                        "description": "the date of the order in the format 'yyyy-mm-dd hh:mm:ss' (only for type 'ORDER')",
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "description": "the textual description of the coupon",
+                                        "type": "string"
+                                    },
+                                    "order_id": {
+                                        "description": "the ID of the order (only for type 'ORDER')",
+                                        "type": "string"
+                                    },
+                                    "status": {
+                                        "description": "Status of the coupon:\n * `BOOKED` - for coupon type 'ORDER', it means the coupon is  reserved but not paid yet\n * `PAID` - for coupon type 'ORDER', it means the coupon is paid but not get/used yet\n * `VALID` - for coupon type 'DISCOUNT' and 'REWARD', it means the coupon is not used yet\n * `REDEEMED` - for all coupon types, it means the coupon is paid and already used, not valid anymore\n * `UNKNOWN` - the order is expired\n",
+                                        "enum": [
+                                            "BOOKED",
+                                            "PAID",
+                                            "VALID",
+                                            "REDEEMED",
+                                            "UNKNOWN"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "status_description": {
+                                        "description": "the textual description of the coupon status",
+                                        "type": "string"
+                                    },
+                                    "sub_type": {
+                                        "description": "The coupon sub_type, only for coupon of type 'DISCOUNT':\n * `ABSOLUTE` - the discount in in absolute terms\n * `PERCENTAGE` - the the discount is in percentage terms\n",
+                                        "enum": [
+                                            "ABSOLUTE",
+                                            "PERCENTAGE"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "description": "the coupon type",
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "description": "the value of the discount (only for type 'DISCOUNT' and 'REWARD')",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": {
+                        "description": "Status of the coupon:\n * `ORDER` - the coupon is related to a purchase\n * `DISCOUNT` - the coupon is a percentage discount (i.e. 25% discount) or absolute discount (i.e. $5 discount)\n * `REWARD` - the coupon is a gift for the consumer\n",
+                        "enum": [
+                            "ORDER",
+                            "DISCOUNT",
+                            "REWARD"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "getStoreProducts",
+            "url": "https://hello-openapi.p.rapidapi.com/Store/{store_id}/Products/",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "store_id",
+                    "type": "STRING",
+                    "description": "Id of the Store",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "partner_code",
+                    "type": "STRING",
+                    "description": "the partner code, if this parameter is set then 'store_id' is the partner store ID, if 'partner_code' is not set then 'store_id' is the Movylo store ID",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Products/\"\nquerystring = {\"partner_code\": \"\", \"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Products/\"\nquerystring = {\"partner_code\": \"\", \"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getStore",
+            "url": "https://hello-openapi.p.rapidapi.com/Store/{store_id}/",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "store_id",
+                    "type": "STRING",
+                    "description": "Id of the Store",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "partner_code",
+                    "type": "STRING",
+                    "description": "the partner code, if this parameter is set then 'store_id' is the partner store ID, if 'partner_code' is not set then 'store_id' is the Movylo store ID",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/\"\nquerystring = {\"partner_code\": \"\", \"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/\"\nquerystring = {\"partner_code\": \"\", \"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getCouponsStats",
+            "url": "https://hello-openapi.p.rapidapi.com/Store/{store_id}/Coupons/Stats/",
+            "description": "Get the stats about coupons use for a time range",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "store_id",
+                    "type": "NUMBER",
+                    "description": "Id of the Movylo store to check",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "from_date",
+                    "type": "STRING",
+                    "description": "in format 'yyyy-mm-dd', if not set returns last 30 days",
+                    "default": ""
+                },
+                {
+                    "name": "to_date",
+                    "type": "STRING",
+                    "description": "in format 'yyyy-mm-dd', if not set returns last 30 days",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Coupons/Stats/\"\nquerystring = {\"from_date\": \"\", \"store_id\": \"\", \"to_date\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Coupons/Stats/\"\nquerystring = {\"from_date\": \"\", \"store_id\": \"\", \"to_date\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getReviews",
+            "url": "https://hello-openapi.p.rapidapi.com/Store/{store_id}/Reviews/",
+            "description": "Get the Reviews",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "store_id",
+                    "type": "NUMBER",
+                    "description": "Id of the Movylo store to check",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Reviews/\"\nquerystring = {\"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Reviews/\"\nquerystring = {\"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "example": [
+                    {
+                        "customer_full_name": "Bill",
+                        "customer_id": "103",
+                        "review_date": "2019-10-09 16:15:44",
+                        "review_id": "327",
+                        "review_text": "I liked everything, thanks",
+                        "review_title": "good work"
+                    },
+                    {
+                        "customer_full_name": "Jack",
+                        "customer_id": "541",
+                        "review_date": "2019-09-015 15:34:44",
+                        "review_id": "256",
+                        "review_text": "Nice and warm location",
+                        "review_title": "nice place"
+                    }
+                ],
+                "type": "string"
+            }
+        },
+        {
+            "name": "getPlanById",
+            "url": "https://hello-openapi.p.rapidapi.com/Billing/Plan/Id/{plan_id}/",
+            "description": "Get plan info by the plan ID",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "plan_id",
+                    "type": "STRING",
+                    "description": "Id of the plan",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "partner_code",
+                    "type": "STRING",
+                    "description": "the partner code, if this parameter is set then 'plan_id' is the partner plan ID, if 'partner_code' is not set then 'plan_id' is the internal Movylo plan ID",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Billing/Plan/Id/{plan_id}/\"\nquerystring = {\"plan_id\": \"\", \"partner_code\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Billing/Plan/Id/{plan_id}/\"\nquerystring = {\"plan_id\": \"\", \"partner_code\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getPlans",
+            "url": "https://hello-openapi.p.rapidapi.com/Billing/Plans/",
+            "description": "Get plans info",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "partner_code",
+                    "type": "STRING",
+                    "description": "the partner code, if this parameter is set then returns plans associociated to the Partner",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Billing/Plans/\"\nquerystring = {\"partner_code\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Billing/Plans/\"\nquerystring = {\"partner_code\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getStoreOffers",
+            "url": "https://hello-openapi.p.rapidapi.com/Store/{store_id}/Offers/",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "store_id",
+                    "type": "STRING",
+                    "description": "Id of the Store",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "partner_code",
+                    "type": "STRING",
+                    "description": "the partner code, if this parameter is set then 'store_id' is the partner store ID, if 'partner_code' is not set then 'store_id' is the Movylo store ID",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Offers/\"\nquerystring = {\"partner_code\": \"\", \"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Offers/\"\nquerystring = {\"partner_code\": \"\", \"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getProduct",
+            "url": "https://hello-openapi.p.rapidapi.com/Store/{store_id}/Product/{product_id}/",
+            "description": "Get products by the product id",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "store_id",
+                    "type": "NUMBER",
+                    "description": "Id of the Movylo store where the customer is",
+                    "default": ""
+                },
+                {
+                    "name": "product_id",
+                    "type": "NUMBER",
+                    "description": "Id of the Store's product",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Product/{product_id}/\"\nquerystring = {\"store_id\": \"\", \"product_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Product/{product_id}/\"\nquerystring = {\"store_id\": \"\", \"product_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getFeedback",
+            "url": "https://hello-openapi.p.rapidapi.com/Store/{store_id}/Feedback/",
+            "description": "Get the Feedback",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "store_id",
+                    "type": "NUMBER",
+                    "description": "Id of the Movylo store to check",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Feedback/\"\nquerystring = {\"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Feedback/\"\nquerystring = {\"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "/Merchant/Stores/{account_id}/",
+            "url": "https://hello-openapi.p.rapidapi.com/Merchant/Stores/{account_id}/",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "account_id",
+                    "type": "STRING",
+                    "description": "Id of the Merchant account",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "partner_code",
+                    "type": "STRING",
+                    "description": "the partner code, if this parameter is set then 'account_id' is the partner account ID, if 'partner_code' is not set then 'account_id' is the Movylo merchant account ID",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Merchant/Stores/{account_id}/\"\nquerystring = {\"partner_code\": \"\", \"account_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Merchant/Stores/{account_id}/\"\nquerystring = {\"partner_code\": \"\", \"account_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getAutoPilot",
+            "url": "https://hello-openapi.p.rapidapi.com/Store/{store_id}/MarketingAutomation/",
+            "description": "Check if the AutoPilot is enabled for the specified Store",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "store_id",
+                    "type": "NUMBER",
+                    "description": "Id of the Movylo store to check",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/MarketingAutomation/\"\nquerystring = {\"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/MarketingAutomation/\"\nquerystring = {\"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getCustomerPrefStoreData",
+            "url": "https://hello-openapi.p.rapidapi.com/Store/{store_id}/Home/Customer/{account_id}/",
+            "description": "Get Store Home data for the customer",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "store_id",
+                    "type": "STRING",
+                    "description": "Id of the Movylo store where to search the customers",
+                    "default": ""
+                },
+                {
+                    "name": "account_id",
+                    "type": "STRING",
+                    "description": "Id of the Store's customer account",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Home/Customer/{account_id}/\"\nquerystring = {\"store_id\": \"\", \"account_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Home/Customer/{account_id}/\"\nquerystring = {\"store_id\": \"\", \"account_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "customer_points": {
+                        "description": "number of customer loyalty points",
+                        "type": "integer"
+                    },
+                    "store_email": {
+                        "description": "email of the store",
+                        "type": "string"
+                    },
+                    "store_logo_url": {
+                        "description": "logo url of the store",
+                        "type": "string"
+                    },
+                    "store_offers_num": {
+                        "description": "number of store's offers",
+                        "type": "integer"
+                    },
+                    "store_phone": {
+                        "description": "phone of the store",
+                        "type": "string"
+                    },
+                    "store_url": {
+                        "description": "url of the store",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "getStoreStats",
+            "url": "https://hello-openapi.p.rapidapi.com/Store/{store_id}/Stats/",
+            "description": "Get the stats about the store",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "store_id",
+                    "type": "NUMBER",
+                    "description": "Id of the Movylo store to check",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Stats/\"\nquerystring = {\"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Store/{store_id}/Stats/\"\nquerystring = {\"store_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "/Merchant/Login/{id}/",
+            "url": "https://hello-openapi.p.rapidapi.com/Merchant/Login/{id}/",
+            "description": "hi",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Can be the Id of the Merchant account or the registration email. If use the registration email you need to also set the password parameter.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "password",
+                    "type": "STRING",
+                    "description": "the password of the account, required if authenticate via email",
+                    "default": ""
+                },
+                {
+                    "name": "partner_code",
+                    "type": "STRING",
+                    "description": "the partner code, if this parameter is set then 'account_id' is the partner account ID, if 'partner_code' is not set then 'account_id' is the Movylo merchant account ID",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Merchant/Login/{id}/\"\nquerystring = {\"password\": \"\", \"partner_code\": \"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://hello-openapi.p.rapidapi.com/Merchant/Login/{id}/\"\nquerystring = {\"password\": \"\", \"partner_code\": \"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"hello-openapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

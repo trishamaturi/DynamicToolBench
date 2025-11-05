@@ -1,0 +1,197 @@
+{
+    "product_id": "api_378bdaa7-8827-4c8f-83d1-482262a06ed3",
+    "tool_description": "Fast and Reliable API to Get Products and Product Reviews from Capterra in Real-Time (unofficial API).",
+    "home_url": "https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-capterra-data/",
+    "name": "Real-Time Capterra Data",
+    "title": "Real-Time Capterra Data",
+    "pricing": "FREEMIUM",
+    "tool_name": "Real-Time Capterra Data",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 76,
+        "avgSuccessRate": 100,
+        "popularityScore": 8.5,
+        "__typename": "Score"
+    },
+    "host": "real-time-capterra-data.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Products",
+            "url": "https://real-time-capterra-data.p.rapidapi.com/products",
+            "description": "Get products by category / search for products on Capterra, with filters, sort option, and pagination support.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "category_id",
+                    "type": "STRING",
+                    "description": "Capterra Category ID.\n\nThe Capterra Product Category ID can be obtained from a Capterra URL, for example, given the following Capterra URL: *https://www.capterra.com/human-resource-software/* - the Category ID is **human-resource-software**). ",
+                    "default": "human-resource-software"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "pricing_options",
+                    "type": "STRING",
+                    "description": "Return products with specific pricing options. Multiple values can be specified as a comma delimited list of the following values: `FREE_VERSION, FREE_TRIAL`.\n\n**e.g.** `FREE_VERSION`\n**e.g.** `FREE_VERSION,FREE_TRIAL`",
+                    "default": ""
+                },
+                {
+                    "name": "sort",
+                    "type": "ENUM",
+                    "description": "Return products in a specific sort order.\n\n**Default:** `SPONSORED`\n\n**Allowed values:** `SPONSORED, HIGHEST_RATED, MOST_REVIEWS, ALPHABETICAL`",
+                    "default": ""
+                },
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Search query.",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "The page to return (each page includes up to 25 results).\n\n**Allowed values:** positive integers.\n**Default:** `1`.",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://real-time-capterra-data.p.rapidapi.com/products\"\nquerystring = {\"pricing_options\": \"\", \"sort\": \"\", \"query\": \"\", \"page\": \"1\", \"category_id\": \"human-resource-software\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"real-time-capterra-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://real-time-capterra-data.p.rapidapi.com/products\"\nquerystring = {\"pricing_options\": \"\", \"sort\": \"\", \"query\": \"\", \"page\": \"1\", \"category_id\": \"human-resource-software\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"real-time-capterra-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "category_id": {
+                                "type": "string"
+                            },
+                            "page": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "products": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Product Reviews",
+            "url": "https://real-time-capterra-data.p.rapidapi.com/product-reviews",
+            "description": "Get product reviews from Capterra, with filters, sort option, and pagination support.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "product_id",
+                    "type": "STRING",
+                    "description": "Product ID (can be extracted from the company Capterra profile URL - https://www.capterra.com/p/143877/Wattics), in that case *143877*.",
+                    "default": "143877"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "time_used",
+                    "type": "STRING",
+                    "description": "Return reviews posted by reviewers that used the product for a specific amount of time. Multiple values can be specified as a comma delimited list of the following values: `FREE_TRIAL, LESS_THAN_6_MONTHS, LESS_THAN_12_MONTHS, LESS_THAN_2_YEARS, MORE_THAN_2_YEARS`.\n\n**e.g.** `FREE_TRIAL`\n**e.g.** `LESS_THAN_12_MONTHS,LESS_THAN_2_YEARS`",
+                    "default": ""
+                },
+                {
+                    "name": "frequency_used",
+                    "type": "STRING",
+                    "description": "Return reviews posted by reviewers that used the product in a specific frequency. Multiple values can be specified as a comma delimited list of the following values: `DAILY, WEEKLY, MONTHLY, OTHER`.\n\n**e.g.** `MONTHLY`\n**e.g.** `DAILY,WEEKLY`",
+                    "default": ""
+                },
+                {
+                    "name": "reviewers_role",
+                    "type": "STRING",
+                    "description": "Return reviews posted by a reviewer with specific role at the company. Multiple values can be specified as a comma delimited list of the following values: `USER, ADMINISTRATOR, OTHER`.\n\n**e.g.** `USER,ADMINISTRATOR`\n**e.g.** `OTHER`",
+                    "default": ""
+                },
+                {
+                    "name": "sort",
+                    "type": "ENUM",
+                    "description": "Return reviews in a specific sort order.\n\n**Default:** `MOST_HELPFUL`\n\n**Allowed values:** `MOST_HELPFUL, MOST_RECENT, HIGHEST_RATING, LOWEST_RATING`",
+                    "default": ""
+                },
+                {
+                    "name": "company_size",
+                    "type": "STRING",
+                    "description": "Return reviews posted by a reviewer with specific company size. Multiple values can be specified as a comma delimited list of the following values: `SELF_EMPLOYED, 1_TO_10_EMPLOYEES, 11_TO_50_EMPLOYEES, 51_TO_200_EMPLOYEES, 201_TO_500_EMPLOYEES, 501_TO_1000_EMPLOYEES, 1001_TO_5000_EMPLOYEES, 5001_TO_10000_EMPLOYEES, 10001_OR_MORE_EMPLOYEES`.\n\n**e.g.** `SELF_EMPLOYED`\n**e.g.** `5001_TO_10000_EMPLOYEES,10001_OR_MORE_EMPLOYEES`",
+                    "default": ""
+                },
+                {
+                    "name": "rating",
+                    "type": "STRING",
+                    "description": "Return reviews with specific ratings. Multiple values can be specified as a comma delimited list of the following values: `1, 2, 3, 4, 5`.\n\n**e.g.** `5`\n**e.g.** `4,5`",
+                    "default": ""
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Number of reviews to skip (for pagination).\n\n**Allowed values:** positive integers.\n**Default:** `0`.",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://real-time-capterra-data.p.rapidapi.com/product-reviews\"\nquerystring = {\"time_used\": \"\", \"frequency_used\": \"\", \"reviewers_role\": \"\", \"sort\": \"\", \"company_size\": \"\", \"rating\": \"\", \"product_id\": \"143877\", \"offset\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"real-time-capterra-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://real-time-capterra-data.p.rapidapi.com/product-reviews\"\nquerystring = {\"time_used\": \"\", \"frequency_used\": \"\", \"reviewers_role\": \"\", \"sort\": \"\", \"company_size\": \"\", \"rating\": \"\", \"product_id\": \"143877\", \"offset\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"real-time-capterra-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "product_id": {
+                                "type": "string"
+                            },
+                            "offset": {
+                                "type": "integer"
+                            },
+                            "sort": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "reviews": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "has_next_page": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

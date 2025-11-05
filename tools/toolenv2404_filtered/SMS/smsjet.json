@@ -1,0 +1,164 @@
+{
+    "product_id": "api_50bb9152-d55c-42f0-a367-54b8dc3cb051",
+    "tool_description": "The Affordable SMS API, send 100 SMS for only $1. Receive 100 free credits on signup.",
+    "home_url": "https://rapidapi.com/illegalbyte/api/smsjet/",
+    "name": "SMSjet",
+    "title": "SMSjet",
+    "pricing": "FREEMIUM",
+    "tool_name": "SMSjet",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 339,
+        "avgSuccessRate": 100,
+        "popularityScore": 8.5,
+        "__typename": "Score"
+    },
+    "host": "smsjet.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Validate Phone Number",
+            "url": "https://smsjet.p.rapidapi.com/api/validate",
+            "description": "Check the validity of a phone number's format.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "phone_number",
+                    "type": "STRING",
+                    "description": "The phone number to validate. <b>Must include country code</b>.",
+                    "default": "+61412345678"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://smsjet.p.rapidapi.com/api/validate\"\nquerystring = {\"phone_number\": \"+61412345678\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"smsjet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://smsjet.p.rapidapi.com/api/validate\"\nquerystring = {\"phone_number\": \"+61412345678\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"smsjet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Check SMS Send Status",
+            "url": "https://smsjet.p.rapidapi.com/api/checksms/{sms_id}",
+            "description": "Check the send status of an SMS using its ID",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "sms_id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://smsjet.p.rapidapi.com/api/checksms/{sms_id}\"\nquerystring = {\"sms_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"smsjet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://smsjet.p.rapidapi.com/api/checksms/{sms_id}\"\nquerystring = {\"sms_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"smsjet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "title": "SMS_Sent",
+                "required": [
+                    "time",
+                    "message_id",
+                    "status",
+                    "phone_number",
+                    "message"
+                ],
+                "type": "object",
+                "properties": {
+                    "time": {
+                        "title": "Time",
+                        "type": "string"
+                    },
+                    "message_id": {
+                        "title": "Message Id",
+                        "type": "integer"
+                    },
+                    "status": {
+                        "title": "Status",
+                        "type": "string"
+                    },
+                    "phone_number": {
+                        "title": "Phone Number",
+                        "type": "string"
+                    },
+                    "message": {
+                        "title": "Message",
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Check Status of All Sent SMS",
+            "url": "https://smsjet.p.rapidapi.com/api/checksms/",
+            "description": "Check the send status of all SMS sent.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://smsjet.p.rapidapi.com/api/checksms/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"smsjet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://smsjet.p.rapidapi.com/api/checksms/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"smsjet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "title": "SMS_Sent_All",
+                "required": [
+                    "count",
+                    "sms_sent_successfully",
+                    "sms_sent_pending",
+                    "sms_sent"
+                ],
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "title": "Count",
+                        "type": "integer"
+                    },
+                    "sms_sent_successfully": {
+                        "title": "Sms Sent Successfully",
+                        "type": "integer"
+                    },
+                    "sms_sent_pending": {
+                        "title": "Sms Sent Pending",
+                        "type": "integer"
+                    },
+                    "sms_sent": {
+                        "title": "Sms Sent",
+                        "type": "array",
+                        "items": {
+                            "title": "SMS_Sent",
+                            "required": [
+                                "time",
+                                "message_id",
+                                "status",
+                                "phone_number",
+                                "message"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "time": {
+                                    "title": "Time",
+                                    "type": "string"
+                                },
+                                "message_id": {
+                                    "title": "Message Id",
+                                    "type": "integer"
+                                },
+                                "status": {
+                                    "title": "Status",
+                                    "type": "string"
+                                },
+                                "phone_number": {
+                                    "title": "Phone Number",
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "title": "Message",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

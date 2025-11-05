@@ -1,0 +1,336 @@
+{
+    "product_id": "api_0205921d-eca6-4bdf-9c83-e0acfc5963d0",
+    "tool_description": "Video optimization, Turn your videos into smaller, faster, lower-cost versions of themselves.",
+    "home_url": "https://rapidapi.com/dani-ZbVSnt4Ta/api/beamr-cloud/",
+    "name": "Beamr Cloud",
+    "title": "Beamr Cloud",
+    "pricing": "FREE",
+    "tool_name": "Beamr Cloud",
+    "score": null,
+    "host": "beamr-cloud.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/v1/jobs",
+            "url": "https://beamr-cloud.p.rapidapi.com/v1/jobs",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://beamr-cloud.p.rapidapi.com/v1/jobs\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"beamr-cloud.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://beamr-cloud.p.rapidapi.com/v1/jobs\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"beamr-cloud.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "jobs": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "created": {
+                                    "type": "number",
+                                    "description": "Numeric timestamp of job creation"
+                                },
+                                "createdHuman": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "Human readable timestamp of job creation"
+                                },
+                                "jobId": {
+                                    "type": "string",
+                                    "format": "uuid",
+                                    "description": "Job identifier"
+                                },
+                                "location": {
+                                    "type": "string",
+                                    "format": "url",
+                                    "description": "URL of job resource in API"
+                                },
+                                "input": {
+                                    "type": "object",
+                                    "properties": {
+                                        "path": {
+                                            "type": "string",
+                                            "format": "url",
+                                            "description": "url of input file"
+                                        },
+                                        "filesize": {
+                                            "type": "integer",
+                                            "description": "Size in bytes of input file"
+                                        }
+                                    }
+                                },
+                                "output": {
+                                    "type": "object",
+                                    "properties": {
+                                        "filesize": {
+                                            "type": "integer",
+                                            "description": "Size in bytes of output file"
+                                        },
+                                        "savings": {
+                                            "type": "number",
+                                            "description": "Reduction of file size in percentage"
+                                        }
+                                    }
+                                },
+                                "owner": {
+                                    "type": "string",
+                                    "description": "Job owner"
+                                },
+                                "status": {
+                                    "type": "string",
+                                    "description": "Current job status",
+                                    "enum": [
+                                        "SUBMITTED",
+                                        "PENDING",
+                                        "RUNNABLE",
+                                        "STARTING",
+                                        "RUNNING",
+                                        "SUCCEEDED",
+                                        "FAILED"
+                                    ]
+                                },
+                                "lastUpdate": {
+                                    "type": "number",
+                                    "description": "Numeric timestamp of last job update"
+                                },
+                                "lastUpdateHuman": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "Human readable timestamp of last job update"
+                                },
+                                "ttl": {
+                                    "type": "number",
+                                    "description": "Numeric timestamp when job will be deleted from list"
+                                },
+                                "ttlHuman": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "Human readable timestamp when job will be deleted from list"
+                                },
+                                "userParameters": {
+                                    "type": "object",
+                                    "properties": {
+                                        "source": {
+                                            "type": "string",
+                                            "format": "url",
+                                            "description": "Source file url"
+                                        },
+                                        "codec": {
+                                            "type": "string",
+                                            "default": "preserve",
+                                            "description": "Output codec",
+                                            "enum": [
+                                                "h264",
+                                                "h265",
+                                                "avc",
+                                                "hevc",
+                                                "preserve"
+                                            ]
+                                        },
+                                        "height": {
+                                            "type": "integer",
+                                            "description": "Output height (must be an even number)"
+                                        },
+                                        "width": {
+                                            "type": "integer",
+                                            "description": "Output width (must be an even number)"
+                                        }
+                                    },
+                                    "required": [
+                                        "source"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "/v1/jobs/{job_id}",
+            "url": "https://beamr-cloud.p.rapidapi.com/v1/jobs/{job_id}",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "job_id",
+                    "type": "STRING",
+                    "description": "Job identifier",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://beamr-cloud.p.rapidapi.com/v1/jobs/{job_id}\"\nquerystring = {\"job_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"beamr-cloud.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://beamr-cloud.p.rapidapi.com/v1/jobs/{job_id}\"\nquerystring = {\"job_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"beamr-cloud.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "job": {
+                        "type": "object",
+                        "properties": {
+                            "created": {
+                                "type": "number",
+                                "description": "Numeric timestamp of job creation"
+                            },
+                            "createdHuman": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Human readable timestamp of job creation"
+                            },
+                            "jobId": {
+                                "type": "string",
+                                "format": "uuid",
+                                "description": "Job identifier"
+                            },
+                            "location": {
+                                "type": "string",
+                                "format": "url",
+                                "description": "URL of job resource in API"
+                            },
+                            "input": {
+                                "type": "object",
+                                "properties": {
+                                    "path": {
+                                        "type": "string",
+                                        "format": "url",
+                                        "description": "url of input file"
+                                    },
+                                    "filesize": {
+                                        "type": "integer",
+                                        "description": "Size in bytes of input file"
+                                    }
+                                }
+                            },
+                            "output": {
+                                "type": "object",
+                                "properties": {
+                                    "filesize": {
+                                        "type": "integer",
+                                        "description": "Size in bytes of output file"
+                                    },
+                                    "savings": {
+                                        "type": "number",
+                                        "description": "Reduction of file size in percentage"
+                                    }
+                                }
+                            },
+                            "owner": {
+                                "type": "string",
+                                "description": "Job owner"
+                            },
+                            "status": {
+                                "type": "string",
+                                "description": "Current job status",
+                                "enum": [
+                                    "SUBMITTED",
+                                    "PENDING",
+                                    "RUNNABLE",
+                                    "STARTING",
+                                    "RUNNING",
+                                    "SUCCEEDED",
+                                    "FAILED"
+                                ]
+                            },
+                            "lastUpdate": {
+                                "type": "number",
+                                "description": "Numeric timestamp of last job update"
+                            },
+                            "lastUpdateHuman": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Human readable timestamp of last job update"
+                            },
+                            "ttl": {
+                                "type": "number",
+                                "description": "Numeric timestamp when job will be deleted from list"
+                            },
+                            "ttlHuman": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "Human readable timestamp when job will be deleted from list"
+                            },
+                            "userParameters": {
+                                "type": "object",
+                                "properties": {
+                                    "source": {
+                                        "type": "string",
+                                        "format": "url",
+                                        "description": "Source file url"
+                                    },
+                                    "codec": {
+                                        "type": "string",
+                                        "default": "preserve",
+                                        "description": "Output codec",
+                                        "enum": [
+                                            "h264",
+                                            "h265",
+                                            "avc",
+                                            "hevc",
+                                            "preserve"
+                                        ]
+                                    },
+                                    "height": {
+                                        "type": "integer",
+                                        "description": "Output height (must be an even number)"
+                                    },
+                                    "width": {
+                                        "type": "integer",
+                                        "description": "Output width (must be an even number)"
+                                    }
+                                },
+                                "required": [
+                                    "source"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "/v1/jobs/{job_id}/download",
+            "url": "https://beamr-cloud.p.rapidapi.com/v1/jobs/{job_id}/download",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "job_id",
+                    "type": "STRING",
+                    "description": "Job identifier",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://beamr-cloud.p.rapidapi.com/v1/jobs/{job_id}/download\"\nquerystring = {\"job_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"beamr-cloud.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://beamr-cloud.p.rapidapi.com/v1/jobs/{job_id}/download\"\nquerystring = {\"job_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"beamr-cloud.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "/heartbeat",
+            "url": "https://beamr-cloud.p.rapidapi.com/heartbeat",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://beamr-cloud.p.rapidapi.com/heartbeat\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"beamr-cloud.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://beamr-cloud.p.rapidapi.com/heartbeat\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"beamr-cloud.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "timestamp": {
+                        "type": "number",
+                        "description": "seconds since the epoch"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,107 @@
+{
+    "product_id": "api_3114afb1-7db9-4ad3-b08e-15cc2baacca5",
+    "tool_description": "A Restful API which is scraping the Wikipedia pages for fish species in order to collect data. The data are cached and refreshed every 24 hours.",
+    "home_url": "https://rapidapi.com/myapos--FqlEzvrlv/api/fish-species/",
+    "name": "Fish species",
+    "title": "Fish species",
+    "pricing": "FREEMIUM",
+    "tool_name": "Fish species",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 664,
+        "avgSuccessRate": 93,
+        "popularityScore": 9.3,
+        "__typename": "Score"
+    },
+    "host": "fish-species.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/fish_api/group",
+            "url": "https://fish-species.p.rapidapi.com/fish_api/group",
+            "description": "This endpoint will group the available data by the <code>property_value</code> parameter. The available URL query parameters are <code>meta_property</code>,  <code>meta_property_attribute</code>, and <code>property_value</code>. The API will group and return all fishes that are matching the <code>property_value</code> that is given in the meta-object.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "meta_property",
+                    "type": "STRING",
+                    "description": "The property to search for",
+                    "default": "scientific_classification"
+                },
+                {
+                    "name": "property_value",
+                    "type": "STRING",
+                    "description": "The value of property that will be matched",
+                    "default": "actinopterygii"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "meta_property_attribute",
+                    "type": "STRING",
+                    "description": "The value of property that will be matched",
+                    "default": "class"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://fish-species.p.rapidapi.com/fish_api/group\"\nquerystring = {\"meta_property_attribute\": \"class\", \"meta_property\": \"scientific_classification\", \"property_value\": \"actinopterygii\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fish-species.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fish-species.p.rapidapi.com/fish_api/group\"\nquerystring = {\"meta_property_attribute\": \"class\", \"meta_property\": \"scientific_classification\", \"property_value\": \"actinopterygii\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fish-species.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "/fish_api/fishes",
+            "url": "https://fish-species.p.rapidapi.com/fish_api/fishes",
+            "description": "This endpoint will return back all available fishes that are available",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://fish-species.p.rapidapi.com/fish_api/fishes\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fish-species.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fish-species.p.rapidapi.com/fish_api/fishes\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fish-species.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "/fish_api/fish/{name}",
+            "url": "https://fish-species.p.rapidapi.com/fish_api/fish/Tarpon",
+            "description": "This endpoint will return information for a specific fish",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "The fish to be found",
+                    "default": "Tarpon"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://fish-species.p.rapidapi.com/fish_api/fish/Tarpon\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fish-species.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fish-species.p.rapidapi.com/fish_api/fish/{name}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fish-species.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "breed": {
+                        "type": "string"
+                    },
+                    "origin": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "img": {
+                        "type": "string"
+                    },
+                    "meta": {
+                        "type": "object"
+                    }
+                }
+            }
+        }
+    ]
+}

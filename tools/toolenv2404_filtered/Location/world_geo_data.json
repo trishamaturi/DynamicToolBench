@@ -1,0 +1,646 @@
+{
+    "product_id": "api_accb74e2-a25d-4f2b-88d6-a7a8908bd3d2",
+    "tool_description": "Get detailed information about countries, cities, administrative regions and  search for the cities near by.",
+    "home_url": "https://rapidapi.com/natkapral/api/world-geo-data/",
+    "name": "World Geo Data",
+    "title": "World Geo Data",
+    "pricing": "FREEMIUM",
+    "tool_name": "World Geo Data",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 108,
+        "avgSuccessRate": 99,
+        "popularityScore": 9.4,
+        "__typename": "Score"
+    },
+    "host": "world-geo-data.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Cities in the Country",
+            "url": "https://world-geo-data.p.rapidapi.com/countries/GB/cities",
+            "description": "Returns the list of the cities in the country",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "",
+                    "default": "GB"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "per_page",
+                    "type": "NUMBER",
+                    "description": "Maximum number of results per page is 100",
+                    "default": "10"
+                },
+                {
+                    "name": "language",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "max_population",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10000"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "min_population",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "100"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/countries/GB/cities\"\nquerystring = {\"format\": \"\", \"per_page\": \"10\", \"language\": \"\", \"max_population\": \"10000\", \"page\": \"1\", \"min_population\": \"100\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/countries/{code}/cities\"\nquerystring = {\"format\": \"\", \"per_page\": \"10\", \"language\": \"\", \"max_population\": \"10000\", \"page\": \"1\", \"min_population\": \"100\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "cities": {
+                        "items": {
+                            "properties": {
+                                "geonameid": {
+                                    "type": "integer"
+                                },
+                                "latitude": {
+                                    "type": "number"
+                                },
+                                "longitude": {
+                                    "type": "number"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "population": {
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "country_code": {
+                        "type": "string"
+                    },
+                    "links": {
+                        "properties": {
+                            "first": {
+                                "type": "string"
+                            },
+                            "last": {
+                                "type": "string"
+                            },
+                            "next": {
+                                "type": "string"
+                            },
+                            "previous": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "page": {
+                        "type": "integer"
+                    },
+                    "per_page": {
+                        "type": "integer"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "total_cities": {
+                        "type": "integer"
+                    },
+                    "total_pages": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Cities in the Administrative Division",
+            "url": "https://world-geo-data.p.rapidapi.com/adm-divisions/6269131/cities",
+            "description": "Returns the list of cities in the administrative division",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "geonameid",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "6269131"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "language",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "max_population",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10000"
+                },
+                {
+                    "name": "per_page",
+                    "type": "NUMBER",
+                    "description": "Maximum number of results per page is 100",
+                    "default": "10"
+                },
+                {
+                    "name": "min_population",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "100"
+                },
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/adm-divisions/6269131/cities\"\nquerystring = {\"language\": \"\", \"page\": \"1\", \"max_population\": \"10000\", \"per_page\": \"10\", \"min_population\": \"100\", \"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/adm-divisions/{geonameid}/cities\"\nquerystring = {\"language\": \"\", \"page\": \"1\", \"max_population\": \"10000\", \"per_page\": \"10\", \"min_population\": \"100\", \"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Cities near Location",
+            "url": "https://world-geo-data.p.rapidapi.com/cities/nearby",
+            "description": "Returns the cities in the specified radius from the geo location",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "per_page",
+                    "type": "NUMBER",
+                    "description": "Maximum number of results per page is 100",
+                    "default": "9"
+                },
+                {
+                    "name": "language",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "max_population",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10000"
+                },
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "25"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "55.12"
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "37.02"
+                },
+                {
+                    "name": "min_population",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "100"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/cities/nearby\"\nquerystring = {\"per_page\": \"9\", \"language\": \"\", \"format\": \"\", \"max_population\": \"10000\", \"radius\": \"25\", \"page\": \"1\", \"latitude\": \"55.12\", \"longitude\": \"37.02\", \"min_population\": \"100\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/cities/nearby\"\nquerystring = {\"per_page\": \"9\", \"language\": \"\", \"format\": \"\", \"max_population\": \"10000\", \"radius\": \"25\", \"page\": \"1\", \"latitude\": \"55.12\", \"longitude\": \"37.02\", \"min_population\": \"100\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "City Details",
+            "url": "https://world-geo-data.p.rapidapi.com/cities/5128581",
+            "description": "Returns a detailed information about the city and it's location",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "geonameid",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "5128581"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/cities/5128581\"\nquerystring = {\"format\": \"\", \"language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/cities/{geonameid}\"\nquerystring = {\"format\": \"\", \"language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Country Details",
+            "url": "https://world-geo-data.p.rapidapi.com/countries/US",
+            "description": "Information about the country: area_size, country, continent, timezone, currency, population, flag, dependent territories, wikipedia reference totals of the cities and the first-level divisions",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "",
+                    "default": "US"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en,ru,zh,es,ar,fr,fa,ja,pl,it,pt,de"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/countries/US\"\nquerystring = {\"format\": \"\", \"language\": \"en,ru,zh,es,ar,fr,fa,ja,pl,it,pt,de\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/countries/{code}\"\nquerystring = {\"format\": \"\", \"language\": \"en,ru,zh,es,ar,fr,fa,ja,pl,it,pt,de\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Country Administrative Divisions",
+            "url": "https://world-geo-data.p.rapidapi.com/countries/GB/adm-divisions",
+            "description": "Returns the list of administrative divisions of the country",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "",
+                    "default": "GB"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "per_page",
+                    "type": "ENUM",
+                    "description": "Maximum number of results per page is 100",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en,ru,zh,es,ar,fr,fa,ja,pl,it,pt,de"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/countries/GB/adm-divisions\"\nquerystring = {\"format\": \"\", \"per_page\": \"\", \"language\": \"en,ru,zh,es,ar,fr,fa,ja,pl,it,pt,de\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/countries/{code}/adm-divisions\"\nquerystring = {\"format\": \"\", \"per_page\": \"\", \"language\": \"en,ru,zh,es,ar,fr,fa,ja,pl,it,pt,de\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Country ISO Divisions",
+            "url": "https://world-geo-data.p.rapidapi.com/countries/GB/iso-divisions",
+            "description": "Returns the list of divisions based on the ISO Standard",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "",
+                    "default": "GB"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "per_page",
+                    "type": "NUMBER",
+                    "description": "Maximum number of results per page is 100",
+                    "default": "10"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/countries/GB/iso-divisions\"\nquerystring = {\"format\": \"\", \"language\": \"\", \"per_page\": \"10\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/countries/{code}/iso-divisions\"\nquerystring = {\"format\": \"\", \"language\": \"\", \"per_page\": \"10\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Country ISO Sub-Divisions",
+            "url": "https://world-geo-data.p.rapidapi.com/countries/GB/iso-divisions/GB-ENG",
+            "description": "Returns the list of sub divisions in the specific division based on the ISO Standard",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "iso_code",
+                    "type": "string",
+                    "description": "",
+                    "default": "GB-ENG"
+                },
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "",
+                    "default": "GB"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "language",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "per_page",
+                    "type": "NUMBER",
+                    "description": "Maximum number of results per page is 100",
+                    "default": "10"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/countries/GB/iso-divisions/GB-ENG\"\nquerystring = {\"format\": \"\", \"page\": \"1\", \"language\": \"\", \"per_page\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/countries/{code}/iso-divisions/{iso_code}\"\nquerystring = {\"format\": \"\", \"page\": \"1\", \"language\": \"\", \"per_page\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Country Administrative Division Details",
+            "url": "https://world-geo-data.p.rapidapi.com/adm-divisions/6269131",
+            "description": "Returns the detailed information about administrative division",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "geonameid",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "6269131"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/adm-divisions/6269131\"\nquerystring = {\"format\": \"\", \"language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/adm-divisions/{geonameid}\"\nquerystring = {\"format\": \"\", \"language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Country ISO Division Details",
+            "url": "https://world-geo-data.p.rapidapi.com/iso-divisions/GB-ENG",
+            "description": "Returns the detailed information about  ISO division",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "iso_code",
+                    "type": "string",
+                    "description": "",
+                    "default": "GB-ENG"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "languages",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/iso-divisions/GB-ENG\"\nquerystring = {\"format\": \"\", \"languages\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/iso-divisions/{iso_code}\"\nquerystring = {\"format\": \"\", \"languages\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Country Administrative Sub-Divisions",
+            "url": "https://world-geo-data.p.rapidapi.com/countries/GB/adm-divisions/2641364",
+            "description": "Returns the list of administrative sub divisions  of the country based on the geonameid",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "",
+                    "default": "GB"
+                },
+                {
+                    "name": "geonameid",
+                    "type": "string",
+                    "description": "",
+                    "default": "2641364"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "per_page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "language",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/countries/GB/adm-divisions/2641364\"\nquerystring = {\"per_page\": \"10\", \"page\": \"1\", \"language\": \"\", \"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/countries/{code}/adm-divisions/{geonameid}\"\nquerystring = {\"per_page\": \"10\", \"page\": \"1\", \"language\": \"\", \"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Countries and Dependent Territories",
+            "url": "https://world-geo-data.p.rapidapi.com/countries",
+            "description": "Returns a list of countries and territories if requested",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "territories",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/countries\"\nquerystring = {\"territories\": \"\", \"language\": \"\", \"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/countries\"\nquerystring = {\"territories\": \"\", \"language\": \"\", \"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Country GeoJson",
+            "url": "https://world-geo-data.p.rapidapi.com/countries/GB/geojson",
+            "description": "Returns the multi-polygon of the country",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "",
+                    "default": "GB"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/countries/GB/geojson\"\nquerystring = {\"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://world-geo-data.p.rapidapi.com/countries/{code}/geojson\"\nquerystring = {\"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"world-geo-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

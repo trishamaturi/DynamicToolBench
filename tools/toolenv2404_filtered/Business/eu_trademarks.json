@@ -1,0 +1,111 @@
+{
+    "product_id": "api_aab2c9e7-46a3-473c-9bd1-a1d5021c95b5",
+    "tool_description": "BETA! An instant and daily-updated API to gather data on EU trademarks, their respective owners and all other relevant data. NO affiliation with EUIPO!",
+    "home_url": "https://rapidapi.com/truejoolean/api/eu-trademarks/",
+    "name": "EU Trademarks",
+    "title": "EU Trademarks",
+    "pricing": "FREE",
+    "tool_name": "EU Trademarks",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 67,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.4,
+        "__typename": "Score"
+    },
+    "host": "eu-trademarks.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "EUTM Search (Keyword or RegEx)",
+            "url": "https://eu-trademarks.p.rapidapi.com/eutm/search",
+            "description": "Search for EU trademarks based on a keyword or RegEx (regular expression) as the trademark's respective name.\nIf you send a keyword, regex will be ignored.\nPlease refer to the documentation (\"About\" tab) for types and valid schema!",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "status",
+                    "type": "STRING",
+                    "description": "Filter for a specific status of the trademark. Possible values:\n```\n[\n  'Registered',\n  'Registration expired',\n  'Application withdrawn',\n  'Registration cancellation pending',\n  'Application opposed',\n  'Appeal pending',\n  'Registration pending',\n  'Application filed',\n  'Application refused',\n  'Registration surrendered',\n  'Registration cancelled',\n  'Application under examination',\n  'Application published',\n]\n```",
+                    "default": "Registered"
+                },
+                {
+                    "name": "regex",
+                    "type": "STRING",
+                    "description": "In case you want to search for a regular expression (RegEx) instead of a specific keyword, use this field and simply leave the keyword field empty.",
+                    "default": "^A"
+                },
+                {
+                    "name": "keyword",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "apple"
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Default page number is 1, and can go up to 10. Note that the page size is 100.",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://eu-trademarks.p.rapidapi.com/eutm/search\"\nquerystring = {\"status\": \"Registered\", \"regex\": \"^A\", \"keyword\": \"apple\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"eu-trademarks.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://eu-trademarks.p.rapidapi.com/eutm/search\"\nquerystring = {\"status\": \"Registered\", \"regex\": \"^A\", \"keyword\": \"apple\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"eu-trademarks.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "page": {
+                        "type": "integer"
+                    },
+                    "totalResults": {
+                        "type": "integer"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Owner / Applicant Fetch",
+            "url": "https://eu-trademarks.p.rapidapi.com/owner/fetch",
+            "description": "Based on the exact `identifier`, this endpoint delivers details regarding the owner. Also delivering all trademarks associated with this person. Note that we do not distribute any data on physical persons here, but only if it's a *legal person*!\n\nNote that we use the terms owner and applicant interchangeably here.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "identifier",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "839"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://eu-trademarks.p.rapidapi.com/owner/fetch\"\nquerystring = {\"identifier\": \"839\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"eu-trademarks.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://eu-trademarks.p.rapidapi.com/owner/fetch\"\nquerystring = {\"identifier\": \"839\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"eu-trademarks.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "EUTM Fetch (exact search by applicationNumber)",
+            "url": "https://eu-trademarks.p.rapidapi.com/eutm/fetch",
+            "description": "While the EUTM search endpoint allows you to **search** for keywords, this endpoint takes in an `applicationNumber` and only returns that exact trademark. In addition, it also gathers data on the owner, if that data is in the database.\nPlease pay attention that we add this as an additional field `ownerDetails`!",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "applicationNumber",
+                    "type": "STRING",
+                    "description": "The `applicationNumber` can be found in the field `information.applicationNumber` of a trademark.",
+                    "default": "000000597"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://eu-trademarks.p.rapidapi.com/eutm/fetch\"\nquerystring = {\"applicationNumber\": \"000000597\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"eu-trademarks.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://eu-trademarks.p.rapidapi.com/eutm/fetch\"\nquerystring = {\"applicationNumber\": \"000000597\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"eu-trademarks.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

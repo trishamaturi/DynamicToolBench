@@ -1,0 +1,229 @@
+{
+    "product_id": "api_4723f104-f8e6-4ba9-a5aa-dd41bde62ac0",
+    "tool_description": "AliExpress products and services as seen on Aliexpress.com. Begin by using our category endpoints to query a specific category niche and obtain the categoryID. With the categoryID in hand, you can then access the product endpoints to explore a vast collection of products within that category. Alternatively, harness the power of our search endpoints to refine your search and find exactly what you're looking for.",
+    "home_url": "https://rapidapi.com/sparior/api/aliexpress-ecommerce/",
+    "name": "Aliexpress eCommerce",
+    "title": "Aliexpress eCommerce",
+    "pricing": "FREEMIUM",
+    "tool_name": "Aliexpress eCommerce",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 2500,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.1,
+        "__typename": "Score"
+    },
+    "host": "aliexpress-ecommerce.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "v1/product-details",
+            "url": "https://aliexpress-ecommerce.p.rapidapi.com/v1/aliexpress/product-details",
+            "description": "Query AliExpress product details such as title, description, images, sales and more",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "productId",
+                    "type": "STRING",
+                    "description": "Enter product_id (this data is in the /products endpoint)",
+                    "default": "1005006040200610"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://aliexpress-ecommerce.p.rapidapi.com/v1/aliexpress/product-details\"\nquerystring = {\"productId\": \"1005006040200610\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aliexpress-ecommerce.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aliexpress-ecommerce.p.rapidapi.com/v1/aliexpress/product-details\"\nquerystring = {\"productId\": \"1005006040200610\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aliexpress-ecommerce.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/product-reviews",
+            "url": "https://aliexpress-ecommerce.p.rapidapi.com/v1/aliexpress/product-reviews",
+            "description": "Query AliExpress product's review using the `productID`. The product ID can be found in the /products and /product-description endpoints",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "productId",
+                    "type": "STRING",
+                    "description": "Enter the product description `productId` (this data is in the /product-details endpoint).",
+                    "default": "1005005071434469"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Select a country: `en_US` | `es_ES` | `fr_FR` | `ru_RU` | `pt_BR` | `de_DE` | `it_IT` | `nl_NL`",
+                    "default": "en_US"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Select a country: `US` | `ES` | `FR` | `RU` | `BR` | `DE` | `IT` | `NL`",
+                    "default": "US"
+                },
+                {
+                    "name": "filter",
+                    "type": "STRING",
+                    "description": "Select filter options: `all` | `image`",
+                    "default": "all"
+                },
+                {
+                    "name": "page",
+                    "type": "ENUM",
+                    "description": "Select the page number",
+                    "default": ""
+                },
+                {
+                    "name": "per_page",
+                    "type": "ENUM",
+                    "description": "Select the number of reviews per page (default: 20 & max: 100)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://aliexpress-ecommerce.p.rapidapi.com/v1/aliexpress/product-reviews\"\nquerystring = {\"lang\": \"en_US\", \"country\": \"US\", \"filter\": \"all\", \"productId\": \"1005005071434469\", \"page\": \"\", \"per_page\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aliexpress-ecommerce.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aliexpress-ecommerce.p.rapidapi.com/v1/aliexpress/product-reviews\"\nquerystring = {\"lang\": \"en_US\", \"country\": \"US\", \"filter\": \"all\", \"productId\": \"1005005071434469\", \"page\": \"\", \"per_page\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aliexpress-ecommerce.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/categories",
+            "url": "https://aliexpress-ecommerce.p.rapidapi.com/v1/aliexpress/categories",
+            "description": "Get all the latest Aliexpress categories.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://aliexpress-ecommerce.p.rapidapi.com/v1/aliexpress/categories\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aliexpress-ecommerce.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aliexpress-ecommerce.p.rapidapi.com/v1/aliexpress/categories\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aliexpress-ecommerce.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/products",
+            "url": "https://aliexpress-ecommerce.p.rapidapi.com/v1/aliexpress/products",
+            "description": "Query AliExpress products for each category using the `categoryID`",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "categoryID",
+                    "type": "STRING",
+                    "description": "Enter a `categoryID` to search within",
+                    "default": "100003269"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "fourStarsAndUp",
+                    "type": "STRING",
+                    "description": "Select: `true` | `false` (default: false)",
+                    "default": "true"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Select a page number (default: 1)",
+                    "default": "1"
+                },
+                {
+                    "name": "minPrice",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "freeShipping",
+                    "type": "STRING",
+                    "description": "Select: `true` | `false` (default: false)",
+                    "default": "true"
+                },
+                {
+                    "name": "maxPrice",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Select:   `orders` | `price_desc` | `price_asc`",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://aliexpress-ecommerce.p.rapidapi.com/v1/aliexpress/products\"\nquerystring = {\"fourStarsAndUp\": \"true\", \"page\": \"1\", \"categoryID\": \"100003269\", \"minPrice\": \"\", \"freeShipping\": \"true\", \"maxPrice\": \"\", \"sort\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aliexpress-ecommerce.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aliexpress-ecommerce.p.rapidapi.com/v1/aliexpress/products\"\nquerystring = {\"fourStarsAndUp\": \"true\", \"page\": \"1\", \"categoryID\": \"100003269\", \"minPrice\": \"\", \"freeShipping\": \"true\", \"maxPrice\": \"\", \"sort\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aliexpress-ecommerce.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/search",
+            "url": "https://aliexpress-ecommerce.p.rapidapi.com/v1/aliexpress/search",
+            "description": "Search products on AliExpress.com using parameters to filter and sort your results",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "eye liner"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "shipFromCountry",
+                    "type": "STRING",
+                    "description": "Locations: `US` | `TR` | `CN`",
+                    "default": ""
+                },
+                {
+                    "name": "minPrice",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "freeShipping",
+                    "type": "STRING",
+                    "description": "Select: `true` | `false` (default: false)",
+                    "default": "true"
+                },
+                {
+                    "name": "maxPrice",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Select a page number (default: 1)",
+                    "default": "1"
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Select:   `orders` | `price_desc` | `price_asc`",
+                    "default": ""
+                },
+                {
+                    "name": "fourStarsAndUp",
+                    "type": "STRING",
+                    "description": "Select: `true` | `false` (default: false)",
+                    "default": "true"
+                },
+                {
+                    "name": "categoryID",
+                    "type": "STRING",
+                    "description": "Enter a `categoryID` to search within",
+                    "default": "100003269"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://aliexpress-ecommerce.p.rapidapi.com/v1/aliexpress/search\"\nquerystring = {\"shipFromCountry\": \"\", \"minPrice\": \"\", \"freeShipping\": \"true\", \"maxPrice\": \"\", \"page\": \"1\", \"sort\": \"\", \"search\": \"eye liner\", \"fourStarsAndUp\": \"true\", \"categoryID\": \"100003269\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aliexpress-ecommerce.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aliexpress-ecommerce.p.rapidapi.com/v1/aliexpress/search\"\nquerystring = {\"shipFromCountry\": \"\", \"minPrice\": \"\", \"freeShipping\": \"true\", \"maxPrice\": \"\", \"page\": \"1\", \"sort\": \"\", \"search\": \"eye liner\", \"fourStarsAndUp\": \"true\", \"categoryID\": \"100003269\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aliexpress-ecommerce.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

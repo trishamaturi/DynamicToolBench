@@ -1,0 +1,543 @@
+{
+    "product_id": "api_e4647e49-0d74-474e-9aa1-3afbc15d8d3d",
+    "tool_description": "Job postings from 140 countries (190k job ads / day). Search by 20 fields and get 10 full jobs per request.",
+    "home_url": "https://rapidapi.com/techmap-io-techmap-io-default/api/daily-international-job-postings/",
+    "name": "Daily International Job Postings",
+    "title": "Daily International Job Postings",
+    "pricing": "FREEMIUM",
+    "tool_name": "Daily International Job Postings",
+    "score": {
+        "avgServiceLevel": 97,
+        "avgLatency": 1125,
+        "avgSuccessRate": 96,
+        "popularityScore": 8.8,
+        "__typename": "Score"
+    },
+    "host": "daily-international-job-postings.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Field Statistics",
+            "url": "https://daily-international-job-postings.p.rapidapi.com/api/v2/meta/jobs/statistics",
+            "description": "Get a list of distinct values for searchable fields such as workPlace, industry, timezone etc.\n\nReturns a list of distinct field values for the given query parameter in the /api/v2/jobs/search endpoint.The returned JSON is described below and mainly consist of a list of keys and the count of jobs with this field value.\n\n### Notes\n* This endpoint is only be available for ULTRA and MEGA subscription plans.\n* The results are capped at 500 values and are calculated from job postings within the last month (i.e., current date minus 1 month).\n* The parameters or field values do not always exists for all job. For example, fields like 'state', 'postCode', or 'department' are often empty.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "field",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "countryCode"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://daily-international-job-postings.p.rapidapi.com/api/v2/meta/jobs/statistics\"\nquerystring = {\"field\": \"countryCode\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"daily-international-job-postings.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://daily-international-job-postings.p.rapidapi.com/api/v2/meta/jobs/statistics\"\nquerystring = {\"field\": \"countryCode\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"daily-international-job-postings.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "api": {
+                        "type": "string"
+                    },
+                    "apiVersion": {
+                        "type": "string"
+                    },
+                    "apiEndpoint": {
+                        "type": "string"
+                    },
+                    "aggregation": {
+                        "type": "object",
+                        "properties": {
+                            "query": {
+                                "type": "object",
+                                "properties": {
+                                    "bool": {
+                                        "type": "object",
+                                        "properties": {
+                                            "must": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "range": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "dateCreated": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "gte": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "lte": {
+                                                                            "type": "string"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "size": {
+                                "type": "integer"
+                            },
+                            "aggs": {
+                                "type": "object",
+                                "properties": {
+                                    "total_doc_count": {
+                                        "type": "object",
+                                        "properties": {
+                                            "value_count": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "field": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "value_count": {
+                                        "type": "object",
+                                        "properties": {
+                                            "cardinality": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "field": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "docs_with_field": {
+                                        "type": "object",
+                                        "properties": {
+                                            "filter": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "exists": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "field": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "field_usage_stats": {
+                                        "type": "object",
+                                        "properties": {
+                                            "terms": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "field": {
+                                                        "type": "string"
+                                                    },
+                                                    "size": {
+                                                        "type": "integer"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "totalCount": {
+                        "type": "integer"
+                    },
+                    "docsWithValue": {
+                        "type": "integer"
+                    },
+                    "coverage": {
+                        "type": "integer"
+                    },
+                    "valueCount": {
+                        "type": "integer"
+                    },
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "key": {
+                                    "type": "string"
+                                },
+                                "doc_count": {
+                                    "type": "integer"
+                                },
+                                "percentage_relative": {
+                                    "type": "number"
+                                },
+                                "percentage_absolute": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get Distinct Field Values",
+            "url": "https://daily-international-job-postings.p.rapidapi.com/api/v2/meta/jobs/distinct",
+            "description": "Get a list of distinct values for searchable fields such as workPlace, industry, timezone etc.\n\nReturns a list of distinct field values for the given query parameter in the /api/v2/jobs/search endpoint.The returned JSON is described below and mainly consist of a list of keys and the count of jobs with this field value.\n\n### Notes\n* This endpoint is only be available for ULTRA and MEGA subscription plans.\n* The results are capped at 500 values and are calculated from job postings within the last month (i.e., current date minus 1 month).\n* The parameters or field values do not always exists for all job. For example, fields like 'state', 'postCode', or 'department' are often empty.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "field",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "workPlace"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://daily-international-job-postings.p.rapidapi.com/api/v2/meta/jobs/distinct\"\nquerystring = {\"field\": \"workPlace\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"daily-international-job-postings.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://daily-international-job-postings.p.rapidapi.com/api/v2/meta/jobs/distinct\"\nquerystring = {\"field\": \"workPlace\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"daily-international-job-postings.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "api": {
+                        "type": "string"
+                    },
+                    "apiVersion": {
+                        "type": "string"
+                    },
+                    "apiEndpoint": {
+                        "type": "string"
+                    },
+                    "aggregation": {
+                        "type": "object",
+                        "properties": {
+                            "query": {
+                                "type": "object",
+                                "properties": {
+                                    "bool": {
+                                        "type": "object",
+                                        "properties": {
+                                            "filter": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "range": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "dateCreated": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "gte": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "lte": {
+                                                                        "type": "string"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "size": {
+                                "type": "integer"
+                            },
+                            "aggs": {
+                                "type": "object",
+                                "properties": {
+                                    "value_count": {
+                                        "type": "object",
+                                        "properties": {
+                                            "cardinality": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "field": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "distinct_values": {
+                                        "type": "object",
+                                        "properties": {
+                                            "terms": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "field": {
+                                                        "type": "string"
+                                                    },
+                                                    "size": {
+                                                        "type": "integer"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "valueCount": {
+                        "type": "integer"
+                    },
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "key": {
+                                    "type": "string"
+                                },
+                                "doc_count": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Paginated Search (10 Jobs)",
+            "url": "https://daily-international-job-postings.p.rapidapi.com/api/v2/jobs/search",
+            "description": "Search for job postings by different parameters such as date, \nlocation, skills, industry, etc.\n\nReturns the paginated search result with 10 full jobs for a search query. The returned JSON is described in our API docs and mainly consist of an extended JSON-LD payload for JobPostings \n(see https://schema.org/JobPosting) that can be integrated into \na webpage for search engines (e.g., https://developers.google.com/search/docs/appearance/structured-data/job-posting).",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "dateCreated",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2023-11-01"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "department",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "geoBottomRightLng",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "contractType",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "occupation",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "timezoneMax",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "-5"
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "company",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "geoPointLat",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "geoDistance",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "workPlace",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "skills",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "workType",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "geoTopLeftLat",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "countryCode",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "geoBottomRightLat",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "geoTopLeftLng",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "industry",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "postCode",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "state",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "city",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "geoPointLng",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "timezoneMin",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "-8"
+                },
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://daily-international-job-postings.p.rapidapi.com/api/v2/jobs/search\"\nquerystring = {\"department\": \"\", \"geoBottomRightLng\": \"\", \"contractType\": \"\", \"occupation\": \"\", \"timezoneMax\": \"-5\", \"locale\": \"\", \"company\": \"\", \"title\": \"\", \"geoPointLat\": \"\", \"geoDistance\": \"\", \"workPlace\": \"\", \"dateCreated\": \"2023-11-01\", \"language\": \"\", \"skills\": \"\", \"workType\": \"\", \"geoTopLeftLat\": \"\", \"countryCode\": \"\", \"geoBottomRightLat\": \"\", \"geoTopLeftLng\": \"\", \"industry\": \"\", \"postCode\": \"\", \"state\": \"\", \"city\": \"\", \"geoPointLng\": \"\", \"timezoneMin\": \"-8\", \"timezone\": \"\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"daily-international-job-postings.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://daily-international-job-postings.p.rapidapi.com/api/v2/jobs/search\"\nquerystring = {\"department\": \"\", \"geoBottomRightLng\": \"\", \"contractType\": \"\", \"occupation\": \"\", \"timezoneMax\": \"-5\", \"locale\": \"\", \"company\": \"\", \"title\": \"\", \"geoPointLat\": \"\", \"geoDistance\": \"\", \"workPlace\": \"\", \"dateCreated\": \"2023-11-01\", \"language\": \"\", \"skills\": \"\", \"workType\": \"\", \"geoTopLeftLat\": \"\", \"countryCode\": \"\", \"geoBottomRightLat\": \"\", \"geoTopLeftLng\": \"\", \"industry\": \"\", \"postCode\": \"\", \"state\": \"\", \"city\": \"\", \"geoPointLng\": \"\", \"timezoneMin\": \"-8\", \"timezone\": \"\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"daily-international-job-postings.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "api": {
+                        "type": "string"
+                    },
+                    "apiVersion": {
+                        "type": "string"
+                    },
+                    "apiEndpoint": {
+                        "type": "string"
+                    },
+                    "page": {
+                        "type": "integer"
+                    },
+                    "pageSize": {
+                        "type": "integer"
+                    },
+                    "totalCount": {
+                        "type": "integer"
+                    },
+                    "query": {
+                        "type": "object",
+                        "properties": {
+                            "query": {
+                                "type": "object",
+                                "properties": {
+                                    "bool": {
+                                        "type": "object",
+                                        "properties": {
+                                            "must": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "result": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "resultSizeInBytes": {
+                        "type": "integer"
+                    }
+                }
+            }
+        }
+    ]
+}

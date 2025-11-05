@@ -1,0 +1,486 @@
+{
+    "product_id": "api_ac380b3b-b6c4-4815-83f0-130c72651d0a",
+    "tool_description": "US Zip Codes, Cities, States and Counties boundaries API, which provides info in common GeoJson format for instant integration with existing maps like Google, etc., or with your custom application.",
+    "home_url": "https://rapidapi.com/codevision-llc-codevision-llc-default/api/mapreflex/",
+    "name": "MapReflex",
+    "title": "MapReflex",
+    "pricing": "FREEMIUM",
+    "tool_name": "MapReflex",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 869,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.3,
+        "__typename": "Score"
+    },
+    "host": "mapreflex.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "zipCodesSearchInBoundingBox",
+            "url": "https://mapreflex.p.rapidapi.com/api/us/v1/zipcodes/search/in-bounding-box",
+            "description": "Get ZIP Codes boundaries in provided bounding box (in GeoJSON format). For a quick view, copy and paste results: http://geojsonlint.com",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "northEast",
+                    "type": "GEOPOINT (latitude, longitude)",
+                    "description": "Coordinates of north-east corner of bounding box. Test example: 40.81,-73.41",
+                    "default": ""
+                },
+                {
+                    "name": "southWest",
+                    "type": "GEOPOINT (latitude, longitude)",
+                    "description": "Coordinates of south-west corner of bounding box. Test example: 40.62,-74.73",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "intersect",
+                    "type": "BOOLEAN",
+                    "description": "Include areas that intersect with bounding box",
+                    "default": true
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/zipcodes/search/in-bounding-box\"\nquerystring = {\"northEast\": \"\", \"southWest\": \"\", \"intersect\": true}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/zipcodes/search/in-bounding-box\"\nquerystring = {\"northEast\": \"\", \"southWest\": \"\", \"intersect\": true}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "zipCodesListByState",
+            "url": "https://mapreflex.p.rapidapi.com/api/us/v1/zipcodes/by-state/list",
+            "description": "Get a plain list of ZIP Codes of a state. Result is a plain list of ZIP Codes, not GeoJSON format. To retrieve boundaries of all ZIP Codes of a state you may query method \"zipCodesByIds\" with a portion of current method output.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "state",
+                    "type": "STRING",
+                    "description": "State name abbreviation. Test example: NY",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/zipcodes/by-state/list\"\nquerystring = {\"state\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/zipcodes/by-state/list\"\nquerystring = {\"state\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "zipCodesSearchInRadius",
+            "url": "https://mapreflex.p.rapidapi.com/api/us/v1/zipcodes/search/in-radius",
+            "description": "Get ZIP Codes boundaries in circle with given radius (in GeoJSON format). For a quick view, copy and paste results: http://geojsonlint.com",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "Longitude of radius center. Test example: -74.72",
+                    "default": ""
+                },
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "Latitude of radius center. Test example: 40.61",
+                    "default": ""
+                },
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "Radius size in miles. Min value is 1, max value is 50 miles.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/zipcodes/search/in-radius\"\nquerystring = {\"longitude\": \"\", \"latitude\": \"\", \"radius\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/zipcodes/search/in-radius\"\nquerystring = {\"longitude\": \"\", \"latitude\": \"\", \"radius\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "countiesByIds",
+            "url": "https://mapreflex.p.rapidapi.com/api/us/v1/counties/by-ids",
+            "description": "Get boundaries of given Counties (in GeoJSON format). For a quick view, copy and paste results: http://geojsonlint.com",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "ids",
+                    "type": "STRING",
+                    "description": "Array of comma separated county ids. Test example: 20109,20111,20113",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/counties/by-ids\"\nquerystring = {\"ids\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/counties/by-ids\"\nquerystring = {\"ids\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "countyByNameAndState",
+            "url": "https://mapreflex.p.rapidapi.com/api/us/v1/counties/by-name-and-state",
+            "description": "Get boundaries of County by name and state (in GeoJSON format).  For a quick view, copy and paste results: http://geojsonlint.com",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Full county name. Test example: Logan",
+                    "default": ""
+                },
+                {
+                    "name": "state",
+                    "type": "STRING",
+                    "description": "State name abbreviation. Test example: KS",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/counties/by-name-and-state\"\nquerystring = {\"name\": \"\", \"state\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/counties/by-name-and-state\"\nquerystring = {\"name\": \"\", \"state\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "countiesByState",
+            "url": "https://mapreflex.p.rapidapi.com/api/us/v1/counties/by-state",
+            "description": "Get Counties boundaries of state (in GeoJSON format). For a quick view, copy and paste results: http://geojsonlint.com",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "state",
+                    "type": "STRING",
+                    "description": "State name abbreviation. Test example: TX",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/counties/by-state\"\nquerystring = {\"state\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/counties/by-state\"\nquerystring = {\"state\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "countiesSearchInBoundingBox",
+            "url": "https://mapreflex.p.rapidapi.com/api/us/v1/counties/search/in-bounding-box",
+            "description": "Get Counties boundaries in provided bounding box (in GeoJSON format). For a quick view, copy and paste results: http://geojsonlint.com",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "northEast",
+                    "type": "GEOPOINT (latitude, longitude)",
+                    "description": "Coordinates of north-east corner of bounding box. Test example: 40.81,-73.41",
+                    "default": ""
+                },
+                {
+                    "name": "southWest",
+                    "type": "GEOPOINT (latitude, longitude)",
+                    "description": "Coordinates of south-west corner of bounding box. Test example: 40.62,-74.73",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "intersect",
+                    "type": "BOOLEAN",
+                    "description": "Include areas that intersect with bounding box",
+                    "default": true
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/counties/search/in-bounding-box\"\nquerystring = {\"intersect\": true, \"northEast\": \"\", \"southWest\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/counties/search/in-bounding-box\"\nquerystring = {\"intersect\": true, \"northEast\": \"\", \"southWest\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "countiesSearchInRadius",
+            "url": "https://mapreflex.p.rapidapi.com/api/us/v1/counties/search/in-radius",
+            "description": "Get Counties boundaries in circle with given radius (in GeoJSON format). For a quick view, copy and paste results: http://geojsonlint.com",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "Radius size in miles. Min value is 1, max value is 50 miles.",
+                    "default": ""
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "Longitude of radius center. Test example: -74.72",
+                    "default": ""
+                },
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "Latitude of radius center. Test example: 40.61",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/counties/search/in-radius\"\nquerystring = {\"radius\": \"\", \"longitude\": \"\", \"latitude\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/counties/search/in-radius\"\nquerystring = {\"radius\": \"\", \"longitude\": \"\", \"latitude\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "placesSearchInRadius",
+            "url": "https://mapreflex.p.rapidapi.com/api/us/v1/places/search/in-radius",
+            "description": "Get Places boundaries in circle with given radius (in GeoJSON format). For a quick view, copy and paste results: http://geojsonlint.com",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "Latitude of radius center. Test example: 40.61",
+                    "default": ""
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "Longitude of radius center. Test example: -74.72",
+                    "default": ""
+                },
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "Radius size in miles. Min value is 1, max value is 50 miles.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/places/search/in-radius\"\nquerystring = {\"latitude\": \"\", \"longitude\": \"\", \"radius\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/places/search/in-radius\"\nquerystring = {\"latitude\": \"\", \"longitude\": \"\", \"radius\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "placeByNameAndState",
+            "url": "https://mapreflex.p.rapidapi.com/api/us/v1/places/by-name-and-state",
+            "description": "Get boundaries of Place by name and state (in GeoJSON format).  For a quick view, copy and paste results: http://geojsonlint.com",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Full place name. Test example: Madison",
+                    "default": "Madison"
+                },
+                {
+                    "name": "state",
+                    "type": "STRING",
+                    "description": "State name abbreviation. Test example: AL",
+                    "default": "AL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/places/by-name-and-state\"\nquerystring = {\"name\": \"Madison\", \"state\": \"AL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/places/by-name-and-state\"\nquerystring = {\"name\": \"Madison\", \"state\": \"AL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "zipCodesByIds",
+            "url": "https://mapreflex.p.rapidapi.com/api/us/v1/zipcodes/by-ids",
+            "description": "Get boundaries of given ZIP Codes (in GeoJSON format). For a quick view, copy and paste results: http://geojsonlint.com",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "ids",
+                    "type": "STRING",
+                    "description": "Array of comma separated zipCodes/ids. Max size is 200. Test example: 10021,10022,10023",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "properties",
+                    "type": "STRING",
+                    "description": "Customize feature properties to include. In case of ZIP Code - set of [\\\"zip\\\", \\\"centroid\\\", \\\"aland\\\", \\\"awater\\\"]. Default value includes all properties: zip,centroid,aland,awater . ",
+                    "default": "zip,centroid,aland,awater"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/zipcodes/by-ids\"\nquerystring = {\"properties\": \"zip,centroid,aland,awater\", \"ids\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/zipcodes/by-ids\"\nquerystring = {\"properties\": \"zip,centroid,aland,awater\", \"ids\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "placesByIds",
+            "url": "https://mapreflex.p.rapidapi.com/api/us/v1/places/by-ids",
+            "description": "Get boundaries of given Places (in GeoJSON format). For a quick view, copy and paste results: http://geojsonlint.com",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "ids",
+                    "type": "STRING",
+                    "description": "Array of comma separated place ids. Test example: 0126896,0162688,0145784",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/places/by-ids\"\nquerystring = {\"ids\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/places/by-ids\"\nquerystring = {\"ids\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "placesListByState",
+            "url": "https://mapreflex.p.rapidapi.com/api/us/v1/places/by-state/list",
+            "description": "Get a plain list of Places of a state. Result is a plain list of place ids, not GeoJSON format. To retrieve boundaries of all Places of a state you may query method \"placesByIds\" with a portion of current method output.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "state",
+                    "type": "STRING",
+                    "description": "State name abbreviation. Test example: NY",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/places/by-state/list\"\nquerystring = {\"state\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/places/by-state/list\"\nquerystring = {\"state\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "placesSearchInBoundingBox",
+            "url": "https://mapreflex.p.rapidapi.com/api/us/v1/places/search/in-bounding-box",
+            "description": "Get Places boundaries in provided bounding box (in GeoJSON format). For a quick view, copy and paste results: http://geojsonlint.com",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "northEast",
+                    "type": "GEOPOINT (latitude, longitude)",
+                    "description": "Coordinates of north-east corner of bounding box. Test example: 40.81,-73.41",
+                    "default": ""
+                },
+                {
+                    "name": "southWest",
+                    "type": "GEOPOINT (latitude, longitude)",
+                    "description": "Coordinates of south-west corner of bounding box. Test example: 40.62,-74.73",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "intersect",
+                    "type": "BOOLEAN",
+                    "description": "Include areas that intersect with bounding box",
+                    "default": true
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/places/search/in-bounding-box\"\nquerystring = {\"northEast\": \"\", \"southWest\": \"\", \"intersect\": true}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/places/search/in-bounding-box\"\nquerystring = {\"northEast\": \"\", \"southWest\": \"\", \"intersect\": true}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "statesSearchInRadius",
+            "url": "https://mapreflex.p.rapidapi.com/api/us/v1/states/search/in-radius",
+            "description": "Get States boundaries in circle with given radius (in GeoJSON format). For a quick view, copy and paste results: http://geojsonlint.com",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "Latitude of radius center. Test example: 40.61",
+                    "default": ""
+                },
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "Radius size in miles. Min value is 1, max value is 50 miles.",
+                    "default": ""
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "Longitude of radius center. Test example: -74.72",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/states/search/in-radius\"\nquerystring = {\"latitude\": \"\", \"radius\": \"\", \"longitude\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/states/search/in-radius\"\nquerystring = {\"latitude\": \"\", \"radius\": \"\", \"longitude\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "statesSearchInBoundingBox",
+            "url": "https://mapreflex.p.rapidapi.com/api/us/v1/states/search/in-bounding-box",
+            "description": "Get States boundaries in provided bounding box (in GeoJSON format). For a quick view, copy and paste results: http://geojsonlint.com",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "northEast",
+                    "type": "GEOPOINT (latitude, longitude)",
+                    "description": "Coordinates of north-east corner of bounding box. Test example: 40.81,-73.41",
+                    "default": ""
+                },
+                {
+                    "name": "southWest",
+                    "type": "GEOPOINT (latitude, longitude)",
+                    "description": "Coordinates of south-west corner of bounding box. Test example: 40.62,-74.73",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "intersect",
+                    "type": "BOOLEAN",
+                    "description": "Include areas that intersect with bounding box",
+                    "default": true
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/states/search/in-bounding-box\"\nquerystring = {\"intersect\": true, \"northEast\": \"\", \"southWest\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/states/search/in-bounding-box\"\nquerystring = {\"intersect\": true, \"northEast\": \"\", \"southWest\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "states",
+            "url": "https://mapreflex.p.rapidapi.com/api/us/v1/states",
+            "description": "Get boundaries of given States (in GeoJSON format). By default, returns boundaries of all States.  For a quick view, copy and paste results: http://geojsonlint.com",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "states",
+                    "type": "STRING",
+                    "description": "Array of comma separated State name abbreviations. If the parameter is absent, boundaries of all States requested. Test example: NY,CA,DE,AK",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/states\"\nquerystring = {\"states\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/states\"\nquerystring = {\"states\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "zipCodesByCounty",
+            "url": "https://mapreflex.p.rapidapi.com/api/us/v1/zipcodes/by-counties",
+            "description": "Get ZIP Codes boundaries of County (in GeoJSON format). For a quick view, copy and paste results: http://geojsonlint.com",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "countyIds",
+                    "type": "STRING",
+                    "description": "Array of  County ids. Test example: 20109",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/zipcodes/by-counties\"\nquerystring = {\"countyIds\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mapreflex.p.rapidapi.com/api/us/v1/zipcodes/by-counties\"\nquerystring = {\"countyIds\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mapreflex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

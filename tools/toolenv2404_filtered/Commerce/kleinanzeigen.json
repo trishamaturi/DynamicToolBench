@@ -1,0 +1,287 @@
+{
+    "product_id": "api_7e7fa940-c22e-4ff4-9fc9-d2bc2229db48",
+    "tool_description": "Search and retrieve posts on Kleinanzeigen in real-time.",
+    "home_url": "https://rapidapi.com/beat-analytics-beat-analytics-default/api/kleinanzeigen1/",
+    "name": "Kleinanzeigen",
+    "title": "Kleinanzeigen",
+    "pricing": "FREEMIUM",
+    "tool_name": "Kleinanzeigen",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1080,
+        "avgSuccessRate": 100,
+        "popularityScore": 8.4,
+        "__typename": "Score"
+    },
+    "host": "kleinanzeigen1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "searchPosts",
+            "url": "https://kleinanzeigen1.p.rapidapi.com/search",
+            "description": "Search for posts by given keywords. Optionally narrow down search results with location/radius or category ID. Returns available details for all search results.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "keywords",
+                    "type": "STRING",
+                    "description": "Keywords to search for, e.g. `iPhone 15 Pro`.",
+                    "default": "iPhone 15 Pro"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "Search radius in km, e.g. `50`. Defaults to `0`. Has no effect if no `location` is given.\n\nAllowed values: `0`, `5`, `10`, `20`, `30`, `50`, `100`, `150`, `200`.",
+                    "default": ""
+                },
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "Optional location to search in, e.g. `K\u00f6ln` or `10178`.",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Search result page to retrieve, e.g. `12`. Kleinanzeigen will not return any posts beyond page 50.",
+                    "default": ""
+                },
+                {
+                    "name": "categoryId",
+                    "type": "NUMBER",
+                    "description": "Optional category constraint for search results, e.g. `161` for 'Elektronik'.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://kleinanzeigen1.p.rapidapi.com/search\"\nquerystring = {\"radius\": \"\", \"location\": \"\", \"page\": \"\", \"categoryId\": \"\", \"keywords\": \"iPhone 15 Pro\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kleinanzeigen1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kleinanzeigen1.p.rapidapi.com/search\"\nquerystring = {\"radius\": \"\", \"location\": \"\", \"page\": \"\", \"categoryId\": \"\", \"keywords\": \"iPhone 15 Pro\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kleinanzeigen1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getPost",
+            "url": "https://kleinanzeigen1.p.rapidapi.com/post/2623607133",
+            "description": "Get extended details for given post.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "postId",
+                    "type": "NUMBER",
+                    "description": "Kleinanzeigen \"Anzeigen-ID\" to retrieve details for, e.g. `2623607133`.",
+                    "default": 2623607133
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://kleinanzeigen1.p.rapidapi.com/post/2623607133\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kleinanzeigen1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://kleinanzeigen1.p.rapidapi.com/post/{postid}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"kleinanzeigen1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "title": "Id",
+                        "examples": [
+                            2634163976
+                        ]
+                    },
+                    "url": {
+                        "type": "string",
+                        "title": "Url",
+                        "examples": [
+                            "https://www.kleinanzeigen.de/s-anzeige/wharfedale-crystal2-series-wenig-genutzt/2634163976-168-2039"
+                        ]
+                    },
+                    "title": {
+                        "type": "string",
+                        "title": "Title",
+                        "examples": [
+                            "Wharfedale Crystal2 Series, wenig genutzt"
+                        ]
+                    },
+                    "description": {
+                        "type": "string",
+                        "title": "Description",
+                        "examples": [
+                            "S. Bilder\nVoll funktionsf\u00e4hig mit zus\u00e4tzlichen Anschlusskabel"
+                        ]
+                    },
+                    "location": {
+                        "type": "string",
+                        "title": "Location",
+                        "examples": [
+                            "45257 Essen-Ruhrhalbinsel"
+                        ]
+                    },
+                    "price": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Price",
+                        "examples": [
+                            "75.00"
+                        ]
+                    },
+                    "priceType": {
+                        "type": "string",
+                        "enum": [
+                            "fixed",
+                            "negotiable",
+                            "give_away"
+                        ],
+                        "title": "Pricetype",
+                        "examples": [
+                            "negotiable"
+                        ]
+                    },
+                    "buyNowPossible": {
+                        "type": "boolean",
+                        "title": "Buynowpossible",
+                        "examples": [
+                            true
+                        ]
+                    },
+                    "offerPossible": {
+                        "type": "boolean",
+                        "title": "Offerpossible",
+                        "examples": [
+                            true
+                        ]
+                    },
+                    "publishDate": {
+                        "type": "string",
+                        "title": "Publishdate",
+                        "examples": [
+                            "2023-12-21"
+                        ]
+                    },
+                    "shipping": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Shipping",
+                        "examples": [
+                            " + Versand ab 10,95 \u20ac"
+                        ]
+                    },
+                    "category": {
+                        "type": "string",
+                        "title": "Category",
+                        "examples": [
+                            "Audio & Hifi"
+                        ]
+                    },
+                    "properties": {
+                        "items": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "title": "Name",
+                                    "examples": [
+                                        "Zustand"
+                                    ]
+                                },
+                                "value": {
+                                    "type": "string",
+                                    "title": "Value",
+                                    "examples": [
+                                        "Sehr Gut"
+                                    ]
+                                }
+                            },
+                            "additionalProperties": false,
+                            "type": "object",
+                            "required": [
+                                "name",
+                                "value"
+                            ],
+                            "title": "PostProperty"
+                        },
+                        "type": "array",
+                        "title": "Properties"
+                    },
+                    "images": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Images",
+                        "examples": [
+                            [
+                                "https://img.kleinanzeigen.de/api/v1/prod-ads/images/bb/bb32ee18-9edf-4d7b-8830-3b70032c0b82?rule=$_59.JPG",
+                                "https://img.kleinanzeigen.de/api/v1/prod-ads/images/58/581cbff3-ea2c-4898-ba21-03a0141c3bfe?rule=$_59.JPG",
+                                "https://img.kleinanzeigen.de/api/v1/prod-ads/images/b3/b3c67e2d-9ba8-4994-b116-b6c50630a4f2?rule=$_59.JPG",
+                                "https://img.kleinanzeigen.de/api/v1/prod-ads/images/dc/dc575a1f-855e-4398-8409-b60db37e6cd5?rule=$_59.JPG"
+                            ]
+                        ]
+                    },
+                    "user": {
+                        "properties": {
+                            "id": {
+                                "type": "integer",
+                                "title": "Id",
+                                "examples": [
+                                    123456
+                                ]
+                            },
+                            "name": {
+                                "type": "string",
+                                "title": "Name",
+                                "examples": [
+                                    "Max Mustermann"
+                                ]
+                            },
+                            "isCommercial": {
+                                "type": "boolean",
+                                "title": "Iscommercial",
+                                "examples": [
+                                    false
+                                ]
+                            }
+                        },
+                        "additionalProperties": false,
+                        "type": "object",
+                        "required": [
+                            "id",
+                            "name",
+                            "isCommercial"
+                        ],
+                        "title": "BasicUserInfo"
+                    }
+                },
+                "additionalProperties": false,
+                "type": "object",
+                "required": [
+                    "id",
+                    "url",
+                    "title",
+                    "description",
+                    "location",
+                    "price",
+                    "priceType",
+                    "buyNowPossible",
+                    "offerPossible",
+                    "publishDate",
+                    "shipping",
+                    "category",
+                    "properties",
+                    "images",
+                    "user"
+                ],
+                "title": "PostInfo"
+            }
+        }
+    ]
+}

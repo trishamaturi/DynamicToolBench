@@ -1,0 +1,1008 @@
+{
+    "product_id": "api_ce9fea86-cb52-4fc1-b8c5-b77badba549e",
+    "tool_description": "The Shein Data API grants direct access to Shein's expansive fashion catalog and inventory data, facilitating effortless integration of up-to-date product details into applications and systems. ",
+    "home_url": "https://rapidapi.com/iamEvara/api/shein-Xi-Yin-data-service/",
+    "name": "Shein(\u5e0c\u97f3) Data Service",
+    "title": "Shein(\u5e0c\u97f3) Data Service",
+    "pricing": "FREEMIUM",
+    "tool_name": "Shein(\u5e0c\u97f3) Data Service",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 727,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.6,
+        "__typename": "Score"
+    },
+    "host": "shein-Xi-Yin-data-service.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Search Suggestions",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/search/get_search_suggestions",
+            "description": "Returns a list of suggested words. This endpoint could also be used in auto-completing of search keywords. The endpoint also returns a list of categories that are associated with the words.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "word",
+                    "type": "STRING",
+                    "description": "The word or phrase to complete.",
+                    "default": "One Piece Swimsuit"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter value of the country the data will refer to. Shein website has separate data for each country.",
+                    "default": "US"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The `language` parameter defines the returned data language, country-dependent. Not all countries support all languages. For example, `US` has `en` (English) and `es` (Spanish). To find supported languages for a country, use `setting/get_language_list` with the two-letter country code.",
+                    "default": "en"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/search/get_search_suggestions\"\nquerystring = {\"word\": \"One Piece Swimsuit\", \"country\": \"US\", \"language\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/search/get_search_suggestions\"\nquerystring = {\"word\": \"One Piece Swimsuit\", \"country\": \"US\", \"language\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Search Products By Keywords",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/search/search_products_by_keywords",
+            "description": "Searches products based on given keywords and other parameters.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter value of the country the data will refer to. Shein website has separate data for each country.",
+                    "default": "US"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The `language` parameter defines the returned data language, country-dependent. Not all countries support all languages. For example, `US` has `en` (English) and `es` (Spanish). To find supported languages for a country, use `setting/get_language_list` with the two-letter country code.",
+                    "default": "en"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "The `currency` parameter specifies the currency for displayed prices. Each country offers its own set of supported currencies, obtainable through `/setting/currency_list`.",
+                    "default": "USD"
+                },
+                {
+                    "name": "keywords",
+                    "type": "STRING",
+                    "description": "Searching Keywords.",
+                    "default": "Tshirt"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "The page number of the results to be retrieved. Default is 1.",
+                    "default": ""
+                },
+                {
+                    "name": "tag_ids",
+                    "type": "STRING",
+                    "description": "Value of `tag_id` in `tags`.",
+                    "default": ""
+                },
+                {
+                    "name": "size",
+                    "type": "STRING",
+                    "description": "Number of results per page.",
+                    "default": ""
+                },
+                {
+                    "name": "cat_id",
+                    "type": "STRING",
+                    "description": "Shein Category Identifier. If you have a URL from the website, it's the number after the `-cat-`. For example in this url: https://www.shein.com/Baby-Girl-Hook-and-loop-Fastener-Strap-Sandals-p-`2410511`-cat-`6252`.html the category Id is `6252`.",
+                    "default": ""
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "The `sort` parameter determines the sorting method for the results:\n\n- `default`: The default sorting option.\n\n- `new_arrivals`: Sorts items based on their release or arrival date, with the newest items appearing first.\n\n- `top_rated`: Ranks items based on user ratings or reviews, with the highest-rated items appearing first.\n\n- `most_popular`: Sorts items based on popularity.\n\n- `price_asc`:  Sorts items in ascending order based on their price, with the lowest-priced items appearing first.\n\n- `price_desc`: Sorts items in descending order based on their price, with the highest-priced items appearing first.",
+                    "default": ""
+                },
+                {
+                    "name": "filter",
+                    "type": "STRING",
+                    "description": "The values of `attr_id`. For multiple values separate the Identifiers by a hyphen `-`. For example: `160_154-160_91`",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/search/search_products_by_keywords\"\nquerystring = {\"page\": \"\", \"tag_ids\": \"\", \"country\": \"US\", \"size\": \"\", \"language\": \"en\", \"cat_id\": \"\", \"currency\": \"USD\", \"sort\": \"\", \"filter\": \"\", \"keywords\": \"Tshirt\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/search/search_products_by_keywords\"\nquerystring = {\"page\": \"\", \"tag_ids\": \"\", \"country\": \"US\", \"size\": \"\", \"language\": \"en\", \"cat_id\": \"\", \"currency\": \"USD\", \"sort\": \"\", \"filter\": \"\", \"keywords\": \"Tshirt\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Store Info",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/store/get_store_info",
+            "description": "Returns all info about a store based in the store identifier.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "The `currency` parameter specifies the currency for displayed prices. Each country offers its own set of supported currencies, obtainable through `/setting/currency_list`.",
+                    "default": "USD"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The `language` parameter defines the returned data language, country-dependent. Not all countries support all languages. For example, `US` has `en` (English) and `es` (Spanish). To find supported languages for a country, use `setting/get_language_list` with the two-letter country code.",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter value of the country the data will refer to. Shein website has separate data for each country.",
+                    "default": "US"
+                },
+                {
+                    "name": "store_code",
+                    "type": "STRING",
+                    "description": "Shein Store Identifier.",
+                    "default": "3551126176"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/store/get_store_info\"\nquerystring = {\"currency\": \"USD\", \"language\": \"en\", \"country\": \"US\", \"store_code\": \"3551126176\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/store/get_store_info\"\nquerystring = {\"currency\": \"USD\", \"language\": \"en\", \"country\": \"US\", \"store_code\": \"3551126176\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Translate Product Review",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/reviews/translate_product_review",
+            "description": "Translates a product review's text given the identifier of the review and the product spu",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "dest_language",
+                    "type": "STRING",
+                    "description": "The destination translation language. For a full list of languages check [this ](https://rapidapi.com/iamEvara/api/shein-Xi-Yin-data-service/tutorials/list-of-all-supported-languages) tutorial.",
+                    "default": "es"
+                },
+                {
+                    "name": "goods_id",
+                    "type": "STRING",
+                    "description": "Shein Item Identifier. If you have a URL from the website, it's the number after the `-p-`. For example in this url: https://www.shein.com/Baby-Girl-Hook-and-loop-Fastener-Strap-Sandals-p-`2410511`-cat-`6252`.html the item Id is `2410511`.",
+                    "default": "14738124"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter value of the country the data will refer to. Shein website has separate data for each country.",
+                    "default": "US"
+                },
+                {
+                    "name": "comment_id",
+                    "type": "STRING",
+                    "description": "The `comment_id` returned by `/reviews/get_product_reviews_list`.",
+                    "default": "3054772433"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "src_language",
+                    "type": "STRING",
+                    "description": "The review's text language, this parameter is optional. If not set it will automatically detect the language and translate it.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/reviews/translate_product_review\"\nquerystring = {\"dest_language\": \"es\", \"goods_id\": \"14738124\", \"country\": \"US\", \"comment_id\": \"3054772433\", \"src_language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/reviews/translate_product_review\"\nquerystring = {\"dest_language\": \"es\", \"goods_id\": \"14738124\", \"country\": \"US\", \"comment_id\": \"3054772433\", \"src_language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Tab Details",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/navigation/get_tab_details",
+            "description": "Return Tab details. For reference of the usage of this endpoint refer to [this](https://i.postimg.cc/rs12fS7q/tab-details.jpg) image.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The `language` parameter defines the returned data language, country-dependent. Not all countries support all languages. For example, `US` has `en` (English) and `es` (Spanish). To find supported languages for a country, use `setting/get_language_list` with the two-letter country code.",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter value of the country the data will refer to. Shein website has separate data for each country.",
+                    "default": "US"
+                },
+                {
+                    "name": "channelType",
+                    "type": "STRING",
+                    "description": "The value of `id` returned in `/navigation/get_all_tabs`",
+                    "default": "2"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/navigation/get_tab_details\"\nquerystring = {\"language\": \"en\", \"country\": \"US\", \"channelType\": \"2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/navigation/get_tab_details\"\nquerystring = {\"language\": \"en\", \"country\": \"US\", \"channelType\": \"2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get All Tabs",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/navigation/get_all_tabs",
+            "description": "Returns a list of all tabs. For reference of the usage of this endpoint refer to [this](https://i.postimg.cc/7PMRQYfP/tabs-explanation.jpg) image.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter value of the country the data will refer to. Shein website has separate data for each country.",
+                    "default": "LB"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The `language` parameter defines the returned data language, country-dependent. Not all countries support all languages. For example, `US` has `en` (English) and `es` (Spanish). To find supported languages for a country, use `setting/get_language_list` with the two-letter country code.",
+                    "default": "en"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/navigation/get_all_tabs\"\nquerystring = {\"country\": \"LB\", \"language\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/navigation/get_all_tabs\"\nquerystring = {\"country\": \"LB\", \"language\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Real Category Products",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/category/get_real_category_products",
+            "description": "Return category products. For reference of the usage of this endpoint refer to [this](https://i.postimg.cc/fRh6R2kC/category-products.jpg) image.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "cat_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2031"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "US"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "USD"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "max_price",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "The `sort` parameter determines the sorting method for the results:\n\n- `default`: The default sorting option.\n\n- `new_arrivals`: Sorts items based on their release or arrival date, with the newest items appearing first.\n\n- `top_rated`: Ranks items based on user ratings or reviews, with the highest-rated items appearing first.\n\n- `most_popular`: Sorts items based on popularity.\n\n- `price_asc`:  Sorts items in ascending order based on their price, with the lowest-priced items appearing first.\n\n- `price_desc`: Sorts items in descending order based on their price, with the highest-priced items appearing first.",
+                    "default": "0"
+                },
+                {
+                    "name": "tag_ids",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "min_price",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "filter",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "size",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20"
+                },
+                {
+                    "name": "choosed_nav_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/category/get_real_category_products\"\nquerystring = {\"max_price\": \"\", \"cat_id\": \"2031\", \"sort\": \"0\", \"tag_ids\": \"\", \"language\": \"en\", \"min_price\": \"\", \"country\": \"US\", \"page\": \"1\", \"filter\": \"\", \"size\": \"20\", \"currency\": \"USD\", \"choosed_nav_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/category/get_real_category_products\"\nquerystring = {\"max_price\": \"\", \"cat_id\": \"2031\", \"sort\": \"0\", \"tag_ids\": \"\", \"language\": \"en\", \"min_price\": \"\", \"country\": \"US\", \"page\": \"1\", \"filter\": \"\", \"size\": \"20\", \"currency\": \"USD\", \"choosed_nav_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Category Products",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/category/get_category_products",
+            "description": "Return category products. For reference of the usage of this endpoint refer to [this](https://i.postimg.cc/fRh6R2kC/category-products.jpg) image.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "cat_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "US"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "USD"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "min_price",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "select_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "filter",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "max_price",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "size",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20"
+                },
+                {
+                    "name": "tag_ids",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "The `sort` parameter determines the sorting method for the results:\n\n- `default`: The default sorting option.\n\n- `new_arrivals`: Sorts items based on their release or arrival date, with the newest items appearing first.\n\n- `top_rated`: Ranks items based on user ratings or reviews, with the highest-rated items appearing first.\n\n- `most_popular`: Sorts items based on popularity.\n\n- `price_asc`:  Sorts items in ascending order based on their price, with the lowest-priced items appearing first.\n\n- `price_desc`: Sorts items in descending order based on their price, with the highest-priced items appearing first.",
+                    "default": "0"
+                },
+                {
+                    "name": "choosed_nav_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/category/get_category_products\"\nquerystring = {\"min_price\": \"\", \"cat_id\": \"\", \"select_id\": \"\", \"language\": \"en\", \"country\": \"US\", \"filter\": \"\", \"max_price\": \"\", \"size\": \"20\", \"tag_ids\": \"\", \"currency\": \"USD\", \"page\": \"1\", \"sort\": \"0\", \"choosed_nav_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/category/get_category_products\"\nquerystring = {\"min_price\": \"\", \"cat_id\": \"\", \"select_id\": \"\", \"language\": \"en\", \"country\": \"US\", \"filter\": \"\", \"max_price\": \"\", \"size\": \"20\", \"tag_ids\": \"\", \"currency\": \"USD\", \"page\": \"1\", \"sort\": \"0\", \"choosed_nav_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Category Navs",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/category/get_category_navs",
+            "description": "Return the category nav. For reference of the usage of this endpoint refer to [this](https://i.postimg.cc/bwsq1Fqh/category-navs.jpg) image.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The `language` parameter defines the returned data language, country-dependent. Not all countries support all languages. For example, `US` has `en` (English) and `es` (Spanish). To find supported languages for a country, use `setting/get_language_list` with the two-letter country code.",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter value of the country the data will refer to. Shein website has separate data for each country.",
+                    "default": "US"
+                },
+                {
+                    "name": "cate_id",
+                    "type": "STRING",
+                    "description": "Value of ",
+                    "default": "00225479"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/category/get_category_navs\"\nquerystring = {\"language\": \"en\", \"country\": \"US\", \"cate_id\": \"00225479\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/category/get_category_navs\"\nquerystring = {\"language\": \"en\", \"country\": \"US\", \"cate_id\": \"00225479\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get \"Best Sellers\" Products",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/feed/get_best_sellers_products",
+            "description": "Returns the best selling products of a best selling list.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter value of the country the data will refer to. Shein website has separate data for each country.",
+                    "default": "US"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The `language` parameter defines the returned data language, country-dependent. Not all countries support all languages. For example, `US` has `en` (English) and `es` (Spanish). To find supported languages for a country, use `setting/get_language_list` with the two-letter country code.",
+                    "default": "en"
+                },
+                {
+                    "name": "contentCarrierId",
+                    "type": "STRING",
+                    "description": "Value of `contentCarrierId` returned from `/feed/get_feed` in the `best_sellers` key.",
+                    "default": "14158043"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "The `currency` parameter specifies the currency for displayed prices. Each country offers its own set of supported currencies, obtainable through `/setting/currency_list`.",
+                    "default": "USD"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "The page number of the results to be retrieved. Default is 1.",
+                    "default": "1"
+                },
+                {
+                    "name": "size",
+                    "type": "STRING",
+                    "description": "Number of results per page.",
+                    "default": "20"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/feed/get_best_sellers_products\"\nquerystring = {\"country\": \"US\", \"page\": \"1\", \"language\": \"en\", \"contentCarrierId\": \"14158043\", \"currency\": \"USD\", \"size\": \"20\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/feed/get_best_sellers_products\"\nquerystring = {\"country\": \"US\", \"page\": \"1\", \"language\": \"en\", \"contentCarrierId\": \"14158043\", \"currency\": \"USD\", \"size\": \"20\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Product Feed",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/feed/get_feed",
+            "description": "Returns the feed list.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "This specifies the returned feeds. Available values are `deal_goods`, `best_sellers`, and `new_goods`. For multiple values add a seperating comma `,`.",
+                    "default": "deal_goods,best_sellers,new_goods"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "The `currency` parameter specifies the currency for displayed prices. Each country offers its own set of supported currencies, obtainable through `/setting/currency_list`.",
+                    "default": "USD"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter value of the country the data will refer to. Shein website has separate data for each country.",
+                    "default": "US"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The `language` parameter defines the returned data language, country-dependent. Not all countries support all languages. For example, `US` has `en` (English) and `es` (Spanish). To find supported languages for a country, use `setting/get_language_list` with the two-letter country code.",
+                    "default": "en"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "size",
+                    "type": "STRING",
+                    "description": "Number of results per page.",
+                    "default": "20"
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "The page number of the results to be retrieved. Default is 1.",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/feed/get_feed\"\nquerystring = {\"fields\": \"deal_goods,best_sellers,new_goods\", \"currency\": \"USD\", \"country\": \"US\", \"size\": \"20\", \"page\": \"1\", \"language\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/feed/get_feed\"\nquerystring = {\"fields\": \"deal_goods,best_sellers,new_goods\", \"currency\": \"USD\", \"country\": \"US\", \"size\": \"20\", \"page\": \"1\", \"language\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Product Reviews List",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/reviews/get_product_reviews_list",
+            "description": "Returns a list of Product Reviews",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "goods_spu",
+                    "type": "STRING",
+                    "description": "The value of `productRelationID` returned by `/product/get_goods_details`.",
+                    "default": "b23080897970"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The `language` parameter defines the returned data language, country-dependent. Not all countries support all languages. For example, `US` has `en` (English) and `es` (Spanish). To find supported languages for a country, use `setting/get_language_list` with the two-letter country code.",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter value of the country the data will refer to. Shein website has separate data for each country.",
+                    "default": "US"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "is_picture",
+                    "type": "STRING",
+                    "description": "If set to `1`, only reviews with Pictures will be returned.",
+                    "default": "0"
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "The page number of the results to be retrieved. Default is 1.",
+                    "default": "1"
+                },
+                {
+                    "name": "size",
+                    "type": "STRING",
+                    "description": "Number of results per page.",
+                    "default": "20"
+                },
+                {
+                    "name": "comment_rank",
+                    "type": "STRING",
+                    "description": "The `comment_rank` parameter filters reviews based on their ranking, returning only those with a specified `comment_rank` value. Review rankings are on a scale from 1 to 5. If this wasn't set, it will return all reviews with all ranks.",
+                    "default": ""
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "The `sort` parameter determines the sorting method for the results, there is three distinct options:\n\n- `time_asc`: Sorts products in ascending order based on their timestamp.\n- `time_desc`: Sorts products in descending order based on their timestamp.\n- `default`: Applies the default Shein ranking.",
+                    "default": "default"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/reviews/get_product_reviews_list\"\nquerystring = {\"is_picture\": \"0\", \"page\": \"1\", \"size\": \"20\", \"goods_spu\": \"b23080897970\", \"language\": \"en\", \"comment_rank\": \"\", \"country\": \"US\", \"sort\": \"default\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/reviews/get_product_reviews_list\"\nquerystring = {\"is_picture\": \"0\", \"page\": \"1\", \"size\": \"20\", \"goods_spu\": \"b23080897970\", \"language\": \"en\", \"comment_rank\": \"\", \"country\": \"US\", \"sort\": \"default\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Goods Detail Image",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/product/get_goods_detail_image",
+            "description": "Returns list of detailed images of the product. If this endpoints returns an empty list, it means that the product doesn't have detailed images.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "goods_id",
+                    "type": "NUMBER",
+                    "description": "Shein Item Identifier. If you have a URL from the website, it's the number after the `-p-`. For example in this url: https://www.shein.com/Baby-Girl-Hook-and-loop-Fastener-Strap-Sandals-p-`2410511`-cat-`6252`.html the item Id is `2410511`.",
+                    "default": "10948622"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/product/get_goods_detail_image\"\nquerystring = {\"goods_id\": \"10948622\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/product/get_goods_detail_image\"\nquerystring = {\"goods_id\": \"10948622\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Shipping Details",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/product/get_shipping_details",
+            "description": "Returns product's shipping details according to the Country Identifier and Product's Serial Number",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The `language` parameter defines the returned data language, country-dependent. Not all countries support all languages. For example, `US` has `en` (English) and `es` (Spanish). To find supported languages for a country, use `setting/get_language_list` with the two-letter country code.",
+                    "default": "en"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "The `currency` parameter specifies the currency for displayed prices. Each country offers its own set of supported currencies, obtainable through `/setting/currency_list`.",
+                    "default": "USD"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter value of the country the data will refer to. Shein website has separate data for each country.",
+                    "default": "US"
+                },
+                {
+                    "name": "goods_id",
+                    "type": "STRING",
+                    "description": "Shein Item Identifier. If you have a URL from the website, it's the number after the `-p-`. For example in this url: https://www.shein.com/Baby-Girl-Hook-and-loop-Fastener-Strap-Sandals-p-`2410511`-cat-`6252`.html the item Id is `2410511`.",
+                    "default": "8682882"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/product/get_shipping_details\"\nquerystring = {\"language\": \"en\", \"currency\": \"USD\", \"country\": \"US\", \"goods_id\": \"8682882\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/product/get_shipping_details\"\nquerystring = {\"language\": \"en\", \"currency\": \"USD\", \"country\": \"US\", \"goods_id\": \"8682882\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Searching Keywords",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/search/get_searching_keywords",
+            "description": "Returns a list of trending search keywords.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The `language` parameter defines the returned data language, country-dependent. Not all countries support all languages. For example, `US` has `en` (English) and `es` (Spanish). To find supported languages for a country, use `setting/get_language_list` with the two-letter country code.",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter value of the country the data will refer to. Shein website has separate data for each country.",
+                    "default": "US"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/search/get_searching_keywords\"\nquerystring = {\"language\": \"en\", \"country\": \"US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/search/get_searching_keywords\"\nquerystring = {\"language\": \"en\", \"country\": \"US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Detailed Recommended Goods",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/product/get_detailed_recommended_goods",
+            "description": "Retrieves a curated list of recommended products based on the provided product and category identifiers. Check [this](https://i.postimg.cc/NMM6BHHB/Screenshot-1695501624.png) image for in-app reference.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter value of the country the data will refer to. Shein website has separate data for each country.",
+                    "default": "US"
+                },
+                {
+                    "name": "goods_id",
+                    "type": "STRING",
+                    "description": "Shein Item Identifier. If you have a URL from the website, it's the number after the `-p-`. For example in this url: https://www.shein.com/Baby-Girl-Hook-and-loop-Fastener-Strap-Sandals-p-`2410511`-cat-`6252`.html the item Id is `2410511`.",
+                    "default": "18871365"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "The `currency` parameter specifies the currency for displayed prices. Each country offers its own set of supported currencies, obtainable through `/setting/currency_list`.",
+                    "default": "USD"
+                },
+                {
+                    "name": "cat_id",
+                    "type": "STRING",
+                    "description": "Shein Category Identifier. If you have a URL from the website, it's the number after the `-cat-`. For example in this url: https://www.shein.com/Baby-Girl-Hook-and-loop-Fastener-Strap-Sandals-p-`2410511`-cat-`6252`.html the category Id is `6252`.",
+                    "default": "2561"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The `language` parameter defines the returned data language, country-dependent. Not all countries support all languages. For example, `US` has `en` (English) and `es` (Spanish). To find supported languages for a country, use `setting/get_language_list` with the two-letter country code.",
+                    "default": "en"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "The page number of the results to be retrieved. Default is 1.",
+                    "default": "1"
+                },
+                {
+                    "name": "size",
+                    "type": "STRING",
+                    "description": "Number of results per page.",
+                    "default": "20"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/product/get_detailed_recommended_goods\"\nquerystring = {\"country\": \"US\", \"goods_id\": \"18871365\", \"currency\": \"USD\", \"page\": \"1\", \"size\": \"20\", \"cat_id\": \"2561\", \"language\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/product/get_detailed_recommended_goods\"\nquerystring = {\"country\": \"US\", \"goods_id\": \"18871365\", \"currency\": \"USD\", \"page\": \"1\", \"size\": \"20\", \"cat_id\": \"2561\", \"language\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Goods Similar List",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/product/get_goods_similar_list",
+            "description": "Returns a list of products that are similar to a product based on the given goods id and category id. Check [this](https://i.postimg.cc/NMM6BHHB/Screenshot-1695501624.png) image for in-app reference.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The `language` parameter defines the returned data language, country-dependent. Not all countries support all languages. For example, `US` has `en` (English) and `es` (Spanish). To find supported languages for a country, use `setting/get_language_list` with the two-letter country code.",
+                    "default": "en"
+                },
+                {
+                    "name": "cat_id",
+                    "type": "STRING",
+                    "description": "Shein Category Identifier. If you have a URL from the website, it's the number after the `-cat-`. For example in this url: https://www.shein.com/Baby-Girl-Hook-and-loop-Fastener-Strap-Sandals-p-`2410511`-cat-`6252`.html the category Id is `6252`.",
+                    "default": "6469"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The two-letter country code that corresponds to the specific geographic region for which you wish to access data. The Shein website maintains distinct data for each individual country.",
+                    "default": "US"
+                },
+                {
+                    "name": "goods_id",
+                    "type": "STRING",
+                    "description": "Shein Item Identifier. If you have a URL from the website, it's the number after the `-p-`. For example in this url: https://www.shein.com/Baby-Girl-Hook-and-loop-Fastener-Strap-Sandals-p-`2410511`-cat-`6252`.html the item Id is `2410511`.",
+                    "default": "8682882"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "The `currency` parameter specifies the currency for displayed prices. Each country offers its own set of supported currencies, obtainable through `/setting/currency_list`.",
+                    "default": "USD"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "size",
+                    "type": "STRING",
+                    "description": "Number of results per page.",
+                    "default": "20"
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "The page number of the results to be retrieved. Default is 1.",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/product/get_goods_similar_list\"\nquerystring = {\"size\": \"20\", \"language\": \"en\", \"page\": \"1\", \"cat_id\": \"6469\", \"country\": \"US\", \"goods_id\": \"8682882\", \"currency\": \"USD\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/product/get_goods_similar_list\"\nquerystring = {\"size\": \"20\", \"language\": \"en\", \"page\": \"1\", \"cat_id\": \"6469\", \"country\": \"US\", \"goods_id\": \"8682882\", \"currency\": \"USD\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Language List By Country",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/setting/get_language_list_by_country",
+            "description": "The endpoint returns a list of languages that can be used in a specific site. Shein doesn't support all languages in all sites, each site has a specific set of supported languages. For example, the [US ](https://us.shein.com) site only supports Espa\u00f1ol and English.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter value of the country the data will refer to. Shein website has separate data for each country.",
+                    "default": "US"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/setting/get_language_list_by_country\"\nquerystring = {\"country\": \"US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/setting/get_language_list_by_country\"\nquerystring = {\"country\": \"US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Country's Currency List",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/setting/get_country_currency_list",
+            "description": "Returns a list of supported currencies by site(country). For example the [US](https://us.shein.com) site supports USD, EUR, GBP, CHF, CAD, MXN currencies.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter value of the country the data will refer to. Shein website has separate data for each country.",
+                    "default": "US"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/setting/get_country_currency_list\"\nquerystring = {\"country\": \"US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/setting/get_country_currency_list\"\nquerystring = {\"country\": \"US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Tab Node Details",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/navigation/get_tab_node_details",
+            "description": "Returns the Tab's Navigation details. This endpoint will contain the category Identifiers inside each `info -> content -> index -> thumb` key. For reference of the usage of this endpoint refer to [this](https://i.postimg.cc/RVZgs7kG/tab-nav-details.jpg) image.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "navNodeId",
+                    "type": "STRING",
+                    "description": "The value of `navNodeId` in `/navigation/get_tab_details`",
+                    "default": "32242300209"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The `language` parameter defines the returned data language, country-dependent. Not all countries support all languages. For example, `US` has `en` (English) and `es` (Spanish). To find supported languages for a country, use `setting/get_language_list` with the two-letter country code.",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter value of the country the data will refer to. Shein website has separate data for each country.",
+                    "default": "US"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/navigation/get_tab_node_details\"\nquerystring = {\"navNodeId\": \"32242300209\", \"language\": \"en\", \"country\": \"US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/navigation/get_tab_node_details\"\nquerystring = {\"navNodeId\": \"32242300209\", \"language\": \"en\", \"country\": \"US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Goods Detail",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/product/get_goods_details",
+            "description": "Retrieves product details. Check [this ](https://i.postimg.cc/Jh8KV0xz/Screenshot-1695501477.png) image for in-app reference.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter value of the country the data will refer to. Shein website has separate data for each country.",
+                    "default": "US"
+                },
+                {
+                    "name": "goods_id",
+                    "type": "STRING",
+                    "description": "Shein Item Identifier. If you have a URL from the website, it's the number after the `-p-`. For example in this url: https://www.shein.com/Baby-Girl-Hook-and-loop-Fastener-Strap-Sandals-p-`2410511`-cat-`6252`.html the item Id is `2410511`.",
+                    "default": "14738124"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "The `currency` parameter specifies the currency for displayed prices. Each country offers its own set of supported currencies, obtainable through `/setting/currency_list`.",
+                    "default": "USD"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The `language` parameter defines the returned data language, country-dependent. Not all countries support all languages. For example, `US` has `en` (English) and `es` (Spanish). To find supported languages for a country, use `setting/get_language_list` with the two-letter country code.",
+                    "default": "en"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/product/get_goods_details\"\nquerystring = {\"country\": \"US\", \"goods_id\": \"14738124\", \"currency\": \"USD\", \"language\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/product/get_goods_details\"\nquerystring = {\"country\": \"US\", \"goods_id\": \"14738124\", \"currency\": \"USD\", \"language\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Store Items",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/store/get_store_items",
+            "description": "Returns items based on store identifier.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The `language` parameter defines the returned data language, country-dependent. Not all countries support all languages. For example, `US` has `en` (English) and `es` (Spanish). To find supported languages for a country, use `setting/get_language_list` with the two-letter country code.",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter value of the country the data will refer to. Shein website has separate data for each country.",
+                    "default": "US"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "The `currency` parameter specifies the currency for displayed prices. Each country offers its own set of supported currencies, obtainable through `/setting/currency_list`.",
+                    "default": "USD"
+                },
+                {
+                    "name": "store_code",
+                    "type": "STRING",
+                    "description": "Shein Store Identifier.",
+                    "default": "3551126176"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "size",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20"
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/store/get_store_items\"\nquerystring = {\"language\": \"en\", \"size\": \"20\", \"country\": \"US\", \"currency\": \"USD\", \"page\": \"1\", \"store_code\": \"3551126176\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/store/get_store_items\"\nquerystring = {\"language\": \"en\", \"size\": \"20\", \"country\": \"US\", \"currency\": \"USD\", \"page\": \"1\", \"store_code\": \"3551126176\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Recommended Goods by Categories",
+            "url": "https://shein-Xi-Yin-data-service.p.rapidapi.com/product/get_recommended_goods_by_categories",
+            "description": "Returns a list of goods by category Ids.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter value of the country the data will refer to. Shein website has separate data for each country.",
+                    "default": "US"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The `language` parameter defines the returned data language, country-dependent. Not all countries support all languages. For example, `US` has `en` (English) and `es` (Spanish). To find supported languages for a country, use `setting/get_language_list` with the two-letter country code.",
+                    "default": "en"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "The `currency` parameter specifies the currency for displayed prices. Each country offers its own set of supported currencies, obtainable through `/setting/currency_list`.",
+                    "default": "USD"
+                },
+                {
+                    "name": "cat_ids",
+                    "type": "STRING",
+                    "description": "Shein Categories Identifier. For multiple values, seperate them by commas.",
+                    "default": "1864,2026,2031,2032,2038,2273,2297,2400,3195,3224,3631,3634,3636,3637,3650,3657,4327,4328,4436"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "The page number of the results to be retrieved. Default is 1.",
+                    "default": "1"
+                },
+                {
+                    "name": "size",
+                    "type": "STRING",
+                    "description": "Number of results per page.",
+                    "default": "20"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/product/get_recommended_goods_by_categories\"\nquerystring = {\"country\": \"US\", \"page\": \"1\", \"language\": \"en\", \"size\": \"20\", \"currency\": \"USD\", \"cat_ids\": \"1864,2026,2031,2032,2038,2273,2297,2400,3195,3224,3631,3634,3636,3637,3650,3657,4327,4328,4436\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shein-Xi-Yin-data-service.p.rapidapi.com/product/get_recommended_goods_by_categories\"\nquerystring = {\"country\": \"US\", \"page\": \"1\", \"language\": \"en\", \"size\": \"20\", \"currency\": \"USD\", \"cat_ids\": \"1864,2026,2031,2032,2038,2273,2297,2400,3195,3224,3631,3634,3636,3637,3650,3657,4327,4328,4436\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shein-Xi-Yin-data-service.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

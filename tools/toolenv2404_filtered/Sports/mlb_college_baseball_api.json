@@ -1,0 +1,1706 @@
+{
+    "product_id": "api_3be026c7-f051-4a5e-b29c-f017fa2896c6",
+    "tool_description": "Real-time MLB and College Baseball hub, your one-stop destination for all things baseball. Stay updated with live scores, detailed stats, game data, odds, standings, and highlights from both MLB and college baseball games. Dive deeper with game recaps, post-game conferences, and jaw-dropping plays, all available in real time.",
+    "home_url": "https://rapidapi.com/highlightly-api-highlightly-api-default/api/mlb-college-baseball-api/",
+    "name": "MLB, College Baseball API",
+    "title": "MLB, College Baseball API",
+    "pricing": "FREEMIUM",
+    "tool_name": "MLB, College Baseball API",
+    "score": {
+        "avgServiceLevel": 62,
+        "avgLatency": 148,
+        "avgSuccessRate": 56,
+        "popularityScore": 7.8,
+        "__typename": "Score"
+    },
+    "host": "mlb-college-baseball-api.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "TeamController_getTeams",
+            "url": "https://mlb-college-baseball-api.p.rapidapi.com/teams",
+            "description": "Retrieve a list of all teams.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "displayName",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "Baylor"
+                },
+                {
+                    "name": "abbreviation",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "BAY"
+                },
+                {
+                    "name": "name",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "Bears"
+                },
+                {
+                    "name": "league",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "NCAA"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mlb-college-baseball-api.p.rapidapi.com/teams\"\nquerystring = {\"displayName\": \"Baylor\", \"abbreviation\": \"BAY\", \"name\": \"Bears\", \"league\": \"NCAA\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mlb-college-baseball-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mlb-college-baseball-api.p.rapidapi.com/teams\"\nquerystring = {\"displayName\": \"Baylor\", \"abbreviation\": \"BAY\", \"name\": \"Bears\", \"league\": \"NCAA\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mlb-college-baseball-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "number"
+                                },
+                                "logo": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "displayName": {
+                                    "type": "string"
+                                },
+                                "abbreviation": {
+                                    "type": "string"
+                                },
+                                "league": {
+                                    "type": "string"
+                                },
+                                "records": {
+                                    "description": "Team records for the current year/season.",
+                                    "allOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "home": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "wins": {
+                                                            "type": "number"
+                                                        },
+                                                        "losses": {
+                                                            "type": "number"
+                                                        }
+                                                    }
+                                                },
+                                                "away": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "wins": {
+                                                            "type": "number"
+                                                        },
+                                                        "losses": {
+                                                            "type": "number"
+                                                        }
+                                                    }
+                                                },
+                                                "total": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "wins": {
+                                                            "type": "number"
+                                                        },
+                                                        "losses": {
+                                                            "type": "number"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "required": [
+                                                "home",
+                                                "away",
+                                                "total"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "id",
+                                "displayName",
+                                "abbreviation",
+                                "league",
+                                "records"
+                            ]
+                        }
+                    },
+                    "pagination": {
+                        "type": "object",
+                        "properties": {
+                            "totalCount": {
+                                "type": "number",
+                                "description": "Available number of items, relevant to the provided query."
+                            },
+                            "offset": {
+                                "type": "number"
+                            },
+                            "limit": {
+                                "type": "number"
+                            }
+                        },
+                        "required": [
+                            "totalCount",
+                            "offset",
+                            "limit"
+                        ]
+                    },
+                    "plan": {
+                        "type": "object",
+                        "properties": {
+                            "tier": {
+                                "type": "string",
+                                "description": "Your current API subscription tier."
+                            },
+                            "message": {
+                                "type": "string",
+                                "description": "Explanation message regarding your current tier."
+                            }
+                        },
+                        "required": [
+                            "tier",
+                            "message"
+                        ]
+                    }
+                },
+                "required": [
+                    "data",
+                    "pagination",
+                    "plan"
+                ]
+            }
+        },
+        {
+            "name": "TeamController_getTeamById",
+            "url": "https://mlb-college-baseball-api.p.rapidapi.com/teams/219",
+            "description": "Retrieve team details by team id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "Requested team id.",
+                    "default": 219
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mlb-college-baseball-api.p.rapidapi.com/teams/219\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mlb-college-baseball-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mlb-college-baseball-api.p.rapidapi.com/teams/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mlb-college-baseball-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "BaseballStandingsController_getStandings",
+            "url": "https://mlb-college-baseball-api.p.rapidapi.com/standings",
+            "description": "Retrieve a list of all standings based on passed query parameters.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "abbreviation",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "CAC"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 0
+                },
+                {
+                    "name": "leagueName",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "NCAA"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 5
+                },
+                {
+                    "name": "leagueType",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "MLB"
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 2024
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mlb-college-baseball-api.p.rapidapi.com/standings\"\nquerystring = {\"abbreviation\": \"CAC\", \"offset\": 0, \"leagueName\": \"NCAA\", \"limit\": 5, \"leagueType\": \"MLB\", \"year\": 2024}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mlb-college-baseball-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mlb-college-baseball-api.p.rapidapi.com/standings\"\nquerystring = {\"abbreviation\": \"CAC\", \"offset\": 0, \"leagueName\": \"NCAA\", \"limit\": 5, \"leagueType\": \"MLB\", \"year\": 2024}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mlb-college-baseball-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "HighlightsController_getHighlights",
+            "url": "https://mlb-college-baseball-api.p.rapidapi.com/highlights",
+            "description": "Retrieve a list of all highlights.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": 0
+                },
+                {
+                    "name": "offset",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": 0
+                },
+                {
+                    "name": "homeTeamDisplayName",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "Baylor"
+                },
+                {
+                    "name": "awayTeamDisplayName",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "Dallas Baptist"
+                },
+                {
+                    "name": "homeTeamAbbreviation",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "BAY"
+                },
+                {
+                    "name": "awayTeamName",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "Patriots"
+                },
+                {
+                    "name": "homeTeamId",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": 219
+                },
+                {
+                    "name": "season",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": 2024
+                },
+                {
+                    "name": "homeTeamName",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "Bears"
+                },
+                {
+                    "name": "date",
+                    "type": "OBJECT",
+                    "description": "Date that follows the YYYY-MM-DD format.",
+                    "default": "2024-03-06"
+                },
+                {
+                    "name": "awayTeamAbbreviation",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "DBU"
+                },
+                {
+                    "name": "matchId",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": 394
+                },
+                {
+                    "name": "league",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "NCAA"
+                },
+                {
+                    "name": "awayTeamId",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": 302
+                },
+                {
+                    "name": "timezone",
+                    "type": "OBJECT",
+                    "description": "Valid timezone identifier.",
+                    "default": "Europe/London"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mlb-college-baseball-api.p.rapidapi.com/highlights\"\nquerystring = {\"limit\": 0, \"offset\": 0, \"homeTeamDisplayName\": \"Baylor\", \"awayTeamDisplayName\": \"Dallas Baptist\", \"homeTeamAbbreviation\": \"BAY\", \"awayTeamName\": \"Patriots\", \"homeTeamId\": 219, \"season\": 2024, \"homeTeamName\": \"Bears\", \"date\": \"2024-03-06\", \"awayTeamAbbreviation\": \"DBU\", \"matchId\": 394, \"league\": \"NCAA\", \"awayTeamId\": 302, \"timezone\": \"Europe/London\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mlb-college-baseball-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mlb-college-baseball-api.p.rapidapi.com/highlights\"\nquerystring = {\"limit\": 0, \"offset\": 0, \"homeTeamDisplayName\": \"Baylor\", \"awayTeamDisplayName\": \"Dallas Baptist\", \"homeTeamAbbreviation\": \"BAY\", \"awayTeamName\": \"Patriots\", \"homeTeamId\": 219, \"season\": 2024, \"homeTeamName\": \"Bears\", \"date\": \"2024-03-06\", \"awayTeamAbbreviation\": \"DBU\", \"matchId\": 394, \"league\": \"NCAA\", \"awayTeamId\": 302, \"timezone\": \"Europe/London\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mlb-college-baseball-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "number"
+                                },
+                                "type": {
+                                    "type": "string"
+                                },
+                                "imgUrl": {
+                                    "type": "string",
+                                    "description": "Preview picture of the highlight."
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string",
+                                    "description": "Url location of the video highlight."
+                                },
+                                "embedUrl": {
+                                    "type": "string",
+                                    "description": "Url of embeddable video highlight."
+                                },
+                                "match": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "number"
+                                        },
+                                        "round": {
+                                            "type": "string"
+                                        },
+                                        "date": {
+                                            "type": "string"
+                                        },
+                                        "league": {
+                                            "type": "string"
+                                        },
+                                        "season": {
+                                            "type": "number"
+                                        },
+                                        "awayTeam": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number"
+                                                },
+                                                "logo": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "displayName": {
+                                                    "type": "string"
+                                                },
+                                                "abbreviation": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "id",
+                                                "displayName",
+                                                "abbreviation"
+                                            ]
+                                        },
+                                        "homeTeam": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number"
+                                                },
+                                                "logo": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "displayName": {
+                                                    "type": "string"
+                                                },
+                                                "abbreviation": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "id",
+                                                "displayName",
+                                                "abbreviation"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "round",
+                                        "date",
+                                        "league",
+                                        "season",
+                                        "awayTeam",
+                                        "homeTeam"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "id",
+                                "type",
+                                "title",
+                                "url",
+                                "match"
+                            ]
+                        }
+                    },
+                    "pagination": {
+                        "type": "object",
+                        "properties": {
+                            "totalCount": {
+                                "type": "number",
+                                "description": "Available number of items, relevant to the provided query."
+                            },
+                            "offset": {
+                                "type": "number"
+                            },
+                            "limit": {
+                                "type": "number"
+                            }
+                        },
+                        "required": [
+                            "totalCount",
+                            "offset",
+                            "limit"
+                        ]
+                    },
+                    "plan": {
+                        "type": "object",
+                        "properties": {
+                            "tier": {
+                                "type": "string",
+                                "description": "Your current API subscription tier."
+                            },
+                            "message": {
+                                "type": "string",
+                                "description": "Explanation message regarding your current tier."
+                            }
+                        },
+                        "required": [
+                            "tier",
+                            "message"
+                        ]
+                    }
+                },
+                "required": [
+                    "data",
+                    "pagination",
+                    "plan"
+                ]
+            }
+        },
+        {
+            "name": "HighlightsController_getHighlightById",
+            "url": "https://mlb-college-baseball-api.p.rapidapi.com/highlights/27",
+            "description": "Retrieve highlight details by highlight id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "Requested highlight id.",
+                    "default": 27
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mlb-college-baseball-api.p.rapidapi.com/highlights/27\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mlb-college-baseball-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mlb-college-baseball-api.p.rapidapi.com/highlights/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mlb-college-baseball-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "BaseballOddsController_getOdds",
+            "url": "https://mlb-college-baseball-api.p.rapidapi.com/odds",
+            "description": "Retrieve a list of all odds based on passed query parameters. At least one parameter has to be specified.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 0
+                },
+                {
+                    "name": "bookmakerId",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 53
+                },
+                {
+                    "name": "matchId",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 394
+                },
+                {
+                    "name": "leagueName",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "NCAA"
+                },
+                {
+                    "name": "timezone",
+                    "type": "OBJECT",
+                    "description": "Valid timezone identifier.",
+                    "default": "Europe/London"
+                },
+                {
+                    "name": "date",
+                    "type": "OBJECT",
+                    "description": "Date that follows the YYYY-MM-DD format.",
+                    "default": "2024-03-06"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 5
+                },
+                {
+                    "name": "bookmakerName",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Megapari Sport"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mlb-college-baseball-api.p.rapidapi.com/odds\"\nquerystring = {\"offset\": 0, \"bookmakerId\": 53, \"matchId\": 394, \"leagueName\": \"NCAA\", \"timezone\": \"Europe/London\", \"date\": \"2024-03-06\", \"limit\": 5, \"bookmakerName\": \"Megapari Sport\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mlb-college-baseball-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mlb-college-baseball-api.p.rapidapi.com/odds\"\nquerystring = {\"offset\": 0, \"bookmakerId\": 53, \"matchId\": 394, \"leagueName\": \"NCAA\", \"timezone\": \"Europe/London\", \"date\": \"2024-03-06\", \"limit\": 5, \"bookmakerName\": \"Megapari Sport\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mlb-college-baseball-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "matchId": {
+                                    "type": "number"
+                                },
+                                "odds": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "bookmakerId": {
+                                                "type": "number"
+                                            },
+                                            "bookmakerName": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "market": {
+                                                "type": "string"
+                                            },
+                                            "values": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "odd": {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        "value": {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "odd",
+                                                        "value"
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        "required": [
+                                            "bookmakerId",
+                                            "type",
+                                            "market",
+                                            "values"
+                                        ]
+                                    }
+                                }
+                            },
+                            "required": [
+                                "matchId",
+                                "odds"
+                            ]
+                        }
+                    },
+                    "pagination": {
+                        "type": "object",
+                        "properties": {
+                            "totalCount": {
+                                "type": "number",
+                                "description": "Available number of items, relevant to the provided query."
+                            },
+                            "offset": {
+                                "type": "number"
+                            },
+                            "limit": {
+                                "type": "number"
+                            }
+                        },
+                        "required": [
+                            "totalCount",
+                            "offset",
+                            "limit"
+                        ]
+                    },
+                    "plan": {
+                        "type": "object",
+                        "properties": {
+                            "tier": {
+                                "type": "string",
+                                "description": "Your current API subscription tier."
+                            },
+                            "message": {
+                                "type": "string",
+                                "description": "Explanation message regarding your current tier."
+                            }
+                        },
+                        "required": [
+                            "tier",
+                            "message"
+                        ]
+                    }
+                },
+                "required": [
+                    "data",
+                    "pagination",
+                    "plan"
+                ]
+            }
+        },
+        {
+            "name": "BaseballMatchController_getMatchById",
+            "url": "https://mlb-college-baseball-api.p.rapidapi.com/matches/58348",
+            "description": "Retrieve match details by match id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "Requested match id.",
+                    "default": 58348
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mlb-college-baseball-api.p.rapidapi.com/matches/58348\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mlb-college-baseball-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mlb-college-baseball-api.p.rapidapi.com/matches/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mlb-college-baseball-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "number"
+                        },
+                        "round": {
+                            "type": "string"
+                        },
+                        "date": {
+                            "type": "string"
+                        },
+                        "league": {
+                            "type": "string"
+                        },
+                        "season": {
+                            "type": "number"
+                        },
+                        "awayTeam": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "number"
+                                },
+                                "logo": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "displayName": {
+                                    "type": "string"
+                                },
+                                "abbreviation": {
+                                    "type": "string"
+                                },
+                                "records": {
+                                    "description": "Team records for the current year/season.",
+                                    "allOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "home": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "wins": {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        "losses": {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    }
+                                                },
+                                                "away": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "wins": {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        "losses": {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    }
+                                                },
+                                                "total": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "wins": {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        "losses": {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "required": [
+                                                "home",
+                                                "away",
+                                                "total"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "id",
+                                "displayName",
+                                "abbreviation",
+                                "records"
+                            ]
+                        },
+                        "homeTeam": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "number"
+                                },
+                                "logo": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "displayName": {
+                                    "type": "string"
+                                },
+                                "abbreviation": {
+                                    "type": "string"
+                                },
+                                "records": {
+                                    "description": "Team records for the current year/season.",
+                                    "allOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "home": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "wins": {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        "losses": {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    }
+                                                },
+                                                "away": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "wins": {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        "losses": {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    }
+                                                },
+                                                "total": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "wins": {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        "losses": {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "required": [
+                                                "home",
+                                                "away",
+                                                "total"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "id",
+                                "displayName",
+                                "abbreviation",
+                                "records"
+                            ]
+                        },
+                        "state": {
+                            "type": "object",
+                            "properties": {
+                                "description": {
+                                    "type": "string",
+                                    "enum": [
+                                        "Finished",
+                                        "Postponed",
+                                        "Period End",
+                                        "Rain Delay",
+                                        "Scheduled",
+                                        "Half Time",
+                                        "In Progress",
+                                        "Canceled",
+                                        "Unknown"
+                                    ]
+                                },
+                                "report": {
+                                    "type": "string",
+                                    "description": "Additional description of the match state."
+                                },
+                                "score": {
+                                    "type": "object",
+                                    "properties": {
+                                        "home": {
+                                            "type": "object",
+                                            "properties": {
+                                                "hits": {
+                                                    "type": "number"
+                                                },
+                                                "errors": {
+                                                    "type": "number"
+                                                },
+                                                "innings": {
+                                                    "description": "Scores for each played inning.",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "description": "**Omitted**"
+                                                    }
+                                                }
+                                            },
+                                            "required": [
+                                                "innings"
+                                            ]
+                                        },
+                                        "away": {
+                                            "type": "object",
+                                            "properties": {
+                                                "hits": {
+                                                    "type": "number"
+                                                },
+                                                "errors": {
+                                                    "type": "number"
+                                                },
+                                                "innings": {
+                                                    "description": "Scores for each played inning.",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "description": "**Omitted**"
+                                                    }
+                                                }
+                                            },
+                                            "required": [
+                                                "innings"
+                                            ]
+                                        },
+                                        "current": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "home",
+                                        "away"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "description",
+                                "score"
+                            ]
+                        },
+                        "venue": {
+                            "type": "object",
+                            "properties": {
+                                "city": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "state": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "city",
+                                "name",
+                                "state"
+                            ]
+                        },
+                        "stats": {
+                            "type": "object",
+                            "properties": {
+                                "homeTeam": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "batting": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "value": {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        "displayName": {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "value",
+                                                        "displayName"
+                                                    ]
+                                                }
+                                            },
+                                            "fielding": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "pitching": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "awayTeam": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "batting": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "value": {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        "displayName": {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "value",
+                                                        "displayName"
+                                                    ]
+                                                }
+                                            },
+                                            "fielding": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "pitching": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "required": [
+                                "homeTeam",
+                                "awayTeam"
+                            ]
+                        },
+                        "plays": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "teamId": {
+                                        "type": "number"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "currentOuts": {
+                                        "type": "number"
+                                    },
+                                    "period": {
+                                        "type": "string"
+                                    },
+                                    "pitch": {
+                                        "type": "object",
+                                        "properties": {
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "velocity": {
+                                                "type": "number"
+                                            },
+                                            "ballsCount": {
+                                                "type": "number"
+                                            },
+                                            "strikesCount": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    },
+                                    "result": {
+                                        "type": "object",
+                                        "properties": {
+                                            "ballsCount": {
+                                                "type": "number"
+                                            },
+                                            "strikesCount": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    },
+                                    "score": {
+                                        "type": "object",
+                                        "properties": {
+                                            "away": {
+                                                "type": "number"
+                                            },
+                                            "home": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "type",
+                                    "teamId",
+                                    "description",
+                                    "currentOuts",
+                                    "period",
+                                    "pitch",
+                                    "result",
+                                    "score"
+                                ]
+                            }
+                        },
+                        "referees": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "position": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "position"
+                                ]
+                            }
+                        },
+                        "rosters": {
+                            "type": "object",
+                            "properties": {
+                                "awayTeam": {
+                                    "type": "object",
+                                    "properties": {
+                                        "jersey": {
+                                            "type": "number"
+                                        },
+                                        "fullName": {
+                                            "type": "string"
+                                        },
+                                        "position": {
+                                            "type": "string"
+                                        },
+                                        "isStarter": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "required": [
+                                        "fullName",
+                                        "position",
+                                        "isStarter"
+                                    ]
+                                },
+                                "homeTeam": {
+                                    "type": "object",
+                                    "properties": {
+                                        "jersey": {
+                                            "type": "number"
+                                        },
+                                        "fullName": {
+                                            "type": "string"
+                                        },
+                                        "position": {
+                                            "type": "string"
+                                        },
+                                        "isStarter": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "required": [
+                                        "fullName",
+                                        "position",
+                                        "isStarter"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "awayTeam",
+                                "homeTeam"
+                            ]
+                        },
+                        "forecast": {
+                            "type": "object",
+                            "properties": {
+                                "status": {
+                                    "type": "string"
+                                },
+                                "temperature": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "round",
+                        "date",
+                        "league",
+                        "season",
+                        "awayTeam",
+                        "homeTeam",
+                        "state"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "BaseballMatchController_getMatches",
+            "url": "https://mlb-college-baseball-api.p.rapidapi.com/matches",
+            "description": "Retrieve a list of all matches.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 0
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 100
+                },
+                {
+                    "name": "awayTeamDisplayName",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "Dallas Baptist"
+                },
+                {
+                    "name": "homeTeamDisplayName",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "Baylor"
+                },
+                {
+                    "name": "awayTeamName",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "Patriots"
+                },
+                {
+                    "name": "homeTeamId",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": 219
+                },
+                {
+                    "name": "awayTeamId",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": 302
+                },
+                {
+                    "name": "awayTeamAbbreviation",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "DBU"
+                },
+                {
+                    "name": "homeTeamAbbreviation",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "BAY"
+                },
+                {
+                    "name": "season",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": 2024
+                },
+                {
+                    "name": "homeTeamName",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "Bears"
+                },
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "Valid timezone identifier.",
+                    "default": "Europe/London"
+                },
+                {
+                    "name": "league",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "NCAA"
+                },
+                {
+                    "name": "date",
+                    "type": "OBJECT",
+                    "description": "Date that follows the YYYY-MM-DD format.",
+                    "default": "2024-03-06"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mlb-college-baseball-api.p.rapidapi.com/matches\"\nquerystring = {\"offset\": 0, \"limit\": 100, \"awayTeamDisplayName\": \"Dallas Baptist\", \"homeTeamDisplayName\": \"Baylor\", \"awayTeamName\": \"Patriots\", \"homeTeamId\": 219, \"awayTeamId\": 302, \"awayTeamAbbreviation\": \"DBU\", \"homeTeamAbbreviation\": \"BAY\", \"season\": 2024, \"homeTeamName\": \"Bears\", \"timezone\": \"Europe/London\", \"league\": \"NCAA\", \"date\": \"2024-03-06\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mlb-college-baseball-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mlb-college-baseball-api.p.rapidapi.com/matches\"\nquerystring = {\"offset\": 0, \"limit\": 100, \"awayTeamDisplayName\": \"Dallas Baptist\", \"homeTeamDisplayName\": \"Baylor\", \"awayTeamName\": \"Patriots\", \"homeTeamId\": 219, \"awayTeamId\": 302, \"awayTeamAbbreviation\": \"DBU\", \"homeTeamAbbreviation\": \"BAY\", \"season\": 2024, \"homeTeamName\": \"Bears\", \"timezone\": \"Europe/London\", \"league\": \"NCAA\", \"date\": \"2024-03-06\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mlb-college-baseball-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "number"
+                                },
+                                "round": {
+                                    "type": "string"
+                                },
+                                "date": {
+                                    "type": "string"
+                                },
+                                "league": {
+                                    "type": "string"
+                                },
+                                "season": {
+                                    "type": "number"
+                                },
+                                "awayTeam": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "number"
+                                        },
+                                        "logo": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "displayName": {
+                                            "type": "string"
+                                        },
+                                        "abbreviation": {
+                                            "type": "string"
+                                        },
+                                        "records": {
+                                            "description": "Team records for the current year/season.",
+                                            "allOf": [
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "home": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "wins": {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                "losses": {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            }
+                                                        },
+                                                        "away": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "wins": {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                "losses": {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            }
+                                                        },
+                                                        "total": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "wins": {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                "losses": {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "home",
+                                                        "away",
+                                                        "total"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "displayName",
+                                        "abbreviation",
+                                        "records"
+                                    ]
+                                },
+                                "homeTeam": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "number"
+                                        },
+                                        "logo": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "displayName": {
+                                            "type": "string"
+                                        },
+                                        "abbreviation": {
+                                            "type": "string"
+                                        },
+                                        "records": {
+                                            "description": "Team records for the current year/season.",
+                                            "allOf": [
+                                                {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "home": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "wins": {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                "losses": {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            }
+                                                        },
+                                                        "away": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "wins": {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                "losses": {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            }
+                                                        },
+                                                        "total": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "wins": {
+                                                                    "description": "**Omitted**"
+                                                                },
+                                                                "losses": {
+                                                                    "description": "**Omitted**"
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "home",
+                                                        "away",
+                                                        "total"
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "displayName",
+                                        "abbreviation",
+                                        "records"
+                                    ]
+                                },
+                                "state": {
+                                    "type": "object",
+                                    "properties": {
+                                        "description": {
+                                            "type": "string",
+                                            "enum": [
+                                                "Finished",
+                                                "Postponed",
+                                                "Period End",
+                                                "Rain Delay",
+                                                "Scheduled",
+                                                "Half Time",
+                                                "In Progress",
+                                                "Canceled",
+                                                "Unknown"
+                                            ]
+                                        },
+                                        "report": {
+                                            "type": "string",
+                                            "description": "Additional description of the match state."
+                                        },
+                                        "score": {
+                                            "type": "object",
+                                            "properties": {
+                                                "home": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "hits": {
+                                                            "type": "number"
+                                                        },
+                                                        "errors": {
+                                                            "type": "number"
+                                                        },
+                                                        "innings": {
+                                                            "description": "Scores for each played inning.",
+                                                            "type": "array",
+                                                            "items": {
+                                                                "description": "**Omitted**"
+                                                            }
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "innings"
+                                                    ]
+                                                },
+                                                "away": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "hits": {
+                                                            "type": "number"
+                                                        },
+                                                        "errors": {
+                                                            "type": "number"
+                                                        },
+                                                        "innings": {
+                                                            "description": "Scores for each played inning.",
+                                                            "type": "array",
+                                                            "items": {
+                                                                "description": "**Omitted**"
+                                                            }
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "innings"
+                                                    ]
+                                                },
+                                                "current": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "home",
+                                                "away"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "description",
+                                        "score"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "id",
+                                "round",
+                                "date",
+                                "league",
+                                "season",
+                                "awayTeam",
+                                "homeTeam",
+                                "state"
+                            ]
+                        }
+                    },
+                    "pagination": {
+                        "type": "object",
+                        "properties": {
+                            "totalCount": {
+                                "type": "number",
+                                "description": "Available number of items, relevant to the provided query."
+                            },
+                            "offset": {
+                                "type": "number"
+                            },
+                            "limit": {
+                                "type": "number"
+                            }
+                        },
+                        "required": [
+                            "totalCount",
+                            "offset",
+                            "limit"
+                        ]
+                    },
+                    "plan": {
+                        "type": "object",
+                        "properties": {
+                            "tier": {
+                                "type": "string",
+                                "description": "Your current API subscription tier."
+                            },
+                            "message": {
+                                "type": "string",
+                                "description": "Explanation message regarding your current tier."
+                            }
+                        },
+                        "required": [
+                            "tier",
+                            "message"
+                        ]
+                    }
+                },
+                "required": [
+                    "data",
+                    "pagination",
+                    "plan"
+                ]
+            }
+        },
+        {
+            "name": "BaseballBookmakersController_getBookmakers",
+            "url": "https://mlb-college-baseball-api.p.rapidapi.com/bookmakers",
+            "description": "Retrieve a list of all bookmakers based on passed query parameters.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 20
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 0
+                },
+                {
+                    "name": "name",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "Megapari Sport"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mlb-college-baseball-api.p.rapidapi.com/bookmakers\"\nquerystring = {\"limit\": 20, \"offset\": 0, \"name\": \"Megapari Sport\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mlb-college-baseball-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mlb-college-baseball-api.p.rapidapi.com/bookmakers\"\nquerystring = {\"limit\": 20, \"offset\": 0, \"name\": \"Megapari Sport\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mlb-college-baseball-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "BaseballBookmakersController_getBookmakerById",
+            "url": "https://mlb-college-baseball-api.p.rapidapi.com/bookmakers/53",
+            "description": "Retrieve bookmaker details by bookmaker id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "Requested bookmaker id.",
+                    "default": 53
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mlb-college-baseball-api.p.rapidapi.com/bookmakers/53\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mlb-college-baseball-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mlb-college-baseball-api.p.rapidapi.com/bookmakers/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mlb-college-baseball-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

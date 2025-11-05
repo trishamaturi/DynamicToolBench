@@ -1,0 +1,475 @@
+{
+    "product_id": "api_07b9ecd4-6478-4eef-b01b-4f2e2e98e790",
+    "tool_description": "This API helps to query for business news and live market data to create a financial site such as cnbc.com",
+    "home_url": "https://rapidapi.com/apidojo/api/cnbc/",
+    "name": "CNBC",
+    "title": "CNBC",
+    "pricing": "FREEMIUM",
+    "tool_name": "CNBC",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1071,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.6,
+        "__typename": "Score"
+    },
+    "host": "cnbc.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "symbols/translate",
+            "url": "https://cnbc.p.rapidapi.com/symbols/translate",
+            "description": "Get issueId from specific symbol",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "Symbol of stock, index, exchange, etc...",
+                    "default": "TSLA"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/symbols/translate\"\nquerystring = {\"symbol\": \"TSLA\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/symbols/translate\"\nquerystring = {\"symbol\": \"TSLA\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "symbols/get-peers",
+            "url": "https://cnbc.p.rapidapi.com/symbols/get-peers",
+            "description": "Get peers relating to stock quote, index, exchange, etc...",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "NUMBER",
+                    "description": "The value of issueId field returned in .../auto-complete or .../symbols/translate endpoints. ",
+                    "default": "36276"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/symbols/get-peers\"\nquerystring = {\"symbol\": \"36276\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/symbols/get-peers\"\nquerystring = {\"symbol\": \"36276\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "symbols/get-priceline-chart",
+            "url": "https://cnbc.p.rapidapi.com/symbols/get-priceline-chart",
+            "description": "Generate image of price line chart of specific stock quote, index, exchange, etc...",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "issueId",
+                    "type": "NUMBER",
+                    "description": "The value of issueId field returned in .../auto-complete or .../symbols/translate endpoints. ",
+                    "default": "24812378"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "numberOfDays",
+                    "type": "NUMBER",
+                    "description": "Number of days to generate image of price line chart (1 to 9999)",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/symbols/get-priceline-chart\"\nquerystring = {\"numberOfDays\": \"1\", \"issueId\": \"24812378\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/symbols/get-priceline-chart\"\nquerystring = {\"numberOfDays\": \"1\", \"issueId\": \"24812378\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "symbols/get-summary",
+            "url": "https://cnbc.p.rapidapi.com/symbols/get-summary",
+            "description": "Get summary information of stock quote, index, exchange, etc...",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "issueIds",
+                    "type": "STRING",
+                    "description": "The value of issueId field returned in .../auto-complete or .../symbols/translate endpoints. Separated by comma for multiple values. Ex : 36276,24812378",
+                    "default": "36276,24812378"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/symbols/get-summary\"\nquerystring = {\"issueIds\": \"36276,24812378\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/symbols/get-summary\"\nquerystring = {\"issueIds\": \"36276,24812378\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "symbols/get-fundamentals",
+            "url": "https://cnbc.p.rapidapi.com/symbols/get-fundamentals",
+            "description": "Get fundamental information of stock quote, index, exchange, etc...",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "issueIds",
+                    "type": "STRING",
+                    "description": "The value of issueId field returned in .../auto-complete or .../symbols/translate endpoints. Separated by comma for multiple values. Ex : 36276,24812378",
+                    "default": "36276,24812378"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/symbols/get-fundamentals\"\nquerystring = {\"issueIds\": \"36276,24812378\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/symbols/get-fundamentals\"\nquerystring = {\"issueIds\": \"36276,24812378\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "symbols/get-earnings-chart",
+            "url": "https://cnbc.p.rapidapi.com/symbols/get-earnings-chart",
+            "description": "Generate image of earnings chart of specific stock quote, index, exchange, etc...",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "issueId",
+                    "type": "NUMBER",
+                    "description": "The value of issueId field returned in .../auto-complete or .../symbols/translate endpoints. ",
+                    "default": "36276"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "numberOfYears",
+                    "type": "NUMBER",
+                    "description": "Number of most latest years to get report of earnings (1 to 10)",
+                    "default": "3"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/symbols/get-earnings-chart\"\nquerystring = {\"issueId\": \"36276\", \"numberOfYears\": \"3\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/symbols/get-earnings-chart\"\nquerystring = {\"issueId\": \"36276\", \"numberOfYears\": \"3\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "symbols/v2/get-chart",
+            "url": "https://cnbc.p.rapidapi.com/symbols/v2/get-chart",
+            "description": "Get raw data to draw price line chart of stock quote, index, exchange, etc...",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "The value of 'symbolName' returned in .../auto-complete OR 'symbol' returned in .../v2/auto-complete endpoint.",
+                    "default": "TSLA"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "interval",
+                    "type": "STRING",
+                    "description": "One of the following is allowed 1D|5D|1M|6M|YTD|1Y|5Y|ALL",
+                    "default": "1D"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/symbols/v2/get-chart\"\nquerystring = {\"interval\": \"1D\", \"symbol\": \"TSLA\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/symbols/v2/get-chart\"\nquerystring = {\"interval\": \"1D\", \"symbol\": \"TSLA\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "news/v2/list-by-symbol",
+            "url": "https://cnbc.p.rapidapi.com/news/v2/list-by-symbol",
+            "description": "List latest news by symbol name",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "The symbol returned in .../v2/auto-complete or other endpoints",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "For paging purpose",
+                    "default": "1"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "NUMBER",
+                    "description": "For paging purpose",
+                    "default": "30"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/news/v2/list-by-symbol\"\nquerystring = {\"symbol\": \"AAPL\", \"page\": \"1\", \"pageSize\": \"30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/news/v2/list-by-symbol\"\nquerystring = {\"symbol\": \"AAPL\", \"page\": \"1\", \"pageSize\": \"30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "news/v2/list",
+            "url": "https://cnbc.p.rapidapi.com/news/v2/list",
+            "description": "List news by category",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "franchiseId",
+                    "type": "NUMBER",
+                    "description": "The value of .../sectionData/parameters/franchiseId json object returned in .../get-meta-data endpoint. Pass this parameter multiple times for news from multiple categories. Ex : ...&franchiseId=105230142&franchiseId=15839263&...",
+                    "default": "19794221"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "count",
+                    "type": "NUMBER",
+                    "description": "The number of items returned by the endpoint",
+                    "default": "15"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/news/v2/list\"\nquerystring = {\"franchiseId\": \"19794221\", \"count\": \"15\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/news/v2/list\"\nquerystring = {\"franchiseId\": \"19794221\", \"count\": \"15\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "news/v2/list-special-reports",
+            "url": "https://cnbc.p.rapidapi.com/news/v2/list-special-reports",
+            "description": "List special reports",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "pageSize",
+                    "type": "NUMBER",
+                    "description": "For paging purpose",
+                    "default": "30"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "For paging purpose",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/news/v2/list-special-reports\"\nquerystring = {\"pageSize\": \"30\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/news/v2/list-special-reports\"\nquerystring = {\"pageSize\": \"30\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "news/v2/list-trending",
+            "url": "https://cnbc.p.rapidapi.com/news/v2/list-trending",
+            "description": "List trending news",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "tag",
+                    "type": "STRING",
+                    "description": "The value is always Articles",
+                    "default": "Articles"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "count",
+                    "type": "NUMBER",
+                    "description": "Number of items returned by the endpoint",
+                    "default": "30"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/news/v2/list-trending\"\nquerystring = {\"count\": \"30\", \"tag\": \"Articles\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/news/v2/list-trending\"\nquerystring = {\"count\": \"30\", \"tag\": \"Articles\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "symbols/get-profile",
+            "url": "https://cnbc.p.rapidapi.com/symbols/get-profile",
+            "description": "Get summary information of stock quote, index, exchange, etc...",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "issueId",
+                    "type": "NUMBER",
+                    "description": "The value of issueId field returned in .../auto-complete or .../symbols/translate endpoints. ",
+                    "default": "36276"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/symbols/get-profile\"\nquerystring = {\"issueId\": \"36276\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/symbols/get-profile\"\nquerystring = {\"issueId\": \"36276\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "symbols/get-chart (Deprecating)",
+            "url": "https://cnbc.p.rapidapi.com/symbols/get-chart",
+            "description": "Get raw data to draw price line chart of stock quote, index, exchange, etc...",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "NUMBER",
+                    "description": "The value of issueId field returned in .../auto-complete or .../symbols/translate endpoints",
+                    "default": "36276"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "interval",
+                    "type": "STRING",
+                    "description": "One of the following is allowed 1d|5d|1m|3m|6m|ytd|1y|3y|5y|10y|all",
+                    "default": "1d"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/symbols/get-chart\"\nquerystring = {\"symbol\": \"36276\", \"interval\": \"1d\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/symbols/get-chart\"\nquerystring = {\"symbol\": \"36276\", \"interval\": \"1d\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v2/auto-complete",
+            "url": "https://cnbc.p.rapidapi.com/v2/auto-complete",
+            "description": "Get auto suggestion by familiar terms or phrase",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Any word or phrase that you are familiar with",
+                    "default": "tesla"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/v2/auto-complete\"\nquerystring = {\"q\": \"tesla\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/v2/auto-complete\"\nquerystring = {\"q\": \"tesla\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "get-meta-data",
+            "url": "https://cnbc.p.rapidapi.com/get-meta-data",
+            "description": "Get meta data that supports for other endpoints",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/get-meta-data\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/get-meta-data\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "news/list-trending (Deprecated)",
+            "url": "https://cnbc.p.rapidapi.com/news/list-trending",
+            "description": "List trending news",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/news/list-trending\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/news/list-trending\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "news/list-special-reports (Deprecated)",
+            "url": "https://cnbc.p.rapidapi.com/news/list-special-reports",
+            "description": "List special reports",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/news/list-special-reports\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/news/list-special-reports\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "auto-complete (Deprecated)",
+            "url": "https://cnbc.p.rapidapi.com/auto-complete",
+            "description": "Get auto suggestion by familiar words or phrase",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "prefix",
+                    "type": "STRING",
+                    "description": "Any word or phrase that you are familiar with",
+                    "default": "tesla"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/auto-complete\"\nquerystring = {\"prefix\": \"tesla\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/auto-complete\"\nquerystring = {\"prefix\": \"tesla\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "news/list (Deprecated)",
+            "url": "https://cnbc.p.rapidapi.com/news/list",
+            "description": "List news by category",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "franchiseId",
+                    "type": "NUMBER",
+                    "description": "The value of .../sectionData/parameters/franchiseId json object returned in .../get-meta-data endpoint",
+                    "default": "19794221"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/news/list\"\nquerystring = {\"franchiseId\": \"19794221\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/news/list\"\nquerystring = {\"franchiseId\": \"19794221\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "news/list-by-symbol (Deprecated)",
+            "url": "https://cnbc.p.rapidapi.com/news/list-by-symbol",
+            "description": "List latest news by symbol name",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "tickersymbol",
+                    "type": "STRING",
+                    "description": "The value of symbolName field returned in .../auto-complete endpoint",
+                    "default": "TSLA"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "For paging purpose",
+                    "default": "1"
+                },
+                {
+                    "name": "pagesize",
+                    "type": "NUMBER",
+                    "description": "For paging purpose",
+                    "default": "20"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/news/list-by-symbol\"\nquerystring = {\"tickersymbol\": \"TSLA\", \"page\": \"1\", \"pagesize\": \"20\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/news/list-by-symbol\"\nquerystring = {\"tickersymbol\": \"TSLA\", \"page\": \"1\", \"pagesize\": \"20\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "market/list-indices",
+            "url": "https://cnbc.p.rapidapi.com/market/list-indices",
+            "description": "List all available indices",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/market/list-indices\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cnbc.p.rapidapi.com/market/list-indices\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cnbc.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

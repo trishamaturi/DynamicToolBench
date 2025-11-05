@@ -1,0 +1,88 @@
+{
+    "product_id": "api_48dd35c1-e413-445c-a004-7e323bbce2f8",
+    "tool_description": "Access the global job listing by using Google Jobs webscraping. This API allows you to discover employment opportunities from various providers, including but not limited to LinkedIn, Indeed, Jooble, ZipRecruiter, Glassdoor, and many other sources.",
+    "home_url": "https://rapidapi.com/Pat92/api/jobs-api14/",
+    "name": "Jobs API",
+    "title": "Jobs API",
+    "pricing": "FREEMIUM",
+    "tool_name": "Jobs API",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 754,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.7,
+        "__typename": "Score"
+    },
+    "host": "jobs-api14.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "List Jobs",
+            "url": "https://jobs-api14.p.rapidapi.com/list",
+            "description": "The API simplifies the job search process by offering an array of filter criteria in the URL parameters, to receive relevant results.\n\n**Filters (URL-Parameters):**\n**- query:** Keywords, Company names, job titles, etc. *Required*\n**- location:** Country, city or general location. *Required*\n**- remoteOnly:** Only return remote jobs (true/false). *Optional (default value = false)* \n**- employmentTypes:** Filter by fulltime, parttime, contractor, intern. Multiple values can be added semcolon separated. *Optional (default value = '': all results are returned)*\n**- datePosted:** Filter by creation date of th job posting; month, week, 3days, today. *Optional (default value = '': all results are returned)*\n**- distance:** Filter jobs based on proximity to a specified location in kilometers. *Optional (default value = -1.0: all results are returned)*\n**- language:** This is not the language of the jobs, but of specific fields. *Optional (default value = 'en_GB':english is used)*\n**- index:** Normally you will receive 10 results for each request, to get more you can increase the index by one. *Optional (default value = 1)*\n\n**Returned Fields:**\n**- jobs:** A list of returned jobs.\n   - id: Base64 ID of the job-listing\n   - title: Job title\n   - company: Company name\n   - description: Job description\n   - image: Image of the company\n   - location: Location of the job\n   - employmentType: Types of employment for the job listing.\n   - datePosted: Date when the job-listing was posted\n   - salaryRange: Salary range for the job posting\n   - jobProviders: Array of jobboards, including their name and the url\n\n**- index:** Current search-index.\n**- jobCount:** Amount of jobs returned, maxiumum of jobs per request is 10.\n**- hasError:** Bolean to check for errors.\n**- errors:** Array of error messages.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "**Required**\nKeywords, Jobtitle, Company name or any other relevant search-query.",
+                    "default": "Web Developer"
+                },
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "**Required**\nCity, country, or any other locations.",
+                    "default": "United States"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "employmentTypes",
+                    "type": "STRING",
+                    "description": "**Optional**\n*Default value = ''*\nOnly receive job postings with the specific employment types.\nYou can use multiple types and separate them with semicolons (parttime;internship)\n\n**Allowed values**\ncontractor, fulltime, parttime, intern",
+                    "default": "fulltime;parttime;intern;contractor"
+                },
+                {
+                    "name": "allowedJobProviders",
+                    "type": "STRING",
+                    "description": "**Optional**\n*Default value = ''*\nOnly receive job postings from specific job-providers.\nYou can use multiple providers and separate them with semicolons (ziprecruiter;indeed;linkedin)\n\n**Note:** It currently works only with bigger providers like indeed, linkedin, etc.",
+                    "default": ""
+                },
+                {
+                    "name": "remoteOnly",
+                    "type": "BOOLEAN",
+                    "description": "**Optional**\n*Default value = false*\nFilter by only remote job postings.",
+                    "default": "false"
+                },
+                {
+                    "name": "index",
+                    "type": "NUMBER",
+                    "description": "**Optional**\n*Default value = 0*\nIndex of the search, per request you will get a maximum of 10 jobs.\nIf you have received a total of 10 jobs, you can increase the index by 1 to get the next results.",
+                    "default": "0"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "**Optional**\n*Default value = en_GB*\nSets the language of the following return fields **(location, employmentType, datePosted and salaryRange)**, but does not filter by language.\n\n**Important:** If you want the values in english, either don't use this field or use 'en_GB', other variants will not work.",
+                    "default": "en_GB"
+                },
+                {
+                    "name": "distance",
+                    "type": "NUMBER",
+                    "description": "**Optional**\n*Default value = -1.0*\nDistance to the location in kilometers",
+                    "default": "1.0"
+                },
+                {
+                    "name": "datePosted",
+                    "type": "STRING",
+                    "description": "**Optional**\n*Default value = ''*\nOnly receive job postings that are newer than the date given, takes all job postings if not set.\n\n**Allowed values**\nmonth, week, today, 3days",
+                    "default": "month"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://jobs-api14.p.rapidapi.com/list\"\nquerystring = {\"employmentTypes\": \"fulltime;parttime;intern;contractor\", \"allowedJobProviders\": \"\", \"remoteOnly\": \"false\", \"query\": \"Web Developer\", \"index\": \"0\", \"location\": \"United States\", \"language\": \"en_GB\", \"distance\": \"1.0\", \"datePosted\": \"month\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"jobs-api14.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://jobs-api14.p.rapidapi.com/list\"\nquerystring = {\"employmentTypes\": \"fulltime;parttime;intern;contractor\", \"allowedJobProviders\": \"\", \"remoteOnly\": \"false\", \"query\": \"Web Developer\", \"index\": \"0\", \"location\": \"United States\", \"language\": \"en_GB\", \"distance\": \"1.0\", \"datePosted\": \"month\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"jobs-api14.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

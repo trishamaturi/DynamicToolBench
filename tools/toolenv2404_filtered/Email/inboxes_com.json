@@ -1,0 +1,231 @@
+{
+    "product_id": "api_193ff135-b015-4736-88ed-91e4d49b8d64",
+    "tool_description": "inboxes.com temp email accounts for testing and automation",
+    "home_url": "https://rapidapi.com/startfu-startfu-default/api/inboxes-com/",
+    "name": "inboxes.com",
+    "title": "inboxes.com",
+    "pricing": "FREEMIUM",
+    "tool_name": "inboxes.com",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 173,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.8,
+        "__typename": "Score"
+    },
+    "host": "inboxes-com.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "GetMessage",
+            "url": "https://inboxes-com.p.rapidapi.com/messages/UvB71VVQEoFUk1tsVroUFvU6aBa1j",
+            "description": "get a sinlge message content by message id",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "messageId",
+                    "type": "STRING",
+                    "description": "The id of the Message",
+                    "default": "UvB71VVQEoFUk1tsVroUFvU6aBa1j"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://inboxes-com.p.rapidapi.com/messages/UvB71VVQEoFUk1tsVroUFvU6aBa1j\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"inboxes-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://inboxes-com.p.rapidapi.com/messages/{messageid}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"inboxes-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "required": [
+                    "uid",
+                    "from",
+                    "to",
+                    "subject",
+                    "attachments",
+                    "created_at",
+                    "created_at_epoch",
+                    "html",
+                    "text"
+                ],
+                "properties": {
+                    "uid": {
+                        "type": "string"
+                    },
+                    "from": {
+                        "type": "string"
+                    },
+                    "to": {
+                        "type": "string"
+                    },
+                    "subject": {
+                        "type": "string"
+                    },
+                    "attachments": {
+                        "type": "array",
+                        "items": {
+                            "oneOf": [
+                                {
+                                    "type": "object",
+                                    "required": [
+                                        "id",
+                                        "filename",
+                                        "size",
+                                        "type"
+                                    ],
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "filename": {
+                                            "type": "string"
+                                        },
+                                        "size": {
+                                            "type": "integer"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "created_at_epoch": {
+                        "type": "integer"
+                    },
+                    "html": {
+                        "type": "string"
+                    },
+                    "text": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "getAllDomains",
+            "url": "https://inboxes-com.p.rapidapi.com/domains",
+            "description": "get system domains you can choose fro",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://inboxes-com.p.rapidapi.com/domains\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"inboxes-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://inboxes-com.p.rapidapi.com/domains\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"inboxes-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "oneOf": [
+                        {
+                            "type": "object",
+                            "required": [
+                                "qdn"
+                            ],
+                            "properties": {
+                                "qdn": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "GetAttachment",
+            "url": "https://inboxes-com.p.rapidapi.com/attachments/UvB71VVQEoFUk1tsVroUFvU6aBa1j/8849fffe-586a-4052-84dd-818039a60bd9",
+            "description": "get download url for a sinlge attachment",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "attachmentId",
+                    "type": "STRING",
+                    "description": "The id of the attachment",
+                    "default": "8849fffe-586a-4052-84dd-818039a60bd9"
+                },
+                {
+                    "name": "messageId",
+                    "type": "STRING",
+                    "description": "The id of the Message",
+                    "default": "UvB71VVQEoFUk1tsVroUFvU6aBa1j"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://inboxes-com.p.rapidapi.com/attachments/UvB71VVQEoFUk1tsVroUFvU6aBa1j/8849fffe-586a-4052-84dd-818039a60bd9\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"inboxes-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://inboxes-com.p.rapidapi.com/attachments/{messageid}/{attachmentid}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"inboxes-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "required": [
+                    "download_url"
+                ],
+                "properties": {
+                    "download_url": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "GetInboxMessages",
+            "url": "https://inboxes-com.p.rapidapi.com/inboxes/me@getnada.com",
+            "description": "get all inbox messages",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "inboxId",
+                    "type": "STRING",
+                    "description": "The id of the inbox",
+                    "default": "me@getnada.com"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://inboxes-com.p.rapidapi.com/inboxes/me@getnada.com\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"inboxes-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://inboxes-com.p.rapidapi.com/inboxes/{inboxid}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"inboxes-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "oneOf": [
+                        {
+                            "type": "object",
+                            "required": [
+                                "uid",
+                                "from",
+                                "to",
+                                "subject",
+                                "created_at",
+                                "created_at_epoch"
+                            ],
+                            "properties": {
+                                "uid": {
+                                    "type": "string"
+                                },
+                                "from": {
+                                    "type": "string"
+                                },
+                                "to": {
+                                    "type": "string"
+                                },
+                                "subject": {
+                                    "type": "string"
+                                },
+                                "created_at": {
+                                    "type": "string"
+                                },
+                                "created_at_epoch": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

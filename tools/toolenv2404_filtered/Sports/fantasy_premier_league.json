@@ -1,0 +1,646 @@
+{
+    "product_id": "api_9cf76952-c0bb-4f99-b48e-f83ff167b33d",
+    "tool_description": "Unofficial Wrapper API for the Fantasy Premier League",
+    "home_url": "https://rapidapi.com/pyuser/api/fantasy-premier-league3/",
+    "name": "Fantasy Premier League",
+    "title": "Fantasy Premier League",
+    "pricing": "FREEMIUM",
+    "tool_name": "Fantasy Premier League",
+    "score": {
+        "avgServiceLevel": 93,
+        "avgLatency": 332,
+        "avgSuccessRate": 93,
+        "popularityScore": 8.1,
+        "__typename": "Score"
+    },
+    "host": "fantasy-premier-league3.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Search for League",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/fpl/leagues",
+            "description": "Find a League by league name. Returns Max 10 results per page",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "League Name ",
+                    "default": "premier_league"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "p",
+                    "type": "NUMBER",
+                    "description": "Results Page Number.",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fpl/leagues\"\nquerystring = {\"p\": \"0\", \"name\": \"premier_league\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fpl/leagues\"\nquerystring = {\"p\": \"0\", \"name\": \"premier_league\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Search for Manager",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/fpl/managers",
+            "description": "Find a Manager by real name. Returns Max 10 results per page",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "The Name of the Manager You are searching for.",
+                    "default": "john doe"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "p",
+                    "type": "NUMBER",
+                    "description": "Page Number for results. Note, adding a page number larger than available number of pages will return a 400 error. Page count returned in response",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fpl/managers\"\nquerystring = {\"p\": \"1\", \"name\": \"john doe\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fpl/managers\"\nquerystring = {\"p\": \"1\", \"name\": \"john doe\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "H2H League",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/fpl/leagues/h2h/310476",
+            "description": "Return data on a Head-to-Head (H2H) league by provided league id",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "310476"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "ep",
+                    "type": "STRING",
+                    "description": "Entries Page. Data has a \\\\\\\\\\\\\\\"has_next\\\\\\\\\\\\\\\" boolean to verify if next page exists",
+                    "default": ""
+                },
+                {
+                    "name": "sp",
+                    "type": "STRING",
+                    "description": "Standings Page. Data has a \\\\\\\\\\\\\\\"has_next\\\\\\\\\\\\\\\" boolean to verify if next page exists",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fpl/leagues/h2h/310476\"\nquerystring = {\"ep\": \"\", \"sp\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fpl/leagues/h2h/{id}\"\nquerystring = {\"ep\": \"\", \"sp\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Classic Leagues",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/fpl/leagues/classic/2130809",
+            "description": "Return data on a classic league by provided league id",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "2130809"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "ep",
+                    "type": "STRING",
+                    "description": "Entries Page. Data has a \\\"has_next\\\" boolean to verify if next page exists",
+                    "default": ""
+                },
+                {
+                    "name": "sp",
+                    "type": "STRING",
+                    "description": "Standings Page. Data has a \\\"has_next\\\" boolean to verify if next page exists",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fpl/leagues/classic/2130809\"\nquerystring = {\"ep\": \"\", \"sp\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fpl/leagues/classic/{id}\"\nquerystring = {\"ep\": \"\", \"sp\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Fixtures",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/fixtures",
+            "description": "Return list of fixtures in the FPL season",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "gw",
+                    "type": "STRING",
+                    "description": "Gameweek Filter",
+                    "default": "10"
+                },
+                {
+                    "name": "h",
+                    "type": "STRING",
+                    "description": "Home Team ID",
+                    "default": ""
+                },
+                {
+                    "name": "as",
+                    "type": "STRING",
+                    "description": "Away Team Score",
+                    "default": ""
+                },
+                {
+                    "name": "hs",
+                    "type": "STRING",
+                    "description": "Home Team Score",
+                    "default": ""
+                },
+                {
+                    "name": "a",
+                    "type": "STRING",
+                    "description": "Away Team ID",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fixtures\"\nquerystring = {\"gw\": \"10\", \"h\": \"\", \"as\": \"\", \"hs\": \"\", \"a\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fixtures\"\nquerystring = {\"gw\": \"10\", \"h\": \"\", \"as\": \"\", \"hs\": \"\", \"a\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Teams Set-Piece Notes",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/team/notes/set-pieces",
+            "description": "Returns a list of team notes for updates around set-piece takers",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "team",
+                    "type": "STRING",
+                    "description": "Filter results by the provided team id",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/team/notes/set-pieces\"\nquerystring = {\"team\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/team/notes/set-pieces\"\nquerystring = {\"team\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Dream Team",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/team/dream-team/10",
+            "description": "Return the FPL dream-team for a chosen gameweek",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "gameweek",
+                    "type": "string",
+                    "description": "",
+                    "default": "10"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/team/dream-team/10\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/team/dream-team/{gameweek}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Team",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/team/1",
+            "description": "Return data for a chosen team",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/team/1\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/team/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Teams",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/teams",
+            "description": "Return list of all teams in the premier league",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Search data by team names, e.g \\\"Arsenal\\\"",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/teams\"\nquerystring = {\"q\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/teams\"\nquerystring = {\"q\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "FPL Player Historic Stats",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/fpl/history/4",
+            "description": "Returns FPL player performance stats for previous FPL seasons",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "4"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "s",
+                    "type": "STRING",
+                    "description": "Filter data and return stats only for the provided season, i.e \\\"2019/20\\\", \\\"2014/15\\\" etc. ",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fpl/history/4\"\nquerystring = {\"s\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fpl/history/{id}\"\nquerystring = {\"s\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "FPL Player gameweek stats",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/fpl/stats/4",
+            "description": "Returns FPL player performance stats for each gameweek so far in the season",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "4"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "gw",
+                    "type": "STRING",
+                    "description": "Filter data to return stats for only the provided gameweek",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fpl/stats/4\"\nquerystring = {\"gw\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fpl/stats/{id}\"\nquerystring = {\"gw\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "FPL Player chips used",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/fpl/chips/4",
+            "description": "Returns the chips used by the provided FPL player, i.e wildcard, triple captain, free hit",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "4"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "gw",
+                    "type": "STRING",
+                    "description": "Filter results by gameweek to find which chips an FPL player used in the provided gameweek",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fpl/chips/4\"\nquerystring = {\"gw\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fpl/chips/{id}\"\nquerystring = {\"gw\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "FPL Player Leagues",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/fpl/player-leagues/4",
+            "description": "Return a list of leagues a chosen FPL player is part of",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "4"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fpl/player-leagues/4\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fpl/player-leagues/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "FPL Status",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/fpl/status",
+            "description": "Return the status of FPL after the latest gameweek, i.e. bonus points added, leagues updated",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fpl/status\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fpl/status\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "FPL Player Picks for Gameweek",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/fpl/picks/4/10",
+            "description": "Return an FPL players selected team for a chosen gameweek",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "gameweek",
+                    "type": "string",
+                    "description": "",
+                    "default": "10"
+                },
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "4"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fpl/picks/4/10\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/fpl/picks/{id}/{gameweek}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Player History",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/player/4/history",
+            "description": "Return FPL statistics for a provided player from previous seasons",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "4"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "cs",
+                    "type": "STRING",
+                    "description": "Filter data and return historic season data where the player kept the provided amount of cleansheets",
+                    "default": ""
+                },
+                {
+                    "name": "gls",
+                    "type": "STRING",
+                    "description": "Filter data and return historic season data where the player scored the provided amount of goals",
+                    "default": ""
+                },
+                {
+                    "name": "ast",
+                    "type": "STRING",
+                    "description": "Filter data and return historic season data where the player assisted the provided amount of goals",
+                    "default": ""
+                },
+                {
+                    "name": "s",
+                    "type": "STRING",
+                    "description": "Filter by season, E.g \\\"2020/21\\\", \\\"2019/20\\\"",
+                    "default": "2020/21"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/player/4/history\"\nquerystring = {\"cs\": \"\", \"gls\": \"\", \"ast\": \"\", \"s\": \"2020/21\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/player/{id}/history\"\nquerystring = {\"cs\": \"\", \"gls\": \"\", \"ast\": \"\", \"s\": \"2020/21\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Player Results",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/player/1/results",
+            "description": "Get all match results in the season so far for a player by a provided player id",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "gw",
+                    "type": "STRING",
+                    "description": "Filter the data to return results that took place on the provided gameweek",
+                    "default": ""
+                },
+                {
+                    "name": "ast",
+                    "type": "STRING",
+                    "description": "Filter data to return results where the player assisted the provided amount of goals",
+                    "default": ""
+                },
+                {
+                    "name": "as",
+                    "type": "STRING",
+                    "description": "Away Score filter to return data where the away team scored the provided amount of goals",
+                    "default": ""
+                },
+                {
+                    "name": "gls",
+                    "type": "STRING",
+                    "description": "Filter data to return results where the player scored the provided amount of goals",
+                    "default": ""
+                },
+                {
+                    "name": "cs",
+                    "type": "STRING",
+                    "description": "Filter the data to return the results where the player kept a cleansheet (1 for a cleansheet, 0 for no cleansheet)",
+                    "default": ""
+                },
+                {
+                    "name": "hs",
+                    "type": "STRING",
+                    "description": "Home Score filter to return data where the home team scored the provided amount of goals",
+                    "default": ""
+                },
+                {
+                    "name": "opp",
+                    "type": "STRING",
+                    "description": "Opponent team id to filter results",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/player/1/results\"\nquerystring = {\"gw\": \"\", \"ast\": \"\", \"as\": \"\", \"gls\": \"\", \"cs\": \"\", \"hs\": \"\", \"opp\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/player/{id}/results\"\nquerystring = {\"gw\": \"\", \"ast\": \"\", \"as\": \"\", \"gls\": \"\", \"cs\": \"\", \"hs\": \"\", \"opp\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Player Fixtures",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/player/1/fixtures",
+            "description": "Get all remaining fixtures for a player by a provided player id",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "at",
+                    "type": "STRING",
+                    "description": "Away Team ID filter to return fixtures with the provided away team",
+                    "default": ""
+                },
+                {
+                    "name": "gw",
+                    "type": "STRING",
+                    "description": "gameweek filter to return fixture for the given gameweek",
+                    "default": ""
+                },
+                {
+                    "name": "ht",
+                    "type": "STRING",
+                    "description": "Home Team ID filter to return fixtures with the provided home team",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/player/1/fixtures\"\nquerystring = {\"at\": \"\", \"gw\": \"\", \"ht\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/player/{id}/fixtures\"\nquerystring = {\"at\": \"\", \"gw\": \"\", \"ht\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Player simple",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/player/1/simple",
+            "description": "Return simplified details of a player by provided player id",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/player/1/simple\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/player/{id}/simple\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Player",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/player/1",
+            "description": "Return details of a player by provide player id",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/player/1\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/player/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Players Simple",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/players/simple",
+            "description": "Return list of all players included in FPL in a simplified form, only including the player's first name, last name, web name, fpl cost, team id and their fpl photo address",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Search query to filter by player name",
+                    "default": "Jorginho"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/players/simple\"\nquerystring = {\"q\": \"Jorginho\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/players/simple\"\nquerystring = {\"q\": \"Jorginho\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Players",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/players",
+            "description": "Return list of all players included in FPL",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Search query to filter by player name",
+                    "default": "Jorginho"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/players\"\nquerystring = {\"q\": \"Jorginho\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/players\"\nquerystring = {\"q\": \"Jorginho\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Gameweeks by Month",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/data/phases",
+            "description": "Returns list of month objects and the corresponding first and final gameweeks that occur in each month",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "gw",
+                    "type": "STRING",
+                    "description": "Filter by Gameweek",
+                    "default": "10"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/data/phases\"\nquerystring = {\"gw\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/data/phases\"\nquerystring = {\"gw\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Player Positions",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/data/types",
+            "description": "Return data on each player position",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/data/types\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/data/types\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Total FPL players",
+            "url": "https://fantasy-premier-league3.p.rapidapi.com/data/players",
+            "description": "Returns total number of FPL players for the current season",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/data/players\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fantasy-premier-league3.p.rapidapi.com/data/players\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fantasy-premier-league3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

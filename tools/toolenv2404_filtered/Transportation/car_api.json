@@ -1,0 +1,1964 @@
+{
+    "product_id": "api_fce33be1-2c38-4b93-ad1e-d5c471ccfc37",
+    "tool_description": "Search vehicles sold in the United States by year, make, model, trim, engine, body, mileage, VIN decoder and more. Note, the Basic plan is for development only and will only return data for vehicles sold in 2015-2020. To unlock all data you must subscribe to Pro, Ultra, or Mega plans.",
+    "home_url": "https://rapidapi.com/carapi/api/car-api2/",
+    "name": "Car API",
+    "title": "Car API",
+    "pricing": "FREEMIUM",
+    "tool_name": "Car API",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 292,
+        "avgSuccessRate": 98,
+        "popularityScore": 9.7,
+        "__typename": "Score"
+    },
+    "host": "car-api2.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "VIN Decoder",
+            "url": "https://car-api2.p.rapidapi.com/api/vin/1GTG6CEN0L1139305",
+            "description": "Decodes Vehicle Identification Numbers. The result will include a list of specifications in the specs property and a list of all possible trims matching the VIN in the trims property.\n\nFor non-paying users, all VINs for 2015-2020 models (e.g. 1GTG6CEN0L1139305) will be returned, otherwise data is hidden. Paying users have full data access.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "vin",
+                    "type": "string",
+                    "description": "",
+                    "default": "1GTG6CEN0L1139305"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/vin/1GTG6CEN0L1139305\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/vin/{vin}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Trims",
+            "url": "https://car-api2.p.rapidapi.com/api/trims",
+            "description": "To include additional information about the returned body (such as year, make, model and trim) request with the query parameter as verbose=yes.\n\nFor complex queries you may use the json field to send an array of URL encoded JSON conditions, example:\n\n`[{\"field\": \"year\", \"op\": \">=\", \"val\": 2010}, {\"field\": \"year\", \"op\": \"<=\", \"val\": 2020}]`\n\nAllowed operators are: `>`, `<`, `>=`, `<=`, `in`, `not in`, `like`, `not like`, `is null` and `not null`.\n\nAllowed json search fields are: year, make, model, trim, bodies.type, engines.cam_type, engines.cylinders, engines.drive_type, engines.engine_type, engines.fuel_type, engines.transmission, engines.valve_timing, engines.valves, make_id, make_model_id, make_model_trim_id, created, and modified.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "make",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make_model_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "model",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "trim",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "verbose",
+                    "type": "STRING",
+                    "description": "Includes make, model and trim",
+                    "default": "yes"
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "id"
+                },
+                {
+                    "name": "year",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2020"
+                },
+                {
+                    "name": "direction",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "asc"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "json",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/trims\"\nquerystring = {\"make\": \"\", \"make_id\": \"\", \"make_model_id\": \"\", \"model\": \"\", \"trim\": \"\", \"page\": \"\", \"verbose\": \"yes\", \"sort\": \"id\", \"year\": \"2020\", \"direction\": \"asc\", \"limit\": \"\", \"json\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/trims\"\nquerystring = {\"make\": \"\", \"make_id\": \"\", \"make_model_id\": \"\", \"model\": \"\", \"trim\": \"\", \"page\": \"\", \"verbose\": \"yes\", \"sort\": \"id\", \"year\": \"2020\", \"direction\": \"asc\", \"limit\": \"\", \"json\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Models",
+            "url": "https://car-api2.p.rapidapi.com/api/models",
+            "description": "Search models by year, make, model, trim or make_id.\n\nTo include the models make in the description request with the query parameter as `verbose=yes`.\n\nFor complex queries you may use the json field to send an array of URL encoded JSON conditions, example:\n\n`[{\"field\": \"make\", \"op\": \"in\", \"val\": [\"Ford\", \"Acura\"]}, {\"field\": \"year\", \"op\": \">=\", \"val\": 2010}]\n\nAllowed json operators are: =, !=, >, <, >=, <=, in, not in, like, not like, not null, and is null.\n\nAllowed json search fields are: year, make, model, make_id, created, and modified.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "direction",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "asc"
+                },
+                {
+                    "name": "year",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2020"
+                },
+                {
+                    "name": "verbose",
+                    "type": "STRING",
+                    "description": "Includes make, model and trim",
+                    "default": "yes"
+                },
+                {
+                    "name": "make_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "id"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "model",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/models\"\nquerystring = {\"direction\": \"asc\", \"year\": \"2020\", \"verbose\": \"yes\", \"make_id\": \"\", \"sort\": \"id\", \"page\": \"\", \"make\": \"\", \"limit\": \"\", \"model\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/models\"\nquerystring = {\"direction\": \"asc\", \"year\": \"2020\", \"verbose\": \"yes\", \"make_id\": \"\", \"sort\": \"id\", \"page\": \"\", \"make\": \"\", \"limit\": \"\", \"model\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Engines",
+            "url": "https://car-api2.p.rapidapi.com/api/engines",
+            "description": "To include additional information about the returned body (such as year, make, model and trim) request with the query parameter as verbose=yes.\n\nFor complex queries you may use the json field to send an array of URL encoded JSON conditions, example:\n\n`[{\"field\": \"horsepower_hp\", \"op\": \">=\", \"val\": 100}, {\"field\": \"horsepower_hp\", \"op\": \"<=\", \"val\": 300}]`\n\nSee /api/vehicle-attributes for a complete list of vehicle attributes.\n\nAllowed operators are: `>`, `<`, `>=`, `<=`, `in`, `not in`, `like`, `not like`, `is null` and `not null`.\n\nAllowed json search fields are: year, make, model, trim, fuel_type, engine_type, transmission, drive_type, cam_type, valve_timing, valves, horsepower_hp, size, cylinders, make_id, make_model_id, and make_model_trim_id.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "year",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "direction",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "asc"
+                },
+                {
+                    "name": "valves",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "valve_timing",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "fuel_type",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "json",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "model",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make_model_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "trim",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "cam_type",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "engine_type",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make_model_trim_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "drive_type",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "verbose",
+                    "type": "STRING",
+                    "description": "Includes make, model and trim",
+                    "default": "yes"
+                },
+                {
+                    "name": "make_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "cylinders",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "id"
+                },
+                {
+                    "name": "size",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "horsepower_hp",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "transmission",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/engines\"\nquerystring = {\"year\": \"\", \"direction\": \"asc\", \"valves\": \"\", \"valve_timing\": \"\", \"fuel_type\": \"\", \"json\": \"\", \"model\": \"\", \"make\": \"\", \"make_model_id\": \"\", \"trim\": \"\", \"cam_type\": \"\", \"engine_type\": \"\", \"make_model_trim_id\": \"\", \"limit\": \"\", \"drive_type\": \"\", \"verbose\": \"yes\", \"make_id\": \"\", \"cylinders\": \"\", \"page\": \"\", \"sort\": \"id\", \"size\": \"\", \"horsepower_hp\": \"\", \"transmission\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/engines\"\nquerystring = {\"year\": \"\", \"direction\": \"asc\", \"valves\": \"\", \"valve_timing\": \"\", \"fuel_type\": \"\", \"json\": \"\", \"model\": \"\", \"make\": \"\", \"make_model_id\": \"\", \"trim\": \"\", \"cam_type\": \"\", \"engine_type\": \"\", \"make_model_trim_id\": \"\", \"limit\": \"\", \"drive_type\": \"\", \"verbose\": \"yes\", \"make_id\": \"\", \"cylinders\": \"\", \"page\": \"\", \"sort\": \"id\", \"size\": \"\", \"horsepower_hp\": \"\", \"transmission\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "_embedded": {
+                        "items": {
+                            "type": "object",
+                            "allOf": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "links": {
+                                            "type": "object",
+                                            "properties": {
+                                                "self": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "href": {
+                                                            "type": "string",
+                                                            "format": "url"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "properties": {
+                                        "id": {
+                                            "minLength": 1,
+                                            "type": "integer",
+                                            "format": "int64",
+                                            "minimum": -9223372036854776000,
+                                            "maximum": 9223372036854776000
+                                        },
+                                        "make_model_trim_id": {
+                                            "minLength": 1,
+                                            "type": "integer",
+                                            "format": "int64",
+                                            "minimum": -9223372036854776000,
+                                            "maximum": 9223372036854776000
+                                        },
+                                        "engine_type": {
+                                            "maxLength": 32,
+                                            "type": "string",
+                                            "enum": [
+                                                "diesel",
+                                                "electric",
+                                                "electric (fuel cell)",
+                                                "flex-fuel (FFV)",
+                                                "gas",
+                                                "hybrid",
+                                                "mild hybrid",
+                                                "natural gas (CNG)",
+                                                "plug-in hybrid"
+                                            ]
+                                        },
+                                        "fuel_type": {
+                                            "maxLength": 64,
+                                            "type": "string",
+                                            "enum": [
+                                                "diesel fuel",
+                                                "electric",
+                                                "flex-fuel (premium unleaded recommended/E85)",
+                                                "flex-fuel (premium unleaded required/E85)",
+                                                "flex-fuel (unleaded/E85)",
+                                                "flex-fuel (unleaded/natural gas)",
+                                                "hydrogen",
+                                                "natural gas",
+                                                "premium unleaded (recommended)",
+                                                "premium unleaded (required)",
+                                                "regular unleaded"
+                                            ]
+                                        },
+                                        "cylinders": {
+                                            "maxLength": 8,
+                                            "type": "string",
+                                            "format": "string",
+                                            "enum": [
+                                                "fla",
+                                                "I2",
+                                                "I3",
+                                                "I4",
+                                                "I5",
+                                                "I6",
+                                                "rot",
+                                                "V10",
+                                                "V12",
+                                                "V6",
+                                                "V8",
+                                                "W12",
+                                                "W16",
+                                                "W8"
+                                            ]
+                                        },
+                                        "size": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "minimum": -3.402823669209385e+38,
+                                            "maximum": 3.402823669209385e+38
+                                        },
+                                        "horsepower_hp": {
+                                            "type": "integer",
+                                            "format": "int64",
+                                            "minimum": -9223372036854776000,
+                                            "maximum": 9223372036854776000
+                                        },
+                                        "horsepower_rpm": {
+                                            "type": "integer",
+                                            "format": "int64",
+                                            "minimum": -9223372036854776000,
+                                            "maximum": 9223372036854776000
+                                        },
+                                        "torque_ft_lbs": {
+                                            "type": "integer",
+                                            "format": "int64",
+                                            "minimum": -9223372036854776000,
+                                            "maximum": 9223372036854776000
+                                        },
+                                        "torque_rpm": {
+                                            "type": "integer",
+                                            "format": "int64",
+                                            "minimum": -9223372036854776000,
+                                            "maximum": 9223372036854776000
+                                        },
+                                        "valves": {
+                                            "type": "integer",
+                                            "format": "int32",
+                                            "minimum": -2147483648,
+                                            "maximum": 2147483647
+                                        },
+                                        "valve_timing": {
+                                            "maxLength": 32,
+                                            "type": "string",
+                                            "enum": [
+                                                "Variable"
+                                            ]
+                                        },
+                                        "cam_type": {
+                                            "maxLength": 64,
+                                            "type": "string",
+                                            "enum": [
+                                                "Double overhead cam (DOHC)",
+                                                "Overhead valves (OHV)",
+                                                "Single overhead cam (SOHC)"
+                                            ]
+                                        },
+                                        "drive_type": {
+                                            "maxLength": 32,
+                                            "type": "string",
+                                            "enum": [
+                                                "all wheel drive",
+                                                "four wheel drive",
+                                                "front wheel drive",
+                                                "rear wheel drive"
+                                            ]
+                                        },
+                                        "transmission": {
+                                            "maxLength": 64,
+                                            "type": "string",
+                                            "enum": [
+                                                "1-speed direct drive",
+                                                "10-speed automatic",
+                                                "10-speed shiftable automatic",
+                                                "2-speed",
+                                                "2-speed automated manual",
+                                                "3-speed automatic",
+                                                "4-speed automatic",
+                                                "4-speed manual",
+                                                "4-speed shiftable automatic",
+                                                "5-speed automated manual",
+                                                "5-speed automatic",
+                                                "5-speed manual",
+                                                "5-speed shiftable automatic",
+                                                "6-speed automated manual",
+                                                "6-speed automatic",
+                                                "6-speed manual",
+                                                "6-speed shiftable automatic",
+                                                "7-speed automated manual",
+                                                "7-speed automatic",
+                                                "7-speed manual",
+                                                "7-speed shiftable automatic",
+                                                "8-speed automated manual",
+                                                "8-speed automatic",
+                                                "8-speed shiftable automatic",
+                                                "9-speed automated manual",
+                                                "9-speed automatic",
+                                                "9-speed shiftable automatic",
+                                                "continuously variable-speed automatic",
+                                                "continuously variable-speed shiftable automatic",
+                                                "electrically variable-speed automatic"
+                                            ]
+                                        }
+                                    },
+                                    "type": "object",
+                                    "description": "Engine specifications and transmission type"
+                                }
+                            ]
+                        },
+                        "type": "array"
+                    }
+                },
+                "allOf": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "links": {
+                                "type": "object",
+                                "properties": {
+                                    "self": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    },
+                                    "next": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    },
+                                    "prev": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    },
+                                    "first": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    },
+                                    "properties": {
+                                        "href": {
+                                            "type": "string",
+                                            "format": "url",
+                                            "example": "/collection?page=:number"
+                                        }
+                                    }
+                                },
+                                "last": {
+                                    "type": "object",
+                                    "properties": {
+                                        "href": {
+                                            "type": "string",
+                                            "format": "url",
+                                            "example": "/collection?page=:number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Bodies",
+            "url": "https://car-api2.p.rapidapi.com/api/bodies",
+            "description": "To include additional information about the returned body (such as year, make, model and trim) request with the query parameter as verbose=yes.\n\nFor complex queries you may use the json field to send an array of URL encoded JSON conditions, example:\n\n`[{\"field\": \"doors\", \"op\": \">=\", \"val\": 4}, {\"field\": \"type\", \"op\": \"in\", \"val\": [\"SUV\",\"Van\"]}]`\n\nSee /api/vehicle-attributes for a complete list of vehicle attributes.\n\nAllowed operators are: `>`, `<`, `>=`, `<=`, `in`, `not in`, `like`, `not like`, `is null` and `not null`.\n\nAllowed json search fields are: year, make, model, trim, type, doors, make_id, make_model_id, and make_model_trim_id.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "make_model_trim_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "direction",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "asc"
+                },
+                {
+                    "name": "year",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "verbose",
+                    "type": "STRING",
+                    "description": "Includes make, model and trim",
+                    "default": "yes"
+                },
+                {
+                    "name": "json",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "trim",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "id"
+                },
+                {
+                    "name": "make_model_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "model",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "doors",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/bodies\"\nquerystring = {\"make_model_trim_id\": \"\", \"direction\": \"asc\", \"year\": \"\", \"page\": \"\", \"verbose\": \"yes\", \"json\": \"\", \"make_id\": \"\", \"trim\": \"\", \"sort\": \"id\", \"make_model_id\": \"\", \"model\": \"\", \"make\": \"\", \"type\": \"\", \"limit\": \"\", \"doors\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/bodies\"\nquerystring = {\"make_model_trim_id\": \"\", \"direction\": \"asc\", \"year\": \"\", \"page\": \"\", \"verbose\": \"yes\", \"json\": \"\", \"make_id\": \"\", \"trim\": \"\", \"sort\": \"id\", \"make_model_id\": \"\", \"model\": \"\", \"make\": \"\", \"type\": \"\", \"limit\": \"\", \"doors\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "_embedded": {
+                        "items": {
+                            "type": "object",
+                            "allOf": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "links": {
+                                            "type": "object",
+                                            "properties": {
+                                                "self": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "href": {
+                                                            "type": "string",
+                                                            "format": "url"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "properties": {
+                                        "id": {
+                                            "minLength": 1,
+                                            "type": "integer",
+                                            "format": "int64",
+                                            "minimum": -9223372036854776000,
+                                            "maximum": 9223372036854776000
+                                        },
+                                        "make_model_trim_id": {
+                                            "minLength": 1,
+                                            "type": "integer",
+                                            "format": "int64",
+                                            "minimum": -9223372036854776000,
+                                            "maximum": 9223372036854776000
+                                        },
+                                        "type": {
+                                            "minLength": 1,
+                                            "maxLength": 32,
+                                            "type": "string",
+                                            "enum": [
+                                                "Cargo Van",
+                                                "Convertible",
+                                                "Coupe",
+                                                "Ext Van",
+                                                "Hatchback",
+                                                "Minivan",
+                                                "Passenger Van",
+                                                "Sedan",
+                                                "SUV",
+                                                "Truck (Access Cab)",
+                                                "Truck (Cab Plus)",
+                                                "Truck (Club Cab)",
+                                                "Truck (Crew Cab)",
+                                                "Truck (CrewMax)",
+                                                "Truck (Double Cab)",
+                                                "Truck (Extended Cab)",
+                                                "Truck (King Cab)",
+                                                "Truck (Mega Cab)",
+                                                "Truck (Quad Cab)",
+                                                "Truck (Regular Cab)",
+                                                "Truck (SuperCab)",
+                                                "Truck (SuperCrew)",
+                                                "Truck (Xtracab)",
+                                                "Van",
+                                                "Wagon"
+                                            ]
+                                        },
+                                        "doors": {
+                                            "type": "integer",
+                                            "format": "int32",
+                                            "minimum": -2147483648,
+                                            "maximum": 2147483647
+                                        },
+                                        "length": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "minimum": -3.402823669209385e+38,
+                                            "maximum": 3.402823669209385e+38
+                                        },
+                                        "width": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "minimum": -3.402823669209385e+38,
+                                            "maximum": 3.402823669209385e+38
+                                        },
+                                        "seats": {
+                                            "type": "integer",
+                                            "format": "int32",
+                                            "minimum": -2147483648,
+                                            "maximum": 2147483647
+                                        },
+                                        "height": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "minimum": -3.402823669209385e+38,
+                                            "maximum": 3.402823669209385e+38
+                                        },
+                                        "wheel_base": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "minimum": -3.402823669209385e+38,
+                                            "maximum": 3.402823669209385e+38
+                                        },
+                                        "front_track": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "minimum": -3.402823669209385e+38,
+                                            "maximum": 3.402823669209385e+38
+                                        },
+                                        "rear_track": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "minimum": -3.402823669209385e+38,
+                                            "maximum": 3.402823669209385e+38
+                                        },
+                                        "ground_clearance": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "minimum": -3.402823669209385e+38,
+                                            "maximum": 3.402823669209385e+38
+                                        },
+                                        "cargo_capacity": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "minimum": -3.402823669209385e+38,
+                                            "maximum": 3.402823669209385e+38
+                                        },
+                                        "max_cargo_capacity": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "minimum": -3.402823669209385e+38,
+                                            "maximum": 3.402823669209385e+38
+                                        },
+                                        "curb_weight": {
+                                            "type": "integer",
+                                            "format": "int64",
+                                            "minimum": -9223372036854776000,
+                                            "maximum": 9223372036854776000
+                                        },
+                                        "gross_weight": {
+                                            "type": "integer",
+                                            "format": "int64",
+                                            "minimum": -9223372036854776000,
+                                            "maximum": 9223372036854776000
+                                        },
+                                        "max_payload": {
+                                            "type": "integer",
+                                            "format": "int64",
+                                            "minimum": -9223372036854776000,
+                                            "maximum": 9223372036854776000
+                                        },
+                                        "max_towing_capacity": {
+                                            "type": "integer",
+                                            "format": "int64",
+                                            "minimum": -9223372036854776000,
+                                            "maximum": 9223372036854776000
+                                        }
+                                    },
+                                    "type": "object",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "type": "array"
+                    }
+                },
+                "allOf": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "links": {
+                                "type": "object",
+                                "properties": {
+                                    "self": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    },
+                                    "next": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    },
+                                    "prev": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    },
+                                    "first": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    },
+                                    "properties": {
+                                        "href": {
+                                            "type": "string",
+                                            "format": "url",
+                                            "example": "/collection?page=:number"
+                                        }
+                                    }
+                                },
+                                "last": {
+                                    "type": "object",
+                                    "properties": {
+                                        "href": {
+                                            "type": "string",
+                                            "format": "url",
+                                            "example": "/collection?page=:number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Years",
+            "url": "https://car-api2.p.rapidapi.com/api/years",
+            "description": "For complex queries you may use the json field to send an array of URL encoded JSON conditions, example:\n\n`[{\"field\": \"make\", \"op\": \"in\", \"val\": [\"Scion\", \"Tesla\"]}]`\n\nAllowed operators are: `>`, `<`, `>=`, `<=`, `in`, `not in`, `like`, `not like`, `is null` and `not null`.\n\nAllowed search fields are: `year`, `make`, `model`, `trim`, `make_id`, and `make_model_id`.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "make_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "year",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "json",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make_model_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "model",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "trim",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/years\"\nquerystring = {\"make_id\": \"\", \"make\": \"\", \"year\": \"\", \"json\": \"\", \"make_model_id\": \"\", \"model\": \"\", \"trim\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/years\"\nquerystring = {\"make_id\": \"\", \"make\": \"\", \"year\": \"\", \"json\": \"\", \"make_model_id\": \"\", \"model\": \"\", \"trim\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Interior Colors",
+            "url": "https://car-api2.p.rapidapi.com/api/interior-colors",
+            "description": "To include additional information about the returned body (such as year, make, model and trim) request with the query parameter as verbose=yes.\n\nFor complex queries you may use the json field to send an array of URL encoded JSON conditions, example:\n\n[{\"field\": \"name\", \"op\": \"in\", \"val\": [\"red\", \"blue\"]}]\n\nAllowed operators are: `>`, `<`, `>=`, `<=`, `in`, `not in`, `like`, `not like`, `is null` and `not null`.\n\nAllowed json search fields are: year, make, model, trim, name, rgb, make_id, make_model_id, and make_model_trim_i",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "model",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "trim",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "direction",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "asc"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make_model_trim_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "year",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "rgb",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "id"
+                },
+                {
+                    "name": "verbose",
+                    "type": "STRING",
+                    "description": "Includes make, model and trim",
+                    "default": "yes"
+                },
+                {
+                    "name": "json",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make_model_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/interior-colors\"\nquerystring = {\"model\": \"\", \"name\": \"\", \"trim\": \"\", \"page\": \"\", \"direction\": \"asc\", \"limit\": \"\", \"make_model_trim_id\": \"\", \"year\": \"\", \"rgb\": \"\", \"sort\": \"id\", \"verbose\": \"yes\", \"json\": \"\", \"make_id\": \"\", \"make\": \"\", \"make_model_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/interior-colors\"\nquerystring = {\"model\": \"\", \"name\": \"\", \"trim\": \"\", \"page\": \"\", \"direction\": \"asc\", \"limit\": \"\", \"make_model_trim_id\": \"\", \"year\": \"\", \"rgb\": \"\", \"sort\": \"id\", \"verbose\": \"yes\", \"json\": \"\", \"make_id\": \"\", \"make\": \"\", \"make_model_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "_embedded": {
+                        "items": {
+                            "type": "object",
+                            "allOf": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "links": {
+                                            "type": "object",
+                                            "properties": {
+                                                "self": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "href": {
+                                                            "type": "string",
+                                                            "format": "url"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "properties": {
+                                        "id": {
+                                            "minLength": 1,
+                                            "type": "integer",
+                                            "format": "int64",
+                                            "minimum": -9223372036854776000,
+                                            "maximum": 9223372036854776000
+                                        },
+                                        "make_model_trim_id": {
+                                            "minLength": 1,
+                                            "type": "integer",
+                                            "format": "int64",
+                                            "minimum": -9223372036854776000,
+                                            "maximum": 9223372036854776000
+                                        },
+                                        "name": {
+                                            "minLength": 1,
+                                            "maxLength": 128,
+                                            "type": "string"
+                                        },
+                                        "rgb": {
+                                            "maxLength": 16,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "type": "array"
+                    }
+                },
+                "allOf": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "links": {
+                                "type": "object",
+                                "properties": {
+                                    "self": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    },
+                                    "next": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    },
+                                    "prev": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    },
+                                    "first": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    },
+                                    "properties": {
+                                        "href": {
+                                            "type": "string",
+                                            "format": "url",
+                                            "example": "/collection?page=:number"
+                                        }
+                                    }
+                                },
+                                "last": {
+                                    "type": "object",
+                                    "properties": {
+                                        "href": {
+                                            "type": "string",
+                                            "format": "url",
+                                            "example": "/collection?page=:number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Exterior Colors",
+            "url": "https://car-api2.p.rapidapi.com/api/exterior-colors",
+            "description": "To include additional information about the returned body (such as year, make, model and trim) request with the query parameter as verbose=yes.\n\nFor complex queries you may use the json field to send an array of URL encoded JSON conditions, example:\n\n[{\"field\": \"name\", \"op\": \"in\", \"val\": [\"red\", \"blue\"]}]\n\nAllowed operators are: `>`, `<`, `>=`, `<=`, `in`, `not in`, `like`, `not like`, `is null` and `not null`.\n\nAllowed json search fields are: year, make, model, trim, name, rgb, make_id, make_model_id, and make_model_trim_i",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "trim",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make_model_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "id"
+                },
+                {
+                    "name": "verbose",
+                    "type": "STRING",
+                    "description": "Includes make, model and trim",
+                    "default": "yes"
+                },
+                {
+                    "name": "rgb",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "direction",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "asc"
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "year",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "model",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make_model_trim_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "json",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/exterior-colors\"\nquerystring = {\"trim\": \"\", \"make_model_id\": \"\", \"sort\": \"id\", \"verbose\": \"yes\", \"rgb\": \"\", \"limit\": \"\", \"direction\": \"asc\", \"name\": \"\", \"make_id\": \"\", \"make\": \"\", \"year\": \"\", \"model\": \"\", \"make_model_trim_id\": \"\", \"page\": \"\", \"json\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/exterior-colors\"\nquerystring = {\"trim\": \"\", \"make_model_id\": \"\", \"sort\": \"id\", \"verbose\": \"yes\", \"rgb\": \"\", \"limit\": \"\", \"direction\": \"asc\", \"name\": \"\", \"make_id\": \"\", \"make\": \"\", \"year\": \"\", \"model\": \"\", \"make_model_trim_id\": \"\", \"page\": \"\", \"json\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "_embedded": {
+                        "items": {
+                            "type": "object",
+                            "allOf": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "links": {
+                                            "type": "object",
+                                            "properties": {
+                                                "self": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "href": {
+                                                            "type": "string",
+                                                            "format": "url"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "properties": {
+                                        "id": {
+                                            "minLength": 1,
+                                            "type": "integer",
+                                            "format": "int64",
+                                            "minimum": -9223372036854776000,
+                                            "maximum": 9223372036854776000
+                                        },
+                                        "make_model_trim_id": {
+                                            "minLength": 1,
+                                            "type": "integer",
+                                            "format": "int64",
+                                            "minimum": -9223372036854776000,
+                                            "maximum": 9223372036854776000
+                                        },
+                                        "name": {
+                                            "minLength": 1,
+                                            "maxLength": 128,
+                                            "type": "string"
+                                        },
+                                        "rgb": {
+                                            "maxLength": 16,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "type": "array"
+                    }
+                },
+                "allOf": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "links": {
+                                "type": "object",
+                                "properties": {
+                                    "self": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    },
+                                    "next": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    },
+                                    "prev": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    },
+                                    "first": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    },
+                                    "properties": {
+                                        "href": {
+                                            "type": "string",
+                                            "format": "url",
+                                            "example": "/collection?page=:number"
+                                        }
+                                    }
+                                },
+                                "last": {
+                                    "type": "object",
+                                    "properties": {
+                                        "href": {
+                                            "type": "string",
+                                            "format": "url",
+                                            "example": "/collection?page=:number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Makes",
+            "url": "https://car-api2.p.rapidapi.com/api/makes",
+            "description": "Search makes by name and year.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "direction",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "asc"
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "id"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "year",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/makes\"\nquerystring = {\"limit\": \"\", \"direction\": \"asc\", \"sort\": \"id\", \"page\": \"\", \"make\": \"\", \"year\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/makes\"\nquerystring = {\"limit\": \"\", \"direction\": \"asc\", \"sort\": \"id\", \"page\": \"\", \"make\": \"\", \"year\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "_embedded": {
+                        "items": {
+                            "type": "object",
+                            "allOf": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "links": {
+                                            "type": "object",
+                                            "properties": {
+                                                "self": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "href": {
+                                                            "type": "string",
+                                                            "format": "url"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "properties": {
+                                        "id": {
+                                            "minLength": 1,
+                                            "type": "integer",
+                                            "format": "int64",
+                                            "minimum": -9223372036854776000,
+                                            "maximum": 9223372036854776000
+                                        },
+                                        "name": {
+                                            "minLength": 1,
+                                            "maxLength": 32,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "type": "array"
+                    }
+                },
+                "allOf": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "links": {
+                                "type": "object",
+                                "properties": {
+                                    "self": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    },
+                                    "next": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    },
+                                    "prev": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    },
+                                    "first": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    },
+                                    "properties": {
+                                        "href": {
+                                            "type": "string",
+                                            "format": "url",
+                                            "example": "/collection?page=:number"
+                                        }
+                                    }
+                                },
+                                "last": {
+                                    "type": "object",
+                                    "properties": {
+                                        "href": {
+                                            "type": "string",
+                                            "format": "url",
+                                            "example": "/collection?page=:number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Vehicle Attributes",
+            "url": "https://car-api2.p.rapidapi.com/api/vehicle-attributes",
+            "description": "Returns all options for given attribute.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "attribute",
+                    "type": "STRING",
+                    "description": "The attribute options to be returned",
+                    "default": "bodies.type"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/vehicle-attributes\"\nquerystring = {\"attribute\": \"bodies.type\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/vehicle-attributes\"\nquerystring = {\"attribute\": \"bodies.type\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Mileages",
+            "url": "https://car-api2.p.rapidapi.com/api/mileages",
+            "description": "To include additional information about the returned body (such as year, make, model and trim) request with the query parameter as verbose=yes.\n\nFor complex queries you may use the json field to send an array of URL encoded JSON conditions, example:\n\n[{\"field\": \"combined_mpg\", \"op\": \">=\", \"val\": 20}, {\"field\": \"combined_mpg\", \"op\": \"<=\", \"val\": 30}]\n\nAllowed operators are: `>`, `<`, `>=`, `<=`, `in`, `not in`, `like`, `not like`, `is null` and `not null`.\n\nAllowed json search fields are: year, make, model, trim, combined_mpg, epa_city_mpg, epa_highway_mpg, range_city, range_highway, make_id, make_model_id, and make_model_trim_id.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "make_model_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make_model_trim_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "trim",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "json",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "range_highway",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "id"
+                },
+                {
+                    "name": "direction",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "asc"
+                },
+                {
+                    "name": "range_city",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "combined_mpg",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "verbose",
+                    "type": "STRING",
+                    "description": "Includes make, model and trim",
+                    "default": "yes"
+                },
+                {
+                    "name": "epa_highway_mpg",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "epa_city_mpg",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "model",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "year",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "make",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/mileages\"\nquerystring = {\"make_model_id\": \"\", \"limit\": \"\", \"make_model_trim_id\": \"\", \"trim\": \"\", \"json\": \"\", \"range_highway\": \"\", \"sort\": \"id\", \"direction\": \"asc\", \"range_city\": \"\", \"page\": \"\", \"combined_mpg\": \"\", \"verbose\": \"yes\", \"epa_highway_mpg\": \"\", \"epa_city_mpg\": \"\", \"model\": \"\", \"year\": \"\", \"make_id\": \"\", \"make\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/mileages\"\nquerystring = {\"make_model_id\": \"\", \"limit\": \"\", \"make_model_trim_id\": \"\", \"trim\": \"\", \"json\": \"\", \"range_highway\": \"\", \"sort\": \"id\", \"direction\": \"asc\", \"range_city\": \"\", \"page\": \"\", \"combined_mpg\": \"\", \"verbose\": \"yes\", \"epa_highway_mpg\": \"\", \"epa_city_mpg\": \"\", \"model\": \"\", \"year\": \"\", \"make_id\": \"\", \"make\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Trim View",
+            "url": "https://car-api2.p.rapidapi.com/api/trims/{id}",
+            "description": "Returns all data associated with the vehicle trim.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/trims/{id}\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://car-api2.p.rapidapi.com/api/trims/{id}\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"car-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "_embedded": {
+                            "type": "object",
+                            "properties": {
+                                "make_model": {
+                                    "allOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "links": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "self": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "href": {
+                                                                    "type": "string",
+                                                                    "format": "url"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                "make_model_trim_body": {
+                                    "allOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "links": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "self": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "href": {
+                                                                    "type": "string",
+                                                                    "format": "url"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                "make_model_trim_engine": {
+                                    "allOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "links": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "self": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "href": {
+                                                                    "type": "string",
+                                                                    "format": "url"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                "make_model_trim_mileage": {
+                                    "allOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "links": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "self": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "href": {
+                                                                    "type": "string",
+                                                                    "format": "url"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            "items": {
+                                "type": "object",
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "id": {
+                                                "minLength": 1,
+                                                "type": "integer",
+                                                "format": "int64",
+                                                "minimum": -9223372036854776000,
+                                                "maximum": 9223372036854776000
+                                            },
+                                            "make_model_trim_id": {
+                                                "minLength": 1,
+                                                "type": "integer",
+                                                "format": "int64",
+                                                "minimum": -9223372036854776000,
+                                                "maximum": 9223372036854776000
+                                            },
+                                            "name": {
+                                                "minLength": 1,
+                                                "maxLength": 128,
+                                                "type": "string"
+                                            },
+                                            "rgb": {
+                                                "maxLength": 16,
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object",
+                                        "description": ""
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "links": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "self": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "href": {
+                                                                "type": "string",
+                                                                "format": "url"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "allOf": [
+                    {
+                        "type": "object",
+                        "properties": {
+                            "links": {
+                                "type": "object",
+                                "properties": {
+                                    "self": {
+                                        "type": "object",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "format": "url"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

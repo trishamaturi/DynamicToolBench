@@ -1,0 +1,194 @@
+{
+    "product_id": "api_9da18196-2a0c-4cc0-abd5-7711c8d62dd1",
+    "tool_description": "Fast and Reliable Company/Employer Searches, Reviews, and more from Glassdoor in Real-Time (unofficial API).",
+    "home_url": "https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-glassdoor-data/",
+    "name": "Real-Time Glassdoor Data",
+    "title": "Real-Time Glassdoor Data",
+    "pricing": "FREEMIUM",
+    "tool_name": "Real-Time Glassdoor Data",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 802,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.5,
+        "__typename": "Score"
+    },
+    "host": "real-time-glassdoor-data.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Company Reviews",
+            "url": "https://real-time-glassdoor-data.p.rapidapi.com/company-reviews",
+            "description": "Get company (employer) reviews from Glassdoor, with filters, sort option, and pagination support.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "company_id",
+                    "type": "NUMBER",
+                    "description": "Company ID.",
+                    "default": "9079"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "extended_rating_data",
+                    "type": "BOOLEAN",
+                    "description": "Include extended company rating data such as rating breakdown and rating distributions.\n\n**Default:** `false`.",
+                    "default": "false"
+                },
+                {
+                    "name": "language",
+                    "type": "ENUM",
+                    "description": "Return reviews written in a specific language.\n\n**Default:** `en`\n\n**Allowed values:** `en, fr, nl, de, pt, es, it`",
+                    "default": ""
+                },
+                {
+                    "name": "sort",
+                    "type": "ENUM",
+                    "description": "Return reviews in a specific sort order.\n\n**Default:** `POPULAR`\n\n**Allowed values:** `POPULAR, MOST_RECENT, HIGHEST_RATING, LOWEST_RATING`",
+                    "default": ""
+                },
+                {
+                    "name": "only_current_employees",
+                    "type": "BOOLEAN",
+                    "description": "Only return reviews written by current employees (at the time of writing).\n\n**Default:** `false`.",
+                    "default": "false"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "The reviews page to return (each page includes up to 10 results).\n\n**Allowed values:** positive integers.\n**Default:** `1`.",
+                    "default": "1"
+                },
+                {
+                    "name": "employment_statuses",
+                    "type": "STRING",
+                    "description": "Return reviews written by employees with a specific job type. Multiple values can be specified as a comma delimited list of the following values: `REGULAR, INTERN, PART_TIME, CONTRACT, FREELANCE`.\n\n**e.g.** `REGULAR`\n**e.g.** `CONTRACT, FREELANCE`\n",
+                    "default": ""
+                },
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Return reviews matching a search query.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://real-time-glassdoor-data.p.rapidapi.com/company-reviews\"\nquerystring = {\"extended_rating_data\": \"false\", \"company_id\": \"9079\", \"language\": \"\", \"sort\": \"\", \"only_current_employees\": \"false\", \"page\": \"1\", \"employment_statuses\": \"\", \"query\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"real-time-glassdoor-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://real-time-glassdoor-data.p.rapidapi.com/company-reviews\"\nquerystring = {\"extended_rating_data\": \"false\", \"company_id\": \"9079\", \"language\": \"\", \"sort\": \"\", \"only_current_employees\": \"false\", \"page\": \"1\", \"employment_statuses\": \"\", \"query\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"real-time-glassdoor-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "company_id": {
+                                "type": "string"
+                            },
+                            "page": {
+                                "type": "integer"
+                            },
+                            "sort": {
+                                "type": "string"
+                            },
+                            "only_current_employees": {
+                                "type": "boolean"
+                            },
+                            "extended_rating_data": {
+                                "type": "boolean"
+                            },
+                            "language": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "reviews": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "page_count": {
+                                "type": "integer"
+                            },
+                            "rating": {
+                                "type": "number"
+                            },
+                            "review_count": {
+                                "type": "integer"
+                            },
+                            "filtered_review_count": {
+                                "type": "integer"
+                            },
+                            "rated_review_count": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Company Search",
+            "url": "https://real-time-glassdoor-data.p.rapidapi.com/company-search",
+            "description": "Search for companies (employers) on Glassdoor.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Maximum number of results to return (1-100).\n\n**Default**: `10`",
+                    "default": "10"
+                },
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Search query.",
+                    "default": "goo"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://real-time-glassdoor-data.p.rapidapi.com/company-search\"\nquerystring = {\"limit\": \"10\", \"query\": \"goo\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"real-time-glassdoor-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://real-time-glassdoor-data.p.rapidapi.com/company-search\"\nquerystring = {\"limit\": \"10\", \"query\": \"goo\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"real-time-glassdoor-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "query": {
+                                "type": "string"
+                            },
+                            "limit": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

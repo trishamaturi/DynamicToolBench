@@ -1,0 +1,154 @@
+{
+    "product_id": "api_2800ba2d-cbb2-49b8-bbbb-8979d62cb098",
+    "tool_description": "Netherlands postcode validation and address lookup API with 99.99% uptime. ",
+    "home_url": "https://rapidapi.com/shoticcha/api/dutch-postcode-validation-lookup-api/",
+    "name": "Dutch Postcode Validation/Lookup API",
+    "title": "Dutch Postcode Validation/Lookup API",
+    "pricing": "FREEMIUM",
+    "tool_name": "Dutch Postcode Validation/Lookup API",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 205,
+        "avgSuccessRate": 93,
+        "popularityScore": 7.3,
+        "__typename": "Score"
+    },
+    "host": "dutch-postcode-validation-lookup-api.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "search",
+            "url": "https://dutch-postcode-validation-lookup-api.p.rapidapi.com/api/v1/search",
+            "description": "Search address with postcode and house number",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "house_number",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "104"
+                },
+                {
+                    "name": "postal_code",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "1011AJ"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "house_number_addition",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "A"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://dutch-postcode-validation-lookup-api.p.rapidapi.com/api/v1/search\"\nquerystring = {\"house_number_addition\": \"A\", \"house_number\": \"104\", \"postal_code\": \"1011AJ\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dutch-postcode-validation-lookup-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dutch-postcode-validation-lookup-api.p.rapidapi.com/api/v1/search\"\nquerystring = {\"house_number_addition\": \"A\", \"house_number\": \"104\", \"postal_code\": \"1011AJ\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dutch-postcode-validation-lookup-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "province": {
+                        "type": "string"
+                    },
+                    "municipality": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "postal_code": {
+                        "type": "string"
+                    },
+                    "street": {
+                        "type": "string"
+                    },
+                    "street_number": {
+                        "type": "string"
+                    },
+                    "street_number_addition": {
+                        "type": "string"
+                    },
+                    "latitude": {
+                        "type": "number"
+                    },
+                    "longitude": {
+                        "type": "number"
+                    }
+                }
+            }
+        },
+        {
+            "name": "housenumbers",
+            "url": "https://dutch-postcode-validation-lookup-api.p.rapidapi.com/api/v1/postcode/1011AJ/housenumbers",
+            "description": "Get all the house numbers in a given postcode",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "postal_code",
+                    "type": "string",
+                    "description": "",
+                    "default": "1011AJ"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dutch-postcode-validation-lookup-api.p.rapidapi.com/api/v1/postcode/1011AJ/housenumbers\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dutch-postcode-validation-lookup-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dutch-postcode-validation-lookup-api.p.rapidapi.com/api/v1/postcode/{postal_code}/housenumbers\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dutch-postcode-validation-lookup-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "house_numbers": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "street": {
+                                    "type": "string"
+                                },
+                                "street_number": {
+                                    "type": "string"
+                                },
+                                "street_number_addition": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "postcode-is-valid",
+            "url": "https://dutch-postcode-validation-lookup-api.p.rapidapi.com/api/v1/postcode/1011AJ",
+            "description": "Check if postcode is valid",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "postal_code",
+                    "type": "string",
+                    "description": "",
+                    "default": "1011AJ"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dutch-postcode-validation-lookup-api.p.rapidapi.com/api/v1/postcode/1011AJ\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dutch-postcode-validation-lookup-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dutch-postcode-validation-lookup-api.p.rapidapi.com/api/v1/postcode/{postal_code}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dutch-postcode-validation-lookup-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "valid": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    ]
+}

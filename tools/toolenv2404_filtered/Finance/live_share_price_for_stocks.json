@@ -1,0 +1,78 @@
+{
+    "product_id": "api_709408d4-7497-4bcc-92e7-1068681ae308",
+    "tool_description": "This API provides live share prices for stocks in world-wide exchanges on every minute basis. Supports 61 stock exchanges and more than 50,000 stocks world-wide.",
+    "home_url": "https://rapidapi.com/vijaysairamv/api/live-share-price-for-stocks/",
+    "name": "Live Share Price for Stocks",
+    "title": "Live Share Price for Stocks",
+    "pricing": "FREEMIUM",
+    "tool_name": "Live Share Price for Stocks",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 106,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.6,
+        "__typename": "Score"
+    },
+    "host": "live-share-price-for-stocks.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "IntradayLivePrice",
+            "url": "https://live-share-price-for-stocks.p.rapidapi.com/IntradayLivePrice",
+            "description": "This end-point provides share prices for stocks you are looking for intraday on every minute basis which can help in knowing how the stock has been trending in the market for the day until the time you query it or the end of the market session whichever is earlier. You can take this data and draw graphs of the trend the stock experienced over the day.\nResponse structure is as below - \n{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Intraday live prices for ADANI ENTERPRISES LIMITED (ADANIENT.NS)\",\n    \"data\": [\n        {\n            \"datetime\": \"2024-02-09 09:15:00+05:30\",\n            \"price\": 3178.2\n        },\n       ...\n      {\n            \"datetime\": \"2024-02-09 15:29:00+05:30\",\n            \"price\": 3215.2\n        }\n    ]\n}",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "exchange",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "NSE"
+                },
+                {
+                    "name": "stock_code",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "ADANIENT.NS"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://live-share-price-for-stocks.p.rapidapi.com/IntradayLivePrice\"\nquerystring = {\"exchange\": \"NSE\", \"stock_code\": \"ADANIENT.NS\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"live-share-price-for-stocks.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://live-share-price-for-stocks.p.rapidapi.com/IntradayLivePrice\"\nquerystring = {\"exchange\": \"NSE\", \"stock_code\": \"ADANIENT.NS\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"live-share-price-for-stocks.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "SupportedExchanges",
+            "url": "https://live-share-price-for-stocks.p.rapidapi.com/SupportedExchanges",
+            "description": "This endpoint provides all the stock exchanges supported (exchange codes) and country these exchanges belong to. No input parameters required.  In case the response is successful status will be \"SUCCESS\". If there is an error, status in the response will have \"ERROR\" as value and message will be provide the error details. This end point provides the list of 61 stock exchanges world-wide. Response structure is as below - \n{\n    \"status\": \"SUCCESS\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"exchange\": \"NSE\",\n            \"country\": \"India\"\n        },\n        {\n            \"exchange\": \"BSE\",\n            \"country\": \"India\"\n        },\n        {\n            \"exchange\": \"AMS\",\n            \"country\": \"Netherlands\"\n        },\n        {\n            \"exchange\": \"ASE\",\n            \"country\": \"USA\"\n        },\n\t\t...\n\t]\n}",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://live-share-price-for-stocks.p.rapidapi.com/SupportedExchanges\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"live-share-price-for-stocks.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://live-share-price-for-stocks.p.rapidapi.com/SupportedExchanges\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"live-share-price-for-stocks.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "FindStocks",
+            "url": "https://live-share-price-for-stocks.p.rapidapi.com/FindStocks",
+            "description": "This endpoint does a starts-with search on stock code or company name and returns stock codes and company names starting with the search_term provided in the input parameter for the provided exchange. 2 mandatory input parameters - exchange and search_term. You must enter at least three characters in search_term. In case the response is successful status will be \"SUCCESS\". If there is an error, status in the response will have \"ERROR\" as value and message will be provide the error details. In case no data found for the combination of exchange and search_term input parameters, status will be \"WARN\". \n\n/FindStocks?exchange=NMS&search_term=Apple\n\nResponse structure is as below - \n{\n    \"status\": \"SUCCESS\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"stock_code\": \"AAPL\",\n            \"company_name\": \"APPLE INC.\"\n        }\n    ]\n}",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "search_term",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Tata"
+                },
+                {
+                    "name": "exchange",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "NSE"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://live-share-price-for-stocks.p.rapidapi.com/FindStocks\"\nquerystring = {\"search_term\": \"Tata\", \"exchange\": \"NSE\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"live-share-price-for-stocks.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://live-share-price-for-stocks.p.rapidapi.com/FindStocks\"\nquerystring = {\"search_term\": \"Tata\", \"exchange\": \"NSE\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"live-share-price-for-stocks.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

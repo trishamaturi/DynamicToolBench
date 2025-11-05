@@ -1,0 +1,778 @@
+{
+    "product_id": "api_d2b7bca7-7934-4ed6-9cac-44d01d480d7d",
+    "tool_description": "Fast and Reliable Product Searches, Offers, and Reviews on Google Shopping - the Largest Product Data Aggregate in the World. ",
+    "home_url": "https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-product-search/",
+    "name": "Real-Time Product Search",
+    "title": "Real-Time Product Search",
+    "pricing": "FREEMIUM",
+    "tool_name": "Real-Time Product Search",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 2478,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.8,
+        "__typename": "Score"
+    },
+    "host": "real-time-product-search.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Search",
+            "url": "https://real-time-product-search.p.rapidapi.com/search",
+            "description": "Search for products on Google Shopping. Each page contains up to 100 product offers. Pagination/scrolling is supported using the *page* parameter.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Search query.",
+                    "default": "Nike shoes"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "store_id",
+                    "type": "STRING",
+                    "description": "Only return product offers from specific stores (comma separated list of store id's). Store IDs can be obtained from the Google Shopping URL after using the **Seller** filter by taking the part after the `merchagg:` variable within the `tbs` parameter.\n\nWhen filtering for a certain Seller / Store on Google Shopping, a URL similar to the following is shown on the address bar: `https://www.google.com/search?gl=us&tbm=shop&q=shoes&tbs=mr:1,merchagg:m100456214|m114373355`, in that case, the Store IDs are **m100456214** and **m114373355** - to filter for these stores, set store_id=m100456214,m114373355.",
+                    "default": ""
+                },
+                {
+                    "name": "max_shipping_days",
+                    "type": "NUMBER",
+                    "description": "Only return product offers that offer shipping/delivery of up to specific number of days (i.e. shipping speed).",
+                    "default": ""
+                },
+                {
+                    "name": "free_returns",
+                    "type": "BOOLEAN",
+                    "description": "Only return product offers that offer free returns.\nDefault: `false`.",
+                    "default": ""
+                },
+                {
+                    "name": "min_rating",
+                    "type": "ENUM",
+                    "description": "Return products with rating greater than the specified value.\nPossible values: `1`, `2`, `3`, `4`.",
+                    "default": ""
+                },
+                {
+                    "name": "sort_by",
+                    "type": "ENUM",
+                    "description": "Sort product offers by best match, top rated, lowest or highest price.\nPossible values: `BEST_MATCH`, `TOP_RATED`, `LOWEST_PRICE`, `HIGHEST_PRICE`.\nDefault: `BEST_MATCH`.",
+                    "default": ""
+                },
+                {
+                    "name": "other_filters",
+                    "type": "STRING",
+                    "description": "[EXPERIMENTAL] Other filters list for dynamic filtering (e.g. by Size, Color or any attribute supported by Google Shopping for a specific query). The filter values should be taken from the Search response *filters.other* array and separated by comma when multiple values are specified.\n\n**e.g** `other_filters=742548|742552,742548|7573734,2154444|6802823`",
+                    "default": ""
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Country code of the region/country to return offers for.\nValid values: see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\nDefault: `us`.",
+                    "default": "us"
+                },
+                {
+                    "name": "on_sale",
+                    "type": "BOOLEAN",
+                    "description": "Only return product offers that are currently on sale.\nDefault: `false`.",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Results page to return (each page contains up to 100 product results).\nDefault: `1`.",
+                    "default": ""
+                },
+                {
+                    "name": "free_shipping",
+                    "type": "BOOLEAN",
+                    "description": "Only return product offers that offer free shipping/delivery.\nDefault: `false`.",
+                    "default": ""
+                },
+                {
+                    "name": "max_price",
+                    "type": "NUMBER",
+                    "description": "Only return product offers with price lower than a certain value.",
+                    "default": ""
+                },
+                {
+                    "name": "min_price",
+                    "type": "NUMBER",
+                    "description": "Only return product offers with price greater than a certain value.",
+                    "default": ""
+                },
+                {
+                    "name": "product_condition",
+                    "type": "ENUM",
+                    "description": "Only return products with a specific condition.\nPossible values: `NEW`, `USED`, `REFURBISHED`.",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The language of the results.\nValid values: see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\nDefault: `en`.",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://real-time-product-search.p.rapidapi.com/search\"\nquerystring = {\"store_id\": \"\", \"max_shipping_days\": \"\", \"free_returns\": \"\", \"min_rating\": \"\", \"sort_by\": \"\", \"q\": \"Nike shoes\", \"other_filters\": \"\", \"country\": \"us\", \"on_sale\": \"\", \"page\": \"\", \"free_shipping\": \"\", \"max_price\": \"\", \"min_price\": \"\", \"product_condition\": \"\", \"language\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"real-time-product-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://real-time-product-search.p.rapidapi.com/search\"\nquerystring = {\"store_id\": \"\", \"max_shipping_days\": \"\", \"free_returns\": \"\", \"min_rating\": \"\", \"sort_by\": \"\", \"q\": \"Nike shoes\", \"other_filters\": \"\", \"country\": \"us\", \"on_sale\": \"\", \"page\": \"\", \"free_shipping\": \"\", \"max_price\": \"\", \"min_price\": \"\", \"product_condition\": \"\", \"language\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"real-time-product-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Product Offers",
+            "url": "https://real-time-product-search.p.rapidapi.com/product-offers",
+            "description": "Get all offers available for a product. Each page of offers contains offers from 10 sellers, since some stores sell the same item more than once (e.g. Amazon, Ebay, etc), it's possible that more than 10 offers will be returned.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "product_id",
+                    "type": "STRING",
+                    "description": "Product id of the product for which to fetch offers.",
+                    "default": "11577822456427762145"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "The page to return. Each page contains offers from 10 different stores (potentially resulting in more than 10 offers).\nValid values: positive integers.\nDefault: `1`.",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The language of the results.\nValid values: see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\nDefault: `en`.",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Country code of the region/country to return offers for.\nValid values: see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\nDefault: `us`.",
+                    "default": "us"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://real-time-product-search.p.rapidapi.com/product-offers\"\nquerystring = {\"page\": \"\", \"language\": \"en\", \"country\": \"us\", \"product_id\": \"11577822456427762145\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"real-time-product-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://real-time-product-search.p.rapidapi.com/product-offers\"\nquerystring = {\"page\": \"\", \"language\": \"en\", \"country\": \"us\", \"product_id\": \"11577822456427762145\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"real-time-product-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "offers": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "product_rating": {
+                                "type": "number"
+                            },
+                            "product_num_reviews": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Product Details",
+            "url": "https://real-time-product-search.p.rapidapi.com/product-details",
+            "description": "Get the details of a specific product by product id. Returns the full product details in addition to reviews sample, photos, product specs and more information.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "product_id",
+                    "type": "STRING",
+                    "description": "Product id of the product for which to get full details.",
+                    "default": "11577822456427762145"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The language of the results.\nValid values: see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\nDefault: `en`.",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Country code of the region/country to return offers for.\nValid values: see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\nDefault: `us`.",
+                    "default": "us"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://real-time-product-search.p.rapidapi.com/product-details\"\nquerystring = {\"language\": \"en\", \"country\": \"us\", \"product_id\": \"11577822456427762145\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"real-time-product-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://real-time-product-search.p.rapidapi.com/product-details\"\nquerystring = {\"language\": \"en\", \"country\": \"us\", \"product_id\": \"11577822456427762145\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"real-time-product-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "product": {
+                                "type": "object",
+                                "properties": {
+                                    "product_id": {
+                                        "type": "string"
+                                    },
+                                    "product_title": {
+                                        "type": "string"
+                                    },
+                                    "product_description": {
+                                        "type": "string"
+                                    },
+                                    "product_photos": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "product_attributes": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Department": {
+                                                "type": "string"
+                                            },
+                                            "Size": {
+                                                "type": "string"
+                                            },
+                                            "Material": {
+                                                "type": "string"
+                                            },
+                                            "Color": {
+                                                "type": "string"
+                                            },
+                                            "Closure Style": {
+                                                "type": "string"
+                                            },
+                                            "Features": {
+                                                "type": "string"
+                                            },
+                                            "Style": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "product_rating": {
+                                        "type": "number"
+                                    },
+                                    "product_page_url": {
+                                        "type": "string"
+                                    },
+                                    "product_offers_page_url": {
+                                        "type": "string"
+                                    },
+                                    "product_specs_page_url": {
+                                        "type": "string"
+                                    },
+                                    "product_reviews_page_url": {
+                                        "type": "string"
+                                    },
+                                    "product_num_reviews": {
+                                        "type": "integer"
+                                    },
+                                    "product_num_offers": {
+                                        "type": "string"
+                                    },
+                                    "typical_price_range": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "product_variant_properties": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Size": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "product_variants": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Size": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "4": {
+                                                        "type": "string"
+                                                    },
+                                                    "5": {
+                                                        "type": "string"
+                                                    },
+                                                    "6": {
+                                                        "type": "string"
+                                                    },
+                                                    "7": {
+                                                        "type": "string"
+                                                    },
+                                                    "8": {
+                                                        "type": "string"
+                                                    },
+                                                    "9": {
+                                                        "type": "string"
+                                                    },
+                                                    "10": {
+                                                        "type": "string"
+                                                    },
+                                                    "11": {
+                                                        "type": "string"
+                                                    },
+                                                    "12": {
+                                                        "type": "string"
+                                                    },
+                                                    "13": {
+                                                        "type": "string"
+                                                    },
+                                                    "14": {
+                                                        "type": "string"
+                                                    },
+                                                    "15": {
+                                                        "type": "string"
+                                                    },
+                                                    "16": {
+                                                        "type": "string"
+                                                    },
+                                                    "17": {
+                                                        "type": "string"
+                                                    },
+                                                    "18": {
+                                                        "type": "string"
+                                                    },
+                                                    "36": {
+                                                        "type": "string"
+                                                    },
+                                                    "37": {
+                                                        "type": "string"
+                                                    },
+                                                    "41": {
+                                                        "type": "string"
+                                                    },
+                                                    "3\u00bd": {
+                                                        "type": "string"
+                                                    },
+                                                    "4\u00bd": {
+                                                        "type": "string"
+                                                    },
+                                                    "5\u00bd": {
+                                                        "type": "string"
+                                                    },
+                                                    "7\u00bd": {
+                                                        "type": "string"
+                                                    },
+                                                    "6\u00bd": {
+                                                        "type": "string"
+                                                    },
+                                                    "8\u00bd": {
+                                                        "type": "string"
+                                                    },
+                                                    "9\u00bd": {
+                                                        "type": "string"
+                                                    },
+                                                    "10\u00bd": {
+                                                        "type": "string"
+                                                    },
+                                                    "11.5": {
+                                                        "type": "string"
+                                                    },
+                                                    "11\u00bd": {
+                                                        "type": "string"
+                                                    },
+                                                    "12\u00bd": {
+                                                        "type": "string"
+                                                    },
+                                                    "13\u00bd": {
+                                                        "type": "string"
+                                                    },
+                                                    "M5\u00bd/W7": {
+                                                        "type": "string"
+                                                    },
+                                                    "36\u00bd": {
+                                                        "type": "string"
+                                                    },
+                                                    "38\u00bd": {
+                                                        "type": "string"
+                                                    },
+                                                    "40\u00bd": {
+                                                        "type": "string"
+                                                    },
+                                                    "47\u00bd": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "offer": {
+                                        "type": "object",
+                                        "properties": {
+                                            "store_name": {
+                                                "type": "string"
+                                            },
+                                            "store_rating": {
+                                                "type": "number"
+                                            },
+                                            "offer_page_url": {
+                                                "type": "string"
+                                            },
+                                            "store_review_count": {
+                                                "type": "integer"
+                                            },
+                                            "store_reviews_page_url": {
+                                                "type": "string"
+                                            },
+                                            "price": {
+                                                "type": "string"
+                                            },
+                                            "shipping": {
+                                                "type": "string"
+                                            },
+                                            "tax": {
+                                                "type": "string"
+                                            },
+                                            "on_sale": {
+                                                "type": "boolean"
+                                            },
+                                            "original_price": {
+                                                "type": "null"
+                                            },
+                                            "product_condition": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "reviews_sample": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "review_id": {
+                                            "type": "string"
+                                        },
+                                        "review_title": {
+                                            "type": "null"
+                                        },
+                                        "review_author": {
+                                            "type": "string"
+                                        },
+                                        "review_source": {
+                                            "type": "string"
+                                        },
+                                        "review_source_url": {
+                                            "type": "string"
+                                        },
+                                        "review_text": {
+                                            "type": "string"
+                                        },
+                                        "rating": {
+                                            "type": "integer"
+                                        },
+                                        "review_datetime_utc": {
+                                            "type": "string"
+                                        },
+                                        "review_language": {
+                                            "type": "string"
+                                        },
+                                        "photos": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "reviews_per_rating": {
+                                "type": "object",
+                                "properties": {
+                                    "1": {
+                                        "type": "integer"
+                                    },
+                                    "2": {
+                                        "type": "integer"
+                                    },
+                                    "3": {
+                                        "type": "integer"
+                                    },
+                                    "4": {
+                                        "type": "integer"
+                                    },
+                                    "5": {
+                                        "type": "integer"
+                                    }
+                                }
+                            },
+                            "reviews_insights": {
+                                "type": "object",
+                                "properties": {
+                                    "Attractive": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Attractive": {
+                                                "type": "integer"
+                                            },
+                                            "Unattractive": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    },
+                                    "Durable": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Durable": {
+                                                "type": "integer"
+                                            },
+                                            "Lacks durability": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    },
+                                    "Comfortable": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Comfortable": {
+                                                "type": "integer"
+                                            },
+                                            "Uncomfortable": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    },
+                                    "Weight": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Lightweight": {
+                                                "type": "integer"
+                                            },
+                                            "Heavy": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    },
+                                    "Entertainment value": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Fun": {
+                                                "type": "integer"
+                                            },
+                                            "Boring": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    },
+                                    "Support": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Supportive": {
+                                                "type": "integer"
+                                            },
+                                            "Unsupportive": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    },
+                                    "Noise level": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Quiet": {
+                                                "type": "integer"
+                                            },
+                                            "Noisy": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "product_highlights": {
+                                "type": "array"
+                            },
+                            "product_details": {
+                                "type": "object",
+                                "properties": {
+                                    "Department": {
+                                        "type": "string"
+                                    },
+                                    "Size": {
+                                        "type": "string"
+                                    },
+                                    "Material": {
+                                        "type": "string"
+                                    },
+                                    "Color": {
+                                        "type": "string"
+                                    },
+                                    "Closure Style": {
+                                        "type": "string"
+                                    },
+                                    "Features": {
+                                        "type": "string"
+                                    },
+                                    "Style": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "product_specs": {
+                                "type": "object",
+                                "properties": {
+                                    "Colorway": {
+                                        "type": "string"
+                                    },
+                                    "Style": {
+                                        "type": "string"
+                                    },
+                                    "Applicable Season": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Product Reviews",
+            "url": "https://real-time-product-search.p.rapidapi.com/product-reviews",
+            "description": "Get all product reviews. Infinite pagination/scrolling is supported using the *limit* and *offset* parameters.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "product_id",
+                    "type": "STRING",
+                    "description": "Product id of the product for which to fetch reviews.",
+                    "default": "11577822456427762145"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "cursor",
+                    "type": "STRING",
+                    "description": "A cursor to get the next set of results, it can be used for for paging purposes.\nNote: the cursor value for the next set of results is returned by this endpoint under data.cursor.",
+                    "default": ""
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Country code of the region/country.\nValid values: see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\nDefault: `us`.",
+                    "default": "us"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The language of the results.\nValid values: see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\nDefault: `en`.",
+                    "default": "en"
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "Maximum number of product reviews to return.\nValid values: integers from 0-100.\nDefault: `10`.",
+                    "default": ""
+                },
+                {
+                    "name": "rating",
+                    "type": "STRING",
+                    "description": "Only return reviews with user rating greater than the specified value.\nValid values: 1-5.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://real-time-product-search.p.rapidapi.com/product-reviews\"\nquerystring = {\"cursor\": \"\", \"country\": \"us\", \"product_id\": \"11577822456427762145\", \"language\": \"en\", \"limit\": \"\", \"rating\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"real-time-product-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://real-time-product-search.p.rapidapi.com/product-reviews\"\nquerystring = {\"cursor\": \"\", \"country\": \"us\", \"product_id\": \"11577822456427762145\", \"language\": \"en\", \"limit\": \"\", \"rating\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"real-time-product-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "reviews": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "cursor": {
+                                "type": "string"
+                            },
+                            "product_rating": {
+                                "type": "number"
+                            },
+                            "product_num_reviews": {
+                                "type": "integer"
+                            },
+                            "reviews_per_rating": {
+                                "type": "object",
+                                "properties": {
+                                    "1": {
+                                        "type": "integer"
+                                    },
+                                    "2": {
+                                        "type": "integer"
+                                    },
+                                    "3": {
+                                        "type": "integer"
+                                    },
+                                    "4": {
+                                        "type": "integer"
+                                    },
+                                    "5": {
+                                        "type": "integer"
+                                    }
+                                }
+                            },
+                            "reviews_insights": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

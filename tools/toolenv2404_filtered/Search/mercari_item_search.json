@@ -1,0 +1,153 @@
+{
+    "product_id": "api_959ee781-a608-4f45-ad09-5ba1d559e1b0",
+    "tool_description": "API for searching item on Mercari",
+    "home_url": "https://rapidapi.com/k19862217/api/mercari-item-search/",
+    "name": "mercari item search",
+    "title": "mercari item search",
+    "pricing": "FREEMIUM",
+    "tool_name": "mercari item search",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 127272,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.1,
+        "__typename": "Score"
+    },
+    "host": "mercari-item-search.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "show_item_by_id",
+            "url": "https://mercari-item-search.p.rapidapi.com/item/{itemId}",
+            "description": "`item` api parameters:\n- itemId: The item id you want to query. The item id is something like `m72639077322`, you can get it from the response of `items` API.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "itemId",
+                    "type": "STRING",
+                    "description": "The id of the item to retrieve",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mercari-item-search.p.rapidapi.com/item/{itemId}\"\nquerystring = {\"itemId\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mercari-item-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mercari-item-search.p.rapidapi.com/item/{itemId}\"\nquerystring = {\"itemId\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mercari-item-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "desc": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "images": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "integer"
+                    },
+                    "soldOut": {
+                        "type": "boolean"
+                    },
+                    "url": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "list_items",
+            "url": "https://mercari-item-search.p.rapidapi.com/items",
+            "description": "`items` api parameters:\n- keyword: The keyword you want to query\n- page: Which page you want to get (132 item per page)\n- priceLow: Price range start from which price.\n- priceHight: Price range to which price.\n- itemStatus: Item status filter, you can choose one or multiple from\n  ```NEW,ALMOST_NEW,NO_DAMAGES,FEW_DAMAGES,SOME_DAMAGES,BAD_CONDITION```\n- delivery: Delivery type, you can choose one or multiple from\n  ``` CASH_ON_DELIVERY,DELIVERY_COST_INCLUDED```\n- saleStatus: Saling status, you can choose one or multiple from\n  ```ON_SALE,SOLD_OUT```",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "keyword",
+                    "type": "STRING",
+                    "description": "The keyword you want to query",
+                    "default": "Iphone 12"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "saleStatus",
+                    "type": "ARRAY",
+                    "description": "The item sale status filter, **please don't put any space between STATUS**",
+                    "default": "ON_SALE"
+                },
+                {
+                    "name": "priceLow",
+                    "type": "NUMBER",
+                    "description": "The lowest price",
+                    "default": ""
+                },
+                {
+                    "name": "itemStatus",
+                    "type": "ARRAY",
+                    "description": "The item statuses filter, **please don't put any space between STATUS**",
+                    "default": "NEW,ALMOST_NEW"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "The page you want to get",
+                    "default": ""
+                },
+                {
+                    "name": "priceHight",
+                    "type": "NUMBER",
+                    "description": "The hightest price",
+                    "default": ""
+                },
+                {
+                    "name": "delivery",
+                    "type": "ARRAY",
+                    "description": "The delivery types filter, **please don't put any space between DELIVERY_TYPEs**",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mercari-item-search.p.rapidapi.com/items\"\nquerystring = {\"saleStatus\": \"ON_SALE\", \"priceLow\": \"\", \"itemStatus\": \"NEW,ALMOST_NEW\", \"page\": \"\", \"priceHight\": \"\", \"delivery\": \"\", \"keyword\": \"Iphone 12\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mercari-item-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mercari-item-search.p.rapidapi.com/items\"\nquerystring = {\"saleStatus\": \"ON_SALE\", \"priceLow\": \"\", \"itemStatus\": \"NEW,ALMOST_NEW\", \"page\": \"\", \"priceHight\": \"\", \"delivery\": \"\", \"keyword\": \"Iphone 12\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mercari-item-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "currentPage": {
+                        "type": "integer"
+                    },
+                    "itemList": {
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "price": {
+                                    "type": "integer"
+                                },
+                                "url": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "type": "array"
+                    },
+                    "totalPage": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    ]
+}

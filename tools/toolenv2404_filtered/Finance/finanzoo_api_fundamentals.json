@@ -1,0 +1,439 @@
+{
+    "product_id": "api_267c6f6f-42c5-440a-9e31-3e31f87ea974",
+    "tool_description": "Contains fundamental stock data from the annual reports:\n\n- Diluted earnings per share\n- total capital\n- equity\n- net operating cash flow\n- capital expenditure\n- free cash flow\n- Profit loss\n- Shares outstanding\n- Net sales",
+    "home_url": "https://rapidapi.com/finanzoo/api/finanzoo-api_fundamentals/",
+    "name": "Finanzoo API_Fundamentals",
+    "title": "Finanzoo API_Fundamentals",
+    "pricing": "FREEMIUM",
+    "tool_name": "Finanzoo API_Fundamentals",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1663,
+        "avgSuccessRate": 100,
+        "popularityScore": 8.6,
+        "__typename": "Score"
+    },
+    "host": "finanzoo-api_fundamentals.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "API_Dividend",
+            "url": "https://finanzoo-api_fundamentals.p.rapidapi.com/",
+            "description": "Contains the annual dividends (split-adjusted without special dividend)\n\nAPI_Dividend\nSyntax:\n\nshareuid = unique identifier for the share searched\nfrom = Start date of the searched period in American notation year-month-day with leading 0\nto = End date of the searched period in American notation year-month-day with leading 0",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "from",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "1962-01-01"
+                },
+                {
+                    "name": "shareuid",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "2"
+                },
+                {
+                    "name": "API_Dividend",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "to",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2020-03-31"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"from\": \"1962-01-01\", \"shareuid\": \"2\", \"API_Dividend\": \"1\", \"to\": \"2020-03-31\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"from\": \"1962-01-01\", \"shareuid\": \"2\", \"API_Dividend\": \"1\", \"to\": \"2020-03-31\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "API_Index_Isin",
+            "url": "https://finanzoo-api_fundamentals.p.rapidapi.com/",
+            "description": "Determine shareuid\nTo query the fundamental data via our API, you need the Shareuid for the share you are looking for. You can either determine this yourself via the API, or take it from the Excel table.\nIMPORTANT! The currency that is output in the API_Fundamentals results is also included here.\n\nSyntax:\n\nisin = search shareuid with ISIN",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "API_Index",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "isin",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "US4592001014"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"API_Index\": \"1\", \"isin\": \"US4592001014\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"API_Index\": \"1\", \"isin\": \"US4592001014\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "API_Index_Name",
+            "url": "https://finanzoo-api_fundamentals.p.rapidapi.com/",
+            "description": "Determine shareuid\nTo query the fundamental data via our API, you need the Shareuid for the share you are looking for. You can either determine this yourself via the API, or take it from the Excel table.\nIMPORTANT! The currency that is output in the API_Fundamentals results is also included here.\n\nSyntax:\n\nname = search shareuid with company name",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "ibm"
+                },
+                {
+                    "name": "API_Index",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"name\": \"ibm\", \"API_Index\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"name\": \"ibm\", \"API_Index\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "API_Index_Wkn",
+            "url": "https://finanzoo-api_fundamentals.p.rapidapi.com/",
+            "description": "Determine shareuid\nTo query the fundamental data via our API, you need the Shareuid for the share you are looking for. You can either determine this yourself via the API, or take it from the Excel table.\nIMPORTANT! The currency that is output in the API_Fundamentals results is also included here.\n\nSyntax:\n\nwkn = search shareuid with WKN",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "wkn",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "851399"
+                },
+                {
+                    "name": "API_Index",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"wkn\": \"851399\", \"API_Index\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"wkn\": \"851399\", \"API_Index\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "API_Pricetobook",
+            "url": "https://finanzoo-api_fundamentals.p.rapidapi.com/",
+            "description": "contains the price-book ratio (P / B ratio) for each past trading day",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "API_Pricetobook",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "shareuid",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "2"
+                },
+                {
+                    "name": "to",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2020-03-15"
+                },
+                {
+                    "name": "from",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2019-12-15"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"API_Pricetobook\": \"1\", \"shareuid\": \"2\", \"to\": \"2020-03-15\", \"from\": \"2019-12-15\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"API_Pricetobook\": \"1\", \"shareuid\": \"2\", \"to\": \"2020-03-15\", \"from\": \"2019-12-15\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "API_Pricetocashflow",
+            "url": "https://finanzoo-api_fundamentals.p.rapidapi.com/",
+            "description": "Contains the price-cash-flow ratio (P / C ratio) for each past trading day\n\nAPI_Pricetocashflow\nSyntax:\n \n\nshareuid = unique identifier for the share searched\nfrom = Start date of the searched period in American notation year-month-day with leading 0\nto = End date of the searched period in American notation year-month-day with leading 0",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "to",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2020-03-15"
+                },
+                {
+                    "name": "from",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2020-01-06"
+                },
+                {
+                    "name": "shareuid",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "2"
+                },
+                {
+                    "name": "API_Pricetocashflow",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"to\": \"2020-03-15\", \"from\": \"2020-01-06\", \"shareuid\": \"2\", \"API_Pricetocashflow\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"to\": \"2020-03-15\", \"from\": \"2020-01-06\", \"shareuid\": \"2\", \"API_Pricetocashflow\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "API_Pricetoearning",
+            "url": "https://finanzoo-api_fundamentals.p.rapidapi.com/",
+            "description": "Contains the price-earnings ratio (P / E ratio) for each past trading day\n\nAPI_Pricetoearning\nSyntax:\n \n\nshareuid = unique identifier for the share searched\nfrom = Start date of the searched period in American notation year-month-day with leading 0\nto = End date of the searched period in American notation year-month-day with leading 0",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "to",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2020-05-15"
+                },
+                {
+                    "name": "API_Pricetoearning",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "from",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2020-04-15"
+                },
+                {
+                    "name": "shareuid",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "2"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"to\": \"2020-05-15\", \"API_Pricetoearning\": \"1\", \"from\": \"2020-04-15\", \"shareuid\": \"2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"to\": \"2020-05-15\", \"API_Pricetoearning\": \"1\", \"from\": \"2020-04-15\", \"shareuid\": \"2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "API_Pricetosales",
+            "url": "https://finanzoo-api_fundamentals.p.rapidapi.com/",
+            "description": "Contains the price turnover ratio (P / S ratio) for each past trading day.\n\nAPI_Pricetosales\nSyntax:\n \n\nshareuid = unique identifier for the share searched\nfrom = Start date of the searched period in American notation year-month-day with leading 0\nto = End date of the searched period in American notation year-month-day with leading 0",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "shareuid",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "2"
+                },
+                {
+                    "name": "to",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2020-06-08"
+                },
+                {
+                    "name": "API_Pricetosales",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "from",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2020-05-15"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"shareuid\": \"2\", \"to\": \"2020-06-08\", \"API_Pricetosales\": \"1\", \"from\": \"2020-05-15\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"shareuid\": \"2\", \"to\": \"2020-06-08\", \"API_Pricetosales\": \"1\", \"from\": \"2020-05-15\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "API_Roa",
+            "url": "https://finanzoo-api_fundamentals.p.rapidapi.com/",
+            "description": "Contains the profitability (ROA ratio) for the financial year.\n\nAPI_Roa\nSyntax:\n \n\nshareuid = unique identifier for the share searched\nfrom = Start date of the searched period in American notation year-month-day with leading 0\nto = End date of the searched period in American notation year-month-day with leading 0",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "API_Roa",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "to",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2020-06-08"
+                },
+                {
+                    "name": "from",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2018-05-15"
+                },
+                {
+                    "name": "shareuid",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "2"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"API_Roa\": \"1\", \"to\": \"2020-06-08\", \"from\": \"2018-05-15\", \"shareuid\": \"2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"API_Roa\": \"1\", \"to\": \"2020-06-08\", \"from\": \"2018-05-15\", \"shareuid\": \"2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "API_Roe",
+            "url": "https://finanzoo-api_fundamentals.p.rapidapi.com/",
+            "description": "Contains the equity ratio (ROE ratio) for the financial year.\n\nAPI_Roe\nSyntax:\n \n\nshareuid = unique identifier for the share searched\nfrom = Start date of the searched period in American notation year-month-day with leading 0\nto = End date of the searched period in American notation year-month-day with leading 0",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "from",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2018-05-08"
+                },
+                {
+                    "name": "shareuid",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "2"
+                },
+                {
+                    "name": "to",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2020-06-08"
+                },
+                {
+                    "name": "API_Roe",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"from\": \"2018-05-08\", \"shareuid\": \"2\", \"to\": \"2020-06-08\", \"API_Roe\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"from\": \"2018-05-08\", \"shareuid\": \"2\", \"to\": \"2020-06-08\", \"API_Roe\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "API_Pricetofreecashflow",
+            "url": "https://finanzoo-api_fundamentals.p.rapidapi.com/",
+            "description": "Contains the price-free-cash-flow ratio (P / FC ratio) for each past trading day.\n\nAPI_Pricetofreecashflow\nSyntax:\n \n\nshareuid = unique identifier for the share searched\nfrom = Start date of the searched period in American notation year-month-day with leading 0\nto = End date of the searched period in American notation year-month-day with leading 0",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "API_Pricetofreecashflow",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "shareuid",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "2"
+                },
+                {
+                    "name": "from",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2020-05-15"
+                },
+                {
+                    "name": "to",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2020-06-08"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"API_Pricetofreecashflow\": \"1\", \"shareuid\": \"2\", \"from\": \"2020-05-15\", \"to\": \"2020-06-08\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"API_Pricetofreecashflow\": \"1\", \"shareuid\": \"2\", \"from\": \"2020-05-15\", \"to\": \"2020-06-08\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "API_Fundamentals",
+            "url": "https://finanzoo-api_fundamentals.p.rapidapi.com/",
+            "description": "contains fundamental data from the annual reports:\n\n- Diluted earnings per share\n- total capital\n- equity\n- net operating cash flow\n- capital expenditure\n- free cash flow\n- Profit loss\n- Shares outstanding\n- Net sales\n\nDetermine shareuid\nTo query the fundamental data via our API, you need the Shareuid for the share you are looking for. You can either determine this yourself via the API, or take it from the Excel table.\nIMPORTANT! The currency that is output in the API_Fundamentals results is also included here.\n\nSyntax:\n\nname = search shareuid with company name\nwkn = search shareuid with WKN\nisin = search shareuid with ISIN\ntoken = your Finanzoo token (https://www.finanzoo.de/account/api.html) -> You need a premium account to use.\n\n \n\nExample calls:\n\nhttps://api.finanzoo.de/v1/public/?API_Index&name=ibm&token=YOURTOKEN\nhttps://api.finanzoo.de/v1/public/?API_Index&wkn=851399&token=YOURTOKEN\nhttps://api.finanzoo.de/v1/public/?API_Index&isin=US4592001014&token=YOURTOKEN\n\nExample answer:\n\n{\"shareuid\":\"2\",\"isin\":\"US4592001014 \",\"wkn\":\"851399\",\"currency\":\"USD\",\"shortname\":\"IBM\",\"name\":\"International Business Machines Corp.\",\"country\":\"Vereinigte Staaten von Amerika\",\"indizes\":\"Dow Jones Industrial Average,S&P 500\",\"sector\":\"Technology\",\"lastbalanceupdate\":\"2020-01-26\"}\n\nShareuid Excel Table\nFind the shareuid for your query.\n[https://www.finanzoo.de/en/fundamental-api.html](url)\nis required for the API queries",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "from",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2018-01-01"
+                },
+                {
+                    "name": "to",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2019-01-01"
+                },
+                {
+                    "name": "API_Fundamentals",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "shareuid",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "2"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"from\": \"2018-01-01\", \"to\": \"2019-01-01\", \"API_Fundamentals\": \"1\", \"shareuid\": \"2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://finanzoo-api_fundamentals.p.rapidapi.com/\"\nquerystring = {\"from\": \"2018-01-01\", \"to\": \"2019-01-01\", \"API_Fundamentals\": \"1\", \"shareuid\": \"2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finanzoo-api_fundamentals.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

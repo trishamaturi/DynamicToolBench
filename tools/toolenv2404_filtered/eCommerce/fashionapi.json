@@ -1,0 +1,81 @@
+{
+    "product_id": "api_2d98f110-9964-4484-a73d-86268f912aae",
+    "tool_description": "Discover the Spanish Fashion Brands API - your gateway to real-time information on Spain's top clothing labels. Access brand details, product information, and metadata effortlessly. Stay updated on trends and collections, enriching your fashion apps and platforms. Revolutionize the fashion landscape with this invaluable API.\n\nCurrently, the API is in the initial development stages. All proposals for improvements and functionalities will be valued in the shortest possible time.",
+    "home_url": "https://rapidapi.com/carloslimalopez/api/fashionapi/",
+    "name": "FashionApi",
+    "title": "FashionApi",
+    "pricing": "PAID",
+    "tool_name": "FashionApi",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 21,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.1,
+        "__typename": "Score"
+    },
+    "host": "fashionapi.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/products",
+            "url": "https://fashionapi.p.rapidapi.com/products",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "PageNumber",
+                    "type": "NUMBER",
+                    "description": "Number of the page(min 1)",
+                    "default": 3
+                },
+                {
+                    "name": "PageSize",
+                    "type": "NUMBER",
+                    "description": "Items number per page(range 1-50)",
+                    "default": 15
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://fashionapi.p.rapidapi.com/products\"\nquerystring = {\"PageNumber\": 3, \"PageSize\": 15}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fashionapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://fashionapi.p.rapidapi.com/products\"\nquerystring = {\"PageNumber\": 3, \"PageSize\": 15}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"fashionapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "Garment name assigned by the brand"
+                        },
+                        "reference": {
+                            "type": "string",
+                            "description": "Garment reference assigned by the brand"
+                        },
+                        "brand": {
+                            "type": "string",
+                            "description": "Brand that markets the garment"
+                        },
+                        "description": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "description": "Garment description assigned by the brand"
+                        },
+                        "color": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "description": "Garment color assigned by the brand"
+                        },
+                        "wearer": {
+                            "type": "string",
+                            "description": "Target audience of the garment"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

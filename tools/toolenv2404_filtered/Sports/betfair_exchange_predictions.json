@@ -1,0 +1,149 @@
+{
+    "product_id": "api_6ef4300c-ab2e-416f-b3c7-7160b0c9d955",
+    "tool_description": "Get bet predictions of Betfair Exchange Sports and Markets with applied advanced Machine Learning.",
+    "home_url": "https://rapidapi.com/fnx-lab-fnx-lab-default/api/betfair-exchange-predictions/",
+    "name": "Betfair Exchange Predictions",
+    "title": "Betfair Exchange Predictions",
+    "pricing": "FREEMIUM",
+    "tool_name": "Betfair Exchange Predictions",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 479,
+        "avgSuccessRate": 58,
+        "popularityScore": 8.1,
+        "__typename": "Score"
+    },
+    "host": "betfair-exchange-predictions.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Sports",
+            "url": "https://betfair-exchange-predictions.p.rapidapi.com/sports",
+            "description": "Get Sports IDs and use it in Get Event (as sportid parameter).",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://betfair-exchange-predictions.p.rapidapi.com/sports\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"betfair-exchange-predictions.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://betfair-exchange-predictions.p.rapidapi.com/sports\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"betfair-exchange-predictions.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "football": {
+                                "type": "integer"
+                            },
+                            "tennis": {
+                                "type": "integer"
+                            },
+                            "basketball": {
+                                "type": "integer"
+                            },
+                            "cricket": {
+                                "type": "integer"
+                            },
+                            "rugby": {
+                                "type": "integer"
+                            },
+                            "volleyball": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get Predictions",
+            "url": "https://betfair-exchange-predictions.p.rapidapi.com/predictions",
+            "description": "Get markets predictions on specific event.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "32958868"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://betfair-exchange-predictions.p.rapidapi.com/predictions\"\nquerystring = {\"id\": \"32958868\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"betfair-exchange-predictions.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://betfair-exchange-predictions.p.rapidapi.com/predictions\"\nquerystring = {\"id\": \"32958868\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"betfair-exchange-predictions.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "eventId": {
+                        "type": "integer"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "marketName": {
+                                    "type": "string"
+                                },
+                                "predictions": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "predict": {
+                                                "type": "float"
+                                            },
+                                            "mediaOdd": {
+                                                "type": "float"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get Event",
+            "url": "https://betfair-exchange-predictions.p.rapidapi.com/find",
+            "description": "Find a Match on Betfair Exchange and retrieve Event ID (use it to get Predictions).",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "sportid",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "home",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Real Madrid"
+                },
+                {
+                    "name": "away",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Barcelona"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://betfair-exchange-predictions.p.rapidapi.com/find\"\nquerystring = {\"sportid\": \"1\", \"home\": \"Real Madrid\", \"away\": \"Barcelona\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"betfair-exchange-predictions.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://betfair-exchange-predictions.p.rapidapi.com/find\"\nquerystring = {\"sportid\": \"1\", \"home\": \"Real Madrid\", \"away\": \"Barcelona\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"betfair-exchange-predictions.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

@@ -1,0 +1,133 @@
+{
+    "product_id": "api_1dc08423-3db2-42d0-85b2-2fde86e4c440",
+    "tool_description": "Over 1.5 million active jobs from Company Career Sites & ATS. The perfect job search API for job boards, with daily updates.",
+    "home_url": "https://rapidapi.com/fantastic-jobs-fantastic-jobs-default/api/active-jobs-db/",
+    "name": "Active Jobs DB",
+    "title": "Active Jobs DB",
+    "pricing": "FREEMIUM",
+    "tool_name": "Active Jobs DB",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1430,
+        "avgSuccessRate": 99,
+        "popularityScore": 8.8,
+        "__typename": "Score"
+    },
+    "host": "active-jobs-db.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Jobs - (No Description)",
+            "url": "https://active-jobs-db.p.rapidapi.com/rest/v1/active_ats_jobs_v4",
+            "description": "Search and retrieve jobs without a job description. This is the fastest way to retrieve jobs.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "Search on the job title. Always include 'wfts.' in your search. If you don't want to search on title, please leave completely empty (remove wfts.)",
+                    "default": "wfts.software engineer"
+                },
+                {
+                    "name": "organization",
+                    "type": "STRING",
+                    "description": "Optionally filter on organization. For example: wfts.Apple.\nAlways include 'wfts.' in your search",
+                    "default": ""
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Offset allows you to paginate results. For example, if you want to retrieve 300 jobs from our api you can send 3 requests with offest 0, 100, and 20.",
+                    "default": "0"
+                },
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "Filter on location. Please do not search on abbreviations like US, UK, NYC. Instead, search on full names like United States, New York, United Kingdom.**",
+                    "default": "wfts.United States"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://active-jobs-db.p.rapidapi.com/rest/v1/active_ats_jobs_v4\"\nquerystring = {\"title\": \"wfts.software engineer\", \"organization\": \"\", \"offset\": \"0\", \"location\": \"wfts.United States\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"active-jobs-db.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://active-jobs-db.p.rapidapi.com/rest/v1/active_ats_jobs_v4\"\nquerystring = {\"title\": \"wfts.software engineer\", \"organization\": \"\", \"offset\": \"0\", \"location\": \"wfts.United States\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"active-jobs-db.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get Jobs - HTML Description",
+            "url": "https://active-jobs-db.p.rapidapi.com/rest/v1/active_ats_htmldescription_v1",
+            "description": "Search and retrieve jobs with the original HTML description as extracted from the ATS or employer career site. **By using this API you understand the risk of including 3rd party HTML on your websites and platforms.**",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Offset allows you to paginate results. For example, if you want to retrieve 300 jobs from our api you can send 3 requests with offest 0, 100, and 20.",
+                    "default": "0"
+                },
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "Filter on location. Please do not search on abbreviations like US, UK, NYC. Instead, search on full names like United States, New York, United Kingdom.",
+                    "default": "wfts.United States"
+                },
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "Search on the job title. Always include 'wfts.' in your search. If you don't want to search on title, please leave completely empty (remove wfts.)",
+                    "default": "wfts.software engineer"
+                },
+                {
+                    "name": "organization",
+                    "type": "STRING",
+                    "description": "Optionally filter on organization. For example: wfts.Apple.\nAlways include 'wfts.' in your search",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://active-jobs-db.p.rapidapi.com/rest/v1/active_ats_htmldescription_v1\"\nquerystring = {\"offset\": \"0\", \"location\": \"wfts.United States\", \"title\": \"wfts.software engineer\", \"organization\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"active-jobs-db.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://active-jobs-db.p.rapidapi.com/rest/v1/active_ats_htmldescription_v1\"\nquerystring = {\"offset\": \"0\", \"location\": \"wfts.United States\", \"title\": \"wfts.software engineer\", \"organization\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"active-jobs-db.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get Jobs - Text Description",
+            "url": "https://active-jobs-db.p.rapidapi.com/rest/v1/active_ats_textdescription_v1",
+            "description": "Search and retrieve jobs with a plain text description. Text descriptions might contain line breaks (/n) for your convenience.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "organization",
+                    "type": "STRING",
+                    "description": "Optionally filter on organization. For example: wfts.Apple.\nAlways include 'wfts.' in your search",
+                    "default": ""
+                },
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "Search on the job title. Always include 'wfts.' in your search. If you don't want to search on title, please leave completely empty (remove wfts.)",
+                    "default": "wfts.software engineer"
+                },
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "Filter on location. Please do not search on abbreviations like US, UK, NYC. Instead, search on full names like United States, New York, United Kingdom.**",
+                    "default": "wfts.United States"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Offset allows you to paginate results. For example, if you want to retrieve 300 jobs from our api you can send 3 requests with offest 0, 100, and 20.",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://active-jobs-db.p.rapidapi.com/rest/v1/active_ats_textdescription_v1\"\nquerystring = {\"organization\": \"\", \"title\": \"wfts.software engineer\", \"location\": \"wfts.United States\", \"offset\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"active-jobs-db.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://active-jobs-db.p.rapidapi.com/rest/v1/active_ats_textdescription_v1\"\nquerystring = {\"organization\": \"\", \"title\": \"wfts.software engineer\", \"location\": \"wfts.United States\", \"offset\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"active-jobs-db.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

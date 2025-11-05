@@ -1,0 +1,83 @@
+{
+    "product_id": "api_38a5d698-5a5f-4483-872e-5216668ea925",
+    "tool_description": "Empower Your App with Muslim Companion API",
+    "home_url": "https://rapidapi.com/EdwinRomelta/api/muslim-companion2/",
+    "name": "Muslim Companion",
+    "title": "Muslim Companion",
+    "pricing": "FREEMIUM",
+    "tool_name": "Muslim Companion",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 4879,
+        "avgSuccessRate": 100,
+        "popularityScore": 5.1,
+        "__typename": "Score"
+    },
+    "host": "muslim-companion2.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Events",
+            "url": "https://muslim-companion2.p.rapidapi.com/calendar/events/2024-01-01",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "Represents the date of a prayer in Coordinated Universal Time (UTC). The date format is expected to be 'yyyy-mm-dd'.",
+                    "default": "2024-01-01"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "periodic",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "daily"
+                },
+                {
+                    "name": "hijri_day_adjustment",
+                    "type": "NUMBER",
+                    "description": "Optional adjustment for Hijri day calculation. Positive values indicate forward adjustment, while negative values indicate backward adjustment. Use this to fine-tune Hijri day calculations based on specific requirements or observations.",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://muslim-companion2.p.rapidapi.com/calendar/events/2024-01-01\"\nquerystring = {\"periodic\": \"daily\", \"hijri_day_adjustment\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"muslim-companion2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://muslim-companion2.p.rapidapi.com/calendar/events/{date}\"\nquerystring = {\"periodic\": \"daily\", \"hijri_day_adjustment\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"muslim-companion2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "required": [
+                    "events"
+                ],
+                "properties": {
+                    "events": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "date",
+                                "hijri_date",
+                                "name"
+                            ],
+                            "properties": {
+                                "date": {
+                                    "type": "string",
+                                    "format": "date"
+                                },
+                                "hijri_date": {
+                                    "type": "string",
+                                    "format": "date"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

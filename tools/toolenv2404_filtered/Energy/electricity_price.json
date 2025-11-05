@@ -1,0 +1,163 @@
+{
+    "product_id": "api_249316fb-7813-465a-9880-87d8eec710da",
+    "tool_description": "The Electricity Price API offers real-time spot prices for European electricity with analytical tools for market analysis.",
+    "home_url": "https://rapidapi.com/miesolavi/api/electricity-price/",
+    "name": "Electricity Price",
+    "title": "Electricity Price",
+    "pricing": "FREEMIUM",
+    "tool_name": "Electricity Price",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 992,
+        "avgSuccessRate": 100,
+        "popularityScore": 7.9,
+        "__typename": "Score"
+    },
+    "host": "electricity-price.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Generation",
+            "url": "https://electricity-price.p.rapidapi.com/generation",
+            "description": "The /api/generation endpoint is a part of the Electricity Price API that returns a list of hourly electricity generation data for a selected date in MAW. The endpoint accepts a date parameter and returns the hourly generation data for major European countries, including the type of energy source used for generation (e.g. wind, solar, gas, etc.)",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "country",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2023-02-16"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://electricity-price.p.rapidapi.com/generation\"\nquerystring = {\"country\": \"\", \"date\": \"2023-02-16\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"electricity-price.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://electricity-price.p.rapidapi.com/generation\"\nquerystring = {\"country\": \"\", \"date\": \"2023-02-16\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"electricity-price.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "generation": {
+                        "type": "object",
+                        "properties": {
+                            "items": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "type": "integer"
+                                        },
+                                        "values": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "labels": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "dates": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Price",
+            "url": "https://electricity-price.p.rapidapi.com/price",
+            "description": "The /api/price endpoint is a part of the Electricity Price API that returns a list of hourly electricity prices for a selected date.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "currency",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "country",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2023-02-16"
+                },
+                {
+                    "name": "priceFormat",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://electricity-price.p.rapidapi.com/price\"\nquerystring = {\"currency\": \"\", \"country\": \"\", \"date\": \"2023-02-16\", \"priceFormat\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"electricity-price.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://electricity-price.p.rapidapi.com/price\"\nquerystring = {\"currency\": \"\", \"country\": \"\", \"date\": \"2023-02-16\", \"priceFormat\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"electricity-price.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "price": {
+                        "type": "object",
+                        "properties": {
+                            "values": {
+                                "type": "array",
+                                "items": {
+                                    "type": "number"
+                                }
+                            },
+                            "labels": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "dates": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "avgPrice": {
+                                "type": "number"
+                            },
+                            "avgPriceDay": {
+                                "type": "number"
+                            },
+                            "avgPriceNight": {
+                                "type": "number"
+                            },
+                            "priceAtCurrentHour": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

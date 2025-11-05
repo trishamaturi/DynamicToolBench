@@ -1,0 +1,364 @@
+{
+    "product_id": "api_08e36599-7a6c-41ee-8491-ba38bcbbf9fb",
+    "tool_description": "Introducing Advanced APIs for CO2 Emissions & Efficiency Metrics, based on our air cargo tracking data.\n\nSeize the Opportunity: Run your AWBs or flight data through our cutting-edge API to easily understand where you can make CO2 \u201csavings\u201d for the future on top of doing your required sustainability reporting.\n\nPrecision in Action: Our CO2 calculations delve into the details of each shipment leg, going beyond just taking into account the departure and arrival airports.\n\nEmpower Your Choices: H...",
+    "home_url": "https://rapidapi.com/cargoai-cargoai-default/api/cargo2zero/",
+    "name": "Cargo2ZERO",
+    "title": "Cargo2ZERO",
+    "pricing": "FREEMIUM",
+    "tool_name": "Cargo2ZERO",
+    "score": {
+        "avgServiceLevel": 75,
+        "avgLatency": 2019,
+        "avgSuccessRate": 75,
+        "popularityScore": 7.1,
+        "__typename": "Score"
+    },
+    "host": "cargo2zero.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "CO2 data from Flight Number",
+            "url": "https://cargo2zero.p.rapidapi.com/co2calculation",
+            "description": "Get CO2 calculation and benchmark data from a flight number and date.\nCalculate CO2 emissions and CO2 efficiency score based on flight path and load information.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "weight",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "100"
+                },
+                {
+                    "name": "flightnumber",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "QR8268"
+                },
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2023-04-03"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cargo2zero.p.rapidapi.com/co2calculation\"\nquerystring = {\"weight\": \"100\", \"flightnumber\": \"QR8268\", \"date\": \"2023-04-03\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cargo2zero.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cargo2zero.p.rapidapi.com/co2calculation\"\nquerystring = {\"weight\": \"100\", \"flightnumber\": \"QR8268\", \"date\": \"2023-04-03\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cargo2zero.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "origin": {
+                        "type": "string"
+                    },
+                    "destination": {
+                        "type": "string"
+                    },
+                    "aircraft": {
+                        "type": "string"
+                    },
+                    "distance": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "integer"
+                            },
+                            "unit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "weight": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "integer"
+                            },
+                            "unit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "co2TTW": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "number"
+                            },
+                            "unit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "co2WTW": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "number"
+                            },
+                            "unit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "co2eTTW": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "number"
+                            },
+                            "unit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "co2eWTW": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "number"
+                            },
+                            "unit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "co2EfficiencyScore": {
+                        "type": "integer"
+                    },
+                    "co2EfficiencyIndustry": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        {
+            "name": "CO2 data per Route and Flight",
+            "url": "https://cargo2zero.p.rapidapi.com/co2calculation",
+            "description": "Get CO2 calculation and benchmark data for the route.\nCalculate CO2 emissions and CO2 efficiency score based on route, flight and load information.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "aircraft",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "77L"
+                },
+                {
+                    "name": "destination",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "CDG"
+                },
+                {
+                    "name": "origin",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "JFK"
+                },
+                {
+                    "name": "weight",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "100"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cargo2zero.p.rapidapi.com/co2calculation\"\nquerystring = {\"aircraft\": \"77L\", \"destination\": \"CDG\", \"origin\": \"JFK\", \"weight\": \"100\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cargo2zero.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cargo2zero.p.rapidapi.com/co2calculation\"\nquerystring = {\"aircraft\": \"77L\", \"destination\": \"CDG\", \"origin\": \"JFK\", \"weight\": \"100\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cargo2zero.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "origin": {
+                        "type": "string"
+                    },
+                    "destination": {
+                        "type": "string"
+                    },
+                    "aircraft": {
+                        "type": "string"
+                    },
+                    "distance": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "number"
+                            },
+                            "unit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "weight": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "integer"
+                            },
+                            "unit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "co2TTW": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "number"
+                            },
+                            "unit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "co2WTW": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "number"
+                            },
+                            "unit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "co2eTTW": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "number"
+                            },
+                            "unit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "co2eWTW": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "number"
+                            },
+                            "unit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "co2EfficiencyScore": {
+                        "type": "integer"
+                    },
+                    "co2EfficiencyIndustry": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        {
+            "name": "CO2 data from AWB",
+            "url": "https://cargo2zero.p.rapidapi.com/co2calculation",
+            "description": "Get CO2 calculation and benchmark data per AWB number.\nCalculate CO2 emissions and CO2 efficiency score based on existing AWB.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "awb",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "000-99999970"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cargo2zero.p.rapidapi.com/co2calculation\"\nquerystring = {\"awb\": \"000-99999970\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cargo2zero.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cargo2zero.p.rapidapi.com/co2calculation\"\nquerystring = {\"awb\": \"000-99999970\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cargo2zero.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "origin": {
+                        "type": "string"
+                    },
+                    "destination": {
+                        "type": "string"
+                    },
+                    "aircraft": {
+                        "type": "string"
+                    },
+                    "distance": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "number"
+                            },
+                            "unit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "weight": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "integer"
+                            },
+                            "unit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "co2TTW": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "number"
+                            },
+                            "unit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "co2WTW": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "number"
+                            },
+                            "unit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "co2eTTW": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "number"
+                            },
+                            "unit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "co2eWTW": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "number"
+                            },
+                            "unit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "co2EfficiencyScore": {
+                        "type": "integer"
+                    },
+                    "co2EfficiencyIndustry": {
+                        "type": "integer"
+                    }
+                }
+            }
+        }
+    ]
+}

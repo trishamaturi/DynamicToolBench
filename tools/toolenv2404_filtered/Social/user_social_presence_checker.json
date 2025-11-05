@@ -1,0 +1,57 @@
+{
+    "product_id": "api_cabe05ed-994a-4f8c-b0d5-80cefceaa978",
+    "tool_description": "Check online/social sites and services user is registered in by providing only email and/or phone number.\n\nList of currently supported platforms: facebook, google, instagram, apple, lazada, linkedin, microsoft, skype, zalo, github, netflix, twitter, spotify, booking, pinterest, samsung\n\nOur existing clients use the data for fraud prevention, credit scoring, audience targeting etc.",
+    "home_url": "https://rapidapi.com/tomsf/api/user-social-presence-checker/",
+    "name": "User Social Presence Checker",
+    "title": "User Social Presence Checker",
+    "pricing": "FREEMIUM",
+    "tool_name": "User Social Presence Checker",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 9953,
+        "avgSuccessRate": 79,
+        "popularityScore": 8.8,
+        "__typename": "Score"
+    },
+    "host": "user-social-presence-checker.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Social Data",
+            "url": "https://user-social-presence-checker.p.rapidapi.com/rapid-api/1.0/social-data",
+            "description": "The Social Presence API allows you to pass an e-mail and/or a phone number of a client and retrieve information about platforms these credentials are registered in.\n\n### Retrieving social presence data\n\nIn order to retrieve social presence data, execute an HTTP `GET` request. It is mandatory to have at least email or phone parameter present.\n\nQuery parameters:\n\n| Parameter             | Value Examples                          | Mandatory | Description                                                                                                                   |\n| --------------------- | --------------------------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------- |\n| email                 | `jon.doe@gmail.com`                     | No        | Email to search social presence for                                                                                           |\n| phone                 | VN: `84877797487`<br>PH: `639365429568` | No        | Phone number to search search social presence for. Has to include country code (international format, no plus sign or spaces) |\n| max-wait-time-seconds | `20`                                    | No        | Max waiting time before returning a response. Allowed values are from `1` to `90` inclusive. Defaults to `15`                 |\n| platforms             | `facebook,apple,instagram`              | No        | A list of platforms to search for. By default all platforms are searched                                                      |\n\n### Response waiting times\n\nLonger waiting times (controlled by the `max-wait-time-seconds` parameter) increase the hit rate of the social presence data for the given email/phone. Some of the platforms reach 95% hit rate in 5 seconds, some take up to 15. If all the desired data points are gathered before timeout is reached, response returns immediately.\n\n### Response field descriptions\n\n#### Platform presence facts\n\nInformation of in which external platforms email and/or phone number are registered\n\n| Path                                                | Description                                                                           |\n| --------------------------------------------------- | ------------------------------------------------------------------------------------- |\n| platformPresenceFacts / id                          | ID of the presence fact                                                               |\n| platformPresenceFacts / created                     | Time when the information was obtained                                                |\n| platformPresenceFacts / platform                    | Platform in question. See section \"Supported platforms\" for a full list |\n| platformPresenceFacts / present                     | Is the given `credentialType` present in the `platform`                               |\n| platformPresenceFacts / credentialType              | `EMAIL` or `PHONE`                                                                    |\n| platformPresenceFacts / details / id                | Unique user identifier in the given platform. Supported platforms: `skype`            |\n| platformPresenceFacts / details / name              | Full name of the user. Supported platforms: `skype`                                   |\n| platformPresenceFacts / details / photo             | URL of the photo of the user. Supported platforms: `skype`                            |\n| platformPresenceFacts / details / city              | City of residence as provided in profile. Supported platforms: `skype`                |\n| platformPresenceFacts / details / state             | State of residence as provided in profile. Supported platforms: `skype`               |\n| platformPresenceFacts / details / country           | Country of residence as provided in profile. Supported platforms: `skype`             |\n| platformPresenceFacts / details / isBusinessAccount | Is the account in the given platform a business account. Supported platforms: `skype` |\n\n### Supported platforms\n\n| Name      | Email | Phone Number | Notes                                                                                                  |\n| --------- | ----- | ------------ | ------------------------------------------------------------------------------------------------------ |\n| facebook  | +     | +            |                                                                                                        |\n| google    | +     | +            |                                                                                                        |\n| instagram | +     | +            |                                                                                                        |\n| apple     | +     |              | `@icloud.com` e-mails are not checked - in this case the response will not contain apple presence fact |\n| lazada    | +     | +            |                                                                                                        |\n| linkedin  | +     |              |                                                                                                        |\n| microsoft | +     | +            |                                                                                                        |\n| skype     | +     | +            |                                                                                                        |\n| zalo      |       | +            |                                                                                                        |\n| github    | +     |              |                                                                                                        |\n| netflix   | +     |              |                                                                                                        |\n| twitter   | +     | +            |                                                                                                        |\n| spotify   | +     |              |                                                                                                        |\n| booking   | +     | +            | (Booking.com)                                                                                          |\n| pinterest | +     |              |                                                                                                        |",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "email",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "user@gmail.com"
+                },
+                {
+                    "name": "platforms",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "twitter,netflix,apple"
+                },
+                {
+                    "name": "max-wait-time-seconds",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10"
+                },
+                {
+                    "name": "phone",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "84394265388"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://user-social-presence-checker.p.rapidapi.com/rapid-api/1.0/social-data\"\nquerystring = {\"email\": \"user@gmail.com\", \"platforms\": \"twitter,netflix,apple\", \"max-wait-time-seconds\": \"10\", \"phone\": \"84394265388\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"user-social-presence-checker.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://user-social-presence-checker.p.rapidapi.com/rapid-api/1.0/social-data\"\nquerystring = {\"email\": \"user@gmail.com\", \"platforms\": \"twitter,netflix,apple\", \"max-wait-time-seconds\": \"10\", \"phone\": \"84394265388\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"user-social-presence-checker.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

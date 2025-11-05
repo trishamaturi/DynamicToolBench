@@ -1,0 +1,787 @@
+{
+    "product_id": "api_0add681f-f145-44b4-87d7-2fe8fa092d50",
+    "tool_description": "Fixtures, Results, and scorecards for the worlds most popular cricket tournaments",
+    "home_url": "https://rapidapi.com/sportcontentapi/api/cricket-live-data/",
+    "name": "Cricket Live Data",
+    "title": "Cricket Live Data",
+    "pricing": "FREEMIUM",
+    "tool_name": "Cricket Live Data",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 710,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.6,
+        "__typename": "Score"
+    },
+    "host": "cricket-live-data.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Series",
+            "url": "https://cricket-live-data.p.rapidapi.com/series",
+            "description": "Lists available cricket series' to query",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cricket-live-data.p.rapidapi.com/series\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cricket-live-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cricket-live-data.p.rapidapi.com/series\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cricket-live-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "meta": {
+                        "properties": {
+                            "description": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "results": {
+                        "items": {
+                            "properties": {
+                                "series": {
+                                    "items": {
+                                        "properties": {
+                                            "season": {
+                                                "type": "string"
+                                            },
+                                            "series_id": {
+                                                "type": "integer"
+                                            },
+                                            "series_name": {
+                                                "type": "string"
+                                            },
+                                            "status": {
+                                                "type": "string"
+                                            },
+                                            "updated_at": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "type": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Fixtures",
+            "url": "https://cricket-live-data.p.rapidapi.com/fixtures",
+            "description": "Lists next 50 fixtures across all series'",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cricket-live-data.p.rapidapi.com/fixtures\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cricket-live-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cricket-live-data.p.rapidapi.com/fixtures\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cricket-live-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "results": {
+                        "items": {
+                            "properties": {
+                                "away": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "date": {
+                                    "type": "string"
+                                },
+                                "home": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "match_subtitle": {
+                                    "type": "string"
+                                },
+                                "match_title": {
+                                    "type": "string"
+                                },
+                                "result": {
+                                    "type": "string"
+                                },
+                                "series_id": {
+                                    "type": "integer"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "venue": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Fixtures By Series",
+            "url": "https://cricket-live-data.p.rapidapi.com/fixtures-by-series/606",
+            "description": "Lists Fixtures and Results for a given tournament.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "series_id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "606"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cricket-live-data.p.rapidapi.com/fixtures-by-series/606\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cricket-live-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cricket-live-data.p.rapidapi.com/fixtures-by-series/{series_id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cricket-live-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "results": {
+                        "items": {
+                            "properties": {
+                                "away": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "date": {
+                                    "type": "string"
+                                },
+                                "home": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "match_subtitle": {
+                                    "type": "string"
+                                },
+                                "match_title": {
+                                    "type": "string"
+                                },
+                                "result": {
+                                    "type": "string"
+                                },
+                                "series_id": {
+                                    "type": "integer"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "venue": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Fixtures By Date",
+            "url": "https://cricket-live-data.p.rapidapi.com/fixtures-by-date/2020-09-21",
+            "description": "Lists fixtures for a given date",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2020-09-21"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cricket-live-data.p.rapidapi.com/fixtures-by-date/2020-09-21\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cricket-live-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cricket-live-data.p.rapidapi.com/fixtures-by-date/{date}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cricket-live-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "results": {
+                        "items": {
+                            "properties": {
+                                "away": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "date": {
+                                    "type": "string"
+                                },
+                                "home": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "match_subtitle": {
+                                    "type": "string"
+                                },
+                                "match_title": {
+                                    "type": "string"
+                                },
+                                "result": {
+                                    "type": "string"
+                                },
+                                "series_id": {
+                                    "type": "integer"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "venue": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Results",
+            "url": "https://cricket-live-data.p.rapidapi.com/results",
+            "description": "Lists last 50 Results across all series'",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cricket-live-data.p.rapidapi.com/results\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cricket-live-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cricket-live-data.p.rapidapi.com/results\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cricket-live-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "results": {
+                        "items": {
+                            "properties": {
+                                "away": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "date": {
+                                    "type": "string"
+                                },
+                                "home": {
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "match_subtitle": {
+                                    "type": "string"
+                                },
+                                "match_title": {
+                                    "type": "string"
+                                },
+                                "result": {
+                                    "type": "string"
+                                },
+                                "series_id": {
+                                    "type": "integer"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "venue": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Results By Date",
+            "url": "https://cricket-live-data.p.rapidapi.com/results-by-date/2020-09-20",
+            "description": "Lists results for given date",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2020-09-20"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cricket-live-data.p.rapidapi.com/results-by-date/2020-09-20\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cricket-live-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cricket-live-data.p.rapidapi.com/results-by-date/{date}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cricket-live-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Match Scorecard",
+            "url": "https://cricket-live-data.p.rapidapi.com/match/2432999",
+            "description": "Lists full scorecard (updated live) for a given match id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "match_id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "2432999"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cricket-live-data.p.rapidapi.com/match/2432999\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cricket-live-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cricket-live-data.p.rapidapi.com/match/{match_id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cricket-live-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "results": {
+                        "properties": {
+                            "fixture": {
+                                "properties": {
+                                    "away": {
+                                        "properties": {
+                                            "code": {
+                                                "type": "string"
+                                            },
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "dates": {
+                                        "items": {
+                                            "properties": {
+                                                "date": {
+                                                    "type": "string"
+                                                },
+                                                "match_subtitle": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "end_date": {
+                                        "type": "string"
+                                    },
+                                    "home": {
+                                        "properties": {
+                                            "code": {
+                                                "type": "string"
+                                            },
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "id": {
+                                        "type": "integer"
+                                    },
+                                    "match_title": {
+                                        "type": "string"
+                                    },
+                                    "series_id": {
+                                        "type": "integer"
+                                    },
+                                    "start_date": {
+                                        "type": "string"
+                                    },
+                                    "venue": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "live_details": {
+                                "properties": {
+                                    "match_summary": {
+                                        "properties": {
+                                            "away_scores": {
+                                                "type": "string"
+                                            },
+                                            "home_scores": {
+                                                "type": "string"
+                                            },
+                                            "in_play": {
+                                                "type": "string"
+                                            },
+                                            "result": {
+                                                "type": "string"
+                                            },
+                                            "status": {
+                                                "type": "string"
+                                            },
+                                            "toss": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "officials": {
+                                        "properties": {
+                                            "referee": {
+                                                "type": "string"
+                                            },
+                                            "umpire_1": {
+                                                "type": "string"
+                                            },
+                                            "umpire_2": {
+                                                "type": "string"
+                                            },
+                                            "umpire_reserve": {
+                                                "type": "string"
+                                            },
+                                            "umpire_tv": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "scorecard": {
+                                        "items": {
+                                            "properties": {
+                                                "batting": {
+                                                    "items": {
+                                                        "properties": {
+                                                            "balls": {
+                                                                "type": "integer"
+                                                            },
+                                                            "bat_order": {
+                                                                "type": "integer"
+                                                            },
+                                                            "fours": {
+                                                                "type": "integer"
+                                                            },
+                                                            "how_out": {
+                                                                "type": "string"
+                                                            },
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "minutes": {
+                                                                "type": "string"
+                                                            },
+                                                            "player_id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player_name": {
+                                                                "type": "string"
+                                                            },
+                                                            "runs": {
+                                                                "type": "integer"
+                                                            },
+                                                            "sixes": {
+                                                                "type": "integer"
+                                                            },
+                                                            "strike_rate": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "type": "array"
+                                                },
+                                                "bowling": {
+                                                    "items": {
+                                                        "properties": {
+                                                            "dot_balls": {
+                                                                "type": "integer"
+                                                            },
+                                                            "economy": {
+                                                                "type": "string"
+                                                            },
+                                                            "extras": {
+                                                                "type": "string"
+                                                            },
+                                                            "fours": {
+                                                                "type": "integer"
+                                                            },
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "maidens": {
+                                                                "type": "integer"
+                                                            },
+                                                            "overs": {
+                                                                "type": "string"
+                                                            },
+                                                            "player_id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player_name": {
+                                                                "type": "string"
+                                                            },
+                                                            "runs_conceded": {
+                                                                "type": "integer"
+                                                            },
+                                                            "sixes": {
+                                                                "type": "integer"
+                                                            },
+                                                            "wickets": {
+                                                                "type": "integer"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "type": "array"
+                                                },
+                                                "current": {
+                                                    "type": "boolean"
+                                                },
+                                                "extras": {
+                                                    "type": "integer"
+                                                },
+                                                "extras_detail": {
+                                                    "type": "string"
+                                                },
+                                                "fow": {
+                                                    "type": "string"
+                                                },
+                                                "innings_number": {
+                                                    "type": "integer"
+                                                },
+                                                "overs": {
+                                                    "type": "string"
+                                                },
+                                                "runs": {
+                                                    "type": "integer"
+                                                },
+                                                "still_to_bat": {
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player_id": {
+                                                                "type": "integer"
+                                                            },
+                                                            "player_name": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    "type": "array"
+                                                },
+                                                "title": {
+                                                    "type": "string"
+                                                },
+                                                "wickets": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "type": "array"
+                                    },
+                                    "stats": {
+                                        "properties": {
+                                            "current_run_rate": {
+                                                "type": "string"
+                                            },
+                                            "last_18_balls": {
+                                                "items": {
+                                                    "properties": {
+                                                        "currentOver": {
+                                                            "type": "integer"
+                                                        },
+                                                        "currentOverBall": {
+                                                            "type": "integer"
+                                                        },
+                                                        "isBoundary": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "isBye": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "isDismissal": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "isLegBye": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "isMaiden": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "isNoBall": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "isOverEnd": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "isWide": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "runs": {
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            },
+                                            "last_update": {
+                                                "type": "string"
+                                            },
+                                            "min_remaining_overs": {
+                                                "type": "string"
+                                            },
+                                            "partnership_overs": {
+                                                "type": "string"
+                                            },
+                                            "partnership_player_1": {
+                                                "type": "string"
+                                            },
+                                            "partnership_player_1_balls": {
+                                                "type": "integer"
+                                            },
+                                            "partnership_player_1_runs": {
+                                                "type": "integer"
+                                            },
+                                            "partnership_player_2": {
+                                                "type": "string"
+                                            },
+                                            "partnership_player_2_balls": {
+                                                "type": "integer"
+                                            },
+                                            "partnership_player_2_runs": {
+                                                "type": "integer"
+                                            },
+                                            "partnership_run_rate": {
+                                                "type": "string"
+                                            },
+                                            "partnership_runs": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "teamsheets": {
+                                        "type": "null"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    ]
+}

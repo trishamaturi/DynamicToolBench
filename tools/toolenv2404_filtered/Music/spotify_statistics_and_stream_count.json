@@ -1,0 +1,309 @@
+{
+    "product_id": "api_6c5a2dd0-b5ad-49fc-943b-be03176a12ca",
+    "tool_description": "Retrieve the number of streams (playback count), listeners, and followers for tracks and artists on Spotify.",
+    "home_url": "https://rapidapi.com/beat-analytics-beat-analytics-default/api/spotify-statistics-and-stream-count/",
+    "name": "Spotify Statistics and Stream Count",
+    "title": "Spotify Statistics and Stream Count",
+    "pricing": "FREEMIUM",
+    "tool_name": "Spotify Statistics and Stream Count",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 845,
+        "avgSuccessRate": 99,
+        "popularityScore": 9.2,
+        "__typename": "Score"
+    },
+    "host": "spotify-statistics-and-stream-count.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "getArtist",
+            "url": "https://spotify-statistics-and-stream-count.p.rapidapi.com/artist/7Ln80lUS6He07XvHI8qqHH",
+            "description": "Get artist statistics, including monthly listeners, top listener cities, followers, and top songs, for given artist ID.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "artistId",
+                    "type": "STRING",
+                    "description": "Spotify ID of the artist you wish to receive statistics for, e.g. `7Ln80lUS6He07XvHI8qqHH`.",
+                    "default": "7Ln80lUS6He07XvHI8qqHH"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://spotify-statistics-and-stream-count.p.rapidapi.com/artist/7Ln80lUS6He07XvHI8qqHH\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"spotify-statistics-and-stream-count.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://spotify-statistics-and-stream-count.p.rapidapi.com/artist/{artistid}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"spotify-statistics-and-stream-count.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "getTrack",
+            "url": "https://spotify-statistics-and-stream-count.p.rapidapi.com/track/2x8evxqUlF0eRabbW2JBJd",
+            "description": "Get track statistics, including stream count, content rating, and duration, for given track ID.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "trackId",
+                    "type": "STRING",
+                    "description": "Spotify ID of the track you wish to receive statistics for, e.g. `2x8evxqUlF0eRabbW2JBJd`.",
+                    "default": "2x8evxqUlF0eRabbW2JBJd"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://spotify-statistics-and-stream-count.p.rapidapi.com/track/2x8evxqUlF0eRabbW2JBJd\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"spotify-statistics-and-stream-count.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://spotify-statistics-and-stream-count.p.rapidapi.com/track/{trackid}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"spotify-statistics-and-stream-count.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "title": "Id",
+                        "examples": [
+                            "2x8evxqUlF0eRabbW2JBJd"
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "title": "Name",
+                        "examples": [
+                            "Fluorescent Adolescent"
+                        ]
+                    },
+                    "streamCount": {
+                        "type": "integer",
+                        "title": "Streamcount",
+                        "examples": [
+                            764621158
+                        ]
+                    },
+                    "duration": {
+                        "type": "integer",
+                        "title": "Duration",
+                        "examples": [
+                            183893
+                        ]
+                    },
+                    "contentRating": {
+                        "type": "string",
+                        "title": "Contentrating",
+                        "examples": [
+                            "none"
+                        ]
+                    },
+                    "trackNumber": {
+                        "type": "integer",
+                        "title": "Tracknumber",
+                        "examples": [
+                            3
+                        ]
+                    },
+                    "album": {
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "title": "Id",
+                                "examples": [
+                                    "1XkGORuUX2QGOEIL4EbJKm"
+                                ]
+                            },
+                            "name": {
+                                "type": "string",
+                                "title": "Name",
+                                "examples": [
+                                    "Favourite Worst Nightmare"
+                                ]
+                            },
+                            "releaseDate": {
+                                "type": "string",
+                                "title": "Releasedate",
+                                "examples": [
+                                    "2007-04-22"
+                                ]
+                            }
+                        },
+                        "type": "object",
+                        "required": [
+                            "id",
+                            "name",
+                            "releaseDate"
+                        ],
+                        "title": "BasicAlbumInfo"
+                    },
+                    "artists": {
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "title": "Id",
+                                    "examples": [
+                                        "7Ln80lUS6He07XvHI8qqHH"
+                                    ]
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "title": "Name",
+                                    "examples": [
+                                        "Arctic Monkeys"
+                                    ]
+                                }
+                            },
+                            "type": "object",
+                            "required": [
+                                "id",
+                                "name"
+                            ],
+                            "title": "BasicArtistInfo"
+                        },
+                        "type": "array",
+                        "title": "Artists"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "name",
+                    "streamCount",
+                    "duration",
+                    "contentRating",
+                    "trackNumber",
+                    "album",
+                    "artists"
+                ],
+                "title": "TrackStats"
+            }
+        },
+        {
+            "name": "getAlbum",
+            "url": "https://spotify-statistics-and-stream-count.p.rapidapi.com/album/1XkGORuUX2QGOEIL4EbJKm",
+            "description": "Get album statistics, including per-track stream counts, per-track durations, and release date, for given album ID.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "albumId",
+                    "type": "STRING",
+                    "description": "Spotify ID of the album you wish to receive statistics for, e.g. `1XkGORuUX2QGOEIL4EbJKm`.",
+                    "default": "1XkGORuUX2QGOEIL4EbJKm"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://spotify-statistics-and-stream-count.p.rapidapi.com/album/1XkGORuUX2QGOEIL4EbJKm\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"spotify-statistics-and-stream-count.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://spotify-statistics-and-stream-count.p.rapidapi.com/album/{albumid}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"spotify-statistics-and-stream-count.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "title": "Id",
+                        "examples": [
+                            "1XkGORuUX2QGOEIL4EbJKm"
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "title": "Name",
+                        "examples": [
+                            "Favourite Worst Nightmare"
+                        ]
+                    },
+                    "releaseDate": {
+                        "type": "string",
+                        "title": "Releasedate",
+                        "examples": [
+                            "2007-04-22"
+                        ]
+                    },
+                    "artists": {
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "title": "Id",
+                                    "examples": [
+                                        "7Ln80lUS6He07XvHI8qqHH"
+                                    ]
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "title": "Name",
+                                    "examples": [
+                                        "Arctic Monkeys"
+                                    ]
+                                }
+                            },
+                            "type": "object",
+                            "required": [
+                                "id",
+                                "name"
+                            ],
+                            "title": "BasicArtistInfo"
+                        },
+                        "type": "array",
+                        "title": "Artists"
+                    },
+                    "tracks": {
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "title": "Id",
+                                    "examples": [
+                                        "2x8evxqUlF0eRabbW2JBJd"
+                                    ]
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "title": "Name",
+                                    "examples": [
+                                        "Fluorescent Adolescent"
+                                    ]
+                                },
+                                "streamCount": {
+                                    "type": "integer",
+                                    "title": "Streamcount",
+                                    "examples": [
+                                        764621158
+                                    ]
+                                },
+                                "duration": {
+                                    "type": "integer",
+                                    "title": "Duration",
+                                    "examples": [
+                                        183893
+                                    ]
+                                },
+                                "contentRating": {
+                                    "type": "string",
+                                    "title": "Contentrating",
+                                    "examples": [
+                                        "none"
+                                    ]
+                                }
+                            },
+                            "type": "object",
+                            "required": [
+                                "id",
+                                "name",
+                                "streamCount",
+                                "duration",
+                                "contentRating"
+                            ],
+                            "title": "BasicTrackInfo"
+                        },
+                        "type": "array",
+                        "title": "Tracks"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "name",
+                    "releaseDate",
+                    "artists",
+                    "tracks"
+                ],
+                "title": "AlbumStats"
+            }
+        }
+    ]
+}

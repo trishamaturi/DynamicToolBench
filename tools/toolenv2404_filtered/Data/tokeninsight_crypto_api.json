@@ -1,0 +1,495 @@
+{
+    "product_id": "api_385edd3f-0f8e-4bc5-b934-1d7ec39c1c46",
+    "tool_description": "A one-stop crypto API developed by TokenInsight (tokeninsight.com)that helps you get:\n1. crypto prices, trading markets, ratings, contract addresses, ecosystems, etc. \n2. Exchanges volume, and historical data. \n3. General market statistics of the cryptocurrencies market.\n4. Latest crypto news and research reports.\n5. More endpoint here https://tokeninsight-api.readme.io/reference/api-overview\n\nCheck here to see how to get your Free API Key https://tokeninsight-api.readme.io/reference/get-your...",
+    "home_url": "https://rapidapi.com/tokeninsight-tokeninsight-default/api/tokeninsight-crypto-api1/",
+    "name": "TokenInsight Crypto API",
+    "title": "TokenInsight Crypto API",
+    "pricing": "FREE",
+    "tool_name": "TokenInsight Crypto API",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 377,
+        "avgSuccessRate": 96,
+        "popularityScore": 9,
+        "__typename": "Score"
+    },
+    "host": "tokeninsight-crypto-api1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Exchange historical data",
+            "url": "https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/history/exchanges/binance",
+            "description": "Retrieve crypto exchanges historical data including spot volume, derivatives volume and total volume.\nhttps://tokeninsight.com/en/exchanges/binance",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "binance"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "vs_currency",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "usd"
+                },
+                {
+                    "name": "days",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "90"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/history/exchanges/binance\"\nquerystring = {\"vs_currency\": \"usd\", \"days\": \"90\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/history/exchanges/{id}\"\nquerystring = {\"vs_currency\": \"usd\", \"days\": \"90\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Coin historical data",
+            "url": "https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/history/coins/bitcoin",
+            "description": "Retrieve coins historical data including price, market cap, and trading volume. Day, Hour, and Minute data is supported.\n\nhttps://tokeninsight.com/en/coins/bitcoin/historical",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "bitcoin"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "interval",
+                    "type": "STRING",
+                    "description": "minute, hour, day. day in default",
+                    "default": "day"
+                },
+                {
+                    "name": "vs_currency",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "usd"
+                },
+                {
+                    "name": "length",
+                    "type": "NUMBER",
+                    "description": "minute: 1-10080(60 in default) hour: 1-8784(24 in default) day: 1-365, -1 stands for max (90 in default)",
+                    "default": "90"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/history/coins/bitcoin\"\nquerystring = {\"interval\": \"day\", \"vs_currency\": \"usd\", \"length\": \"90\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/history/coins/{id}\"\nquerystring = {\"interval\": \"day\", \"vs_currency\": \"usd\", \"length\": \"90\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "All coins rating",
+            "url": "https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/rating/coins",
+            "description": "Retrieve all coins rating",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "300"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/rating/coins\"\nquerystring = {\"offset\": \"0\", \"limit\": \"300\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/rating/coins\"\nquerystring = {\"offset\": \"0\", \"limit\": \"300\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Any coin rating",
+            "url": "https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/rating/coin/ethereum",
+            "description": "Retrieve any coin rating",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "token id",
+                    "default": "ethereum"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/rating/coin/ethereum\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/rating/coin/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "CRYPTO RESEARCH ARTICLES",
+            "url": "https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/research/list",
+            "description": "Retrieve the latest research articles.\n\nhttps://tokeninsight.com/en/research",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "'en' for English research articles and 'cn' for Chinese research articles.",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/research/list\"\nquerystring = {\"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/research/list\"\nquerystring = {\"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "CRYPTO NEWS",
+            "url": "https://tokeninsight-crypto-api1.p.rapidapi.com/",
+            "description": "Return the latest crypto-related news\n\nhttps://tokeninsight.com/en/news",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "'en' for English news, 'cn' for Chinese news, and 'kr' for Korea news.",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/\"\nquerystring = {\"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/\"\nquerystring = {\"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Exchange trading markets",
+            "url": "https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/exchanges/{id}/markets",
+            "description": "Retrieve exchange trading markets",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "Exchange id, exid. You can find all exchange id in the exchanges list endpoint.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "300"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0"
+                },
+                {
+                    "name": "status",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "verified"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/exchanges/{id}/markets\"\nquerystring = {\"id\": \"\", \"limit\": \"300\", \"offset\": \"0\", \"status\": \"verified\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/exchanges/{id}/markets\"\nquerystring = {\"id\": \"\", \"limit\": \"300\", \"offset\": \"0\", \"status\": \"verified\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Exchange complete data",
+            "url": "https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/exchanges/binance",
+            "description": "Retrieve an exchange complete data",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "Exchange ID, exid. You can find the exid in the exchange list for every exchange.",
+                    "default": "binance"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/exchanges/binance\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/exchanges/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Exchanges list",
+            "url": "https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/exchanges/list",
+            "description": "Use `offset` and `limit` to decide the number of items (in this case, the number of exchanges) that will be returned.\n\nFor example, set `offset` as `0`, and `limit` as `20`, then you will get the top 20 exchanges data based on exchanges' ranking on https://tokeninsight.com/en/exchanges.\n\nSet `offset` as `10`, and limit as `10`, then you will get 10 exchanges data from No.11 to No.20 based on exchanges' ranking on https://tokeninsight.com/en/exchanges.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "300"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0"
+                },
+                {
+                    "name": "derivatives",
+                    "type": "BOOLEAN",
+                    "description": "true/false to include derivatives exchanges, default: false",
+                    "default": ""
+                },
+                {
+                    "name": "cex",
+                    "type": "BOOLEAN",
+                    "description": "true/false to include centralized exchanges, default: true",
+                    "default": ""
+                },
+                {
+                    "name": "dex",
+                    "type": "BOOLEAN",
+                    "description": "true/false to include decentralized exchanges, default: false",
+                    "default": ""
+                },
+                {
+                    "name": "spot",
+                    "type": "BOOLEAN",
+                    "description": "true/false to include spot exchanges, default: true",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/exchanges/list\"\nquerystring = {\"limit\": \"300\", \"offset\": \"0\", \"derivatives\": \"\", \"cex\": \"\", \"dex\": \"\", \"spot\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/exchanges/list\"\nquerystring = {\"limit\": \"300\", \"offset\": \"0\", \"derivatives\": \"\", \"cex\": \"\", \"dex\": \"\", \"spot\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Newly listed coins",
+            "url": "https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/coins/list/newly-listed",
+            "description": "You are able to retrieve the latest listed tokens on TokenInsight.\n\nhttps://tokeninsight.com/en/cryptocurrencies/newly-listed\n\nYou can use `price_tracked` to filter whether tokens without prices are included.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "price_tracked",
+                    "type": "BOOLEAN",
+                    "description": "true stands for yes, and newly listed token with prices will be excluded. false stands for no and all the newly listed tokens will be returned",
+                    "default": "true"
+                },
+                {
+                    "name": "vs_currency",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "usd"
+                },
+                {
+                    "name": "limit",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "offset",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/coins/list/newly-listed\"\nquerystring = {\"price_tracked\": \"true\", \"vs_currency\": \"usd\", \"limit\": \"\", \"offset\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/coins/list/newly-listed\"\nquerystring = {\"price_tracked\": \"true\", \"vs_currency\": \"usd\", \"limit\": \"\", \"offset\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Top losers",
+            "url": "https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/coins/top-losers",
+            "description": "https://tokeninsight.com/en/cryptocurrencies/gainers-losers\n\nYou will be able to retrieve the top gainer list with this endpoint.\n\nThe parameter you set range controls the `range` that top gainers you get from.\n\n`100` stands for you are retrieving the top gainers within the Top 100 tokens by market cap.\n\n`200` stands for you are retrieving the top gainers within the Top 200 tokens by market cap.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "range",
+                    "type": "NUMBER",
+                    "description": "Gainers or losers in top *** coins. Ex: 100 stands for retrieving ganers / losers in only the top 100 marketcap coins. 500 stands for for retrieving ganers / losers in only the top 500 marketcap coins. Default in 100, other options 200 500 1000 and -1 .-1 stands for the whole token range",
+                    "default": "100"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/coins/top-losers\"\nquerystring = {\"range\": \"100\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/coins/top-losers\"\nquerystring = {\"range\": \"100\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Top gainers",
+            "url": "https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/coins/top-gainers",
+            "description": "https://tokeninsight.com/en/cryptocurrencies/gainers-losers\n\nYou will be able to retrieve the top gainer list with this endpoint.\n\nThe parameter you set `range` controls the range that top gainers you get from.\n\n`100` stands for you are retrieving the top gainers within the Top 100 tokens by market cap.\n\n`200` stands for you are retrieving the top gainers within the Top 200 tokens by market cap.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "range",
+                    "type": "NUMBER",
+                    "description": "Gainers or losers in top *** coins. Ex: 100 stands for retrieving ganers / losers in only the top 100 marketcap coins. 500 stands for for retrieving ganers / losers in only the top 500 marketcap coins. Default in 100, other options 200 500 1000 and -1 .-1 stands for the whole token range",
+                    "default": "100"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/coins/top-gainers\"\nquerystring = {\"range\": \"100\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/coins/top-gainers\"\nquerystring = {\"range\": \"100\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Coin trading markets",
+            "url": "https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/coins/bitcoin/markets",
+            "description": "Retrieve coin trading markets",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "A unique ID to identify different coins/protocols. You can find the list of ids in Coins list endpoint.",
+                    "default": "bitcoin"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "default 300, max 900",
+                    "default": "300"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/coins/bitcoin/markets\"\nquerystring = {\"limit\": \"300\", \"offset\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/coins/{id}/markets\"\nquerystring = {\"limit\": \"300\", \"offset\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Coin complete data",
+            "url": "https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/coins/bitcoin",
+            "description": "Retrieve a coin complete data",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "A unique ID to identify different coins/protocols. You can find the list of ids in Coins list endpoint.",
+                    "default": "bitcoin"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/coins/bitcoin\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/coins/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Coins list",
+            "url": "https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/coins/list",
+            "description": "Retrieve coins list with price.\nGet all coins with prices that are currently listed on TokenInsight. Price is the default in US Dollars. You can check Get list of supported_vs_currencies for other currencies.\n\nid is unique to any given coin / protocol. You shall need it if you want to retrieve data on a specific coin. We have more than 10k+ coins in our database, thus, more than 10k ids.\n\nMost of the time, TokenInsight's coin id was the same as their name, while replacing space or other symbols with a \"-\".\n\nYou can also find a coin's id from our website's URL:\nhttps://tokeninsight.com/en/coins/bitcoin/overview\n\nbitcoin that after \"coins/\" is the coin id.\n\nUse offset and limit to decide the number of items (in this case, the number of coins) that will be returned.\n\nFor example, set offset as 0, and limit as 200, then you will get the top 200 coins based on the coins' marketcap.\n\nSet offset as 200, and limit as 50, then you will get 50 coins from No.201 to No.250 based on the coins' marketcap.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0"
+                },
+                {
+                    "name": "vs_currency",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "usd"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "default 300, max 1500",
+                    "default": "300"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/coins/list\"\nquerystring = {\"offset\": \"0\", \"vs_currency\": \"usd\", \"limit\": \"300\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/coins/list\"\nquerystring = {\"offset\": \"0\", \"vs_currency\": \"usd\", \"limit\": \"300\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Currencies supported",
+            "url": "https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/simple/supported_vs_currencies",
+            "description": "Retrieve fiat currencies supported",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/simple/supported_vs_currencies\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/simple/supported_vs_currencies\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Coin simple data",
+            "url": "https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/simple/price",
+            "description": "Retrieve a coin simple data",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "ids",
+                    "type": "STRING",
+                    "description": "A unique ID to identify different coins/protocols. You can find the list of ids in Coin list endpoint. Comma-separated if querying more than 1 coin",
+                    "default": "bitcoin,ethereum"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "include_vol_spot_24h",
+                    "type": "BOOLEAN",
+                    "description": "true/false to include 24h spot_vol, default: false",
+                    "default": ""
+                },
+                {
+                    "name": "include_price_change_percentage_24h",
+                    "type": "BOOLEAN",
+                    "description": "true/false to include 24h price change percentage., default: false",
+                    "default": ""
+                },
+                {
+                    "name": "include_market_cap",
+                    "type": "BOOLEAN",
+                    "description": "true/false to include market_cap, default: false",
+                    "default": "true"
+                },
+                {
+                    "name": "vs_currencies",
+                    "type": "STRING",
+                    "description": "vs_currency of coins, comma-separated if querying more than 1 vs_currency. Default in USD",
+                    "default": "usd"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/simple/price\"\nquerystring = {\"include_vol_spot_24h\": \"\", \"include_price_change_percentage_24h\": \"\", \"include_market_cap\": \"true\", \"vs_currencies\": \"usd\", \"ids\": \"bitcoin,ethereum\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/simple/price\"\nquerystring = {\"include_vol_spot_24h\": \"\", \"include_price_change_percentage_24h\": \"\", \"include_market_cap\": \"true\", \"vs_currencies\": \"usd\", \"ids\": \"bitcoin,ethereum\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "GLOBAL STATUS",
+            "url": "https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/global",
+            "description": "Retrieve the global status of the crypto market, including global market cap, trading volume, top coins' dominance, and other metrics.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/global\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/global\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "PING",
+            "url": "https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/ping",
+            "description": "Check API server status",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/ping\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tokeninsight-crypto-api1.p.rapidapi.com/api/v1/ping\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tokeninsight-crypto-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

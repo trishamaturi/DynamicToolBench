@@ -1,0 +1,82 @@
+{
+    "product_id": "api_8fec249a-041f-47d6-a476-09b51e90edf5",
+    "tool_description": "Fast and Reliable Reverse Image Searches - Find the Sources of an Image and Referencing Web Pages in Real-Time.",
+    "home_url": "https://rapidapi.com/letscrape-6bRBa3QguO5/api/reverse-image-search1/",
+    "name": "Reverse Image Search",
+    "title": "Reverse Image Search",
+    "pricing": "FREEMIUM",
+    "tool_name": "Reverse Image Search",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1067,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.4,
+        "__typename": "Score"
+    },
+    "host": "reverse-image-search1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Reverse Image Search",
+            "url": "https://reverse-image-search1.p.rapidapi.com/reverse-image-search",
+            "description": "Send an image URL and get the top 400 source web pages.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "Image URL to search",
+                    "default": "https://apkmazon.com/wp-content/uploads/2023/03/ask-ai-chatgpt-powered-chat-1.jpg"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Maximum number of results to return (1-500). \n**Default**: `500`.",
+                    "default": "10"
+                },
+                {
+                    "name": "safe_search",
+                    "type": "ENUM",
+                    "description": "How to show explicit content in your search results, like sexual activity and graphic violence. \n\n**Allowed values:** `off, blur`\n**Default:** `blur`",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://reverse-image-search1.p.rapidapi.com/reverse-image-search\"\nquerystring = {\"limit\": \"10\", \"safe_search\": \"\", \"url\": \"https://apkmazon.com/wp-content/uploads/2023/03/ask-ai-chatgpt-powered-chat-1.jpg\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"reverse-image-search1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://reverse-image-search1.p.rapidapi.com/reverse-image-search\"\nquerystring = {\"limit\": \"10\", \"safe_search\": \"\", \"url\": \"https://apkmazon.com/wp-content/uploads/2023/03/ask-ai-chatgpt-powered-chat-1.jpg\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"reverse-image-search1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "url": {
+                                "type": "string"
+                            },
+                            "language": {
+                                "type": "string"
+                            },
+                            "country": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

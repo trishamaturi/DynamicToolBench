@@ -1,0 +1,285 @@
+{
+    "product_id": "api_e022d155-a037-4de0-97c3-0dbae4b26d86",
+    "tool_description": "This API gives you the tools to find high-quality data on over 875,000 branded, grocery, and generic foods. You can also use this API to get nutrition data for thousands of raw ingredients. This API supports barcode lookup, searching by name, advanced searches using 10+ filters, and searching using a single ingredient or a set of ingredients. We provide ingredients, packaging info (size and photos), serving info, nutrients (micro and macro), diet labels (vegan, vegetarian, gluten-free), flagged ingredients, allergens, trace ingredients, countries where sold, palm oil ingredients, and more.",
+    "home_url": "https://rapidapi.com/chomp/api/chomp-food-nutrition-database-v2/",
+    "name": "Chomp Food & Nutrition Database v2",
+    "title": "Chomp Food & Nutrition Database v2",
+    "pricing": "FREEMIUM",
+    "tool_name": "Chomp Food & Nutrition Database v2",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1238,
+        "avgSuccessRate": 100,
+        "popularityScore": 6.6,
+        "__typename": "Score"
+    },
+    "host": "chomp-food-nutrition-database-v2.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/food/branded/barcode.php",
+            "url": "https://chomp-food-nutrition-database-v2.p.rapidapi.com/food/branded/barcode.php",
+            "description": "Get data for a branded food using the food's UPC/EAN barcode.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "STRING",
+                    "description": "UPC/EAN barcode",
+                    "default": "00038000116490"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://chomp-food-nutrition-database-v2.p.rapidapi.com/food/branded/barcode.php\"\nquerystring = {\"code\": \"00038000116490\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chomp-food-nutrition-database-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://chomp-food-nutrition-database-v2.p.rapidapi.com/food/branded/barcode.php\"\nquerystring = {\"code\": \"00038000116490\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chomp-food-nutrition-database-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "/food/branded/name.php",
+            "url": "https://chomp-food-nutrition-database-v2.p.rapidapi.com/food/branded/name.php",
+            "description": "Search for branded food items by name.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Search for branded food items using a general food name keyword. This does not have to exactly match the \"official\" name for the food.",
+                    "default": "Pop-Tarts"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Set maximum number of records you want the API to return. The default value is \"10.\"",
+                    "default": "3"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "This is how you paginate the search result. By default, you will see the first 10 records. You must increment the page number to access the next 10 records, and so on. The default value is \"1.\"",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://chomp-food-nutrition-database-v2.p.rapidapi.com/food/branded/name.php\"\nquerystring = {\"name\": \"Pop-Tarts\", \"limit\": \"3\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chomp-food-nutrition-database-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://chomp-food-nutrition-database-v2.p.rapidapi.com/food/branded/name.php\"\nquerystring = {\"name\": \"Pop-Tarts\", \"limit\": \"3\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chomp-food-nutrition-database-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 401,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "/food/branded/search.php",
+            "url": "https://chomp-food-nutrition-database-v2.p.rapidapi.com/food/branded/search.php",
+            "description": "Search for branded food items using various parameters.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "This is how you paginate the search result. By default, you will see the first 10 records. You must increment the page number to access the next 10 records, and so on. The default value is \"1.\"",
+                    "default": "1"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Filter the search to only include branded foods that are sold in a specific country.",
+                    "default": "United States"
+                },
+                {
+                    "name": "palm_oil",
+                    "type": "STRING",
+                    "description": "Filter the search to only include branded foods that contain a specific ingredient from palm oil.",
+                    "default": ""
+                },
+                {
+                    "name": "mineral",
+                    "type": "STRING",
+                    "description": "Filter the search to only include branded foods that contain a specific mineral.",
+                    "default": ""
+                },
+                {
+                    "name": "trace",
+                    "type": "STRING",
+                    "description": "Filter the search to only include branded foods that contain a specific trace ingredient.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrient",
+                    "type": "STRING",
+                    "description": "Filter the search to only include branded foods that contain a specific nutrient.",
+                    "default": ""
+                },
+                {
+                    "name": "diet",
+                    "type": "STRING",
+                    "description": "Filter the search to only include branded foods that are considered compatible with a specific diet. Valid diets: Vegan, Vegetarian, Gluten Free",
+                    "default": ""
+                },
+                {
+                    "name": "vitamin",
+                    "type": "STRING",
+                    "description": "Filter the search to only include branded foods that contain a specific vitamin.",
+                    "default": ""
+                },
+                {
+                    "name": "brand",
+                    "type": "STRING",
+                    "description": "Filter the search to only include branded foods that are owned by a specific brand.",
+                    "default": "Starbucks"
+                },
+                {
+                    "name": "keyword",
+                    "type": "STRING",
+                    "description": "Filter the search to only include branded foods that contain a specific keyword.",
+                    "default": ""
+                },
+                {
+                    "name": "ingredient",
+                    "type": "STRING",
+                    "description": "Filter the search to only include branded foods that contain a specific ingredient.",
+                    "default": ""
+                },
+                {
+                    "name": "allergen",
+                    "type": "STRING",
+                    "description": "Filter the search to only include branded foods that contain a specific allergen.",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "ENUM",
+                    "description": "Set maximum number of records you want the API to return. The default value is 10.",
+                    "default": ""
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "Filter the search to only include branded foods from a specific category.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://chomp-food-nutrition-database-v2.p.rapidapi.com/food/branded/search.php\"\nquerystring = {\"page\": \"1\", \"country\": \"United States\", \"palm_oil\": \"\", \"mineral\": \"\", \"trace\": \"\", \"nutrient\": \"\", \"diet\": \"\", \"vitamin\": \"\", \"brand\": \"Starbucks\", \"keyword\": \"\", \"ingredient\": \"\", \"allergen\": \"\", \"limit\": \"\", \"category\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chomp-food-nutrition-database-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://chomp-food-nutrition-database-v2.p.rapidapi.com/food/branded/search.php\"\nquerystring = {\"page\": \"1\", \"country\": \"United States\", \"palm_oil\": \"\", \"mineral\": \"\", \"trace\": \"\", \"nutrient\": \"\", \"diet\": \"\", \"vitamin\": \"\", \"brand\": \"Starbucks\", \"keyword\": \"\", \"ingredient\": \"\", \"allergen\": \"\", \"limit\": \"\", \"category\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chomp-food-nutrition-database-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 404,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "/food/ingredient/search.php",
+            "url": "https://chomp-food-nutrition-database-v2.p.rapidapi.com/food/ingredient/search.php",
+            "description": "Get data for a specific ingredient or a specific set of ingredients.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "find",
+                    "type": "STRING",
+                    "description": "Search our database for a single ingredient or a specific set of ingredients. Example #1: Single Ingredient \"&find=raw broccoli\". Example #2: Set of Ingredients \"&find=raw broccoli,raw cauliflower,mashed potatoes\". Comma-separated lists cannot contain more than 10 ingredients. You must perform additional API calls if you are looking up more than 10 ingredients.",
+                    "default": "waffle,raw banana,maple syrup"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Set maximum number of records you want the API to return, per search term. The default value is \"1.\"",
+                    "default": "2"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://chomp-food-nutrition-database-v2.p.rapidapi.com/food/ingredient/search.php\"\nquerystring = {\"find\": \"waffle,raw banana,maple syrup\", \"limit\": \"2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chomp-food-nutrition-database-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://chomp-food-nutrition-database-v2.p.rapidapi.com/food/ingredient/search.php\"\nquerystring = {\"find\": \"waffle,raw banana,maple syrup\", \"limit\": \"2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chomp-food-nutrition-database-v2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 500,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

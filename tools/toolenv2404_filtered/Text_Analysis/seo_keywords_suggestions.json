@@ -1,0 +1,78 @@
+{
+    "product_id": "api_4c13bd2f-4b63-46ca-957d-a7c5249510f7",
+    "tool_description": "Provide 100 additional keyword suggestions from the given keyword. Bundled with CPC, Competition, Search Volume and historic monthly searches over the last year.",
+    "home_url": "https://rapidapi.com/rulilg/api/seo-keywords-suggestions/",
+    "name": "SEO Keywords Suggestions",
+    "title": "SEO Keywords Suggestions",
+    "pricing": "FREEMIUM",
+    "tool_name": "SEO Keywords Suggestions",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 34,
+        "avgSuccessRate": 0,
+        "popularityScore": 0,
+        "__typename": "Score"
+    },
+    "host": "seo-keywords-suggestions.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Keyword Suggestions",
+            "url": "https://seo-keywords-suggestions.p.rapidapi.com/keyword-suggestions",
+            "description": "This endpoint works with updated Google keywords information. Once requested, it will return 100 keyword suggestions, related to the given keyword.\n\nEach record will also have information about SEO competition (between 0 and 1), CPC, monthly search volume, and historical monthly searches over the last year.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "keyword",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "web development"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://seo-keywords-suggestions.p.rapidapi.com/keyword-suggestions\"\nquerystring = {\"keyword\": \"web development\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"seo-keywords-suggestions.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://seo-keywords-suggestions.p.rapidapi.com/keyword-suggestions\"\nquerystring = {\"keyword\": \"web development\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"seo-keywords-suggestions.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "keyword": {
+                            "type": "string"
+                        },
+                        "lastUpdatedAt": {
+                            "type": "string"
+                        },
+                        "competition": {
+                            "type": "number"
+                        },
+                        "cpc": {
+                            "type": "number"
+                        },
+                        "searchVolume": {
+                            "type": "integer"
+                        },
+                        "monthlySearches": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "year": {
+                                        "type": "integer"
+                                    },
+                                    "month": {
+                                        "type": "integer"
+                                    },
+                                    "search_volume": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,2146 @@
+{
+    "product_id": "api_80b5609b-b6b4-4aff-a824-f9381f781377",
+    "tool_description": "Flight data API for travel, hospitality, or aviation applications, researchers, small teams, and individual developers.",
+    "home_url": "https://rapidapi.com/aedbx-aedbx/api/aerodatabox/",
+    "name": "AeroDataBox",
+    "title": "AeroDataBox",
+    "pricing": "PAID",
+    "tool_name": "AeroDataBox",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 245,
+        "avgSuccessRate": 99,
+        "popularityScore": 9.9,
+        "__typename": "Score"
+    },
+    "host": "aerodatabox.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "(BETA) Weather / forecast at the airport - specific time",
+            "url": "https://aerodatabox.p.rapidapi.com/airports/{codeType}/LHR/weather/2023-04-03T12:00/2023-04-03T14:00",
+            "description": "- What is the weather forecast for the airport? (up to 48 hours ahead)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "If `codeType` is:\n* `icao`, then this field must be a 4-character ICAO-code of the airport (e.g.: EHAM, KLAX, UUEE, etc.);\n* `iata`, then this field must be a 3-character IATA-code of the airport (e.g.: AMS, SFO, LAX, etc.).",
+                    "default": "LHR"
+                },
+                {
+                    "name": "codeType",
+                    "type": "ENUM",
+                    "description": "Type of code to search airport by (`iata` or `icao`)",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "toLocal",
+                    "type": "string",
+                    "description": "(Optional) End of the search range (local time, format: `YYYY-MM-DDTHH:mm`). Must be equal to or more than the beginning of the search range specified in `fromLocal`, up to 48 hours in the future. Default equal to `fromLocal`.",
+                    "default": "2023-04-03T14:00"
+                },
+                {
+                    "name": "fromLocal",
+                    "type": "string",
+                    "description": "(Optional) Beginning of the search range (local time, format: `YYYY-MM-DDTHH:mm`). Must be in range from current time up to 48 hours in the future. Default - current time.",
+                    "default": "2023-04-03T12:00"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/LHR/weather/2023-04-03T12:00/2023-04-03T14:00\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/{code}/weather/{fromlocal}/{tolocal}\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "(BETA) Weather / forecast at the airport - current",
+            "url": "https://aerodatabox.p.rapidapi.com/airports/{codeType}/LHR/weather",
+            "description": "- What is the current weather at the airport?",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "If `codeType` is:\n* `icao`, then this field must be a 4-character ICAO-code of the airport (e.g.: EHAM, KLAX, UUEE, etc.);\n* `iata`, then this field must be a 3-character IATA-code of the airport (e.g.: AMS, SFO, LAX, etc.).",
+                    "default": "LHR"
+                },
+                {
+                    "name": "codeType",
+                    "type": "ENUM",
+                    "description": "Type of code to search airport by (`iata` or `icao`)",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/LHR/weather\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/{code}/weather\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "(NEW) FIDS/Schedules: Airport departures and arrivals (by relative time)",
+            "url": "https://aerodatabox.p.rapidapi.com/flights/airports/{codeType}/YYZ",
+            "description": "**What are current departures or arrivals at the airport?** or **What is the flight schedule at the airport?** or **What is flight history at the airport?**\n\nFlights may contain live updates with corresponding information related to the actual progress of the flight (including actual/estimated arrival/departure times). In this case this endpoint serves as a FIDS endpoint. Presense of live updates is subject to data coverage: not all airports have this coverage in our system.\n\nOtherwise the flight information will be limited to schedule only and will not be updated with time. Much more airports have this coverage.\n\nTo check if airport is tracked and on which level, use `/health/services/airports/{icao}/feeds` endpoint. You can also use `/health/services/feeds/{service}/airports` to get the list of supported airports for this or that layer of coverage.\n\nTo learn more about the data coverage, refer to https://www.aerodatabox.com/data-coverage.\n\nReturns: the list of arriving and/or departing flights scheduled and/or planned and/or commenced within a time range specified \nrelatively to the current local time at the airport.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "codeType",
+                    "type": "ENUM",
+                    "description": "Type of code to search airport by (`iata` or `icao`)",
+                    "default": ""
+                },
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "If `codeType` is:\n* `icao`, then this field must be a 4-character ICAO-code of the airport (e.g.: EHAM, KLAX, UUEE, etc.);\n* `iata`, then this field must be a 3-character IATA-code of the airport (e.g.: AMS, SFO, LAX, etc.).",
+                    "default": "YYZ"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "withCancelled",
+                    "type": "BOOLEAN",
+                    "description": "If set to true, result will include cancelled, divered, likely cancelled (CanceledUncertain) flights. Default: true.",
+                    "default": "true"
+                },
+                {
+                    "name": "withLocation",
+                    "type": "BOOLEAN",
+                    "description": "If set to true, each currently active flight within the result will be populated with its present real-time location, altitude, speed and track (subject to availability).",
+                    "default": "false"
+                },
+                {
+                    "name": "withCargo",
+                    "type": "BOOLEAN",
+                    "description": "If set to true, result will include cargo flights (subject to availability).",
+                    "default": "true"
+                },
+                {
+                    "name": "durationMinutes",
+                    "type": "NUMBER",
+                    "description": "Length (duration) of the search range expressed in minutes",
+                    "default": "720"
+                },
+                {
+                    "name": "offsetMinutes",
+                    "type": "NUMBER",
+                    "description": "Beginning of the search range expressed in minutes relative to the current time at the airport",
+                    "default": "-120"
+                },
+                {
+                    "name": "direction",
+                    "type": "ENUM",
+                    "description": "Direction of flights: Arrival, Departure or Both (default)",
+                    "default": ""
+                },
+                {
+                    "name": "withCodeshared",
+                    "type": "BOOLEAN",
+                    "description": "If set to true, result will include flights with all code-shared statuses. Otherwise, code-sharing flights will be excluded. For airports, where no information about code-share statuses of flights are supplied (all flights are CodeshareStatus=Unknown), complex filtering will be applied to determine which flights are likely to be operational (caution: false results are possible).",
+                    "default": "true"
+                },
+                {
+                    "name": "withLeg",
+                    "type": "BOOLEAN",
+                    "description": "If set to true, will include movement information from airport opposite in this flight leg (airport of origin for arriving flight or airport of destination for departing flight). In this case, Movement property will be replaced with Departure and Arrival properties for each flight. Default: false.",
+                    "default": "true"
+                },
+                {
+                    "name": "withPrivate",
+                    "type": "BOOLEAN",
+                    "description": "If set to true, result will include private flights (subject to availability).",
+                    "default": "true"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/flights/airports/{codeType}/YYZ\"\nquerystring = {\"withCancelled\": \"true\", \"withLocation\": \"false\", \"withCargo\": \"true\", \"durationMinutes\": \"720\", \"codeType\": \"\", \"offsetMinutes\": \"-120\", \"direction\": \"\", \"withCodeshared\": \"true\", \"withLeg\": \"true\", \"withPrivate\": \"true\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/flights/airports/{codeType}/{code}\"\nquerystring = {\"withCancelled\": \"true\", \"withLocation\": \"false\", \"withCargo\": \"true\", \"durationMinutes\": \"720\", \"codeType\": \"\", \"offsetMinutes\": \"-120\", \"direction\": \"\", \"withCodeshared\": \"true\", \"withLeg\": \"true\", \"withPrivate\": \"true\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "arrivals": {
+                        "items": {
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "departures": {
+                        "items": {
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "FIDS/Schedules: Airport departures and arrivals (by local time range)",
+            "url": "https://aerodatabox.p.rapidapi.com/flights/airports/{codeType}/LGA/2023-04-04T20:00/2023-04-05T08:00",
+            "description": "**What are current departures or arrivals at the airport?** or **What is the flight schedule at the airport?** or **What is flight history at the airport?**\n\nFlights may contain live updates with corresponding information related to the actual progress of the flight (including actual/estimated arrival/departure times). In this case this endpoint serves as a FIDS endpoint. Presense of live updates is subject to data coverage: not all airports have this coverage in our system.\n\nOtherwise the flight information will be limited to schedule only and will not be updated with time. Much more airports have this coverage.\n\nTo check if airport is tracked and on which level, use `/health/services/airports/{icao}/feeds` endpoint. You can also use `/health/services/feeds/{service}/airports` to get the list of supported airports for this or that layer of coverage.\n\nTo learn more about the data coverage, refer to https://www.aerodatabox.com/data-coverage.\n\nReturns: the list of arriving and/or departing flights scheduled and/or planned and/or commenced within a specified time range for a specified airport.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "toLocal",
+                    "type": "STRING",
+                    "description": "End of the search range (local time, format: YYYY-MM-DDTHH:mm). Should be more than beginning of the search range, but not more than by 12 hours.",
+                    "default": "2023-04-05T08:00"
+                },
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "If `codeType` is:\n* `icao`, then this field must be a 4-character ICAO-code of the airport (e.g.: EHAM, KLAX, UUEE, etc.);\n* `iata`, then this field must be a 3-character IATA-code of the airport (e.g.: AMS, SFO, LAX, etc.).",
+                    "default": "LGA"
+                },
+                {
+                    "name": "codeType",
+                    "type": "ENUM",
+                    "description": "Type of code to search airport by (`iata` or `icao`)",
+                    "default": ""
+                },
+                {
+                    "name": "fromLocal",
+                    "type": "STRING",
+                    "description": "Beginning of the search range (local time, format: YYYY-MM-DDTHH:mm)",
+                    "default": "2023-04-04T20:00"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "withCargo",
+                    "type": "BOOLEAN",
+                    "description": "If set to true, result will include cargo flights (subject to availability).",
+                    "default": "true"
+                },
+                {
+                    "name": "withPrivate",
+                    "type": "BOOLEAN",
+                    "description": "If set to true, result will include private flights (subject to availability).",
+                    "default": "true"
+                },
+                {
+                    "name": "direction",
+                    "type": "ENUM",
+                    "description": "Direction of flights: Arrival, Departure or Both (default)",
+                    "default": ""
+                },
+                {
+                    "name": "withCancelled",
+                    "type": "BOOLEAN",
+                    "description": "If set to true, result will include cancelled, divered, likely cancelled (CanceledUncertain) flights. Default: true.",
+                    "default": "true"
+                },
+                {
+                    "name": "withLocation",
+                    "type": "BOOLEAN",
+                    "description": "If set to true, each currently active flight within the result will be populated with its present real-time location, altitude, speed and track (subject to availability).",
+                    "default": "false"
+                },
+                {
+                    "name": "withCodeshared",
+                    "type": "BOOLEAN",
+                    "description": "If set to true, result will include flights with all code-shared statuses. Otherwise, code-sharing flights will be excluded. For airports, where no information about code-share statuses of flights are supplied (all flights are CodeshareStatus=Unknown), complex filtering will be applied to determine which flights are likely to be operational (caution: false results are possible).",
+                    "default": "true"
+                },
+                {
+                    "name": "withLeg",
+                    "type": "BOOLEAN",
+                    "description": "If set to true, will include movement information from airport opposite in this flight leg (airport of origin for arriving flight or airport of destination for departing flight). In this case, Movement property will be replaced with Departure and Arrival properties for each flight. Default: false.",
+                    "default": "true"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/flights/airports/{codeType}/LGA/2023-04-04T20:00/2023-04-05T08:00\"\nquerystring = {\"withCargo\": \"true\", \"withPrivate\": \"true\", \"direction\": \"\", \"withCancelled\": \"true\", \"withLocation\": \"false\", \"withCodeshared\": \"true\", \"codeType\": \"\", \"withLeg\": \"true\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/flights/airports/{codeType}/{code}/{fromlocal}/{tolocal}\"\nquerystring = {\"withCargo\": \"true\", \"withPrivate\": \"true\", \"direction\": \"\", \"withCancelled\": \"true\", \"withLocation\": \"false\", \"withCodeshared\": \"true\", \"codeType\": \"\", \"withLeg\": \"true\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "arrivals": {
+                        "items": {
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "departures": {
+                        "items": {
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Current local time at the airport",
+            "url": "https://aerodatabox.p.rapidapi.com/airports/{codeType}/KLAX/time/local",
+            "description": "What is the current local time at the airport?",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "If `codeType` is:\n * `icao`, then this field must be a 4-character ICAO-code of the airport (e.g.: EHAM, KLAX, UUEE, etc.);\n* `iata`, then this field must be a 3-character IATA-code of the airport (e.g.: AMS, SFO, LAX, etc.).",
+                    "default": "KLAX"
+                },
+                {
+                    "name": "codeType",
+                    "type": "ENUM",
+                    "description": "Type of code to search airport by (iata or icao)",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/KLAX/time/local\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/{code}/time/local\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "utcTime": {
+                        "type": "string"
+                    },
+                    "localTime": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Flight delay statistics by flight number",
+            "url": "https://aerodatabox.p.rapidapi.com/flights/KL1395/delays",
+            "description": "**By how much the flight is delayed in average?** \n\nGets delay statistics for the flight with specified number.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "number",
+                    "type": "STRING",
+                    "description": "Flight number (with or without spaces, IATA or ICAO, any case formats are acceptable, e.g. KL1395, Klm 1395)",
+                    "default": "KL1395"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/flights/KL1395/delays\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/flights/{number}/delays\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "(BETA) Airport routes and daily flights statistics (by date)",
+            "url": "https://aerodatabox.p.rapidapi.com/airports/{codeType}/CYYZ/stats/routes/daily/2023-08-28",
+            "description": "**What are the most popular routes from an airport?** or **Where I can fly from an airport?** or **How many daily flights to different destinations from an airport?**\n\nGets list of routes and daily flights amount departing from an airport based on 7 days prior to selected date.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "dateLocal",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2023-08-28"
+                },
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "If `codeType` is:\n* `icao`, then this field must be a 4-character ICAO-code of the airport (e.g.: EHAM, KLAX, UUEE, etc.);\n* `iata`, then this field must be a 3-character IATA-code of the airport (e.g.: AMS, SFO, LAX, etc.).",
+                    "default": "CYYZ"
+                },
+                {
+                    "name": "codeType",
+                    "type": "ENUM",
+                    "description": "Type of code to search airport by (`iata` or `icao`)",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/CYYZ/stats/routes/daily/2023-08-28\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/{code}/stats/routes/daily/{datelocal}\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "routes": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "destination": {
+                                    "type": "object"
+                                },
+                                "averageDailyFlights": {
+                                    "type": "number"
+                                },
+                                "operators": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Global delays (by date)",
+            "url": "https://aerodatabox.p.rapidapi.com/airports/delays/2022-01-21T12:00",
+            "description": "**What is the historical delay situation in all airports?** or **What was the delay index of all airports at a moment in the past?**\n\n*Returns:* Statistical delay information about delays (median delay, delay index, cancelled flights) of arrivals and departures for all known airports, represented by a collection of items sorted in departure index descending order (from worst to best).",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "dateTimeUtc",
+                    "type": "string",
+                    "description": "The moment of time for / from which delay data is requested (UTC time, format: YYYY-MM-DDTHH:mm). Default - current time.",
+                    "default": "2022-01-21T12:00"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/delays/2022-01-21T12:00\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/delays/{datetimeutc}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Airport routes and daily flights statistics (current)",
+            "url": "https://aerodatabox.p.rapidapi.com/airports/{codeType}/CYYZ/stats/routes/daily",
+            "description": "**What are the most popular routes from an airport?** or **Where I can fly from an airport?** or **How many daily flights to different destinations from an airport?**\n\nGets list of routes and daily flights amount departing from an airport based on 7 days prior to current local date.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "codeType",
+                    "type": "ENUM",
+                    "description": "Type of code to search airport by (`iata` or `icao`)",
+                    "default": ""
+                },
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "If `codeType` is:\n* `icao`, then this field must be a 4-character ICAO-code of the airport (e.g.: EHAM, KLAX, UUEE, etc.);\n* `iata`, then this field must be a 3-character IATA-code of the airport (e.g.: AMS, SFO, LAX, etc.).",
+                    "default": "CYYZ"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/CYYZ/stats/routes/daily\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/{code}/stats/routes/daily\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "routes": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "destination": {
+                                    "type": "object"
+                                },
+                                "averageDailyFlights": {
+                                    "type": "number"
+                                },
+                                "operators": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Airport delays (by date)",
+            "url": "https://aerodatabox.p.rapidapi.com/airports/{codeType}/KLAX/delays/2023-11-15T09:00",
+            "description": "**What is the delay index at a moment in the past?\"\"\n\nStatistics are calculated against the flight data we aggregated. Henceforth, it is available only for those airports and those periods of time when delay information could have been reasonably derived. This applies to flights which qualify for this calculation (actual time and status of the flight must be available). This normally applies to flights arriving to / departing from the airports with Live or Radar + Scheduled quality. Learn more about coverage here: https://aerodatabox.com/data-coverage/\n\nMedian delay and delay index are available if there were at least 2 flights per hour per departures or arrivals at the time requested and at least 3 total qualifying flights within the coverage period.\n\n*Returns*: Statistical delay information about delays (median delay, delay index, cancelled flights) of arrivals and departures for the requested airport, represented by a single `AirportDelayContract` item displaying the delay information based on flight movements within the 2 hours prior to the moment requested in `dateLocal`",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "If `codeType` is:\n* `icao`, then this field must be a 4-character ICAO-code of the airport (e.g.: EHAM, KLAX, UUEE, etc.);\n* `iata`, then this field must be a 3-character IATA-code of the airport (e.g.: AMS, SFO, LAX, etc.).",
+                    "default": "KLAX"
+                },
+                {
+                    "name": "codeType",
+                    "type": "ENUM",
+                    "description": "Type of code to search airport by (`iata` or `icao`)",
+                    "default": ""
+                },
+                {
+                    "name": "dateLocal",
+                    "type": "string",
+                    "description": "",
+                    "default": "2023-11-15T09:00"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/KLAX/delays/2023-11-15T09:00\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/{code}/delays/{datelocal}\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "airportIcao": {
+                        "type": "string"
+                    },
+                    "fromLocal": {
+                        "type": "string"
+                    },
+                    "toLocal": {
+                        "type": "string"
+                    },
+                    "fromUtc": {
+                        "type": "string"
+                    },
+                    "toUtc": {
+                        "type": "string"
+                    },
+                    "departuresDelayInformation": {
+                        "type": "object",
+                        "properties": {
+                            "numTotal": {
+                                "type": "integer"
+                            },
+                            "numCancelled": {
+                                "type": "integer"
+                            },
+                            "medianDelay": {
+                                "type": "string"
+                            },
+                            "delayIndex": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "arrivalsDelayInformation": {
+                        "type": "object",
+                        "properties": {
+                            "numTotal": {
+                                "type": "integer"
+                            },
+                            "numCancelled": {
+                                "type": "integer"
+                            },
+                            "medianDelay": {
+                                "type": "string"
+                            },
+                            "delayIndex": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Airport delays (current)",
+            "url": "https://aerodatabox.p.rapidapi.com/airports/{codeType}/KLAX/delays",
+            "description": "**What is the current average delay in the airport?*\n\nStatistics are calculated against the flight data we aggregated. Henceforth, it is available only for those airports and those periods of time when delay information could have been reasonably derived. This applies to flights which qualify for this calculation (actual time and status of the flight must be available). This normally applies to flights arriving to / departing from the airports with Live or Radar + Scheduled quality. Learn more about coverage here: https://aerodatabox.com/data-coverage/\n\nMedian delay and delay index are available if there were at least 2 flights per hour per departures or arrivals at the time requested and at least 3 total qualifying flights within the coverage period.\n\n*Returns*: Statistical delay information about delays (median delay, delay index, cancelled flights) of arrivals and departures for the requested airport, represented by a single `AirportDelayContract` item displaying the delay information based on flight movements within the 2 hours prior to the current moment, if no `dateLocal` is specified.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "codeType",
+                    "type": "ENUM",
+                    "description": "Type of code to search airport by (`iata` or `icao`)",
+                    "default": ""
+                },
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "If `codeType` is:\n* `icao`, then this field must be a 4-character ICAO-code of the airport (e.g.: EHAM, KLAX, UUEE, etc.);\n* `iata`, then this field must be a 3-character IATA-code of the airport (e.g.: AMS, SFO, LAX, etc.).",
+                    "default": "KLAX"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/KLAX/delays\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/{code}/delays\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "airportIcao": {
+                        "type": "string"
+                    },
+                    "fromLocal": {
+                        "type": "string"
+                    },
+                    "toLocal": {
+                        "type": "string"
+                    },
+                    "fromUtc": {
+                        "type": "string"
+                    },
+                    "toUtc": {
+                        "type": "string"
+                    },
+                    "departuresDelayInformation": {
+                        "type": "object",
+                        "properties": {
+                            "numTotal": {
+                                "type": "integer"
+                            },
+                            "numCancelled": {
+                                "type": "integer"
+                            },
+                            "medianDelay": {
+                                "type": "string"
+                            },
+                            "delayIndex": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "arrivalsDelayInformation": {
+                        "type": "object",
+                        "properties": {
+                            "numTotal": {
+                                "type": "integer"
+                            },
+                            "numCancelled": {
+                                "type": "integer"
+                            },
+                            "medianDelay": {
+                                "type": "string"
+                            },
+                            "delayIndex": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Global delays (current)",
+            "url": "https://aerodatabox.p.rapidapi.com/airports/delays",
+            "description": "**What is the current delay situation in all airports?** or **What is the delay index of all airports right now ?**\n\n*Returns:* Statistical delay information about delays (median delay, delay index, cancelled flights) of arrivals and departures for all known airports, represented by a collection of items sorted in departure index descending order (from worst to best).",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/delays\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/delays\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Airport delays (by range of dates)",
+            "url": "https://aerodatabox.p.rapidapi.com/airports/{codeType}/KLAX/delays/2022-06-03T12:00/2022-06-04T00:00",
+            "description": "**What is the historical average delay in the airport?** or **How the delays changed within a specific period of time?**\n\nStatistics are calculated against the flight data we aggregated. Henceforth, it is available only for those airports and those periods of time when delay information could have been reasonably derived. This applies to flights which qualify for this calculation (actual time and status of the flight must be available). This normally applies to flights arriving to / departing from the airports with Live or Radar + Scheduled quality. Learn more about coverage here: https://aerodatabox.com/data-coverage/\n\nMedian delay and delay index are available if there were at least 2 flights per hour per departures or arrivals at the time requested and at least 3 total qualifying flights within the coverage period.\n\n*Returns*: Statistical delay information about delays (median delay, delay index, cancelled flights) of arrivals and departures for the requested airport, represented by a collection of `AiportDelayContract` items displaying the delay information at multiple moments within the period between `dateLocal` and `dateToLocal`, if both are specified.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "codeType",
+                    "type": "ENUM",
+                    "description": "Type of code to search airport by (`iata` or `icao`)",
+                    "default": ""
+                },
+                {
+                    "name": "dateLocal",
+                    "type": "STRING",
+                    "description": "The moment of time for / from which delay data is requested (local time, format: YYYY-MM-DDTHH:mm).",
+                    "default": "2022-06-03T12:00"
+                },
+                {
+                    "name": "dateToLocal",
+                    "type": "string",
+                    "description": "The moment of time until which delay data is requested (local time, format: YYYY-MM-DDTHH:mm).",
+                    "default": "2022-06-04T00:00"
+                },
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "If `codeType` is:\n* `icao`, then this field must be a 4-character ICAO-code of the airport (e.g.: EHAM, KLAX, UUEE, etc.);\n* `iata`, then this field must be a 3-character IATA-code of the airport (e.g.: AMS, SFO, LAX, etc.).",
+                    "default": "KLAX"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/KLAX/delays/2022-06-03T12:00/2022-06-04T00:00\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/{code}/delays/{datelocal}/{datetolocal}\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "airportIcao": {
+                        "type": "string"
+                    },
+                    "fromLocal": {
+                        "type": "string"
+                    },
+                    "toLocal": {
+                        "type": "string"
+                    },
+                    "fromUtc": {
+                        "type": "string"
+                    },
+                    "toUtc": {
+                        "type": "string"
+                    },
+                    "departuresDelayInformation": {
+                        "type": "object",
+                        "properties": {
+                            "numTotal": {
+                                "type": "integer"
+                            },
+                            "numCancelled": {
+                                "type": "integer"
+                            },
+                            "medianDelay": {
+                                "type": "string"
+                            },
+                            "delayIndex": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "arrivalsDelayInformation": {
+                        "type": "object",
+                        "properties": {
+                            "numTotal": {
+                                "type": "integer"
+                            },
+                            "numCancelled": {
+                                "type": "integer"
+                            },
+                            "medianDelay": {
+                                "type": "string"
+                            },
+                            "delayIndex": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Flight status (by date)",
+            "url": "https://aerodatabox.p.rapidapi.com/flights/{searchBy}/DL47/2022-10-20",
+            "description": "Gets information about the status of the nearest (either in past or in future) flight or about flight departing or arriving on the day specified (local time), operated:\n- under specified flight number; or\n- by an aircraft with specified registration; or\n- under specified ATC-callsign; or\n- by an aircraft with specified Mode-S 24-bit ICAO Transponder address.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "dateLocal",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Optional parameter: Local date of departure or arrival (in format: YYYY-MM-DD, e.g.: 2019-08-29). If specified, endpoint gets information about flight departing or arriving on the day specified (local time).",
+                    "default": "2022-10-20"
+                },
+                {
+                    "name": "searchBy",
+                    "type": "ENUM",
+                    "description": "Criteria to search by: \n- **number**: search flight operated under specified flight number;\n- **callsign**: search flight operated under specified ATC call-sign;\n- **reg**: search flight operated on an aircraft with specified registration;\n- **icao24**: search flight operated on an aircraft with specified ICAO 24-bit Mode-S transponder address.",
+                    "default": ""
+                },
+                {
+                    "name": "searchParameter",
+                    "type": "string",
+                    "description": "If **searchBy** is: \n- **number**, then then this field should be Flight number (with or without spaces, IATA or ICAO, any case formats are acceptable, e.g. KL1395, Klm 1395)\n- **callsign**, then this field should be ATC call-sign of the flight (with or without spaces, any case formats are acceptable, e.g. AFL1482, nca 008X);\n- **reg**: then this field should be Aircraft registration (with or without spaces or dashes, any case formats are acceptable, e.g. PH-BXO, DeMhJ);\n- **icao24**, then this field should be Aircraft ICAO 24-bit Mode-S address specified in hexadecimal format (e.g. 484161, 483EFD).",
+                    "default": "DL47"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "withLocation",
+                    "type": "BOOLEAN",
+                    "description": "Should include real-time positional data, e.g.: location, speed, altitude, etc., if available ",
+                    "default": "false"
+                },
+                {
+                    "name": "withAircraftImage",
+                    "type": "BOOLEAN",
+                    "description": "Should include aircraft image.",
+                    "default": "false"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/flights/{searchBy}/DL47/2022-10-20\"\nquerystring = {\"withLocation\": \"false\", \"searchBy\": \"\", \"withAircraftImage\": \"false\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/flights/{searchBy}/{searchparameter}/{datelocal}\"\nquerystring = {\"withLocation\": \"false\", \"searchBy\": \"\", \"withAircraftImage\": \"false\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "(BETA) Airline fleet / Aircraft list by airline code",
+            "url": "https://aerodatabox.p.rapidapi.com/airlines/KLM/aircrafts",
+            "description": "*Returns: * A paged list of aircraft in the fleet of the specified airline.\n\nThat will include active aircraft currently flying in an active airline, verfified through more than one source. Unconfirmed sightings of an aircraft will not qualify said aircraft to be listed in the fleet.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "airlineCode",
+                    "type": "string",
+                    "description": "3-character ICAO-code of the airliner (e.g., KLM, ACA); or 2-character IATA-code of the airline (e.g., KL, AC).\n\nPlease note that more than one active airline may have the same IATA code, therefore IATA codes are not recommended for this endpoint.",
+                    "default": "KLM"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "NUMBER",
+                    "description": "The number of returned records will be capped at this value. Must be a positive value and not exceed the limit stipulated by your pricing plan.",
+                    "default": "10"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "pageOffset",
+                    "type": "NUMBER",
+                    "description": "The number of records to skip before listing a page of records. In conjunction with `pageSize` effectively determines the page number (default  - 0).",
+                    "default": "0"
+                },
+                {
+                    "name": "withRegistrations",
+                    "type": "BOOLEAN",
+                    "description": "Should include the history of aircraft registrations (default: false).",
+                    "default": "false"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airlines/KLM/aircrafts\"\nquerystring = {\"pageOffset\": \"0\", \"pageSize\": \"10\", \"withRegistrations\": \"false\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airlines/{airlinecode}/aircrafts\"\nquerystring = {\"pageOffset\": \"0\", \"pageSize\": \"10\", \"withRegistrations\": \"false\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Aircraft registration history (by tail-number, Mode-S or ID)",
+            "url": "https://aerodatabox.p.rapidapi.com/aircrafts/{searchBy}/VP-BZP/registrations",
+            "description": "Returns: A list of all known registrations of a single aircraft, best matching specified search criteria, if found",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "searchParam",
+                    "type": "string",
+                    "description": "Value of the search criteria. If *searchBy* is:\n  - **reg**: then this field should be aircraft registration (with or without spaces or dashes, any case formats are acceptable, e.g.PH-BXO, DeMhJ);\n-  **icao24**, then this field should be aircraft ICAO 24-bit Mode-S address specified in hexadecimal format (e.g. 484161, 483EFD).\n",
+                    "default": "VP-BZP"
+                },
+                {
+                    "name": "searchBy",
+                    "type": "ENUM",
+                    "description": "Criteria to search aircraft by",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/aircrafts/{searchBy}/VP-BZP/registrations\"\nquerystring = {\"searchBy\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/aircrafts/{searchBy}/{searchparam}/registrations\"\nquerystring = {\"searchBy\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "reg": {
+                        "type": "string"
+                    },
+                    "active": {
+                        "type": "boolean"
+                    },
+                    "serial": {
+                        "type": "string"
+                    },
+                    "hexIcao": {
+                        "type": "string"
+                    },
+                    "airlineId": {
+                        "type": "string"
+                    },
+                    "airlineName": {
+                        "type": "string"
+                    },
+                    "iataCodeShort": {
+                        "type": "string"
+                    },
+                    "iataCodeLong": {
+                        "type": "string"
+                    },
+                    "model": {
+                        "type": "string"
+                    },
+                    "modelCode": {
+                        "type": "string"
+                    },
+                    "numSeats": {
+                        "type": "integer"
+                    },
+                    "rolloutDate": {
+                        "type": "string"
+                    },
+                    "firstFlightDate": {
+                        "type": "string"
+                    },
+                    "deliveryDate": {
+                        "type": "string"
+                    },
+                    "registrationDate": {
+                        "type": "string"
+                    },
+                    "typeName": {
+                        "type": "string"
+                    },
+                    "numEngines": {
+                        "type": "integer"
+                    },
+                    "engineType": {
+                        "type": "string"
+                    },
+                    "isFreighter": {
+                        "type": "boolean"
+                    },
+                    "productionLine": {
+                        "type": "string"
+                    },
+                    "ageYears": {
+                        "type": "number"
+                    },
+                    "verified": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get all aircraft (by tail-number, Mode-S or ID)",
+            "url": "https://aerodatabox.p.rapidapi.com/aircrafts/{searchBy}/TF-ELD/all",
+            "description": "Returns: A list of all aircraft matching the search criteria",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "searchParam",
+                    "type": "string",
+                    "description": "Value of the search criteria. If *searchBy* is:\n  - **reg**: then this field should be aircraft registration (with or without spaces or dashes, any case formats are acceptable, e.g.PH-BXO, DeMhJ);\n-  **icao24**, then this field should be aircraft ICAO 24-bit Mode-S address specified in hexadecimal format (e.g. 484161, 483EFD).\n",
+                    "default": "TF-ELD"
+                },
+                {
+                    "name": "searchBy",
+                    "type": "ENUM",
+                    "description": "Criteria to search aircraft by",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "withRegistrations",
+                    "type": "BOOLEAN",
+                    "description": "Should include the history of aircraft registrations (default: false).",
+                    "default": ""
+                },
+                {
+                    "name": "withImage",
+                    "type": "BOOLEAN",
+                    "description": "Should include aircraft image (default: false).",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/aircrafts/{searchBy}/TF-ELD/all\"\nquerystring = {\"withRegistrations\": \"\", \"searchBy\": \"\", \"withImage\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/aircrafts/{searchBy}/{searchparam}/all\"\nquerystring = {\"withRegistrations\": \"\", \"searchBy\": \"\", \"withImage\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "reg": {
+                        "type": "string"
+                    },
+                    "active": {
+                        "type": "boolean"
+                    },
+                    "serial": {
+                        "type": "string"
+                    },
+                    "hexIcao": {
+                        "type": "string"
+                    },
+                    "airlineId": {
+                        "type": "string"
+                    },
+                    "airlineName": {
+                        "type": "string"
+                    },
+                    "iataCodeShort": {
+                        "type": "string"
+                    },
+                    "iataCodeLong": {
+                        "type": "string"
+                    },
+                    "model": {
+                        "type": "string"
+                    },
+                    "modelCode": {
+                        "type": "string"
+                    },
+                    "numSeats": {
+                        "type": "integer"
+                    },
+                    "rolloutDate": {
+                        "type": "string"
+                    },
+                    "firstFlightDate": {
+                        "type": "string"
+                    },
+                    "deliveryDate": {
+                        "type": "string"
+                    },
+                    "registrationDate": {
+                        "type": "string"
+                    },
+                    "typeName": {
+                        "type": "string"
+                    },
+                    "numEngines": {
+                        "type": "integer"
+                    },
+                    "engineType": {
+                        "type": "string"
+                    },
+                    "isFreighter": {
+                        "type": "boolean"
+                    },
+                    "productionLine": {
+                        "type": "string"
+                    },
+                    "ageYears": {
+                        "type": "number"
+                    },
+                    "verified": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        {
+            "name": "(BETA) Aircraft image by registration",
+            "url": "https://aerodatabox.p.rapidapi.com/aircrafts/reg/PH-BXO/image/beta",
+            "description": "**What is the aircraft photo?  **\n\nAircraft images are being searched externally in Flickr. Only images with licenses approved for commercial use are returned. Please be advised that you may be required to mention author attribution before using the image.  \n\nReturns: Image data with medium-sized direct image URL and licence approved for commercial use is returned.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "reg",
+                    "type": "STRING",
+                    "description": "Registration of the aircraft (full, stripped and any case formats are acceptable).",
+                    "default": "PH-BXO"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/aircrafts/reg/PH-BXO/image/beta\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/aircrafts/reg/{reg}/image/beta\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "type": "string"
+                    },
+                    "webUrl": {
+                        "type": "string"
+                    },
+                    "author": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "license": {
+                        "type": "string"
+                    },
+                    "htmlAttributions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get single aircraft (by tail-number, Mode-S or ID)",
+            "url": "https://aerodatabox.p.rapidapi.com/aircrafts/{searchBy}/VP-BZP",
+            "description": "Returns: Single aircraft, best matching specified search criteria, if found",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "searchBy",
+                    "type": "ENUM",
+                    "description": "Criteria to search aircraft by",
+                    "default": ""
+                },
+                {
+                    "name": "searchParam",
+                    "type": "string",
+                    "description": "Value of the search criteria. If *searchBy* is:\n  - **reg**: then this field should be aircraft registration (with or without spaces or dashes, any case formats are acceptable, e.g.PH-BXO, DeMhJ);\n-  **icao24**, then this field should be aircraft ICAO 24-bit Mode-S address specified in hexadecimal format (e.g. 484161, 483EFD).\n",
+                    "default": "VP-BZP"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "withImage",
+                    "type": "BOOLEAN",
+                    "description": "Should include aircraft image (default: false).",
+                    "default": ""
+                },
+                {
+                    "name": "withRegistrations",
+                    "type": "BOOLEAN",
+                    "description": "Should include the history of aircraft registrations (default: false).",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/aircrafts/{searchBy}/VP-BZP\"\nquerystring = {\"withImage\": \"\", \"searchBy\": \"\", \"withRegistrations\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/aircrafts/{searchBy}/{searchparam}\"\nquerystring = {\"withImage\": \"\", \"searchBy\": \"\", \"withRegistrations\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "reg": {
+                        "type": "string"
+                    },
+                    "active": {
+                        "type": "boolean"
+                    },
+                    "serial": {
+                        "type": "string"
+                    },
+                    "hexIcao": {
+                        "type": "string"
+                    },
+                    "airlineId": {
+                        "type": "string"
+                    },
+                    "airlineName": {
+                        "type": "string"
+                    },
+                    "iataCodeShort": {
+                        "type": "string"
+                    },
+                    "iataCodeLong": {
+                        "type": "string"
+                    },
+                    "model": {
+                        "type": "string"
+                    },
+                    "modelCode": {
+                        "type": "string"
+                    },
+                    "numSeats": {
+                        "type": "integer"
+                    },
+                    "rolloutDate": {
+                        "type": "string"
+                    },
+                    "firstFlightDate": {
+                        "type": "string"
+                    },
+                    "deliveryDate": {
+                        "type": "string"
+                    },
+                    "registrationDate": {
+                        "type": "string"
+                    },
+                    "typeName": {
+                        "type": "string"
+                    },
+                    "numEngines": {
+                        "type": "integer"
+                    },
+                    "engineType": {
+                        "type": "string"
+                    },
+                    "isFreighter": {
+                        "type": "boolean"
+                    },
+                    "productionLine": {
+                        "type": "string"
+                    },
+                    "ageYears": {
+                        "type": "number"
+                    },
+                    "verified": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Solar and day time at the airport",
+            "url": "https://aerodatabox.p.rapidapi.com/airports/{codeType}/LGA/time/solar/2023-04-03T19:00",
+            "description": "- What is the sun position in the sky now at a specific time at the airport? \n- When does the sun rise and set at the airport today or on the other day at the airport? \n- Is it dark now or is it day at the airport?",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "If `codeType` is:\n* `icao`, then this field must be a 4-character ICAO-code of the airport (e.g.: EHAM, KLAX, UUEE, etc.);\n* `iata`, then this field must be a 3-character IATA-code of the airport (e.g.: AMS, SFO, LAX, etc.).",
+                    "default": "LGA"
+                },
+                {
+                    "name": "codeType",
+                    "type": "ENUM",
+                    "description": "Type of code to search airport by (`iata` or `icao`)",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "dateLocal",
+                    "type": "STRING",
+                    "description": "The moment of time which solar data is request for (local time, format: YYYY-MM-DDTHH:mm). Default - current time.",
+                    "default": "2023-04-03T19:00"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/LGA/time/solar/2023-04-03T19:00\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/{code}/time/solar/{datelocal}\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Aiport by code",
+            "url": "https://aerodatabox.p.rapidapi.com/airports/{codeType}/LHR",
+            "description": "Gets airport by code (IATA or ICAO).",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "If `codeType` is:\n* `icao`, then this field must be a 4-character ICAO-code of the airport (e.g.: EHAM, KLAX, UUEE, etc.);\n* `iata`, then this field must be a 3-character IATA-code of the airport (e.g.: AMS, SFO, LAX, etc.).",
+                    "default": "LHR"
+                },
+                {
+                    "name": "codeType",
+                    "type": "ENUM",
+                    "description": "Type of code to search airport by (`iata` or `icao`)",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "withTime",
+                    "type": "BOOLEAN",
+                    "description": "Should include current local time information",
+                    "default": ""
+                },
+                {
+                    "name": "withRunways",
+                    "type": "BOOLEAN",
+                    "description": "Should include runway information",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/LHR\"\nquerystring = {\"withTime\": \"\", \"codeType\": \"\", \"withRunways\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/{code}\"\nquerystring = {\"withTime\": \"\", \"codeType\": \"\", \"withRunways\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "icao": {
+                        "type": "string"
+                    },
+                    "iata": {
+                        "type": "string"
+                    },
+                    "shortName": {
+                        "type": "string"
+                    },
+                    "fullName": {
+                        "type": "string"
+                    },
+                    "municipalityName": {
+                        "type": "string"
+                    },
+                    "location": {
+                        "type": "object",
+                        "properties": {
+                            "lat": {
+                                "type": "number"
+                            },
+                            "lon": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "country": {
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "continent": {
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "timeZone": {
+                        "type": "string"
+                    },
+                    "urls": {
+                        "type": "object",
+                        "properties": {
+                            "WebSite": {
+                                "type": "string"
+                            },
+                            "Wikipedia": {
+                                "type": "string"
+                            },
+                            "Twitter": {
+                                "type": "string"
+                            },
+                            "GoogleMaps": {
+                                "type": "string"
+                            },
+                            "FlightRadar": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Airport runways",
+            "url": "https://aerodatabox.p.rapidapi.com/airports/{codeType}/EHAM/runways",
+            "description": "Gets information about runways at specified airport.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "If `codeType` is:\n* `icao`, then this field must be a 4-character ICAO-code of the airport (e.g.: EHAM, KLAX, UUEE, etc.);\n* `iata`, then this field must be a 3-character IATA-code of the airport (e.g.: AMS, SFO, LAX, etc.).",
+                    "default": "EHAM"
+                },
+                {
+                    "name": "codeType",
+                    "type": "ENUM",
+                    "description": "Type of code to search airport by (`iata` or `icao`)",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/EHAM/runways\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/{code}/runways\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "trueHdg": {
+                            "type": "number"
+                        },
+                        "length": {
+                            "type": "object",
+                            "properties": {
+                                "meter": {
+                                    "type": "integer"
+                                },
+                                "km": {
+                                    "type": "number"
+                                },
+                                "mile": {
+                                    "type": "number"
+                                },
+                                "nm": {
+                                    "type": "number"
+                                },
+                                "feet": {
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "width": {
+                            "type": "object",
+                            "properties": {
+                                "meter": {
+                                    "type": "integer"
+                                },
+                                "km": {
+                                    "type": "number"
+                                },
+                                "mile": {
+                                    "type": "number"
+                                },
+                                "nm": {
+                                    "type": "number"
+                                },
+                                "feet": {
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "isClosed": {
+                            "type": "boolean"
+                        },
+                        "location": {
+                            "type": "object",
+                            "properties": {
+                                "lat": {
+                                    "type": "number"
+                                },
+                                "lon": {
+                                    "type": "number"
+                                }
+                            }
+                        },
+                        "surface": {
+                            "type": "string"
+                        },
+                        "displacedThreshold": {
+                            "type": "object",
+                            "properties": {
+                                "meter": {
+                                    "type": "integer"
+                                },
+                                "km": {
+                                    "type": "number"
+                                },
+                                "mile": {
+                                    "type": "number"
+                                },
+                                "nm": {
+                                    "type": "number"
+                                },
+                                "feet": {
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "hasLighting": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Search airports by IP address geolocation",
+            "url": "https://aerodatabox.p.rapidapi.com/airports/search/ip",
+            "description": "**What are the airports closest to the customer, based on their IP address?**\n** What are the airports closest to the location determined (geo-located) by a IP address?**\n\nGets the list of airports found within the specified radius around the location approximated (geo-located) from the specified IP address.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Maximum number of airports to be returned (max. 250)",
+                    "default": "10"
+                },
+                {
+                    "name": "radiusKm",
+                    "type": "NUMBER",
+                    "description": "Radius of search around specified location in kilometers (max. 1000 km)",
+                    "default": "50"
+                },
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "A valid public IP v4 address",
+                    "default": "123.123.123.123"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "withFlightInfoOnly",
+                    "type": "BOOLEAN",
+                    "description": "If set to true, will only return airports which have flight data (scheduled or live) available. Default = false.",
+                    "default": "true"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/search/ip\"\nquerystring = {\"withFlightInfoOnly\": \"true\", \"limit\": \"10\", \"radiusKm\": \"50\", \"q\": \"123.123.123.123\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/search/ip\"\nquerystring = {\"withFlightInfoOnly\": \"true\", \"limit\": \"10\", \"radiusKm\": \"50\", \"q\": \"123.123.123.123\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "icao": {
+                                    "type": "string"
+                                },
+                                "iata": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "shortName": {
+                                    "type": "string"
+                                },
+                                "municipalityName": {
+                                    "type": "string"
+                                },
+                                "location": {
+                                    "type": "object",
+                                    "properties": {
+                                        "lat": {
+                                            "type": "number"
+                                        },
+                                        "lon": {
+                                            "type": "number"
+                                        }
+                                    }
+                                },
+                                "countryCode": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "[DEPRECATED] Search airports by location (path-style)",
+            "url": "https://aerodatabox.p.rapidapi.com/airports/search/location/51.511142/-0.103869/km/100/16",
+            "description": "Use `Search airports by location` endpoint instead.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "radiusKm",
+                    "type": "NUMBER",
+                    "description": "Radius of search around specified location in kilometers (maximum 1000 km)",
+                    "default": "100"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Maximum number of airports to be returned",
+                    "default": "16"
+                },
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "Latitude location coordinate in decimal format (between -90 and 90)",
+                    "default": "51.511142"
+                },
+                {
+                    "name": "lon",
+                    "type": "NUMBER",
+                    "description": "Longitude location coordinate in decimal format (between -180 and 180)",
+                    "default": "-0.103869"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "withFlightInfoOnly",
+                    "type": "BOOLEAN",
+                    "description": "If set to true, will only return airports which have flight data (scheduled or live) available. Default = false.",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/search/location/51.511142/-0.103869/km/100/16\"\nquerystring = {\"withFlightInfoOnly\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/search/location/{lat}/{lon}/km/{radiuskm}/{limit}\"\nquerystring = {\"withFlightInfoOnly\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "icao": {
+                                    "type": "string"
+                                },
+                                "iata": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "shortName": {
+                                    "type": "string"
+                                },
+                                "municipalityName": {
+                                    "type": "string"
+                                },
+                                "location": {
+                                    "type": "object",
+                                    "properties": {
+                                        "lat": {
+                                            "type": "number"
+                                        },
+                                        "lon": {
+                                            "type": "number"
+                                        }
+                                    }
+                                },
+                                "countryCode": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Search airports by free text",
+            "url": "https://aerodatabox.p.rapidapi.com/airports/search/term",
+            "description": "Gets the list of airports with ICAO or IATA code matching the search term case-insensitively and airports with airport or city name containing the search term case-insensitively.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Search query (min. 3 non whitespace characters length)",
+                    "default": "schiphol"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "withSearchByCode",
+                    "type": "BOOLEAN",
+                    "description": "If set to true, will attempt to interpret short words within the search query as IATA or ICAO code and prioritize exact matches by these codes (they will appear higher than others). Otherwise, the search by code will be completely excluded (only the name of an airport or its city will be searched). Default = true.",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Maximum number of airports to be returned (max. 250, defaut = 10)",
+                    "default": "10"
+                },
+                {
+                    "name": "withFlightInfoOnly",
+                    "type": "BOOLEAN",
+                    "description": "If set to true, will only return airports which have flight data (scheduled or live) available. Default = false.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/search/term\"\nquerystring = {\"withSearchByCode\": \"\", \"q\": \"schiphol\", \"limit\": \"10\", \"withFlightInfoOnly\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/search/term\"\nquerystring = {\"withSearchByCode\": \"\", \"q\": \"schiphol\", \"limit\": \"10\", \"withFlightInfoOnly\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "icao": {
+                                    "type": "string"
+                                },
+                                "iata": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "shortName": {
+                                    "type": "string"
+                                },
+                                "municipalityName": {
+                                    "type": "string"
+                                },
+                                "location": {
+                                    "type": "object",
+                                    "properties": {
+                                        "lat": {
+                                            "type": "number"
+                                        },
+                                        "lon": {
+                                            "type": "number"
+                                        }
+                                    }
+                                },
+                                "countryCode": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Search airports by location",
+            "url": "https://aerodatabox.p.rapidapi.com/airports/search/location",
+            "description": "Gets the list of airports found within specified radius around specified location.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Maximum number of airports to be returned (max. 250)",
+                    "default": "10"
+                },
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "Latitude location coordinate in decimal format (between -90 and 90)",
+                    "default": "40.688812"
+                },
+                {
+                    "name": "lon",
+                    "type": "NUMBER",
+                    "description": "Longitude location coordinate in decimal format (between -180 and 180)",
+                    "default": "-74.044369"
+                },
+                {
+                    "name": "radiusKm",
+                    "type": "NUMBER",
+                    "description": "Radius of search around specified location in kilometers (max. 1000 km)",
+                    "default": "50"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "withFlightInfoOnly",
+                    "type": "BOOLEAN",
+                    "description": "If set to true, will only return airports which have flight data (scheduled or live) available. Default = false.",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/search/location\"\nquerystring = {\"limit\": \"10\", \"lat\": \"40.688812\", \"lon\": \"-74.044369\", \"withFlightInfoOnly\": \"0\", \"radiusKm\": \"50\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/search/location\"\nquerystring = {\"limit\": \"10\", \"lat\": \"40.688812\", \"lon\": \"-74.044369\", \"withFlightInfoOnly\": \"0\", \"radiusKm\": \"50\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "icao": {
+                                    "type": "string"
+                                },
+                                "iata": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "shortName": {
+                                    "type": "string"
+                                },
+                                "municipalityName": {
+                                    "type": "string"
+                                },
+                                "location": {
+                                    "type": "object",
+                                    "properties": {
+                                        "lat": {
+                                            "type": "number"
+                                        },
+                                        "lon": {
+                                            "type": "number"
+                                        }
+                                    }
+                                },
+                                "countryCode": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Distance / Flight time between airports",
+            "url": "https://aerodatabox.p.rapidapi.com/airports/{codeType}/LHR/distance-time/LAX",
+            "description": "**What is distance between airports?** and **What is approximate flight time between airports?**\n\nReturns: Distance and approximate flight time between airports, if both airports found.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "codeTo",
+                    "type": "STRING",
+                    "description": "If `codeType` is:\n* `icao`, then this field must be a 4-character ICAO-code of the destination airport (e.g.: EHAM, KLAX, UUEE, etc.);\n* `iata`, then this field must be a 3-character IATA-code of the destination  airport (e.g.: AMS, SFO, LAX, etc.).",
+                    "default": "LAX"
+                },
+                {
+                    "name": "codeFrom",
+                    "type": "STRING",
+                    "description": "If `codeType` is:\n* `icao`, then this field must be a 4-character ICAO-code of the origin airport (e.g.: EHAM, KLAX, UUEE, etc.);\n* `iata`, then this field must be a 3-character IATA-code of the origin airport (e.g.: AMS, SFO, LAX, etc.).",
+                    "default": "LHR"
+                },
+                {
+                    "name": "codeType",
+                    "type": "ENUM",
+                    "description": "Type of code to search airport by (IATA or ICAO)",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/LHR/distance-time/LAX\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/airports/{codeType}/{codefrom}/distance-time/{codeto}\"\nquerystring = {\"codeType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "from": {
+                        "type": "object",
+                        "properties": {
+                            "icao": {
+                                "type": "string"
+                            },
+                            "iata": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "shortName": {
+                                "type": "string"
+                            },
+                            "municipalityName": {
+                                "type": "string"
+                            },
+                            "location": {
+                                "type": "object",
+                                "properties": {
+                                    "lat": {
+                                        "type": "number"
+                                    },
+                                    "lon": {
+                                        "type": "number"
+                                    }
+                                }
+                            },
+                            "countryCode": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "to": {
+                        "type": "object",
+                        "properties": {
+                            "icao": {
+                                "type": "string"
+                            },
+                            "iata": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "shortName": {
+                                "type": "string"
+                            },
+                            "municipalityName": {
+                                "type": "string"
+                            },
+                            "location": {
+                                "type": "object",
+                                "properties": {
+                                    "lat": {
+                                        "type": "number"
+                                    },
+                                    "lon": {
+                                        "type": "number"
+                                    }
+                                }
+                            },
+                            "countryCode": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "greatCircleDistance": {
+                        "type": "object",
+                        "properties": {
+                            "meter": {
+                                "type": "integer"
+                            },
+                            "km": {
+                                "type": "number"
+                            },
+                            "mile": {
+                                "type": "number"
+                            },
+                            "nm": {
+                                "type": "number"
+                            },
+                            "feet": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "approxFlightTime": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Airports supporting data feed service",
+            "url": "https://aerodatabox.p.rapidapi.com/health/services/feeds/{service}/airports",
+            "description": "**Which airports support flight schedules? **or **Which airports support live flight updates?**\n\nReturns: Collection ICAO codes of airports supporting specified airport data feed service.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "service",
+                    "type": "ENUM",
+                    "description": "Airport data feed service name",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/health/services/feeds/{service}/airports\"\nquerystring = {\"service\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/health/services/feeds/{service}/airports\"\nquerystring = {\"service\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "items": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Airport data feed services status by ICAO code",
+            "url": "https://aerodatabox.p.rapidapi.com/health/services/airports/EGLL/feeds",
+            "description": "Gets current status of airport data feed services (live flight updates, flight schedules, etc.) for requested airport.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "icao",
+                    "type": "STRING",
+                    "description": "4-digit ICAO-code of the airport (e.g.: EHAM, KLAX, UUEE, etc.). Full, stripped and any case formats are acceptable.",
+                    "default": "EGLL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/health/services/airports/EGLL/feeds\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/health/services/airports/{icao}/feeds\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "General status of data feed services",
+            "url": "https://aerodatabox.p.rapidapi.com/health/services/feeds/{service}",
+            "description": "**Which is the general health of the data feed service?**\n\nReturns: Status of the service in general, regardless of the airports",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "service",
+                    "type": "ENUM",
+                    "description": "Data feed service name",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "withHttpCode",
+                    "type": "BOOLEAN",
+                    "description": "If true, reflect status of the service in the HTTP code of the response (if the service is down, HTTP code will be 503).\n\n Default: false",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/health/services/feeds/{service}\"\nquerystring = {\"withHttpCode\": \"\", \"service\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/health/services/feeds/{service}\"\nquerystring = {\"withHttpCode\": \"\", \"service\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "items": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Flight status (nearest)",
+            "url": "https://aerodatabox.p.rapidapi.com/flights/{searchBy}/DL47",
+            "description": "Gets information about the status of the nearest (either in past or in future) flight or about flight departing or arriving on the day specified (local time), operated:\n- under specified flight number; or\n- by an aircraft with specified registration; or\n- under specified ATC-callsign; or\n- by an aircraft with specified Mode-S 24-bit ICAO Transponder address.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "searchParameter",
+                    "type": "string",
+                    "description": "If **searchBy** is: \n- **number**, then then this field should be Flight number (with or without spaces, IATA or ICAO, any case formats are acceptable, e.g. KL1395, Klm 1395)\n- **callsign**, then this field should be ATC call-sign of the flight (with or without spaces, any case formats are acceptable, e.g. AFL1482, nca 008X);\n- **reg**: then this field should be Aircraft registration (with or without spaces or dashes, any case formats are acceptable, e.g. PH-BXO, DeMhJ);\n- **icao24**, then this field should be Aircraft ICAO 24-bit Mode-S address specified in hexadecimal format (e.g. 484161, 483EFD).",
+                    "default": "DL47"
+                },
+                {
+                    "name": "searchBy",
+                    "type": "ENUM",
+                    "description": "Criteria to search by: \n- **number**: search flight operated under specified flight number;\n- **callsign**: search flight operated under specified ATC call-sign;\n- **reg**: search flight operated on an aircraft with specified registration;\n- **icao24**: search flight operated on an aircraft with specified ICAO 24-bit Mode-S transponder address.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "withLocation",
+                    "type": "BOOLEAN",
+                    "description": "Should include real-time positional data, e.g.: location, speed, altitude, etc., if available ",
+                    "default": "false"
+                },
+                {
+                    "name": "withAircraftImage",
+                    "type": "BOOLEAN",
+                    "description": "Should include aircraft image.",
+                    "default": "false"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/flights/{searchBy}/DL47\"\nquerystring = {\"withLocation\": \"false\", \"searchBy\": \"\", \"withAircraftImage\": \"false\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/flights/{searchBy}/{searchparameter}\"\nquerystring = {\"withLocation\": \"false\", \"searchBy\": \"\", \"withAircraftImage\": \"false\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Flight departure dates",
+            "url": "https://aerodatabox.p.rapidapi.com/flights/{searchBy}/KL1395/dates/2020-06-01/2020-06-15",
+            "description": "**On which days the flight operates?** or **What is the flight schedule?**\n\nGet flight departure dates for a flight operated:\n, operated:\n- under specified flight number; or\n- by an aircraft with specified registration; or\n- under specified ATC-callsign; or\n- by an aircraft with specified Mode-S 24-bit ICAO Transponder address.\n\nReturns: Array of local departure dates in (YYYY-MM-DD).",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "searchParameter",
+                    "type": "string",
+                    "description": "If **searchBy** is: \n- **number**, then then this field should be Flight number (with or without spaces, IATA or ICAO, any case formats are acceptable, e.g. KL1395, Klm 1395)\n- **callsign**, then this field should be ATC call-sign of the flight (with or without spaces, any case formats are acceptable, e.g. AFL1482, nca 008X);\n- **reg**: then this field should be Aircraft registration (with or without spaces or dashes, any case formats are acceptable, e.g. PH-BXO, DeMhJ);\n- **icao24**, then this field should be Aircraft ICAO 24-bit Mode-S address specified in hexadecimal format (e.g. 484161, 483EFD).",
+                    "default": "KL1395"
+                },
+                {
+                    "name": "searchBy",
+                    "type": "ENUM",
+                    "description": "Criteria to search by: \n- **number**: search flight operated under specified flight number;\n- **callsign**: search flight operated under specified ATC call-sign;\n- **reg**: search flight operated on an aircraft with specified registration;\n- **icao24**: search flight operated on an aircraft with specified ICAO 24-bit Mode-S transponder address.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "toLocal",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "End of the search range (local time, format: YYYY-MM-DD)",
+                    "default": "2020-06-15"
+                },
+                {
+                    "name": "fromLocal",
+                    "type": "string",
+                    "description": "Beginning of the search range (local time, format: YYYY-MM-DD)",
+                    "default": "2020-06-01"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/flights/{searchBy}/KL1395/dates/2020-06-01/2020-06-15\"\nquerystring = {\"searchBy\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/flights/{searchBy}/{searchparameter}/dates/{fromlocal}/{tolocal}\"\nquerystring = {\"searchBy\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "List web-hook subscriptions",
+            "url": "https://aerodatabox.p.rapidapi.com/subscriptions/webhook",
+            "description": "Get the list of existing active web-hook subscriptions",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/subscriptions/webhook\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/subscriptions/webhook\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get web-hook subscription",
+            "url": "https://aerodatabox.p.rapidapi.com/subscriptions/webhook/af46c290-2717-4d58-87ab-7225a0ed7c12",
+            "description": "Gets information about an existing web-hook subscription.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "subscriptionId",
+                    "type": "STRING",
+                    "description": "Subscription ID",
+                    "default": "af46c290-2717-4d58-87ab-7225a0ed7c12"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/subscriptions/webhook/af46c290-2717-4d58-87ab-7225a0ed7c12\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/subscriptions/webhook/{subscriptionid}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

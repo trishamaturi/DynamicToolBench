@@ -1,0 +1,206 @@
+{
+    "product_id": "api_58e534e0-1df4-4d4b-b3c6-c47de16eaae6",
+    "tool_description": "Laptop database API that contains both specs and images of most laptops. Updated on daily basis.",
+    "home_url": "https://rapidapi.com/laptopdb/api/laptopdb1/",
+    "name": "LaptopDB",
+    "title": "LaptopDB",
+    "pricing": "PAID",
+    "tool_name": "LaptopDB",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 946,
+        "avgSuccessRate": 100,
+        "popularityScore": 7.6,
+        "__typename": "Score"
+    },
+    "host": "laptopdb1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "companies",
+            "url": "https://laptopdb1.p.rapidapi.com/companies",
+            "description": "List of all available companies that can be used in /laptop/search ?company filter",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://laptopdb1.p.rapidapi.com/companies\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"laptopdb1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://laptopdb1.p.rapidapi.com/companies\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"laptopdb1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "gpu/search",
+            "url": "https://laptopdb1.p.rapidapi.com/gpu/search",
+            "description": "Lets you search gpus by name",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "1080"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://laptopdb1.p.rapidapi.com/gpu/search\"\nquerystring = {\"q\": \"1080\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"laptopdb1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://laptopdb1.p.rapidapi.com/gpu/search\"\nquerystring = {\"q\": \"1080\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"laptopdb1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "cpu/search",
+            "url": "https://laptopdb1.p.rapidapi.com/cpu/search",
+            "description": "Lets you search cpus by name",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "i7"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://laptopdb1.p.rapidapi.com/cpu/search\"\nquerystring = {\"q\": \"i7\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"laptopdb1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://laptopdb1.p.rapidapi.com/cpu/search\"\nquerystring = {\"q\": \"i7\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"laptopdb1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "laptop/search",
+            "url": "https://laptopdb1.p.rapidapi.com/laptop/search",
+            "description": "Lets you search laptops by specs or name",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "security",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "company",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "inches",
+                    "type": "STRING",
+                    "description": "Example: 10.1,11.6,12, etc.. You can also send multiple comma separated.",
+                    "default": ""
+                },
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "sort",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "cpu",
+                    "type": "STRING",
+                    "description": "It can be simple like i3 or i9, but also an specific integer.",
+                    "default": ""
+                },
+                {
+                    "name": "gpu",
+                    "type": "NUMBER",
+                    "description": "GPU id that can be obtained using gpu/search call. Ex: 11 (Nvidia 1080 GTX)",
+                    "default": ""
+                },
+                {
+                    "name": "ram",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "os",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://laptopdb1.p.rapidapi.com/laptop/search\"\nquerystring = {\"security\": \"\", \"company\": \"\", \"inches\": \"\", \"q\": \"\", \"sort\": \"\", \"cpu\": \"\", \"gpu\": \"\", \"ram\": \"\", \"os\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"laptopdb1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://laptopdb1.p.rapidapi.com/laptop/search\"\nquerystring = {\"security\": \"\", \"company\": \"\", \"inches\": \"\", \"q\": \"\", \"sort\": \"\", \"cpu\": \"\", \"gpu\": \"\", \"ram\": \"\", \"os\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"laptopdb1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

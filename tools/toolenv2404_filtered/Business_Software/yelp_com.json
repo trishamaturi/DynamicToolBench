@@ -1,0 +1,151 @@
+{
+    "product_id": "api_ce2bbea4-bc8a-45c0-9d7d-f83808c06e29",
+    "tool_description": "Real time Yelp data",
+    "home_url": "https://rapidapi.com/hannahle/api/yelp-com/",
+    "name": "Yelp.com",
+    "title": "Yelp.com",
+    "pricing": "FREEMIUM",
+    "tool_name": "Yelp.com",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 780,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.1,
+        "__typename": "Score"
+    },
+    "host": "yelp-com.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "search nearby",
+            "url": "https://yelp-com.p.rapidapi.com/search/nearby/37.788719679657554/-122.40057774847898",
+            "description": "Search businesses nearby",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "-122.40057774847898"
+                },
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "37.788719679657554"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0"
+                },
+                {
+                    "name": "term",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Restaurants"
+                },
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "Default: 5 (km)\\\\nMax: 40 (km)",
+                    "default": "5"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://yelp-com.p.rapidapi.com/search/nearby/37.788719679657554/-122.40057774847898\"\nquerystring = {\"offset\": \"0\", \"term\": \"Restaurants\", \"radius\": \"5\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yelp-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://yelp-com.p.rapidapi.com/search/nearby/{latitude}/{longitude}\"\nquerystring = {\"offset\": \"0\", \"term\": \"Restaurants\", \"radius\": \"5\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yelp-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "business details",
+            "url": "https://yelp-com.p.rapidapi.com/business/DAiqwrmv19Uv-I1bOoAJCQ",
+            "description": "Get business details",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "DAiqwrmv19Uv-I1bOoAJCQ"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://yelp-com.p.rapidapi.com/business/DAiqwrmv19Uv-I1bOoAJCQ\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yelp-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://yelp-com.p.rapidapi.com/business/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yelp-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "similar businesses",
+            "url": "https://yelp-com.p.rapidapi.com/business/a-Lf60V3BDdS27la95VQWA/related",
+            "description": "Similar businesses",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "a-Lf60V3BDdS27la95VQWA"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://yelp-com.p.rapidapi.com/business/a-Lf60V3BDdS27la95VQWA/related\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yelp-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://yelp-com.p.rapidapi.com/business/{id}/related\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yelp-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "reviews",
+            "url": "https://yelp-com.p.rapidapi.com/reviews/a-Lf60V3BDdS27la95VQWA",
+            "description": "List reviews about the business",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "business_id",
+                    "type": "string",
+                    "description": "",
+                    "default": "a-Lf60V3BDdS27la95VQWA"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://yelp-com.p.rapidapi.com/reviews/a-Lf60V3BDdS27la95VQWA\"\nquerystring = {\"offset\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yelp-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://yelp-com.p.rapidapi.com/reviews/{business_id}\"\nquerystring = {\"offset\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yelp-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "review highlights",
+            "url": "https://yelp-com.p.rapidapi.com/reviews/a-Lf60V3BDdS27la95VQWA/highlights",
+            "description": "List of review highlights for the business",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "business_id",
+                    "type": "string",
+                    "description": "",
+                    "default": "a-Lf60V3BDdS27la95VQWA"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://yelp-com.p.rapidapi.com/reviews/a-Lf60V3BDdS27la95VQWA/highlights\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yelp-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://yelp-com.p.rapidapi.com/reviews/{business_id}/highlights\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yelp-com.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

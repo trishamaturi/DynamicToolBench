@@ -1,0 +1,243 @@
+{
+    "product_id": "api_110eeffc-aa45-4c58-ae33-f4967efa2f74",
+    "tool_description": "API for Rumble.com videos, channels, search data and more.\nGet useful JSON data from homepage, video search, channel search, video page, editor picks, etc.",
+    "home_url": "https://rapidapi.com/igalbo/api/api-for-rumble/",
+    "name": "API for Rumble",
+    "title": "API for Rumble",
+    "pricing": "FREEMIUM",
+    "tool_name": "API for Rumble",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 363,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.3,
+        "__typename": "Score"
+    },
+    "host": "api-for-rumble.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Channel Page",
+            "url": "https://api-for-rumble.p.rapidapi.com/c/NYPost",
+            "description": "Channel info - title, subscriber count, background image, thumbnail, verified, array of channel's videos, each containing: verified, title, link, image, channel, channel url, duration, views, time of publishing, etc.\nOptionally, add query parameters for sort, date, duration, page",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "channel",
+                    "type": "string",
+                    "description": "The channel as it appears on https://rumble.com/c/[CHANNEL]",
+                    "default": "NYPost"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "this-month"
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2"
+                },
+                {
+                    "name": "duration",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "short"
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "views"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-for-rumble.p.rapidapi.com/c/NYPost\"\nquerystring = {\"date\": \"this-month\", \"page\": \"2\", \"duration\": \"short\", \"sort\": \"views\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-rumble.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-for-rumble.p.rapidapi.com/c/{channel}\"\nquerystring = {\"date\": \"this-month\", \"page\": \"2\", \"duration\": \"short\", \"sort\": \"views\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-rumble.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Homepage",
+            "url": "https://api-for-rumble.p.rapidapi.com/",
+            "description": "Info from Rumble homepage - top videos, editor picks, news, viral, and other categories",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://api-for-rumble.p.rapidapi.com/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-rumble.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-for-rumble.p.rapidapi.com/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-rumble.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "All Videos",
+            "url": "https://api-for-rumble.p.rapidapi.com/videos",
+            "description": "All videos page. Array of video results, each containing: title, link, image, channel, channel url, duration, views, rumbles (if available), verified (if true), time.\nAdd the keyword as a query parameter (?q=food).\nOptionally, add query parameters for sort, date, duration, license, page",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "food"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "this-month"
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "views"
+                },
+                {
+                    "name": "duration",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "long"
+                },
+                {
+                    "name": "license",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "now"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-for-rumble.p.rapidapi.com/videos\"\nquerystring = {\"date\": \"this-month\", \"sort\": \"views\", \"duration\": \"long\", \"license\": \"now\", \"q\": \"food\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-rumble.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-for-rumble.p.rapidapi.com/videos\"\nquerystring = {\"date\": \"this-month\", \"sort\": \"views\", \"duration\": \"long\", \"license\": \"now\", \"q\": \"food\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-rumble.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Video Search",
+            "url": "https://api-for-rumble.p.rapidapi.com/search/video",
+            "description": "Video search by keyword. Array of video results, each containing: title, link, image, channel, channel url, duration, views, time of publishing, etc.\nAdd the keyword as a query parameter (?q=dogs).\nOptionally, add query parameters for sort, date, duration, license, page",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "cats"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2"
+                },
+                {
+                    "name": "duration",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "short"
+                },
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "this-month"
+                },
+                {
+                    "name": "license",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "now"
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "views"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-for-rumble.p.rapidapi.com/search/video\"\nquerystring = {\"page\": \"2\", \"duration\": \"short\", \"date\": \"this-month\", \"license\": \"now\", \"sort\": \"views\", \"q\": \"cats\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-rumble.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-for-rumble.p.rapidapi.com/search/video\"\nquerystring = {\"page\": \"2\", \"duration\": \"short\", \"date\": \"this-month\", \"license\": \"now\", \"sort\": \"views\", \"q\": \"cats\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-rumble.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Channel Search",
+            "url": "https://api-for-rumble.p.rapidapi.com/search/channel",
+            "description": "Channel search by keyword. Array of channel results, each containing: title, link, subscribers, verified (if true).\nAdd the keyword as a query parameter (?q=food)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "food"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://api-for-rumble.p.rapidapi.com/search/channel\"\nquerystring = {\"q\": \"food\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-rumble.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-for-rumble.p.rapidapi.com/search/channel\"\nquerystring = {\"q\": \"food\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-rumble.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Video Page",
+            "url": "https://api-for-rumble.p.rapidapi.com/v30032-cat-scared-of-cucumber.html",
+            "description": "Info from video page - title, channel, channel url, verified, publish date, views, subscribers, rumbles.\nIn addition, an array with related videos.\nUse the html filename directly as path parameter (e.g. v30032-cat-scared-of-cucumber.html)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "video",
+                    "type": "string",
+                    "description": "",
+                    "default": "v30032-cat-scared-of-cucumber.html"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://api-for-rumble.p.rapidapi.com/v30032-cat-scared-of-cucumber.html\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-rumble.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-for-rumble.p.rapidapi.com/{video}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-rumble.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Editor Picks",
+            "url": "https://api-for-rumble.p.rapidapi.com/editor-picks",
+            "description": "Editor picks, each containing: verified, title, link, image, channel, channel url, duration, views, time of publishing, etc.\nOptionally, add query parameters for sort, date, duration, license, page",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2"
+                },
+                {
+                    "name": "duration",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "short"
+                },
+                {
+                    "name": "license",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "now"
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "views"
+                },
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "this-month"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-for-rumble.p.rapidapi.com/editor-picks\"\nquerystring = {\"page\": \"2\", \"duration\": \"short\", \"license\": \"now\", \"sort\": \"views\", \"date\": \"this-month\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-rumble.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-for-rumble.p.rapidapi.com/editor-picks\"\nquerystring = {\"page\": \"2\", \"duration\": \"short\", \"license\": \"now\", \"sort\": \"views\", \"date\": \"this-month\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-rumble.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

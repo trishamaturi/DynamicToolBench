@@ -1,0 +1,132 @@
+{
+    "product_id": "api_fb71056f-07e9-4b50-bc1f-66e4e7aa2e98",
+    "tool_description": "A file management API that allows users to upload files, retrieve file metadata, and generate progressive download URLs. ",
+    "home_url": "https://rapidapi.com/art68401/api/veestream2/",
+    "name": "Veestream",
+    "title": "Veestream",
+    "pricing": "PAID",
+    "tool_name": "Veestream",
+    "score": null,
+    "host": "veestream2.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get files",
+            "url": "https://veestream2.p.rapidapi.com/files",
+            "description": "Get all the files that are related to your storage container.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://veestream2.p.rapidapi.com/files\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"veestream2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://veestream2.p.rapidapi.com/files\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"veestream2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Generate video gif",
+            "url": "https://veestream2.p.rapidapi.com/file/642d95e39b9f1430cd5c166d/gif",
+            "description": "This endpoint generates gif image from a video file. You can pass start and end in the query to specify where you want your gif to start and end.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "The unique id for the video. After uploading a file you get _id as part of the response. Use _id as your id",
+                    "default": "642d95e39b9f1430cd5c166d"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Where you want your gif to start (secs)",
+                    "default": "10"
+                },
+                {
+                    "name": "end",
+                    "type": "STRING",
+                    "description": "Where you want your gif to end (secs)",
+                    "default": "12"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://veestream2.p.rapidapi.com/file/642d95e39b9f1430cd5c166d/gif\"\nquerystring = {\"start\": \"10\", \"end\": \"12\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"veestream2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://veestream2.p.rapidapi.com/file/{id}/gif\"\nquerystring = {\"start\": \"10\", \"end\": \"12\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"veestream2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get video thumbnail",
+            "url": "https://veestream2.p.rapidapi.com/file/642d95e39b9f1430cd5c166d/poster",
+            "description": "This endpoint generates a thumbnail from a video file. It will only work for video files. The start and end values in the query lets you specify where you want to screenshot your video.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "The id parameter is the unique identifier for your file. It is the _id from the upload response.",
+                    "default": "642d95e39b9f1430cd5c166d"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "start",
+                    "type": "NUMBER",
+                    "description": "Where you want your the image to be shot from. E.g 10  for 10 secs.",
+                    "default": "3"
+                },
+                {
+                    "name": "end",
+                    "type": "NUMBER",
+                    "description": "The section of the video to take the shot from will be from start to end where start is what you provide in the start query and end is what you put here.",
+                    "default": "4"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://veestream2.p.rapidapi.com/file/642d95e39b9f1430cd5c166d/poster\"\nquerystring = {\"start\": \"3\", \"end\": \"4\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"veestream2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://veestream2.p.rapidapi.com/file/{id}/poster\"\nquerystring = {\"start\": \"3\", \"end\": \"4\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"veestream2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get file metadata",
+            "url": "https://veestream2.p.rapidapi.com/file/642d7bacaa13f462fface4b7/data",
+            "description": "This endpoint returns metadata about a particular file. The metadata includes the name, _id, url, gif and poster. The latter 2 are useful for videos since they are endpoints to generate gifs and image thumbnails from videos. For non video files, this endpoints will be not useful. We have intentionally decided to let them be in the response for non video files though they do nothing.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "642d7bacaa13f462fface4b7"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://veestream2.p.rapidapi.com/file/642d7bacaa13f462fface4b7/data\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"veestream2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://veestream2.p.rapidapi.com/file/{id}/data\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"veestream2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get File progressive download url",
+            "url": "https://veestream2.p.rapidapi.com/file/642d7bacaa13f462fface4b7",
+            "description": "A GET request that allows you to download a file from your storage container that has your files. The file can be an image, video, or any other file type. In order to access the endpoint, you need to pass an \"apikey\" header in the request headers.\n\nTo use this endpoint, replace \"{id}\" with the \"_id\" property of the file you want to download. This will return a valid file URL that you can use to download the file.\n\nOverall, this endpoint provides a simple and secure way to download files from your container with the added benefit of being able to work with a variety of file types.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "642d7bacaa13f462fface4b7"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://veestream2.p.rapidapi.com/file/642d7bacaa13f462fface4b7\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"veestream2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://veestream2.p.rapidapi.com/file/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"veestream2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

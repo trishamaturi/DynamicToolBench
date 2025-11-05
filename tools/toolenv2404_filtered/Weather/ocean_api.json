@@ -1,0 +1,419 @@
+{
+    "product_id": "api_4865e3b7-478b-4599-9b77-ea447626075c",
+    "tool_description": "Fetch bathymetry, physical and biogeochemistry hindcast and forecast information",
+    "home_url": "https://rapidapi.com/amentum-amentum-default/api/ocean-api1/",
+    "name": "Ocean API",
+    "title": "Ocean API",
+    "pricing": "FREEMIUM",
+    "tool_name": "Ocean API",
+    "score": null,
+    "host": "ocean-api1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "app.api_bathymetry.endpoints.GEBCO_Bathymetry.point",
+            "url": "https://ocean-api1.p.rapidapi.com/gebco",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "Geocentric longitude (deg): -180 to 180 (0 to 360 also accepted)",
+                    "default": 152
+                },
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "Geocentric latitude (deg): -90 to 90",
+                    "default": -34
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://ocean-api1.p.rapidapi.com/gebco\"\nquerystring = {\"longitude\": 152, \"latitude\": -34}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ocean-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://ocean-api1.p.rapidapi.com/gebco\"\nquerystring = {\"longitude\": 152, \"latitude\": -34}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ocean-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "elevation": {
+                        "description": "Elevation above average ocean height to the nearest meter.\n",
+                        "properties": {
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "point": {
+                        "description": "The given point in the request.\n",
+                        "properties": {
+                            "latitude": {
+                                "type": "number"
+                            },
+                            "longitude": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "app.api_oceans.endpoints.Oceans.point",
+            "url": "https://ocean-api1.p.rapidapi.com/rtofs",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "depth",
+                    "type": "NUMBER",
+                    "description": "Depth (in m). Supported values are: 0, 10, 20, 30, 50, 75, 100, 125, 150, 200, 250, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1750, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500. Unsupported values will be rounded to the closest value.\n",
+                    "default": 30
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "Geocentric longitude (deg): -180 to 180 (0 to 360 also accepted)",
+                    "default": 152
+                },
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "Geocentric latitude (deg): -90 to 90",
+                    "default": -34
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://ocean-api1.p.rapidapi.com/rtofs\"\nquerystring = {\"depth\": 30, \"longitude\": 152, \"latitude\": -34}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ocean-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://ocean-api1.p.rapidapi.com/rtofs\"\nquerystring = {\"depth\": 30, \"longitude\": 152, \"latitude\": -34}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ocean-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "current_u": {
+                        "description": "Eastward component of sea water velocity, in meters per second.\n",
+                        "properties": {
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "current_v": {
+                        "description": "Northward component of sea water velocity, in meters per second.\n",
+                        "properties": {
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "point": {
+                        "description": "The given point in the request.\n",
+                        "properties": {
+                            "depth": {
+                                "type": "number"
+                            },
+                            "latitude": {
+                                "type": "number"
+                            },
+                            "longitude": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "salinity": {
+                        "description": "Sea water salinity, in grams per kilogram of water.\n",
+                        "properties": {
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "temperature": {
+                        "description": "Temperature, in degrees celsius.\n",
+                        "properties": {
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "app.api_nemo.endpoints.NEMO.point",
+            "url": "https://ocean-api1.p.rapidapi.com/nemo",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "Geocentric latitude (deg): -90 to 90",
+                    "default": -34
+                },
+                {
+                    "name": "day",
+                    "type": "NUMBER",
+                    "description": "Day in DD format",
+                    "default": 23
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "Geocentric longitude (deg): -180 to 180 (0 to 360 also accepted)",
+                    "default": 152
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "Year in YYYY format",
+                    "default": 2020
+                },
+                {
+                    "name": "depth",
+                    "type": "NUMBER",
+                    "description": "Depth (in m). Supported values are: 0, 10, 20, 30, 50, 75, 100, 125, 150, 200, 250, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1750, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500. Unsupported values will be rounded to the closest value.\n",
+                    "default": 30
+                },
+                {
+                    "name": "month",
+                    "type": "NUMBER",
+                    "description": "Month in MM format",
+                    "default": 5
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://ocean-api1.p.rapidapi.com/nemo\"\nquerystring = {\"latitude\": -34, \"day\": 23, \"longitude\": 152, \"year\": 2020, \"depth\": 30, \"month\": 5}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ocean-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://ocean-api1.p.rapidapi.com/nemo\"\nquerystring = {\"latitude\": -34, \"day\": 23, \"longitude\": 152, \"year\": 2020, \"depth\": 30, \"month\": 5}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ocean-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "chl": {
+                        "description": "Mass concentration of chlorophyll-a in sea water\n",
+                        "properties": {
+                            "long_name": {
+                                "type": "string"
+                            },
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "dissic": {
+                        "description": "Mole concentration of dissolved inorganic carbon in sea water. May be missing if historical=True\n",
+                        "properties": {
+                            "long_name": {
+                                "type": "string"
+                            },
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "fe": {
+                        "description": "Mole concentration of dissolved iron in sea water\n",
+                        "properties": {
+                            "long_name": {
+                                "type": "string"
+                            },
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "historical": {
+                        "description": "Whether this point is part of the hindcast set\n",
+                        "type": "boolean"
+                    },
+                    "no3": {
+                        "description": "Mole concentration of nitrate in sea water\n",
+                        "properties": {
+                            "long_name": {
+                                "type": "string"
+                            },
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "nppv": {
+                        "description": "net primary production of biomass expressed as carbon per unit volume in sea water\n",
+                        "properties": {
+                            "long_name": {
+                                "type": "string"
+                            },
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "o2": {
+                        "description": "Mole concentration of dissolved molecular oxygen in sea water\n",
+                        "properties": {
+                            "long_name": {
+                                "type": "string"
+                            },
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "ph": {
+                        "description": "Sea water pH recorded on total scale\n",
+                        "properties": {
+                            "long_name": {
+                                "type": "string"
+                            },
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "phyc": {
+                        "description": "Mole concentration of phytoplankton expressed as carbon in sea water\n",
+                        "properties": {
+                            "long_name": {
+                                "type": "string"
+                            },
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "po4": {
+                        "description": "Mole concentration of phosphate in sea water\n",
+                        "properties": {
+                            "long_name": {
+                                "type": "string"
+                            },
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "point": {
+                        "description": "The given point in the request.\n",
+                        "properties": {
+                            "depth": {
+                                "type": "number"
+                            },
+                            "latitude": {
+                                "type": "number"
+                            },
+                            "longitude": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "si": {
+                        "description": "Mole concentration of silicate in sea water\n",
+                        "properties": {
+                            "long_name": {
+                                "type": "string"
+                            },
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "spco2": {
+                        "description": "Surface partial pressure of carbon dioxide in sea water\n",
+                        "properties": {
+                            "long_name": {
+                                "type": "string"
+                            },
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "talk": {
+                        "description": "Sea water alkalinity expressed as mole equivalent. May be missing if historical=True\n",
+                        "properties": {
+                            "long_name": {
+                                "type": "string"
+                            },
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    ]
+}

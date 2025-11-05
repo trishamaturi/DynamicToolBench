@@ -1,0 +1,1065 @@
+{
+    "product_id": "api_87067ab2-df36-4441-921f-50d726e22068",
+    "tool_description": "SocialHub is an efficient API service offering comprehensive social media and creator statistics. Ideal for businesses and developers, it provides key insights into user engagement, growth metrics, and content performance across major platforms like TikTok, Instagram, and Facebook. With its user-friendly interface, SocialHub ensures easy integration for data-driven decision making in the fast-paced social media landscape.\n\nSome data:\nEngagement rate for tiktok.\nMost used tags, song, descripti...",
+    "home_url": "https://rapidapi.com/pandev-srl-pandev-srl-default/api/social-hub2/",
+    "name": "Social Hub",
+    "title": "Social Hub",
+    "pricing": "FREEMIUM",
+    "tool_name": "Social Hub",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 67,
+        "avgSuccessRate": 100,
+        "popularityScore": 8.4,
+        "__typename": "Score"
+    },
+    "host": "social-hub2.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/profiles/views",
+            "url": "https://social-hub2.p.rapidapi.com/profiles/views",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "collected_at_lteq",
+                    "type": "STRING",
+                    "description": "Set the lower limit from when to get views",
+                    "default": ""
+                },
+                {
+                    "name": "inserted_at_lteq",
+                    "type": "STRING",
+                    "description": "Set the lower limit from when to get views",
+                    "default": ""
+                },
+                {
+                    "name": "collected_at_gteq",
+                    "type": "STRING",
+                    "description": "Set the upper limit from when to get views",
+                    "default": ""
+                },
+                {
+                    "name": "nation_eq",
+                    "type": "STRING",
+                    "description": "When sending this parameter, you'll be filtering by nation of visits",
+                    "default": "AU"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "This is the number of the page you requested. Positive integer. If omitted 1 is sent",
+                    "default": ""
+                },
+                {
+                    "name": "inserted_at_gteq",
+                    "type": "STRING",
+                    "description": "Set the upper limit from when to get views",
+                    "default": ""
+                },
+                {
+                    "name": "profile_id_eq",
+                    "type": "STRING",
+                    "description": "the id of the profile you want the statistics of",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://social-hub2.p.rapidapi.com/profiles/views\"\nquerystring = {\"collected_at_lteq\": \"\", \"inserted_at_lteq\": \"\", \"collected_at_gteq\": \"\", \"nation_eq\": \"AU\", \"page\": \"\", \"inserted_at_gteq\": \"\", \"profile_id_eq\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"social-hub2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://social-hub2.p.rapidapi.com/profiles/views\"\nquerystring = {\"collected_at_lteq\": \"\", \"inserted_at_lteq\": \"\", \"collected_at_gteq\": \"\", \"nation_eq\": \"AU\", \"page\": \"\", \"inserted_at_gteq\": \"\", \"profile_id_eq\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"social-hub2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "profileId": {
+                                    "type": "string"
+                                },
+                                "nation": {
+                                    "type": "string",
+                                    "enum": [
+                                        "AU",
+                                        "CA",
+                                        "DE",
+                                        "ES",
+                                        "FR",
+                                        "IT",
+                                        "PT",
+                                        "UK",
+                                        "US"
+                                    ]
+                                },
+                                "collectedAt": {
+                                    "type": "string",
+                                    "format": "date"
+                                }
+                            },
+                            "required": [
+                                "id",
+                                "profileId",
+                                "nation",
+                                "collectedAt"
+                            ]
+                        }
+                    },
+                    "meta": {
+                        "type": "object",
+                        "properties": {
+                            "pagination": {
+                                "type": "object",
+                                "properties": {
+                                    "totalCount": {
+                                        "type": "integer"
+                                    },
+                                    "totalPages": {
+                                        "type": "integer"
+                                    },
+                                    "currentPage": {
+                                        "type": "integer"
+                                    },
+                                    "itemsPerPage": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "required": [
+                                    "totalCount",
+                                    "totalPages",
+                                    "currentPage",
+                                    "itemsPerPage"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "pagination"
+                        ]
+                    }
+                },
+                "required": [
+                    "data",
+                    "meta"
+                ]
+            }
+        },
+        {
+            "name": "/profiles/views/{id}",
+            "url": "https://social-hub2.p.rapidapi.com/profiles/views/{id}",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "id",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://social-hub2.p.rapidapi.com/profiles/views/{id}\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"social-hub2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://social-hub2.p.rapidapi.com/profiles/views/{id}\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"social-hub2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "profileId": {
+                                "type": "string"
+                            },
+                            "nation": {
+                                "type": "string",
+                                "enum": [
+                                    "AU",
+                                    "CA",
+                                    "DE",
+                                    "ES",
+                                    "FR",
+                                    "IT",
+                                    "PT",
+                                    "UK",
+                                    "US"
+                                ]
+                            },
+                            "collectedAt": {
+                                "type": "string",
+                                "format": "date"
+                            },
+                            "latest": {
+                                "type": "boolean"
+                            },
+                            "oldest": {
+                                "type": "boolean"
+                            },
+                            "followerCount": {
+                                "type": "integer"
+                            },
+                            "followingCount": {
+                                "type": "integer"
+                            },
+                            "likeCount": {
+                                "type": "integer"
+                            },
+                            "engagementRate": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "id",
+                            "profileId",
+                            "nation",
+                            "collectedAt",
+                            "latest",
+                            "oldest",
+                            "followerCount",
+                            "followingCount",
+                            "likeCount",
+                            "engagementRate"
+                        ]
+                    }
+                },
+                "required": [
+                    "data"
+                ]
+            }
+        },
+        {
+            "name": "/hashtags",
+            "url": "https://social-hub2.p.rapidapi.com/hashtags",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "usage_count_lteq",
+                    "type": "NUMBER",
+                    "description": "When sending this parameter, you'll be filtering hashtags with less or equal usages than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "This is the number of the page you requested. Positive integer. If omitted 1 is sent",
+                    "default": ""
+                },
+                {
+                    "name": "name_i_cont",
+                    "type": "STRING",
+                    "description": "When sending this parameter, you'll be filtering by name that contains the sent value. Case insensitive",
+                    "default": ""
+                },
+                {
+                    "name": "usage_count_gteq",
+                    "type": "NUMBER",
+                    "description": "When sending this parameter, you'll be filtering hashtags with more or equal usages than sent value",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://social-hub2.p.rapidapi.com/hashtags\"\nquerystring = {\"usage_count_lteq\": \"\", \"page\": \"\", \"name_i_cont\": \"\", \"usage_count_gteq\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"social-hub2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://social-hub2.p.rapidapi.com/hashtags\"\nquerystring = {\"usage_count_lteq\": \"\", \"page\": \"\", \"name_i_cont\": \"\", \"usage_count_gteq\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"social-hub2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "id",
+                                "name"
+                            ]
+                        }
+                    },
+                    "meta": {
+                        "type": "object",
+                        "properties": {
+                            "pagination": {
+                                "type": "object",
+                                "properties": {
+                                    "totalCount": {
+                                        "type": "integer"
+                                    },
+                                    "totalPages": {
+                                        "type": "integer"
+                                    },
+                                    "currentPage": {
+                                        "type": "integer"
+                                    },
+                                    "itemsPerPage": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "required": [
+                                    "totalCount",
+                                    "totalPages",
+                                    "currentPage",
+                                    "itemsPerPage"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "pagination"
+                        ]
+                    }
+                },
+                "required": [
+                    "data",
+                    "meta"
+                ]
+            }
+        },
+        {
+            "name": "/hashtags/{id}",
+            "url": "https://social-hub2.p.rapidapi.com/hashtags/{id}",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "id",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://social-hub2.p.rapidapi.com/hashtags/{id}\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"social-hub2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://social-hub2.p.rapidapi.com/hashtags/{id}\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"social-hub2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "usageCount": {
+                                "type": "integer"
+                            },
+                            "industry": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id",
+                                    "name"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "id",
+                            "name",
+                            "usageCount",
+                            "industry"
+                        ]
+                    }
+                },
+                "required": [
+                    "data"
+                ]
+            }
+        },
+        {
+            "name": "/media/views",
+            "url": "https://social-hub2.p.rapidapi.com/media/views",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "nation_eq",
+                    "type": "STRING",
+                    "description": "When sending this parameter, you'll be filtering by nation of visits",
+                    "default": "AU"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "This is the number of the page you requested. Positive integer. If omitted 1 is sent",
+                    "default": ""
+                },
+                {
+                    "name": "inserted_at_gteq",
+                    "type": "STRING",
+                    "description": "Set the upper limit from when to get views",
+                    "default": ""
+                },
+                {
+                    "name": "media_id_eq",
+                    "type": "STRING",
+                    "description": "the id of the media you want the statistics of",
+                    "default": ""
+                },
+                {
+                    "name": "inserted_at_lteq",
+                    "type": "STRING",
+                    "description": "Set the lower limit from when to get views",
+                    "default": ""
+                },
+                {
+                    "name": "collected_at_gteq",
+                    "type": "STRING",
+                    "description": "Set the upper limit from when to get views",
+                    "default": ""
+                },
+                {
+                    "name": "collected_at_lteq",
+                    "type": "STRING",
+                    "description": "Set the lower limit from when to get views",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://social-hub2.p.rapidapi.com/media/views\"\nquerystring = {\"nation_eq\": \"AU\", \"page\": \"\", \"inserted_at_gteq\": \"\", \"media_id_eq\": \"\", \"inserted_at_lteq\": \"\", \"collected_at_gteq\": \"\", \"collected_at_lteq\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"social-hub2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://social-hub2.p.rapidapi.com/media/views\"\nquerystring = {\"nation_eq\": \"AU\", \"page\": \"\", \"inserted_at_gteq\": \"\", \"media_id_eq\": \"\", \"inserted_at_lteq\": \"\", \"collected_at_gteq\": \"\", \"collected_at_lteq\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"social-hub2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "mediaId": {
+                                    "type": "string"
+                                },
+                                "nation": {
+                                    "type": "string",
+                                    "enum": [
+                                        "AU",
+                                        "CA",
+                                        "DE",
+                                        "ES",
+                                        "FR",
+                                        "IT",
+                                        "PT",
+                                        "UK",
+                                        "US"
+                                    ]
+                                },
+                                "collectedAt": {
+                                    "type": "string",
+                                    "format": "date"
+                                }
+                            },
+                            "required": [
+                                "id",
+                                "mediaId",
+                                "nation",
+                                "collectedAt"
+                            ]
+                        }
+                    },
+                    "meta": {
+                        "type": "object",
+                        "properties": {
+                            "pagination": {
+                                "type": "object",
+                                "properties": {
+                                    "totalCount": {
+                                        "type": "integer"
+                                    },
+                                    "totalPages": {
+                                        "type": "integer"
+                                    },
+                                    "currentPage": {
+                                        "type": "integer"
+                                    },
+                                    "itemsPerPage": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "required": [
+                                    "totalCount",
+                                    "totalPages",
+                                    "currentPage",
+                                    "itemsPerPage"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "pagination"
+                        ]
+                    }
+                },
+                "required": [
+                    "data",
+                    "meta"
+                ]
+            }
+        },
+        {
+            "name": "/media/views/{id}",
+            "url": "https://social-hub2.p.rapidapi.com/media/views/{id}",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "id",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://social-hub2.p.rapidapi.com/media/views/{id}\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"social-hub2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://social-hub2.p.rapidapi.com/media/views/{id}\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"social-hub2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "/profiles",
+            "url": "https://social-hub2.p.rapidapi.com/profiles",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "followers_gteq",
+                    "type": "NUMBER",
+                    "description": "When sending this parameter, you'll be filtering profiles with more or equal followers than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "followers_lteq",
+                    "type": "NUMBER",
+                    "description": "When sending this parameter, you'll be filtering profiles with less or equal followers than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "likes_lteq",
+                    "type": "NUMBER",
+                    "description": "When sending this parameter, you'll be filtering profiles with less or equal likes than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "inserted_at_lteq",
+                    "type": "STRING",
+                    "description": "When sending this parameter, you'll be filtering profiles with more or equal inserted_at than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "likes_gteq",
+                    "type": "NUMBER",
+                    "description": "When sending this parameter, you'll be filtering profiles with more or equal likes than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "nation_eq",
+                    "type": "STRING",
+                    "description": "When sending this parameter, you'll be filtering by nation of visits",
+                    "default": "AU"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "This is the number of the page you requested. Positive integer. If omitted 1 is sent",
+                    "default": ""
+                },
+                {
+                    "name": "username_i_cont",
+                    "type": "STRING",
+                    "description": "When sending this parameter, you'll be filtering by username that contains the sent value. Case insensitive",
+                    "default": ""
+                },
+                {
+                    "name": "inserted_at_gteq",
+                    "type": "STRING",
+                    "description": "When sending this parameter, you'll be filtering profiles with less or equal inserted_at than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "name_i_cont",
+                    "type": "STRING",
+                    "description": "When sending this parameter, you'll be filtering by name that contains the sent value. Case insensitive",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://social-hub2.p.rapidapi.com/profiles\"\nquerystring = {\"followers_gteq\": \"\", \"followers_lteq\": \"\", \"likes_lteq\": \"\", \"inserted_at_lteq\": \"\", \"likes_gteq\": \"\", \"nation_eq\": \"AU\", \"page\": \"\", \"username_i_cont\": \"\", \"inserted_at_gteq\": \"\", \"name_i_cont\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"social-hub2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://social-hub2.p.rapidapi.com/profiles\"\nquerystring = {\"followers_gteq\": \"\", \"followers_lteq\": \"\", \"likes_lteq\": \"\", \"inserted_at_lteq\": \"\", \"likes_gteq\": \"\", \"nation_eq\": \"AU\", \"page\": \"\", \"username_i_cont\": \"\", \"inserted_at_gteq\": \"\", \"name_i_cont\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"social-hub2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "type": "string"
+                                },
+                                "username": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "bio": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "url": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "id",
+                                "type",
+                                "username",
+                                "name",
+                                "bio",
+                                "url"
+                            ]
+                        }
+                    },
+                    "meta": {
+                        "type": "object",
+                        "properties": {
+                            "pagination": {
+                                "type": "object",
+                                "properties": {
+                                    "totalCount": {
+                                        "type": "integer"
+                                    },
+                                    "totalPages": {
+                                        "type": "integer"
+                                    },
+                                    "currentPage": {
+                                        "type": "integer"
+                                    },
+                                    "itemsPerPage": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "required": [
+                                    "totalCount",
+                                    "totalPages",
+                                    "currentPage",
+                                    "itemsPerPage"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "pagination"
+                        ]
+                    }
+                },
+                "required": [
+                    "data",
+                    "meta"
+                ]
+            }
+        },
+        {
+            "name": "/profiles/{id}",
+            "url": "https://social-hub2.p.rapidapi.com/profiles/{id}",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "id",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://social-hub2.p.rapidapi.com/profiles/{id}\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"social-hub2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://social-hub2.p.rapidapi.com/profiles/{id}\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"social-hub2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string"
+                            },
+                            "username": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "bio": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "url": {
+                                "type": "string"
+                            },
+                            "mails": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "latestView": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "profileId": {
+                                        "type": "string"
+                                    },
+                                    "nation": {
+                                        "type": "string",
+                                        "enum": [
+                                            "AU",
+                                            "CA",
+                                            "DE",
+                                            "ES",
+                                            "FR",
+                                            "IT",
+                                            "PT",
+                                            "UK",
+                                            "US"
+                                        ]
+                                    },
+                                    "collectedAt": {
+                                        "type": "string",
+                                        "format": "date"
+                                    }
+                                },
+                                "required": [
+                                    "id",
+                                    "profileId",
+                                    "nation",
+                                    "collectedAt"
+                                ]
+                            },
+                            "oldestView": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "profileId": {
+                                        "type": "string"
+                                    },
+                                    "nation": {
+                                        "type": "string",
+                                        "enum": [
+                                            "AU",
+                                            "CA",
+                                            "DE",
+                                            "ES",
+                                            "FR",
+                                            "IT",
+                                            "PT",
+                                            "UK",
+                                            "US"
+                                        ]
+                                    },
+                                    "collectedAt": {
+                                        "type": "string",
+                                        "format": "date"
+                                    }
+                                },
+                                "required": [
+                                    "id",
+                                    "profileId",
+                                    "nation",
+                                    "collectedAt"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "id",
+                            "type",
+                            "username",
+                            "name",
+                            "bio",
+                            "url",
+                            "mails",
+                            "latestView"
+                        ]
+                    }
+                },
+                "required": [
+                    "data"
+                ]
+            }
+        },
+        {
+            "name": "/media/{id}",
+            "url": "https://social-hub2.p.rapidapi.com/media/{id}",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "id",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://social-hub2.p.rapidapi.com/media/{id}\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"social-hub2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://social-hub2.p.rapidapi.com/media/{id}\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"social-hub2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "/media",
+            "url": "https://social-hub2.p.rapidapi.com/media",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "inserted_at_gteq",
+                    "type": "STRING",
+                    "description": "When sending this parameter, you'll be filtering media with less or equal inserted_at than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "engagement_rate_gteq",
+                    "type": "NUMBER",
+                    "description": "When sending this parameter, you'll be filtering media with more or equal engagement_rate than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "views_gteq",
+                    "type": "NUMBER",
+                    "description": "When sending this parameter, you'll be filtering media with more or equal views than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "This is the number of the page you requested. Positive integer. If omitted 1 is sent",
+                    "default": ""
+                },
+                {
+                    "name": "bookmarks_gteq",
+                    "type": "NUMBER",
+                    "description": "When sending this parameter, you'll be filtering media with more or equal bookmarks than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "comment_gteq",
+                    "type": "NUMBER",
+                    "description": "When sending this parameter, you'll be filtering media with more or equal comments than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "likes_lteq",
+                    "type": "NUMBER",
+                    "description": "When sending this parameter, you'll be filtering media with less or equal likes than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "likes_gteq",
+                    "type": "NUMBER",
+                    "description": "When sending this parameter, you'll be filtering media with more or equal likes than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "shares_gteq",
+                    "type": "NUMBER",
+                    "description": "When sending this parameter, you'll be filtering media with more or equal shares than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "comment_lteq",
+                    "type": "NUMBER",
+                    "description": "When sending this parameter, you'll be filtering media with less or equal comments than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "engagement_rate_lteq",
+                    "type": "NUMBER",
+                    "description": "When sending this parameter, you'll be filtering media with less or equal engagement_rate than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "shares_lteq",
+                    "type": "NUMBER",
+                    "description": "When sending this parameter, you'll be filtering media with less or equal shares than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "profile_id_eq",
+                    "type": "STRING",
+                    "description": "When sending this parameter, you'll be filtering by profile",
+                    "default": ""
+                },
+                {
+                    "name": "bookmarks_lteq",
+                    "type": "NUMBER",
+                    "description": "When sending this parameter, you'll be filtering media with less or equal bookmarks than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "views_lteq",
+                    "type": "NUMBER",
+                    "description": "When sending this parameter, you'll be filtering media with less or equal views than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "inserted_at_lteq",
+                    "type": "STRING",
+                    "description": "When sending this parameter, you'll be filtering media with more or equal inserted_at than sent value",
+                    "default": ""
+                },
+                {
+                    "name": "nation_eq",
+                    "type": "STRING",
+                    "description": "When sending this parameter, you'll be filtering by nation of visits",
+                    "default": "AU"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://social-hub2.p.rapidapi.com/media\"\nquerystring = {\"inserted_at_gteq\": \"\", \"engagement_rate_gteq\": \"\", \"views_gteq\": \"\", \"page\": \"\", \"bookmarks_gteq\": \"\", \"comment_gteq\": \"\", \"likes_lteq\": \"\", \"likes_gteq\": \"\", \"shares_gteq\": \"\", \"comment_lteq\": \"\", \"engagement_rate_lteq\": \"\", \"shares_lteq\": \"\", \"profile_id_eq\": \"\", \"bookmarks_lteq\": \"\", \"views_lteq\": \"\", \"inserted_at_lteq\": \"\", \"nation_eq\": \"AU\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"social-hub2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://social-hub2.p.rapidapi.com/media\"\nquerystring = {\"inserted_at_gteq\": \"\", \"engagement_rate_gteq\": \"\", \"views_gteq\": \"\", \"page\": \"\", \"bookmarks_gteq\": \"\", \"comment_gteq\": \"\", \"likes_lteq\": \"\", \"likes_gteq\": \"\", \"shares_gteq\": \"\", \"comment_lteq\": \"\", \"engagement_rate_lteq\": \"\", \"shares_lteq\": \"\", \"profile_id_eq\": \"\", \"bookmarks_lteq\": \"\", \"views_lteq\": \"\", \"inserted_at_lteq\": \"\", \"nation_eq\": \"AU\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"social-hub2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "profileId": {
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "type": "string"
+                                },
+                                "socialType": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "music": {
+                                    "type": "string"
+                                },
+                                "externalId": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "id",
+                                "profileId",
+                                "type",
+                                "socialType",
+                                "description",
+                                "music",
+                                "externalId"
+                            ]
+                        }
+                    },
+                    "meta": {
+                        "type": "object",
+                        "properties": {
+                            "pagination": {
+                                "type": "object",
+                                "properties": {
+                                    "totalCount": {
+                                        "type": "integer"
+                                    },
+                                    "totalPages": {
+                                        "type": "integer"
+                                    },
+                                    "currentPage": {
+                                        "type": "integer"
+                                    },
+                                    "itemsPerPage": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "required": [
+                                    "totalCount",
+                                    "totalPages",
+                                    "currentPage",
+                                    "itemsPerPage"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "pagination"
+                        ]
+                    }
+                },
+                "required": [
+                    "data",
+                    "meta"
+                ]
+            }
+        }
+    ]
+}

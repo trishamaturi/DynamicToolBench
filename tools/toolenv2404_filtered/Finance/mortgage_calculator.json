@@ -1,0 +1,204 @@
+{
+    "product_id": "api_6e111f3c-89ae-472f-834a-3ce294d129b5",
+    "tool_description": "Easy API to calculate monthly principal and interest, total monthly mortgage payment including taxes and insurance, and generate an amortization schedule table.",
+    "home_url": "https://rapidapi.com/bitfactor-bitfactor-default/api/mortgage-calculator2/",
+    "name": "Mortgage Calculator",
+    "title": "Mortgage Calculator",
+    "pricing": "FREEMIUM",
+    "tool_name": "Mortgage Calculator",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 127225,
+        "avgSuccessRate": 0,
+        "popularityScore": 0,
+        "__typename": "Score"
+    },
+    "host": "mortgage-calculator2.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Monthly Payment",
+            "url": "https://mortgage-calculator2.p.rapidapi.com/getMonthlyPayment",
+            "description": "This endpoint can be used to calculate monthly P&I (principal and interest) amount and total monthly payment amount for a fixed-rate mortgage based on input values such as home price, down payment, annual interest rate, and loan term.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "loanTerm",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "15"
+                },
+                {
+                    "name": "annualInterestRate",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "4.125"
+                },
+                {
+                    "name": "downPaymentAmt",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "60000"
+                },
+                {
+                    "name": "price",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "300000"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "pmi",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0.22"
+                },
+                {
+                    "name": "homeInsurance",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "2000"
+                },
+                {
+                    "name": "downPaymentPct",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "20"
+                },
+                {
+                    "name": "extraMonthlyPrincipalPmt",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "100"
+                },
+                {
+                    "name": "propertyTax",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "6200"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mortgage-calculator2.p.rapidapi.com/getMonthlyPayment\"\nquerystring = {\"pmi\": \"0.22\", \"loanTerm\": \"15\", \"homeInsurance\": \"2000\", \"downPaymentPct\": \"20\", \"annualInterestRate\": \"4.125\", \"extraMonthlyPrincipalPmt\": \"100\", \"propertyTax\": \"6200\", \"downPaymentAmt\": \"60000\", \"price\": \"300000\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mortgage-calculator2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mortgage-calculator2.p.rapidapi.com/getMonthlyPayment\"\nquerystring = {\"pmi\": \"0.22\", \"loanTerm\": \"15\", \"homeInsurance\": \"2000\", \"downPaymentPct\": \"20\", \"annualInterestRate\": \"4.125\", \"extraMonthlyPrincipalPmt\": \"100\", \"propertyTax\": \"6200\", \"downPaymentAmt\": \"60000\", \"price\": \"300000\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mortgage-calculator2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "price": {
+                        "type": "integer"
+                    },
+                    "downPaymentAmt": {
+                        "type": "integer"
+                    },
+                    "downPaymentPct": {
+                        "type": "integer"
+                    },
+                    "annualInterestRate": {
+                        "type": "number"
+                    },
+                    "loanTerm": {
+                        "type": "integer"
+                    },
+                    "extraMonthlyPrincipalPmt": {
+                        "type": "integer"
+                    },
+                    "numberOfPayments": {
+                        "type": "integer"
+                    },
+                    "monthlyPrincipalInterest": {
+                        "type": "number"
+                    },
+                    "totalMonthlyPayment": {
+                        "type": "number"
+                    },
+                    "loanAmount": {
+                        "type": "integer"
+                    },
+                    "propertyTax": {
+                        "type": "integer"
+                    },
+                    "homeInsurance": {
+                        "type": "integer"
+                    },
+                    "pmi": {
+                        "type": "number"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get Amortization Schedule",
+            "url": "https://mortgage-calculator2.p.rapidapi.com/getAmortizationSchedule",
+            "description": "This endpoint returns an amortization schedule table (as a list) containing monthly loan information including interest for the current month, principal for the current month, remaining loan balance, and total amount of interest paid so far.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "annualInterestRate",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "4.125"
+                },
+                {
+                    "name": "price",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "300000"
+                },
+                {
+                    "name": "downPaymentAmt",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "60000"
+                },
+                {
+                    "name": "loanTerm",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "30"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "downPaymentPct",
+                    "type": "NUMBER",
+                    "description": "Percentage of home price the buyer is willing to pay up front. Value ranges from 1 to 100.",
+                    "default": "20"
+                },
+                {
+                    "name": "extraMonthlyPrincipalPayment",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "100"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mortgage-calculator2.p.rapidapi.com/getAmortizationSchedule\"\nquerystring = {\"downPaymentPct\": \"20\", \"extraMonthlyPrincipalPayment\": \"100\", \"annualInterestRate\": \"4.125\", \"price\": \"300000\", \"downPaymentAmt\": \"60000\", \"loanTerm\": \"30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mortgage-calculator2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mortgage-calculator2.p.rapidapi.com/getAmortizationSchedule\"\nquerystring = {\"downPaymentPct\": \"20\", \"extraMonthlyPrincipalPayment\": \"100\", \"annualInterestRate\": \"4.125\", \"price\": \"300000\", \"downPaymentAmt\": \"60000\", \"loanTerm\": \"30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mortgage-calculator2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "interestPayment": {
+                            "type": "number"
+                        },
+                        "principalPayment": {
+                            "type": "number"
+                        },
+                        "balanceRemaining": {
+                            "type": "number"
+                        },
+                        "totalInterest": {
+                            "type": "number"
+                        },
+                        "paymentMonth": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,165 @@
+{
+    "product_id": "api_147612b4-5558-44df-b908-43040a838d71",
+    "tool_description": "UFC fighter and event data between 1993-2023 (updated regularly)\n",
+    "home_url": "https://rapidapi.com/dolphinnoirbusiness/api/ufc-data1/",
+    "name": "UFC Data",
+    "title": "UFC Data",
+    "pricing": "FREEMIUM",
+    "tool_name": "UFC Data",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1468,
+        "avgSuccessRate": 100,
+        "popularityScore": 8.7,
+        "__typename": "Score"
+    },
+    "host": "ufc-data1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Filter",
+            "url": "https://ufc-data1.p.rapidapi.com/Filter/",
+            "description": "Allows users to filter by things such as winMethod, Fighter names and weightClass",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "30"
+                },
+                {
+                    "name": "weightClass",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Light Heavyweight"
+                },
+                {
+                    "name": "fighter2",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Daniel Cormier"
+                },
+                {
+                    "name": "winMethod",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "DEC"
+                },
+                {
+                    "name": "winner",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Jon Jones"
+                },
+                {
+                    "name": "fighter1",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Jon Jones"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://ufc-data1.p.rapidapi.com/Filter/\"\nquerystring = {\"limit\": \"30\", \"weightClass\": \"Light Heavyweight\", \"fighter2\": \"Daniel Cormier\", \"winMethod\": \"DEC\", \"winner\": \"Jon Jones\", \"fighter1\": \"Jon Jones\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ufc-data1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://ufc-data1.p.rapidapi.com/Filter/\"\nquerystring = {\"limit\": \"30\", \"weightClass\": \"Light Heavyweight\", \"fighter2\": \"Daniel Cormier\", \"winMethod\": \"DEC\", \"winner\": \"Jon Jones\", \"fighter1\": \"Jon Jones\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ufc-data1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Find Events By Fighter Name",
+            "url": "https://ufc-data1.p.rapidapi.com/Events/FindEventsByFighterName/Jon Jones",
+            "description": "Find all the events of a particular fighter",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "FighterName",
+                    "type": "string",
+                    "description": "",
+                    "default": "Jon Jones"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "30"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://ufc-data1.p.rapidapi.com/Events/FindEventsByFighterName/Jon Jones\"\nquerystring = {\"limit\": \"30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ufc-data1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://ufc-data1.p.rapidapi.com/Events/FindEventsByFighterName/{fightername}\"\nquerystring = {\"limit\": \"30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ufc-data1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Find Events By Date Range",
+            "url": "https://ufc-data1.p.rapidapi.com/Events/FindEventsByDateRange/2-1-22/2-28-22",
+            "description": "Find all the events that occured between two dates (MM/DD/YY) format",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "MaxDate",
+                    "type": "string",
+                    "description": "",
+                    "default": "2-28-22"
+                },
+                {
+                    "name": "MinDate",
+                    "type": "string",
+                    "description": "",
+                    "default": "2-1-22"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "30"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://ufc-data1.p.rapidapi.com/Events/FindEventsByDateRange/2-1-22/2-28-22\"\nquerystring = {\"limit\": \"30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ufc-data1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://ufc-data1.p.rapidapi.com/Events/FindEventsByDateRange/{mindate}/{maxdate}\"\nquerystring = {\"limit\": \"30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ufc-data1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Find Matchups",
+            "url": "https://ufc-data1.p.rapidapi.com/Events/FindMatchups/Jon Jones/Daniel Cormier",
+            "description": "Find all the events between two specific fighters",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "Fighter2",
+                    "type": "string",
+                    "description": "",
+                    "default": "Daniel Cormier"
+                },
+                {
+                    "name": "Fighter1",
+                    "type": "string",
+                    "description": "",
+                    "default": "Jon Jones"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://ufc-data1.p.rapidapi.com/Events/FindMatchups/Jon Jones/Daniel Cormier\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ufc-data1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://ufc-data1.p.rapidapi.com/Events/FindMatchups/{fighter1}/{fighter2}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ufc-data1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Find Fighter Stats",
+            "url": "https://ufc-data1.p.rapidapi.com/Fighters/FindStatsByFighterName/Jon Jones",
+            "description": "Takes in a fighters name and returns their career statistics",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "FighterName",
+                    "type": "string",
+                    "description": "",
+                    "default": "Jon Jones"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://ufc-data1.p.rapidapi.com/Fighters/FindStatsByFighterName/Jon Jones\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ufc-data1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://ufc-data1.p.rapidapi.com/Fighters/FindStatsByFighterName/{fightername}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ufc-data1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

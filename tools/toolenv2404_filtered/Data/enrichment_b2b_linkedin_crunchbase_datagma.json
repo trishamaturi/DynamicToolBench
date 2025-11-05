@@ -1,0 +1,2699 @@
+{
+    "product_id": "api_aaed0ac1-6ac8-4c5e-afd9-ebefb4c283c0",
+    "tool_description": "Enrich your incomplete B2B data with more than 75 exclusive attributes about your prospects and target companies",
+    "home_url": "https://rapidapi.com/raphael-0lpOSWjHK34/api/enrichment-b2b-linkedin-crunchbase-datagma/",
+    "name": "Enrichment B2B - Linkedin - Crunchbase -Datagma",
+    "title": "Enrichment B2B - Linkedin - Crunchbase -Datagma",
+    "pricing": "FREEMIUM",
+    "tool_name": "Enrichment B2B - Linkedin - Crunchbase -Datagma",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 2669,
+        "avgSuccessRate": 97,
+        "popularityScore": 8.6,
+        "__typename": "Score"
+    },
+    "host": "enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Enrich API - Get company & person details",
+            "url": "https://enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com/api/ingress/v2/full",
+            "description": "You can enrich an email address, a LinkedIn profile, or a full name with a company name to get info about the person and his company, Or  you can send a company name, website, or SIREN number to get only company info.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "data",
+                    "type": "STRING",
+                    "description": "You can submit a professional email address or a LinkedIn profile URL to get info about a person and his company. A successful person response costs two credits. You can also submit a company name, a website, or a Siren if you only want information about the company with this parameter. Note: If you don't have an email address or Linkedin Profile, and if you still want information about the person, you can use the couple Full Name + Company Name, see below)",
+                    "default": "algolia.com"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "firstName",
+                    "type": "STRING",
+                    "description": "Replace the data parameter if you don't use it. (Must be used with lastName and company).",
+                    "default": "Julien"
+                },
+                {
+                    "name": "personFull",
+                    "type": "BOOLEAN",
+                    "description": "To get the full profile of the person(education, past experiences...).",
+                    "default": "false"
+                },
+                {
+                    "name": "fullName",
+                    "type": "STRING",
+                    "description": "Instead of input firstname, lastname. You can input full name here",
+                    "default": "Julien Lemoine"
+                },
+                {
+                    "name": "lastName",
+                    "type": "STRING",
+                    "description": "Replace the data parameter if you don't use it. (Must be used with firstName and company).",
+                    "default": "Lemoine"
+                },
+                {
+                    "name": "companyFull",
+                    "type": "BOOLEAN",
+                    "description": "To get financial information about the company of the enriched person.",
+                    "default": "false"
+                },
+                {
+                    "name": "companyPremium",
+                    "type": "BOOLEAN",
+                    "description": "To get the LinkedIn information about the enriched person's company.",
+                    "default": "false"
+                },
+                {
+                    "name": "debug",
+                    "type": "BOOLEAN",
+                    "description": "By defaut Datagma filters what we consider junk results, thanks to the debug mode, you can access to this junk result",
+                    "default": "true"
+                },
+                {
+                    "name": "companyFrench",
+                    "type": "BOOLEAN",
+                    "description": "To get the information of the SIREN directory if the company is French.",
+                    "default": "false"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com/api/ingress/v2/full\"\nquerystring = {\"firstName\": \"Julien\", \"personFull\": \"false\", \"data\": \"algolia.com\", \"fullName\": \"Julien Lemoine\", \"lastName\": \"Lemoine\", \"companyFull\": \"false\", \"companyPremium\": \"false\", \"debug\": \"true\", \"companyFrench\": \"false\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com/api/ingress/v2/full\"\nquerystring = {\"firstName\": \"Julien\", \"personFull\": \"false\", \"data\": \"algolia.com\", \"fullName\": \"Julien Lemoine\", \"lastName\": \"Lemoine\", \"companyFull\": \"false\", \"companyPremium\": \"false\", \"debug\": \"true\", \"companyFrench\": \"false\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "phone": {
+                        "type": "object",
+                        "properties": {
+                            "workPhones": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "mobiles": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "email": {
+                        "type": "object",
+                        "properties": {
+                            "status": {
+                                "type": "string"
+                            },
+                            "email": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "person": {
+                        "type": "object",
+                        "properties": {
+                            "basic": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "firstName": {
+                                        "type": "string"
+                                    },
+                                    "lastName": {
+                                        "type": "string"
+                                    },
+                                    "location": {
+                                        "type": "string"
+                                    },
+                                    "jobTitle": {
+                                        "type": "string"
+                                    },
+                                    "company": {
+                                        "type": "string"
+                                    },
+                                    "linkedInUrl": {
+                                        "type": "string"
+                                    },
+                                    "extractedRole": {
+                                        "type": "string"
+                                    },
+                                    "extractedSeniority": {
+                                        "type": "string"
+                                    },
+                                    "extractedGender": {
+                                        "type": "string"
+                                    },
+                                    "dateDeNaissanceFormate": {
+                                        "type": "string"
+                                    },
+                                    "age": {
+                                        "type": "string"
+                                    },
+                                    "personConfidenceScore": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "minimum": -3.402823669209385e+38,
+                                        "maximum": 3.402823669209385e+38
+                                    },
+                                    "employeeJobScore": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "minimum": -3.402823669209385e+38,
+                                        "maximum": 3.402823669209385e+38
+                                    },
+                                    "employeeCompanyScore": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "minimum": -3.402823669209385e+38,
+                                        "maximum": 3.402823669209385e+38
+                                    }
+                                }
+                            },
+                            "data": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "position": {
+                                        "type": "string"
+                                    },
+                                    "currentCompany": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "avatar": {
+                                        "type": "string"
+                                    },
+                                    "about": {
+                                        "type": "string"
+                                    },
+                                    "city": {
+                                        "type": "string"
+                                    },
+                                    "educationsDetails": {
+                                        "title": "string following = 7;",
+                                        "type": "string"
+                                    },
+                                    "posts": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "image": {
+                                                    "type": "string"
+                                                },
+                                                "title": {
+                                                    "type": "string"
+                                                },
+                                                "attribuion": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "experience": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "company": {
+                                                    "type": "string"
+                                                },
+                                                "duration": {
+                                                    "type": "string"
+                                                },
+                                                "positions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "title": {
+                                                                "type": "string"
+                                                            },
+                                                            "meta": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "title": {
+                                                    "type": "string"
+                                                },
+                                                "subtitle": {
+                                                    "type": "string"
+                                                },
+                                                "location": {
+                                                    "type": "string"
+                                                },
+                                                "description": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "education": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "title": {
+                                                    "type": "string"
+                                                },
+                                                "subtitle": {
+                                                    "type": "string"
+                                                },
+                                                "meta": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "certifications": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "title": {
+                                                    "type": "string"
+                                                },
+                                                "subtitle": {
+                                                    "type": "string"
+                                                },
+                                                "meta": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "courses": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "title": {
+                                                    "type": "string"
+                                                },
+                                                "subtitle": {
+                                                    "type": "string"
+                                                },
+                                                "meta": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "languages": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "title": {
+                                                    "type": "string"
+                                                },
+                                                "subtitle": {
+                                                    "type": "string"
+                                                },
+                                                "meta": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "groups": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "title": {
+                                                    "type": "string"
+                                                },
+                                                "subtitle": {
+                                                    "type": "string"
+                                                },
+                                                "meta": {
+                                                    "type": "string"
+                                                },
+                                                "img": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "input": {
+                                        "type": "object",
+                                        "properties": {
+                                            "url": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "from": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "company": {
+                        "type": "object",
+                        "properties": {
+                            "basic": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "website": {
+                                        "type": "string"
+                                    },
+                                    "yearFounded": {
+                                        "type": "string"
+                                    },
+                                    "industry": {
+                                        "type": "string"
+                                    },
+                                    "size": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "minimum": -2147483648,
+                                        "maximum": 2147483647
+                                    },
+                                    "locality": {
+                                        "type": "string"
+                                    },
+                                    "region": {
+                                        "type": "string"
+                                    },
+                                    "country": {
+                                        "type": "string"
+                                    },
+                                    "linkedUrl": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "french": {
+                                "title": "model.paper",
+                                "type": "object",
+                                "properties": {
+                                    "siren": {
+                                        "type": "string"
+                                    },
+                                    "nomEntreprise": {
+                                        "type": "string"
+                                    },
+                                    "codeNaf": {
+                                        "type": "string"
+                                    },
+                                    "libelleCodeNaf": {
+                                        "type": "string"
+                                    },
+                                    "domaineActivite": {
+                                        "type": "string"
+                                    },
+                                    "objetSocial": {
+                                        "type": "string"
+                                    },
+                                    "dateCreationFormate": {
+                                        "type": "string"
+                                    },
+                                    "entrepriseCessee": {
+                                        "type": "boolean"
+                                    },
+                                    "effectif": {
+                                        "type": "string"
+                                    },
+                                    "numeroTvaIntracommunautaire": {
+                                        "type": "string"
+                                    },
+                                    "siege": {
+                                        "type": "object",
+                                        "properties": {
+                                            "siret": {
+                                                "type": "string"
+                                            },
+                                            "adresseLigne1": {
+                                                "type": "string"
+                                            },
+                                            "codePostal": {
+                                                "type": "string"
+                                            },
+                                            "ville": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "representants": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "nomComplet": {
+                                                    "type": "string"
+                                                },
+                                                "dateDeNaissanceFormate": {
+                                                    "type": "string"
+                                                },
+                                                "age": {
+                                                    "type": "string",
+                                                    "format": "int64",
+                                                    "minimum": -9223372036854776000,
+                                                    "maximum": 9223372036854776000
+                                                },
+                                                "type": {
+                                                    "type": "string"
+                                                },
+                                                "qualite": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "finances": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "annee": {
+                                                    "type": "string",
+                                                    "format": "int64",
+                                                    "minimum": -9223372036854776000,
+                                                    "maximum": 9223372036854776000
+                                                },
+                                                "chiffreAffaires": {
+                                                    "type": "string",
+                                                    "format": "int64",
+                                                    "minimum": -9223372036854776000,
+                                                    "maximum": 9223372036854776000
+                                                },
+                                                "chiffreAffairesPrettier": {
+                                                    "type": "string"
+                                                },
+                                                "resultat": {
+                                                    "type": "string",
+                                                    "format": "int64",
+                                                    "minimum": -9223372036854776000,
+                                                    "maximum": 9223372036854776000
+                                                },
+                                                "resultatPrettier": {
+                                                    "type": "string"
+                                                },
+                                                "effectif": {
+                                                    "type": "string",
+                                                    "format": "int64",
+                                                    "minimum": -9223372036854776000,
+                                                    "maximum": 9223372036854776000
+                                                },
+                                                "effectifPrettier": {
+                                                    "type": "string"
+                                                },
+                                                "tauxCroissanceChiffreAffaires": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "minimum": -3.402823669209385e+38,
+                                                    "maximum": 3.402823669209385e+38
+                                                },
+                                                "tauxCroissanceChiffreAffairesPrettier": {
+                                                    "type": "string"
+                                                },
+                                                "effectifGrowthRate": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "minimum": -3.402823669209385e+38,
+                                                    "maximum": 3.402823669209385e+38
+                                                },
+                                                "effectifGrowthRatePrettier": {
+                                                    "type": "string"
+                                                },
+                                                "effectifEvolution": {
+                                                    "type": "string",
+                                                    "format": "int64",
+                                                    "minimum": -9223372036854776000,
+                                                    "maximum": 9223372036854776000
+                                                },
+                                                "effectifEvolutionPrettier": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "full": {
+                                "type": "object",
+                                "properties": {
+                                    "properties": {
+                                        "type": "object",
+                                        "properties": {
+                                            "revenueRange": {
+                                                "type": "string"
+                                            },
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "shortDescription": {
+                                                "type": "string"
+                                            },
+                                            "identifier": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "permalink": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "cards": {
+                                        "type": "object",
+                                        "properties": {
+                                            "fundingRoundsSummary": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "fundingTotal": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "valueUsd": {
+                                                                "type": "number",
+                                                                "format": "float",
+                                                                "minimum": -3.402823669209385e+38,
+                                                                "maximum": 3.402823669209385e+38
+                                                            },
+                                                            "valueUsdPretty": {
+                                                                "type": "string"
+                                                            },
+                                                            "valueUsdRoundup": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "lastFundingType": {
+                                                        "type": "string"
+                                                    },
+                                                    "lastFundingAt": {
+                                                        "type": "string"
+                                                    },
+                                                    "numFundingRounds": {
+                                                        "type": "string",
+                                                        "format": "int64",
+                                                        "minimum": -9223372036854776000,
+                                                        "maximum": 9223372036854776000
+                                                    }
+                                                }
+                                            },
+                                            "trafficRankHeadline": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "visitsLatestMonth": {
+                                                        "type": "string",
+                                                        "format": "int64",
+                                                        "minimum": -9223372036854776000,
+                                                        "maximum": 9223372036854776000
+                                                    },
+                                                    "visitsLastestMonthPrettier": {
+                                                        "type": "string"
+                                                    },
+                                                    "visitsMomPct": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "minimum": -3.402823669209385e+38,
+                                                        "maximum": 3.402823669209385e+38
+                                                    }
+                                                }
+                                            },
+                                            "spentSummary": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "siteItSpend": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "valueUsd": {
+                                                                "type": "number",
+                                                                "format": "float",
+                                                                "minimum": -3.402823669209385e+38,
+                                                                "maximum": 3.402823669209385e+38
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "overviewCompanyFields": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "companyType": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "overviewFields": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "revenueRange": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "minimum": -3.402823669209385e+38,
+                                                        "maximum": 3.402823669209385e+38
+                                                    },
+                                                    "numEmployeesEnum": {
+                                                        "type": "string"
+                                                    },
+                                                    "numEmployee": {
+                                                        "type": "string"
+                                                    },
+                                                    "lastFundingType": {
+                                                        "type": "string"
+                                                    },
+                                                    "operatingStatus": {
+                                                        "type": "string"
+                                                    },
+                                                    "foundedOn": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "value": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "categories": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "value": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "legalName": {
+                                                        "type": "string"
+                                                    },
+                                                    "fundingStage": {
+                                                        "type": "string"
+                                                    },
+                                                    "locationGroupIdentifiers": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "value": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "overviewFields2": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "website": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "value": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "linkedin": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "value": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "twitter": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "value": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "contactEmail": {
+                                                        "type": "string"
+                                                    },
+                                                    "facebook": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "value": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "fundingRoundsList": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "moneyRaised": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "value": {
+                                                                    "type": "string",
+                                                                    "format": "int64",
+                                                                    "minimum": -9223372036854776000,
+                                                                    "maximum": 9223372036854776000
+                                                                },
+                                                                "currency": {
+                                                                    "type": "string"
+                                                                },
+                                                                "valueUsd": {
+                                                                    "type": "string",
+                                                                    "format": "int64",
+                                                                    "minimum": -9223372036854776000,
+                                                                    "maximum": 9223372036854776000
+                                                                },
+                                                                "valueUsdPretty": {
+                                                                    "type": "string"
+                                                                },
+                                                                "valueUsdRoundup": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "trafficSummary": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "globalRank": {
+                                                        "type": "string",
+                                                        "format": "int64",
+                                                        "minimum": -9223372036854776000,
+                                                        "maximum": 9223372036854776000
+                                                    },
+                                                    "globalRankPrettier": {
+                                                        "type": "string"
+                                                    },
+                                                    "visitsLatestMonth": {
+                                                        "type": "string",
+                                                        "format": "int64",
+                                                        "minimum": -9223372036854776000,
+                                                        "maximum": 9223372036854776000
+                                                    },
+                                                    "visitsLatestMonthPrettier": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "ipoSummary": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "stockLink": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "label": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "wentPublicOn": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "fullConfidenceScore": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "minimum": -3.402823669209385e+38,
+                                        "maximum": 3.402823669209385e+38
+                                    }
+                                }
+                            },
+                            "premium": {
+                                "type": "object",
+                                "properties": {
+                                    "url": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "sphere": {
+                                        "type": "string"
+                                    },
+                                    "employeesAmountInLinkedin": {
+                                        "title": "int32 followers = 3;",
+                                        "type": "string"
+                                    },
+                                    "about": {
+                                        "type": "string"
+                                    },
+                                    "headquaterAddr": {
+                                        "type": "string"
+                                    },
+                                    "headquaterAddrStreet": {
+                                        "type": "string"
+                                    },
+                                    "headquaterAddrPostalCode": {
+                                        "type": "string"
+                                    },
+                                    "headquaterAddrLocality": {
+                                        "type": "string"
+                                    },
+                                    "headquaterAddrRegion": {
+                                        "type": "string"
+                                    },
+                                    "headquaterAddrCountry": {
+                                        "type": "string"
+                                    },
+                                    "subsidiary": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "subsidiary": {
+                                                    "type": "string"
+                                                },
+                                                "firstPart": {
+                                                    "type": "string"
+                                                },
+                                                "secondpart": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "numberOfLocation": {
+                                        "type": "string"
+                                    },
+                                    "website": {
+                                        "type": "string"
+                                    },
+                                    "industries": {
+                                        "type": "string"
+                                    },
+                                    "companySize": {
+                                        "type": "string"
+                                    },
+                                    "headquarters": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "founded": {
+                                        "type": "string"
+                                    },
+                                    "specialties": {
+                                        "type": "string"
+                                    },
+                                    "specialtiesArr": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "value": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "input": {
+                                        "type": "object",
+                                        "properties": {
+                                            "url": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "companyId": {
+                                        "title": "string followers = 25;",
+                                        "type": "string"
+                                    },
+                                    "locations": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "premiumConfidenceScore": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "minimum": -3.402823669209385e+38,
+                                        "maximum": 3.402823669209385e+38
+                                    }
+                                }
+                            },
+                            "phone": {
+                                "type": "object",
+                                "properties": {
+                                    "formattedPhoneNumber": {
+                                        "type": "string"
+                                    },
+                                    "formattedAddress": {
+                                        "type": "string"
+                                    },
+                                    "geometry": {
+                                        "type": "object",
+                                        "properties": {
+                                            "location": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "lat": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "minimum": -3.402823669209385e+38,
+                                                        "maximum": 3.402823669209385e+38
+                                                    },
+                                                    "lng": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "minimum": -3.402823669209385e+38,
+                                                        "maximum": 3.402823669209385e+38
+                                                    }
+                                                }
+                                            },
+                                            "viewport": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "northeast": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "lat": {
+                                                                "type": "number",
+                                                                "format": "float",
+                                                                "minimum": -3.402823669209385e+38,
+                                                                "maximum": 3.402823669209385e+38
+                                                            },
+                                                            "lng": {
+                                                                "type": "number",
+                                                                "format": "float",
+                                                                "minimum": -3.402823669209385e+38,
+                                                                "maximum": 3.402823669209385e+38
+                                                            }
+                                                        }
+                                                    },
+                                                    "southwest": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "lat": {
+                                                                "type": "number",
+                                                                "format": "float",
+                                                                "minimum": -3.402823669209385e+38,
+                                                                "maximum": 3.402823669209385e+38
+                                                            },
+                                                            "lng": {
+                                                                "type": "number",
+                                                                "format": "float",
+                                                                "minimum": -3.402823669209385e+38,
+                                                                "maximum": 3.402823669209385e+38
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "vicinity": {
+                                        "type": "string"
+                                    },
+                                    "score": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "minimum": -3.402823669209385e+38,
+                                        "maximum": 3.402823669209385e+38
+                                    }
+                                }
+                            },
+                            "technologies": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "technologiesCategories": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "deepTraffic": {
+                                "type": "object",
+                                "properties": {
+                                    "addNetworks": {
+                                        "type": "object",
+                                        "properties": {
+                                            "count": {
+                                                "type": "string",
+                                                "format": "int64",
+                                                "minimum": -9223372036854776000,
+                                                "maximum": 9223372036854776000
+                                            },
+                                            "data": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "item": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "trafficSources": {
+                                        "type": "object",
+                                        "properties": {
+                                            "direct": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "minimum": -3.402823669209385e+38,
+                                                "maximum": 3.402823669209385e+38
+                                            },
+                                            "referrals": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "minimum": -3.402823669209385e+38,
+                                                "maximum": 3.402823669209385e+38
+                                            },
+                                            "search": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "minimum": -3.402823669209385e+38,
+                                                "maximum": 3.402823669209385e+38
+                                            },
+                                            "social": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "minimum": -3.402823669209385e+38,
+                                                "maximum": 3.402823669209385e+38
+                                            },
+                                            "mail": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "minimum": -3.402823669209385e+38,
+                                                "maximum": 3.402823669209385e+38
+                                            },
+                                            "paidReferrals": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "minimum": -3.402823669209385e+38,
+                                                "maximum": 3.402823669209385e+38
+                                            }
+                                        }
+                                    },
+                                    "category": {
+                                        "type": "string"
+                                    },
+                                    "similarSites": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "site": {
+                                                    "type": "string"
+                                                },
+                                                "altImage": {
+                                                    "type": "string"
+                                                },
+                                                "imageUrl": {
+                                                    "type": "string"
+                                                },
+                                                "iconUrl": {
+                                                    "type": "string"
+                                                },
+                                                "ellipsiseName": {
+                                                    "type": "string"
+                                                },
+                                                "rank": {
+                                                    "type": "string",
+                                                    "format": "int64",
+                                                    "minimum": -9223372036854776000,
+                                                    "maximum": 9223372036854776000
+                                                },
+                                                "isBlackListed": {
+                                                    "type": "boolean"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "topCountryShares": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "item": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "minimum": -3.402823669209385e+38,
+                                                        "maximum": 3.402823669209385e+38
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "employees": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "firstName": {
+                                            "type": "string"
+                                        },
+                                        "lastName": {
+                                            "type": "string"
+                                        },
+                                        "location": {
+                                            "type": "string"
+                                        },
+                                        "jobTitle": {
+                                            "type": "string"
+                                        },
+                                        "company": {
+                                            "type": "string"
+                                        },
+                                        "linkedInUrl": {
+                                            "type": "string"
+                                        },
+                                        "extractedRole": {
+                                            "type": "string"
+                                        },
+                                        "extractedSeniority": {
+                                            "type": "string"
+                                        },
+                                        "extractedGender": {
+                                            "type": "string"
+                                        },
+                                        "dateDeNaissanceFormate": {
+                                            "type": "string"
+                                        },
+                                        "age": {
+                                            "type": "string"
+                                        },
+                                        "personConfidenceScore": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "minimum": -3.402823669209385e+38,
+                                            "maximum": 3.402823669209385e+38
+                                        },
+                                        "employeeJobScore": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "minimum": -3.402823669209385e+38,
+                                            "maximum": 3.402823669209385e+38
+                                        },
+                                        "employeeCompanyScore": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "minimum": -3.402823669209385e+38,
+                                            "maximum": 3.402823669209385e+38
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "emailV2": {
+                        "type": "object",
+                        "properties": {
+                            "email": {
+                                "type": "string"
+                            },
+                            "emailDomain": {
+                                "type": "string"
+                            },
+                            "status": {
+                                "type": "string"
+                            },
+                            "patterns": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "mxfound": {
+                                "type": "boolean"
+                            },
+                            "smtpCheck": {
+                                "type": "boolean"
+                            },
+                            "cachAll": {
+                                "type": "boolean"
+                            }
+                        }
+                    },
+                    "creditBurn": {
+                        "type": "string",
+                        "format": "int64",
+                        "minimum": -9223372036854776000,
+                        "maximum": 9223372036854776000
+                    }
+                }
+            }
+        },
+        {
+            "name": "Find Mobile Phone Number API",
+            "url": "https://enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com/api/ingress/v1/search",
+            "description": "To find the phone number of anybody. Enter any LinkedIn, Facebook, or Twitter Profile URL in the username field.\n\nYou can also enrich an email and find its associated mobile phone.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "email",
+                    "type": "STRING",
+                    "description": "Instead of input firstname, lastname. You can input full name here",
+                    "default": ""
+                },
+                {
+                    "name": "username",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "https://ca.linkedin.com/in/mikebbarrett"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com/api/ingress/v1/search\"\nquerystring = {\"email\": \"\", \"username\": \"https://ca.linkedin.com/in/mikebbarrett\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com/api/ingress/v1/search\"\nquerystring = {\"email\": \"\", \"username\": \"https://ca.linkedin.com/in/mikebbarrett\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "phone": {
+                        "type": "object",
+                        "properties": {
+                            "workPhones": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "mobiles": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "email": {
+                        "type": "object",
+                        "properties": {
+                            "status": {
+                                "type": "string"
+                            },
+                            "email": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "person": {
+                        "type": "object",
+                        "properties": {
+                            "basic": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "firstName": {
+                                        "type": "string"
+                                    },
+                                    "lastName": {
+                                        "type": "string"
+                                    },
+                                    "location": {
+                                        "type": "string"
+                                    },
+                                    "jobTitle": {
+                                        "type": "string"
+                                    },
+                                    "company": {
+                                        "type": "string"
+                                    },
+                                    "linkedInUrl": {
+                                        "type": "string"
+                                    },
+                                    "extractedRole": {
+                                        "type": "string"
+                                    },
+                                    "extractedSeniority": {
+                                        "type": "string"
+                                    },
+                                    "extractedGender": {
+                                        "type": "string"
+                                    },
+                                    "dateDeNaissanceFormate": {
+                                        "type": "string"
+                                    },
+                                    "age": {
+                                        "type": "string"
+                                    },
+                                    "personConfidenceScore": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "minimum": -3.402823669209385e+38,
+                                        "maximum": 3.402823669209385e+38
+                                    },
+                                    "employeeJobScore": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "minimum": -3.402823669209385e+38,
+                                        "maximum": 3.402823669209385e+38
+                                    },
+                                    "employeeCompanyScore": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "minimum": -3.402823669209385e+38,
+                                        "maximum": 3.402823669209385e+38
+                                    }
+                                }
+                            },
+                            "data": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "position": {
+                                        "type": "string"
+                                    },
+                                    "currentCompany": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "avatar": {
+                                        "type": "string"
+                                    },
+                                    "about": {
+                                        "type": "string"
+                                    },
+                                    "city": {
+                                        "type": "string"
+                                    },
+                                    "educationsDetails": {
+                                        "title": "string following = 7;",
+                                        "type": "string"
+                                    },
+                                    "posts": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "image": {
+                                                    "type": "string"
+                                                },
+                                                "title": {
+                                                    "type": "string"
+                                                },
+                                                "attribuion": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "experience": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "company": {
+                                                    "type": "string"
+                                                },
+                                                "duration": {
+                                                    "type": "string"
+                                                },
+                                                "positions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "title": {
+                                                                "type": "string"
+                                                            },
+                                                            "meta": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "title": {
+                                                    "type": "string"
+                                                },
+                                                "subtitle": {
+                                                    "type": "string"
+                                                },
+                                                "location": {
+                                                    "type": "string"
+                                                },
+                                                "description": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "education": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "title": {
+                                                    "type": "string"
+                                                },
+                                                "subtitle": {
+                                                    "type": "string"
+                                                },
+                                                "meta": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "certifications": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "title": {
+                                                    "type": "string"
+                                                },
+                                                "subtitle": {
+                                                    "type": "string"
+                                                },
+                                                "meta": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "courses": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "title": {
+                                                    "type": "string"
+                                                },
+                                                "subtitle": {
+                                                    "type": "string"
+                                                },
+                                                "meta": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "languages": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "title": {
+                                                    "type": "string"
+                                                },
+                                                "subtitle": {
+                                                    "type": "string"
+                                                },
+                                                "meta": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "groups": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "title": {
+                                                    "type": "string"
+                                                },
+                                                "subtitle": {
+                                                    "type": "string"
+                                                },
+                                                "meta": {
+                                                    "type": "string"
+                                                },
+                                                "img": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "input": {
+                                        "type": "object",
+                                        "properties": {
+                                            "url": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "from": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "company": {
+                        "type": "object",
+                        "properties": {
+                            "basic": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "website": {
+                                        "type": "string"
+                                    },
+                                    "yearFounded": {
+                                        "type": "string"
+                                    },
+                                    "industry": {
+                                        "type": "string"
+                                    },
+                                    "size": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "minimum": -2147483648,
+                                        "maximum": 2147483647
+                                    },
+                                    "locality": {
+                                        "type": "string"
+                                    },
+                                    "region": {
+                                        "type": "string"
+                                    },
+                                    "country": {
+                                        "type": "string"
+                                    },
+                                    "linkedUrl": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "french": {
+                                "title": "model.paper",
+                                "type": "object",
+                                "properties": {
+                                    "siren": {
+                                        "type": "string"
+                                    },
+                                    "nomEntreprise": {
+                                        "type": "string"
+                                    },
+                                    "codeNaf": {
+                                        "type": "string"
+                                    },
+                                    "libelleCodeNaf": {
+                                        "type": "string"
+                                    },
+                                    "domaineActivite": {
+                                        "type": "string"
+                                    },
+                                    "objetSocial": {
+                                        "type": "string"
+                                    },
+                                    "dateCreationFormate": {
+                                        "type": "string"
+                                    },
+                                    "entrepriseCessee": {
+                                        "type": "boolean"
+                                    },
+                                    "effectif": {
+                                        "type": "string"
+                                    },
+                                    "numeroTvaIntracommunautaire": {
+                                        "type": "string"
+                                    },
+                                    "siege": {
+                                        "type": "object",
+                                        "properties": {
+                                            "siret": {
+                                                "type": "string"
+                                            },
+                                            "adresseLigne1": {
+                                                "type": "string"
+                                            },
+                                            "codePostal": {
+                                                "type": "string"
+                                            },
+                                            "ville": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "representants": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "nomComplet": {
+                                                    "type": "string"
+                                                },
+                                                "dateDeNaissanceFormate": {
+                                                    "type": "string"
+                                                },
+                                                "age": {
+                                                    "type": "string",
+                                                    "format": "int64",
+                                                    "minimum": -9223372036854776000,
+                                                    "maximum": 9223372036854776000
+                                                },
+                                                "type": {
+                                                    "type": "string"
+                                                },
+                                                "qualite": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "finances": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "annee": {
+                                                    "type": "string",
+                                                    "format": "int64",
+                                                    "minimum": -9223372036854776000,
+                                                    "maximum": 9223372036854776000
+                                                },
+                                                "chiffreAffaires": {
+                                                    "type": "string",
+                                                    "format": "int64",
+                                                    "minimum": -9223372036854776000,
+                                                    "maximum": 9223372036854776000
+                                                },
+                                                "chiffreAffairesPrettier": {
+                                                    "type": "string"
+                                                },
+                                                "resultat": {
+                                                    "type": "string",
+                                                    "format": "int64",
+                                                    "minimum": -9223372036854776000,
+                                                    "maximum": 9223372036854776000
+                                                },
+                                                "resultatPrettier": {
+                                                    "type": "string"
+                                                },
+                                                "effectif": {
+                                                    "type": "string",
+                                                    "format": "int64",
+                                                    "minimum": -9223372036854776000,
+                                                    "maximum": 9223372036854776000
+                                                },
+                                                "effectifPrettier": {
+                                                    "type": "string"
+                                                },
+                                                "tauxCroissanceChiffreAffaires": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "minimum": -3.402823669209385e+38,
+                                                    "maximum": 3.402823669209385e+38
+                                                },
+                                                "tauxCroissanceChiffreAffairesPrettier": {
+                                                    "type": "string"
+                                                },
+                                                "effectifGrowthRate": {
+                                                    "type": "number",
+                                                    "format": "float",
+                                                    "minimum": -3.402823669209385e+38,
+                                                    "maximum": 3.402823669209385e+38
+                                                },
+                                                "effectifGrowthRatePrettier": {
+                                                    "type": "string"
+                                                },
+                                                "effectifEvolution": {
+                                                    "type": "string",
+                                                    "format": "int64",
+                                                    "minimum": -9223372036854776000,
+                                                    "maximum": 9223372036854776000
+                                                },
+                                                "effectifEvolutionPrettier": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "full": {
+                                "type": "object",
+                                "properties": {
+                                    "properties": {
+                                        "type": "object",
+                                        "properties": {
+                                            "revenueRange": {
+                                                "type": "string"
+                                            },
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "shortDescription": {
+                                                "type": "string"
+                                            },
+                                            "identifier": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "permalink": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "cards": {
+                                        "type": "object",
+                                        "properties": {
+                                            "fundingRoundsSummary": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "fundingTotal": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "valueUsd": {
+                                                                "type": "number",
+                                                                "format": "float",
+                                                                "minimum": -3.402823669209385e+38,
+                                                                "maximum": 3.402823669209385e+38
+                                                            },
+                                                            "valueUsdPretty": {
+                                                                "type": "string"
+                                                            },
+                                                            "valueUsdRoundup": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "lastFundingType": {
+                                                        "type": "string"
+                                                    },
+                                                    "lastFundingAt": {
+                                                        "type": "string"
+                                                    },
+                                                    "numFundingRounds": {
+                                                        "type": "string",
+                                                        "format": "int64",
+                                                        "minimum": -9223372036854776000,
+                                                        "maximum": 9223372036854776000
+                                                    }
+                                                }
+                                            },
+                                            "trafficRankHeadline": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "visitsLatestMonth": {
+                                                        "type": "string",
+                                                        "format": "int64",
+                                                        "minimum": -9223372036854776000,
+                                                        "maximum": 9223372036854776000
+                                                    },
+                                                    "visitsLastestMonthPrettier": {
+                                                        "type": "string"
+                                                    },
+                                                    "visitsMomPct": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "minimum": -3.402823669209385e+38,
+                                                        "maximum": 3.402823669209385e+38
+                                                    }
+                                                }
+                                            },
+                                            "spentSummary": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "siteItSpend": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "valueUsd": {
+                                                                "type": "number",
+                                                                "format": "float",
+                                                                "minimum": -3.402823669209385e+38,
+                                                                "maximum": 3.402823669209385e+38
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "overviewCompanyFields": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "companyType": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "overviewFields": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "revenueRange": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "minimum": -3.402823669209385e+38,
+                                                        "maximum": 3.402823669209385e+38
+                                                    },
+                                                    "numEmployeesEnum": {
+                                                        "type": "string"
+                                                    },
+                                                    "numEmployee": {
+                                                        "type": "string"
+                                                    },
+                                                    "lastFundingType": {
+                                                        "type": "string"
+                                                    },
+                                                    "operatingStatus": {
+                                                        "type": "string"
+                                                    },
+                                                    "foundedOn": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "value": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "categories": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "value": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "legalName": {
+                                                        "type": "string"
+                                                    },
+                                                    "fundingStage": {
+                                                        "type": "string"
+                                                    },
+                                                    "locationGroupIdentifiers": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "value": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "overviewFields2": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "website": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "value": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "linkedin": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "value": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "twitter": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "value": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "contactEmail": {
+                                                        "type": "string"
+                                                    },
+                                                    "facebook": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "value": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "fundingRoundsList": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "moneyRaised": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "value": {
+                                                                    "type": "string",
+                                                                    "format": "int64",
+                                                                    "minimum": -9223372036854776000,
+                                                                    "maximum": 9223372036854776000
+                                                                },
+                                                                "currency": {
+                                                                    "type": "string"
+                                                                },
+                                                                "valueUsd": {
+                                                                    "type": "string",
+                                                                    "format": "int64",
+                                                                    "minimum": -9223372036854776000,
+                                                                    "maximum": 9223372036854776000
+                                                                },
+                                                                "valueUsdPretty": {
+                                                                    "type": "string"
+                                                                },
+                                                                "valueUsdRoundup": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "trafficSummary": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "globalRank": {
+                                                        "type": "string",
+                                                        "format": "int64",
+                                                        "minimum": -9223372036854776000,
+                                                        "maximum": 9223372036854776000
+                                                    },
+                                                    "globalRankPrettier": {
+                                                        "type": "string"
+                                                    },
+                                                    "visitsLatestMonth": {
+                                                        "type": "string",
+                                                        "format": "int64",
+                                                        "minimum": -9223372036854776000,
+                                                        "maximum": 9223372036854776000
+                                                    },
+                                                    "visitsLatestMonthPrettier": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "ipoSummary": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "stockLink": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "label": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "wentPublicOn": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "fullConfidenceScore": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "minimum": -3.402823669209385e+38,
+                                        "maximum": 3.402823669209385e+38
+                                    }
+                                }
+                            },
+                            "premium": {
+                                "type": "object",
+                                "properties": {
+                                    "url": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "sphere": {
+                                        "type": "string"
+                                    },
+                                    "employeesAmountInLinkedin": {
+                                        "title": "int32 followers = 3;",
+                                        "type": "string"
+                                    },
+                                    "about": {
+                                        "type": "string"
+                                    },
+                                    "headquaterAddr": {
+                                        "type": "string"
+                                    },
+                                    "headquaterAddrStreet": {
+                                        "type": "string"
+                                    },
+                                    "headquaterAddrPostalCode": {
+                                        "type": "string"
+                                    },
+                                    "headquaterAddrLocality": {
+                                        "type": "string"
+                                    },
+                                    "headquaterAddrRegion": {
+                                        "type": "string"
+                                    },
+                                    "headquaterAddrCountry": {
+                                        "type": "string"
+                                    },
+                                    "subsidiary": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "subsidiary": {
+                                                    "type": "string"
+                                                },
+                                                "firstPart": {
+                                                    "type": "string"
+                                                },
+                                                "secondpart": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "numberOfLocation": {
+                                        "type": "string"
+                                    },
+                                    "website": {
+                                        "type": "string"
+                                    },
+                                    "industries": {
+                                        "type": "string"
+                                    },
+                                    "companySize": {
+                                        "type": "string"
+                                    },
+                                    "headquarters": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "founded": {
+                                        "type": "string"
+                                    },
+                                    "specialties": {
+                                        "type": "string"
+                                    },
+                                    "specialtiesArr": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "value": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "input": {
+                                        "type": "object",
+                                        "properties": {
+                                            "url": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "companyId": {
+                                        "title": "string followers = 25;",
+                                        "type": "string"
+                                    },
+                                    "locations": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "premiumConfidenceScore": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "minimum": -3.402823669209385e+38,
+                                        "maximum": 3.402823669209385e+38
+                                    }
+                                }
+                            },
+                            "phone": {
+                                "type": "object",
+                                "properties": {
+                                    "formattedPhoneNumber": {
+                                        "type": "string"
+                                    },
+                                    "formattedAddress": {
+                                        "type": "string"
+                                    },
+                                    "geometry": {
+                                        "type": "object",
+                                        "properties": {
+                                            "location": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "lat": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "minimum": -3.402823669209385e+38,
+                                                        "maximum": 3.402823669209385e+38
+                                                    },
+                                                    "lng": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "minimum": -3.402823669209385e+38,
+                                                        "maximum": 3.402823669209385e+38
+                                                    }
+                                                }
+                                            },
+                                            "viewport": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "northeast": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "lat": {
+                                                                "type": "number",
+                                                                "format": "float",
+                                                                "minimum": -3.402823669209385e+38,
+                                                                "maximum": 3.402823669209385e+38
+                                                            },
+                                                            "lng": {
+                                                                "type": "number",
+                                                                "format": "float",
+                                                                "minimum": -3.402823669209385e+38,
+                                                                "maximum": 3.402823669209385e+38
+                                                            }
+                                                        }
+                                                    },
+                                                    "southwest": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "lat": {
+                                                                "type": "number",
+                                                                "format": "float",
+                                                                "minimum": -3.402823669209385e+38,
+                                                                "maximum": 3.402823669209385e+38
+                                                            },
+                                                            "lng": {
+                                                                "type": "number",
+                                                                "format": "float",
+                                                                "minimum": -3.402823669209385e+38,
+                                                                "maximum": 3.402823669209385e+38
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "vicinity": {
+                                        "type": "string"
+                                    },
+                                    "score": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "minimum": -3.402823669209385e+38,
+                                        "maximum": 3.402823669209385e+38
+                                    }
+                                }
+                            },
+                            "technologies": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "technologiesCategories": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "deepTraffic": {
+                                "type": "object",
+                                "properties": {
+                                    "addNetworks": {
+                                        "type": "object",
+                                        "properties": {
+                                            "count": {
+                                                "type": "string",
+                                                "format": "int64",
+                                                "minimum": -9223372036854776000,
+                                                "maximum": 9223372036854776000
+                                            },
+                                            "data": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "item": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "trafficSources": {
+                                        "type": "object",
+                                        "properties": {
+                                            "direct": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "minimum": -3.402823669209385e+38,
+                                                "maximum": 3.402823669209385e+38
+                                            },
+                                            "referrals": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "minimum": -3.402823669209385e+38,
+                                                "maximum": 3.402823669209385e+38
+                                            },
+                                            "search": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "minimum": -3.402823669209385e+38,
+                                                "maximum": 3.402823669209385e+38
+                                            },
+                                            "social": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "minimum": -3.402823669209385e+38,
+                                                "maximum": 3.402823669209385e+38
+                                            },
+                                            "mail": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "minimum": -3.402823669209385e+38,
+                                                "maximum": 3.402823669209385e+38
+                                            },
+                                            "paidReferrals": {
+                                                "type": "number",
+                                                "format": "float",
+                                                "minimum": -3.402823669209385e+38,
+                                                "maximum": 3.402823669209385e+38
+                                            }
+                                        }
+                                    },
+                                    "category": {
+                                        "type": "string"
+                                    },
+                                    "similarSites": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "site": {
+                                                    "type": "string"
+                                                },
+                                                "altImage": {
+                                                    "type": "string"
+                                                },
+                                                "imageUrl": {
+                                                    "type": "string"
+                                                },
+                                                "iconUrl": {
+                                                    "type": "string"
+                                                },
+                                                "ellipsiseName": {
+                                                    "type": "string"
+                                                },
+                                                "rank": {
+                                                    "type": "string",
+                                                    "format": "int64",
+                                                    "minimum": -9223372036854776000,
+                                                    "maximum": 9223372036854776000
+                                                },
+                                                "isBlackListed": {
+                                                    "type": "boolean"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "topCountryShares": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "item": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "minimum": -3.402823669209385e+38,
+                                                        "maximum": 3.402823669209385e+38
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "employees": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "firstName": {
+                                            "type": "string"
+                                        },
+                                        "lastName": {
+                                            "type": "string"
+                                        },
+                                        "location": {
+                                            "type": "string"
+                                        },
+                                        "jobTitle": {
+                                            "type": "string"
+                                        },
+                                        "company": {
+                                            "type": "string"
+                                        },
+                                        "linkedInUrl": {
+                                            "type": "string"
+                                        },
+                                        "extractedRole": {
+                                            "type": "string"
+                                        },
+                                        "extractedSeniority": {
+                                            "type": "string"
+                                        },
+                                        "extractedGender": {
+                                            "type": "string"
+                                        },
+                                        "dateDeNaissanceFormate": {
+                                            "type": "string"
+                                        },
+                                        "age": {
+                                            "type": "string"
+                                        },
+                                        "personConfidenceScore": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "minimum": -3.402823669209385e+38,
+                                            "maximum": 3.402823669209385e+38
+                                        },
+                                        "employeeJobScore": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "minimum": -3.402823669209385e+38,
+                                            "maximum": 3.402823669209385e+38
+                                        },
+                                        "employeeCompanyScore": {
+                                            "type": "number",
+                                            "format": "float",
+                                            "minimum": -3.402823669209385e+38,
+                                            "maximum": 3.402823669209385e+38
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "emailV2": {
+                        "type": "object",
+                        "properties": {
+                            "email": {
+                                "type": "string"
+                            },
+                            "emailDomain": {
+                                "type": "string"
+                            },
+                            "status": {
+                                "type": "string"
+                            },
+                            "patterns": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "mxfound": {
+                                "type": "boolean"
+                            },
+                            "smtpCheck": {
+                                "type": "boolean"
+                            },
+                            "cachAll": {
+                                "type": "boolean"
+                            }
+                        }
+                    },
+                    "creditBurn": {
+                        "type": "string",
+                        "format": "int64",
+                        "minimum": -9223372036854776000,
+                        "maximum": 9223372036854776000
+                    }
+                }
+            }
+        },
+        {
+            "name": "Job Change API",
+            "url": "https://enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com/api/ingress/v4/update",
+            "description": "Detect in real time if one of your contacts has changed company or if he still works in the same company.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "companyName",
+                    "type": "STRING",
+                    "description": "The last known company for this person",
+                    "default": ""
+                },
+                {
+                    "name": "lastName",
+                    "type": "STRING",
+                    "description": "The last name of the person whose status you want to check",
+                    "default": ""
+                },
+                {
+                    "name": "firstName",
+                    "type": "STRING",
+                    "description": "The first name of the person whose status you want to check",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "jobTitle",
+                    "type": "STRING",
+                    "description": "If you think that more than one person may have the same name in this company, please do not hesitate to give us the last known job title, so that our AI can choose the right person.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com/api/ingress/v4/update\"\nquerystring = {\"companyName\": \"\", \"lastName\": \"\", \"jobTitle\": \"\", \"firstName\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com/api/ingress/v4/update\"\nquerystring = {\"companyName\": \"\", \"lastName\": \"\", \"jobTitle\": \"\", \"firstName\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "firstName": {
+                                "type": "string"
+                            },
+                            "lastName": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "linkedIn": {
+                                "type": "string"
+                            },
+                            "currentCompany": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "experiences": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "company": {
+                                            "type": "string"
+                                        },
+                                        "jobTitle": {
+                                            "type": "string"
+                                        },
+                                        "duration": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "ableToGetPastExperience": {
+                                "type": "boolean"
+                            },
+                            "ableToFindCompanyInputInProfile": {
+                                "type": "boolean"
+                            },
+                            "from": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "companyScore": {
+                        "type": "number",
+                        "format": "float",
+                        "minimum": -3.402823669209385e+38,
+                        "maximum": 3.402823669209385e+38
+                    },
+                    "creditBurn": {
+                        "type": "string",
+                        "format": "int64",
+                        "minimum": -9223372036854776000,
+                        "maximum": 9223372036854776000
+                    }
+                }
+            }
+        },
+        {
+            "name": "Find Email API",
+            "url": "https://enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com/api/ingress/v6/findEmail",
+            "description": "An endpoint to only find email address without any other info. Much faster if you are only looking for email",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "lastName",
+                    "type": "STRING",
+                    "description": "Last Name",
+                    "default": ""
+                },
+                {
+                    "name": "company",
+                    "type": "STRING",
+                    "description": "Company name",
+                    "default": ""
+                },
+                {
+                    "name": "findEmailV2Country",
+                    "type": "STRING",
+                    "description": "Config the country to search domain and have accurate result. You can enter any location (city, region) and we will do the rest.",
+                    "default": "General"
+                },
+                {
+                    "name": "fullName",
+                    "type": "STRING",
+                    "description": "Instead of input firstname, lastname. You can input full name here",
+                    "default": ""
+                },
+                {
+                    "name": "linkedInSlug",
+                    "type": "STRING",
+                    "description": "Linkedin Company Slug URL, (can be inputed on this format https://www.linkedin.com/company/10625816 or on this format https://www.linkedin.com/company/livestorm/ or on this format https://www.linkedin.com/sales/company/10625816)\n\n",
+                    "default": ""
+                },
+                {
+                    "name": "firstName",
+                    "type": "STRING",
+                    "description": "First Name",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com/api/ingress/v6/findEmail\"\nquerystring = {\"lastName\": \"\", \"company\": \"\", \"findEmailV2Country\": \"General\", \"fullName\": \"\", \"linkedInSlug\": \"\", \"firstName\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com/api/ingress/v6/findEmail\"\nquerystring = {\"lastName\": \"\", \"company\": \"\", \"findEmailV2Country\": \"General\", \"fullName\": \"\", \"linkedInSlug\": \"\", \"firstName\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"enrichment-b2b-linkedin-crunchbase-datagma.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "emailDomain": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "patterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "mxfound": {
+                        "type": "boolean"
+                    },
+                    "smtpCheck": {
+                        "type": "boolean"
+                    },
+                    "cachAll": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    ]
+}

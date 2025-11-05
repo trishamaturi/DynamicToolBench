@@ -1,0 +1,287 @@
+{
+    "product_id": "api_a1213ab6-5d4e-47e4-990d-0624d4014db3",
+    "tool_description": "Sports betting API covering odds from bookmakers around the world",
+    "home_url": "https://rapidapi.com/finestoreuk/api/betsmart-sports-betting-api/",
+    "name": "BetSmart Sports Betting API",
+    "title": "BetSmart Sports Betting API",
+    "pricing": "FREEMIUM",
+    "tool_name": "BetSmart Sports Betting API",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 953,
+        "avgSuccessRate": 100,
+        "popularityScore": 8.4,
+        "__typename": "Score"
+    },
+    "host": "betsmart-sports-betting-api.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Odds",
+            "url": "https://betsmart-sports-betting-api.p.rapidapi.com/BettingGetOdds",
+            "description": "Returns a list of upcoming and live games with recent odds for a given sport, region and market.\n\nParameters\n+ sport: the sport key obtained from calling the /GetSports endpoint. **upcoming** can be used and will return any live games as well as the next 8 upcoming games across all sports\n\n+ regions: determines the bookmakers to be returned. Valid regions are us, us2 (United States), uk (United Kingdom), au (Australia) and eu (Europe). Multiple regions can be specified if comma delimited. See the list of bookmakers by region.\n\n+ markets (Optional): determines which odds market is returned. Defaults to h2h (head to head / moneyline). Valid markets are h2h (moneyline), spreads (points handicaps), totals (over/under) and outrights (futures). Multiple markets can be specified if comma delimited. spreads and totals markets are mainly available for US sports and bookmakers at this time. \n\nLay odds are automatically included with h2h results for relevant betting exchanges (Betfair, Matchbook etc). These have a h2h_lay market key.\n\nFor sports with outright markets (such as Golf), the market will default to outrights if not specified. Lay odds for outrights (outrights_lay) will automatically be available for relevant exchanges.\n\n+ dateFormat (Optional): determines the format of timestamps in the response. Valid values are unix and iso (ISO 8601). Defaults to iso.\n\n+ oddsFormat (Optional): determines the format of odds in the response. Valid values are decimal and american. Defaults to decimal. When set to american, small discrepancies might exist for some bookmakers due to rounding errors.\n\n+ eventIds (Optional): comma-separated game ids. Filters the response to only return games for the specified game ids.\n\n+ bookmakers (Optional): comma-separated list of bookmakers to be returned. If both bookmakers and regions are both specified, bookmakers takes priority. Bookmakers can be from any region. Every group of 10 bookmakers is the equivalent of 1 region. For example, specifying up to 10 bookmakers counts as 1 region. Specifying between 11 and 20 bookmakers counts as 2 regions.\n\n+ commenceTimeFrom (Optional): filter the response to show games that commence on and after this parameter. Values are in ISO 8601 format, for example 2023-09-09T00:00:00Z\n\n+ commenceTimeTo (Optional): filter the response to show games that commence on and before this parameter. Values are in ISO 8601 format, for example 2023-09-10T23:59:59Z",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "regions",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "au,eu,uk,us,us2"
+                },
+                {
+                    "name": "sport",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "upcoming"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "commenceTimeTo",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "oddsFormat",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "dateFormat",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "commenceTimeFrom",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "markets",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "eventIds",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "bookmakers",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://betsmart-sports-betting-api.p.rapidapi.com/BettingGetOdds\"\nquerystring = {\"commenceTimeTo\": \"\", \"oddsFormat\": \"\", \"dateFormat\": \"\", \"commenceTimeFrom\": \"\", \"regions\": \"au,eu,uk,us,us2\", \"markets\": \"\", \"sport\": \"upcoming\", \"eventIds\": \"\", \"bookmakers\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"betsmart-sports-betting-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://betsmart-sports-betting-api.p.rapidapi.com/BettingGetOdds\"\nquerystring = {\"commenceTimeTo\": \"\", \"oddsFormat\": \"\", \"dateFormat\": \"\", \"commenceTimeFrom\": \"\", \"regions\": \"au,eu,uk,us,us2\", \"markets\": \"\", \"sport\": \"upcoming\", \"eventIds\": \"\", \"bookmakers\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"betsmart-sports-betting-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Sports",
+            "url": "https://betsmart-sports-betting-api.p.rapidapi.com/BettingGetSports",
+            "description": "Returns a list of in-season sport objects. The sport key can be used as the sport parameter in the /GetOdds requests.\n\nParameters\n+ all: if this parameter is set to true (all=true), a list of both in and out of season sports will be returned.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "all",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "false"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://betsmart-sports-betting-api.p.rapidapi.com/BettingGetSports\"\nquerystring = {\"all\": \"false\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"betsmart-sports-betting-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://betsmart-sports-betting-api.p.rapidapi.com/BettingGetSports\"\nquerystring = {\"all\": \"false\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"betsmart-sports-betting-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Historical Odds",
+            "url": "https://betsmart-sports-betting-api.p.rapidapi.com/BettingGetHistoricalOdds",
+            "description": "**ONLY AVAILABLE FOR THE PAID PLANS**\n\nReturns a snapshot of games with bookmaker odds for a given sport, region and market, at a given historical date. Historical odds data is available from June 6th 2020, with snapshots taken at 10 minute intervals. From September 2022, historical odds snapshots are available at 5 minute intervals.\n\n**Parameters:**\n\n+ date: the timestamp of the data snapshot to be returned, specified in ISO8601 format, for example 2021-10-18T12:00:00Z. The historical odds API will return the closest snapshot equal to or earlier than the provided date parameter.\n\n+ sport: the sport key obtained from calling the /GetSports endpoint. upcoming is always valid, returning any live games as well as the next 8 upcoming games across all sports\n\n+ regions: determines the bookmakers to be returned. Valid regions are us, us2 (United States), uk (United Kingdom), au (Australia) and eu (Europe). Multiple regions can be specified if comma delimited. See the list of bookmakers by region.\n\n+ markets (Optional): determines which odds market is returned. Defaults to h2h (head to head / moneyline). Valid markets are h2h (moneyline), spreads (points handicaps), totals (over/under) and outrights (futures). Multiple markets can be specified if comma delimited. spreads and totals markets are mainly available for US sports and bookmakers at this time. \n\nLay odds are automatically included with h2h results for relevant betting exchanges (Betfair, Matchbook etc). These have a h2h_lay market key.\n\nFor sports with outright markets (such as Golf), the market will default to outrights if not specified. Lay odds for outrights (outrights_lay) will automatically be available for relevant exchanges.\n\n+ dateFormat (Optional): determines the format of timestamps in the response. Valid values are unix and iso (ISO 8601). Defaults to iso.\n\n+ oddsFormat (Optional): determines the format of odds in the response. Valid values are decimal and american. Defaults to decimal. When set to american, small discrepancies might exist for some bookmakers due to rounding errors.\n\n+ eventIds (Optional): comma-separated game ids. Filters the response to only return games for the specified game ids.\n\n+ bookmakers (Optional): comma-separated list of bookmakers to be returned. If both bookmakers and regions are both specified, bookmakers takes priority. Bookmakers can be from any region. Every group of 10 bookmakers is the equivalent of 1 region. For example, specifying up to 10 bookmakers counts as 1 region. Specifying between 11 and 20 bookmakers counts as 2 regions.\n\n+ commenceTimeFrom (Optional): filter the response to show games that commence on and after this parameter. Values are in ISO 8601 format, for example 2023-09-09T00:00:00Z\n\n+ commenceTimeTo (Optional): filter the response to show games that commence on and before this parameter. Values are in ISO 8601 format, for example 2023-09-10T23:59:59Z",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2024-01-01T12:00:00Z"
+                },
+                {
+                    "name": "sport",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "upcoming"
+                },
+                {
+                    "name": "regions",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "au,eu,uk,us,us2"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "commenceTimeFrom",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "commenceTimeTo",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "eventIds",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "dateFormat",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "oddsFormat",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "markets",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "bookmakers",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://betsmart-sports-betting-api.p.rapidapi.com/BettingGetHistoricalOdds\"\nquerystring = {\"date\": \"2024-01-01T12:00:00Z\", \"commenceTimeFrom\": \"\", \"sport\": \"upcoming\", \"commenceTimeTo\": \"\", \"regions\": \"au,eu,uk,us,us2\", \"eventIds\": \"\", \"dateFormat\": \"\", \"oddsFormat\": \"\", \"markets\": \"\", \"bookmakers\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"betsmart-sports-betting-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://betsmart-sports-betting-api.p.rapidapi.com/BettingGetHistoricalOdds\"\nquerystring = {\"date\": \"2024-01-01T12:00:00Z\", \"commenceTimeFrom\": \"\", \"sport\": \"upcoming\", \"commenceTimeTo\": \"\", \"regions\": \"au,eu,uk,us,us2\", \"eventIds\": \"\", \"dateFormat\": \"\", \"oddsFormat\": \"\", \"markets\": \"\", \"bookmakers\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"betsmart-sports-betting-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Scores",
+            "url": "https://betsmart-sports-betting-api.p.rapidapi.com/BettingGetScores",
+            "description": "Returns a list of upcoming, live and recently completed games for a given sport. Live and recently completed games contain scores. Games from up to 3 days ago can be returned using the daysFrom parameter. Live scores update approximately every 30 seconds.\n\nThe scores endpoint applies to selected sports and is gradually being expanded to more sports. See the current list at the bottom.\n\n**Parameters**\n\n+ sport: the sport key obtained from calling the /GetSports endpoint.\n+ daysFrom (Optional): the number of days in the past from which to return completed games. Valid values are integers from 1 to 3. If this parameter is missing, only live and upcoming games are returned.\n+ dateFormat (Optional): determines the format of timestamps in the response. Valid values are unix and iso (ISO 8601). Defaults to iso.\n+ eventIds (Optional): comma-separated game ids. Filters the response to only return games for the specified game ids.\n\n**List of covered sports:**\n\nAmerican Football\tCFL\tamericanfootball_cfl\t\u2714\nAmerican Football\tNCAAF\tamericanfootball_ncaaf\t\u2714\nAmerican Football\tNFL\tamericanfootball_nfl\t\u2714\nAussie Rules\tAFL\taussierules_afl\t\u2714\nBaseball\tMLB\tbaseball_mlb\t\u2714\t\nBaseball\tNCAA Baseball\tbaseball_ncaa\t\u2714\nBasketball\tBasketball Euroleague\tbasketball_euroleague\t\u2714\nBasketball\tNBA\tbasketball_nba\t\u2714\nBasketball\tWNBA\tbasketball_wnba\t\u2714\nBasketball\tNCAAB\tbasketball_ncaab\t\u2714\nIce Hockey\tNHL\ticehockey_nhl\t\u2714\t\nRugby League\tNRL\trugbyleague_nrl\t\u2714\nSoccer\tPrimera Divisi\u00f3n - Argentina\tsoccer_argentina_primera_division\t\u2714\nSoccer\tA-League\tsoccer_australia_aleague\t\u2714\nSoccer\tAustrian Football Bundesliga\tsoccer_austria_bundesliga\t\u2714\nSoccer\tBelgium First Div\tsoccer_belgium_first_div\t\u2714\nSoccer\tBrazil S\u00e9rie A\tsoccer_brazil_campeonato\t\u2714\nSoccer\tBrazil S\u00e9rie B\tsoccer_brazil_serie_b\t\u2714\nSoccer\tPrimera Divisi\u00f3n - Chile\tsoccer_chile_campeonato\t\u2714\nSoccer\tSuper League - China\tsoccer_china_superleague\t\u2714\nSoccer\tDenmark Superliga\tsoccer_denmark_superliga\t\u2714\nSoccer\tChampionship\tsoccer_efl_champ\t\u2714\nSoccer\tEFL Cup\tsoccer_england_efl_cup\t\u2714\nSoccer\tLeague 1\tsoccer_england_league1\t\u2714\nSoccer\tLeague 2\tsoccer_england_league2\t\u2714\nSoccer\tEPL\tsoccer_epl\t\u2714\nSoccer\tFA Cup\tsoccer_fa_cup\t\u2714\nSoccer\tFIFA World Cup\tsoccer_fifa_world_cup\t\u2714\nSoccer\tFIFA Women's World Cup\tsoccer_fifa_world_cup_womens\t\u2714\nSoccer\tVeikkausliiga - Finland\tsoccer_finland_veikkausliiga\t\u2714\nSoccer\tLigue 1 - France\tsoccer_france_ligue_one\t\u2714\nSoccer\tLigue 2 - France\tsoccer_france_ligue_two\t\u2714\nSoccer\tBundesliga - Germany\tsoccer_germany_bundesliga\t\u2714\nSoccer\tBundesliga 2 - Germany\tsoccer_germany_bundesliga2\t\u2714\nSoccer\t3. Liga - Germany\tsoccer_germany_liga3\t\u2714\nSoccer\tSuper League - Greece\tsoccer_greece_super_league\t\u2714\nSoccer\tSerie A - Italy\tsoccer_italy_serie_a\t\u2714\nSoccer\tSerie B - Italy\tsoccer_italy_serie_b\t\u2714\nSoccer\tJ League\tsoccer_japan_j_league\t\u2714\nSoccer\tK League 1\tsoccer_korea_kleague1\t\u2714\nSoccer\tLeague of Ireland\tsoccer_league_of_ireland\t\u2714\nSoccer\tLiga MX\tsoccer_mexico_ligamx\t\u2714\nSoccer\tDutch Eredivisie\tsoccer_netherlands_eredivisie\t\u2714\nSoccer\tEliteserien - Norway\tsoccer_norway_eliteserien\t\u2714\nSoccer\tEkstraklasa - Poland\tsoccer_poland_ekstraklasa\t\u2714\nSoccer\tPrimeira Liga - Portugal\tsoccer_portugal_primeira_liga\t\u2714\nSoccer\tLa Liga - Spain\tsoccer_spain_la_liga\t\u2714\nSoccer\tLa Liga 2 - Spain\tsoccer_spain_segunda_division\t\u2714\nSoccer\tPremiership - Scotland\tsoccer_spl\t\u2714\nSoccer\tAllsvenskan - Sweden\tsoccer_sweden_allsvenskan\t\u2714\nSoccer\tSuperettan - Sweden\tsoccer_sweden_superettan\t\u2714\nSoccer\tSwiss Superleague\tsoccer_switzerland_superleague\t\u2714\nSoccer\tTurkey Super League\tsoccer_turkey_super_league\t\u2714\nSoccer\tUEFA Europa Conference League\tsoccer_uefa_europa_conference_league\t\u2714\nSoccer\tUEFA Champions League\tsoccer_uefa_champs_league\t\u2714\nSoccer\tUEFA Champions League Qualification\tsoccer_uefa_champs_league_qualification\t\u2714\nSoccer\tUEFA Europa League\tsoccer_uefa_europa_league\t\u2714\t\nSoccer\tMLS\tsoccer_usa_mls\t\u2714",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "sport",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "americanfootball_nfl"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "eventIds",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "daysFrom",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "dateFormat",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://betsmart-sports-betting-api.p.rapidapi.com/BettingGetScores\"\nquerystring = {\"eventIds\": \"\", \"sport\": \"americanfootball_nfl\", \"daysFrom\": \"\", \"dateFormat\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"betsmart-sports-betting-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://betsmart-sports-betting-api.p.rapidapi.com/BettingGetScores\"\nquerystring = {\"eventIds\": \"\", \"sport\": \"americanfootball_nfl\", \"daysFrom\": \"\", \"dateFormat\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"betsmart-sports-betting-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Event Odds",
+            "url": "https://betsmart-sports-betting-api.p.rapidapi.com/BettingGetEventOdds",
+            "description": "Returns odds for a single game. Accepts any available betting markets using the markets parameter. Coverage of non-featured markets is currently limited to selected bookmakers and sports, and expanding over time.\n\nWhen to use this endpoint: We're gradually adding odds for additional betting markets. Use this endpoint to access odds for any supported market. Since the volume of data returned for these new markets can be large, we have decided to restrict requests to one event at a time. If you are only interested in the most popular betting markets, including head-to-head (moneyline), point spreads (handicap), over/under (totals), the main /GetOdds endpoint is simpler to integrate and more cost-effective.\n\n**Parameters:**\n\nParameters are the same as for the /GetOdds endpoint with the addition of the eventId in the path. All available market keys are accepted in the markets parameter.\n\n+ eventId: the id of an upcoming or live game. Event ids can be found in the \"id\" field in response of main /GetOdds endpoint.\n\n+ sport: the sport key obtained from calling the /GetSports endpoint. upcoming is always valid, returning any live games as well as the next 8 upcoming games across all sports\n\n+ regions: determines the bookmakers to be returned. Valid regions are us, us2 (United States), uk (United Kingdom), au (Australia) and eu (Europe). Multiple regions can be specified if comma delimited. See the list of bookmakers by region.\n\n+ markets (Optional): determines which odds market is returned. Defaults to h2h (head to head / moneyline). Valid markets are h2h (moneyline), spreads (points handicaps), totals (over/under) and outrights (futures). Multiple markets can be specified if comma delimited. spreads and totals markets are mainly available for US sports and bookmakers at this time. \n\nLay odds are automatically included with h2h results for relevant betting exchanges (Betfair, Matchbook etc). These have a h2h_lay market key.\n\nFor sports with outright markets (such as Golf), the market will default to outrights if not specified. Lay odds for outrights (outrights_lay) will automatically be available for relevant exchanges.\n\n+ dateFormat (Optional): determines the format of timestamps in the response. Valid values are unix and iso (ISO 8601). Defaults to iso.\n\n+ oddsFormat (Optional): determines the format of odds in the response. Valid values are decimal and american. Defaults to decimal. When set to american, small discrepancies might exist for some bookmakers due to rounding errors.\n\n+ eventIds (Optional): comma-separated game ids. Filters the response to only return games for the specified game ids.\n\n+ bookmakers (Optional): comma-separated list of bookmakers to be returned. If both bookmakers and regions are both specified, bookmakers takes priority. Bookmakers can be from any region. Every group of 10 bookmakers is the equivalent of 1 region. For example, specifying up to 10 bookmakers counts as 1 region. Specifying between 11 and 20 bookmakers counts as 2 regions.\n\n+ commenceTimeFrom (Optional): filter the response to show games that commence on and after this parameter. Values are in ISO 8601 format, for example 2023-09-09T00:00:00Z\n\n+ commenceTimeTo (Optional): filter the response to show games that commence on and before this parameter. Values are in ISO 8601 format, for example 2023-09-10T23:59:59Z",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "eventId",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0"
+                },
+                {
+                    "name": "regions",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "au,eu,uk,us,us2"
+                },
+                {
+                    "name": "sport",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "upcoming"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "markets",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "oddsFormat",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "bookmakers",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "commenceTimeFrom",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "eventIds",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "commenceTimeTo",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "dateFormat",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://betsmart-sports-betting-api.p.rapidapi.com/BettingGetEventOdds\"\nquerystring = {\"markets\": \"\", \"oddsFormat\": \"\", \"eventId\": \"0\", \"regions\": \"au,eu,uk,us,us2\", \"bookmakers\": \"\", \"commenceTimeFrom\": \"\", \"eventIds\": \"\", \"sport\": \"upcoming\", \"commenceTimeTo\": \"\", \"dateFormat\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"betsmart-sports-betting-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://betsmart-sports-betting-api.p.rapidapi.com/BettingGetEventOdds\"\nquerystring = {\"markets\": \"\", \"oddsFormat\": \"\", \"eventId\": \"0\", \"regions\": \"au,eu,uk,us,us2\", \"bookmakers\": \"\", \"commenceTimeFrom\": \"\", \"eventIds\": \"\", \"sport\": \"upcoming\", \"commenceTimeTo\": \"\", \"dateFormat\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"betsmart-sports-betting-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

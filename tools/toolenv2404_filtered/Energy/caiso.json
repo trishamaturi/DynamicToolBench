@@ -1,0 +1,284 @@
+{
+    "product_id": "api_d3a3cbde-14d3-4d3d-8a66-ca33a1d46002",
+    "tool_description": "API for California Independent System Operator data provided from caiso.com. It includes data on energy emissions, demand, supply, and prices. Updated daily.",
+    "home_url": "https://rapidapi.com/buildingviz-buildingviz-default/api/caiso/",
+    "name": "CAISO",
+    "title": "CAISO",
+    "pricing": "FREEMIUM",
+    "tool_name": "CAISO",
+    "score": {
+        "avgServiceLevel": 68,
+        "avgLatency": 11066,
+        "avgSuccessRate": 68,
+        "popularityScore": 8.5,
+        "__typename": "Score"
+    },
+    "host": "caiso.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "caiso",
+            "url": "https://caiso.p.rapidapi.com/caiso",
+            "description": "Gets standard CAISO data",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Type needs to be one of \\\\\\\\\\\\\\\"co2\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\"fuelsource\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\"netdemand\\\\\\\\\\\\\\\", or \\\\\\\\\\\\\\\"all\\\\\\\\\\\\\\\". The \\\\\\\\\\\\\\\"all\\\\\\\\\\\\\\\" value will combine the results for the three other tables into a single CSV file with all the columns you requested.",
+                    "default": "co2"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "enddate",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20220901"
+                },
+                {
+                    "name": "interval",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "30"
+                },
+                {
+                    "name": "startdate",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20220101"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://caiso.p.rapidapi.com/caiso\"\nquerystring = {\"enddate\": \"20220901\", \"interval\": \"30\", \"type\": \"co2\", \"startdate\": \"20220101\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"caiso.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://caiso.p.rapidapi.com/caiso\"\nquerystring = {\"enddate\": \"20220901\", \"interval\": \"30\", \"type\": \"co2\", \"startdate\": \"20220101\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"caiso.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "CAISOFile": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "caisonode",
+            "url": "https://caiso.p.rapidapi.com/caisonode",
+            "description": "Returns nodes where prices are tracked by CAISO",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "state"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "long",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "-114.1056"
+                },
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "100"
+                },
+                {
+                    "name": "region",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "state",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "wa"
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "34.6106"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://caiso.p.rapidapi.com/caisonode\"\nquerystring = {\"long\": \"-114.1056\", \"type\": \"state\", \"radius\": \"100\", \"region\": \"\", \"state\": \"wa\", \"name\": \"\", \"lat\": \"34.6106\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"caiso.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://caiso.p.rapidapi.com/caisonode\"\nquerystring = {\"long\": \"-114.1056\", \"type\": \"state\", \"radius\": \"100\", \"region\": \"\", \"state\": \"wa\", \"name\": \"\", \"lat\": \"34.6106\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"caiso.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "nodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "node_name": {
+                                    "type": "string"
+                                },
+                                "node_type": {
+                                    "type": "string"
+                                },
+                                "node_region": {
+                                    "type": "string"
+                                },
+                                "node_ntype": {
+                                    "type": "string"
+                                },
+                                "node_lat": {
+                                    "type": "number"
+                                },
+                                "node_long": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "caisoregion",
+            "url": "https://caiso.p.rapidapi.com/caisoregion",
+            "description": "Gets Regional Authorities where node prices are tracked by CAISO",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://caiso.p.rapidapi.com/caisoregion\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"caiso.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://caiso.p.rapidapi.com/caisoregion\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"caiso.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "regions": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "region_code": {
+                                    "type": "string"
+                                },
+                                "region_name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "caisoprice",
+            "url": "https://caiso.p.rapidapi.com/caisoprice",
+            "description": "Fetches hourly CAISO price data",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "date"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "12"
+                },
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20220601"
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "jsonpage"
+                },
+                {
+                    "name": "node",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://caiso.p.rapidapi.com/caisoprice\"\nquerystring = {\"page\": \"12\", \"date\": \"20220601\", \"format\": \"jsonpage\", \"type\": \"date\", \"node\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"caiso.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://caiso.p.rapidapi.com/caisoprice\"\nquerystring = {\"page\": \"12\", \"date\": \"20220601\", \"format\": \"jsonpage\", \"type\": \"date\", \"node\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"caiso.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "prices": {
+                        "type": "object",
+                        "properties": {
+                            "nodes": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "node_info": {
+                                            "type": "object",
+                                            "properties": {
+                                                "node": {
+                                                    "type": "string"
+                                                },
+                                                "price_date": {
+                                                    "type": "string"
+                                                },
+                                                "hourly_prices": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "price_hour": {
+                                                                "type": "integer"
+                                                            },
+                                                            "price_details": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "lmp": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "congestion": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "energy": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "losses": {
+                                                                        "type": "number"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

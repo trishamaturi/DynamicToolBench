@@ -1,0 +1,85 @@
+{
+    "product_id": "api_992f3e01-da24-4c58-84df-1f9525a426d2",
+    "tool_description": "Calculate areas reachable by driving within given time. Calculate service areas. Multiple transportation modes supported.",
+    "home_url": "https://rapidapi.com/geoapify-gmbh-geoapify/api/travel-time-isochrone/",
+    "name": "Travel time isochrone",
+    "title": "Travel time isochrone",
+    "pricing": "FREEMIUM",
+    "tool_name": "Travel time isochrone",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 966,
+        "avgSuccessRate": 100,
+        "popularityScore": 7.4,
+        "__typename": "Score"
+    },
+    "host": "travel-time-isochrone.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Reachability area (isoline)",
+            "url": "https://travel-time-isochrone.p.rapidapi.com/v1/isoline",
+            "description": "Calculate isoline that defines reachability or service area (by travel time or distance)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Calculate by \"time\" or \"distance\"",
+                    "default": "time"
+                },
+                {
+                    "name": "lat",
+                    "type": "STRING",
+                    "description": "Latitude of the starting location",
+                    "default": "48.2656"
+                },
+                {
+                    "name": "range",
+                    "type": "STRING",
+                    "description": "Maximum duration (seconds) or distance (meters)",
+                    "default": "1800"
+                },
+                {
+                    "name": "mode",
+                    "type": "STRING",
+                    "description": "Travel mode - drive, truck, bicycle, walk or transit",
+                    "default": "drive"
+                },
+                {
+                    "name": "lon",
+                    "type": "STRING",
+                    "description": "Longitude of the starting location",
+                    "default": "10.9846"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://travel-time-isochrone.p.rapidapi.com/v1/isoline\"\nquerystring = {\"type\": \"time\", \"lat\": \"48.2656\", \"range\": \"1800\", \"mode\": \"drive\", \"lon\": \"10.9846\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"travel-time-isochrone.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://travel-time-isochrone.p.rapidapi.com/v1/isoline\"\nquerystring = {\"type\": \"time\", \"lat\": \"48.2656\", \"range\": \"1800\", \"mode\": \"drive\", \"lon\": \"10.9846\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"travel-time-isochrone.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

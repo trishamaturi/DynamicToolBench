@@ -1,0 +1,452 @@
+{
+    "product_id": "54e4c908e4b0a1ea357b9b82",
+    "tool_description": "Since we understand the recipe \u2013 ingredients, diets, allergies, nutrition, taste, techniques & more. We can connect your users with the best recipes available for their unique food preferences.  \n\n\nSearch over 2 million recipes\n\n- Search our large recipe database. We add new sites and recipes continuously.\n- You will also get access to over 5000 top web recipe sources\n- Our search algorithm returns the most relevant recipes from the most popular and best recipes sources on the web. We order r...",
+    "home_url": "https://rapidapi.com/edamam/api/recipe-search-and-diet/",
+    "name": "Recipe Search and Diet",
+    "title": "Recipe Search and Diet",
+    "pricing": "FREEMIUM",
+    "tool_name": "Recipe Search and Diet",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 734,
+        "avgSuccessRate": 98,
+        "popularityScore": 9.6,
+        "__typename": "Score"
+    },
+    "host": "edamam-recipe-search.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/api/recipes/v2/{id}",
+            "url": "https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2/{id}",
+            "description": "Returns the nutritional information for given recipe. These requests are constructed automatically and can be found in <tt>hits[]._links.self.href</tt>",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Type of recipes to search for.",
+                    "default": "public"
+                },
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The recipe ID",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "field",
+                    "type": "ARRAY",
+                    "description": "Recipe fields to be included in the response.",
+                    "default": "[\n  \"uri\"\n]"
+                },
+                {
+                    "name": "beta",
+                    "type": "BOOLEAN",
+                    "description": "Allow beta features in response.",
+                    "default": true
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2/{id}\"\nquerystring = {\"field\": \"[\\n  \\\"uri\\\"\\n]\", \"type\": \"public\", \"id\": \"\", \"beta\": true}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"edamam-recipe-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2/{id}\"\nquerystring = {\"field\": \"[\\n  \\\"uri\\\"\\n]\", \"type\": \"public\", \"id\": \"\", \"beta\": true}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"edamam-recipe-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "/api/recipes/v2",
+            "url": "https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2",
+            "description": "This endpoint returns a list of recipes matching the provided criteria. Get started by placing your search query in the \"q\" parameter, fill in your 3scale credentials, and press the \"Try it out!\" button at the bottom. Additionaly, refine your search by using the optional parameters to specify what you are looking for.\n \n <b>Note:</b>\n When mentioned, 'floating point values' refers to values such as '50.0', '50.', '0.5', and '.5'. \n When speaking of ranges, the API accepts values such as 1.0+, 1.0-50.0, or 50.0, for floating point ranges.\n \n The parameters with <b>(required)</b> in their value box are the required parameters and must be defined as part of a request, all others can be left blank if you do not wish to define them.\n \n <b>Access Point:</b> https://api.edamam.com/api/recipes/v2",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Type of recipes to search for.",
+                    "default": "public"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "co2EmissionsClass",
+                    "type": "STRING",
+                    "description": "Filter recipes by their CO2 footprint.",
+                    "default": "A+"
+                },
+                {
+                    "name": "field",
+                    "type": "ARRAY",
+                    "description": "Recipe fields to be included in the response.",
+                    "default": "[\n  \"uri\"\n]"
+                },
+                {
+                    "name": "nutrients[ZN]",
+                    "type": "STRING",
+                    "description": "Zinc, Zn. Unit: mg. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[VITK1]",
+                    "type": "STRING",
+                    "description": "Vitamin K (phylloquinone). Unit: \u00b5g. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[WATER]",
+                    "type": "STRING",
+                    "description": "Water. Unit: g. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[VITD]",
+                    "type": "STRING",
+                    "description": "Vitamin D (D2 + D3). Unit: \u00b5g. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[TOCPHA]",
+                    "type": "STRING",
+                    "description": "Vitamin E (alpha-tocopherol). Unit: mg. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[VITA_RAE]",
+                    "type": "STRING",
+                    "description": "Vitamin A, RAE. Unit: \u00b5g. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[VITB6A]",
+                    "type": "STRING",
+                    "description": "Vitamin B6. Unit: mg. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[THIA]",
+                    "type": "STRING",
+                    "description": "Thiamin. Unit: mg. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "tag",
+                    "type": "ARRAY",
+                    "description": "Only show recipes with the specified tags.",
+                    "default": "[]"
+                },
+                {
+                    "name": "nutrients[VITC]",
+                    "type": "STRING",
+                    "description": "Vitamin C, total ascorbic acid. Unit: mg. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[SUGAR.added]",
+                    "type": "STRING",
+                    "description": "Sugars, added. Unit: g. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[P]",
+                    "type": "STRING",
+                    "description": "Phosphorus, P. Unit: mg. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[NIA]",
+                    "type": "STRING",
+                    "description": "Niacin. Unit: mg. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[NA]",
+                    "type": "STRING",
+                    "description": "Sodium, Na. Unit: mg. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[SUGAR]",
+                    "type": "STRING",
+                    "description": "Sugars, total. Unit: g. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[K]",
+                    "type": "STRING",
+                    "description": "Potassium, K. Unit: mg. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[MG]",
+                    "type": "STRING",
+                    "description": "Magnesium. Unit: mg. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[Sugar.alcohol]",
+                    "type": "STRING",
+                    "description": "Sugar alcohols. Unit: g. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[VITB12]",
+                    "type": "STRING",
+                    "description": "Vitamin B12. Unit: \u00b5g. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[FOLAC]",
+                    "type": "STRING",
+                    "description": "Folic acid. Unit: \u00b5g. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[FOLFD]",
+                    "type": "STRING",
+                    "description": "Folate (food). Unit: \u00b5g. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[FASAT]",
+                    "type": "STRING",
+                    "description": "Fatty acids, total saturated. Unit: g. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[PROCNT]",
+                    "type": "STRING",
+                    "description": "Protein. Unit: g. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[FIBTG]",
+                    "type": "STRING",
+                    "description": "Fiber, total dietary. Unit: g. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[FAT]",
+                    "type": "STRING",
+                    "description": "Total lipid (fat). Unit: g. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[FOLDFE]",
+                    "type": "STRING",
+                    "description": "Folate, DFE. Unit: \u00b5g. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[FAPU]",
+                    "type": "STRING",
+                    "description": "Fatty acids, total polyunsaturated. Unit: g. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[FE]",
+                    "type": "STRING",
+                    "description": "Iron, Fe. Unit: mg. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Query text, for example \"chicken\". <br> <b>REQUIRED</b> if no other parameter is specified. <b>NOT REQUIRED</b> if any other parameter (other than application credentials) is specified.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[FAMS]",
+                    "type": "STRING",
+                    "description": "Fatty acids, total monounsaturated. Unit: g. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[FATRN]",
+                    "type": "STRING",
+                    "description": "Fatty acids, total trans. Unit: g. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "beta",
+                    "type": "BOOLEAN",
+                    "description": "Allow beta features in the request and response",
+                    "default": true
+                },
+                {
+                    "name": "glycemicIndex",
+                    "type": "STRING",
+                    "description": "Filter by glycemic index. The format is FLOAT-RANGE",
+                    "default": ""
+                },
+                {
+                    "name": "time",
+                    "type": "STRING",
+                    "description": "Time range for the total cooking and prep time for a recipe . The format is time=RANGE where RANGE is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative integer numbers. The + symbol needs to be properly encoded. Examples: \u201ctime=1%2B\u201d will return all recipes with available total time greater then 1 minute",
+                    "default": ""
+                },
+                {
+                    "name": "random",
+                    "type": "BOOLEAN",
+                    "description": "Select whether you want this query to respond with a random selection of 20 recipes based on the criteria filled. If there were only 20 or less possible results, this will return those results in random order.",
+                    "default": true
+                },
+                {
+                    "name": "cuisineType",
+                    "type": "ARRAY",
+                    "description": "The type of cuisine of the recipe",
+                    "default": "[\n  \"American\"\n]"
+                },
+                {
+                    "name": "nutrients[RIBF]",
+                    "type": "STRING",
+                    "description": "Riboflavin. Unit: mg. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "imageSize",
+                    "type": "ARRAY",
+                    "description": "Show only recipes, which have images with selected sizes",
+                    "default": "[\n  \"LARGE\"\n]"
+                },
+                {
+                    "name": "excluded",
+                    "type": "ARRAY",
+                    "description": "Excluding recipes with certain ingredients. The format is excluded=FOOD where FOOD is replaced by the name of the specific food you don\u2019t want to be present in the recipe results. More than one food can be excluded at the same time. Example: excluded=vinegar&excluded=pretzel will exclude any recipes which contain vinegar or pretzels in their ingredient list",
+                    "default": "[]"
+                },
+                {
+                    "name": "nutrients[CA]",
+                    "type": "STRING",
+                    "description": "Calcium, Ca. Unit: mg. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> For example: nutrients[CA]=50+ means minimum 50mg calcium, where \u201850+\u2019 has to be properly encoded as \u201850%2B\u2019 nutrients[FAT]=30 means maximum 30g fat and nutrients[FE]=5-10 means iron between 5mg and 10mg inclusive",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[CHOLE]",
+                    "type": "STRING",
+                    "description": "Cholesterol. Unit: mg. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br>See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "mealType",
+                    "type": "ARRAY",
+                    "description": "The type of meal a recipe belongs to",
+                    "default": "[\n  \"Breakfast\"\n]"
+                },
+                {
+                    "name": "nutrients[CHOCDF.net]",
+                    "type": "STRING",
+                    "description": "Carbohydrates (net). Unit: g. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "calories",
+                    "type": "STRING",
+                    "description": "The format is calories=RANGE where RANGE is in one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. The + symbol needs to be properly encoded. Examples: \u201ccalories=100-300\u201d will return all recipes with which have between 100 and 300 kcal per serving.",
+                    "default": ""
+                },
+                {
+                    "name": "nutrients[ENERC_KCAL]",
+                    "type": "STRING",
+                    "description": "Energy. Unit: kcal. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                },
+                {
+                    "name": "health",
+                    "type": "ARRAY",
+                    "description": "Health label. You can select multiple labels by holding shift and left-clicking all the labels needed.",
+                    "default": "[\n  \"alcohol-cocktail\"\n]"
+                },
+                {
+                    "name": "diet",
+                    "type": "ARRAY",
+                    "description": "Diet label. You can select multiple labels by holding shift and left-clicking all the labels needed.",
+                    "default": "[\n  \"balanced\"\n]"
+                },
+                {
+                    "name": "ingr",
+                    "type": "STRING",
+                    "description": "Filter by number of ingredients (MIN+, MIN-MAX, MAX), where MIN and MAX are integer numbers. Example: ingr=5-8",
+                    "default": ""
+                },
+                {
+                    "name": "dishType",
+                    "type": "ARRAY",
+                    "description": "The dish type a recipe belongs to",
+                    "default": "[\n  \"Biscuits and cookies\"\n]"
+                },
+                {
+                    "name": "nutrients[CHOCDF]",
+                    "type": "STRING",
+                    "description": "Carbohydrate, by difference. Unit: g. Input the range which is one of MIN+, MIN-MAX or MAX, where MIN and MAX are non-negative floating point numbers. <br> <br> See calcium for an example for how to fill in the range.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2\"\nquerystring = {\"co2EmissionsClass\": \"A+\", \"field\": \"[\\n  \\\"uri\\\"\\n]\", \"nutrients[ZN]\": \"\", \"nutrients[VITK1]\": \"\", \"nutrients[WATER]\": \"\", \"nutrients[VITD]\": \"\", \"nutrients[TOCPHA]\": \"\", \"nutrients[VITA_RAE]\": \"\", \"nutrients[VITB6A]\": \"\", \"nutrients[THIA]\": \"\", \"tag\": \"[]\", \"nutrients[VITC]\": \"\", \"nutrients[SUGAR.added]\": \"\", \"nutrients[P]\": \"\", \"nutrients[NIA]\": \"\", \"nutrients[NA]\": \"\", \"nutrients[SUGAR]\": \"\", \"nutrients[K]\": \"\", \"nutrients[MG]\": \"\", \"nutrients[Sugar.alcohol]\": \"\", \"nutrients[VITB12]\": \"\", \"nutrients[FOLAC]\": \"\", \"nutrients[FOLFD]\": \"\", \"nutrients[FASAT]\": \"\", \"nutrients[PROCNT]\": \"\", \"nutrients[FIBTG]\": \"\", \"nutrients[FAT]\": \"\", \"nutrients[FOLDFE]\": \"\", \"nutrients[FAPU]\": \"\", \"nutrients[FE]\": \"\", \"q\": \"\", \"nutrients[FAMS]\": \"\", \"nutrients[FATRN]\": \"\", \"beta\": true, \"type\": \"public\", \"glycemicIndex\": \"\", \"time\": \"\", \"random\": true, \"cuisineType\": \"[\\n  \\\"American\\\"\\n]\", \"nutrients[RIBF]\": \"\", \"imageSize\": \"[\\n  \\\"LARGE\\\"\\n]\", \"excluded\": \"[]\", \"nutrients[CA]\": \"\", \"nutrients[CHOLE]\": \"\", \"mealType\": \"[\\n  \\\"Breakfast\\\"\\n]\", \"nutrients[CHOCDF.net]\": \"\", \"calories\": \"\", \"nutrients[ENERC_KCAL]\": \"\", \"health\": \"[\\n  \\\"alcohol-cocktail\\\"\\n]\", \"diet\": \"[\\n  \\\"balanced\\\"\\n]\", \"ingr\": \"\", \"dishType\": \"[\\n  \\\"Biscuits and cookies\\\"\\n]\", \"nutrients[CHOCDF]\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"edamam-recipe-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2\"\nquerystring = {\"co2EmissionsClass\": \"A+\", \"field\": \"[\\n  \\\"uri\\\"\\n]\", \"nutrients[ZN]\": \"\", \"nutrients[VITK1]\": \"\", \"nutrients[WATER]\": \"\", \"nutrients[VITD]\": \"\", \"nutrients[TOCPHA]\": \"\", \"nutrients[VITA_RAE]\": \"\", \"nutrients[VITB6A]\": \"\", \"nutrients[THIA]\": \"\", \"tag\": \"[]\", \"nutrients[VITC]\": \"\", \"nutrients[SUGAR.added]\": \"\", \"nutrients[P]\": \"\", \"nutrients[NIA]\": \"\", \"nutrients[NA]\": \"\", \"nutrients[SUGAR]\": \"\", \"nutrients[K]\": \"\", \"nutrients[MG]\": \"\", \"nutrients[Sugar.alcohol]\": \"\", \"nutrients[VITB12]\": \"\", \"nutrients[FOLAC]\": \"\", \"nutrients[FOLFD]\": \"\", \"nutrients[FASAT]\": \"\", \"nutrients[PROCNT]\": \"\", \"nutrients[FIBTG]\": \"\", \"nutrients[FAT]\": \"\", \"nutrients[FOLDFE]\": \"\", \"nutrients[FAPU]\": \"\", \"nutrients[FE]\": \"\", \"q\": \"\", \"nutrients[FAMS]\": \"\", \"nutrients[FATRN]\": \"\", \"beta\": true, \"type\": \"public\", \"glycemicIndex\": \"\", \"time\": \"\", \"random\": true, \"cuisineType\": \"[\\n  \\\"American\\\"\\n]\", \"nutrients[RIBF]\": \"\", \"imageSize\": \"[\\n  \\\"LARGE\\\"\\n]\", \"excluded\": \"[]\", \"nutrients[CA]\": \"\", \"nutrients[CHOLE]\": \"\", \"mealType\": \"[\\n  \\\"Breakfast\\\"\\n]\", \"nutrients[CHOCDF.net]\": \"\", \"calories\": \"\", \"nutrients[ENERC_KCAL]\": \"\", \"health\": \"[\\n  \\\"alcohol-cocktail\\\"\\n]\", \"diet\": \"[\\n  \\\"balanced\\\"\\n]\", \"ingr\": \"\", \"dishType\": \"[\\n  \\\"Biscuits and cookies\\\"\\n]\", \"nutrients[CHOCDF]\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"edamam-recipe-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "/api/recipes/v2/by-uri",
+            "url": "https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2/by-uri",
+            "description": "Search for recipes by their URI. Note, that the API response doesn't directly indicate if there are missing recipes. Instead, you need to compare he URIs to see if any are missing.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Type of recipes to search for.",
+                    "default": "public"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "beta",
+                    "type": "BOOLEAN",
+                    "description": "Allow beta features in the request and response",
+                    "default": true
+                },
+                {
+                    "name": "uri",
+                    "type": "ARRAY",
+                    "description": "Recipe URIs",
+                    "default": "[]"
+                },
+                {
+                    "name": "field",
+                    "type": "ARRAY",
+                    "description": "Recipe fields to be included in the response.",
+                    "default": "[\n  \"uri\"\n]"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2/by-uri\"\nquerystring = {\"beta\": true, \"type\": \"public\", \"uri\": \"[]\", \"field\": \"[\\n  \\\"uri\\\"\\n]\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"edamam-recipe-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://edamam-recipe-search.p.rapidapi.com/api/recipes/v2/by-uri\"\nquerystring = {\"beta\": true, \"type\": \"public\", \"uri\": \"[]\", \"field\": \"[\\n  \\\"uri\\\"\\n]\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"edamam-recipe-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

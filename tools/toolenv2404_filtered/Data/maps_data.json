@@ -1,0 +1,761 @@
+{
+    "product_id": "api_efebfc3c-1e5c-4ca3-8ead-9b55f8e1d325",
+    "tool_description": "Don\u2019t hesitate to contact me on Telegram @AlexanderVikhorev or via email alexander.xbx@gmail.com \ud83d\ude03\n\nSearch and get local business information, reviews and photos from Google Maps. Geocoding and reverse geocoding is also available. \n\n",
+    "home_url": "https://rapidapi.com/alexanderxbx/api/maps-data/",
+    "name": "Maps Data",
+    "title": "Maps Data",
+    "pricing": "FREEMIUM",
+    "tool_name": "Maps Data",
+    "score": {
+        "avgServiceLevel": 99,
+        "avgLatency": 2648,
+        "avgSuccessRate": 99,
+        "popularityScore": 9.9,
+        "__typename": "Score"
+    },
+    "host": "maps-data.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "What is here?",
+            "url": "https://maps-data.p.rapidapi.com/whatishere.php",
+            "description": "Get information about address or local businesses by the geocode.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "lng",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "40.78230"
+                },
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "-73.50158"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://maps-data.p.rapidapi.com/whatishere.php\"\nquerystring = {\"country\": \"us\", \"lang\": \"en\", \"lng\": \"40.78230\", \"lat\": \"-73.50158\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"maps-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://maps-data.p.rapidapi.com/whatishere.php\"\nquerystring = {\"country\": \"us\", \"lang\": \"en\", \"lng\": \"40.78230\", \"lat\": \"-73.50158\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"maps-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Place info",
+            "url": "https://maps-data.p.rapidapi.com/place.php",
+            "description": "Gets the data of place info by it's business id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "business_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0x47f4eb87e91f866d:0x9629fabb993eb66"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "place_id",
+                    "type": "STRING",
+                    "description": "Google Place ID, has higher priority than business id and overwrites it.\n",
+                    "default": "ChIJk_grnPDq9EcRE7gOH9gAPZA"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "fr"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://maps-data.p.rapidapi.com/place.php\"\nquerystring = {\"place_id\": \"ChIJk_grnPDq9EcRE7gOH9gAPZA\", \"country\": \"fr\", \"lang\": \"en\", \"business_id\": \"0x47f4eb87e91f866d:0x9629fabb993eb66\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"maps-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://maps-data.p.rapidapi.com/place.php\"\nquerystring = {\"place_id\": \"ChIJk_grnPDq9EcRE7gOH9gAPZA\", \"country\": \"fr\", \"lang\": \"en\", \"business_id\": \"0x47f4eb87e91f866d:0x9629fabb993eb66\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"maps-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "business_id": {
+                                    "type": "string"
+                                },
+                                "phone_number": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "full_address": {
+                                    "type": "string"
+                                },
+                                "latitude": {
+                                    "type": "number"
+                                },
+                                "longitude": {
+                                    "type": "number"
+                                },
+                                "review_count": {
+                                    "type": "integer"
+                                },
+                                "rating": {
+                                    "type": "number"
+                                },
+                                "timezone": {
+                                    "type": "string"
+                                },
+                                "website": {
+                                    "type": "string"
+                                },
+                                "place_link": {
+                                    "type": "string"
+                                },
+                                "types": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "price_level": {
+                                    "type": "string"
+                                },
+                                "working_hours": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Sunday": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "Monday": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "Tuesday": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "Wednesday": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "Thursday": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "Friday": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "Saturday": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "state": {
+                                    "type": "string"
+                                },
+                                "photos": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "url": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "description": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Search Nearby",
+            "url": "https://maps-data.p.rapidapi.com/nearby.php",
+            "description": "Search Google maps for local business information.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "Latitude for the search point.",
+                    "default": "48.8577848"
+                },
+                {
+                    "name": "lng",
+                    "type": "NUMBER",
+                    "description": "Longtitude for the search point.",
+                    "default": "2.2888379"
+                },
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "cafe"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "maximum 500",
+                    "default": "20"
+                },
+                {
+                    "name": "zoom",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "12"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://maps-data.p.rapidapi.com/nearby.php\"\nquerystring = {\"offset\": \"0\", \"lat\": \"48.8577848\", \"lang\": \"en\", \"lng\": \"2.2888379\", \"query\": \"cafe\", \"limit\": \"20\", \"zoom\": \"12\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"maps-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://maps-data.p.rapidapi.com/nearby.php\"\nquerystring = {\"offset\": \"0\", \"lat\": \"48.8577848\", \"lang\": \"en\", \"lng\": \"2.2888379\", \"query\": \"cafe\", \"limit\": \"20\", \"zoom\": \"12\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"maps-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Search",
+            "url": "https://maps-data.p.rapidapi.com/searchmaps.php",
+            "description": "Search Google maps for local business information.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "restaurant"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "zoom",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "13"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0"
+                },
+                {
+                    "name": "lng",
+                    "type": "NUMBER",
+                    "description": "Longtitude for the search point.",
+                    "default": "0.12"
+                },
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "Latitude for the search point.",
+                    "default": "51.5072"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "maximum 500",
+                    "default": "20"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://maps-data.p.rapidapi.com/searchmaps.php\"\nquerystring = {\"zoom\": \"13\", \"offset\": \"0\", \"lng\": \"0.12\", \"lat\": \"51.5072\", \"limit\": \"20\", \"country\": \"us\", \"lang\": \"en\", \"query\": \"restaurant\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"maps-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://maps-data.p.rapidapi.com/searchmaps.php\"\nquerystring = {\"zoom\": \"13\", \"offset\": \"0\", \"lng\": \"0.12\", \"lat\": \"51.5072\", \"limit\": \"20\", \"country\": \"us\", \"lang\": \"en\", \"query\": \"restaurant\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"maps-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Geocoding",
+            "url": "https://maps-data.p.rapidapi.com/geocoding.php",
+            "description": "Get the coordinates of the place by the address query.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Place de la Navigation"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "fr"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://maps-data.p.rapidapi.com/geocoding.php\"\nquerystring = {\"country\": \"fr\", \"lang\": \"en\", \"query\": \"Place de la Navigation\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"maps-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://maps-data.p.rapidapi.com/geocoding.php\"\nquerystring = {\"country\": \"fr\", \"lang\": \"en\", \"query\": \"Place de la Navigation\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"maps-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Place photos",
+            "url": "https://maps-data.p.rapidapi.com/photos.php",
+            "description": "Get photos from google maps.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "business_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0x47e66e2964e34e2d:0x8ddca9ee380ef7e0"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://maps-data.p.rapidapi.com/photos.php\"\nquerystring = {\"country\": \"us\", \"lang\": \"en\", \"business_id\": \"0x47e66e2964e34e2d:0x8ddca9ee380ef7e0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"maps-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://maps-data.p.rapidapi.com/photos.php\"\nquerystring = {\"country\": \"us\", \"lang\": \"en\", \"business_id\": \"0x47e66e2964e34e2d:0x8ddca9ee380ef7e0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"maps-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "business_id": {
+                                "type": "string"
+                            },
+                            "phone_number": {
+                                "type": "null"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "full_address": {
+                                "type": "string"
+                            },
+                            "latitude": {
+                                "type": "number"
+                            },
+                            "longitude": {
+                                "type": "number"
+                            },
+                            "review_count": {
+                                "type": "integer"
+                            },
+                            "rating": {
+                                "type": "number"
+                            },
+                            "timezone": {
+                                "type": "string"
+                            },
+                            "website": {
+                                "type": "string"
+                            },
+                            "reviews_id1": {
+                                "type": "string"
+                            },
+                            "reviews_id2": {
+                                "type": "string"
+                            },
+                            "place_link": {
+                                "type": "string"
+                            },
+                            "types": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "price_level": {
+                                "type": "null"
+                            },
+                            "working_hours": {
+                                "type": "object",
+                                "properties": {
+                                    "Sunday": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "Monday": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "Tuesday": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "Wednesday": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "Thursday": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "Friday": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "Saturday": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "state": {
+                                "type": "string"
+                            },
+                            "photos": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "description": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Place reviews",
+            "url": "https://maps-data.p.rapidapi.com/reviews.php",
+            "description": "Gets the reviews of specific business.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "business_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0x47f4ea8ed352d3c5:0x7bb3bc00dfc039a9"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "place_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "cursor",
+                    "type": "STRING",
+                    "description": "The cursor value from the latest review you've got from previous response.\nExample: CAESBkVnSUlDdw==",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Maximum 20",
+                    "default": "20"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                },
+                {
+                    "name": "sort",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://maps-data.p.rapidapi.com/reviews.php\"\nquerystring = {\"place_id\": \"\", \"cursor\": \"\", \"limit\": \"20\", \"lang\": \"en\", \"sort\": \"\", \"business_id\": \"0x47f4ea8ed352d3c5:0x7bb3bc00dfc039a9\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"maps-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://maps-data.p.rapidapi.com/reviews.php\"\nquerystring = {\"place_id\": \"\", \"cursor\": \"\", \"limit\": \"20\", \"lang\": \"en\", \"sort\": \"\", \"business_id\": \"0x47f4ea8ed352d3c5:0x7bb3bc00dfc039a9\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"maps-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "business_id": {
+                                "type": "string"
+                            },
+                            "phone_number": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "full_address": {
+                                "type": "string"
+                            },
+                            "latitude": {
+                                "type": "number"
+                            },
+                            "longitude": {
+                                "type": "number"
+                            },
+                            "review_count": {
+                                "type": "integer"
+                            },
+                            "rating": {
+                                "type": "integer"
+                            },
+                            "timezone": {
+                                "type": "string"
+                            },
+                            "website": {
+                                "type": "string"
+                            },
+                            "reviews_id1": {
+                                "type": "string"
+                            },
+                            "reviews_id2": {
+                                "type": "string"
+                            },
+                            "place_link": {
+                                "type": "string"
+                            },
+                            "types": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "price_level": {
+                                "type": "string"
+                            },
+                            "working_hours": {
+                                "type": "object",
+                                "properties": {
+                                    "Sunday": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "Monday": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "Tuesday": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "Wednesday": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "Thursday": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "Friday": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "Saturday": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "state": {
+                                "type": "string"
+                            },
+                            "photos": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "description": {
+                                "type": "array"
+                            },
+                            "reviews": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "user_name": {
+                                            "type": "string"
+                                        },
+                                        "user_avatar": {
+                                            "type": "string"
+                                        },
+                                        "review_time": {
+                                            "type": "string"
+                                        },
+                                        "review_text": {
+                                            "type": "string"
+                                        },
+                                        "review_rate": {
+                                            "type": "integer"
+                                        },
+                                        "review_cursor": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "total_reviews": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

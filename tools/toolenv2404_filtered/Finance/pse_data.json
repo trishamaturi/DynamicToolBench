@@ -1,0 +1,65 @@
+{
+    "product_id": "api_42bdff80-37a8-4a11-bce2-28e54afc2d8c",
+    "tool_description": "An API showing Philippine Stock Exchange data",
+    "home_url": "https://rapidapi.com/aguilarufino-hyny_vLehW4/api/pse-data/",
+    "name": "PSE Data",
+    "title": "PSE Data",
+    "pricing": "FREEMIUM",
+    "tool_name": "PSE Data",
+    "score": null,
+    "host": "pse-data.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get PSE Company List",
+            "url": "https://pse-data.p.rapidapi.com/api/pse/getcompanies",
+            "description": "This endpoint will return all PSE listed companies.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://pse-data.p.rapidapi.com/api/pse/getcompanies\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"pse-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://pse-data.p.rapidapi.com/api/pse/getcompanies\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"pse-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get Company Chart Data",
+            "url": "https://pse-data.p.rapidapi.com/api/pse/getchartdata/29/146/01-01-2000/11-04-2021",
+            "description": "This endpoint will return Chart Data of the specified company for the specified period.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "security_id",
+                    "type": "string",
+                    "description": "",
+                    "default": "146"
+                },
+                {
+                    "name": "cmpy_id",
+                    "type": "string",
+                    "description": "",
+                    "default": "29"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "endDate",
+                    "type": "string",
+                    "description": "If endDate is not specified the default value would be the current date.",
+                    "default": "11-04-2021"
+                },
+                {
+                    "name": "startDate",
+                    "type": "string",
+                    "description": "If startDate is not specified the default would be endDate/currentDate - 1 year",
+                    "default": "01-01-2000"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://pse-data.p.rapidapi.com/api/pse/getchartdata/29/146/01-01-2000/11-04-2021\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"pse-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://pse-data.p.rapidapi.com/api/pse/getchartdata/{cmpy_id}/{security_id}/{startdate}/{enddate}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"pse-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

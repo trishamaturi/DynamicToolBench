@@ -1,0 +1,84 @@
+{
+    "product_id": "53aa5dc9e4b0f2c97547140b",
+    "tool_description": "This API consumes documents in various formats and outputs PNG or TIFF images of the pages. Input is via a multipart POST.\r\n\r\nImages of the pages can be retrieved individually using a session token. Options allow for specifying raster resolution and image quality.",
+    "home_url": "https://rapidapi.com/mazira/api/document-rasterizer-convert-pdf-ppt-etc-to-images/",
+    "name": "Document Rasterizer - convert PDF PPT etc to images",
+    "title": "Document Rasterizer - convert PDF PPT etc to images",
+    "pricing": "FREEMIUM",
+    "tool_name": "Document Rasterizer - convert PDF PPT etc to images",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 127386,
+        "avgSuccessRate": 0,
+        "popularityScore": 0,
+        "__typename": "Score"
+    },
+    "host": "mazira-rasterizer.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "document metadata",
+            "url": "https://mazira-rasterizer.p.rapidapi.com/11427-5723-srnpc9",
+            "description": "Used to retrieve information about document length and endpoints. Same information as returned from POST.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The document ID returned from the POST",
+                    "default": "11427-5723-srnpc9"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mazira-rasterizer.p.rapidapi.com/11427-5723-srnpc9\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mazira-rasterizer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mazira-rasterizer.p.rapidapi.com/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mazira-rasterizer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "rastered image",
+            "url": "https://mazira-rasterizer.p.rapidapi.com/11427-5723-srnpc9/1",
+            "description": "Used to generate an actual image of the specific page",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The document ID returned from POST",
+                    "default": "11427-5723-srnpc9"
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "The document page number to rasterize",
+                    "default": "1"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "The desired image file format. Defaults to png24.",
+                    "default": "png24, png8, tiff24"
+                },
+                {
+                    "name": "res",
+                    "type": "NUMBER",
+                    "description": "The rasterization resolution, in pixels-per-inch. For example, a PDF that is 8.5 inches wide, rasterized at 72 PPI, will produce an image 612 pixels wide. Default value is 72.",
+                    "default": "120"
+                },
+                {
+                    "name": "quality",
+                    "type": "NUMBER",
+                    "description": "An integer indicating the rasterization quality images, but longer processing time. Defaults to 1.",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mazira-rasterizer.p.rapidapi.com/11427-5723-srnpc9/1\"\nquerystring = {\"format\": \"png24, png8, tiff24\", \"res\": \"120\", \"quality\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mazira-rasterizer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mazira-rasterizer.p.rapidapi.com/{id}/{page}\"\nquerystring = {\"format\": \"png24, png8, tiff24\", \"res\": \"120\", \"quality\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mazira-rasterizer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

@@ -1,0 +1,815 @@
+{
+    "product_id": "api_dea82954-ee2a-4af7-985a-2189c7cbad32",
+    "tool_description": "ComplianceSphere offers real-time sanctions, PEPs and AML watch list screening using global lists. Access accurate and structured information to help you meet your KYC and third-party due diligence screening obligations.",
+    "home_url": "https://rapidapi.com/compliancesphere1-compliancesphere-default/api/compliancesphere/",
+    "name": "ComplianceSphere",
+    "title": "ComplianceSphere",
+    "pricing": "FREEMIUM",
+    "tool_name": "ComplianceSphere",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 61286,
+        "avgSuccessRate": 0,
+        "popularityScore": 0,
+        "__typename": "Score"
+    },
+    "host": "compliancesphere.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Reconciliation manifest",
+            "url": "https://compliancesphere.p.rapidapi.com/reconcile/{dataset}",
+            "description": "Reconciliation API, emulates Google Refine API. This endpoint can be used\nto bulk match entities against the system using an end-user application like\n[OpenRefine](https://openrefine.org). The reconciliation API uses the same\nsearch and matching functions as the matching API and will also produce\nscores that reflect additional properties like country or date of birth, if\nspecified.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "dataset",
+                    "type": "STRING",
+                    "description": "Data source or collection name to be queries",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://compliancesphere.p.rapidapi.com/reconcile/{dataset}\"\nquerystring = {\"dataset\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"compliancesphere.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://compliancesphere.p.rapidapi.com/reconcile/{dataset}\"\nquerystring = {\"dataset\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"compliancesphere.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Data catalog",
+            "url": "https://compliancesphere.p.rapidapi.com/catalog",
+            "description": "Return the service manifest, which includes a list of all indexed datasets.\n\nThe manifest is the configuration file of the yente service. It specifies what\ndata sources are included, and how often they should be loaded.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://compliancesphere.p.rapidapi.com/catalog\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"compliancesphere.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://compliancesphere.p.rapidapi.com/catalog\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"compliancesphere.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "datasets": {
+                        "items": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "title": "Name"
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "title": "Title"
+                                },
+                                "summary": {
+                                    "anyOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "null"
+                                        }
+                                    ],
+                                    "title": "Summary"
+                                },
+                                "url": {
+                                    "anyOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "null"
+                                        }
+                                    ],
+                                    "title": "Url"
+                                },
+                                "load": {
+                                    "type": "boolean",
+                                    "title": "Load"
+                                },
+                                "entities_url": {
+                                    "anyOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "null"
+                                        }
+                                    ],
+                                    "title": "Entities Url"
+                                },
+                                "version": {
+                                    "type": "string",
+                                    "title": "Version"
+                                },
+                                "index_version": {
+                                    "anyOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "null"
+                                        }
+                                    ],
+                                    "title": "Index Version"
+                                },
+                                "index_current": {
+                                    "type": "boolean",
+                                    "title": "Index Current",
+                                    "default": false
+                                },
+                                "children": {
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "type": "array",
+                                    "title": "Children"
+                                }
+                            },
+                            "type": "object",
+                            "required": [
+                                "name",
+                                "title",
+                                "load",
+                                "version",
+                                "children"
+                            ],
+                            "title": "DatasetModel"
+                        },
+                        "type": "array",
+                        "title": "Datasets"
+                    },
+                    "current": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Current"
+                    },
+                    "outdated": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Outdated"
+                    },
+                    "index_stale": {
+                        "type": "boolean",
+                        "title": "Index Stale",
+                        "default": false
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "datasets",
+                    "current",
+                    "outdated"
+                ],
+                "title": "DataCatalogModel"
+            }
+        },
+        {
+            "name": "Fetch Entity",
+            "url": "https://compliancesphere.p.rapidapi.com/entities/{entity_id}",
+            "description": "Retrieve a single entity by its ID. The entity will be returned in\nfull, with data from all datasets and with nested entities (adjacent\npassport, sanction and associated entities) included. If the entity ID\nhas been merged into a different canonical entity, an HTTP redirect will\nbe triggered.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "entity_id",
+                    "type": "STRING",
+                    "description": "ID of the entity to retrieve",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "nested",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "true"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://compliancesphere.p.rapidapi.com/entities/{entity_id}\"\nquerystring = {\"nested\": \"true\", \"entity_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"compliancesphere.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://compliancesphere.p.rapidapi.com/entities/{entity_id}\"\nquerystring = {\"nested\": \"true\", \"entity_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"compliancesphere.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "title": "Id",
+                        "examples": [
+                            "NK-A7z...."
+                        ]
+                    },
+                    "caption": {
+                        "type": "string",
+                        "title": "Caption",
+                        "examples": [
+                            "John Doe"
+                        ]
+                    },
+                    "schema": {
+                        "type": "string",
+                        "title": "Schema",
+                        "examples": [
+                            "LegalEntity"
+                        ]
+                    },
+                    "properties": {
+                        "additionalProperties": {
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "description": "**Omitted**"
+                                    }
+                                ]
+                            },
+                            "type": "array"
+                        },
+                        "type": "object",
+                        "title": "Properties",
+                        "examples": [
+                            {
+                                "name": [
+                                    "John Doe"
+                                ]
+                            }
+                        ]
+                    },
+                    "datasets": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Datasets",
+                        "default": [],
+                        "examples": [
+                            [
+                                "us_ofac_sdn"
+                            ]
+                        ]
+                    },
+                    "referents": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array",
+                        "title": "Referents",
+                        "default": [],
+                        "examples": [
+                            [
+                                "ofac-1234"
+                            ]
+                        ]
+                    },
+                    "target": {
+                        "type": "boolean",
+                        "title": "Target",
+                        "default": false
+                    },
+                    "first_seen": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "First Seen",
+                        "examples": [
+                            "2024-01-28T17:14:25.993733"
+                        ]
+                    },
+                    "last_seen": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Last Seen",
+                        "examples": [
+                            "2024-01-28T17:14:25.993789"
+                        ]
+                    },
+                    "last_change": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Last Change",
+                        "examples": [
+                            "2024-01-28T17:14:25.993815"
+                        ]
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "caption",
+                    "schema",
+                    "properties"
+                ],
+                "title": "EntityResponse"
+            }
+        },
+        {
+            "name": "Search index readiness check",
+            "url": "https://compliancesphere.p.rapidapi.com/readyz",
+            "description": "Search index health check. This is used to know if the service has completed\nits index building.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://compliancesphere.p.rapidapi.com/readyz\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"compliancesphere.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://compliancesphere.p.rapidapi.com/readyz\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"compliancesphere.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "title": "Status",
+                        "default": "ok"
+                    }
+                },
+                "type": "object",
+                "title": "StatusResponse"
+            }
+        },
+        {
+            "name": "Simple entity search",
+            "url": "https://compliancesphere.p.rapidapi.com/search/{dataset}",
+            "description": "Search endpoint for matching entities based on a simple piece of text, e.g.\na name. This can be used to implement a simple, user-facing search. For proper\nentity matching, the multi-property matching API should be used instead.\n\nSearch queries can include field-specific fitlers, wildcards and fuzzy searches.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "dataset",
+                    "type": "STRING",
+                    "description": "Data source or collection name to be queries",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "topics",
+                    "type": "ARRAY",
+                    "description": "",
+                    "default": "[]"
+                },
+                {
+                    "name": "exclude_dataset",
+                    "type": "ARRAY",
+                    "description": "",
+                    "default": "[]"
+                },
+                {
+                    "name": "simple",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "false"
+                },
+                {
+                    "name": "countries",
+                    "type": "ARRAY",
+                    "description": "",
+                    "default": "[]"
+                },
+                {
+                    "name": "exclude_schema",
+                    "type": "ARRAY",
+                    "description": "",
+                    "default": "[]"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0"
+                },
+                {
+                    "name": "sort",
+                    "type": "ARRAY",
+                    "description": "",
+                    "default": "[]"
+                },
+                {
+                    "name": "schema",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Thing"
+                },
+                {
+                    "name": "datasets",
+                    "type": "ARRAY",
+                    "description": "",
+                    "default": "[]"
+                },
+                {
+                    "name": "target",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "{}"
+                },
+                {
+                    "name": "fuzzy",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "false"
+                },
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "changed_since",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "{}"
+                },
+                {
+                    "name": "facets",
+                    "type": "ARRAY",
+                    "description": "",
+                    "default": "[\"countries\",\"topics\",\"datasets\"]"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://compliancesphere.p.rapidapi.com/search/{dataset}\"\nquerystring = {\"topics\": \"[]\", \"exclude_dataset\": \"[]\", \"simple\": \"false\", \"countries\": \"[]\", \"exclude_schema\": \"[]\", \"offset\": \"0\", \"sort\": \"[]\", \"dataset\": \"\", \"schema\": \"Thing\", \"datasets\": \"[]\", \"target\": \"{}\", \"fuzzy\": \"false\", \"q\": \"\", \"changed_since\": \"{}\", \"facets\": \"[\\\"countries\\\",\\\"topics\\\",\\\"datasets\\\"]\", \"limit\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"compliancesphere.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://compliancesphere.p.rapidapi.com/search/{dataset}\"\nquerystring = {\"topics\": \"[]\", \"exclude_dataset\": \"[]\", \"simple\": \"false\", \"countries\": \"[]\", \"exclude_schema\": \"[]\", \"offset\": \"0\", \"sort\": \"[]\", \"dataset\": \"\", \"schema\": \"Thing\", \"datasets\": \"[]\", \"target\": \"{}\", \"fuzzy\": \"false\", \"q\": \"\", \"changed_since\": \"{}\", \"facets\": \"[\\\"countries\\\",\\\"topics\\\",\\\"datasets\\\"]\", \"limit\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"compliancesphere.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "limit": {
+                        "type": "integer",
+                        "title": "Limit",
+                        "examples": [
+                            20
+                        ]
+                    },
+                    "offset": {
+                        "type": "integer",
+                        "title": "Offset",
+                        "default": 0,
+                        "examples": [
+                            0
+                        ]
+                    },
+                    "total": {
+                        "properties": {
+                            "value": {
+                                "type": "integer",
+                                "title": "Value",
+                                "examples": [
+                                    42
+                                ]
+                            },
+                            "relation": {
+                                "type": "string",
+                                "title": "Relation",
+                                "default": "eq",
+                                "examples": [
+                                    "eq"
+                                ]
+                            }
+                        },
+                        "type": "object",
+                        "required": [
+                            "value"
+                        ],
+                        "title": "TotalSpec"
+                    },
+                    "results": {
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "title": "Id",
+                                    "examples": [
+                                        "NK-A7z...."
+                                    ]
+                                },
+                                "caption": {
+                                    "type": "string",
+                                    "title": "Caption",
+                                    "examples": [
+                                        "John Doe"
+                                    ]
+                                },
+                                "schema": {
+                                    "type": "string",
+                                    "title": "Schema",
+                                    "examples": [
+                                        "LegalEntity"
+                                    ]
+                                },
+                                "properties": {
+                                    "additionalProperties": {
+                                        "items": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "string"
+                                                },
+                                                {
+                                                    "description": "**Omitted**"
+                                                }
+                                            ]
+                                        },
+                                        "type": "array"
+                                    },
+                                    "type": "object",
+                                    "title": "Properties",
+                                    "examples": [
+                                        {
+                                            "name": [
+                                                "John Doe"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "datasets": {
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "type": "array",
+                                    "title": "Datasets",
+                                    "default": [],
+                                    "examples": [
+                                        [
+                                            "us_ofac_sdn"
+                                        ]
+                                    ]
+                                },
+                                "referents": {
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "type": "array",
+                                    "title": "Referents",
+                                    "default": [],
+                                    "examples": [
+                                        [
+                                            "ofac-1234"
+                                        ]
+                                    ]
+                                },
+                                "target": {
+                                    "type": "boolean",
+                                    "title": "Target",
+                                    "default": false
+                                },
+                                "first_seen": {
+                                    "anyOf": [
+                                        {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        {
+                                            "type": "null"
+                                        }
+                                    ],
+                                    "title": "First Seen",
+                                    "examples": [
+                                        "2024-01-28T17:14:25.993733"
+                                    ]
+                                },
+                                "last_seen": {
+                                    "anyOf": [
+                                        {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        {
+                                            "type": "null"
+                                        }
+                                    ],
+                                    "title": "Last Seen",
+                                    "examples": [
+                                        "2024-01-28T17:14:25.993789"
+                                    ]
+                                },
+                                "last_change": {
+                                    "anyOf": [
+                                        {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        {
+                                            "type": "null"
+                                        }
+                                    ],
+                                    "title": "Last Change",
+                                    "examples": [
+                                        "2024-01-28T17:14:25.993815"
+                                    ]
+                                }
+                            },
+                            "type": "object",
+                            "required": [
+                                "id",
+                                "caption",
+                                "schema",
+                                "properties"
+                            ],
+                            "title": "EntityResponse"
+                        },
+                        "type": "array",
+                        "title": "Results"
+                    },
+                    "facets": {
+                        "additionalProperties": {
+                            "properties": {
+                                "label": {
+                                    "type": "string",
+                                    "title": "Label",
+                                    "examples": [
+                                        "Countries"
+                                    ]
+                                },
+                                "values": {
+                                    "items": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "title": "Name",
+                                                "examples": [
+                                                    "ru"
+                                                ]
+                                            },
+                                            "label": {
+                                                "type": "string",
+                                                "title": "Label",
+                                                "examples": [
+                                                    "Russia"
+                                                ]
+                                            },
+                                            "count": {
+                                                "type": "integer",
+                                                "title": "Count",
+                                                "default": 1,
+                                                "examples": [
+                                                    42
+                                                ]
+                                            }
+                                        },
+                                        "type": "object",
+                                        "required": [
+                                            "name",
+                                            "label"
+                                        ],
+                                        "title": "SearchFacetItem"
+                                    },
+                                    "type": "array",
+                                    "title": "Values"
+                                }
+                            },
+                            "type": "object",
+                            "required": [
+                                "label",
+                                "values"
+                            ],
+                            "title": "SearchFacet"
+                        },
+                        "type": "object",
+                        "title": "Facets"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "limit",
+                    "total",
+                    "results",
+                    "facets"
+                ],
+                "title": "SearchResponse"
+            }
+        },
+        {
+            "name": "Algorithms",
+            "url": "https://compliancesphere.p.rapidapi.com/algorithms",
+            "description": "Return a list of the supported matching/scoring algorithms used by the matching\nendpoint.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://compliancesphere.p.rapidapi.com/algorithms\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"compliancesphere.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://compliancesphere.p.rapidapi.com/algorithms\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"compliancesphere.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "algorithms": {
+                        "items": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "title": "Name"
+                                },
+                                "description": {
+                                    "anyOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "null"
+                                        }
+                                    ],
+                                    "title": "Description"
+                                },
+                                "features": {
+                                    "additionalProperties": {
+                                        "properties": {
+                                            "description": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string"
+                                                    },
+                                                    {
+                                                        "type": "null"
+                                                    }
+                                                ],
+                                                "title": "Description"
+                                            },
+                                            "coefficient": {
+                                                "type": "number",
+                                                "title": "Coefficient"
+                                            },
+                                            "url": {
+                                                "type": "string",
+                                                "title": "Url"
+                                            }
+                                        },
+                                        "type": "object",
+                                        "required": [
+                                            "description",
+                                            "coefficient",
+                                            "url"
+                                        ],
+                                        "title": "FeatureDoc",
+                                        "description": "Documentation for a particular feature in the matching API model."
+                                    },
+                                    "type": "object",
+                                    "title": "Features"
+                                }
+                            },
+                            "type": "object",
+                            "required": [
+                                "name",
+                                "features"
+                            ],
+                            "title": "Algorithm"
+                        },
+                        "type": "array",
+                        "title": "Algorithms"
+                    },
+                    "default": {
+                        "type": "string",
+                        "title": "Default"
+                    },
+                    "best": {
+                        "type": "string",
+                        "title": "Best"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "algorithms",
+                    "default",
+                    "best"
+                ],
+                "title": "AlgorithmResponse"
+            }
+        },
+        {
+            "name": "Health check",
+            "url": "https://compliancesphere.p.rapidapi.com/healthz",
+            "description": "No-op basic health check. This is used by cluster management systems like\nKubernetes to verify the service is responsive.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://compliancesphere.p.rapidapi.com/healthz\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"compliancesphere.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://compliancesphere.p.rapidapi.com/healthz\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"compliancesphere.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

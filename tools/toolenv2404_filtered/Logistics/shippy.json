@@ -1,0 +1,163 @@
+{
+    "product_id": "api_558591e2-05be-4e22-9a9a-53b68ae43352",
+    "tool_description": "Inquire Trade and Transport locations by UN/LOCODE. Find nearest locations from latitude and longitude coordinates.",
+    "home_url": "https://rapidapi.com/lropero/api/shippy/",
+    "name": "Shippy",
+    "title": "Shippy",
+    "pricing": "FREEMIUM",
+    "tool_name": "Shippy",
+    "score": null,
+    "host": "shippy.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Nearest",
+            "url": "https://shippy.p.rapidapi.com/nearest/41.88/-87.63/5",
+            "description": "Get nearest location from latitude and longitude.\n- To retrieve multiple nearby locations add a limit to the request path (max value 20).\n- To filter by function send a query param with a comma-separated string, valid options are `airport`, `border`, `fixed`, `inland`, `port`, `postal`, `rail`, `road`, `unknown`.\n\nNote: `distance` expressed in km, calculation is geodesic.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "41.88"
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "-87.63"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "function",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "airport,postal,rail"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "5"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://shippy.p.rapidapi.com/nearest/41.88/-87.63/5\"\nquerystring = {\"function\": \"airport,postal,rail\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shippy.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shippy.p.rapidapi.com/nearest/{latitude}/{longitude}/{limit}\"\nquerystring = {\"function\": \"airport,postal,rail\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shippy.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "locode": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "function": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "subdivision": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "coordinates": {
+                            "type": "object",
+                            "properties": {
+                                "lat": {
+                                    "type": "number"
+                                },
+                                "lng": {
+                                    "type": "number"
+                                }
+                            }
+                        },
+                        "status": {
+                            "type": "string"
+                        },
+                        "updated": {
+                            "type": "string"
+                        },
+                        "distance": {
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Info",
+            "url": "https://shippy.p.rapidapi.com/info/AREZE",
+            "description": "Get location information for specific LOCODE.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "locode",
+                    "type": "string",
+                    "description": "",
+                    "default": "AREZE"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://shippy.p.rapidapi.com/info/AREZE\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shippy.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://shippy.p.rapidapi.com/info/{locode}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"shippy.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "function": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "subdivision": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "coordinates": {
+                        "type": "object",
+                        "properties": {
+                            "lat": {
+                                "type": "number"
+                            },
+                            "lng": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "updated": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    ]
+}

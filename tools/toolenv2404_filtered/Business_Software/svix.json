@@ -1,0 +1,1059 @@
+{
+    "product_id": "api_16c8830d-71af-4af5-aba8-0ef86b89ed6a",
+    "tool_description": "Webhooks as a Service. Build a secure, reliable, scalable webhooks service with Svix Webhooks API.",
+    "home_url": "https://rapidapi.com/Svix/api/svix1/",
+    "name": "Svix",
+    "title": "Svix",
+    "pricing": "FREE",
+    "tool_name": "Svix",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 898,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.1,
+        "__typename": "Score"
+    },
+    "host": "svix1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "list_messages_api_v1_app__app_id__msg__get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/msg/",
+            "description": "List all of the application's messages.\n\nThe `before` parameter lets you filter all items created before a certain date and is ignored if an iterator is passed.\nThe `after` parameter lets you filter all items created after a certain date and is ignored if an iterator is passed.\n`before` and `after` cannot be used simultaneously.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "app_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "app_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "after",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "before",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "channel",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "project_1337"
+                },
+                {
+                    "name": "event_types",
+                    "type": "ARRAY",
+                    "description": "",
+                    "default": "[\n  \"user.signup\"\n]"
+                },
+                {
+                    "name": "iterator",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 50
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/msg/\"\nquerystring = {\"after\": \"\", \"before\": \"\", \"channel\": \"project_1337\", \"event_types\": \"[\\n  \\\"user.signup\\\"\\n]\", \"iterator\": \"msg_1srOrx2ZWZBpBUvZwXKQmoEYga2\", \"limit\": 50}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/{app_id}/msg/\"\nquerystring = {\"after\": \"\", \"before\": \"\", \"channel\": \"project_1337\", \"event_types\": \"[\\n  \\\"user.signup\\\"\\n]\", \"iterator\": \"msg_1srOrx2ZWZBpBUvZwXKQmoEYga2\", \"limit\": 50}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "get_application_api_v1_app__app_id___get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/",
+            "description": "Get an application.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "app_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "app_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/{app_id}/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "title": "ApplicationOut",
+                "required": [
+                    "name",
+                    "id",
+                    "createdAt",
+                    "updatedAt"
+                ],
+                "type": "object",
+                "properties": {
+                    "uid": {
+                        "title": "Uid",
+                        "maxLength": 256,
+                        "minLength": 1,
+                        "pattern": "^[a-zA-Z0-9\\-_.]+$",
+                        "type": "string",
+                        "description": "Optional unique identifier for the application"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "rateLimit": {
+                        "title": "Ratelimit",
+                        "exclusiveMinimum": false,
+                        "type": "integer"
+                    },
+                    "id": {
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "title": "Createdat",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "title": "Updatedat",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            }
+        },
+        {
+            "name": "get_integration_key_api_v1_app__app_id__integration__integ_id__key__get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/integration/integ_1srOrx2ZWZBpBUvZwXKQmoEYga2/key/",
+            "description": "Get an integration's key.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "app_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "app_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "integ_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "integ_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/integration/integ_1srOrx2ZWZBpBUvZwXKQmoEYga2/key/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/{app_id}/integration/{integ_id}/key/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "get_attempt_api_v1_app__app_id__msg__msg_id__attempt__attempt_id___get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/msg/msg_1srOrx2ZWZBpBUvZwXKQmoEYga2/attempt/atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2/",
+            "description": "`msg_id`: Use a message id or a message `eventId`",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "app_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "app_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "attempt_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "msg_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/msg/msg_1srOrx2ZWZBpBUvZwXKQmoEYga2/attempt/atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/{app_id}/msg/{msg_id}/attempt/{attempt_id}/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "list_attempts_by_msg_api_v1_app__app_id__attempt_msg__msg_id___get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/attempt/msg/msg_1srOrx2ZWZBpBUvZwXKQmoEYga2/",
+            "description": "List attempts by message id",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "msg_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "app_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "app_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "event_types",
+                    "type": "ARRAY",
+                    "description": "",
+                    "default": "[\n  \"user.signup\"\n]"
+                },
+                {
+                    "name": "after",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 50
+                },
+                {
+                    "name": "status_code_class",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "before",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "channel",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "project_1337"
+                },
+                {
+                    "name": "endpoint_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "ep_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "status",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "iterator",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/attempt/msg/msg_1srOrx2ZWZBpBUvZwXKQmoEYga2/\"\nquerystring = {\"event_types\": \"[\\n  \\\"user.signup\\\"\\n]\", \"after\": \"\", \"limit\": 50, \"status_code_class\": \"\", \"before\": \"\", \"channel\": \"project_1337\", \"endpoint_id\": \"ep_1srOrx2ZWZBpBUvZwXKQmoEYga2\", \"status\": \"\", \"iterator\": \"atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/{app_id}/attempt/msg/{msg_id}/\"\nquerystring = {\"event_types\": \"[\\n  \\\"user.signup\\\"\\n]\", \"after\": \"\", \"limit\": 50, \"status_code_class\": \"\", \"before\": \"\", \"channel\": \"project_1337\", \"endpoint_id\": \"ep_1srOrx2ZWZBpBUvZwXKQmoEYga2\", \"status\": \"\", \"iterator\": \"atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "list_attempts_for_endpoint_api_v1_app__app_id__msg__msg_id__endpoint__endpoint_id__attempt__get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/msg/msg_1srOrx2ZWZBpBUvZwXKQmoEYga2/endpoint/ep_1srOrx2ZWZBpBUvZwXKQmoEYga2/attempt/",
+            "description": "DEPRECATED: please use list_attempts with endpoint_id as a query parameter instead.\n\nList the message attempts for a particular endpoint.\n\nReturning the endpoint.\n\nThe `before` parameter lets you filter all items created before a certain date and is ignored if an iterator is passed.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "endpoint_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "ep_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "msg_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "app_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "app_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "channel",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "project_1337"
+                },
+                {
+                    "name": "status",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "after",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "before",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "event_types",
+                    "type": "ARRAY",
+                    "description": "",
+                    "default": "[\n  \"user.signup\"\n]"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 50
+                },
+                {
+                    "name": "iterator",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/msg/msg_1srOrx2ZWZBpBUvZwXKQmoEYga2/endpoint/ep_1srOrx2ZWZBpBUvZwXKQmoEYga2/attempt/\"\nquerystring = {\"channel\": \"project_1337\", \"status\": \"\", \"after\": \"\", \"before\": \"\", \"event_types\": \"[\\n  \\\"user.signup\\\"\\n]\", \"limit\": 50, \"iterator\": \"atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/{app_id}/msg/{msg_id}/endpoint/{endpoint_id}/attempt/\"\nquerystring = {\"channel\": \"project_1337\", \"status\": \"\", \"after\": \"\", \"before\": \"\", \"event_types\": \"[\\n  \\\"user.signup\\\"\\n]\", \"limit\": 50, \"iterator\": \"atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "get_message_api_v1_app__app_id__msg__msg_id___get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/msg/msg_1srOrx2ZWZBpBUvZwXKQmoEYga2/",
+            "description": "Get a message by its ID or eventID.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "msg_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "app_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "app_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/msg/msg_1srOrx2ZWZBpBUvZwXKQmoEYga2/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/{app_id}/msg/{msg_id}/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "list_attempted_messages_api_v1_app__app_id__endpoint__endpoint_id__msg__get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/endpoint/ep_1srOrx2ZWZBpBUvZwXKQmoEYga2/msg/",
+            "description": "List messages for a particular endpoint. Additionally includes metadata about the latest message attempt.\n\nThe `before` parameter lets you filter all items created before a certain date and is ignored if an iterator is passed.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "app_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "app_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "endpoint_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "ep_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "before",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "after",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "iterator",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "status",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "channel",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "project_1337"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 50
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/endpoint/ep_1srOrx2ZWZBpBUvZwXKQmoEYga2/msg/\"\nquerystring = {\"before\": \"\", \"after\": \"\", \"iterator\": \"msg_1srOrx2ZWZBpBUvZwXKQmoEYga2\", \"status\": \"\", \"channel\": \"project_1337\", \"limit\": 50}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/{app_id}/endpoint/{endpoint_id}/msg/\"\nquerystring = {\"before\": \"\", \"after\": \"\", \"iterator\": \"msg_1srOrx2ZWZBpBUvZwXKQmoEYga2\", \"status\": \"\", \"channel\": \"project_1337\", \"limit\": 50}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "list_attempted_destinations_api_v1_app__app_id__msg__msg_id__endpoint__get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/msg/msg_1srOrx2ZWZBpBUvZwXKQmoEYga2/endpoint/",
+            "description": "`msg_id`: Use a message id or a message `eventId`",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "msg_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "app_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "app_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 50
+                },
+                {
+                    "name": "iterator",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "msgep_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/msg/msg_1srOrx2ZWZBpBUvZwXKQmoEYga2/endpoint/\"\nquerystring = {\"limit\": 50, \"iterator\": \"msgep_1srOrx2ZWZBpBUvZwXKQmoEYga2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/{app_id}/msg/{msg_id}/endpoint/\"\nquerystring = {\"limit\": 50, \"iterator\": \"msgep_1srOrx2ZWZBpBUvZwXKQmoEYga2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "get_integration_api_v1_app__app_id__integration__integ_id___get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/integration/integ_1srOrx2ZWZBpBUvZwXKQmoEYga2/",
+            "description": "Get an integration.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "app_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "app_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "integ_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "integ_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/integration/integ_1srOrx2ZWZBpBUvZwXKQmoEYga2/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/{app_id}/integration/{integ_id}/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "list_attempts_api_v1_app__app_id__msg__msg_id__attempt__get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/msg/msg_1srOrx2ZWZBpBUvZwXKQmoEYga2/attempt/",
+            "description": "Deprecated: Please use \"List Attempts by Endpoint\" and \"List Attempts by Msg\" instead.\n\n`msg_id`: Use a message id or a message `eventId`",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "msg_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "app_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "app_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "channel",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "project_1337"
+                },
+                {
+                    "name": "before",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "status",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "endpoint_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "ep_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "iterator",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 50
+                },
+                {
+                    "name": "event_types",
+                    "type": "ARRAY",
+                    "description": "",
+                    "default": "[\n  \"user.signup\"\n]"
+                },
+                {
+                    "name": "after",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/msg/msg_1srOrx2ZWZBpBUvZwXKQmoEYga2/attempt/\"\nquerystring = {\"channel\": \"project_1337\", \"before\": \"\", \"status\": \"\", \"endpoint_id\": \"ep_1srOrx2ZWZBpBUvZwXKQmoEYga2\", \"iterator\": \"atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2\", \"limit\": 50, \"event_types\": \"[\\n  \\\"user.signup\\\"\\n]\", \"after\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/{app_id}/msg/{msg_id}/attempt/\"\nquerystring = {\"channel\": \"project_1337\", \"before\": \"\", \"status\": \"\", \"endpoint_id\": \"ep_1srOrx2ZWZBpBUvZwXKQmoEYga2\", \"iterator\": \"atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2\", \"limit\": 50, \"event_types\": \"[\\n  \\\"user.signup\\\"\\n]\", \"after\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "title": "ListResponse[MessageAttemptOut]",
+                "required": [
+                    "data",
+                    "done"
+                ],
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "type": "array",
+                        "items": {
+                            "title": "MessageAttemptOut",
+                            "required": [
+                                "id",
+                                "msgId",
+                                "endpointId",
+                                "response",
+                                "responseStatusCode",
+                                "timestamp",
+                                "status",
+                                "triggerType"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "title": "Id",
+                                    "type": "string"
+                                },
+                                "msgId": {
+                                    "title": "Msgid",
+                                    "type": "string"
+                                },
+                                "endpointId": {
+                                    "title": "Endpointid",
+                                    "type": "string"
+                                },
+                                "response": {
+                                    "title": "Response",
+                                    "type": "string"
+                                },
+                                "responseStatusCode": {
+                                    "title": "Responsestatuscode",
+                                    "type": "integer"
+                                },
+                                "timestamp": {
+                                    "title": "Timestamp",
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                "status": {
+                                    "title": "MessageStatus",
+                                    "enum": [
+                                        0,
+                                        1,
+                                        2,
+                                        3
+                                    ],
+                                    "type": "integer",
+                                    "description": "The sending status of the message:\n- Success = 0\n- Pending = 1\n- Fail = 2\n- Sending = 3",
+                                    "x-enum-varnames": [
+                                        "Success",
+                                        "Pending",
+                                        "Fail",
+                                        "Sending"
+                                    ]
+                                },
+                                "triggerType": {
+                                    "title": "MessageAttemptTriggerType",
+                                    "enum": [
+                                        0,
+                                        1
+                                    ],
+                                    "type": "integer",
+                                    "description": "The reason an attempt was made:\n- Scheduled = 0\n- Manual = 1",
+                                    "x-enum-varnames": [
+                                        "Scheduled",
+                                        "Manual"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "iterator": {
+                        "title": "Iterator",
+                        "type": "string"
+                    },
+                    "prevIterator": {
+                        "title": "Previterator",
+                        "type": "string"
+                    },
+                    "done": {
+                        "title": "Done",
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        {
+            "name": "get_endpoint_secret_api_v1_app__app_id__endpoint__endpoint_id__secret__get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/endpoint/ep_1srOrx2ZWZBpBUvZwXKQmoEYga2/secret/",
+            "description": "Get the endpoint's signing secret.\n\nThis is used to verify the authenticity of the webhook.\nFor more information please refer to [the consuming webhooks docs](https://docs.svix.com/consuming-webhooks/).",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "app_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "app_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "endpoint_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "ep_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/endpoint/ep_1srOrx2ZWZBpBUvZwXKQmoEYga2/secret/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/{app_id}/endpoint/{endpoint_id}/secret/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "list_attempts_by_endpoint_api_v1_app__app_id__attempt_endpoint__endpoint_id___get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/attempt/endpoint/ep_1srOrx2ZWZBpBUvZwXKQmoEYga2/",
+            "description": "List attempts by endpoint id",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "endpoint_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "ep_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "app_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "app_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "iterator",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "status",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "status_code_class",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 50
+                },
+                {
+                    "name": "after",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "before",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "channel",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "project_1337"
+                },
+                {
+                    "name": "event_types",
+                    "type": "ARRAY",
+                    "description": "",
+                    "default": "[\n  \"user.signup\"\n]"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/attempt/endpoint/ep_1srOrx2ZWZBpBUvZwXKQmoEYga2/\"\nquerystring = {\"iterator\": \"atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2\", \"status\": \"\", \"status_code_class\": \"\", \"limit\": 50, \"after\": \"\", \"before\": \"\", \"channel\": \"project_1337\", \"event_types\": \"[\\n  \\\"user.signup\\\"\\n]\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/{app_id}/attempt/endpoint/{endpoint_id}/\"\nquerystring = {\"iterator\": \"atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2\", \"status\": \"\", \"status_code_class\": \"\", \"limit\": 50, \"after\": \"\", \"before\": \"\", \"channel\": \"project_1337\", \"event_types\": \"[\\n  \\\"user.signup\\\"\\n]\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "health_api_v1_health__get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/health/",
+            "description": "Verify the API server is up and running.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/health/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/health/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "get_endpoint_api_v1_app__app_id__endpoint__endpoint_id___get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/endpoint/ep_1srOrx2ZWZBpBUvZwXKQmoEYga2/",
+            "description": "Get an application.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "app_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "app_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "endpoint_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "ep_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/endpoint/ep_1srOrx2ZWZBpBUvZwXKQmoEYga2/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/{app_id}/endpoint/{endpoint_id}/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "get_event_type_api_v1_event_type__event_type_name___get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/event-type/user.signup/",
+            "description": "Get an event type.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "event_type_name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "user.signup"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/event-type/user.signup/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/event-type/{event_type_name}/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "list_integrations_api_v1_app__app_id__integration__get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/integration/",
+            "description": "List the application's integrations.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "app_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "app_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 50
+                },
+                {
+                    "name": "iterator",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "integ_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/integration/\"\nquerystring = {\"limit\": 50, \"iterator\": \"integ_1srOrx2ZWZBpBUvZwXKQmoEYga2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/{app_id}/integration/\"\nquerystring = {\"limit\": 50, \"iterator\": \"integ_1srOrx2ZWZBpBUvZwXKQmoEYga2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "get_endpoint_headers_api_v1_app__app_id__endpoint__endpoint_id__headers__get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/endpoint/ep_1srOrx2ZWZBpBUvZwXKQmoEYga2/headers/",
+            "description": "Get the additional headers to be sent with the webhook",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "app_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "app_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                },
+                {
+                    "name": "endpoint_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "ep_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/endpoint/ep_1srOrx2ZWZBpBUvZwXKQmoEYga2/headers/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/{app_id}/endpoint/{endpoint_id}/headers/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "list_event_types_api_v1_event_type__get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/event-type/",
+            "description": "Return the list of event types.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "include_archived",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": false
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 50
+                },
+                {
+                    "name": "with_content",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": false
+                },
+                {
+                    "name": "iterator",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "user.signup"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/event-type/\"\nquerystring = {\"include_archived\": false, \"limit\": 50, \"with_content\": false, \"iterator\": \"user.signup\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/event-type/\"\nquerystring = {\"include_archived\": false, \"limit\": 50, \"with_content\": false, \"iterator\": \"user.signup\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "title": "ListResponse[EventTypeOut]",
+                "required": [
+                    "data",
+                    "done"
+                ],
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "type": "array",
+                        "items": {
+                            "title": "EventTypeOut",
+                            "required": [
+                                "description",
+                                "name",
+                                "createdAt",
+                                "updatedAt"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "description": {
+                                    "title": "Description",
+                                    "type": "string"
+                                },
+                                "schemas": {
+                                    "title": "Schemas",
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    },
+                                    "description": "The schema for the event type for a specific version as a JSON schema."
+                                },
+                                "archived": {
+                                    "title": "Archived",
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "name": {
+                                    "title": "Name",
+                                    "maxLength": 256,
+                                    "pattern": "^[a-zA-Z0-9\\-_.]+$",
+                                    "type": "string"
+                                },
+                                "createdAt": {
+                                    "title": "Createdat",
+                                    "type": "string",
+                                    "format": "date-time"
+                                },
+                                "updatedAt": {
+                                    "title": "Updatedat",
+                                    "type": "string",
+                                    "format": "date-time"
+                                }
+                            }
+                        }
+                    },
+                    "iterator": {
+                        "title": "Iterator",
+                        "type": "string"
+                    },
+                    "done": {
+                        "title": "Done",
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        {
+            "name": "list_endpoints_api_v1_app__app_id__endpoint__get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/endpoint/",
+            "description": "List the application's endpoints.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "app_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "app_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 50
+                },
+                {
+                    "name": "iterator",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "ep_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/app_1srOrx2ZWZBpBUvZwXKQmoEYga2/endpoint/\"\nquerystring = {\"limit\": 50, \"iterator\": \"ep_1srOrx2ZWZBpBUvZwXKQmoEYga2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/{app_id}/endpoint/\"\nquerystring = {\"limit\": 50, \"iterator\": \"ep_1srOrx2ZWZBpBUvZwXKQmoEYga2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "list_applications_api_v1_app__get",
+            "url": "https://svix1.p.rapidapi.com/api/v1/app/",
+            "description": "List of all the organization's applications.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 50
+                },
+                {
+                    "name": "iterator",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "app_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/\"\nquerystring = {\"limit\": 50, \"iterator\": \"app_1srOrx2ZWZBpBUvZwXKQmoEYga2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://svix1.p.rapidapi.com/api/v1/app/\"\nquerystring = {\"limit\": 50, \"iterator\": \"app_1srOrx2ZWZBpBUvZwXKQmoEYga2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"svix1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

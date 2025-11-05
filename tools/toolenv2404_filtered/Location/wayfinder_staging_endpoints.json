@@ -1,0 +1,244 @@
+{
+    "product_id": "577f58ebe4b0faa3d713080e",
+    "tool_description": "The Wayfinder API allows searching for multimodal travel solutions. It is designed to have predictable, resource-oriented URLs and to use HTTP response codes to indicate API errors. JSON will be returned in all responses from the API, including errors.",
+    "home_url": "https://rapidapi.com/waynaut/api/wayfinder-staging-endpoints/",
+    "name": "Wayfinder staging endpoints",
+    "title": "Wayfinder staging endpoints",
+    "pricing": "FREE",
+    "tool_name": "Wayfinder staging endpoints",
+    "score": null,
+    "host": "waynaut-staging.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "locations",
+            "url": "https://waynaut-staging.p.rapidapi.com/locations",
+            "description": "Retrieve data about a location including the region, area and the country. The data can be localized using the 'Accept-Language' header (Available languages: 'en', 'it', 'de'. Default 'en').",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "The search criteria for the request",
+                    "default": "Milan"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "pretty",
+                    "type": "BOOLEAN",
+                    "description": "Formats JSON output so it's easier to read",
+                    "default": true
+                },
+                {
+                    "name": "size",
+                    "type": "NUMBER",
+                    "description": "Max number of hits returned",
+                    "default": "10"
+                },
+                {
+                    "name": "admin1name",
+                    "type": "STRING",
+                    "description": "Administrative code 1 name",
+                    "default": ""
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Country code (ISO 3166-1 alpha-2 code)",
+                    "default": "IT"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://waynaut-staging.p.rapidapi.com/locations\"\nquerystring = {\"q\": \"Milan\", \"pretty\": true, \"size\": \"10\", \"admin1name\": \"\", \"country\": \"IT\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"waynaut-staging.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://waynaut-staging.p.rapidapi.com/locations\"\nquerystring = {\"q\": \"Milan\", \"pretty\": true, \"size\": \"10\", \"admin1name\": \"\", \"country\": \"IT\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"waynaut-staging.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "/trips",
+            "url": "https://waynaut-staging.p.rapidapi.com/trips",
+            "description": "Retrieve raw trip solutions between to locations for a single transport type departing/arriving within 'distance' kilometers from the coordinates specified. Latitude and longitude are expressed in decimal degree notation (e.g.: 45.45217560). By default, at most 10 solutions are returned: you can provide a page number (default 1) and a page size (default 10) to change the number of solutions expected. All departure and arrival times are local times.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "lats",
+                    "type": "NUMBER",
+                    "description": "Latitude of departing location",
+                    "default": ""
+                },
+                {
+                    "name": "latd",
+                    "type": "NUMBER",
+                    "description": "Latitude of destination location",
+                    "default": ""
+                },
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "Departure date (format: yyyy-MM-dd)",
+                    "default": ""
+                },
+                {
+                    "name": "lons",
+                    "type": "NUMBER",
+                    "description": "Longitude of departing location",
+                    "default": ""
+                },
+                {
+                    "name": "lond",
+                    "type": "NUMBER",
+                    "description": "Longitude of destination location",
+                    "default": ""
+                },
+                {
+                    "name": "transporttype",
+                    "type": "STRING",
+                    "description": "Transport type selection",
+                    "default": ""
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Search goal (DURATION, COST, TRANSFER, AGONY, UNIMODAL)",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "adults",
+                    "type": "NUMBER",
+                    "description": "Number of Adult travellers",
+                    "default": ""
+                },
+                {
+                    "name": "children",
+                    "type": "NUMBER",
+                    "description": "Number of Children travellers",
+                    "default": ""
+                },
+                {
+                    "name": "infants",
+                    "type": "NUMBER",
+                    "description": "Number of Infant travellers",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "Currency code ISO 4217",
+                    "default": ""
+                },
+                {
+                    "name": "seniors",
+                    "type": "NUMBER",
+                    "description": "Number of Senior travellers",
+                    "default": ""
+                },
+                {
+                    "name": "per_page",
+                    "type": "NUMBER",
+                    "description": "Number of results per page",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Selected result page",
+                    "default": ""
+                },
+                {
+                    "name": "distance",
+                    "type": "NUMBER",
+                    "description": "Max distance in Km",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://waynaut-staging.p.rapidapi.com/trips\"\nquerystring = {\"lats\": \"\", \"latd\": \"\", \"date\": \"\", \"adults\": \"\", \"children\": \"\", \"infants\": \"\", \"currency\": \"\", \"lons\": \"\", \"lond\": \"\", \"seniors\": \"\", \"per_page\": \"\", \"page\": \"\", \"transporttype\": \"\", \"distance\": \"\", \"type\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"waynaut-staging.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://waynaut-staging.p.rapidapi.com/trips\"\nquerystring = {\"lats\": \"\", \"latd\": \"\", \"date\": \"\", \"adults\": \"\", \"children\": \"\", \"infants\": \"\", \"currency\": \"\", \"lons\": \"\", \"lond\": \"\", \"seniors\": \"\", \"per_page\": \"\", \"page\": \"\", \"transporttype\": \"\", \"distance\": \"\", \"type\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"waynaut-staging.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "transporttypes",
+            "url": "https://waynaut-staging.p.rapidapi.com/transporttypes",
+            "description": "Returns a list of all transport types available for a search request",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://waynaut-staging.p.rapidapi.com/transporttypes\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"waynaut-staging.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://waynaut-staging.p.rapidapi.com/transporttypes\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"waynaut-staging.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "/travelsolution/{id}",
+            "url": "https://waynaut-staging.p.rapidapi.com/travelsolution/{id}",
+            "description": "Retrieve a single travel solution given its unique 'id'. The list of travel solutions and ther ids are returned by polling the search result endpoint. The data can be localized using the 'Accept-Language' header (Available languages: 'en', 'it', 'de'. Default 'en') and the currency parameter.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "Currency code ISO 4217",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://waynaut-staging.p.rapidapi.com/travelsolution/{id}\"\nquerystring = {\"id\": \"\", \"currency\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"waynaut-staging.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://waynaut-staging.p.rapidapi.com/travelsolution/{id}\"\nquerystring = {\"id\": \"\", \"currency\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"waynaut-staging.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "/travels/{id}",
+            "url": "https://waynaut-staging.p.rapidapi.com/travels/{id}",
+            "description": "The client should poll this endpoint several times until the search task is complete. This can take from a few seconds to over a minute, depending on the transport means involded in the search and the number of providers of each segment.<br/><br/>By default, at most 10 solutions are returned: you can provide a page number (default 1) and a page size (default 10) to change the number of solutions expected. <br/><br/>Language preference may be specified using the 'Accept-Language' header (Available languages: 'en', 'it', 'de'. Default 'en'). <br/><br/>All departure and arrival times are local times.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Search goal (DURATION, COST, AGONY)",
+                    "default": "DURATION"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Selected result page",
+                    "default": ""
+                },
+                {
+                    "name": "per_page",
+                    "type": "NUMBER",
+                    "description": "Number of results per page",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "Currency code ISO 4217",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://waynaut-staging.p.rapidapi.com/travels/{id}\"\nquerystring = {\"id\": \"\", \"page\": \"\", \"per_page\": \"\", \"currency\": \"\", \"type\": \"DURATION\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"waynaut-staging.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://waynaut-staging.p.rapidapi.com/travels/{id}\"\nquerystring = {\"id\": \"\", \"page\": \"\", \"per_page\": \"\", \"currency\": \"\", \"type\": \"DURATION\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"waynaut-staging.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

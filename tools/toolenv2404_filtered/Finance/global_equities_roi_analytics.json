@@ -1,0 +1,121 @@
+{
+    "product_id": "api_54cef2f1-b936-4e87-9207-566da386c1bc",
+    "tool_description": "Yahoo Finance API (Alternative) with Stock and  Dividends Data V2 (Dynamic Payload - Ticker Symbol, Company Name, and Stock Quotes)",
+    "home_url": "https://rapidapi.com/moneygoddess888/api/global-equities-roi-analytics/",
+    "name": "Global Equities ROI Analytics",
+    "title": "Global Equities ROI Analytics",
+    "pricing": "FREEMIUM",
+    "tool_name": "Global Equities ROI Analytics",
+    "score": null,
+    "host": "global-equities-roi-analytics.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Dynamic Query for Global Equities Data",
+            "url": "https://global-equities-roi-analytics.p.rapidapi.com/search/microsoft.nasdaqusa",
+            "description": "An API that shows an equity's fundamental, ROI analysis and its long term dividend history\n\nYou will get a comprehensive information on:\n\nFundamentals of a Stock [Sector, Current Price, PE ratio, Cash Balance, Book Value, Nett Income, Total Debt, Dividend Yield]\nDividend History [Get last 100 record of dividend history with Announcement Date and Dividend Amount]\nDividend Analysis [Dividend Suspension Tracker, All Time Average Yield, All Time Average Dividend per Payout, Total Dividend Payment Count, Current Dividend Paying Status]\nBonus: Company Logo in PNG format (Lightweight)\nCurrently Supports NASDAQ, SGX and KLSE stock exchanges",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "StockCode",
+                    "type": "string",
+                    "description": "An API that shows an equity\u2019s fundamental, ROI analysis and its long term dividend history\n\nYou will get a comprehensive information on:\n\nFundamentals of a Stock [Sector, Current Price, PE ratio, Cash Balance, Book Value, Nett Income, Total Debt, Dividend Yield]\nDividend History [Get last 100 record of dividend history with Announcement Date and Dividend Amount]\nDividend Analysis [Dividend Suspension Tracker, All Time Average Yield, All Time Average Dividend per Payout, Total Dividend Payment Count, Current Dividend Paying Status]\nBonus: Company Logo in PNG format (Lightweight)\nCurrently Supports NASDAQ, SGX and KLSE stock exchanges\n\nTo get API for Nasdaq (US) stocks:\n\u2022 Simply type the target Stock\u2019s ticker symbols or Company Name and append this string \u2018.nasdaqusa into the Param\u2019s field in the endpoint [eg: Microsoft.nasdaqusa or MSFT.nasdaqusa for Microsoft Inc | Apple.nasdaqusa or AAPL.nasdaqusa for Apple Inc]\n\u2022 You can also refer this website to reconfirm the NASDAQ stock\u2019s ticker symbols should you need assistance (https://www.nasdaq.com/market-activity/stocks/screener)\n\nTo get API for SGX (Singaporean) stocks:\n\u2022 Simply type the target Stock\u2019s ticker symbols and append this string \u2018.sgxsingapore into the Param\u2019s field in the endpoint [eg: Z74.sgxsingapore or SingTel.sgxsingapore for Singapore Telecommunications Limited | D05.sgxsingapore or DBS.sgxsingapore for DBS Group Holdings Ltd]\n\u2022 You can also refer this website to reconfirm the SGX stock\u2019s ticker symbols should you need assistance (https://www.sgx.com/securities/stock-screener)\n\nTo get API for KLSE (Malaysian) stocks:\n\u2022 Simply type the target Stock\u2019s ticker symbols and append this string \u2018.klsemalaysia\u2019 into the Param\u2019s field in the endpoint [eg: Maybank.klsemalaysia or 1155.klsemalaysia for Malayan Banking Berhad | Genting.klsemalaysia or 3182.klsemalaysia for Genting Berhad]\n\u2022 You can also refer this website to reconfirm the KLSE stock\u2019s ticker symbols should you need assistance (https://www.bursamalaysia.com)",
+                    "default": "microsoft.nasdaqusa"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://global-equities-roi-analytics.p.rapidapi.com/search/microsoft.nasdaqusa\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"global-equities-roi-analytics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://global-equities-roi-analytics.p.rapidapi.com/search/{stockcode}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"global-equities-roi-analytics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "Counter": {
+                        "type": "string"
+                    },
+                    "Author": {
+                        "type": "string"
+                    },
+                    "Last Done Price": {
+                        "type": "number"
+                    },
+                    "Dividend Analysis": {
+                        "type": "object",
+                        "properties": {
+                            "All-Time Average Yield Based on Current price": {
+                                "type": "string"
+                            },
+                            "All-Time Average Dividend per Payout": {
+                                "type": "number"
+                            },
+                            "Total Dividend Payment Count": {
+                                "type": "integer"
+                            },
+                            "Actively Paying": {
+                                "type": "boolean"
+                            }
+                        }
+                    },
+                    "Fundamentals": {
+                        "type": "object",
+                        "properties": {
+                            "Sector": {
+                                "type": "string"
+                            },
+                            "Trailing PE": {
+                                "type": "number"
+                            },
+                            "Total Cash Balance (mrq)": {
+                                "type": "string"
+                            },
+                            "Book Value": {
+                                "type": "number"
+                            },
+                            "Net Income (ttm)": {
+                                "type": "string"
+                            },
+                            "Total Debt (mrq)": {
+                                "type": "string"
+                            },
+                            "Dividend Yield": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "Dividend History": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "Annoucement Date": {
+                                    "type": "string"
+                                },
+                                "Dividend Amount": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    },
+                    "Company Logo": {
+                        "type": "string"
+                    },
+                    "Stock Type": {
+                        "type": "string"
+                    },
+                    "Dividend Frequency": {
+                        "type": "string"
+                    },
+                    "Dividend Suspension Count": {
+                        "type": "integer"
+                    },
+                    "Status": {
+                        "type": "integer"
+                    }
+                }
+            }
+        }
+    ]
+}

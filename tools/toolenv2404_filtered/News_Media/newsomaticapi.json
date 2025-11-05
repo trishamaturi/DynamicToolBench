@@ -1,0 +1,212 @@
+{
+    "product_id": "api_cccf1ccf-b755-41b1-acdf-956dd5a9fe83",
+    "tool_description": "Search worldwide news with code",
+    "home_url": "https://rapidapi.com/caddytzitzy/api/newsomaticapi/",
+    "name": "NewsomaticAPI",
+    "title": "NewsomaticAPI",
+    "pricing": "PAID",
+    "tool_name": "NewsomaticAPI",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1190,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.3,
+        "__typename": "Score"
+    },
+    "host": "newsomaticapi.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Top Worldwide News",
+            "url": "https://newsomaticapi.p.rapidapi.com/top",
+            "description": "Get most popular worldwide news info returned in JSON format.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter ISO-639-1 code of the country you want to get headlines for. Possible options: ae ar at au be bg cr ca ch co cu cz de eg en es fr gb gr hk hu id ie in is it jp kr lt lv ma mx my ng nl np nz pe ph pk pl pt ro rs ru sa se sg si sk th tr tt tw ua uk us ve za zh\n\nDefault: all countries returned.",
+                    "default": ""
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "A date and optional time for the newest article allowed. This should be in ISO 8601 format (e.g. 2021-04-11 or 2021-04-11T19:40:08)\n\nDefault: the newest according to your plan.",
+                    "default": ""
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "A date and optional time for the oldest article allowed. This should be in ISO 8601 format (e.g. 2021-04-11 or 2021-04-11T19:40:08)\n\nDefault: the oldest according to your plan.",
+                    "default": ""
+                },
+                {
+                    "name": "excludeDomains",
+                    "type": "STRING",
+                    "description": "A comma separated string of domains (eg bbc.co.uk, techcrunch.com, engadget.com) to remove from the results.",
+                    "default": ""
+                },
+                {
+                    "name": "pageSize",
+                    "type": "NUMBER",
+                    "description": "The number of results to return per page.\n\nDefault: 100. Maximum: 100.",
+                    "default": ""
+                },
+                {
+                    "name": "sortBy",
+                    "type": "ENUM",
+                    "description": "The order to sort the articles in. Possible options: relevancy, popularity, publishedAt, random.\nrelevancy = articles more closely related to q come first.\npopularity = articles from popular sources and publishers come first.\npublishedAt = newest articles come first.\nrandom = random articles.\n\nDefault: publishedAt",
+                    "default": ""
+                },
+                {
+                    "name": "qInTitle",
+                    "type": "STRING",
+                    "description": "Search query, limited only to article title (similar to the q parameter).",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Use this to page through the results.\n\nDefault: 1.",
+                    "default": ""
+                },
+                {
+                    "name": "domains",
+                    "type": "STRING",
+                    "description": "A comma separated string of domains (eg bbc.co.uk, techcrunch.com, engadget.com) to restrict the search to.",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The 2-letter ISO-639-1 code of the language you want to get headlines for. Possible options: ar bg cr cz de en es fr gr hd he hu id it jp kr lt lv nl no pl pt ro rs ru se si sk sx th tr ua ud zh\n\nDefault: all languages returned.",
+                    "default": ""
+                },
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Keywords or phrases to search for in the article title and body. Advanced search is supported here:\n\nSurround phrases with quotes (\u201c) for exact match.\nPrepend words or phrases that must appear with a + symbol. Eg: +bitcoin\nPrepend words that must not appear with a \u2013 symbol. Eg: -bitcoin\nThe complete value for q must be URL-encoded.\n\nKeywords or phrases to search for in the article title only.\n\nAdvanced search is supported here:\n\nSurround phrases with quotes (\u201c) for exact match.\nPrepend words or phrases that must appear with a + symbol. Eg: +bitcoin\nPrepend words that must not appear with a \u2013 symbol. Eg: -bitcoin",
+                    "default": "bitcoin"
+                },
+                {
+                    "name": "category",
+                    "type": "ENUM",
+                    "description": "Find sources that display news of this category. Possible options: business entertainment general health science sports technology. Default: all categories.\n\n",
+                    "default": ""
+                },
+                {
+                    "name": "sources",
+                    "type": "STRING",
+                    "description": "A comma separated string of identifiers (maximum 10) for the news sources or blogs you want headlines from. Use the /sources endpoint to locate these programmatically or look at the sources index.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://newsomaticapi.p.rapidapi.com/top\"\nquerystring = {\"country\": \"\", \"to\": \"\", \"from\": \"\", \"excludeDomains\": \"\", \"pageSize\": \"\", \"sortBy\": \"\", \"qInTitle\": \"\", \"page\": \"\", \"domains\": \"\", \"language\": \"\", \"q\": \"bitcoin\", \"category\": \"\", \"sources\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"newsomaticapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://newsomaticapi.p.rapidapi.com/top\"\nquerystring = {\"country\": \"\", \"to\": \"\", \"from\": \"\", \"excludeDomains\": \"\", \"pageSize\": \"\", \"sortBy\": \"\", \"qInTitle\": \"\", \"page\": \"\", \"domains\": \"\", \"language\": \"\", \"q\": \"bitcoin\", \"category\": \"\", \"sources\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"newsomaticapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Sources List",
+            "url": "https://newsomaticapi.p.rapidapi.com/sources",
+            "description": "This endpoint returns the subset of news publishers that top headlines are available from. It\u2019s mainly a convenience endpoint that you can use to keep track of the publishers available on the API.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://newsomaticapi.p.rapidapi.com/sources\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"newsomaticapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://newsomaticapi.p.rapidapi.com/sources\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"newsomaticapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "All Worldwide News",
+            "url": "https://newsomaticapi.p.rapidapi.com/all",
+            "description": "Get worldwide news info returned in JSON format.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "category",
+                    "type": "ENUM",
+                    "description": "Find sources that display news of this category. Possible options: business entertainment general health science sports technology. Default: all categories.\n\n",
+                    "default": ""
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "A date and optional time for the newest article allowed. This should be in ISO 8601 format (e.g. 2021-04-11 or 2021-04-11T19:40:08)\n\nDefault: the newest according to your plan.",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Use this to page through the results.\n\nDefault: 1.",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The 2-letter ISO-639-1 code of the language you want to get headlines for. Possible options: ar bg cr cz de en es fr gr hd he hu id it jp kr lt lv nl no pl pt ro rs ru se si sk sx th tr ua ud zh\n\nDefault: all languages returned.",
+                    "default": ""
+                },
+                {
+                    "name": "excludeDomains",
+                    "type": "STRING",
+                    "description": "A comma separated string of domains (eg bbc.co.uk, techcrunch.com, engadget.com) to remove from the results.",
+                    "default": ""
+                },
+                {
+                    "name": "qInTitle",
+                    "type": "STRING",
+                    "description": "Search query, limited only to article title (similar to the q parameter).",
+                    "default": "news"
+                },
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Keywords or phrases to search for in the article title and body. Advanced search is supported here:\n\nSurround phrases with quotes (\u201c) for exact match.\nPrepend words or phrases that must appear with a + symbol. Eg: +bitcoin\nPrepend words that must not appear with a \u2013 symbol. Eg: -bitcoin\nThe complete value for q must be URL-encoded.\n\nKeywords or phrases to search for in the article title only.\n\nAdvanced search is supported here:\n\nSurround phrases with quotes (\u201c) for exact match.\nPrepend words or phrases that must appear with a + symbol. Eg: +bitcoin\nPrepend words that must not appear with a \u2013 symbol. Eg: -bitcoin",
+                    "default": "bitcoin"
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "A date and optional time for the oldest article allowed. This should be in ISO 8601 format (e.g. 2021-04-11 or 2021-04-11T19:40:08)\n\nDefault: the oldest according to your plan.",
+                    "default": ""
+                },
+                {
+                    "name": "sources",
+                    "type": "STRING",
+                    "description": "A comma separated string of identifiers (maximum 10) for the news sources or blogs you want headlines from. Use the /sources endpoint to locate these programmatically or look at the sources index.",
+                    "default": ""
+                },
+                {
+                    "name": "domains",
+                    "type": "STRING",
+                    "description": "A comma separated string of domains (eg bbc.co.uk, techcrunch.com, engadget.com) to restrict the search to.",
+                    "default": ""
+                },
+                {
+                    "name": "sortBy",
+                    "type": "ENUM",
+                    "description": "The order to sort the articles in. Possible options: relevancy, popularity, publishedAt, random.\nrelevancy = articles more closely related to q come first.\npopularity = articles from popular sources and publishers come first.\npublishedAt = newest articles come first.\nrandom = random articles.\n\nDefault: publishedAt",
+                    "default": ""
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The 2-letter ISO-639-1 code of the country you want to get headlines for. Possible options: ae ar at au be bg cr ca ch co cu cz de eg en es fr gb gr hk hu id ie in is it jp kr lt lv ma mx my ng nl np nz pe ph pk pl pt ro rs ru sa se sg si sk th tr tt tw ua uk us ve za zh\n\nDefault: all countries returned.",
+                    "default": ""
+                },
+                {
+                    "name": "pageSize",
+                    "type": "NUMBER",
+                    "description": "The number of results to return per page.\n\nDefault: 100. Maximum: 100.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://newsomaticapi.p.rapidapi.com/all\"\nquerystring = {\"category\": \"\", \"to\": \"\", \"page\": \"\", \"language\": \"\", \"excludeDomains\": \"\", \"qInTitle\": \"news\", \"q\": \"bitcoin\", \"from\": \"\", \"sources\": \"\", \"domains\": \"\", \"sortBy\": \"\", \"country\": \"\", \"pageSize\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"newsomaticapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://newsomaticapi.p.rapidapi.com/all\"\nquerystring = {\"category\": \"\", \"to\": \"\", \"page\": \"\", \"language\": \"\", \"excludeDomains\": \"\", \"qInTitle\": \"news\", \"q\": \"bitcoin\", \"from\": \"\", \"sources\": \"\", \"domains\": \"\", \"sortBy\": \"\", \"country\": \"\", \"pageSize\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"newsomaticapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

@@ -1,0 +1,92 @@
+{
+    "product_id": "api_51c6bd7a-cf48-480a-971c-021e64364f51",
+    "tool_description": "Appointment System Api with user operations and admin operations. Api has all appointment operations for a clinic",
+    "home_url": "https://rapidapi.com/endertasar/api/appointment-system-api/",
+    "name": "Appointment System API",
+    "title": "Appointment System API",
+    "pricing": "FREE",
+    "tool_name": "Appointment System API",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 31,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.3,
+        "__typename": "Score"
+    },
+    "host": "appointment-system-api.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Appointments",
+            "url": "https://appointment-system-api.p.rapidapi.com/appointment/getAppointments",
+            "description": "EndPoints returns all appointments in the date. \n\nParameter Description :\ndate : the date the appointments is requested\nclinicName : Name of the clinic\n\nReturn Value : \nIt returns json object. Json contains all the appointments in requested date.\n\nJson Format :\n\nhLabel:\"07:00\"\nid:5\naDay:\"2022-09-09T00:00:00\"\naHour:58\naName:\"Efe Kemal TASAR\"\naTel:\"+905376853054\"\naType:\"Appoint\"",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2022.09.09"
+                },
+                {
+                    "name": "clinicName",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "DemoUser"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://appointment-system-api.p.rapidapi.com/appointment/getAppointments\"\nquerystring = {\"date\": \"2022.09.09\", \"clinicName\": \"DemoUser\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appointment-system-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://appointment-system-api.p.rapidapi.com/appointment/getAppointments\"\nquerystring = {\"date\": \"2022.09.09\", \"clinicName\": \"DemoUser\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appointment-system-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Appointment Time List",
+            "url": "https://appointment-system-api.p.rapidapi.com/appointment/getHoursByDayByClinic",
+            "description": "EndPoint gets Appointment Time List by Day. EndPoint gets date parameter and returns List of Appointment Times of that date. In the list there is available field, This field indicates whether there is an appointment at the specified time.\nParameter Descriptions : \ndate --> The day that hours will be return\nclinicName --> Name of the clinic\n\nReturn Value: \nThe EndPoint returns json object in format below.\n[\n{\"id\":1\n\"hLabel\":\"07:00\"\n\"available\":\"true\"\n\"hour\":7\n\"minute\":0\n\"interval\":15\n},\n......\n]\n\nId --> is the key value of the record.\nhLabel --> is the string format of the time\navailable --> if is true that means the time is suitable for new record. If it is false that means there is another appointment in this time interval. \nhour --> Hour of the appointment time.\nminute --> Minute of the appointment time.\ninterval  --> this field points out to the interval whether 15 minutes or 30 minutes",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2022.09.05"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "clinicName",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "DemoClinic"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://appointment-system-api.p.rapidapi.com/appointment/getHoursByDayByClinic\"\nquerystring = {\"date\": \"2022.09.05\", \"clinicName\": \"DemoClinic\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appointment-system-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://appointment-system-api.p.rapidapi.com/appointment/getHoursByDayByClinic\"\nquerystring = {\"date\": \"2022.09.05\", \"clinicName\": \"DemoClinic\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appointment-system-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Login",
+            "url": "https://appointment-system-api.p.rapidapi.com/appointment/login",
+            "description": "This Endpoint is use for login to the system and getting the Api Key for the clinic. It needs username and password as query parameters. \nParameter Descriptions:\nusername --> parameter for username in the system. It is the same with username while creating the account.\npassword --> password for the username. It is same with the password while creating the acoount.\n\nReturn Value\nThis Endpoint returns string value.\nIf you get a sting with 6+ long this means that you have successfully passed username and password check and you are getting the Accesskey fort he system.\nIf you get \u201cW1\u201d it means a warning that your username doesn\u2019t exists\nIf you get \u201cW2\u201d it means a warning that your password is not correct.\nIt you get \u201cE1\u201d it means a programmatic internal error. If you get E1 in the next calls you can get help from us.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "password",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "DemoPass"
+                },
+                {
+                    "name": "username",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "DemoUser"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://appointment-system-api.p.rapidapi.com/appointment/login\"\nquerystring = {\"password\": \"DemoPass\", \"username\": \"DemoUser\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appointment-system-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://appointment-system-api.p.rapidapi.com/appointment/login\"\nquerystring = {\"password\": \"DemoPass\", \"username\": \"DemoUser\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appointment-system-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

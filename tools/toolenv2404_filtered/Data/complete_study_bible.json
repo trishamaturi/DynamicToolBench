@@ -1,0 +1,280 @@
+{
+    "product_id": "api_03227c27-5265-426e-99cc-b4a19eb723c8",
+    "tool_description": "The most COMPLETE Bible study API available! Strongs, Locations, Dictionaries, and more! ",
+    "home_url": "https://rapidapi.com/teachjesusapp/api/complete-study-bible/",
+    "name": "Complete Study Bible",
+    "title": "Complete Study Bible",
+    "pricing": "FREEMIUM",
+    "tool_name": "Complete Study Bible",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1195,
+        "avgSuccessRate": 100,
+        "popularityScore": 7.5,
+        "__typename": "Score"
+    },
+    "host": "complete-study-bible.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Search Strongs Number API",
+            "url": "https://complete-study-bible.p.rapidapi.com/search-strongs/G4931/true/",
+            "description": "Returns every verse containing the supplied strong's number.\nInclude lxx boolean option will search the Septuagint translation of the Old Testament when searching for a Greek word. This allows connections to be made between New Testament words and Old Testament concepts.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "include-lxx",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "true"
+                },
+                {
+                    "name": "Strongs-number",
+                    "type": "string",
+                    "description": "",
+                    "default": "G4931"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://complete-study-bible.p.rapidapi.com/search-strongs/G4931/true/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-study-bible.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://complete-study-bible.p.rapidapi.com/search-strongs/{strongs_number}/{include_lxx}/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-study-bible.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Strongs Number Detail API",
+            "url": "https://complete-study-bible.p.rapidapi.com/strongs-detail/G4931,G5000/",
+            "description": "Receives a Strongs Number or comma-separated list of Strong's Numbers (limit 3 at a time) and returns detailed information for each number, including Greek and Hebrew, phonetic pronunciation guide, root, Strong's Condordance, Mounce's Dictionary, Thayer's Greek Lexicon, and Brown-Driver-Brigg's (BDB) Lexicon (Hebrew only).\n\nThayer's and BDB are stored as html and should be displayed as raw html in the browser. Add CSS styling as desired.\nAll scripture references in the html are stored as <a> tags with the following href format: \"/Bible/{book}/{chapter}/{verse}\". If you want the links to work properly, you can program your front-end to recognize these links and do an API call to the Chapter and Verse api  and display the response in a pop-up window.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "comma-separated-strongs-numbers",
+                    "type": "string",
+                    "description": "",
+                    "default": "G4931,G5000"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://complete-study-bible.p.rapidapi.com/strongs-detail/G4931,G5000/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-study-bible.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://complete-study-bible.p.rapidapi.com/strongs-detail/{comma_separated_strongs_numbers}/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-study-bible.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Full Chapter API",
+            "url": "https://complete-study-bible.p.rapidapi.com/John/1/KJV/",
+            "description": "Returns a specified chapter of a book in the Bible.\nBook parameter will accept a full book name, or 3 letter book abbreviation (example: '1Co' = 1 Corinthians). For a full list of books, abbreviations, and chapter counts, send a request to the \"Books\" api.\n\nTranslation options inlcude: \"KJV\", \"KJV-Strongs\", \"ORIG\", and \"LXX\".\nORIG will return Hebrew with Strong's Numbers if book is in the Old Testament, Greek with Strong's Numbers if New Testament.\nLXX is Old Testament only, and returns the Apostolic Polyglot Bible - which is an English translation of the Greek Septuagint with underlying Strong's numbers.\nTranslations with Strong's numbers will return each verse as a JSON array of objects like so:\n [{\"phrase\": \"In the beginning\", \"data_nums\": [\"G746\"]}\nSome phrases are translated from multiple Strong's numbers in tandem, so the data_nums property is an array. You can display the Strong's numbers however you'd like, or hide them from view. You can get data on each Strong's number upon click by calling the \"Strong's Detail API\".\n\n\"Places\" represents an array of objects for each verse containing any known locations mentioned in the verse. Places provide lat / long information and can be displayed on a map using any mapping packages such as LeafletJS, MapboxGL, Google, etc. Detailed info on each place can be obtained by calling the ID number in the \"Place Detail API\". NOTE: some places have numbers in them... i.e. \"Bethany 2\". When this occurs, it is used for distinction and indicates that there is more than one place of the same name referenced in the Bible",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "chapter",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "translation",
+                    "type": "string",
+                    "description": "",
+                    "default": "KJV"
+                },
+                {
+                    "name": "book",
+                    "type": "string",
+                    "description": "",
+                    "default": "John"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://complete-study-bible.p.rapidapi.com/John/1/KJV/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-study-bible.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://complete-study-bible.p.rapidapi.com/{book}/{chapter}/{translation}/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-study-bible.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "chapter": {
+                        "type": "integer"
+                    },
+                    "pk": {
+                        "type": "integer"
+                    },
+                    "book": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "abbrev": {
+                                "type": "string"
+                            },
+                            "web_name": {
+                                "type": "string"
+                            },
+                            "testament": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "verses": {
+                        "type": "array"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Place Detail API",
+            "url": "https://complete-study-bible.p.rapidapi.com/place/2/",
+            "description": "Used in conjunction with Chapter and Verse API. Whenever a city/region/location is mentioned in a verse, the Chapter and Verse API provides a unique ID for the location that is mentioned. This unique ID is more reliable than searching for a place \"name\", because place names and spellings can change, especially from OT to NT. By using the Place ID's provided with the Chapter and Verse API, you can call the Place API to fetch more detail on each place, which returns a name, location, and data from the Encyclopedia of the Bible (when available).\n\nLat / Longs are included with each place as well, so if you want to use a mapping API (leafletJS, MapBox, etc), you can display real-world locations for every place.\n\nEncyclopedia of the Bible data is provided in html form, display as raw html and apply CSS as desired",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "place-unique-id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "2"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://complete-study-bible.p.rapidapi.com/place/2/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-study-bible.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://complete-study-bible.p.rapidapi.com/place/{place_unique_id}/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-study-bible.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Verse Range API",
+            "url": "https://complete-study-bible.p.rapidapi.com/Joh/1/1/3/KJV/",
+            "description": "Use when you only want to fetch a passage subset, not the entire chapter.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "translation",
+                    "type": "string",
+                    "description": "",
+                    "default": "KJV"
+                },
+                {
+                    "name": "verse-end",
+                    "type": "string",
+                    "description": "",
+                    "default": "3"
+                },
+                {
+                    "name": "chapter",
+                    "type": "string",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "verse-start",
+                    "type": "string",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "book",
+                    "type": "string",
+                    "description": "",
+                    "default": "Joh"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://complete-study-bible.p.rapidapi.com/Joh/1/1/3/KJV/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-study-bible.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://complete-study-bible.p.rapidapi.com/{book}/{chapter}/{verse_start}/{verse_end}/{translation}/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-study-bible.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Passage of the Day API",
+            "url": "https://complete-study-bible.p.rapidapi.com/daily-passage/",
+            "description": "Responds with a passage of the day, KJV translation. Can be a single verse or multiple verses. Passages are pre-selected by the API owner and updated every 24 hours.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://complete-study-bible.p.rapidapi.com/daily-passage/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-study-bible.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://complete-study-bible.p.rapidapi.com/daily-passage/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-study-bible.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Search Place ID API",
+            "url": "https://complete-study-bible.p.rapidapi.com/search-place/2/",
+            "description": "Used in conjuction with Chapter and Verse API, Place Detail API. Receives a Place Unique ID, returns a list of all verses in the Bible that mention the place. Helpful for studying the Biblical history of a particular place.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "place-unique-id",
+                    "type": "string",
+                    "description": "",
+                    "default": "2"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://complete-study-bible.p.rapidapi.com/search-place/2/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-study-bible.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://complete-study-bible.p.rapidapi.com/search-place/{place_unique_id}/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-study-bible.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Search Exact Phrase API",
+            "url": "https://complete-study-bible.p.rapidapi.com/search-exact/In the beginning/",
+            "description": "Searches the KJV for the exact phrase supplied",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "phrase",
+                    "type": "string",
+                    "description": "",
+                    "default": "In the beginning"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://complete-study-bible.p.rapidapi.com/search-exact/In the beginning/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-study-bible.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://complete-study-bible.p.rapidapi.com/search-exact/{phrase}/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-study-bible.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Search All Words API",
+            "url": "https://complete-study-bible.p.rapidapi.com/search/Melchizedek priest/",
+            "description": "Returns KJV verses containing all of the supplied words, in any order. Words are separated by '%20' i.e., spaces. Words are not case-sensitive.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "words",
+                    "type": "string",
+                    "description": "",
+                    "default": "Melchizedek priest"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://complete-study-bible.p.rapidapi.com/search/Melchizedek priest/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-study-bible.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://complete-study-bible.p.rapidapi.com/search/{words}/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-study-bible.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Book List and Chapter Counts API",
+            "url": "https://complete-study-bible.p.rapidapi.com/books/",
+            "description": "Lists all books of the Bible, abbreviations, and chapter counts. Can be used as a reference for a chapter selection screen",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://complete-study-bible.p.rapidapi.com/books/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-study-bible.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://complete-study-bible.p.rapidapi.com/books/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"complete-study-bible.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

@@ -1,0 +1,138 @@
+{
+    "product_id": "api_d3e74fb8-3c5c-4a8f-82ae-535bb0eaf775",
+    "tool_description": "Thousands of recipes categorized by cuisines",
+    "home_url": "https://rapidapi.com/criticalhitter31/api/recipes-cuisines/",
+    "name": "recipes--cuisines",
+    "title": "recipes--cuisines",
+    "pricing": "FREEMIUM",
+    "tool_name": "recipes--cuisines",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 4805,
+        "avgSuccessRate": 100,
+        "popularityScore": 5.2,
+        "__typename": "Score"
+    },
+    "host": "recipes-cuisines.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Search recipes by ingredients",
+            "url": "https://recipes-cuisines.p.rapidapi.com/search/ingredient/{ingredient}",
+            "description": "Search Recipes by Ingredient\nSearch for recipes based on the provided ingredient(s) and optional cuisine.\n\nYou can pass multiple ingredients separated by a \" , \".\n\nURL:\n/search/ingredient/:searchValue\n\nMethod:\nGET\n\nURL Parameters:\nsearchValue (required): The search term for recipe ingredients.\ncuisine (optional): The cuisine type to filter recipes (e.g., Italian, Canadian, Mexican, Indian).\nlimit (optional): The maximum number of recipes to retrieve (default is 10).\ncheckAll (optional): Specify whether recipes should contain all (checkAll=1) or any (checkAll=0) of the specified ingredients. Be default it checks for all ingredients.\n\n\nRequest Example\ncurl -X GET \"/ingredient/tofu?cuisine=Japanese&limit=5&checkAll=1\"\n\n\nResponse:\n\nSuccess Response:\nCode: 200 OK\nContent:\n{\n  \"count\": 1,\n  \"data\": [\n    {\n      \"_id\": \"6579de3cea366c4fee775349\",\n      \"cuisine\": \"Japanese\",\n      \"title\": \"Quick Miso Soup\",\n      \"ingredients\": [\n        \"1 tablespoon canola oil, or more as needed\",\n        \"4 large shiitake mushrooms, stemmed and thinly sliced\",\n        \"1 bunch fresh chives, chopped\",\n        \"1 clove garlic, peeled and sliced\",\n        \"\u00bd (14 ounce) package firm tofu, cubed\",\n        \"1 (14 ounce) can low-sodium beef broth\",\n        \"1 (14 ounce) can low-sodium chicken broth\",\n        \"2 \u00bd tablespoons white miso paste\"\n      ],\n      \"instructions\": [\n        \"Heat oil in a medium saucepan over medium-high heat...\",\n        \"Bring to a boil. Reduce heat to a simmer and cook for 10 minutes. Ladle into bowls to serve.\"\n      ],\n      \"category\": \"Japanese Soups and Stews\"\n    },\n    ...\n  ]\n}\n\n\n\nError Responses:\n\nCode: 404 Not Found\nContent:\n{\n  \"error\": \"No recipes were found that meet the specified criteria. Please consider adjusting your search terms.\"\n}\n\n\n\nCode: 400 Bad Request\nContent:\n{\n  \"error\": \"Search term cannot be null.\"\n}\n\n\nCode: 500 Internal Server Error\nContent:\n{\n  \"error\": \"An error occurred while processing the request.\"\n}\n\n\nNotes:\nEnsure to provide a valid searchValue parameter for ingredient search.\nOptionally, provide a valid cuisine parameter to filter recipes by cuisine.\nOptionally, provide limit and checkAll parameters for customized search results.\nSuccessful responses include a count of returned recipes and an array of recipe data.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "ingredient",
+                    "type": "string",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "checkAll",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10"
+                },
+                {
+                    "name": "cuisine",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Mexican"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://recipes-cuisines.p.rapidapi.com/search/ingredient/{ingredient}\"\nquerystring = {\"checkAll\": \"1\", \"limit\": \"10\", \"ingredient\": \"\", \"cuisine\": \"Mexican\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"recipes-cuisines.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://recipes-cuisines.p.rapidapi.com/search/ingredient/{ingredient}\"\nquerystring = {\"checkAll\": \"1\", \"limit\": \"10\", \"ingredient\": \"\", \"cuisine\": \"Mexican\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"recipes-cuisines.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Search recipes by title",
+            "url": "https://recipes-cuisines.p.rapidapi.com/search/title/beef",
+            "description": "Search Recipes by Title\nSearch for recipes by title based on the provided search term.\n\nURL:\n/search/title/:searchValue\n\nMethod:\nGET\n\nURL Parameters:\n\nsearchValue (required): The search term for recipe titles.\nlimit (optional): The maximum number of recipes to retrieve (default is 10).\n\n\nRequest Example:\ncurl -X GET \"/title/Chicken%20and%20Broccoli%20Pasta?limit=5\"\n\n\nResponse:\n\nSuccess Response:\n\nCode: 200 OK\nContent:\n{\n  \"count\": 1,\n  \"data\": [\n    {\n      \"cuisine\": \"Italian\",\n      \"title\": \"Chicken and Broccoli Pasta\",\n      \"ingredients\": [...],\n      \"instructions\": [...],\n      \"category\": \"Italian Chicken Main Dishes\"\n    }\n  ]\n}\n\n\nError Responses:\n\nCode: 404 Not Found\n\nContent:\n{\n  \"error\": \"No recipe matching the provided title was found. Please consider refining your search criteria and try again.\"\n}\n\n\n\nCode: 400 Bad Request\nContent:\n\n{\n  \"error\": \"Search term cannot be null.\"\n}\n\n\n\nCode: 500 Internal Server Error\n\nContent:\n{\n  \"error\": \"An error occurred while processing the request.\"\n}\n\n\n\nNotes\nEnsure to provide a valid searchValue parameter for title search.\nSuccessful responses include a count of returned recipes and an array of recipe data.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "recipeTitle",
+                    "type": "string",
+                    "description": "",
+                    "default": "beef"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://recipes-cuisines.p.rapidapi.com/search/title/beef\"\nquerystring = {\"limit\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"recipes-cuisines.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://recipes-cuisines.p.rapidapi.com/search/title/{recipetitle}\"\nquerystring = {\"limit\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"recipes-cuisines.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get category information by cuisine",
+            "url": "https://recipes-cuisines.p.rapidapi.com/information/categories/{cuisine}",
+            "description": "Get Recipe Categories for a Specific Cuisine\nGet the count of recipe categories for a specific cuisine.\n\nURL\n\n/information/categories/:cuisine\nMethod\n\nGET\nURL Parameters\n\ncuisine (required): The cuisine type to retrieve categories for (e.g., Italian, Canadian, Mexican, Indian).\n\n\nRequest Example\n\ncurl -X GET \"/categories/Mexican\"\n\n\n\nResponse\n\nSuccess Response:\nCode: 200 OK\nContent:\n{\n  \"count\": 3,\n  \"data\": [\n    {\n      \"cuisine\": \"Mexican\",\n      \"category\": \"Mexican Cookies\",\n      \"recipe_count\": 5\n    },\n    {\n      \"cuisine\": \"Mexican\",\n      \"category\": \"Guacamole\",\n      \"recipe_count\": 36\n    },\n    {\n      \"cuisine\": \"Mexican\",\n      \"category\": \"Chilaquiles\",\n      \"recipe_count\": 9\n    }\n  ]\n}\n\n\n\nError Responses:\n\nCode: 404 Not Found\nContent:\n{\n  \"error\": \"Invalid cuisine provided. Please refer to the API documentation to ensure that the provided cuisine name is valid.\"\n}\n\n\n\nCode: 400 Bad Request\nContent:\n{\n  \"error\": \"Cuisine parameter cannot be null.\"\n}\n\n\n\nCode: 500 Internal Server Error\nContent:\n{\n  \"error\": \"Something went wrong. Please try again. If the problem persists, try waiting or contacting support.\"\n}\n\n\n\n\nNotes:\n\nEnsure to provide a valid cuisine parameter to retrieve categories.\nSuccessful responses include a count of returned categories and an array of category data with cuisine, category, and recipe count.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "cuisine",
+                    "type": "string",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://recipes-cuisines.p.rapidapi.com/information/categories/{cuisine}\"\nquerystring = {\"cuisine\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"recipes-cuisines.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://recipes-cuisines.p.rapidapi.com/information/categories/{cuisine}\"\nquerystring = {\"cuisine\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"recipes-cuisines.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get cuisines information data",
+            "url": "https://recipes-cuisines.p.rapidapi.com/information/cuisines",
+            "description": "Get Recipe Counts for Each Cuisine\nGet the count of recipes for each cuisine.\n\nURL\n/information/cuisines\n\nMethod\nGET\n\nRequest Example\ncurl -X GET \"/cuisines\"\n\n\nResponse:\n\nSuccess Response:\n\nCode: 200 OK\nContent:\n{\n  \"count\": 20,\n  \"data\": [\n    {\n      \"cuisine\": \"Greek\",\n      \"recipe_count\": 187\n    },\n    {\n      \"cuisine\": \"Southern Recipes\",\n      \"recipe_count\": 210\n    },\n    ...\n  ]\n}\n\n\nError Response:\nCode: 500 Internal Server Error\nCopy code\n{\n  \"error\": \"Something went wrong. Please try again. If the problem persists, try waiting or contacting support.\"\n}\n\n\nNotes\nSuccessful responses include a count of returned cuisines and an array of cuisine data with cuisine names and their corresponding recipe counts.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://recipes-cuisines.p.rapidapi.com/information/cuisines\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"recipes-cuisines.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://recipes-cuisines.p.rapidapi.com/information/cuisines\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"recipes-cuisines.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Get random recipes",
+            "url": "https://recipes-cuisines.p.rapidapi.com/random",
+            "description": "Get a random recipe based on specified criteria such as cuisine and category.\n\nURL\n\n/random\n\n\nMethod\nGET\n\nURL Parameters\ncuisine (optional): The cuisine type of the recipe (e.g., Italian, Canadian, Mexican, Indian).\ncategory (optional): The category of the recipe (e.g., Meat Pasta Sauce, Strawberry Smoothies, Chilaquiles, Indian Main Dishes).\nlimit (optional): The maximum number of recipes to retrieve (default is 10).\n\nRequest Example:\ncurl -X GET \"/random?cuisine=Italian&category=Meat%20Pasta%20Sauce&limit=5\"\n\n\nResponse\nSuccess Response:\nCode: 200 OK\nContent:\n{\n  \"count\": 5,\n  \"data\": [\n    {\n      \"cuisine\": \"Italian\",\n      \"title\": \"Grandma's Spaghetti Sauce\",\n      \"ingredients\": [...],\n      \"instructions\": [...],\n      \"category\": \"Meat Pasta Sauce\"\n    },\n    // ... (4 more recipes)\n  ]\n}\n\n\nError Responses:\nCode: 404 Not Found\nContent:\n{\n  \"error\": \"Invalid parameters provided. Please refer to the API documentation to ensure that you are not sending non-existent values for cuisine or category.\"\n}\n\n\nCode: 500 Internal Server Error\nContent:\n{\n  \"error\": \"Something went wrong. Please try again. If the problem persists, try waiting or contacting support.\"\n}\n\n\nNotes\nThe limit parameter determines the number of recipes to be returned, with a default value of 10.\nEnsure to refer to the API documentation for valid values for cuisine and category.\nSuccessful responses include a count of returned recipes and an array of recipe data.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "5"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://recipes-cuisines.p.rapidapi.com/random\"\nquerystring = {\"limit\": \"5\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"recipes-cuisines.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://recipes-cuisines.p.rapidapi.com/random\"\nquerystring = {\"limit\": \"5\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"recipes-cuisines.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

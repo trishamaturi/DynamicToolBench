@@ -1,0 +1,93 @@
+{
+    "product_id": "api_ec32e931-581b-4d53-b557-389f98910f48",
+    "tool_description": "Consulte o valor e hist\u00f3rico do pre\u00e7o  de qualquer carro atrav\u00e9s da nossa api dispon\u00edvel",
+    "home_url": "https://rapidapi.com/robertoguerraok/api/consulta-fipe-pela-placa/",
+    "name": "Consulta FIPE pela placa",
+    "title": "Consulta FIPE pela placa",
+    "pricing": "PAID",
+    "tool_name": "Consulta FIPE pela placa",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1693,
+        "avgSuccessRate": 100,
+        "popularityScore": 6.1,
+        "__typename": "Score"
+    },
+    "host": "consulta-fipe-pela-placa.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Buscar FIPE pela PLACA",
+            "url": "https://consulta-fipe-pela-placa.p.rapidapi.com/consultafipe/{placa}",
+            "description": "Busca dados  e pre\u00e7o atual do veiculo pela placa na FIPE",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "placa",
+                    "type": "string",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://consulta-fipe-pela-placa.p.rapidapi.com/consultafipe/{placa}\"\nquerystring = {\"placa\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"consulta-fipe-pela-placa.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://consulta-fipe-pela-placa.p.rapidapi.com/consultafipe/{placa}\"\nquerystring = {\"placa\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"consulta-fipe-pela-placa.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Hist\u00f3rico da FIPE",
+            "url": "https://consulta-fipe-pela-placa.p.rapidapi.com/fipe/historico/{placa}",
+            "description": "Busca o hist\u00f3rico de pre\u00e7o da FIPE pela dos \u00faltimos meses. Tem um tempo de requisi\u00e7\u00e3o um pouco maior.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "placa",
+                    "type": "string",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "months",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 12
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://consulta-fipe-pela-placa.p.rapidapi.com/fipe/historico/{placa}\"\nquerystring = {\"months\": 12, \"placa\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"consulta-fipe-pela-placa.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://consulta-fipe-pela-placa.p.rapidapi.com/fipe/historico/{placa}\"\nquerystring = {\"months\": 12, \"placa\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"consulta-fipe-pela-placa.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "modelo": {
+                        "type": "string"
+                    },
+                    "marca": {
+                        "type": "string"
+                    },
+                    "anoModelo": {
+                        "type": "string"
+                    },
+                    "historico": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "mesReferencia": {
+                                    "type": "string"
+                                },
+                                "valor": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

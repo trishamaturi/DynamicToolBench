@@ -1,0 +1,121 @@
+{
+    "product_id": "api_705ba734-ffef-445e-844f-cbf58fd3b8a3",
+    "tool_description": "On-demand access to the EGM2008 model",
+    "home_url": "https://rapidapi.com/amentum-amentum-default/api/gravity-api1/",
+    "name": "Gravity API",
+    "title": "Gravity API",
+    "pricing": "FREEMIUM",
+    "tool_name": "Gravity API",
+    "score": null,
+    "host": "gravity-api1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "app.api_egm2008.endpoints.EGM2008.calculate_anomaly",
+            "url": "https://gravity-api1.p.rapidapi.com/egm2008/gravity_anomaly",
+            "description": "for a given latitude / longitude.\n",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "Geographic latitude (-90 to 90 deg).",
+                    "default": -45
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "Geographic longitude (-180 to 180 deg).",
+                    "default": 45
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://gravity-api1.p.rapidapi.com/egm2008/gravity_anomaly\"\nquerystring = {\"latitude\": -45, \"longitude\": 45}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gravity-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://gravity-api1.p.rapidapi.com/egm2008/gravity_anomaly\"\nquerystring = {\"latitude\": -45, \"longitude\": 45}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gravity-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "eta": {
+                        "description": "Eta (arcsec) - easterly component of deflection of vertical.",
+                        "properties": {
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "gravity_anomaly": {
+                        "description": "Gravity anomaly (mGal)\n",
+                        "properties": {
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "xi": {
+                        "description": "Xi (arcsec) - northerly component of deflection of vertical.\n",
+                        "properties": {
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "app.api_egm2008.endpoints.EGM2008.calculate_height",
+            "url": "https://gravity-api1.p.rapidapi.com/egm2008/geoid_height",
+            "description": "for a given latitude / longitude. \n",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "Geographic longitude (-180 to 180 deg).",
+                    "default": 45
+                },
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "Geographic latitude (-90 to 90 deg).",
+                    "default": -45
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://gravity-api1.p.rapidapi.com/egm2008/geoid_height\"\nquerystring = {\"longitude\": 45, \"latitude\": -45}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gravity-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://gravity-api1.p.rapidapi.com/egm2008/geoid_height\"\nquerystring = {\"longitude\": 45, \"latitude\": -45}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"gravity-api1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "height": {
+                        "description": "Geoid height (m)\n",
+                        "properties": {
+                            "units": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "number"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    ]
+}

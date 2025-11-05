@@ -1,0 +1,750 @@
+{
+    "product_id": "api_c9de70d9-33c5-4e1d-ae65-34ad6685b84c",
+    "tool_description": "Unofficial Apple App Store Api",
+    "home_url": "https://rapidapi.com/pyuser/api/app-store2/",
+    "name": "App Store",
+    "title": "App Store",
+    "pricing": "FREEMIUM",
+    "tool_name": "App Store",
+    "score": {
+        "avgServiceLevel": 99,
+        "avgLatency": 364,
+        "avgSuccessRate": 99,
+        "popularityScore": 9.4,
+        "__typename": "Score"
+    },
+    "host": "app-store2.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Reviews by bundle ID",
+            "url": "https://app-store2.p.rapidapi.com/reviews/bundle/com.zhiliaoapp.musically",
+            "description": "Get reviews for a chosen app by app bundle id",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "appId",
+                    "type": "string",
+                    "description": "",
+                    "default": "com.zhiliaoapp.musically"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "sort",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/reviews/bundle/com.zhiliaoapp.musically\"\nquerystring = {\"page\": \"1\", \"sort\": \"\", \"lang\": \"en\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/reviews/bundle/{appid}\"\nquerystring = {\"page\": \"1\", \"sort\": \"\", \"lang\": \"en\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Reviews by ID",
+            "url": "https://app-store2.p.rapidapi.com/reviews/835599320",
+            "description": "Get reviews for a chosen app by app id",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "835599320"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "sort",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/reviews/835599320\"\nquerystring = {\"sort\": \"\", \"page\": \"1\", \"lang\": \"en\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/reviews/{id}\"\nquerystring = {\"sort\": \"\", \"page\": \"1\", \"lang\": \"en\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Search",
+            "url": "https://app-store2.p.rapidapi.com/search",
+            "description": "Search for apps on the App Store",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "search"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "num",
+                    "type": "NUMBER",
+                    "description": "Number of results to return. \nDefault: 50\nMax: 200",
+                    "default": "100"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Used for pagination of results.",
+                    "default": "2"
+                },
+                {
+                    "name": "start_date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Date param to filter apps based on release date. Will return apps released on or after this start_date",
+                    "default": "2020-01-02"
+                },
+                {
+                    "name": "end_date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Date param to filter apps based on release date. Will return apps released on or before this end_date",
+                    "default": "2023-05-06"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/search\"\nquerystring = {\"num\": \"100\", \"page\": \"2\", \"start_date\": \"2020-01-02\", \"end_date\": \"2023-05-06\", \"q\": \"search\", \"country\": \"us\", \"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/search\"\nquerystring = {\"num\": \"100\", \"page\": \"2\", \"start_date\": \"2020-01-02\", \"end_date\": \"2023-05-06\", \"q\": \"search\", \"country\": \"us\", \"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "New free ios apps",
+            "url": "https://app-store2.p.rapidapi.com/ios/new/free",
+            "description": "Get list of new free ios apps",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "num",
+                    "type": "NUMBER",
+                    "description": "Number of results to return. \nDefault: 50\nMax: 200",
+                    "default": "100"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "6016"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/ios/new/free\"\nquerystring = {\"num\": \"100\", \"lang\": \"en\", \"country\": \"us\", \"category\": \"6016\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/ios/new/free\"\nquerystring = {\"num\": \"100\", \"lang\": \"en\", \"country\": \"us\", \"category\": \"6016\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "New ios apps",
+            "url": "https://app-store2.p.rapidapi.com/ios/new",
+            "description": "Get list of new ios apps",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "num",
+                    "type": "NUMBER",
+                    "description": "Number of results to return. \nDefault: 50\nMax: 200",
+                    "default": "100"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "6016"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/ios/new\"\nquerystring = {\"num\": \"100\", \"lang\": \"en\", \"category\": \"6016\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/ios/new\"\nquerystring = {\"num\": \"100\", \"lang\": \"en\", \"category\": \"6016\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Top grossing mac apps",
+            "url": "https://app-store2.p.rapidapi.com/mac/top/grossing",
+            "description": "Get list of the top grossing mac apps",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "num",
+                    "type": "NUMBER",
+                    "description": "Number of results to return. \nDefault: 50\nMax: 200",
+                    "default": "100"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "6016"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/mac/top/grossing\"\nquerystring = {\"num\": \"100\", \"lang\": \"en\", \"country\": \"us\", \"category\": \"6016\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/mac/top/grossing\"\nquerystring = {\"num\": \"100\", \"lang\": \"en\", \"country\": \"us\", \"category\": \"6016\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Top grossing ipad apps",
+            "url": "https://app-store2.p.rapidapi.com/ipad/top/grossing",
+            "description": "Get list of the top grossing ipad apps",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "num",
+                    "type": "NUMBER",
+                    "description": "Number of results to return. \nDefault: 50\nMax: 200",
+                    "default": "100"
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "6016"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/ipad/top/grossing\"\nquerystring = {\"num\": \"100\", \"category\": \"6016\", \"lang\": \"en\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/ipad/top/grossing\"\nquerystring = {\"num\": \"100\", \"category\": \"6016\", \"lang\": \"en\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Top grossing ios apps",
+            "url": "https://app-store2.p.rapidapi.com/ios/top/grossing",
+            "description": "Get list of the top grossing ios apps",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "num",
+                    "type": "NUMBER",
+                    "description": "Number of results to return. \nDefault: 50\nMax: 200",
+                    "default": "100"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "6016"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/ios/top/grossing\"\nquerystring = {\"num\": \"100\", \"lang\": \"en\", \"category\": \"6016\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/ios/top/grossing\"\nquerystring = {\"num\": \"100\", \"lang\": \"en\", \"category\": \"6016\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Top paid mac apps",
+            "url": "https://app-store2.p.rapidapi.com/mac/top/paid",
+            "description": "Get list of the top paid mac apps",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "num",
+                    "type": "NUMBER",
+                    "description": "Number of results to return. \nDefault: 50\nMax: 200",
+                    "default": "100"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "6016"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/mac/top/paid\"\nquerystring = {\"num\": \"100\", \"lang\": \"en\", \"country\": \"us\", \"category\": \"6016\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/mac/top/paid\"\nquerystring = {\"num\": \"100\", \"lang\": \"en\", \"country\": \"us\", \"category\": \"6016\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Top paid ipad apps",
+            "url": "https://app-store2.p.rapidapi.com/ipad/top/paid",
+            "description": "Get list of the top paid ipad apps",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "num",
+                    "type": "NUMBER",
+                    "description": "Number of results to return. \nDefault: 50\nMax: 200",
+                    "default": "100"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "6016"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/ipad/top/paid\"\nquerystring = {\"num\": \"100\", \"lang\": \"en\", \"country\": \"us\", \"category\": \"6016\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/ipad/top/paid\"\nquerystring = {\"num\": \"100\", \"lang\": \"en\", \"country\": \"us\", \"category\": \"6016\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Top paid ios apps",
+            "url": "https://app-store2.p.rapidapi.com/ios/top/paid",
+            "description": "Get list of the top paid ios apps",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "num",
+                    "type": "NUMBER",
+                    "description": "Number of results to return. \nDefault: 50\nMax: 200",
+                    "default": "100"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "6016"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/ios/top/paid\"\nquerystring = {\"num\": \"100\", \"country\": \"us\", \"category\": \"6016\", \"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/ios/top/paid\"\nquerystring = {\"num\": \"100\", \"country\": \"us\", \"category\": \"6016\", \"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Top free mac apps",
+            "url": "https://app-store2.p.rapidapi.com/mac/top/free",
+            "description": "Get list of the top free mac apps",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "num",
+                    "type": "NUMBER",
+                    "description": "Number of results to return. \nDefault: 50\nMax: 200",
+                    "default": "100"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "6016"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/mac/top/free\"\nquerystring = {\"num\": \"100\", \"country\": \"us\", \"category\": \"6016\", \"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/mac/top/free\"\nquerystring = {\"num\": \"100\", \"country\": \"us\", \"category\": \"6016\", \"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Top free Ipad apps",
+            "url": "https://app-store2.p.rapidapi.com/ipad/top/free",
+            "description": "Get list of the top free Ipad apps",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "num",
+                    "type": "NUMBER",
+                    "description": "Number of results to return. \nDefault: 50\nMax: 200",
+                    "default": "100"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "6016"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/ipad/top/free\"\nquerystring = {\"num\": \"100\", \"lang\": \"en\", \"category\": \"6016\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/ipad/top/free\"\nquerystring = {\"num\": \"100\", \"lang\": \"en\", \"category\": \"6016\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "New paid ios apps",
+            "url": "https://app-store2.p.rapidapi.com/ios/new/paid",
+            "description": "Get list of new paid ios apps",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "num",
+                    "type": "NUMBER",
+                    "description": "Number of results to return. \nDefault: 50\nMax: 200",
+                    "default": "100"
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "6016"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/ios/new/paid\"\nquerystring = {\"num\": \"100\", \"category\": \"6016\", \"lang\": \"en\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/ios/new/paid\"\nquerystring = {\"num\": \"100\", \"category\": \"6016\", \"lang\": \"en\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Top free IOS apps",
+            "url": "https://app-store2.p.rapidapi.com/ios/top/free",
+            "description": "Get list of the top free apps on IOS",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "6016"
+                },
+                {
+                    "name": "num",
+                    "type": "NUMBER",
+                    "description": "Number of results to return. \nDefault: 50\nMax: 200",
+                    "default": "100"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/ios/top/free\"\nquerystring = {\"category\": \"6016\", \"num\": \"100\", \"country\": \"us\", \"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/ios/top/free\"\nquerystring = {\"category\": \"6016\", \"num\": \"100\", \"country\": \"us\", \"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Privacy Permissions by ID",
+            "url": "https://app-store2.p.rapidapi.com/privacy/835599320",
+            "description": "Get privacy permissions for an app by ID",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "835599320"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/privacy/835599320\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/privacy/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Categories",
+            "url": "https://app-store2.p.rapidapi.com/categories",
+            "description": "Get App Store categories and their matching category codes",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/categories\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/categories\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Similar Apps By ID",
+            "url": "https://app-store2.p.rapidapi.com/similar/835599320",
+            "description": "Get a list of apps similar to the provided app",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "835599320"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/similar/835599320\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/similar/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Similar Apps By bundle ID",
+            "url": "https://app-store2.p.rapidapi.com/similar/bundle/com.zhiliaoapp.musically",
+            "description": "Get a list of apps similar to the provided app by app bundle ID",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "appId",
+                    "type": "string",
+                    "description": "",
+                    "default": "com.zhiliaoapp.musically"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/similar/bundle/com.zhiliaoapp.musically\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/similar/bundle/{appid}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Applications by Developer",
+            "url": "https://app-store2.p.rapidapi.com/developer/1322881000",
+            "description": "Get a list of apps published by a chosen developer",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "1322881000"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/developer/1322881000\"\nquerystring = {\"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/developer/{id}\"\nquerystring = {\"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Application Details By bundle ID",
+            "url": "https://app-store2.p.rapidapi.com/app/bundle/com.zhiliaoapp.musically",
+            "description": "Get Application information by app bundle id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "appId",
+                    "type": "string",
+                    "description": "",
+                    "default": "com.zhiliaoapp.musically"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/app/bundle/com.zhiliaoapp.musically\"\nquerystring = {\"lang\": \"en\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/app/bundle/{appid}\"\nquerystring = {\"lang\": \"en\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Application Details By ID",
+            "url": "https://app-store2.p.rapidapi.com/app/835599320",
+            "description": "Get Application information by app id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "835599320"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/app/835599320\"\nquerystring = {\"lang\": \"en\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://app-store2.p.rapidapi.com/app/{id}\"\nquerystring = {\"lang\": \"en\", \"country\": \"us\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"app-store2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

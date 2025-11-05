@@ -1,0 +1,1639 @@
+{
+    "product_id": "api_edf34699-71c8-4f4b-841c-d2b7cadc8755",
+    "tool_description": "Mboum Finance Official API for stocks, options, ETFs, mutual funds, SEC Data, historical, earnings, technical indicators, live quotes, news, screeners, and more! \n",
+    "home_url": "https://rapidapi.com/sparior/api/mboum-finance/",
+    "name": "Mboum Finance",
+    "title": "Mboum Finance",
+    "pricing": "FREEMIUM",
+    "tool_name": "Mboum Finance",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1906,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.8,
+        "__typename": "Score"
+    },
+    "host": "mboum-finance.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "v1/market/news",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/news",
+            "description": "Recently published stock news in all sectors.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "tickers",
+                    "type": "STRING",
+                    "description": "A stock symbol ",
+                    "default": "AAPL,TSLA"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/news\"\nquerystring = {\"tickers\": \"AAPL,TSLA\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/news\"\nquerystring = {\"tickers\": \"AAPL,TSLA\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/stock/modules",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules",
+            "description": "Get combine stock data such as profile, financial data, statistics, balance sheet, sec-filing, quote, earnings, trends and more!",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "module",
+                    "type": "STRING",
+                    "description": "Acceptable values: (one per request)\n- `profile`\n- `income-statement`\n- `balance-sheet`\n- `cashflow-statement`\n- `statistics`\n- `calendar-events`\n- `sec-filings`\n- `recommendation-trend`\n- `upgrade-downgrade-history`\n- `institution-ownership`\n- `fund-ownership`\n- `major-directHolders`\n- `major-holders-breakdown`\n- `insider-transactions`\n- `insider-holders`\n- `net-share-purchase-activity`\n- `earnings`\n- `industry-trend`\n- `index-trend`\n- `sector-trend`",
+                    "default": "asset-profile"
+                },
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol.",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules\"\nquerystring = {\"module\": \"asset-profile\", \"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules\"\nquerystring = {\"module\": \"asset-profile\", \"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/insider-trades",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/insider-trades",
+            "description": "Latest insider trading activities from CEO, Directors, Chief Executive Officer, 10% Owner, etc...",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/insider-trades\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/insider-trades\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/market/quotes (snapshots)",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/quotes",
+            "description": "Quote data for stocks, ETFs, mutual funds, etc...",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "Multiple symbols separated by commas. Max is 200\n**Equity:** A,APPL,GM,MU,TSLA\n**Futures:** ALI=F,CD=F,QM=F,^IXIC,BTC-F\n**Forex:** EURUSD=X,AUDUSD=X\n**Indexs:** ^DJT,^HSI,^VIX,^TRFK-TC\n**Mutual Funds & ETFs:** SPY,AWSHX,VOO,XAIX.BE\n**Cryptocurrencies:** BTC-USD,ETH-USD\n**Combination:** APPL,CD=F,^VIX,ADA-USD",
+                    "default": "AAPL,MSFT,^SPX,^NYA,GAZP.ME,SIBN.ME,GEECEE.NS"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/quotes\"\nquerystring = {\"symbol\": \"AAPL,MSFT,^SPX,^NYA,GAZP.ME,SIBN.ME,GEECEE.NS\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/quotes\"\nquerystring = {\"symbol\": \"AAPL,MSFT,^SPX,^NYA,GAZP.ME,SIBN.ME,GEECEE.NS\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v2/market/tickers",
+            "url": "https://mboum-finance.p.rapidapi.com/v2/markets/tickers",
+            "description": "Get ticker symbols for stocks traded in the U.S exchange.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Enter one of the following assetClass: `STOCKS` or `ETF` or `MUTUALFUNDS` or `FUTURES`. Example: `STOCKS`",
+                    "default": "STOCKS"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Enter a page number",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v2/markets/tickers\"\nquerystring = {\"type\": \"STOCKS\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v2/markets/tickers\"\nquerystring = {\"type\": \"STOCKS\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v2/market/news",
+            "url": "https://mboum-finance.p.rapidapi.com/v2/markets/news",
+            "description": "Get market news and press releases for a given company.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "tickers",
+                    "type": "STRING",
+                    "description": "A stock symbol ",
+                    "default": "AAPL"
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Enter one of the following types: `ALL` or `VIDEO` or `PRESS_RELEASE`",
+                    "default": "ALL"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v2/markets/news\"\nquerystring = {\"tickers\": \"AAPL\", \"type\": \"ALL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v2/markets/news\"\nquerystring = {\"tickers\": \"AAPL\", \"type\": \"ALL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/stock/history",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/history",
+            "description": "Historic data for stocks, ETFs, mutual funds, etc...",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                },
+                {
+                    "name": "interval",
+                    "type": "STRING",
+                    "description": "Allows one of following : 5m|15m|30m|1h|1d|1wk|1mo|3mo",
+                    "default": "15m"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "diffandsplits",
+                    "type": "STRING",
+                    "description": "Allows one of following : true|false",
+                    "default": "false"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/history\"\nquerystring = {\"symbol\": \"AAPL\", \"interval\": \"15m\", \"diffandsplits\": \"false\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/history\"\nquerystring = {\"symbol\": \"AAPL\", \"interval\": \"15m\", \"diffandsplits\": \"false\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/market/screener",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/screener",
+            "description": "Get a collection of stocks, ETFs, and mutual funds based on selected criteria.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "list",
+                    "type": "STRING",
+                    "description": "Select one of these options:\n\n- `trending` Trending tickers in today's market\n-  `undervalued_growth_stocks` Stocks with earnings growth\n- `growth_technology_stocks ` Technology stocks with revenue\n- `day_gainers` Stocks with the highest gains\n- `day_losers` Stocks with the highest losses\n- `most_actives` Stocks by intraday trade volume.\n- `undervalued_large_caps` Undervalued large cap stocks\n- `aggressive_small_caps` Small-cap stocks with earnings growth.\n- `small_cap_gainers` Small caps with a 1 day price change of 5.0%",
+                    "default": "day_gainers"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/screener\"\nquerystring = {\"list\": \"day_gainers\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/screener\"\nquerystring = {\"list\": \"day_gainers\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/market/quotes (real-time)",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/quote",
+            "description": "Real-time Quote data for stocks, ETFs, mutuals funds, etc...",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Enter one of the following assetClass: `STOCKS` or `ETF` or `MUTUALFUNDS` or `FUTURES`. Example: `STOCKS`",
+                    "default": "STOCKS"
+                },
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "Enter a ticker (one only)",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/quote\"\nquerystring = {\"type\": \"STOCKS\", \"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/quote\"\nquerystring = {\"type\": \"STOCKS\", \"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/options",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/options",
+            "description": "Get option data for stocks, ETFs, and indexes.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single stock symbol ",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "display",
+                    "type": "STRING",
+                    "description": "Display in `list` or `straddle` Default: `list`",
+                    "default": "straddle"
+                },
+                {
+                    "name": "expiration",
+                    "type": "STRING",
+                    "description": "Expiration date",
+                    "default": "1731628800"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/options\"\nquerystring = {\"display\": \"straddle\", \"expiration\": \"1731628800\", \"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/options\"\nquerystring = {\"display\": \"straddle\", \"expiration\": \"1731628800\", \"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/search",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/search",
+            "description": "Get tickers for any stock company, ETF, mutual fund, crypto and more",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "AA"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/search\"\nquerystring = {\"search\": \"AA\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/search\"\nquerystring = {\"search\": \"AA\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/indicators/macd",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/indicators/macd",
+            "description": "This technical indicator returns the moving average convergence/divergence (MACD)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "series_type",
+                    "type": "STRING",
+                    "description": "Select from : open | close | high | low",
+                    "default": "close"
+                },
+                {
+                    "name": "interval",
+                    "type": "STRING",
+                    "description": "Select from : 5m|15m|30m|1h|1d|1wk|1mo|3mo",
+                    "default": "5m"
+                },
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A stock (ex: AAPL) or cryptocurrency (ex: BTC-USD) symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "signal_period",
+                    "type": "STRING",
+                    "description": "Enter the signal period. Positive integers are accepted. Default: 9",
+                    "default": "9"
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "Limit the number of results returned, default is 50",
+                    "default": "50"
+                },
+                {
+                    "name": "slow_period",
+                    "type": "STRING",
+                    "description": "Enter the slow period. Positive integers are accepted. Default: 26",
+                    "default": "26"
+                },
+                {
+                    "name": "fast_period",
+                    "type": "STRING",
+                    "description": "Enter the fast period. Positive integers are accepted. Default: 12",
+                    "default": "12"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/indicators/macd\"\nquerystring = {\"signal_period\": \"9\", \"limit\": \"50\", \"series_type\": \"close\", \"slow_period\": \"26\", \"interval\": \"5m\", \"symbol\": \"AAPL\", \"fast_period\": \"12\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/indicators/macd\"\nquerystring = {\"signal_period\": \"9\", \"limit\": \"50\", \"series_type\": \"close\", \"slow_period\": \"26\", \"interval\": \"5m\", \"symbol\": \"AAPL\", \"fast_period\": \"12\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/indicators/adx",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/indicators/adx",
+            "description": "This technical indicator returns the average directional movement index (ADX).",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "time_period",
+                    "type": "STRING",
+                    "description": "Number of data points used to calculate each moving average value. Positive integers are accepted.",
+                    "default": "50"
+                },
+                {
+                    "name": "series_type",
+                    "type": "STRING",
+                    "description": "Select from : open | close | high | low",
+                    "default": "close"
+                },
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A stock (ex: AAPL) or cryptocurrency (ex: BTC-USD) symbol",
+                    "default": "AAPL"
+                },
+                {
+                    "name": "interval",
+                    "type": "STRING",
+                    "description": "Select from : 5m|15m|30m|1h|1d|1wk|1mo|3mo",
+                    "default": "5m"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "Limit the number of results returned, default is 50",
+                    "default": "50"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/indicators/adx\"\nquerystring = {\"time_period\": \"50\", \"series_type\": \"close\", \"limit\": \"50\", \"symbol\": \"AAPL\", \"interval\": \"5m\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/indicators/adx\"\nquerystring = {\"time_period\": \"50\", \"series_type\": \"close\", \"limit\": \"50\", \"symbol\": \"AAPL\", \"interval\": \"5m\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/indicators/rsi",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/indicators/rsi",
+            "description": "This technical indicator returns the relative strength index (RSI)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "time_period",
+                    "type": "STRING",
+                    "description": "Number of data points used to calculate each moving average value. Positive integers are accepted.",
+                    "default": "50"
+                },
+                {
+                    "name": "series_type",
+                    "type": "STRING",
+                    "description": "Select from : open | close | high | low",
+                    "default": "close"
+                },
+                {
+                    "name": "interval",
+                    "type": "STRING",
+                    "description": "Select from : 5m|15m|30m|1h|1d|1wk|1mo|3mo",
+                    "default": "5m"
+                },
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A stock (ex: AAPL) or cryptocurrency (ex: BTC-USD) symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "Limit the number of results returned, default is 50",
+                    "default": "50"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/indicators/rsi\"\nquerystring = {\"limit\": \"50\", \"time_period\": \"50\", \"series_type\": \"close\", \"interval\": \"5m\", \"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/indicators/rsi\"\nquerystring = {\"limit\": \"50\", \"time_period\": \"50\", \"series_type\": \"close\", \"interval\": \"5m\", \"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/indicators/sma",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/indicators/sma",
+            "description": "This technical indicator returns the simple moving average (SMA).",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "interval",
+                    "type": "STRING",
+                    "description": "Select from : 5m|15m|30m|1h|1d|1wk|1mo|3mo",
+                    "default": "5m"
+                },
+                {
+                    "name": "series_type",
+                    "type": "STRING",
+                    "description": "Select from : open | close | high | low",
+                    "default": "close"
+                },
+                {
+                    "name": "time_period",
+                    "type": "STRING",
+                    "description": "Number of data points used to calculate each moving average value. Positive integers are accepted.",
+                    "default": "50"
+                },
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A stock (ex: AAPL) or cryptocurrency (ex: BTC-USD) symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "Limit the number of results returned, default is 50",
+                    "default": "50"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/indicators/sma\"\nquerystring = {\"interval\": \"5m\", \"limit\": \"50\", \"series_type\": \"close\", \"time_period\": \"50\", \"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/indicators/sma\"\nquerystring = {\"interval\": \"5m\", \"limit\": \"50\", \"series_type\": \"close\", \"time_period\": \"50\", \"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/stock/insider-holders",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=insider-holders",
+            "description": "Get stock insider holders' information.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=insider-holders\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=insider-holders\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/stock/calendar-events",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=calendar-events",
+            "description": "Get stock calendar events.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=calendar-events\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=calendar-events\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/stock/statistics",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=statistics",
+            "description": "Get stock key statistics data.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=statistics\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=statistics\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/stock/financial-data",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=financial-data",
+            "description": "Get stock financial data.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=financial-data\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=financial-data\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/stock/profile",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=asset-profile",
+            "description": "Get stock profile information such as company name, descriptions, website, etc...",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=asset-profile\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=asset-profile\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/stock/institution-ownership",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=institution-ownership",
+            "description": "Get stock institution ownership.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=institution-ownership\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=institution-ownership\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/stock/income-statement",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=income-statement",
+            "description": "Get stock income statement data.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=income-statement\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=income-statement\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/stock/insider-transactions",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=insider-transactions",
+            "description": "Get stock insider transactions history.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=insider-transactions\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=insider-transactions\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/stock/recommendation-trend",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=recommendation-trend",
+            "description": "Get stock recommendations and trends.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=recommendation-trend\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=recommendation-trend\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/stock/net-share-purchase-activity",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=net-share-purchase-activity",
+            "description": "Get net share purchase activity information for a particular stock",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=net-share-purchase-activity\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=net-share-purchase-activity\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/stock/earnings",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=earnings",
+            "description": "Get earnings information for a particular stock",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=earnings\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=earnings\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/stock/earnings-trend",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=earnings-trend",
+            "description": "Get earnings trend earnings history information for a particular stock",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=earnings-trend\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=earnings-trend\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/stock/index-trend",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=index-trend",
+            "description": "Get index trend earnings history information for a particular stock",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=index-trend\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=index-trend\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/stock/upgrade-downgrade-history",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=upgrade-downgrade-history",
+            "description": "Get stock upgrade and downgrade history.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=upgrade-downgrade-history\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=upgrade-downgrade-history\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/stock/earnings-history",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=earnings-history",
+            "description": "Get earnings history information for a particular stock",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=earnings-history\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=earnings-history\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/stock/cashflow-statement",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=cashflow-statement",
+            "description": "Get stock cash flow statements.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=cashflow-statement\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=cashflow-statement\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stock/calendar-events/{stock}",
+            "url": "https://mboum-finance.p.rapidapi.com/qu/quote/calendar-events",
+            "description": "Get stock calendar events.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/calendar-events\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/calendar-events\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "market/most-watched",
+            "url": "https://mboum-finance.p.rapidapi.com/tr/trending",
+            "description": "Trending stocks in today's market",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/tr/trending\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/tr/trending\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "options/{stock}",
+            "url": "https://mboum-finance.p.rapidapi.com/op/option",
+            "description": "Get option data for stocks, ETFs, and indexes.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "expiration",
+                    "type": "STRING",
+                    "description": "Expiration date",
+                    "default": "1705622400"
+                },
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single stock symbol ",
+                    "default": "AAPL"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/op/option\"\nquerystring = {\"expiration\": \"1705622400\", \"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/op/option\"\nquerystring = {\"expiration\": \"1705622400\", \"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stock/data/{stock}/{modules}",
+            "url": "https://mboum-finance.p.rapidapi.com/mo/module/",
+            "description": "Get combine stock data such as profile, financial data, statistics, balance sheet, sec-filing, quote, earnings, trends and more!",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol.",
+                    "default": "AAPL"
+                },
+                {
+                    "name": "module",
+                    "type": "STRING",
+                    "description": "Acceptable values: (one per request)\n- `profile`\n- `income-statement`\n- `balance-sheet`\n- `cashflow-statement`\n- `statistics`\n- `calendar-events`\n- `sec-filings`\n- `recommendation-trend`\n- `upgrade-downgrade-history`\n- `institution-ownership`\n- `fund-ownership`\n- `major-directHolders`\n- `major-holders-breakdown`\n- `insider-transactions`\n- `insider-holders`\n- `net-share-purchase-activity`\n- `earnings`\n- `industry-trend`\n- `index-trend`\n- `sector-trend`",
+                    "default": "asset-profile"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/mo/module/\"\nquerystring = {\"symbol\": \"AAPL\", \"module\": \"asset-profile\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/mo/module/\"\nquerystring = {\"symbol\": \"AAPL\", \"module\": \"asset-profile\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "insider-trades",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/sec/form4",
+            "description": "Latest insider trading activities from CEO, Directors, Chief Executive Officer, 10% Owner, etc...",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/sec/form4\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/sec/form4\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "market/news",
+            "url": "https://mboum-finance.p.rapidapi.com/ne/news",
+            "description": "Recently published stock news in all sectors.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/ne/news\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/ne/news\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "search",
+            "url": "https://mboum-finance.p.rapidapi.com/sc/search/A",
+            "description": "Get tickers for any stock company, ETF, mutual fund, crypto and more",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "string",
+                    "description": "",
+                    "default": "A"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/sc/search/A\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/sc/search/{symbol}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stock/history/{stock}/{interval}",
+            "url": "https://mboum-finance.p.rapidapi.com/hi/history",
+            "description": "Historic data for stocks, ETFs, mutuals funds, etc...",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                },
+                {
+                    "name": "interval",
+                    "type": "STRING",
+                    "description": "Allows one of following : 5m|15m|30m|1h|1d|1wk|1mo|3mo",
+                    "default": "15m"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "diffandsplits",
+                    "type": "STRING",
+                    "description": "Allows one of following : true|false",
+                    "default": "false"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/hi/history\"\nquerystring = {\"diffandsplits\": \"false\", \"symbol\": \"AAPL\", \"interval\": \"15m\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/hi/history\"\nquerystring = {\"diffandsplits\": \"false\", \"symbol\": \"AAPL\", \"interval\": \"15m\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "market/undervalued_growth_stocks",
+            "url": "https://mboum-finance.p.rapidapi.com/co/collections/undervalued_growth_stocks",
+            "description": "Stocks with earnings growth rates better than 25% and relatively low PE and PEG ratios.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "start",
+                    "type": "NUMBER",
+                    "description": "Enter a start index",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/co/collections/undervalued_growth_stocks\"\nquerystring = {\"start\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/co/collections/undervalued_growth_stocks\"\nquerystring = {\"start\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "market/small_cap_gainers",
+            "url": "https://mboum-finance.p.rapidapi.com/co/collections/small_cap_gainers",
+            "description": "Small Caps with a 1-day price change of 5.0% or more.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "start",
+                    "type": "NUMBER",
+                    "description": "Enter a start index",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/co/collections/small_cap_gainers\"\nquerystring = {\"start\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/co/collections/small_cap_gainers\"\nquerystring = {\"start\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "market/aggressive_small_caps",
+            "url": "https://mboum-finance.p.rapidapi.com/co/collections/aggressive_small_caps",
+            "description": "Small cap stocks with earnings growth rates better than 25%.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "start",
+                    "type": "NUMBER",
+                    "description": "Enter a start index",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/co/collections/aggressive_small_caps\"\nquerystring = {\"start\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/co/collections/aggressive_small_caps\"\nquerystring = {\"start\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "market/undervalued_large_caps",
+            "url": "https://mboum-finance.p.rapidapi.com/co/collections/undervalued_large_caps",
+            "description": "Large cap stocks that are potentially undervalued.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "start",
+                    "type": "NUMBER",
+                    "description": "Enter a start index",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/co/collections/undervalued_large_caps\"\nquerystring = {\"start\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/co/collections/undervalued_large_caps\"\nquerystring = {\"start\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "market/growth_technology_stocks",
+            "url": "https://mboum-finance.p.rapidapi.com/co/collections/growth_technology_stocks",
+            "description": "Technology stocks with revenue and earnings growth in excess of 25%.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "start",
+                    "type": "NUMBER",
+                    "description": "Enter a start index",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/co/collections/growth_technology_stocks\"\nquerystring = {\"start\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/co/collections/growth_technology_stocks\"\nquerystring = {\"start\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "calendar/public_offerings",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/calendar/public_offerings",
+            "description": "Get the past, current, and upcoming secondary public offerings (SPO) data.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "Enter a calendar date, for example: 2023-11 (YYYY-MM)",
+                    "default": "2023-11"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/calendar/public_offerings\"\nquerystring = {\"date\": \"2023-11\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/calendar/public_offerings\"\nquerystring = {\"date\": \"2023-11\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "calendar/ipo",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/calendar/ipo",
+            "description": "Get the latest and upcoming IPO data. These companies are going public.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "Enter a calendar date, for example: 2023-11 (YYYY-MM)",
+                    "default": "2023-11"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/calendar/ipo\"\nquerystring = {\"date\": \"2023-11\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/calendar/ipo\"\nquerystring = {\"date\": \"2023-11\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "calendar/economic_events",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/calendar/economic_events",
+            "description": "Get global economic events data.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Enter a calendar date, for example: 2023-11-30",
+                    "default": "2023-11-30"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/calendar/economic_events\"\nquerystring = {\"date\": \"2023-11-30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/calendar/economic_events\"\nquerystring = {\"date\": \"2023-11-30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "calendar/dividends",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/calendar/dividends",
+            "description": "Get past, present, and upcoming company dividend data.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Enter a calendar date, for example: 2023-11-30",
+                    "default": "2023-11-30"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/calendar/dividends\"\nquerystring = {\"date\": \"2023-11-30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/calendar/dividends\"\nquerystring = {\"date\": \"2023-11-30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "calendar/earnings",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/calendar/earnings",
+            "description": "Get past, present, and upcoming company earnings data.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Enter a calendar date, for example: 2023-11-30",
+                    "default": "2023-11-30"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/calendar/earnings\"\nquerystring = {\"date\": \"2023-11-30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/calendar/earnings\"\nquerystring = {\"date\": \"2023-11-30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "market/news/{stock}",
+            "url": "https://mboum-finance.p.rapidapi.com/ne/news/",
+            "description": "Recently published stock news.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single stock symbol ",
+                    "default": "AAPL,MSFT"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/ne/news/\"\nquerystring = {\"symbol\": \"AAPL,MSFT\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/ne/news/\"\nquerystring = {\"symbol\": \"AAPL,MSFT\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "market/quotes/{stocks}",
+            "url": "https://mboum-finance.p.rapidapi.com/qu/quote",
+            "description": "Quote data for stocks, ETFs, mutuals funds, etc...",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "Multiple symbols separated by commas. Max is 200",
+                    "default": "AAPL,MSFT,^SPX,^NYA,GAZP.ME,SIBN.ME,GEECEE.NS"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote\"\nquerystring = {\"symbol\": \"AAPL,MSFT,^SPX,^NYA,GAZP.ME,SIBN.ME,GEECEE.NS\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote\"\nquerystring = {\"symbol\": \"AAPL,MSFT,^SPX,^NYA,GAZP.ME,SIBN.ME,GEECEE.NS\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "market/most_actives",
+            "url": "https://mboum-finance.p.rapidapi.com/co/collections/most_actives",
+            "description": "Stocks are ordered in descending order by intraday trade volume.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "start",
+                    "type": "NUMBER",
+                    "description": "Enter a start index",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/co/collections/most_actives\"\nquerystring = {\"start\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/co/collections/most_actives\"\nquerystring = {\"start\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "market/day_gainers",
+            "url": "https://mboum-finance.p.rapidapi.com/co/collections/day_gainers",
+            "description": "Stocks ordered in descending order by price percent change with respect to the previous close.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "start",
+                    "type": "NUMBER",
+                    "description": "Enter a start index",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/co/collections/day_gainers\"\nquerystring = {\"start\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/co/collections/day_gainers\"\nquerystring = {\"start\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stock/cashflow-statement/{stock}_",
+            "url": "https://mboum-finance.p.rapidapi.com/qu/quote/cashflow-statement",
+            "description": "Get stock cash flow statements.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/cashflow-statement\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/cashflow-statement\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stock/earnings-history/{stock}",
+            "url": "https://mboum-finance.p.rapidapi.com/qu/quote/earnings-history",
+            "description": "Get earnings history information for a particular stock",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/earnings-history\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/earnings-history\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stock/income-statement/{stock}",
+            "url": "https://mboum-finance.p.rapidapi.com/qu/quote/income-statement",
+            "description": "Get stock income statement data.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/income-statement\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/income-statement\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stock/insider-transactions/{stock}",
+            "url": "https://mboum-finance.p.rapidapi.com/qu/quote/insider-transactions",
+            "description": "Get stock insider transactions history.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/insider-transactions\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/insider-transactions\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stock/net-share-purchase-activity/{stock}",
+            "url": "https://mboum-finance.p.rapidapi.com/qu/quote/net-share-purchase-activity",
+            "description": "Get net share purchase activity information for a particular stock",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/net-share-purchase-activity\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/net-share-purchase-activity\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stock/recommendation-trend/{stock}",
+            "url": "https://mboum-finance.p.rapidapi.com/qu/quote/recommendation-trend",
+            "description": "Get stock recommendations and trends.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/recommendation-trend\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/recommendation-trend\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stock/earnings/{stock}",
+            "url": "https://mboum-finance.p.rapidapi.com/qu/quote/earnings",
+            "description": "Get earnings information for a particular stock",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/earnings\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/earnings\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stock/earnings-trend/{stock}",
+            "url": "https://mboum-finance.p.rapidapi.com/qu/quote/earnings-trend",
+            "description": "Get earnings trend earnings history information for a particular stock",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/earnings-trend\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/earnings-trend\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stock/index-trend/{stock}",
+            "url": "https://mboum-finance.p.rapidapi.com/qu/quote/index-trend",
+            "description": "Get index trend earnings history information for a particular stock",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/index-trend\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/index-trend\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stock/institution-ownership/{stock}",
+            "url": "https://mboum-finance.p.rapidapi.com/qu/quote/institution-ownership",
+            "description": "Get stock institution ownership.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/institution-ownership\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/institution-ownership\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stock/upgrade-downgrade-history/{stock}",
+            "url": "https://mboum-finance.p.rapidapi.com/qu/quote/upgrade-downgrade-history",
+            "description": "Get stock upgrade and downgrade history.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/upgrade-downgrade-history\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/upgrade-downgrade-history\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stock/sec-filings/{stock}",
+            "url": "https://mboum-finance.p.rapidapi.com/qu/quote/sec-filings",
+            "description": "Get stock SEC filings.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/sec-filings\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/sec-filings\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/stock/sec-filings",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=sec-filings",
+            "description": "Get stock SEC filings.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=sec-filings\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=sec-filings\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stock/balance-sheet/{stock}",
+            "url": "https://mboum-finance.p.rapidapi.com/qu/quote/balance-sheet",
+            "description": "Get stock balance sheet data.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/balance-sheet\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/balance-sheet\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stock/key-statistics/{stock}",
+            "url": "https://mboum-finance.p.rapidapi.com/qu/quote/default-key-statistics",
+            "description": "Get stock key statistics data.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/default-key-statistics\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/default-key-statistics\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stock/financial-data/{stock}",
+            "url": "https://mboum-finance.p.rapidapi.com/qu/quote/financial-data",
+            "description": "Get stock financial data.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/financial-data\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/financial-data\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stock/profile/{stock}",
+            "url": "https://mboum-finance.p.rapidapi.com/qu/quote/asset-profile",
+            "description": "Get stock profile information such as company name, descriptions, website, etc...",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/asset-profile\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/asset-profile\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "v1/stock/balance-sheet",
+            "url": "https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=balance-sheet",
+            "description": "Get stock balance sheet data.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=balance-sheet\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/v1/markets/stock/modules?module=balance-sheet\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "market/day_losers",
+            "url": "https://mboum-finance.p.rapidapi.com/co/collections/day_losers",
+            "description": "Stocks ordered in ascending order by price percent change with respect to the previous close.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "start",
+                    "type": "NUMBER",
+                    "description": "Enter a start index",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/co/collections/day_losers\"\nquerystring = {\"start\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/co/collections/day_losers\"\nquerystring = {\"start\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "stock/insider-holders/{stock}",
+            "url": "https://mboum-finance.p.rapidapi.com/qu/quote/insider-holders",
+            "description": "Get stock insider holders' information.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "A single symbol",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/insider-holders\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mboum-finance.p.rapidapi.com/qu/quote/insider-holders\"\nquerystring = {\"symbol\": \"AAPL\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mboum-finance.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

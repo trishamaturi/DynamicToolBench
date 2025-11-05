@@ -1,0 +1,74 @@
+{
+    "product_id": "api_8e94abf0-93c0-4b08-ade7-84ec0a2e980c",
+    "tool_description": "Wikipedia image search",
+    "home_url": "https://rapidapi.com/MediaFrog/api/wikimedia-image-search/",
+    "name": "wikimedia image search",
+    "title": "wikimedia image search",
+    "pricing": "FREEMIUM",
+    "tool_name": "wikimedia image search",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 12,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.2,
+        "__typename": "Score"
+    },
+    "host": "wikimedia-image-search.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Image search",
+            "url": "https://wikimedia-image-search.p.rapidapi.com/wiki/",
+            "description": "wiki Image search",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Query String for Search",
+                    "default": "Elon Musk"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "results",
+                    "type": "NUMBER",
+                    "description": "Number of Results",
+                    "default": "12"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Page 1,2,3,4,5 =means Offset: 12 24 36 48",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://wikimedia-image-search.p.rapidapi.com/wiki/\"\nquerystring = {\"results\": \"12\", \"page\": \"1\", \"query\": \"Elon Musk\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"wikimedia-image-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://wikimedia-image-search.p.rapidapi.com/wiki/\"\nquerystring = {\"results\": \"12\", \"page\": \"1\", \"query\": \"Elon Musk\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"wikimedia-image-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

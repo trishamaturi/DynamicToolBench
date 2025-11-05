@@ -1,0 +1,67 @@
+{
+    "product_id": "api_4007d47d-ed6f-411d-a318-e24a1fe5d800",
+    "tool_description": "Musixmatch API for Song Lyrics multi languages",
+    "home_url": "https://rapidapi.com/cavsn/api/musixmatch-song-lyrics-api/",
+    "name": "Musixmatch | Song Lyrics API",
+    "title": "Musixmatch | Song Lyrics API",
+    "pricing": "FREEMIUM",
+    "tool_name": "Musixmatch | Song Lyrics API",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 216,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.3,
+        "__typename": "Score"
+    },
+    "host": "musixmatch-song-lyrics-api.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Search",
+            "url": "https://musixmatch-song-lyrics-api.p.rapidapi.com/search",
+            "description": "Make Search. Available types: tracks, artists. And with the returned ***lyrics_url ***you can easily get the lyrics.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "tracks"
+                },
+                {
+                    "name": "term",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Love"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://musixmatch-song-lyrics-api.p.rapidapi.com/search\"\nquerystring = {\"type\": \"tracks\", \"term\": \"Love\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"musixmatch-song-lyrics-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://musixmatch-song-lyrics-api.p.rapidapi.com/search\"\nquerystring = {\"type\": \"tracks\", \"term\": \"Love\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"musixmatch-song-lyrics-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Lyrics",
+            "url": "https://musixmatch-song-lyrics-api.p.rapidapi.com/lyrics/Taylor-Swift/Midnight-Rain/",
+            "description": "You can get the lyrics with the lyrics_url you get from the Search endpoint.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "track_name",
+                    "type": "string",
+                    "description": "",
+                    "default": "Midnight-Rain"
+                },
+                {
+                    "name": "artist",
+                    "type": "string",
+                    "description": "",
+                    "default": "Taylor-Swift"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://musixmatch-song-lyrics-api.p.rapidapi.com/lyrics/Taylor-Swift/Midnight-Rain/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"musixmatch-song-lyrics-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://musixmatch-song-lyrics-api.p.rapidapi.com/lyrics/{artist}/{track_name}/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"musixmatch-song-lyrics-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

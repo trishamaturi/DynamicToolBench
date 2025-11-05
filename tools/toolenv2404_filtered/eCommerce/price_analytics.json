@@ -1,0 +1,195 @@
+{
+    "product_id": "api_bc24dd2e-ac03-4f95-aa21-5376e902b025",
+    "tool_description": "Amazon, Google Shopping, Ebay, Idealo, billiger - price & product data from all marketplaces via one API. The Price Analytics API provides price & product data incl. product title, manufacturer, sellers, reviews, prices, size selection etc. Querying product data is done using session jobs. You create a session with the query details (marketplace, country , product id etc\u2026), and get a job ID. You can then use that job ID to poll results.   If you need a private plan with higher request amounts...",
+    "home_url": "https://rapidapi.com/3b-data-3b-data-default/api/price-analytics/",
+    "name": "Price Analytics",
+    "title": "Price Analytics",
+    "pricing": "FREEMIUM",
+    "tool_name": "Price Analytics",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 174,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.7,
+        "__typename": "Score"
+    },
+    "host": "price-analytics.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Poll session results",
+            "url": "https://price-analytics.p.rapidapi.com/poll-job/{job_id}",
+            "description": "Get products from created session",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "job_id",
+                    "type": "string",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://price-analytics.p.rapidapi.com/poll-job/{job_id}\"\nquerystring = {\"job_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"price-analytics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://price-analytics.p.rapidapi.com/poll-job/{job_id}\"\nquerystring = {\"job_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"price-analytics.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "job_id": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "updated_at": {
+                                    "type": "string"
+                                },
+                                "query": {
+                                    "type": "object",
+                                    "properties": {
+                                        "max_age": {
+                                            "type": "integer"
+                                        },
+                                        "max_pages": {
+                                            "type": "integer"
+                                        },
+                                        "value": {
+                                            "type": "string"
+                                        },
+                                        "key": {
+                                            "type": "string"
+                                        },
+                                        "country": {
+                                            "type": "string"
+                                        },
+                                        "topic": {
+                                            "type": "string"
+                                        },
+                                        "source": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "content": {
+                                    "type": "object",
+                                    "properties": {
+                                        "offers": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "direct_sale": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "availability_text": {
+                                                        "type": "string"
+                                                    },
+                                                    "availability_code": {
+                                                        "type": "string"
+                                                    },
+                                                    "voucher": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "free_return": {
+                                                        "type": "string"
+                                                    },
+                                                    "total": {
+                                                        "type": "number"
+                                                    },
+                                                    "shipping": {
+                                                        "type": "integer"
+                                                    },
+                                                    "price": {
+                                                        "type": "number"
+                                                    },
+                                                    "currency": {
+                                                        "type": "string"
+                                                    },
+                                                    "position": {
+                                                        "type": "string"
+                                                    },
+                                                    "shop_review_count": {
+                                                        "type": "integer"
+                                                    },
+                                                    "shop_review_rating": {
+                                                        "type": "integer"
+                                                    },
+                                                    "marketplace_name": {
+                                                        "type": "string"
+                                                    },
+                                                    "shop_type": {
+                                                        "type": "string"
+                                                    },
+                                                    "shop_url": {
+                                                        "type": "string"
+                                                    },
+                                                    "shop_name": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "offers_count": {
+                                            "type": "integer"
+                                        },
+                                        "price_min": {
+                                            "type": "number"
+                                        },
+                                        "price_max": {
+                                            "type": "number"
+                                        },
+                                        "price_avg": {
+                                            "type": "number"
+                                        },
+                                        "last_updated": {
+                                            "type": "string"
+                                        },
+                                        "available_since": {
+                                            "type": "string"
+                                        },
+                                        "category_ids": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "categories": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "review_count": {
+                                            "type": "integer"
+                                        },
+                                        "review_rating": {
+                                            "type": "integer"
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "success": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,587 @@
+{
+    "product_id": "5a9ee84fe4b04378c0c99f66",
+    "tool_description": "All cryptocurrency exchanges integrated under a single API",
+    "home_url": "https://rapidapi.com/coinapi/api/coinapi-rest/",
+    "name": "CoinAPI - REST",
+    "title": "CoinAPI - REST",
+    "pricing": "PAID",
+    "tool_name": "CoinAPI - REST",
+    "score": null,
+    "host": "coinapi.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "List all exhanges",
+            "url": "https://coinapi.p.rapidapi.com/v1/exchanges",
+            "description": "Get a detailed list of exchanges provided by the system.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/exchanges\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/exchanges\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "List all assets",
+            "url": "https://coinapi.p.rapidapi.com/v1/assets",
+            "description": "Get detailed list of assets.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/assets\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/assets\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "List all symbols",
+            "url": "https://coinapi.p.rapidapi.com/v1/symbols",
+            "description": "Get detailed list of all symbols.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "filter_symbol_id",
+                    "type": "STRING",
+                    "description": "Part of symbol identifier used to filter response.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/symbols\"\nquerystring = {\"filter_symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/symbols\"\nquerystring = {\"filter_symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Get specific rate",
+            "url": "https://coinapi.p.rapidapi.com/v1/exchangerate/{asset_id_base}/{asset_id_quote}",
+            "description": "Get exchange rate between pair of requested assets at specific or current time.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "asset_id_base",
+                    "type": "STRING",
+                    "description": "Requested exchange rate base asset identifier.",
+                    "default": ""
+                },
+                {
+                    "name": "asset_id_quote",
+                    "type": "STRING",
+                    "description": "Requested exchange rate quote asset identifier.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "time",
+                    "type": "STRING",
+                    "description": "Time at which exchange rate is calculated (optional, if not supplied then current rate is returned)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/exchangerate/{asset_id_base}/{asset_id_quote}\"\nquerystring = {\"time\": \"\", \"asset_id_base\": \"\", \"asset_id_quote\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/exchangerate/{asset_id_base}/{asset_id_quote}\"\nquerystring = {\"time\": \"\", \"asset_id_base\": \"\", \"asset_id_quote\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Get all current rates",
+            "url": "https://coinapi.p.rapidapi.com/v1/exchangerate/{asset_id_base}",
+            "description": "Get the current exchange rate between requested asset and all other assets.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "asset_id_base",
+                    "type": "STRING",
+                    "description": "Requested exchange rate base asset identifier.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/exchangerate/{asset_id_base}\"\nquerystring = {\"asset_id_base\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/exchangerate/{asset_id_base}\"\nquerystring = {\"asset_id_base\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "OHLCV List all periods",
+            "url": "https://coinapi.p.rapidapi.com/v1/ohlcv/periods",
+            "description": "Get full list of supported time periods available for requesting OHLCV timeseries data.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/ohlcv/periods\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/ohlcv/periods\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "OHLCV latest data",
+            "url": "https://coinapi.p.rapidapi.com/v1/ohlcv/{symbol_id}/latest",
+            "description": "Get OHLCV latest timeseries data for requested symbol and period, returned in time descending order.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "period_id",
+                    "type": "STRING",
+                    "description": "Symbol identifier of requested timeseries",
+                    "default": ""
+                },
+                {
+                    "name": "symbol_id",
+                    "type": "STRING",
+                    "description": "Symbol identifier for requested timeseries",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "include_empty_items",
+                    "type": "BOOLEAN",
+                    "description": "Include items with no activity? (optional, default value is false, possible values are true or false)",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/ohlcv/{symbol_id}/latest\"\nquerystring = {\"period_id\": \"\", \"include_empty_items\": \"\", \"limit\": \"\", \"symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/ohlcv/{symbol_id}/latest\"\nquerystring = {\"period_id\": \"\", \"include_empty_items\": \"\", \"limit\": \"\", \"symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "OHLCV historical data",
+            "url": "https://coinapi.p.rapidapi.com/v1/ohlcv/{symbol_id}/history",
+            "description": "Get OHLCV timeseries data for requested symbol and period, returned in time ascending order.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "period_id",
+                    "type": "STRING",
+                    "description": "Identifier of requested timeseries period (required, e.g. 5SEC or 2MTH)",
+                    "default": ""
+                },
+                {
+                    "name": "time_start",
+                    "type": "STRING",
+                    "description": "Timeseries starting time in ISO 8601",
+                    "default": ""
+                },
+                {
+                    "name": "symbol_id",
+                    "type": "STRING",
+                    "description": "Symbol identifier of requested timeseries",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "time_end",
+                    "type": "STRING",
+                    "description": "Timeseries ending time in ISO 8601 (optional, if not supplied then the data is returned to the end or when count of result elements reaches the limit)",
+                    "default": ""
+                },
+                {
+                    "name": "include_empty_items",
+                    "type": "BOOLEAN",
+                    "description": "Include items with no activity? (optional, default value is false, possible values are true or false)",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/ohlcv/{symbol_id}/history\"\nquerystring = {\"period_id\": \"\", \"time_start\": \"\", \"time_end\": \"\", \"include_empty_items\": \"\", \"limit\": \"\", \"symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/ohlcv/{symbol_id}/history\"\nquerystring = {\"period_id\": \"\", \"time_start\": \"\", \"time_end\": \"\", \"include_empty_items\": \"\", \"limit\": \"\", \"symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "All latest trade data",
+            "url": "https://coinapi.p.rapidapi.com/v1/trades/latest",
+            "description": "Get latest trades from all symbols up to 1 minute ago. Latest data is always returned in time descending order.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "filter_symbol_id",
+                    "type": "STRING",
+                    "description": "Part of symbol identifier used to filter response.",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/trades/latest\"\nquerystring = {\"filter_symbol_id\": \"\", \"limit\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/trades/latest\"\nquerystring = {\"filter_symbol_id\": \"\", \"limit\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Latest trade data - specific symbol",
+            "url": "https://coinapi.p.rapidapi.com/v1/trades/{symbol_id}/latest",
+            "description": "Get latest trades from a specific symbol without time limitation. Latest data is always returned in time descending order.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol_id",
+                    "type": "STRING",
+                    "description": "Symbol identifier for requested timeseries",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/trades/{symbol_id}/latest\"\nquerystring = {\"limit\": \"\", \"symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/trades/{symbol_id}/latest\"\nquerystring = {\"limit\": \"\", \"symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Trade historical data",
+            "url": "https://coinapi.p.rapidapi.com/v1/trades/{symbol_id}/history",
+            "description": "Get history transactions from specific symbol, returned in time ascending order.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "time_start",
+                    "type": "STRING",
+                    "description": "Starting time in ISO 8601",
+                    "default": ""
+                },
+                {
+                    "name": "symbol_id",
+                    "type": "STRING",
+                    "description": "Symbol identifier for requested timeseries",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "time_end",
+                    "type": "STRING",
+                    "description": "Timeseries ending time in ISO 8601 (optional, if not supplied then the data is returned to the end or when result elements count reaches the limit)",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/trades/{symbol_id}/history\"\nquerystring = {\"time_start\": \"\", \"time_end\": \"\", \"limit\": \"\", \"symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/trades/{symbol_id}/history\"\nquerystring = {\"time_start\": \"\", \"time_end\": \"\", \"limit\": \"\", \"symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Quotes current data",
+            "url": "https://coinapi.p.rapidapi.com/v1/quotes/current",
+            "description": "Get current quotes for all symbols",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "filter_symbol_id",
+                    "type": "STRING",
+                    "description": "Part of symbol identifier used to filter response.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/quotes/current\"\nquerystring = {\"filter_symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/quotes/current\"\nquerystring = {\"filter_symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Quotes current data - specific symbol",
+            "url": "https://coinapi.p.rapidapi.com/v1/quotes/{symbol_id}/current",
+            "description": "Get current quotes for a specific symbol",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol_id",
+                    "type": "STRING",
+                    "description": "Symbol identifier for requested timeseries",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/quotes/{symbol_id}/current\"\nquerystring = {\"symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/quotes/{symbol_id}/current\"\nquerystring = {\"symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Quotes latest data",
+            "url": "https://coinapi.p.rapidapi.com/v1/quotes/latest",
+            "description": "Get latest quote updates up to 1 minute ago. Latest data is always returned in time descending order.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)",
+                    "default": ""
+                },
+                {
+                    "name": "filter_symbol_id",
+                    "type": "STRING",
+                    "description": "Part of symbol identifier used to filter response.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/quotes/latest\"\nquerystring = {\"limit\": \"\", \"filter_symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/quotes/latest\"\nquerystring = {\"limit\": \"\", \"filter_symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Quotes latest data - specific symbol",
+            "url": "https://coinapi.p.rapidapi.com/v1/quotes/{symbol_id}/latest",
+            "description": "Get updates for a specific symbol without time limit. Latest data is always returned in time descending order.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol_id",
+                    "type": "STRING",
+                    "description": "Symbol identifier of requested timeseries",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/quotes/{symbol_id}/latest\"\nquerystring = {\"limit\": \"\", \"symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/quotes/{symbol_id}/latest\"\nquerystring = {\"limit\": \"\", \"symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Quotes historical data",
+            "url": "https://coinapi.p.rapidapi.com/v1/quotes/{symbol_id}/history",
+            "description": "Get historical quote updates within requested time range, returned in time ascending order.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "time_start",
+                    "type": "STRING",
+                    "description": "Starting time in ISO 8601",
+                    "default": ""
+                },
+                {
+                    "name": "symbol_id",
+                    "type": "STRING",
+                    "description": "Symbol identifier for requested timeseries",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "time_end",
+                    "type": "STRING",
+                    "description": "Timeseries ending time in ISO 8601 (optional, if not supplied then the data is returned to the end or when result elements count reaches the limit)",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/quotes/{symbol_id}/history\"\nquerystring = {\"time_start\": \"\", \"time_end\": \"\", \"limit\": \"\", \"symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/quotes/{symbol_id}/history\"\nquerystring = {\"time_start\": \"\", \"time_end\": \"\", \"limit\": \"\", \"symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Orderbook current data",
+            "url": "https://coinapi.p.rapidapi.com/v1/orderbooks/current",
+            "description": "Get current orderbook snapshot for all symbols",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "filter_symbol_id",
+                    "type": "STRING",
+                    "description": "Part of symbol identifier used to filter response.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/orderbooks/current\"\nquerystring = {\"filter_symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/orderbooks/current\"\nquerystring = {\"filter_symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Orderbook current data - specific symbol",
+            "url": "https://coinapi.p.rapidapi.com/v1/orderbooks/{symbol_id}/current",
+            "description": "Get current orderbook snapshot for a specific symbol",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol_id",
+                    "type": "STRING",
+                    "description": "Symbol identifier for requested timeseries",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/orderbooks/{symbol_id}/current\"\nquerystring = {\"symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/orderbooks/{symbol_id}/current\"\nquerystring = {\"symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Orderbook latest data",
+            "url": "https://coinapi.p.rapidapi.com/v1/orderbooks/{symbol_id}/latest",
+            "description": "Get latest orderbook snapshots for a specific symbol, returned in time descending order.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol_id",
+                    "type": "STRING",
+                    "description": "Symbol identifier of requested timeseries",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/orderbooks/{symbol_id}/latest\"\nquerystring = {\"limit\": \"\", \"symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/orderbooks/{symbol_id}/latest\"\nquerystring = {\"limit\": \"\", \"symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Orderbook historical data",
+            "url": "https://coinapi.p.rapidapi.com/v1/orderbooks/{symbol_id}/history",
+            "description": "Get historical orderbook snapshots for a specific symbol within time range, returned in time ascending order.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "time_start",
+                    "type": "STRING",
+                    "description": "Starting time in ISO 8601",
+                    "default": ""
+                },
+                {
+                    "name": "symbol_id",
+                    "type": "STRING",
+                    "description": "Symbol identifier for requested timeseries",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "time_end",
+                    "type": "STRING",
+                    "description": "Timeseries ending time in ISO 8601 (optional, if not supplied then the data is returned to the end or when result elements count reaches the limit)",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/orderbooks/{symbol_id}/history\"\nquerystring = {\"time_start\": \"\", \"time_end\": \"\", \"limit\": \"\", \"symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/orderbooks/{symbol_id}/history\"\nquerystring = {\"time_start\": \"\", \"time_end\": \"\", \"limit\": \"\", \"symbol_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Twitter Latest data",
+            "url": "https://coinapi.p.rapidapi.com/v1/twitter/latest",
+            "description": "Get latest tweets related to cryptocurrency markets, returned in time descending order.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/twitter/latest\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/twitter/latest\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Twitter historical data",
+            "url": "https://coinapi.p.rapidapi.com/v1/twitter/history",
+            "description": "Get historical tweets related to cryptocurrency markets, returned in time ascending order.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "time_start",
+                    "type": "STRING",
+                    "description": "Starting time in ISO 8601",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "time_end",
+                    "type": "STRING",
+                    "description": "Timeseries ending time in ISO 8601 (optional, if not supplied then the data is returned to the end or when result elements reaches count the limit)",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Amount of items to return (optional, mininum is 1, maximum is 100000, default value is 100, if the parameter is used then every 100 output items are counted as one request)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/twitter/history\"\nquerystring = {\"time_start\": \"\", \"time_end\": \"\", \"limit\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://coinapi.p.rapidapi.com/v1/twitter/history\"\nquerystring = {\"time_start\": \"\", \"time_end\": \"\", \"limit\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"coinapi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

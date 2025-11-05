@@ -1,0 +1,92 @@
+{
+    "product_id": "api_92fc6f8d-02b8-4903-ba99-f510d6f476a0",
+    "tool_description": "Get Localisation Using Latitude & Logintude",
+    "home_url": "https://rapidapi.com/jolix1235/api/map-geo-coding/",
+    "name": "map-geo-coding",
+    "title": "map-geo-coding",
+    "pricing": "FREE",
+    "tool_name": "map-geo-coding",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1027,
+        "avgSuccessRate": 0,
+        "popularityScore": 0,
+        "__typename": "Score"
+    },
+    "host": "map-geo-coding.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/geocode",
+            "url": "https://map-geo-coding.p.rapidapi.com/geocode",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "address",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://map-geo-coding.p.rapidapi.com/geocode\"\nquerystring = {\"address\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"map-geo-coding.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://map-geo-coding.p.rapidapi.com/geocode\"\nquerystring = {\"address\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"map-geo-coding.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "description": "Status of the geocoding request"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "formatted_address": {
+                                    "type": "string",
+                                    "description": "The formatted address of the location"
+                                },
+                                "latitude": {
+                                    "type": "number",
+                                    "description": "The latitude coordinate of the location"
+                                },
+                                "longitude": {
+                                    "type": "number",
+                                    "description": "The longitude coordinate of the location"
+                                },
+                                "address_components": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "long_name": {
+                                                "type": "string",
+                                                "description": "The full text representation of the address component"
+                                            },
+                                            "short_name": {
+                                                "type": "string",
+                                                "description": "An abbreviated, short text representation of the address component"
+                                            },
+                                            "types": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                },
+                                                "description": "An array of strings denoting the type of the address component"
+                                            }
+                                        }
+                                    },
+                                    "description": "Components of the address, such as street number, route, locality, etc."
+                                }
+                            }
+                        },
+                        "description": "List of geocoding results"
+                    }
+                }
+            }
+        }
+    ]
+}

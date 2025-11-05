@@ -1,0 +1,248 @@
+{
+    "product_id": "api_c67d8062-1992-494d-8504-a0f260cca1b6",
+    "tool_description": "get cars from auctions copart.com and iaai.com",
+    "home_url": "https://rapidapi.com/vodniciarv/api/api-for-copart-and-iaai/",
+    "name": "API for Copart and IAAI",
+    "title": "API for Copart and IAAI",
+    "pricing": "FREEMIUM",
+    "tool_name": "API for Copart and IAAI",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 2176,
+        "avgSuccessRate": 88,
+        "popularityScore": 8.7,
+        "__typename": "Score"
+    },
+    "host": "api-for-copart-and-iaai.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Search car by VIN code",
+            "url": "https://api-for-copart-and-iaai.p.rapidapi.com/search-vin/{vin}",
+            "description": "get car from copart and iaai by vin code",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "vin",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://api-for-copart-and-iaai.p.rapidapi.com/search-vin/{vin}\"\nquerystring = {\"vin\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-copart-and-iaai.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-for-copart-and-iaai.p.rapidapi.com/search-vin/{vin}\"\nquerystring = {\"vin\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-copart-and-iaai.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Get all manufacturers",
+            "url": "https://api-for-copart-and-iaai.p.rapidapi.com/manufacturers",
+            "description": "with pagination",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://api-for-copart-and-iaai.p.rapidapi.com/manufacturers\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-copart-and-iaai.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-for-copart-and-iaai.p.rapidapi.com/manufacturers\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-copart-and-iaai.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get all models for each manufacturer",
+            "url": "https://api-for-copart-and-iaai.p.rapidapi.com/models/16",
+            "description": "with filter by manufacturer_id",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "manufacturer_id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "16"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://api-for-copart-and-iaai.p.rapidapi.com/models/16\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-copart-and-iaai.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-for-copart-and-iaai.p.rapidapi.com/models/{manufacturer_id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-copart-and-iaai.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get cars from copart and iaai",
+            "url": "https://api-for-copart-and-iaai.p.rapidapi.com/cars",
+            "description": "this is the main endpoint, use it to get all the cars from copart and iaai",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "from_year",
+                    "type": "NUMBER",
+                    "description": "Filter from specific year",
+                    "default": ""
+                },
+                {
+                    "name": "vehicle_type",
+                    "type": "NUMBER",
+                    "description": "Vehicle type, automobile = 1, motorcycle = 2, atv = 5, watercraft = 12, jet_sky = 11, boat = 7, trailers = 3, mobile_home = 10, emergency_equipment = 13, industrial_equipment = 9, truck = 4, bus = 8",
+                    "default": ""
+                },
+                {
+                    "name": "to_year",
+                    "type": "NUMBER",
+                    "description": "Filter to specific year",
+                    "default": ""
+                },
+                {
+                    "name": "minutes",
+                    "type": "NUMBER",
+                    "description": "this parameter allows you to retrieve only those cars that have been updated in the last few minutes",
+                    "default": "10"
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "Filter with fixed year",
+                    "default": ""
+                },
+                {
+                    "name": "manufacturer_id",
+                    "type": "NUMBER",
+                    "description": "Manufacturer id, to get it use /manufacturers endpoint",
+                    "default": "16"
+                },
+                {
+                    "name": "model_id",
+                    "type": "NUMBER",
+                    "description": "Car model id, to get it use /models endpoint",
+                    "default": ""
+                },
+                {
+                    "name": "per_page",
+                    "type": "NUMBER",
+                    "description": "how many cars show per page",
+                    "default": "50"
+                },
+                {
+                    "name": "generation_id",
+                    "type": "NUMBER",
+                    "description": "Car generation id, to get it use /generations endpoint",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-for-copart-and-iaai.p.rapidapi.com/cars\"\nquerystring = {\"from_year\": \"\", \"vehicle_type\": \"\", \"to_year\": \"\", \"minutes\": \"10\", \"year\": \"\", \"manufacturer_id\": \"16\", \"model_id\": \"\", \"per_page\": \"50\", \"generation_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-copart-and-iaai.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-for-copart-and-iaai.p.rapidapi.com/cars\"\nquerystring = {\"from_year\": \"\", \"vehicle_type\": \"\", \"to_year\": \"\", \"minutes\": \"10\", \"year\": \"\", \"manufacturer_id\": \"16\", \"model_id\": \"\", \"per_page\": \"50\", \"generation_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-copart-and-iaai.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get generations for models of cars",
+            "url": "https://api-for-copart-and-iaai.p.rapidapi.com/generations/94",
+            "description": "Get generations with filter by make and model",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "model_id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "94"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://api-for-copart-and-iaai.p.rapidapi.com/generations/94\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-copart-and-iaai.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-for-copart-and-iaai.p.rapidapi.com/generations/{model_id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-for-copart-and-iaai.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

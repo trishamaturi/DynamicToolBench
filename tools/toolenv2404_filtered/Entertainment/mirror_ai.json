@@ -1,0 +1,132 @@
+{
+    "product_id": "api_734b9430-1e87-4f26-a555-515e09f0a655",
+    "tool_description": "",
+    "home_url": "https://rapidapi.com/mirror-dev-team/api/mirror-ai/",
+    "name": "Mirror-AI",
+    "title": "Mirror-AI",
+    "pricing": "FREEMIUM",
+    "tool_name": "Mirror-AI",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 5818,
+        "avgSuccessRate": 100,
+        "popularityScore": 8.4,
+        "__typename": "Score"
+    },
+    "host": "mirror-ai.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get all available face parts",
+            "url": "https://mirror-ai.p.rapidapi.com/get_all_parts",
+            "description": "Get IDs of parts currently applied to the face and available options. Parts may vary from face to face based on recognised attributes.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "face_id",
+                    "type": "STRING",
+                    "description": "Face ID you got from /generate endpoint",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mirror-ai.p.rapidapi.com/get_all_parts\"\nquerystring = {\"face_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mirror-ai.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mirror-ai.p.rapidapi.com/get_all_parts\"\nquerystring = {\"face_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mirror-ai.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "ok": {
+                        "type": "boolean"
+                    },
+                    "tabs": {
+                        "items": {
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Get face attributes",
+            "url": "https://mirror-ai.p.rapidapi.com/attrs",
+            "description": "Get estimated face attributes such as age and gender.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "face_id",
+                    "type": "STRING",
+                    "description": "Face ID obtained from Generate endpoint",
+                    "default": "M9ofVWZdQkiUAh109ozEMQ"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mirror-ai.p.rapidapi.com/attrs\"\nquerystring = {\"face_id\": \"M9ofVWZdQkiUAh109ozEMQ\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mirror-ai.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mirror-ai.p.rapidapi.com/attrs\"\nquerystring = {\"face_id\": \"M9ofVWZdQkiUAh109ozEMQ\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mirror-ai.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "attrs": {
+                        "properties": {
+                            "age": {
+                                "type": "string"
+                            },
+                            "gender": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "ok": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Get sticker",
+            "url": "https://mirror-ai.p.rapidapi.com/sticker",
+            "description": "Get URL for a sticker for given face. Supported stickers can be explored at https://mirrorai.github.io\n\nNote that sticker style must match face style used while generating the face.\n\nCurrently there are two styles availible:\n* kenga (aka \"line\" in MirrorAI app)\n* anime",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "sticker",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "selfie_in_the_elevator"
+                },
+                {
+                    "name": "face_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "loc",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://mirror-ai.p.rapidapi.com/sticker\"\nquerystring = {\"loc\": \"en\", \"sticker\": \"selfie_in_the_elevator\", \"face_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mirror-ai.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mirror-ai.p.rapidapi.com/sticker\"\nquerystring = {\"loc\": \"en\", \"sticker\": \"selfie_in_the_elevator\", \"face_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mirror-ai.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get token",
+            "url": "https://mirror-ai.p.rapidapi.com/token",
+            "description": "Get a token for making further requests. Faces can be managed only with tokens they were generated with.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://mirror-ai.p.rapidapi.com/token\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mirror-ai.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://mirror-ai.p.rapidapi.com/token\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"mirror-ai.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

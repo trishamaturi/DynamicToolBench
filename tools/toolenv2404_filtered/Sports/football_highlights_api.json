@@ -1,0 +1,1083 @@
+{
+    "product_id": "api_240bd5b1-0da5-4404-8217-0ba51bb90fb8",
+    "tool_description": "Football, Soccer live scores, highlights, game recaps, fouls, and post-match interviews on a global scale, providing developers with comprehensive sports data. Integrate pre-match game odds seamlessly into your projects for a complete sports data solution.",
+    "home_url": "https://rapidapi.com/highlightly-api-highlightly-api-default/api/football-highlights-api/",
+    "name": "Football Highlights API",
+    "title": "Football Highlights API",
+    "pricing": "FREEMIUM",
+    "tool_name": "Football Highlights API",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 242,
+        "avgSuccessRate": 97,
+        "popularityScore": 8.9,
+        "__typename": "Score"
+    },
+    "host": "football-highlights-api.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "FootballBookmakersController_getBookmakers",
+            "url": "https://football-highlights-api.p.rapidapi.com/bookmakers",
+            "description": "Retrieve a list of all bookmakers based on passed query parameters.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "name",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "Stake.com"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 0
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 20
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/bookmakers\"\nquerystring = {\"name\": \"Stake.com\", \"offset\": 0, \"limit\": 20}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/bookmakers\"\nquerystring = {\"name\": \"Stake.com\", \"offset\": 0, \"limit\": 20}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "number"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "id",
+                                "name"
+                            ]
+                        }
+                    },
+                    "pagination": {
+                        "type": "object",
+                        "properties": {
+                            "totalCount": {
+                                "type": "number",
+                                "description": "Available number of items, relevant to the provided query."
+                            },
+                            "offset": {
+                                "type": "number"
+                            },
+                            "limit": {
+                                "type": "number"
+                            }
+                        },
+                        "required": [
+                            "totalCount",
+                            "offset",
+                            "limit"
+                        ]
+                    },
+                    "plan": {
+                        "type": "object",
+                        "properties": {
+                            "tier": {
+                                "type": "string",
+                                "description": "Your current API subscription tier."
+                            },
+                            "message": {
+                                "type": "string",
+                                "description": "Explanation message regarding your current tier."
+                            }
+                        },
+                        "required": [
+                            "tier",
+                            "message"
+                        ]
+                    }
+                },
+                "required": [
+                    "data",
+                    "pagination",
+                    "plan"
+                ]
+            }
+        },
+        {
+            "name": "TeamsController_getTeamById",
+            "url": "https://football-highlights-api.p.rapidapi.com/teams/5700782",
+            "description": "Retrieve team details by team id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "Requested team id.",
+                    "default": 5700782
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/teams/5700782\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/teams/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "HighlightsController_getHighlights",
+            "url": "https://football-highlights-api.p.rapidapi.com/highlights",
+            "description": "Retrieve a list of all highlights.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": 0
+                },
+                {
+                    "name": "awayTeamId",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 1907875
+                },
+                {
+                    "name": "homeTeamName",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Sk\u00f6vde AIK"
+                },
+                {
+                    "name": "awayTeamName",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Vasteras SK FK"
+                },
+                {
+                    "name": "countryName",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Sweden"
+                },
+                {
+                    "name": "homeTeamId",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 5700782
+                },
+                {
+                    "name": "timezone",
+                    "type": "OBJECT",
+                    "description": "Valid timezone identifier.",
+                    "default": "Europe/London"
+                },
+                {
+                    "name": "matchId",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 853061055
+                },
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "Date that follows the YYYY-MM-DD format.",
+                    "default": "2023-08-06"
+                },
+                {
+                    "name": "offset",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": 0
+                },
+                {
+                    "name": "leagueName",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Superettan"
+                },
+                {
+                    "name": "leagueId",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 97798
+                },
+                {
+                    "name": "countryCode",
+                    "type": "STRING",
+                    "description": "Country code specified by the ISO 3166 standard.",
+                    "default": "SE"
+                },
+                {
+                    "name": "season",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 2023
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/highlights\"\nquerystring = {\"limit\": 0, \"awayTeamId\": 1907875, \"homeTeamName\": \"Sk\u00f6vde AIK\", \"awayTeamName\": \"Vasteras SK FK\", \"countryName\": \"Sweden\", \"homeTeamId\": 5700782, \"timezone\": \"Europe/London\", \"matchId\": 853061055, \"date\": \"2023-08-06\", \"offset\": 0, \"leagueName\": \"Superettan\", \"leagueId\": 97798, \"countryCode\": \"SE\", \"season\": 2023}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/highlights\"\nquerystring = {\"limit\": 0, \"awayTeamId\": 1907875, \"homeTeamName\": \"Sk\u00f6vde AIK\", \"awayTeamName\": \"Vasteras SK FK\", \"countryName\": \"Sweden\", \"homeTeamId\": 5700782, \"timezone\": \"Europe/London\", \"matchId\": 853061055, \"date\": \"2023-08-06\", \"offset\": 0, \"leagueName\": \"Superettan\", \"leagueId\": 97798, \"countryCode\": \"SE\", \"season\": 2023}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "number"
+                                },
+                                "type": {
+                                    "type": "string"
+                                },
+                                "imgUrl": {
+                                    "type": "string",
+                                    "description": "Preview picture of the highlight."
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "type": "string",
+                                    "description": "Url location of the video highlight."
+                                },
+                                "embedUrl": {
+                                    "type": "string",
+                                    "description": "Url of embeddable video highlight."
+                                },
+                                "match": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "number"
+                                        },
+                                        "round": {
+                                            "type": "string"
+                                        },
+                                        "date": {
+                                            "type": "string"
+                                        },
+                                        "country": {
+                                            "type": "object",
+                                            "properties": {
+                                                "code": {
+                                                    "type": "string",
+                                                    "description": "Country code specified by the ISO 3166 standard."
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "logo": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "code",
+                                                "name",
+                                                "logo"
+                                            ]
+                                        },
+                                        "awayTeam": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number"
+                                                },
+                                                "logo": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "id",
+                                                "name"
+                                            ]
+                                        },
+                                        "homeTeam": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number"
+                                                },
+                                                "logo": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "id",
+                                                "name"
+                                            ]
+                                        },
+                                        "league": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number"
+                                                },
+                                                "season": {
+                                                    "type": "number"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "logo": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "id",
+                                                "season",
+                                                "name"
+                                            ]
+                                        },
+                                        "state": {
+                                            "type": "object",
+                                            "properties": {
+                                                "description": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "To be announced",
+                                                        "Not started",
+                                                        "First half",
+                                                        "Half time",
+                                                        "Second half",
+                                                        "Extra time",
+                                                        "Break time",
+                                                        "Penalties",
+                                                        "Suspended",
+                                                        "Interrupted",
+                                                        "Finished",
+                                                        "Finished after penalties",
+                                                        "Postponed",
+                                                        "Cancelled",
+                                                        "Abandoned",
+                                                        "Awarded",
+                                                        "Forfeit",
+                                                        "In progress",
+                                                        "Unknown"
+                                                    ],
+                                                    "description": "State of the match."
+                                                },
+                                                "clock": {
+                                                    "type": "number",
+                                                    "description": "Current minute of the match."
+                                                },
+                                                "score": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "current": {
+                                                            "type": "string",
+                                                            "description": "Home - Away score up to penalties."
+                                                        },
+                                                        "penalties": {
+                                                            "type": "string",
+                                                            "description": "Home - Away team score after the penalties phase."
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "required": [
+                                                "description",
+                                                "score"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "round",
+                                        "date",
+                                        "country",
+                                        "awayTeam",
+                                        "homeTeam",
+                                        "league",
+                                        "state"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "id",
+                                "type",
+                                "title",
+                                "url",
+                                "match"
+                            ]
+                        }
+                    },
+                    "pagination": {
+                        "type": "object",
+                        "properties": {
+                            "totalCount": {
+                                "type": "number",
+                                "description": "Available number of items, relevant to the provided query."
+                            },
+                            "offset": {
+                                "type": "number"
+                            },
+                            "limit": {
+                                "type": "number"
+                            }
+                        },
+                        "required": [
+                            "totalCount",
+                            "offset",
+                            "limit"
+                        ]
+                    },
+                    "plan": {
+                        "type": "object",
+                        "properties": {
+                            "tier": {
+                                "type": "string",
+                                "description": "Your current API subscription tier."
+                            },
+                            "message": {
+                                "type": "string",
+                                "description": "Explanation message regarding your current tier."
+                            }
+                        },
+                        "required": [
+                            "tier",
+                            "message"
+                        ]
+                    }
+                },
+                "required": [
+                    "data",
+                    "pagination",
+                    "plan"
+                ]
+            }
+        },
+        {
+            "name": "TeamsController_getTeams",
+            "url": "https://football-highlights-api.p.rapidapi.com/teams",
+            "description": "Retrieve a list of all teams.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": 0
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Sk\u00f6vde AIK"
+                },
+                {
+                    "name": "limit",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": 50
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/teams\"\nquerystring = {\"offset\": 0, \"name\": \"Sk\u00f6vde AIK\", \"limit\": 50}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/teams\"\nquerystring = {\"offset\": 0, \"name\": \"Sk\u00f6vde AIK\", \"limit\": 50}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "number"
+                                },
+                                "logo": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "id",
+                                "name"
+                            ]
+                        }
+                    },
+                    "pagination": {
+                        "type": "object",
+                        "properties": {
+                            "totalCount": {
+                                "type": "number",
+                                "description": "Available number of items, relevant to the provided query."
+                            },
+                            "offset": {
+                                "type": "number"
+                            },
+                            "limit": {
+                                "type": "number"
+                            }
+                        },
+                        "required": [
+                            "totalCount",
+                            "offset",
+                            "limit"
+                        ]
+                    },
+                    "plan": {
+                        "type": "object",
+                        "properties": {
+                            "tier": {
+                                "type": "string",
+                                "description": "Your current API subscription tier."
+                            },
+                            "message": {
+                                "type": "string",
+                                "description": "Explanation message regarding your current tier."
+                            }
+                        },
+                        "required": [
+                            "tier",
+                            "message"
+                        ]
+                    }
+                },
+                "required": [
+                    "data",
+                    "pagination",
+                    "plan"
+                ]
+            }
+        },
+        {
+            "name": "FootballBookmakersController_getBookmakerById",
+            "url": "https://football-highlights-api.p.rapidapi.com/bookmakers/1",
+            "description": "Retrieve bookmaker details by bookmaker id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "Requested bookmaker id.",
+                    "default": 1
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/bookmakers/1\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/bookmakers/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "HighlightsController_getHighlightById",
+            "url": "https://football-highlights-api.p.rapidapi.com/highlights/7082",
+            "description": "Retrieve highlight details by highlight id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "Requested higlight id.",
+                    "default": 7082
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/highlights/7082\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/highlights/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "FootballOddsController_getOdds",
+            "url": "https://football-highlights-api.p.rapidapi.com/odds",
+            "description": "Retrieve a list of all odds based on passed query parameters. At least one parameter has to be specified.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 0
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 5
+                },
+                {
+                    "name": "bookmakerName",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Stake.com"
+                },
+                {
+                    "name": "leagueName",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "League One"
+                },
+                {
+                    "name": "matchId",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 884822928
+                },
+                {
+                    "name": "bookmakerId",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 1
+                },
+                {
+                    "name": "leagueId",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 35675
+                },
+                {
+                    "name": "timezone",
+                    "type": "OBJECT",
+                    "description": "Valid timezone identifier.",
+                    "default": "Europe/London"
+                },
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "Date that follows the YYYY-MM-DD format.",
+                    "default": "2024-03-23"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/odds\"\nquerystring = {\"offset\": 0, \"limit\": 5, \"bookmakerName\": \"Stake.com\", \"leagueName\": \"League One\", \"matchId\": 884822928, \"bookmakerId\": 1, \"leagueId\": 35675, \"timezone\": \"Europe/London\", \"date\": \"2024-03-23\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/odds\"\nquerystring = {\"offset\": 0, \"limit\": 5, \"bookmakerName\": \"Stake.com\", \"leagueName\": \"League One\", \"matchId\": 884822928, \"bookmakerId\": 1, \"leagueId\": 35675, \"timezone\": \"Europe/London\", \"date\": \"2024-03-23\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "matchId": {
+                                    "type": "number"
+                                },
+                                "odds": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "bookmakerId": {
+                                                "type": "number"
+                                            },
+                                            "bookmakerName": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "market": {
+                                                "type": "string"
+                                            },
+                                            "values": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "odd": {
+                                                            "description": "**Omitted**"
+                                                        },
+                                                        "value": {
+                                                            "description": "**Omitted**"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "odd",
+                                                        "value"
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        "required": [
+                                            "bookmakerId",
+                                            "type",
+                                            "market",
+                                            "values"
+                                        ]
+                                    }
+                                }
+                            },
+                            "required": [
+                                "matchId",
+                                "odds"
+                            ]
+                        }
+                    },
+                    "pagination": {
+                        "type": "object",
+                        "properties": {
+                            "totalCount": {
+                                "type": "number",
+                                "description": "Available number of items, relevant to the provided query."
+                            },
+                            "offset": {
+                                "type": "number"
+                            },
+                            "limit": {
+                                "type": "number"
+                            }
+                        },
+                        "required": [
+                            "totalCount",
+                            "offset",
+                            "limit"
+                        ]
+                    },
+                    "plan": {
+                        "type": "object",
+                        "properties": {
+                            "tier": {
+                                "type": "string",
+                                "description": "Your current API subscription tier."
+                            },
+                            "message": {
+                                "type": "string",
+                                "description": "Explanation message regarding your current tier."
+                            }
+                        },
+                        "required": [
+                            "tier",
+                            "message"
+                        ]
+                    }
+                },
+                "required": [
+                    "data",
+                    "pagination",
+                    "plan"
+                ]
+            }
+        },
+        {
+            "name": "LeaguesController_getLeagues",
+            "url": "https://football-highlights-api.p.rapidapi.com/leagues",
+            "description": "Retrieve a list of all leagues.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "countryCode",
+                    "type": "STRING",
+                    "description": "Country code specified by the ISO 3166 standard.",
+                    "default": "SE"
+                },
+                {
+                    "name": "season",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 2023
+                },
+                {
+                    "name": "limit",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": 100
+                },
+                {
+                    "name": "countryName",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Sweden"
+                },
+                {
+                    "name": "leagueName",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Superettan"
+                },
+                {
+                    "name": "offset",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": 0
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/leagues\"\nquerystring = {\"countryCode\": \"SE\", \"season\": 2023, \"limit\": 100, \"countryName\": \"Sweden\", \"leagueName\": \"Superettan\", \"offset\": 0}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/leagues\"\nquerystring = {\"countryCode\": \"SE\", \"season\": 2023, \"limit\": 100, \"countryName\": \"Sweden\", \"leagueName\": \"Superettan\", \"offset\": 0}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "MatchesController_getMatches",
+            "url": "https://football-highlights-api.p.rapidapi.com/matches",
+            "description": "Retrieve a list of all matches. At least one parameter has to be specified.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "homeTeamId",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 5700782
+                },
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "Date that follows the YYYY-MM-DD format.",
+                    "default": "2023-08-06"
+                },
+                {
+                    "name": "season",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 2023
+                },
+                {
+                    "name": "limit",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": 100
+                },
+                {
+                    "name": "homeTeamName",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Sk\u00f6vde AIK"
+                },
+                {
+                    "name": "countryName",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Sweden"
+                },
+                {
+                    "name": "offset",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": 0
+                },
+                {
+                    "name": "leagueName",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Superettan"
+                },
+                {
+                    "name": "leagueId",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 97798
+                },
+                {
+                    "name": "countryCode",
+                    "type": "STRING",
+                    "description": "Country code specified by the ISO 3166 standard.",
+                    "default": "SE"
+                },
+                {
+                    "name": "timezone",
+                    "type": "OBJECT",
+                    "description": "Valid timezone identifier.",
+                    "default": "Europe/London"
+                },
+                {
+                    "name": "awayTeamId",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 1907875
+                },
+                {
+                    "name": "awayTeamName",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Vasteras SK FK"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/matches\"\nquerystring = {\"homeTeamId\": 5700782, \"date\": \"2023-08-06\", \"season\": 2023, \"limit\": 100, \"homeTeamName\": \"Sk\u00f6vde AIK\", \"countryName\": \"Sweden\", \"offset\": 0, \"leagueName\": \"Superettan\", \"leagueId\": 97798, \"countryCode\": \"SE\", \"timezone\": \"Europe/London\", \"awayTeamId\": 1907875, \"awayTeamName\": \"Vasteras SK FK\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/matches\"\nquerystring = {\"homeTeamId\": 5700782, \"date\": \"2023-08-06\", \"season\": 2023, \"limit\": 100, \"homeTeamName\": \"Sk\u00f6vde AIK\", \"countryName\": \"Sweden\", \"offset\": 0, \"leagueName\": \"Superettan\", \"leagueId\": 97798, \"countryCode\": \"SE\", \"timezone\": \"Europe/London\", \"awayTeamId\": 1907875, \"awayTeamName\": \"Vasteras SK FK\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "MatchesController_getMatchById",
+            "url": "https://football-highlights-api.p.rapidapi.com/matches/1002433681",
+            "description": "Retrieve match details by match id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "Requested match id.",
+                    "default": 1002433681
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/matches/1002433681\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/matches/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "CountriesController_getAllCountries",
+            "url": "https://football-highlights-api.p.rapidapi.com/countries",
+            "description": "Retrieve a list of all supported.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "France"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/countries\"\nquerystring = {\"name\": \"France\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/countries\"\nquerystring = {\"name\": \"France\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "code": {
+                            "type": "string",
+                            "description": "Country code specified by the ISO 3166 standard."
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "logo": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "code",
+                        "name",
+                        "logo"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "CountriesController_getCountryByCountryCode",
+            "url": "https://football-highlights-api.p.rapidapi.com/countries/FR",
+            "description": "Retrieve country details by country code.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "countryCode",
+                    "type": "STRING",
+                    "description": "A string value code of the country, following the ISO 3166 standard.",
+                    "default": "FR"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/countries/FR\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/countries/{countrycode}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "LeaguesController_getLeagueById",
+            "url": "https://football-highlights-api.p.rapidapi.com/leagues/97798",
+            "description": "Retrieve league details by league id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "Requested league id.",
+                    "default": 97798
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/leagues/97798\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://football-highlights-api.p.rapidapi.com/leagues/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"football-highlights-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "number"
+                        },
+                        "logo": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "country": {
+                            "type": "object",
+                            "properties": {
+                                "code": {
+                                    "type": "string",
+                                    "description": "Country code specified by the ISO 3166 standard."
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "logo": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "code",
+                                "name",
+                                "logo"
+                            ]
+                        },
+                        "seasons": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "season": {
+                                        "type": "number"
+                                    }
+                                },
+                                "required": [
+                                    "season"
+                                ]
+                            }
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "name",
+                        "country",
+                        "seasons"
+                    ]
+                }
+            }
+        }
+    ]
+}

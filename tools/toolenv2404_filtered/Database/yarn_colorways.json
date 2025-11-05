@@ -1,0 +1,267 @@
+{
+    "product_id": "api_a2a2ac9e-28ca-4c9a-9ccd-243ea8b8b5db",
+    "tool_description": "Find yarn colorways by HTML hex color code.",
+    "home_url": "https://rapidapi.com/temperature-blanket-temperature-blanket-default/api/yarn-colorways/",
+    "name": "Yarn Colorways",
+    "title": "Yarn Colorways",
+    "pricing": "FREEMIUM",
+    "tool_name": "Yarn Colorways",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 861,
+        "avgSuccessRate": 100,
+        "popularityScore": 6.5,
+        "__typename": "Score"
+    },
+    "host": "yarn-colorways.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Yarns",
+            "url": "https://yarn-colorways.p.rapidapi.com/v1/yarns",
+            "description": "Get all yarn IDs and names, useful to filter /match or /colorway results.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "brand",
+                    "type": "STRING",
+                    "description": "The brand ID or name, or a comma-sepparated list of brand IDs or brand names to filter the results by.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://yarn-colorways.p.rapidapi.com/v1/yarns\"\nquerystring = {\"brand\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yarn-colorways.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://yarn-colorways.p.rapidapi.com/v1/yarns\"\nquerystring = {\"brand\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yarn-colorways.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Find Yarn by Color",
+            "url": "https://yarn-colorways.p.rapidapi.com/v1/match/665e3f",
+            "description": "Get best-matching yarn colorways for a specified color.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "color",
+                    "type": "string",
+                    "description": "Any string that can be correctly parsed as a color by [chroma.js](https://gka.github.io/chroma.js/).",
+                    "default": "665e3f"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Specify the starting index of the data to return. Default is 0.",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The maximum number of yarn colorways to include in the results. Default is 50. Maximum is 500.",
+                    "default": ""
+                },
+                {
+                    "name": "threshold",
+                    "type": "NUMBER",
+                    "description": "The minimum percentage amount the yarn colorway must match the supplied color. Default is 75.",
+                    "default": ""
+                },
+                {
+                    "name": "yarn",
+                    "type": "STRING",
+                    "description": "The yarn Id or yarn Name to filter the results by. Text case is ignored.",
+                    "default": ""
+                },
+                {
+                    "name": "brand",
+                    "type": "STRING",
+                    "description": "The brand Id or brand Name to filter the results by. Text case is ignored.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://yarn-colorways.p.rapidapi.com/v1/match/665e3f\"\nquerystring = {\"offset\": \"\", \"limit\": \"\", \"threshold\": \"\", \"yarn\": \"\", \"brand\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yarn-colorways.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://yarn-colorways.p.rapidapi.com/v1/match/{color}\"\nquerystring = {\"offset\": \"\", \"limit\": \"\", \"threshold\": \"\", \"yarn\": \"\", \"brand\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yarn-colorways.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "meta": {
+                        "type": "object",
+                        "properties": {
+                            "limit": {
+                                "type": "integer"
+                            },
+                            "offset": {
+                                "type": "integer"
+                            },
+                            "total": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "hex": {
+                                    "type": "string"
+                                },
+                                "brandId": {
+                                    "type": "string"
+                                },
+                                "brandName": {
+                                    "type": "string"
+                                },
+                                "yarnId": {
+                                    "type": "string"
+                                },
+                                "yarnName": {
+                                    "type": "string"
+                                },
+                                "dateAccessed": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "delta": {
+                                    "type": "number"
+                                },
+                                "percentMatch": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Brands",
+            "url": "https://yarn-colorways.p.rapidapi.com/v1/brands",
+            "description": "Get all brand IDs and names, useful to filter /match or /colorway results.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://yarn-colorways.p.rapidapi.com/v1/brands\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yarn-colorways.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://yarn-colorways.p.rapidapi.com/v1/brands\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yarn-colorways.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Colorways",
+            "url": "https://yarn-colorways.p.rapidapi.com/v1/colorways",
+            "description": "Get yarn colorways.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "The Name of the yarn colorway to filter the results by. Text case is ignored.",
+                    "default": ""
+                },
+                {
+                    "name": "sortBy",
+                    "type": "STRING",
+                    "description": "Default is `default`. Accepted values are `name`, `lightness`, and `default`.",
+                    "default": ""
+                },
+                {
+                    "name": "direction",
+                    "type": "STRING",
+                    "description": "Default is `ASC` (ascending). Accepted values are `ASC` and `DESC` (descending).",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The maximum number of yarn colorways to include in the results. Default is 50. Maximum is 500.",
+                    "default": ""
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Specify the starting index of the data to return. Default is 0.",
+                    "default": ""
+                },
+                {
+                    "name": "yarn",
+                    "type": "STRING",
+                    "description": "The yarn Name or Id to filter the results by. Text case is ignored.",
+                    "default": ""
+                },
+                {
+                    "name": "brand",
+                    "type": "STRING",
+                    "description": "The brand Name or Id to filter the results by. Text case is ignored.",
+                    "default": ""
+                },
+                {
+                    "name": "color",
+                    "type": "STRING",
+                    "description": "Any string that can be correctly parsed as a color by [chroma.js](https://gka.github.io/chroma.js/)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://yarn-colorways.p.rapidapi.com/v1/colorways\"\nquerystring = {\"name\": \"\", \"sortBy\": \"\", \"direction\": \"\", \"limit\": \"\", \"offset\": \"\", \"yarn\": \"\", \"brand\": \"\", \"color\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yarn-colorways.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://yarn-colorways.p.rapidapi.com/v1/colorways\"\nquerystring = {\"name\": \"\", \"sortBy\": \"\", \"direction\": \"\", \"limit\": \"\", \"offset\": \"\", \"yarn\": \"\", \"brand\": \"\", \"color\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yarn-colorways.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "meta": {
+                        "type": "object",
+                        "properties": {
+                            "limit": {
+                                "type": "integer"
+                            },
+                            "offset": {
+                                "type": "integer"
+                            },
+                            "total": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "brandId": {
+                                    "type": "string"
+                                },
+                                "brandName": {
+                                    "type": "string"
+                                },
+                                "dateAccessed": {
+                                    "type": "string"
+                                },
+                                "hex": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "yarnId": {
+                                    "type": "string"
+                                },
+                                "yarnName": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

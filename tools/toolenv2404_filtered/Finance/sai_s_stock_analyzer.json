@@ -1,0 +1,78 @@
+{
+    "product_id": "api_1baa411c-ef84-441d-ab0c-6a09252af0d9",
+    "tool_description": "This API provides technical analysis of stocks using Generative AI (ChatGPT). Also, gives buy/sell/hold recommendations based on the analysis. You can also get prediction of future share price for stocks.",
+    "home_url": "https://rapidapi.com/vijaysairamv/api/sais-stock-analyzer/",
+    "name": "Sai's Stock Analyzer",
+    "title": "Sai's Stock Analyzer",
+    "pricing": "FREEMIUM",
+    "tool_name": "Sai's Stock Analyzer",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 106,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.7,
+        "__typename": "Score"
+    },
+    "host": "sais-stock-analyzer.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "FindStocks",
+            "url": "https://sais-stock-analyzer.p.rapidapi.com/FindStocks",
+            "description": "This endpoint does a starts-with search on stock code or company name and returns stock codes and company names starting with the search_term provided in the input parameter for the provided exchange. 2 mandatory input parameters - exchange and search_term. You must enter at least three characters in search_term. In case the response is successful status will be \"SUCCESS\". If there is an error, status in the response will have \"ERROR\" as value and message will be provide the error details. In case no data found for the combination of exchange and search_term input parameters, status will be \"WARN\". \n\n/FindStocks?exchange=NMS&search_term=Apple\n\nResponse structure is as below - \n{\n    \"status\": \"SUCCESS\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"stock_code\": \"AAPL\",\n            \"company_name\": \"APPLE INC.\"\n        }\n    ]\n}",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "search_term",
+                    "type": "STRING",
+                    "description": "search_term  is the search term to search stock code or company name starting with the search_term. You must enter at least three characters in search_term.  ",
+                    "default": "Apple"
+                },
+                {
+                    "name": "exchange",
+                    "type": "STRING",
+                    "description": "Exchange code for the Stock Exchange for example NYQ for Nasdaq. exchange must be of 3 characters. To get list of all Exchanges supported, call SupportedExchanges endpoint.",
+                    "default": "NMS"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://sais-stock-analyzer.p.rapidapi.com/FindStocks\"\nquerystring = {\"search_term\": \"Apple\", \"exchange\": \"NMS\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sais-stock-analyzer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sais-stock-analyzer.p.rapidapi.com/FindStocks\"\nquerystring = {\"search_term\": \"Apple\", \"exchange\": \"NMS\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sais-stock-analyzer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "SupportedExchanges",
+            "url": "https://sais-stock-analyzer.p.rapidapi.com/SupportedExchanges",
+            "description": "This endpoint provides all the stock exchanges supported (exchange codes) and country these exchanges belong to. No input parameters required.  In case the response is successful status will be \"SUCCESS\". If there is an error, status in the response will have \"ERROR\" as value and message will be provide the error details. This end point provides the list of 61 stock exchanges world-wide. Response structure is as below - \n{\n    \"status\": \"SUCCESS\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"exchange\": \"NSE\",\n            \"country\": \"India\"\n        },\n        {\n            \"exchange\": \"BSE\",\n            \"country\": \"India\"\n        },\n        {\n            \"exchange\": \"AMS\",\n            \"country\": \"Netherlands\"\n        },\n        {\n            \"exchange\": \"ASE\",\n            \"country\": \"USA\"\n        },\n\t\t...\n\t]\n}",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://sais-stock-analyzer.p.rapidapi.com/SupportedExchanges\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sais-stock-analyzer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sais-stock-analyzer.p.rapidapi.com/SupportedExchanges\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sais-stock-analyzer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "AnalysisReport",
+            "url": "https://sais-stock-analyzer.p.rapidapi.com/AnalysisReport",
+            "description": "This endpoint returns the detailed technical analysis as provided by ChatGPT. At the end of the analysis report, it gives buy/sell/hold recommendations based on the analysis. Supports more than 50,000 stocks world-wide. 2 mandatory input parameters - exchange and stock_code. The stock codes used here is same as Yahoo Finance tickers to maintain ease of use. There can be certain stock data missing for any exchange. If you are sure that a certain stock_code is present in Yahoo finance for a particular exchange but you cannot find the data here, please raise a support request with the details of exchange code and stock code and we will get it added ASAP. \nIn case the response is successful status will be \"SUCCESS\". If there is an error, status in the response will have \"ERROR\" as value and message will be provide the error details. In case no data found for the combination of exchange and stock_code input parameters, status will be \"WARN\".\n\n**DISCLAIMER**: The analysis provided by this endpoint is based solely on technical indicators, and should be considered in conjunction with fundamental analysis and personal risk tolerance before making any investment decisions. Please note that the analysis is based on historical price data, and future stock price movements can be influenced by various factors, including market conditions, news, and company-specific events. We should not be held responsible for any losses (if any) in what-so-ever manner including but not limited to, financial losses (if any) incurred by you, because you referred to this analysis report for investing.\n\n**NOTE**: It might take around 1 minute (40-60 seconds) for each report to be generated by ChatGPT. Hence, please have patience. Also, the rate limits of the report generation are kept keeping in mind the rate limits of ChatGPT API usage.\n\n/AnalysisReport?exchange=NSE&stock_code=ADANIENT.NS\n\nResponse structure is as below - \n\n{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Please copy-paste the url below in a browser to get the Analysis Report\",\n    \"data\": {\n \"url\": \"http://mystocks.sairamapps.in/stocksanalysisapp/?exchange=BSE&stockcode=7TEC.BO&accesskey=a4f8e9cbde29dfa3c3a7440dc9e4f63b|50d8bd76837d23448b51430abdd116c24f573184b6cea8d3923321fc6b7a07fca6d94d1cdd76a7c5d1cccf1074bc982c78a4274d\"\n\n}\nPlease note that in the above structure, data.report will provide the detailed report provided by ChatGPT and data.url provides you with the link to technical graphs and technical indicators which can be useful if you are an expert and understand the graphs and indicators to help you to invest in the stock. The URL provided in data.url expires in 24 hours from the time it is generated \u2013 this is done to make sure you can get latest graphs as per the daily changing prices and hence the indicators. If the url expires, you can re-run this endpoint (/AnalysisReport) to generate a new url for use.\n\nAn example code to call the endpoint in python is as given below. You can make use of this or you can follow the code snippets provided by Rapid API in the API console. Rapid API provides code snippets in different languages for your help.\n\ndef GetAnalysisReport(exchange, stockCode):\n    url = \"https://...rapidapi.com/AnalysisReport\"\n    querystring = {\"exchange\":exchange, \"stock_code\":stockCode}\n    headers = { \"X-RapidAPI-Key\": \" YOUR_X-RAPIDAPI-HOST_COPY_DIRECTLY_FROM_RAPIDAPI_PYTHON_CODE_SNIPPETS\",\n\t\"X-RapidAPI-Host\": \" YOUR_X-RAPIDAPI-KEY_WILL_COPY_DIRECTLY_FROM_RAPIDAPI_PYTHON_CODE_SNIPPETS\"}\n    try:\n        response = requests.get(url, headers=headers, params=querystring)\n        if(response.ok):\n            jsonData = json.loads(response.content)\n            if(jsonData[\"status\"] == \"ERROR\"):\n                #print error\n                print(jsonData[\"message\"])\n            elif (jsonData[\"status\"] == \"WARN\"):\n                 #print no data found\n                print(jsonData[\"message\"])\n            else:#success case\n                print(jsonData[\"data\"])\n\n        else:\n            response.raise_for_status()\n        \n    except Exception as e:\n        #log exception and show error message to user\n        raise e",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "exchange",
+                    "type": "STRING",
+                    "description": "Exchange code for the Stock Exchange for example NYQ for Nasdaq. exchange must be of 3 characters. To get list of all Exchanges supported, call SupportedExchanges endpoint.",
+                    "default": "NSE"
+                },
+                {
+                    "name": "stock_code",
+                    "type": "STRING",
+                    "description": "The stock codes used here is same as Yahoo Finance tickers to maintain ease of use. You can also find the desired stock_code using FindStocks endpoint provided.",
+                    "default": "ADANIENT.NS"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://sais-stock-analyzer.p.rapidapi.com/AnalysisReport\"\nquerystring = {\"exchange\": \"NSE\", \"stock_code\": \"ADANIENT.NS\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sais-stock-analyzer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sais-stock-analyzer.p.rapidapi.com/AnalysisReport\"\nquerystring = {\"exchange\": \"NSE\", \"stock_code\": \"ADANIENT.NS\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sais-stock-analyzer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

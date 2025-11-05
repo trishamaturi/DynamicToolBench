@@ -1,0 +1,223 @@
+{
+    "product_id": "5aaad1e1e4b00687d3575f64",
+    "tool_description": "The cloudwi.re short code API is a robust messaging API for compliant USA based short code SMS/MMS applications and further supports international SMS to nearly every country in the world.  No long or short codes are required.  For international SMS, cloudwi.re utilizes local match long codes in over 45 countries.  The developer utilizes our pool of shared codes to transact SMS.  clouwi.re is a premier Twilio partner.\r\n\r\nAn application is required describing your use case along with a separat...",
+    "home_url": "https://rapidapi.com/cloudwire/api/cloudwire-short-code-sms-mms/",
+    "name": "cloudwire Short Code SMS MMS",
+    "title": "cloudwire Short Code SMS MMS",
+    "pricing": "FREE",
+    "tool_name": "cloudwire Short Code SMS MMS",
+    "score": null,
+    "host": "cloudwire-short-code-sms-mms.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Campaign Delivery Status",
+            "url": "https://cloudwire-short-code-sms-mms.p.rapidapi.com/message/campaign/status/{transactionid}/{pagenumber}",
+            "description": "This method allows the developer to page through campaign delivery statistics by campaign transaction ID.  Only delivery statistics of messages that passed opt-in status checks will be provided in this payload.  This includes any delivery errors.  Any message to a subscriber that was not opted-in will hit your notification URL.\n\nA maximum of 100 records are returned per page.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "transactionid",
+                    "type": "NUMBER",
+                    "description": "The campaign transaction ID.",
+                    "default": ""
+                },
+                {
+                    "name": "pagenumber",
+                    "type": "STRING",
+                    "description": "The page number.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cloudwire-short-code-sms-mms.p.rapidapi.com/message/campaign/status/{transactionid}/{pagenumber}\"\nquerystring = {\"transactionid\": \"\", \"pagenumber\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudwire-short-code-sms-mms.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cloudwire-short-code-sms-mms.p.rapidapi.com/message/campaign/status/{transactionid}/{pagenumber}\"\nquerystring = {\"transactionid\": \"\", \"pagenumber\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudwire-short-code-sms-mms.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Message Status",
+            "url": "https://cloudwire-short-code-sms-mms.p.rapidapi.com/message/status/{messageid}",
+            "description": "This method allows the developer to retrieve the status of any outbound mobile terminated message sent to the SMS API that involves the Single Messaging Class.  That includes the subscriber opt-in methods, Send Message and Send Responder Keyword Message.  When using the mentioned methods, cloudwi.re will respond with a tranasaction ID.  The transaction ID will be used in the URL when calling Get Message Status.  It does not include any messages sent via Send Campaign.  Status reports for any campaigns can be retrieved in the Campaign Folder using Get Campaign Status.cloudwi.re recommends to developers that a timer set to a minimum of 5 seconds be set and allowed to pass before retrieving message status.  Although generally, the carriers report the final status in less than a second, this process can sometimes take longer during high queuing events.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "messageid",
+                    "type": "STRING",
+                    "description": "The ID of the message you wish to get status for.  Note:  Will not pull campaign delivery status.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cloudwire-short-code-sms-mms.p.rapidapi.com/message/status/{messageid}\"\nquerystring = {\"messageid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudwire-short-code-sms-mms.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cloudwire-short-code-sms-mms.p.rapidapi.com/message/status/{messageid}\"\nquerystring = {\"messageid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudwire-short-code-sms-mms.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Subscriber Status by Account",
+            "url": "https://cloudwire-short-code-sms-mms.p.rapidapi.com/subscriber/status/{mobileid}",
+            "description": "This method allows the developer to retrieve the opt-in status of a mobile subscriber for all stores within the account where the subscriber exists in any status.  If the subscriber has never communicated with the store at any level, they will not be displayed.\n\nThe mobileId will be inserted in the URL of the request.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "mobileid",
+                    "type": "NUMBER",
+                    "description": "The E.164 number you with to lookup. No spaces or + signs. Exp: '19994447777'",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cloudwire-short-code-sms-mms.p.rapidapi.com/subscriber/status/{mobileid}\"\nquerystring = {\"mobileid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudwire-short-code-sms-mms.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cloudwire-short-code-sms-mms.p.rapidapi.com/subscriber/status/{mobileid}\"\nquerystring = {\"mobileid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudwire-short-code-sms-mms.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Status by Store",
+            "url": "https://cloudwire-short-code-sms-mms.p.rapidapi.com/subscriber/statusbystore/{storeid}/{mobileid}",
+            "description": "This method allows the developer to check the opt-in status of an individual mobile subscriber at the store level.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "storeid",
+                    "type": "STRING",
+                    "description": "The store ID the subscriber belongs in.",
+                    "default": ""
+                },
+                {
+                    "name": "mobileid",
+                    "type": "STRING",
+                    "description": "The mobile ID of the subscriber you want to look up status for.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cloudwire-short-code-sms-mms.p.rapidapi.com/subscriber/statusbystore/{storeid}/{mobileid}\"\nquerystring = {\"storeid\": \"\", \"mobileid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudwire-short-code-sms-mms.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cloudwire-short-code-sms-mms.p.rapidapi.com/subscriber/statusbystore/{storeid}/{mobileid}\"\nquerystring = {\"storeid\": \"\", \"mobileid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudwire-short-code-sms-mms.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "E164 Intel",
+            "url": "https://cloudwire-short-code-sms-mms.p.rapidapi.com/subscriber/e164intel/{mobileid}",
+            "description": "This method allows the developer to validate phone numbers in the E.164 standard and return the country to which they belong.  The data returned will include the line type.  But it is not reliable and cloudwi.re provides it simply as a courtesy.  It is not updated.  If you need accurate line type data use Get Carrier Intel.  In most messaging methods, cloudwi.re will run the check before processing your request.  However, the method is published for any additional list scrubbing or country identification you would like to do as a friendly courtesy.  You will pass the mobile number in the URL of the request.  There is no charge for this method.  The mobile ID should include the country dialing code.  The + sign is not required.  This method is free of charge.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "mobileid",
+                    "type": "NUMBER",
+                    "description": "The E.164 number you with to lookup.  No spaces or + signs.  Exp:  '19994447777'",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cloudwire-short-code-sms-mms.p.rapidapi.com/subscriber/e164intel/{mobileid}\"\nquerystring = {\"mobileid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudwire-short-code-sms-mms.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cloudwire-short-code-sms-mms.p.rapidapi.com/subscriber/e164intel/{mobileid}\"\nquerystring = {\"mobileid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudwire-short-code-sms-mms.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Carrier Intel",
+            "url": "https://cloudwire-short-code-sms-mms.p.rapidapi.com/subscriber/carrierintel/{mobileid}/{storeid}",
+            "description": "This method allows the developer to check the carrier ID, line type, proper display format, country code and mobile network code for a specific number.  All North American lines are covered in this lookup as are many European and other international locations.  \n\nThe method can be used for list scrubbing or to check the MMS capability of a mobile device.  \n\nYou will pass the mobile number in question and the store ID in the URL of the request.  Each successful request is $.005 cents.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "mobileid",
+                    "type": "STRING",
+                    "description": "The E.164 number you with to lookup.  No spaces or + signs.  Exp:  '19994447777'",
+                    "default": ""
+                },
+                {
+                    "name": "storeid",
+                    "type": "STRING",
+                    "description": "The store ID of the store you wish to bill for this transaction.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cloudwire-short-code-sms-mms.p.rapidapi.com/subscriber/carrierintel/{mobileid}/{storeid}\"\nquerystring = {\"mobileid\": \"\", \"storeid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudwire-short-code-sms-mms.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cloudwire-short-code-sms-mms.p.rapidapi.com/subscriber/carrierintel/{mobileid}/{storeid}\"\nquerystring = {\"mobileid\": \"\", \"storeid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudwire-short-code-sms-mms.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Account Details",
+            "url": "https://cloudwire-short-code-sms-mms.p.rapidapi.com/account/details/{accountid}",
+            "description": "This method allows the developer to view data on all stores that exist under the account.  The data returned will include the store's compliance information and templates, keywords and subscriber counts.  \n\nThe accountId will be passed in the URL of the request.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "accountid",
+                    "type": "STRING",
+                    "description": "Your account ID.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cloudwire-short-code-sms-mms.p.rapidapi.com/account/details/{accountid}\"\nquerystring = {\"accountid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudwire-short-code-sms-mms.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cloudwire-short-code-sms-mms.p.rapidapi.com/account/details/{accountid}\"\nquerystring = {\"accountid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudwire-short-code-sms-mms.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Store Details",
+            "url": "https://cloudwire-short-code-sms-mms.p.rapidapi.com/account/store/detail/{storeid}",
+            "description": "This method allows the developer to retrieve pertinent store information such as store name, compliance admins, template content, callback URLs and keywords along with their type.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "storeid",
+                    "type": "NUMBER",
+                    "description": "The Store ID of the store you wish to retrieve details from.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cloudwire-short-code-sms-mms.p.rapidapi.com/account/store/detail/{storeid}\"\nquerystring = {\"storeid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudwire-short-code-sms-mms.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cloudwire-short-code-sms-mms.p.rapidapi.com/account/store/detail/{storeid}\"\nquerystring = {\"storeid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudwire-short-code-sms-mms.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Number Fraud Intel",
+            "url": "https://cloudwire-short-code-sms-mms.p.rapidapi.com/subscriber/reputationintel/{mobileid}/{storeid}",
+            "description": "This method provides the developer with a risk analysis of a mobile or landline telephone number.  The lookup is applicable to the USA, Canada, Mexico, UK, France, Spain, Italy, Sweden, Germany, Australia, Philippines, Singapore, Turkey, Hong Kong, and Israel.\n\nIt is provided for developers who are running commerce applications and wish to add an additional layer of fraud detection by scoring a mobile number based on risk.  The data returned will include a score of 1-4 with 4 being the highest risk.  The type of risk associated with high risk numbers will also be reported in the synchronous body returned.\n\nYou will pass the mobile number in question and the store ID in the URL of the request.  This data is provided to us by Whitepages Pro and it is .009 cents per request.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "mobileid",
+                    "type": "STRING",
+                    "description": "The E.164 number you wish to lookup. No spaces or + signs. Exp: '19994447777'",
+                    "default": ""
+                },
+                {
+                    "name": "storeid",
+                    "type": "STRING",
+                    "description": "The store ID of the store you wish to bill for this transaction.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cloudwire-short-code-sms-mms.p.rapidapi.com/subscriber/reputationintel/{mobileid}/{storeid}\"\nquerystring = {\"mobileid\": \"\", \"storeid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudwire-short-code-sms-mms.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cloudwire-short-code-sms-mms.p.rapidapi.com/subscriber/reputationintel/{mobileid}/{storeid}\"\nquerystring = {\"mobileid\": \"\", \"storeid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudwire-short-code-sms-mms.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Store Subscribers",
+            "url": "https://cloudwire-short-code-sms-mms.p.rapidapi.com/subscriber/bystore/{storeid}/{page_number}",
+            "description": "The method provides the developer with the ability to retrieve store subscribers along with their opt-in status via paging.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "storeid",
+                    "type": "STRING",
+                    "description": "The store ID you are pulling subscribers from.",
+                    "default": ""
+                },
+                {
+                    "name": "page_number",
+                    "type": "STRING",
+                    "description": "The page number.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://cloudwire-short-code-sms-mms.p.rapidapi.com/subscriber/bystore/{storeid}/{page_number}\"\nquerystring = {\"storeid\": \"\", \"page_number\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudwire-short-code-sms-mms.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cloudwire-short-code-sms-mms.p.rapidapi.com/subscriber/bystore/{storeid}/{page_number}\"\nquerystring = {\"storeid\": \"\", \"page_number\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cloudwire-short-code-sms-mms.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

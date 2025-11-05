@@ -1,0 +1,356 @@
+{
+    "product_id": "api_feaf4ace-6805-4881-a0fd-6e0931f379d0",
+    "tool_description": "All endpoints are available in the free tier! Cryptocurrency financial data API for major exchanges. Candlesticks (OHLCV, VWAP, and Trade Count), Trades (tick-level). Spot and futures markets. Robust data catalog and documentation.",
+    "home_url": "https://rapidapi.com/inca-digital123-inca-digital-default/api/cryptocurrency-financial-data/",
+    "name": "Cryptocurrency Financial Data",
+    "title": "Cryptocurrency Financial Data",
+    "pricing": "FREEMIUM",
+    "tool_name": "Cryptocurrency Financial Data",
+    "score": {
+        "avgServiceLevel": 99,
+        "avgLatency": 8533,
+        "avgSuccessRate": 97,
+        "popularityScore": 8.8,
+        "__typename": "Score"
+    },
+    "host": "cryptocurrency-financial-data.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "OHLCV&VWAP Spot",
+            "url": "https://cryptocurrency-financial-data.p.rapidapi.com/metrics/ohlcv",
+            "description": "Price and volume metrics for spot markets",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "market_venue",
+                    "type": "STRING",
+                    "description": "The name of an exchange or a venue",
+                    "default": "BINANCE"
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Start of the requested time period, *%Y-%m-%dT%H:%M:%S* UTC timezone",
+                    "default": "2023-05-05T10:05:00"
+                },
+                {
+                    "name": "base",
+                    "type": "STRING",
+                    "description": "The second listed currency of a currency pair",
+                    "default": "USDT"
+                },
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "The first listed currency of a currency pair",
+                    "default": "BTC"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "gran",
+                    "type": "STRING",
+                    "description": "Available granularities: `1m`, `15m`, `1h`, `1d`",
+                    "default": "1d"
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "The ordering of events: `asc` (from earliest to latest), `desc` (from latest to earliest) ",
+                    "default": "asc"
+                },
+                {
+                    "name": "end",
+                    "type": "STRING",
+                    "description": "End of the requested time period, *%Y-%m-%dT%H:%M:%S* UTC timezone",
+                    "default": "2023-05-30T10:05:00"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://cryptocurrency-financial-data.p.rapidapi.com/metrics/ohlcv\"\nquerystring = {\"gran\": \"1d\", \"sort\": \"asc\", \"market_venue\": \"BINANCE\", \"start\": \"2023-05-05T10:05:00\", \"end\": \"2023-05-30T10:05:00\", \"base\": \"USDT\", \"symbol\": \"BTC\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cryptocurrency-financial-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cryptocurrency-financial-data.p.rapidapi.com/metrics/ohlcv\"\nquerystring = {\"gran\": \"1d\", \"sort\": \"asc\", \"market_venue\": \"BINANCE\", \"start\": \"2023-05-05T10:05:00\", \"end\": \"2023-05-30T10:05:00\", \"base\": \"USDT\", \"symbol\": \"BTC\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cryptocurrency-financial-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "OHLCV&VWAP Futures",
+            "url": "https://cryptocurrency-financial-data.p.rapidapi.com/metrics/ohlcv/futures",
+            "description": "Price and volume metrics for futures markets",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "The first listed currency of a currency pair",
+                    "default": "BTC"
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Start of the requested time period, UTC timezone",
+                    "default": "2023-05-05T10:05:00"
+                },
+                {
+                    "name": "base",
+                    "type": "STRING",
+                    "description": "The second listed currency of a currency pair",
+                    "default": "USDT"
+                },
+                {
+                    "name": "market_venue",
+                    "type": "STRING",
+                    "description": "The name of exchange or venue",
+                    "default": "BINANCE"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "delivery_date",
+                    "type": "STRING",
+                    "description": "The last day when a future contract is valid - *YYYY-MM-DD*",
+                    "default": ""
+                },
+                {
+                    "name": "gran",
+                    "type": "STRING",
+                    "description": "Available granularities: `1m`, `15m`, `1h`, `1d`",
+                    "default": "1d"
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "The ordering of events: `asc` (from earliest to latest), `desc` (from latest to earliest) ",
+                    "default": "asc"
+                },
+                {
+                    "name": "end",
+                    "type": "STRING",
+                    "description": "End of the requested time period, UTC timezone",
+                    "default": "2023-05-06T10:05:00"
+                },
+                {
+                    "name": "expiration",
+                    "type": "STRING",
+                    "description": "The lifespan of a futures contract. Allowed values: `perpetual`(default), `weekly`, `quarterly`, `monthly`",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://cryptocurrency-financial-data.p.rapidapi.com/metrics/ohlcv/futures\"\nquerystring = {\"symbol\": \"BTC\", \"delivery_date\": \"\", \"gran\": \"1d\", \"sort\": \"asc\", \"start\": \"2023-05-05T10:05:00\", \"end\": \"2023-05-06T10:05:00\", \"expiration\": \"\", \"base\": \"USDT\", \"market_venue\": \"BINANCE\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cryptocurrency-financial-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cryptocurrency-financial-data.p.rapidapi.com/metrics/ohlcv/futures\"\nquerystring = {\"symbol\": \"BTC\", \"delivery_date\": \"\", \"gran\": \"1d\", \"sort\": \"asc\", \"start\": \"2023-05-05T10:05:00\", \"end\": \"2023-05-06T10:05:00\", \"expiration\": \"\", \"base\": \"USDT\", \"market_venue\": \"BINANCE\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cryptocurrency-financial-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Metadata",
+            "url": "https://cryptocurrency-financial-data.p.rapidapi.com/metadata",
+            "description": "The full list of supported markets",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "asset_type",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "spot"
+                },
+                {
+                    "name": "market_venue",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "BINANCE"
+                },
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "BTC"
+                },
+                {
+                    "name": "base",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "USDT"
+                },
+                {
+                    "name": "data_type",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "metrics"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://cryptocurrency-financial-data.p.rapidapi.com/metadata\"\nquerystring = {\"asset_type\": \"spot\", \"market_venue\": \"BINANCE\", \"symbol\": \"BTC\", \"base\": \"USDT\", \"data_type\": \"metrics\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cryptocurrency-financial-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cryptocurrency-financial-data.p.rapidapi.com/metadata\"\nquerystring = {\"asset_type\": \"spot\", \"market_venue\": \"BINANCE\", \"symbol\": \"BTC\", \"base\": \"USDT\", \"data_type\": \"metrics\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cryptocurrency-financial-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "required": [
+                    "asset_type",
+                    "data_type",
+                    "market_venue",
+                    "symbol",
+                    "base",
+                    "earliest_date",
+                    "latest_date"
+                ],
+                "properties": {
+                    "asset_type": {
+                        "type": "string",
+                        "description": "The asset types (spot (default) or future)"
+                    },
+                    "data_type": {
+                        "type": "string",
+                        "description": "The data types (metrics or trades)"
+                    },
+                    "market_venue": {
+                        "type": "string",
+                        "description": "The name of exchange or venue"
+                    },
+                    "symbol": {
+                        "type": "string",
+                        "description": "The first listed currency of a currency pair"
+                    },
+                    "base": {
+                        "type": "string",
+                        "description": "The second currency in the pair (also known as quote currency or counter currency)"
+                    },
+                    "earliest_date": {
+                        "type": "string",
+                        "description": "The earliest date when this market appears in our database"
+                    },
+                    "latest_date": {
+                        "type": "string",
+                        "description": "The latest date when this market appears in our database"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Trades Spot",
+            "url": "https://cryptocurrency-financial-data.p.rapidapi.com/trades",
+            "description": "Trades endpoint available upon request",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Start of the requested time period, *%Y-%m-%dT%H:%M:%S* UTC timezone",
+                    "default": "2023-05-05T10:05:00"
+                },
+                {
+                    "name": "market_venue",
+                    "type": "STRING",
+                    "description": "The name of an exchange or a venue",
+                    "default": "COINBASE"
+                },
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "The first or base currency in the traded pair",
+                    "default": "BTC"
+                },
+                {
+                    "name": "base",
+                    "type": "STRING",
+                    "description": "The second or quote currency in the traded pair",
+                    "default": "USDT"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "end",
+                    "type": "STRING",
+                    "description": "End of the requested time period, *%Y-%m-%dT%H:%M:%S* UTC timezone",
+                    "default": "2023-05-06T10:05:00"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Maximum number of records to return, max `10000`",
+                    "default": "100"
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "The ordering of results: `asc` (from earliest to latest), `desc` (from latest to earliest)",
+                    "default": "asc"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://cryptocurrency-financial-data.p.rapidapi.com/trades\"\nquerystring = {\"end\": \"2023-05-06T10:05:00\", \"limit\": \"100\", \"sort\": \"asc\", \"start\": \"2023-05-05T10:05:00\", \"market_venue\": \"COINBASE\", \"symbol\": \"BTC\", \"base\": \"USDT\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cryptocurrency-financial-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cryptocurrency-financial-data.p.rapidapi.com/trades\"\nquerystring = {\"end\": \"2023-05-06T10:05:00\", \"limit\": \"100\", \"sort\": \"asc\", \"start\": \"2023-05-05T10:05:00\", \"market_venue\": \"COINBASE\", \"symbol\": \"BTC\", \"base\": \"USDT\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cryptocurrency-financial-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Trades Futures",
+            "url": "https://cryptocurrency-financial-data.p.rapidapi.com/trades/futures",
+            "description": "Derivatives contracts transactions",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "market_venue",
+                    "type": "STRING",
+                    "description": "The name of an exchange or a venue",
+                    "default": "BINANCE"
+                },
+                {
+                    "name": "base",
+                    "type": "STRING",
+                    "description": "The second listed currency of a currency pair",
+                    "default": "USDT"
+                },
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "The first listed currency of a currency pair",
+                    "default": "BTC"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Maximum number of records to return, max `10000`",
+                    "default": "100"
+                },
+                {
+                    "name": "end",
+                    "type": "STRING",
+                    "description": "End of the requested time period, *%Y-%m-%dT%H:%M:%S* UTC timezone",
+                    "default": "2023-05-06T10:05:00"
+                },
+                {
+                    "name": "expiration",
+                    "type": "STRING",
+                    "description": "The lifespan of a futures contract. Allowed values: `perpetual`(default), `weekly`, `quarterly`, `monthly`",
+                    "default": ""
+                },
+                {
+                    "name": "delivery_date",
+                    "type": "STRING",
+                    "description": "The last day when a future contract is valid - *YYYY-MM-DD*",
+                    "default": ""
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Start of the requested time period, *%Y-%m-%dT%H:%M:%S* UTC timezone",
+                    "default": "2023-05-05T10:05:00"
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "The ordering of results: `asc` (from earliest to latest), `desc` (from latest to earliest)",
+                    "default": "asc"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://cryptocurrency-financial-data.p.rapidapi.com/trades/futures\"\nquerystring = {\"limit\": \"100\", \"end\": \"2023-05-06T10:05:00\", \"expiration\": \"\", \"delivery_date\": \"\", \"start\": \"2023-05-05T10:05:00\", \"market_venue\": \"BINANCE\", \"sort\": \"asc\", \"base\": \"USDT\", \"symbol\": \"BTC\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cryptocurrency-financial-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://cryptocurrency-financial-data.p.rapidapi.com/trades/futures\"\nquerystring = {\"limit\": \"100\", \"end\": \"2023-05-06T10:05:00\", \"expiration\": \"\", \"delivery_date\": \"\", \"start\": \"2023-05-05T10:05:00\", \"market_venue\": \"BINANCE\", \"sort\": \"asc\", \"base\": \"USDT\", \"symbol\": \"BTC\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"cryptocurrency-financial-data.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

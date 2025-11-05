@@ -1,0 +1,153 @@
+{
+    "product_id": "api_d08621e3-f79c-4a7b-9c58-278ab87a5ee6",
+    "tool_description": "Get our dutch charge stations",
+    "home_url": "https://rapidapi.com/tridius-tridius-default/api/emobility/",
+    "name": "eMobility",
+    "title": "eMobility",
+    "pricing": "FREE",
+    "tool_name": "eMobility",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 940,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.1,
+        "__typename": "Score"
+    },
+    "host": "emobility.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "getourdutchchargestations",
+            "url": "https://emobility.p.rapidapi.com/v1/our-dutch-charge-stations",
+            "description": "Get al list of our dutch charge stations",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "pageNumber",
+                    "type": "NUMBER",
+                    "description": "Pagenumber (>= 1)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://emobility.p.rapidapi.com/v1/our-dutch-charge-stations\"\nquerystring = {\"pageNumber\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"emobility.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://emobility.p.rapidapi.com/v1/our-dutch-charge-stations\"\nquerystring = {\"pageNumber\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"emobility.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "totalElements": {
+                        "type": "integer",
+                        "description": "Total number of objects",
+                        "format": "int32",
+                        "minimum": -2147483648,
+                        "maximum": 2147483647
+                    },
+                    "totalPages": {
+                        "type": "integer",
+                        "description": "Total number of pages",
+                        "format": "int32",
+                        "minimum": -2147483648,
+                        "maximum": 2147483647
+                    },
+                    "result": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "lat": {
+                                    "type": "number",
+                                    "description": "Latitude",
+                                    "format": "double",
+                                    "minimum": -1.7976931348623157e+308,
+                                    "maximum": 1.7976931348623157e+308
+                                },
+                                "long": {
+                                    "type": "number",
+                                    "description": "Longitude",
+                                    "format": "double",
+                                    "minimum": -1.7976931348623157e+308,
+                                    "maximum": 1.7976931348623157e+308
+                                },
+                                "address": {
+                                    "type": "string",
+                                    "description": "Address"
+                                },
+                                "postalCode": {
+                                    "type": "string",
+                                    "description": "Postal code"
+                                },
+                                "city": {
+                                    "type": "string",
+                                    "description": "City"
+                                },
+                                "country": {
+                                    "type": "string",
+                                    "description": "Country"
+                                },
+                                "powerType": {
+                                    "type": "string",
+                                    "description": "Type of power and the number of alternating current phases, examples: AC_1_PHASE, AC_3_PHASE"
+                                },
+                                "power": {
+                                    "type": "string",
+                                    "description": "Maximum electric power, examples: 22kW, 6.5kW"
+                                },
+                                "connectionType": {
+                                    "type": "string",
+                                    "description": "Type of the connector, examples: SOCKET, CABLE"
+                                },
+                                "energySupplier": {
+                                    "type": "string",
+                                    "description": "Name of the energy supplier"
+                                },
+                                "energyProduct": {
+                                    "type": "string",
+                                    "description": "Name of the energy product"
+                                },
+                                "greenEnergyComponent": {
+                                    "type": "integer",
+                                    "description": "Amount of green energy that will be delivered expressed as a percentage of the total amount. 100 = 100%",
+                                    "format": "int32",
+                                    "minimum": -2147483648,
+                                    "maximum": 2147483647
+                                },
+                                "open24x7": {
+                                    "type": "boolean",
+                                    "description": "Indication whether the station is open twenty-four-seven"
+                                },
+                                "paymentMethods": {
+                                    "type": "string",
+                                    "description": "Payment methods, examples: 'Factuur', 'Credit Card'"
+                                },
+                                "contactInfoCPO": {
+                                    "type": "string",
+                                    "description": "Contact information of the charge point operator (CPO). Example (phonenumber) 088 363 7991"
+                                },
+                                "idCode": {
+                                    "type": "string",
+                                    "description": "IdCode"
+                                },
+                                "availabilityStatus": {
+                                    "type": "string",
+                                    "description": "Indication whether the station is In order/ Out of order, examples: 'In Order' or 'Out of Order'"
+                                },
+                                "occupationStatus": {
+                                    "type": "string",
+                                    "description": "Occupation status, examples: 'AVAILABLE', 'BLOCKED', 'CHARGING', 'INOPERATIVE', 'OUTOFORDER', 'UNKNOWN'"
+                                },
+                                "price": {
+                                    "type": "number",
+                                    "description": "Price",
+                                    "format": "double",
+                                    "minimum": -1.7976931348623157e+308,
+                                    "maximum": 1.7976931348623157e+308
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

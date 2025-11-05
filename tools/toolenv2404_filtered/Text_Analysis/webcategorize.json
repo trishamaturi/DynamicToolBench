@@ -1,0 +1,983 @@
+{
+    "product_id": "api_1cb3fc2f-5ba2-4ced-866f-38a50a4f16e7",
+    "tool_description": "WebCategorize classifies web content in real-time. You can provide your own content to categorize, or request WebCategorize to fetch a URL and categorize it in real-time.",
+    "home_url": "https://rapidapi.com/support-jIf1RbxgO/api/webcategorize/",
+    "name": "WebCategorize",
+    "title": "WebCategorize",
+    "pricing": "FREE",
+    "tool_name": "WebCategorize",
+    "score": null,
+    "host": "webcategorize.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "getAllKey",
+            "url": "https://webcategorize.p.rapidapi.com/keys",
+            "description": "Get all API Keys",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://webcategorize.p.rapidapi.com/keys\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webcategorize.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://webcategorize.p.rapidapi.com/keys\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webcategorize.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "key": {
+                            "type": "string",
+                            "format": "uuid",
+                            "examples": [
+                                "550e8400-e29b-41d4-a716-446655440000"
+                            ]
+                        },
+                        "createddAt": {
+                            "type": "string",
+                            "format": "date",
+                            "examples": [
+                                "2024-03-18T18:31:40.622Z"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "getAllUrl",
+            "url": "https://webcategorize.p.rapidapi.com/url/get/all",
+            "description": "Retrieve many categorizations of content",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "Matching language. You can specify multiple languages with language=en&language=fr",
+                    "default": ""
+                },
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "Matching URL (partial match)",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Maximum number of records",
+                    "default": ""
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "Matching classification. You can specify multiple categories with category=WEB1-1&category=WEB4",
+                    "default": ""
+                },
+                {
+                    "name": "tag",
+                    "type": "STRING",
+                    "description": "Matching tag. You can specify multiple tags with tag=foo&tag=bar",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://webcategorize.p.rapidapi.com/url/get/all\"\nquerystring = {\"language\": \"\", \"url\": \"\", \"limit\": \"\", \"category\": \"\", \"tag\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webcategorize.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://webcategorize.p.rapidapi.com/url/get/all\"\nquerystring = {\"language\": \"\", \"url\": \"\", \"limit\": \"\", \"category\": \"\", \"tag\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webcategorize.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "format": "uuid",
+                            "examples": [
+                                "550e8400-e29b-41d4-a716-446655440000"
+                            ]
+                        },
+                        "snippet": {
+                            "type": "string",
+                            "description": "A sample of the content. This is not the full content used for classification."
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL provided.",
+                            "examples": [
+                                "https://webcategorize.com/"
+                            ]
+                        },
+                        "finalUrl": {
+                            "type": "string",
+                            "description": "The final URL fetched, after following all redirections.",
+                            "examples": [
+                                "https://webcategorize.com/"
+                            ]
+                        },
+                        "domain": {
+                            "type": "string",
+                            "description": "The domain name of the final URL.",
+                            "examples": [
+                                "webcategorize.com"
+                            ]
+                        },
+                        "code": {
+                            "type": "integer",
+                            "description": "The HTTP status code returned by the final page.",
+                            "examples": [
+                                200
+                            ]
+                        },
+                        "contentType": {
+                            "type": "string",
+                            "examples": [
+                                "text/plain",
+                                "text/html",
+                                "application/json"
+                            ],
+                            "description": "The content type detected"
+                        },
+                        "tags": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "examples": [
+                                [
+                                    "foo",
+                                    "bar"
+                                ]
+                            ],
+                            "description": "An optional list of tags provided by the user"
+                        },
+                        "status": {
+                            "type": "string",
+                            "enum": [
+                                "Finished",
+                                "Error",
+                                "In Process"
+                            ],
+                            "examples": [
+                                "Finished",
+                                "Error"
+                            ],
+                            "description": "If the URL needs to be fetched, the API will return *status: In Progress*. You can alter retrieve the final information."
+                        },
+                        "predictions": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "examples": [
+                                            "WEB4-1",
+                                            "WEB4",
+                                            "WEB2-3"
+                                        ],
+                                        "description": "category ID"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "examples": [
+                                            "Society > Dating",
+                                            "Society"
+                                        ],
+                                        "description": "name of the category"
+                                    },
+                                    "score": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "minimum": 0.1,
+                                        "maximum": 1,
+                                        "description": "the confidence in the category"
+                                    },
+                                    "confidence": {
+                                        "type": "string",
+                                        "enum": [
+                                            "low",
+                                            "medium",
+                                            "high"
+                                        ],
+                                        "examples": [
+                                            "low",
+                                            "medium",
+                                            "high"
+                                        ],
+                                        "description": "the confidence in the category"
+                                    }
+                                }
+                            }
+                        },
+                        "language": {
+                            "type": "string",
+                            "description": "Language detected, in short format",
+                            "examples": [
+                                "en",
+                                "fr",
+                                "de"
+                            ]
+                        },
+                        "model": {
+                            "type": "integer",
+                            "format": "int64",
+                            "examples": [
+                                99,
+                                100
+                            ],
+                            "description": "The machine-learning model number used for the detection",
+                            "minimum": -9223372036854776000,
+                            "maximum": 9223372036854776000
+                        },
+                        "createdAt": {
+                            "type": "string",
+                            "format": "date",
+                            "examples": [
+                                "2024-03-18T18:31:40.622Z"
+                            ]
+                        },
+                        "cached": {
+                            "type": "boolean",
+                            "description": "Whether the categorization was retrieved from cache or in real-time."
+                        },
+                        "feedback": {
+                            "type": "object",
+                            "description": "Feedback provided by the user",
+                            "required": [
+                                "score"
+                            ],
+                            "properties": {
+                                "score": {
+                                    "type": "integer",
+                                    "minimum": 1,
+                                    "maximum": 2,
+                                    "examples": [
+                                        2
+                                    ],
+                                    "description": "1 for positive feedback, 2 for negative feedback"
+                                },
+                                "language": {
+                                    "type": "string",
+                                    "description": "Language that should have been detected, in short format",
+                                    "examples": [
+                                        "en",
+                                        "fr",
+                                        "de"
+                                    ]
+                                },
+                                "classification": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "examples": [
+                                        [
+                                            "WEB4-1",
+                                            "WEB4"
+                                        ],
+                                        [
+                                            "WEB2-3"
+                                        ]
+                                    ],
+                                    "description": "category ID that should have been detected"
+                                },
+                                "comment": {
+                                    "type": "string",
+                                    "description": "An optional comment"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "getHtmlTags",
+            "url": "https://webcategorize.p.rapidapi.com/html/get/tags",
+            "description": "Retrieve all tags submitted by the users for content submissions",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://webcategorize.p.rapidapi.com/html/get/tags\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webcategorize.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://webcategorize.p.rapidapi.com/html/get/tags\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webcategorize.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "examples": [
+                    [
+                        "foo",
+                        "bar"
+                    ]
+                ]
+            }
+        },
+        {
+            "name": "getUrlTags",
+            "url": "https://webcategorize.p.rapidapi.com/url/get/tags",
+            "description": "Retrieve all tags submitted by the users for URL submissions",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://webcategorize.p.rapidapi.com/url/get/tags\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webcategorize.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://webcategorize.p.rapidapi.com/url/get/tags\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webcategorize.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "examples": [
+                    [
+                        "foo",
+                        "bar"
+                    ]
+                ]
+            }
+        },
+        {
+            "name": "getUrl",
+            "url": "https://webcategorize.p.rapidapi.com/url/{urlId}",
+            "description": "Retrieve the categorization of a URL",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "urlId",
+                    "type": "STRING",
+                    "description": "The ID of the URL submission",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://webcategorize.p.rapidapi.com/url/{urlId}\"\nquerystring = {\"urlId\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webcategorize.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://webcategorize.p.rapidapi.com/url/{urlId}\"\nquerystring = {\"urlId\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webcategorize.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "examples": [
+                            "550e8400-e29b-41d4-a716-446655440000"
+                        ]
+                    },
+                    "snippet": {
+                        "type": "string",
+                        "description": "A sample of the content. This is not the full content used for classification."
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The URL provided.",
+                        "examples": [
+                            "https://webcategorize.com/"
+                        ]
+                    },
+                    "finalUrl": {
+                        "type": "string",
+                        "description": "The final URL fetched, after following all redirections.",
+                        "examples": [
+                            "https://webcategorize.com/"
+                        ]
+                    },
+                    "domain": {
+                        "type": "string",
+                        "description": "The domain name of the final URL.",
+                        "examples": [
+                            "webcategorize.com"
+                        ]
+                    },
+                    "code": {
+                        "type": "integer",
+                        "description": "The HTTP status code returned by the final page.",
+                        "examples": [
+                            200
+                        ]
+                    },
+                    "contentType": {
+                        "type": "string",
+                        "examples": [
+                            "text/plain",
+                            "text/html",
+                            "application/json"
+                        ],
+                        "description": "The content type detected"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "examples": [
+                            [
+                                "foo",
+                                "bar"
+                            ]
+                        ],
+                        "description": "An optional list of tags provided by the user"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "Finished",
+                            "Error",
+                            "In Process"
+                        ],
+                        "examples": [
+                            "Finished",
+                            "Error"
+                        ],
+                        "description": "If the URL needs to be fetched, the API will return *status: In Progress*. You can alter retrieve the final information."
+                    },
+                    "predictions": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "examples": [
+                                        "WEB4-1",
+                                        "WEB4",
+                                        "WEB2-3"
+                                    ],
+                                    "description": "category ID"
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "examples": [
+                                        "Society > Dating",
+                                        "Society"
+                                    ],
+                                    "description": "name of the category"
+                                },
+                                "score": {
+                                    "type": "number",
+                                    "format": "float",
+                                    "minimum": 0.1,
+                                    "maximum": 1,
+                                    "description": "the confidence in the category"
+                                },
+                                "confidence": {
+                                    "type": "string",
+                                    "enum": [
+                                        "low",
+                                        "medium",
+                                        "high"
+                                    ],
+                                    "examples": [
+                                        "low",
+                                        "medium",
+                                        "high"
+                                    ],
+                                    "description": "the confidence in the category"
+                                }
+                            }
+                        }
+                    },
+                    "language": {
+                        "type": "string",
+                        "description": "Language detected, in short format",
+                        "examples": [
+                            "en",
+                            "fr",
+                            "de"
+                        ]
+                    },
+                    "model": {
+                        "type": "integer",
+                        "format": "int64",
+                        "examples": [
+                            99,
+                            100
+                        ],
+                        "description": "The machine-learning model number used for the detection",
+                        "minimum": -9223372036854776000,
+                        "maximum": 9223372036854776000
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date",
+                        "examples": [
+                            "2024-03-18T18:31:40.622Z"
+                        ]
+                    },
+                    "cached": {
+                        "type": "boolean",
+                        "description": "Whether the categorization was retrieved from cache or in real-time."
+                    },
+                    "feedback": {
+                        "type": "object",
+                        "description": "Feedback provided by the user",
+                        "required": [
+                            "score"
+                        ],
+                        "properties": {
+                            "score": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 2,
+                                "examples": [
+                                    2
+                                ],
+                                "description": "1 for positive feedback, 2 for negative feedback"
+                            },
+                            "language": {
+                                "type": "string",
+                                "description": "Language that should have been detected, in short format",
+                                "examples": [
+                                    "en",
+                                    "fr",
+                                    "de"
+                                ]
+                            },
+                            "classification": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "examples": [
+                                    [
+                                        "WEB4-1",
+                                        "WEB4"
+                                    ],
+                                    [
+                                        "WEB2-3"
+                                    ]
+                                ],
+                                "description": "category ID that should have been detected"
+                            },
+                            "comment": {
+                                "type": "string",
+                                "description": "An optional comment"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "getAllHtml",
+            "url": "https://webcategorize.p.rapidapi.com/html/get/all",
+            "description": "Retrieve many categorizations of content",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "Matching language. You can specify multiple languages with language=en&language=fr",
+                    "default": ""
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "Matching classification. You can specify multiple categories with category=WEB1-1&category=WEB4",
+                    "default": ""
+                },
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "Matching URL (partial match)",
+                    "default": ""
+                },
+                {
+                    "name": "tag",
+                    "type": "STRING",
+                    "description": "Matching tag. You can specify multiple tags with tag=foo&tag=bar",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Maximum number of records",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://webcategorize.p.rapidapi.com/html/get/all\"\nquerystring = {\"language\": \"\", \"category\": \"\", \"url\": \"\", \"tag\": \"\", \"limit\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webcategorize.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://webcategorize.p.rapidapi.com/html/get/all\"\nquerystring = {\"language\": \"\", \"category\": \"\", \"url\": \"\", \"tag\": \"\", \"limit\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webcategorize.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "format": "uuid",
+                            "examples": [
+                                "550e8400-e29b-41d4-a716-446655440000"
+                            ]
+                        },
+                        "snippet": {
+                            "type": "string",
+                            "description": "A sample of the content. This is not the full content used for classification."
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL provided, for reference.",
+                            "examples": [
+                                "https://webcategorize.com/"
+                            ]
+                        },
+                        "contentType": {
+                            "type": "string",
+                            "examples": [
+                                "text/plain",
+                                "text/html",
+                                "application/json"
+                            ],
+                            "description": "The content type detected"
+                        },
+                        "tags": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "examples": [
+                                [
+                                    "foo",
+                                    "bar"
+                                ]
+                            ],
+                            "description": "An optional list of tags provided by the user"
+                        },
+                        "status": {
+                            "type": "string",
+                            "enum": [
+                                "Finished",
+                                "Error"
+                            ],
+                            "examples": [
+                                "Finished",
+                                "Error"
+                            ]
+                        },
+                        "predictions": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "examples": [
+                                            "WEB4-1",
+                                            "WEB4",
+                                            "WEB2-3"
+                                        ],
+                                        "description": "category ID"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "examples": [
+                                            "Society > Dating",
+                                            "Society"
+                                        ],
+                                        "description": "name of the category"
+                                    },
+                                    "score": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "minimum": 0.1,
+                                        "maximum": 1,
+                                        "description": "the confidence in the category"
+                                    },
+                                    "confidence": {
+                                        "type": "string",
+                                        "enum": [
+                                            "low",
+                                            "medium",
+                                            "high"
+                                        ],
+                                        "examples": [
+                                            "low",
+                                            "medium",
+                                            "high"
+                                        ],
+                                        "description": "the confidence in the category"
+                                    }
+                                }
+                            }
+                        },
+                        "language": {
+                            "type": "string",
+                            "description": "Language detected, in short format",
+                            "examples": [
+                                "en",
+                                "fr",
+                                "de"
+                            ]
+                        },
+                        "model": {
+                            "type": "integer",
+                            "format": "int64",
+                            "examples": [
+                                99,
+                                100
+                            ],
+                            "description": "The machine-learning model number used for the detection",
+                            "minimum": -9223372036854776000,
+                            "maximum": 9223372036854776000
+                        },
+                        "createdAt": {
+                            "type": "string",
+                            "format": "date",
+                            "examples": [
+                                "2024-03-18T18:31:40.622Z"
+                            ]
+                        },
+                        "feedback": {
+                            "type": "object",
+                            "description": "Feedback provided by the user",
+                            "required": [
+                                "score"
+                            ],
+                            "properties": {
+                                "score": {
+                                    "type": "integer",
+                                    "minimum": 1,
+                                    "maximum": 2,
+                                    "examples": [
+                                        2
+                                    ],
+                                    "description": "1 for positive feedback, 2 for negative feedback"
+                                },
+                                "language": {
+                                    "type": "string",
+                                    "description": "Language that should have been detected, in short format",
+                                    "examples": [
+                                        "en",
+                                        "fr",
+                                        "de"
+                                    ]
+                                },
+                                "classification": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "examples": [
+                                        [
+                                            "WEB4-1",
+                                            "WEB4"
+                                        ],
+                                        [
+                                            "WEB2-3"
+                                        ]
+                                    ],
+                                    "description": "category ID that should have been detected"
+                                },
+                                "comment": {
+                                    "type": "string",
+                                    "description": "An optional comment"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "getHtml",
+            "url": "https://webcategorize.p.rapidapi.com/html/{contentId}",
+            "description": "Retrieve a categorization of content",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "contentId",
+                    "type": "STRING",
+                    "description": "The ID of the submission",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://webcategorize.p.rapidapi.com/html/{contentId}\"\nquerystring = {\"contentId\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webcategorize.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://webcategorize.p.rapidapi.com/html/{contentId}\"\nquerystring = {\"contentId\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"webcategorize.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "examples": [
+                            "550e8400-e29b-41d4-a716-446655440000"
+                        ]
+                    },
+                    "snippet": {
+                        "type": "string",
+                        "description": "A sample of the content. This is not the full content used for classification."
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The URL provided, for reference.",
+                        "examples": [
+                            "https://webcategorize.com/"
+                        ]
+                    },
+                    "contentType": {
+                        "type": "string",
+                        "examples": [
+                            "text/plain",
+                            "text/html",
+                            "application/json"
+                        ],
+                        "description": "The content type detected"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "examples": [
+                            [
+                                "foo",
+                                "bar"
+                            ]
+                        ],
+                        "description": "An optional list of tags provided by the user"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "Finished",
+                            "Error"
+                        ],
+                        "examples": [
+                            "Finished",
+                            "Error"
+                        ]
+                    },
+                    "predictions": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "examples": [
+                                        "WEB4-1",
+                                        "WEB4",
+                                        "WEB2-3"
+                                    ],
+                                    "description": "category ID"
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "examples": [
+                                        "Society > Dating",
+                                        "Society"
+                                    ],
+                                    "description": "name of the category"
+                                },
+                                "score": {
+                                    "type": "number",
+                                    "format": "float",
+                                    "minimum": 0.1,
+                                    "maximum": 1,
+                                    "description": "the confidence in the category"
+                                },
+                                "confidence": {
+                                    "type": "string",
+                                    "enum": [
+                                        "low",
+                                        "medium",
+                                        "high"
+                                    ],
+                                    "examples": [
+                                        "low",
+                                        "medium",
+                                        "high"
+                                    ],
+                                    "description": "the confidence in the category"
+                                }
+                            }
+                        }
+                    },
+                    "language": {
+                        "type": "string",
+                        "description": "Language detected, in short format",
+                        "examples": [
+                            "en",
+                            "fr",
+                            "de"
+                        ]
+                    },
+                    "model": {
+                        "type": "integer",
+                        "format": "int64",
+                        "examples": [
+                            99,
+                            100
+                        ],
+                        "description": "The machine-learning model number used for the detection",
+                        "minimum": -9223372036854776000,
+                        "maximum": 9223372036854776000
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date",
+                        "examples": [
+                            "2024-03-18T18:31:40.622Z"
+                        ]
+                    },
+                    "feedback": {
+                        "type": "object",
+                        "description": "Feedback provided by the user",
+                        "required": [
+                            "score"
+                        ],
+                        "properties": {
+                            "score": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 2,
+                                "examples": [
+                                    2
+                                ],
+                                "description": "1 for positive feedback, 2 for negative feedback"
+                            },
+                            "language": {
+                                "type": "string",
+                                "description": "Language that should have been detected, in short format",
+                                "examples": [
+                                    "en",
+                                    "fr",
+                                    "de"
+                                ]
+                            },
+                            "classification": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "examples": [
+                                    [
+                                        "WEB4-1",
+                                        "WEB4"
+                                    ],
+                                    [
+                                        "WEB2-3"
+                                    ]
+                                ],
+                                "description": "category ID that should have been detected"
+                            },
+                            "comment": {
+                                "type": "string",
+                                "description": "An optional comment"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

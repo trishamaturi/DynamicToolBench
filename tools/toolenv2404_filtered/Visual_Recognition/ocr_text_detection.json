@@ -1,0 +1,123 @@
+{
+    "product_id": "api_a1ca7aa2-2a91-4573-8ceb-51f3a9bdd0d0",
+    "tool_description": "Extract text, boundingBoxes, score, locale and dimensions from image using (google vision text detection)",
+    "home_url": "https://rapidapi.com/mkrtchyankaro-A_M729L_lrj/api/ocr-text-detection/",
+    "name": "OCR Text Detection",
+    "title": "OCR Text Detection",
+    "pricing": "FREEMIUM",
+    "tool_name": "OCR Text Detection",
+    "score": null,
+    "host": "ocr-text-detection.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "GET Text Detection",
+            "url": "https://ocr-text-detection.p.rapidapi.com/text-detection",
+            "description": "the **important** thing is that you should use **image** as a query name\nExample (url?**image**=\u201cimage_url\u201d)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "image",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "https://marketplace.canva.com/EAFT2hD3Zcs/1/0/1131w/canva-blue-black-white-professional-corporate-freelancer-invoice-AwSzw5jm0dQ.jpg"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://ocr-text-detection.p.rapidapi.com/text-detection\"\nquerystring = {\"image\": \"https://marketplace.canva.com/EAFT2hD3Zcs/1/0/1131w/canva-blue-black-white-professional-corporate-freelancer-invoice-AwSzw5jm0dQ.jpg\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ocr-text-detection.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://ocr-text-detection.p.rapidapi.com/text-detection\"\nquerystring = {\"image\": \"https://marketplace.canva.com/EAFT2hD3Zcs/1/0/1131w/canva-blue-black-white-professional-corporate-freelancer-invoice-AwSzw5jm0dQ.jpg\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ocr-text-detection.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "text": {
+                        "type": "string"
+                    },
+                    "locale": {
+                        "type": "string"
+                    },
+                    "dimensions": {
+                        "type": "object",
+                        "properties": {
+                            "height": {
+                                "type": "integer"
+                            },
+                            "width": {
+                                "type": "integer"
+                            },
+                            "type": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "ocr": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "text": {
+                                    "type": "string"
+                                },
+                                "confidence": {
+                                    "type": "integer"
+                                },
+                                "boundingBox": {
+                                    "type": "object",
+                                    "properties": {
+                                        "tl": {
+                                            "type": "object",
+                                            "properties": {
+                                                "x": {
+                                                    "type": "integer"
+                                                },
+                                                "y": {
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        },
+                                        "tr": {
+                                            "type": "object",
+                                            "properties": {
+                                                "x": {
+                                                    "type": "integer"
+                                                },
+                                                "y": {
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        },
+                                        "br": {
+                                            "type": "object",
+                                            "properties": {
+                                                "x": {
+                                                    "type": "integer"
+                                                },
+                                                "y": {
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        },
+                                        "bl": {
+                                            "type": "object",
+                                            "properties": {
+                                                "x": {
+                                                    "type": "integer"
+                                                },
+                                                "y": {
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

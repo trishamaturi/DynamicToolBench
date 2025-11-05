@@ -1,0 +1,105 @@
+{
+    "product_id": "api_f34f22a9-5703-47a5-9c3d-6bbc324f8e66",
+    "tool_description": "Libgen scraper API to search and download books by title, author, or genre. It provides important data like cover images, author, publisher etc. It also generates summaries of each book, making it an invaluable resource for researchers, students, and book enthusiasts. ",
+    "home_url": "https://rapidapi.com/happy2purchase/api/freebooks-api2/",
+    "name": "Freebooks API",
+    "title": "Freebooks API",
+    "pricing": "FREEMIUM",
+    "tool_name": "Freebooks API",
+    "score": {
+        "avgServiceLevel": 99,
+        "avgLatency": 1678,
+        "avgSuccessRate": 99,
+        "popularityScore": 9,
+        "__typename": "Score"
+    },
+    "host": "freebooks-api2.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Download URL",
+            "url": "https://freebooks-api2.p.rapidapi.com/fetchDownloadUrl/f9c34bd70adadf9c8fb5d3ea42d73791",
+            "description": "This endpoint retrieves the download URLs for a specified book. It accepts a bookId parameter in the path and returns the download URLs for the book from different mirrors. You can get bookId  from fetchEbooks endpoint.  The response includes the bookId along with URLs from three different mirrors (mirror1, mirror2, and mirror3). This endpoint is particularly useful for users who want to access the downloadable content of a specific book through the provided mirrors.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "bookId",
+                    "type": "string",
+                    "description": "",
+                    "default": "f9c34bd70adadf9c8fb5d3ea42d73791"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://freebooks-api2.p.rapidapi.com/fetchDownloadUrl/f9c34bd70adadf9c8fb5d3ea42d73791\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"freebooks-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://freebooks-api2.p.rapidapi.com/fetchDownloadUrl/{bookid}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"freebooks-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "fetchEbooks with Page",
+            "url": "https://freebooks-api2.p.rapidapi.com/fetchEbooks/harry potter/2",
+            "description": "This endpoint allows you to retrieve eBooks based on a specified title and page number. The page number parameter begins at 1 and is particularly useful when dealing with a large number of books, enabling a \"load more\" functionality. This endpoint provides an efficient way to browse through extensive eBook collections.\n\n**Please note **that explicit pagination is not available. Therefore, to navigate through the results, increment the page number until an empty result is returned, indicating that you have reached the end of the available data.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "title",
+                    "type": "string",
+                    "description": "Min Size: 1\nMax Size: 100",
+                    "default": "harry potter"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Min: 1\nMax: 100",
+                    "default": "2"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://freebooks-api2.p.rapidapi.com/fetchEbooks/harry potter/2\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"freebooks-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://freebooks-api2.p.rapidapi.com/fetchEbooks/{title}/{page}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"freebooks-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "getBookSummary",
+            "url": "https://freebooks-api2.p.rapidapi.com/getBookSummary/d15821dc5a0420dd30d78c112d47815e",
+            "description": "By simply providing a book ID, you can retrieve a detailed summary of the book. First you will have to call **fetchEbooks** endpoint to get the **bookId**.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "bookId",
+                    "type": "string",
+                    "description": "",
+                    "default": "d15821dc5a0420dd30d78c112d47815e"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://freebooks-api2.p.rapidapi.com/getBookSummary/d15821dc5a0420dd30d78c112d47815e\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"freebooks-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://freebooks-api2.p.rapidapi.com/getBookSummary/{bookid}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"freebooks-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "fetchEbooks",
+            "url": "https://freebooks-api2.p.rapidapi.com/fetchEbooks/harry potter",
+            "description": "With the title, author or genre of a book, you can fetch an array of eBooks. The response includes valuable information such as the image URL, number of pages, size, year of publication, publisher, language, title, type, authors, and bookId. This bookId can be used to fetch book summary",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "title",
+                    "type": "string",
+                    "description": "",
+                    "default": "harry potter"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://freebooks-api2.p.rapidapi.com/fetchEbooks/harry potter\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"freebooks-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://freebooks-api2.p.rapidapi.com/fetchEbooks/{title}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"freebooks-api2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

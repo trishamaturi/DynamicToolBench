@@ -1,0 +1,275 @@
+{
+    "product_id": "api_75db40f0-2c8c-412f-a1af-0590bae5f922",
+    "tool_description": "Bonai News API, an alternative to Bing News API and Google News, is a content delivery platform that provides access to millions of news articles from over 100,000 news sources and blogs around the world.\n\nIt offers a REST API that allows developers to easily integrate news content into your applications.",
+    "home_url": "https://rapidapi.com/bonaipowered/api/bonai-news-api/",
+    "name": "Bonai News API",
+    "title": "Bonai News API",
+    "pricing": "FREEMIUM",
+    "tool_name": "Bonai News API",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 116,
+        "avgSuccessRate": 96,
+        "popularityScore": 8.7,
+        "__typename": "Score"
+    },
+    "host": "bonai-news-api.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Search Publishers",
+            "url": "https://bonai-news-api.p.rapidapi.com/v1/publishers",
+            "description": "This endpoint provides a list of news publishers, giving you ability to access detailed information about each publisher, including their description, logo, language, category, and social media links.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "Possible options:\n- General\n- Business\n- Entertainment\n- Lifestyle\n- Politics\n- Science\n- Sports\n- Technology",
+                    "default": ""
+                },
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Keywords or a phrase to search for.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "2-letter ISO 639-1 code of the article language.\n\nTip: use [/languages-by-countries](url) endpoint to get language code.",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The number of results to return per page. ",
+                    "default": ""
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "The order to sort the publishers in. Possible options: ***popularity***, ***relevancy***. Default ***relevancy***.",
+                    "default": ""
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "2-letter ISO 3166-1 code of the country.\n\nTip: use [/languages-by-countries](url) endpoint to get country code.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://bonai-news-api.p.rapidapi.com/v1/publishers\"\nquerystring = {\"language\": \"\", \"category\": \"\", \"limit\": \"\", \"query\": \"\", \"sort\": \"\", \"country\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bonai-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bonai-news-api.p.rapidapi.com/v1/publishers\"\nquerystring = {\"language\": \"\", \"category\": \"\", \"limit\": \"\", \"query\": \"\", \"sort\": \"\", \"country\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bonai-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Trending Topic",
+            "url": "https://bonai-news-api.p.rapidapi.com/v1/trending",
+            "description": "This endpoint allows you to access the most popular article for a specific country, language, and topic category.\n\nSince subtopics are only accessible to **Ultra**  and **Mega** users, **Basic** and **Pro** users can only access the following topics:\n- General\n- World\n- Business\n- Technology\n- Entertainment\n- Sports\n- Science\n- Lifestyle\n- Politics",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "topic",
+                    "type": "STRING",
+                    "description": "The topic of interest. Example: ***Sports***, or subtopic ***Soccer***.\n\nTip: use [/topics](url) endpoint to get topic name.",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "2-letter ISO 639-1 code of the article language.\n\nTip: use [/languages-by-countries](url) endpoint to get language code.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The number of results to return per page. ",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "2-letter ISO 3166-1 code of the country.\n\nTip: use [/languages-by-countries](url) endpoint to get country code.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://bonai-news-api.p.rapidapi.com/v1/trending\"\nquerystring = {\"limit\": \"\", \"page\": \"\", \"topic\": \"\", \"country\": \"\", \"language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bonai-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bonai-news-api.p.rapidapi.com/v1/trending\"\nquerystring = {\"limit\": \"\", \"page\": \"\", \"topic\": \"\", \"country\": \"\", \"language\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bonai-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Topics",
+            "url": "https://bonai-news-api.p.rapidapi.com/v1/topics",
+            "description": "This endpoint provides access to a list of topics and subtopics. \n\nSince subtopics are only accessible to **Ultra**  and **Mega** users, **Basic** and **Pro** users can only access the following topics:\n- General\n- World\n- Business\n- Technology\n- Entertainment\n- Sports\n- Science\n- Lifestyle\n- Politics",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://bonai-news-api.p.rapidapi.com/v1/topics\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bonai-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bonai-news-api.p.rapidapi.com/v1/topics\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bonai-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Random Article",
+            "url": "https://bonai-news-api.p.rapidapi.com/v1/article/random",
+            "description": "This endpoint provides you a straightforward to discover new and engaging content by randomly selecting an article, with the added flexibility to filter the results based on country or language.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "2-letter ISO 639-1 code of the article language.\n\nTip: use [/languages-by-countries](url) endpoint to get language code.",
+                    "default": ""
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "The type of article content. Possible options: ***html***, ***plaintext***. Default ***html***.",
+                    "default": ""
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "2-letter ISO 3166-1 code of the country.\n\nTip: use [/languages-by-countries](url) endpoint to get country code.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://bonai-news-api.p.rapidapi.com/v1/article/random\"\nquerystring = {\"language\": \"\", \"type\": \"\", \"country\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bonai-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bonai-news-api.p.rapidapi.com/v1/article/random\"\nquerystring = {\"language\": \"\", \"type\": \"\", \"country\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bonai-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Article Content",
+            "url": "https://bonai-news-api.p.rapidapi.com/v1/article",
+            "description": "This endpoint allows you to retrieve the complete metadata and content of the article.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "The URL of the article.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "The type of article content. Possible options: ***html***, ***plaintext***. Default ***html***.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://bonai-news-api.p.rapidapi.com/v1/article\"\nquerystring = {\"type\": \"\", \"url\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bonai-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bonai-news-api.p.rapidapi.com/v1/article\"\nquerystring = {\"type\": \"\", \"url\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bonai-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Search Articles",
+            "url": "https://bonai-news-api.p.rapidapi.com/v1/search",
+            "description": "This endpoint provides the ability to search news articles, allowing you to refine your search using advanced query techniques such as Boolean operators (AND, OR, NOT). You can further narrow down your results by filtering by country, language, publisher, and date range.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Keywords or a phrase to search for.\n\nAdvanced search query:\n   - Boolean operators: ***AND***, ***OR***, ***NOT***\n  Example: `AWS OR 'amazon web services'`\n\n   - Grouping: Use parentheses to group multiple clauses.\n  Example: `cyber AND (AWS OR 'amazon web services')`\n\n  -  Exact match: Use double quotes for exact match.\n  Example: `\\\"nasa mission\\\"`",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "The order to sort the articles in. Possible options: relevancy, popularity, date:asc, date:desc. Default relevancy.",
+                    "default": ""
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "A date in ISO 8601 format to filter for the newest article allowed.",
+                    "default": ""
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "A date in ISO 8601 format to filter for the oldest article allowed.",
+                    "default": ""
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "2-letter ISO 639-1 code of the article language.\n\nTip: use [/languages-by-countries](url) endpoint to get language code.",
+                    "default": ""
+                },
+                {
+                    "name": "publisher",
+                    "type": "STRING",
+                    "description": "A comma-seperated for the news sources.\n\nExample: cnn.com,bbc.com",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "2-letter ISO 3166-1 code of the country.\n\nTip: use [/languages-by-countries](url) endpoint to get country code.",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The number of results to return per page. ",
+                    "default": ""
+                },
+                {
+                    "name": "paywall",
+                    "type": "BOOLEAN",
+                    "description": "A boolean to filter paywalls articles.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://bonai-news-api.p.rapidapi.com/v1/search\"\nquerystring = {\"sort\": \"\", \"to\": \"\", \"from\": \"\", \"language\": \"\", \"publisher\": \"\", \"page\": \"\", \"country\": \"\", \"query\": \"\", \"limit\": \"\", \"paywall\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bonai-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bonai-news-api.p.rapidapi.com/v1/search\"\nquerystring = {\"sort\": \"\", \"to\": \"\", \"from\": \"\", \"language\": \"\", \"publisher\": \"\", \"page\": \"\", \"country\": \"\", \"query\": \"\", \"limit\": \"\", \"paywall\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bonai-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Countries and Languages",
+            "url": "https://bonai-news-api.p.rapidapi.com/v1/languages-by-countries",
+            "description": "This endpoint provides access to a list of supported languages, categorized by their respective countries.\n\nThe response will contain an array of objects. Each object in the array will represent a supported country and will include the following properties:\n- name: The full name of the language in English\n- code: The ISO 3166-1 alpha-2 code for the country\n- languages: An array of objects, each representing a supported language in that country. Each language object will include the following properties:\n    - name: The full name of the language in English\n    - code: The ISO 639-1 code for the language",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://bonai-news-api.p.rapidapi.com/v1/languages-by-countries\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bonai-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://bonai-news-api.p.rapidapi.com/v1/languages-by-countries\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"bonai-news-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

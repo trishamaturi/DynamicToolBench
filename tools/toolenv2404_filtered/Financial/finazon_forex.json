@@ -1,0 +1,226 @@
+{
+    "product_id": "api_61932ab2-eefe-4ae3-8588-e13bf5d7a3c2",
+    "tool_description": "Finazon's Forex API provides precise aggregated Forex data sourced from top contributors, prime banks, and financial institutions. Each feed is a meticulously calculated average of bid and ask prices from multiple over-the-counter (OTC) FX sources, selected for quality. This ensures accurate, reliable, and up-to-date data for market analysis, trading strategies, and financial app development.",
+    "home_url": "https://rapidapi.com/finazon-team-finazon-team-default/api/finazon-forex/",
+    "name": "Finazon Forex",
+    "title": "Finazon Forex",
+    "pricing": "FREEMIUM",
+    "tool_name": "Finazon Forex",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 338,
+        "avgSuccessRate": 100,
+        "popularityScore": 6,
+        "__typename": "Score"
+    },
+    "host": "finazon-forex.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/forex/time_series",
+            "url": "https://finazon-forex.p.rapidapi.com/forex/time_series",
+            "description": "This endpoint returns time series data for any given pair at a given interval.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "interval",
+                    "type": "STRING",
+                    "description": "Interval between two consecutive points in time series",
+                    "default": "1m"
+                },
+                {
+                    "name": "ticker",
+                    "type": "STRING",
+                    "description": "Filter by ticker symbol",
+                    "default": "EUR/USD"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "start_at",
+                    "type": "NUMBER",
+                    "description": "Filter output by start time using a UNIX timestamp",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Specific page of a paginated result to be displayed",
+                    "default": "0"
+                },
+                {
+                    "name": "order",
+                    "type": "STRING",
+                    "description": "Sorting order of the output series",
+                    "default": "desc"
+                },
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "Timezone of the output datetime, presented in tz database format",
+                    "default": ""
+                },
+                {
+                    "name": "end_at",
+                    "type": "NUMBER",
+                    "description": "Filter output by end time using a UNIX timestamp",
+                    "default": ""
+                },
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "Specifies the exact date to get the data for",
+                    "default": ""
+                },
+                {
+                    "name": "page_size",
+                    "type": "NUMBER",
+                    "description": "Number of items displayed per page in a paginated result",
+                    "default": "100"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://finazon-forex.p.rapidapi.com/forex/time_series\"\nquerystring = {\"interval\": \"1m\", \"start_at\": \"\", \"page\": \"0\", \"order\": \"desc\", \"timezone\": \"\", \"end_at\": \"\", \"date\": \"\", \"ticker\": \"EUR/USD\", \"page_size\": \"100\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finazon-forex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://finazon-forex.p.rapidapi.com/forex/time_series\"\nquerystring = {\"interval\": \"1m\", \"start_at\": \"\", \"page\": \"0\", \"order\": \"desc\", \"timezone\": \"\", \"end_at\": \"\", \"date\": \"\", \"ticker\": \"EUR/USD\", \"page_size\": \"100\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finazon-forex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "description": "QuoteItem represents a bar quote at the trading interval",
+                    "type": "object",
+                    "properties": {
+                        "c": {
+                            "description": "Closing price at the end of the trading interval",
+                            "type": "number",
+                            "format": "double",
+                            "x-go-name": "C",
+                            "minimum": -1.7976931348623157e+308,
+                            "maximum": 1.7976931348623157e+308
+                        },
+                        "h": {
+                            "description": "Highest price reached during the trading interval",
+                            "type": "number",
+                            "format": "double",
+                            "x-go-name": "H",
+                            "minimum": -1.7976931348623157e+308,
+                            "maximum": 1.7976931348623157e+308
+                        },
+                        "l": {
+                            "description": "Lowest price reached during the trading interval",
+                            "type": "number",
+                            "format": "double",
+                            "x-go-name": "L",
+                            "minimum": -1.7976931348623157e+308,
+                            "maximum": 1.7976931348623157e+308
+                        },
+                        "o": {
+                            "description": "Price at the opening of the trading interval",
+                            "type": "number",
+                            "format": "double",
+                            "x-go-name": "O",
+                            "minimum": -1.7976931348623157e+308,
+                            "maximum": 1.7976931348623157e+308
+                        },
+                        "t": {
+                            "description": "Timestamp indicating when the trading interval opened",
+                            "type": "integer",
+                            "format": "int64",
+                            "x-go-name": "T",
+                            "minimum": -9223372036854776000,
+                            "maximum": 9223372036854776000
+                        },
+                        "v": {
+                            "description": "Trading volume recorded during the trading interval",
+                            "type": "number",
+                            "format": "double",
+                            "x-go-name": "V",
+                            "minimum": -1.7976931348623157e+308,
+                            "maximum": 1.7976931348623157e+308
+                        }
+                    },
+                    "x-go-package": "gitlab.com/finazon/api/route/description"
+                }
+            }
+        },
+        {
+            "name": "/tickers/forex",
+            "url": "https://finazon-forex.p.rapidapi.com/tickers/forex",
+            "description": "Returns a list of 50+ available forex pairs. This list is updated daily.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "page_size",
+                    "type": "NUMBER",
+                    "description": "Number of items displayed per page in a paginated result",
+                    "default": ""
+                },
+                {
+                    "name": "ticker",
+                    "type": "STRING",
+                    "description": "Filter by ticker symbol",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Specific page of a paginated result to be displayed",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://finazon-forex.p.rapidapi.com/tickers/forex\"\nquerystring = {\"page_size\": \"\", \"ticker\": \"\", \"page\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finazon-forex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://finazon-forex.p.rapidapi.com/tickers/forex\"\nquerystring = {\"page_size\": \"\", \"ticker\": \"\", \"page\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"finazon-forex.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "ticker"
+                            ],
+                            "properties": {
+                                "ticker": {
+                                    "description": "Instrument symbol (ticker)",
+                                    "type": "string",
+                                    "x-go-name": "Ticker"
+                                }
+                            },
+                            "x-go-package": "gitlab.com/finazon/api/model/entity"
+                        },
+                        "x-go-name": "Data"
+                    },
+                    "meta": {
+                        "type": "object",
+                        "properties": {
+                            "pagination": {
+                                "type": "object",
+                                "properties": {
+                                    "page": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "x-go-name": "Page",
+                                        "minimum": -9223372036854776000,
+                                        "maximum": 9223372036854776000
+                                    },
+                                    "per_page": {
+                                        "type": "integer",
+                                        "format": "int64",
+                                        "x-go-name": "PerPage",
+                                        "minimum": -9223372036854776000,
+                                        "maximum": 9223372036854776000
+                                    }
+                                },
+                                "x-go-package": "gitlab.com/finazon/api/route/description"
+                            }
+                        },
+                        "x-go-package": "gitlab.com/finazon/api/route/description"
+                    }
+                },
+                "x-go-package": "gitlab.com/finazon/api/route/description"
+            }
+        }
+    ]
+}

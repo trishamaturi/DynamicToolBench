@@ -1,0 +1,2751 @@
+{
+    "product_id": "api_152d76ab-6118-48e6-b594-756be1235d85",
+    "tool_description": "Real-time data, unofficial API skyscanner.com, query hotels, flights.\nAPI searches and compares hotel and rental car options to help them find the best deal for their journey.",
+    "home_url": "https://rapidapi.com/ntd119/api/sky-scanner3/",
+    "name": "Sky Scanner",
+    "title": "Sky Scanner",
+    "pricing": "FREEMIUM",
+    "tool_name": "Sky Scanner",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 3521,
+        "avgSuccessRate": 95,
+        "popularityScore": 9.9,
+        "__typename": "Score"
+    },
+    "host": "sky-scanner3.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "flights/auto-complete",
+            "url": "https://sky-scanner3.p.rapidapi.com/flights/auto-complete",
+            "description": "flights/auto-complete",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "outboundDate",
+                    "type": "STRING",
+                    "description": "Format:  `YYYY-MM-DD`\nDefault value: Current date",
+                    "default": ""
+                },
+                {
+                    "name": "placeTypes",
+                    "type": "STRING",
+                    "description": "It can input multiple values, and the values should be separated by commas\nThe  **/flights/search-multi-city**  endpoint is only used in the case placeTypes=CITY,AIRPORT\nEx: `CITY,AIRPORT`\n`CITY`: City\n`AIRPORT`: Airport\n`COUNTRY`: Country",
+                    "default": ""
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "`market` can be retrieved from /get-config endpoint(data->market)\nEx: `US`\nDefault value: `US`",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from /get-config endpoint(data->locale)\nEx: `en-US`\nDefault value: `en-US`",
+                    "default": ""
+                },
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Required: true\nEx: `New York`",
+                    "default": "New York"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/flights/auto-complete\"\nquerystring = {\"outboundDate\": \"\", \"placeTypes\": \"\", \"market\": \"\", \"locale\": \"\", \"query\": \"New York\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/flights/auto-complete\"\nquerystring = {\"outboundDate\": \"\", \"placeTypes\": \"\", \"market\": \"\", \"locale\": \"\", \"query\": \"New York\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "presentation": {
+                                    "type": "object",
+                                    "properties": {
+                                        "title": {
+                                            "type": "string"
+                                        },
+                                        "suggestionTitle": {
+                                            "type": "string"
+                                        },
+                                        "subtitle": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "navigation": {
+                                    "type": "object",
+                                    "properties": {
+                                        "entityId": {
+                                            "type": "string"
+                                        },
+                                        "entityType": {
+                                            "type": "string"
+                                        },
+                                        "localizedName": {
+                                            "type": "string"
+                                        },
+                                        "relevantFlightParams": {
+                                            "type": "object",
+                                            "properties": {
+                                                "skyId": {
+                                                    "type": "string"
+                                                },
+                                                "entityId": {
+                                                    "type": "string"
+                                                },
+                                                "flightPlaceType": {
+                                                    "type": "string"
+                                                },
+                                                "localizedName": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "relevantHotelParams": {
+                                            "type": "object",
+                                            "properties": {
+                                                "entityId": {
+                                                    "type": "string"
+                                                },
+                                                "entityType": {
+                                                    "type": "string"
+                                                },
+                                                "localizedName": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "flights/price-calendar",
+            "url": "https://sky-scanner3.p.rapidapi.com/flights/price-calendar",
+            "description": "flights/price-calendar",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "departDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Depart date\nRequired: true\nFormat: `YYYY-MM-DD`\nEx: `2024-02-14`",
+                    "default": ""
+                },
+                {
+                    "name": "fromEntityId",
+                    "type": "STRING",
+                    "description": "From location\nRequired: true\n`fromEntityId` can be retrieved from /flights/auto-complete endpoint(data->presentation->id)\nEx: `eyJlIjoiMjc1Mzk3MzMiLCJzIjoiUEFSSSIsImgiOiIyNzUzOTczMyJ9` (Paris)",
+                    "default": "eyJlIjoiMjc1Mzk3MzMiLCJzIjoiUEFSSSIsImgiOiIyNzUzOTczMyJ9"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "toEntityId",
+                    "type": "STRING",
+                    "description": "To location\n`fromEntityId` can be retrieved from /flights/auto-complete endpoint(data->presentation->id)\nEx: `eyJlIjoiMzUyMzQ4OTIiLCJzIjoiTVNZQSIsImgiOiIzNTIzNDg5MiJ9`\n\nDefault value: `anywhere`",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from /get-config endpoint(data->locale)\nEx: `en-US`\nDefault value: `en-US`",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from /get-config endpoint(data->currency)\nEx: `USD`\nDefault value: `USD`",
+                    "default": ""
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "`market` can be retrieved from /get-config endpoint(data->market)\nEx: `US`\nDefault value: `US`",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/flights/price-calendar\"\nquerystring = {\"departDate\": \"\", \"toEntityId\": \"\", \"fromEntityId\": \"eyJlIjoiMjc1Mzk3MzMiLCJzIjoiUEFSSSIsImgiOiIyNzUzOTczMyJ9\", \"locale\": \"\", \"currency\": \"\", \"market\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/flights/price-calendar\"\nquerystring = {\"departDate\": \"\", \"toEntityId\": \"\", \"fromEntityId\": \"eyJlIjoiMjc1Mzk3MzMiLCJzIjoiUEFSSSIsImgiOiIyNzUzOTczMyJ9\", \"locale\": \"\", \"currency\": \"\", \"market\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "flights": {
+                                "type": "object",
+                                "properties": {
+                                    "noPriceLabel": {
+                                        "type": "string"
+                                    },
+                                    "groups": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "label": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "days": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "day": {
+                                                    "type": "string"
+                                                },
+                                                "group": {
+                                                    "type": "string"
+                                                },
+                                                "price": {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "currency": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "flights/search-one-way",
+            "url": "https://sky-scanner3.p.rapidapi.com/flights/search-one-way",
+            "description": "flights/search-one-way\n\nIn case the status is 'incomplete'(data->context->status=incomplete), you need to use the /flights/search-incomplete endpoint to get the full data until the status is 'complete'(data->context->status=complete)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "fromEntityId",
+                    "type": "STRING",
+                    "description": "From location\nRequired: true\n`fromEntityId` can be retrieved from /flights/auto-complete endpoint(data->presentation->id) or  from  **/flights/search-everywhere**  endpoint(data->flightQuotes->results->id)\nEx: `eyJlIjoiOTU1NjUwODUiLCJzIjoiQkNOIiwiaCI6IjI3NTQ4MjgzIn0=` (**Paris**)",
+                    "default": "eyJlIjoiOTU1NjUwODUiLCJzIjoiQkNOIiwiaCI6IjI3NTQ4MjgzIn0="
+                },
+                {
+                    "name": "toEntityId",
+                    "type": "STRING",
+                    "description": "To location\nRequired: true\n`fromEntityId` can be retrieved from /flights/auto-complete endpoint(data->presentation->id) or  from  **/flights/search-everywhere**  endpoint(data->flightQuotes->results->id)\nEx: `eyJlIjoiOTU2NzM3NDQiLCJzIjoiTlVFIiwiaCI6IjI3NTQ1MTYyIn0=` (**New Orleans**)",
+                    "default": "eyJlIjoiOTU2NzM3NDQiLCJzIjoiTlVFIiwiaCI6IjI3NTQ1MTYyIn0="
+                },
+                {
+                    "name": "departDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Depart date\nRequired: true\nFormat: `YYYY-MM-DD`\nEx: `2024-02-14`",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from /get-config endpoint(data->currency)\nEx: `USD`\nDefault value: `USD`",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from /get-config endpoint(data->locale)\nEx: `en-US`\nDefault value: `en-US`",
+                    "default": ""
+                },
+                {
+                    "name": "adults",
+                    "type": "NUMBER",
+                    "description": "Adults: 12+ years\nEx: `3`\nDefault value: `1`",
+                    "default": ""
+                },
+                {
+                    "name": "cabinClass",
+                    "type": "ENUM",
+                    "description": "Cabin class\nEx: `economy`\nDefault value: `economy`\n\n`economy`: Economy\n`premium_economy`: Premium Economy\n`business`: Business\n`first`: First",
+                    "default": ""
+                },
+                {
+                    "name": "infants",
+                    "type": "NUMBER",
+                    "description": "Infants: Under 2 years\nEx: `1`\nDefault value: `0`",
+                    "default": ""
+                },
+                {
+                    "name": "children",
+                    "type": "NUMBER",
+                    "description": "Children: 2-12 years\nEx: `4`\nDefault value: `0`",
+                    "default": ""
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "`market` can be retrieved from /get-config endpoint(data->market)\nEx: `US`\nDefault value: `US`",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/flights/search-one-way\"\nquerystring = {\"currency\": \"\", \"fromEntityId\": \"eyJlIjoiOTU1NjUwODUiLCJzIjoiQkNOIiwiaCI6IjI3NTQ4MjgzIn0=\", \"locale\": \"\", \"toEntityId\": \"eyJlIjoiOTU2NzM3NDQiLCJzIjoiTlVFIiwiaCI6IjI3NTQ1MTYyIn0=\", \"adults\": \"\", \"cabinClass\": \"\", \"departDate\": \"\", \"infants\": \"\", \"children\": \"\", \"market\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/flights/search-one-way\"\nquerystring = {\"currency\": \"\", \"fromEntityId\": \"eyJlIjoiOTU1NjUwODUiLCJzIjoiQkNOIiwiaCI6IjI3NTQ4MjgzIn0=\", \"locale\": \"\", \"toEntityId\": \"eyJlIjoiOTU2NzM3NDQiLCJzIjoiTlVFIiwiaCI6IjI3NTQ1MTYyIn0=\", \"adults\": \"\", \"cabinClass\": \"\", \"departDate\": \"\", \"infants\": \"\", \"children\": \"\", \"market\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "context": {
+                                "type": "object",
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "sessionId": {
+                                        "type": "string"
+                                    },
+                                    "totalResults": {
+                                        "type": "integer"
+                                    }
+                                }
+                            },
+                            "itineraries": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "messages": {
+                                "type": "array"
+                            },
+                            "filterStats": {
+                                "type": "object",
+                                "properties": {
+                                    "duration": {
+                                        "type": "object",
+                                        "properties": {
+                                            "min": {
+                                                "type": "integer"
+                                            },
+                                            "max": {
+                                                "type": "integer"
+                                            },
+                                            "multiCityMin": {
+                                                "type": "integer"
+                                            },
+                                            "multiCityMax": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    },
+                                    "airports": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "city": {
+                                                    "type": "string"
+                                                },
+                                                "airports": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string"
+                                                            },
+                                                            "name": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "carriers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "logoUrl": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "stopPrices": {
+                                        "type": "object",
+                                        "properties": {
+                                            "direct": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "isPresent": {
+                                                        "type": "boolean"
+                                                    }
+                                                }
+                                            },
+                                            "one": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "isPresent": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "formattedPrice": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "twoOrMore": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "isPresent": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "formattedPrice": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "flightsSessionId": {
+                                "type": "string"
+                            },
+                            "destinationImageUrl": {
+                                "type": "string"
+                            },
+                            "token": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "flights/search-everywhere",
+            "url": "https://sky-scanner3.p.rapidapi.com/flights/search-everywhere",
+            "description": "flights/search-everywhere",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "fromEntityId",
+                    "type": "STRING",
+                    "description": "From location\nRequired: true\n`fromEntityId` can be retrieved from /flights/auto-complete endpoint(data->presentation->id)\nEx: `eyJlIjoiMjc1Mzc1NDIiLCJzIjoiTllDQSIsImgiOiIyNzUzNzU0MiJ9` (New York)",
+                    "default": "eyJlIjoiMjc1Mzc1NDIiLCJzIjoiTllDQSIsImgiOiIyNzUzNzU0MiJ9"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "cabinClass",
+                    "type": "ENUM",
+                    "description": "Cabin class\nEx: `economy`\nDefault value: `economy`\n\n`economy`: Economy\n`premium_economy`: Premium Economy\n`business`: Business\n`first`: First",
+                    "default": ""
+                },
+                {
+                    "name": "toEntityId",
+                    "type": "STRING",
+                    "description": "To location\n`toEntityId` can be retrieved from /flights/auto-complete endpoint(data->presentation->id) or the response of endpoint(data->everywhereDestination/countryDestination->results->id)\nEx: `eyJlIjoiMjk0NzUwODUiLCJzIjoiUFIifQ==` (Puerto Rico)",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from /get-config endpoint(data->locale)\nEx: `en-US`\nDefault value: `en-US`",
+                    "default": ""
+                },
+                {
+                    "name": "month",
+                    "type": "STRING",
+                    "description": "Depart month\nFormat: `MM`\nEx: `05`",
+                    "default": ""
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "`market` can be retrieved from /get-config endpoint(data->market)\nEx: `US`\nDefault value: `US`",
+                    "default": ""
+                },
+                {
+                    "name": "infants",
+                    "type": "NUMBER",
+                    "description": "Infants: Under 2 years\nEx: `1`\nDefault value: `0`",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from /get-config endpoint(data->currency)\nEx: `USD`\nDefault value: `USD`",
+                    "default": ""
+                },
+                {
+                    "name": "adults",
+                    "type": "NUMBER",
+                    "description": "Adults: 12+ years\nEx: `3`\nDefault value: `1`",
+                    "default": ""
+                },
+                {
+                    "name": "children",
+                    "type": "NUMBER",
+                    "description": "Children: 2-12 years\nEx: `4`\nDefault value: `0`",
+                    "default": ""
+                },
+                {
+                    "name": "year",
+                    "type": "STRING",
+                    "description": "Depart year\nFormat: `YYYY`\nEx: `2024`",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/flights/search-everywhere\"\nquerystring = {\"fromEntityId\": \"eyJlIjoiMjc1Mzc1NDIiLCJzIjoiTllDQSIsImgiOiIyNzUzNzU0MiJ9\", \"cabinClass\": \"\", \"toEntityId\": \"\", \"locale\": \"\", \"month\": \"\", \"market\": \"\", \"infants\": \"\", \"currency\": \"\", \"adults\": \"\", \"children\": \"\", \"year\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/flights/search-everywhere\"\nquerystring = {\"fromEntityId\": \"eyJlIjoiMjc1Mzc1NDIiLCJzIjoiTllDQSIsImgiOiIyNzUzNzU0MiJ9\", \"cabinClass\": \"\", \"toEntityId\": \"\", \"locale\": \"\", \"month\": \"\", \"market\": \"\", \"infants\": \"\", \"currency\": \"\", \"adults\": \"\", \"children\": \"\", \"year\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "everywhereDestination": {
+                                "type": "object",
+                                "properties": {
+                                    "context": {
+                                        "type": "object",
+                                        "properties": {
+                                            "status": {
+                                                "type": "string"
+                                            },
+                                            "sessionId": {
+                                                "type": "string"
+                                            },
+                                            "totalResults": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    },
+                                    "features": {
+                                        "type": "object",
+                                        "properties": {
+                                            "flightsIndicative": {
+                                                "type": "string"
+                                            },
+                                            "images": {
+                                                "type": "string"
+                                            },
+                                            "ads": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "buckets": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "label": {
+                                                    "type": "string"
+                                                },
+                                                "category": {
+                                                    "type": "string"
+                                                },
+                                                "resultIds": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "flightQuotes": {
+                                                    "type": "string"
+                                                },
+                                                "hotelQuotes": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "results": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "type": {
+                                                    "type": "string"
+                                                },
+                                                "content": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "location": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string"
+                                                                },
+                                                                "skyCode": {
+                                                                    "type": "string"
+                                                                },
+                                                                "name": {
+                                                                    "type": "string"
+                                                                },
+                                                                "type": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        },
+                                                        "flightQuotes": {
+                                                            "type": "object"
+                                                        },
+                                                        "image": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "url": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "context": {
+                                "type": "object",
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "sessionId": {
+                                        "type": "string"
+                                    },
+                                    "totalResults": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "flights/search-incomplete",
+            "url": "https://sky-scanner3.p.rapidapi.com/flights/search-incomplete",
+            "description": "Get full data for  **/flights/search-roundtrip** or  **/flights/search-one-way** or  **/flights/search-multi-city**  endpoint\n\nYou need to call the API multiple times until the item status is 'complete'(data->context->status=complete)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "sessionId",
+                    "type": "STRING",
+                    "description": "Session id\nRequired: true\n`sessionId` can be retrieved from **/flights/search-roundtrip** or  **/flights/search-one-way** or  **/flights/search-multi-city**  endpoint(data->context->sessionId)",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "`market` can be retrieved from /get-config endpoint(data->market)\nEx: `US`\nDefault value: `US`",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from /get-config endpoint(data->locale)\nEx: `en-US`\nDefault value: `en-US`",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from /get-config endpoint(data->currency)\nEx: `USD`\nDefault value: `USD`",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/flights/search-incomplete\"\nquerystring = {\"market\": \"\", \"locale\": \"\", \"sessionId\": \"\", \"currency\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/flights/search-incomplete\"\nquerystring = {\"market\": \"\", \"locale\": \"\", \"sessionId\": \"\", \"currency\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "context": {
+                                "type": "object",
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "sessionId": {
+                                        "type": "string"
+                                    },
+                                    "totalResults": {
+                                        "type": "integer"
+                                    }
+                                }
+                            },
+                            "itineraries": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "messages": {
+                                "type": "array"
+                            },
+                            "filterStats": {
+                                "type": "object",
+                                "properties": {
+                                    "duration": {
+                                        "type": "object",
+                                        "properties": {
+                                            "min": {
+                                                "type": "integer"
+                                            },
+                                            "max": {
+                                                "type": "integer"
+                                            },
+                                            "multiCityMin": {
+                                                "type": "integer"
+                                            },
+                                            "multiCityMax": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    },
+                                    "airports": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "city": {
+                                                    "type": "string"
+                                                },
+                                                "airports": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string"
+                                                            },
+                                                            "name": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "carriers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "logoUrl": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "stopPrices": {
+                                        "type": "object",
+                                        "properties": {
+                                            "direct": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "isPresent": {
+                                                        "type": "boolean"
+                                                    }
+                                                }
+                                            },
+                                            "one": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "isPresent": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "formattedPrice": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "twoOrMore": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "isPresent": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "formattedPrice": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "flightsSessionId": {
+                                "type": "string"
+                            },
+                            "destinationImageUrl": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "flights/search-roundtrip",
+            "url": "https://sky-scanner3.p.rapidapi.com/flights/search-roundtrip",
+            "description": "flights/search-roundtrip\n\nIn case the status is 'incomplete'(data->context->status=incomplete), you need to use the /flights/search-incomplete endpoint to get the full data until the status is 'complete'(data->context->status=complete)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "toEntityId",
+                    "type": "STRING",
+                    "description": "To location\nRequired: true\n`fromEntityId` can be retrieved from /flights/auto-complete endpoint(data->presentation->id) or  from  **/flights/search-everywhere**  endpoint(data->flightQuotes->results->id)\nEx: `eyJlIjoiOTU2NzM3NDQiLCJzIjoiTlVFIiwiaCI6IjI3NTQ1MTYyIn0=` (**New Orleans**)",
+                    "default": "eyJlIjoiOTU2NzM3NDQiLCJzIjoiTlVFIiwiaCI6IjI3NTQ1MTYyIn0="
+                },
+                {
+                    "name": "departDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Depart date\nRequired: true\nFormat: `YYYY-MM-DD`\nEx: `2024-02-14`",
+                    "default": ""
+                },
+                {
+                    "name": "fromEntityId",
+                    "type": "STRING",
+                    "description": "From location\nRequired: true\n`fromEntityId` can be retrieved from /flights/auto-complete endpoint(data->presentation->id)  or  from  **/flights/search-everywhere**  endpoint(data->flightQuotes->results->id)\nEx: `eyJlIjoiOTU1NjUwODUiLCJzIjoiQkNOIiwiaCI6IjI3NTQ4MjgzIn0=` (**Paris**)\n",
+                    "default": "eyJlIjoiOTU1NjUwODUiLCJzIjoiQkNOIiwiaCI6IjI3NTQ4MjgzIn0="
+                },
+                {
+                    "name": "returnDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Return date\nRequired: true\nFormat: `YYYY-MM-DD`\nEx: `2024-02-15`",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "adults",
+                    "type": "NUMBER",
+                    "description": "Adults: 12+ years\nEx: `3`\nDefault value: `1`",
+                    "default": ""
+                },
+                {
+                    "name": "cabinClass",
+                    "type": "ENUM",
+                    "description": "Cabin class\nEx: `economy`\nDefault value: `economy`\n\n`economy`: Economy\n`premium_economy`: Premium Economy\n`business`: Business\n`first`: First",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from /get-config endpoint(data->locale)\nEx: `en-US`\nDefault value: `en-US`",
+                    "default": ""
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "`market` can be retrieved from /get-config endpoint(data->market)\nEx: `US`\nDefault value: `US`",
+                    "default": ""
+                },
+                {
+                    "name": "children",
+                    "type": "NUMBER",
+                    "description": "Children: 2-12 years\nEx: `4`\nDefault value: `0`",
+                    "default": ""
+                },
+                {
+                    "name": "infants",
+                    "type": "NUMBER",
+                    "description": "Infants: Under 2 years\nEx: `1`\nDefault value: `0`",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from /get-config endpoint(data->currency)\nEx: `USD`\nDefault value: `USD`",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/flights/search-roundtrip\"\nquerystring = {\"adults\": \"\", \"toEntityId\": \"eyJlIjoiOTU2NzM3NDQiLCJzIjoiTlVFIiwiaCI6IjI3NTQ1MTYyIn0=\", \"departDate\": \"\", \"cabinClass\": \"\", \"locale\": \"\", \"market\": \"\", \"fromEntityId\": \"eyJlIjoiOTU1NjUwODUiLCJzIjoiQkNOIiwiaCI6IjI3NTQ4MjgzIn0=\", \"children\": \"\", \"infants\": \"\", \"returnDate\": \"\", \"currency\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/flights/search-roundtrip\"\nquerystring = {\"adults\": \"\", \"toEntityId\": \"eyJlIjoiOTU2NzM3NDQiLCJzIjoiTlVFIiwiaCI6IjI3NTQ1MTYyIn0=\", \"departDate\": \"\", \"cabinClass\": \"\", \"locale\": \"\", \"market\": \"\", \"fromEntityId\": \"eyJlIjoiOTU1NjUwODUiLCJzIjoiQkNOIiwiaCI6IjI3NTQ4MjgzIn0=\", \"children\": \"\", \"infants\": \"\", \"returnDate\": \"\", \"currency\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "context": {
+                                "type": "object",
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "sessionId": {
+                                        "type": "string"
+                                    },
+                                    "totalResults": {
+                                        "type": "integer"
+                                    }
+                                }
+                            },
+                            "itineraries": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "messages": {
+                                "type": "array"
+                            },
+                            "filterStats": {
+                                "type": "object",
+                                "properties": {
+                                    "duration": {
+                                        "type": "object",
+                                        "properties": {
+                                            "min": {
+                                                "type": "integer"
+                                            },
+                                            "max": {
+                                                "type": "integer"
+                                            },
+                                            "multiCityMin": {
+                                                "type": "integer"
+                                            },
+                                            "multiCityMax": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    },
+                                    "airports": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "city": {
+                                                    "type": "string"
+                                                },
+                                                "airports": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string"
+                                                            },
+                                                            "name": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "carriers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "logoUrl": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "stopPrices": {
+                                        "type": "object",
+                                        "properties": {
+                                            "direct": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "isPresent": {
+                                                        "type": "boolean"
+                                                    }
+                                                }
+                                            },
+                                            "one": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "isPresent": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "formattedPrice": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "twoOrMore": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "isPresent": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "formattedPrice": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "flightsSessionId": {
+                                "type": "string"
+                            },
+                            "destinationImageUrl": {
+                                "type": "string"
+                            },
+                            "token": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "hotels/nearby-map",
+            "url": "https://sky-scanner3.p.rapidapi.com/hotels/nearby-map",
+            "description": "hotels/nearby-map",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "latitude",
+                    "type": "STRING",
+                    "description": "Latitude\nRequired: true\n`latitude` can be retrieved from hotels/search\nendpoint(data->results->hotelCards->coordinates->latitude)\nEx: `40.7591608`",
+                    "default": "40.7591608"
+                },
+                {
+                    "name": "longitude",
+                    "type": "STRING",
+                    "description": "Longitude\nlongitude: true\n`latitude` can be retrieved from hotels/search\nendpoint(data->results->hotelCards->coordinates->longitude)\nEx: `-73.9954657`",
+                    "default": "-73.9954657"
+                },
+                {
+                    "name": "entityId",
+                    "type": "STRING",
+                    "description": "Required: true\n`entityId` can be retrieved from hotels/search\nendpoint(data->results->searchSummary->entity->entityId)\nEx: `27537542`",
+                    "default": "27537542"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "`market` can be retrieved from /get-config endpoint(data->market)\nEx: `US`\nDefault value: `US`",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from /get-config endpoint(data->locale)\nEx: `en-US`\nDefault value: `en-US`",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from /get-config endpoint(data->currency)\nEx: `USD`\nDefault value: `USD`",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/hotels/nearby-map\"\nquerystring = {\"latitude\": \"40.7591608\", \"market\": \"\", \"longitude\": \"-73.9954657\", \"entityId\": \"27537542\", \"locale\": \"\", \"currency\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/hotels/nearby-map\"\nquerystring = {\"latitude\": \"40.7591608\", \"market\": \"\", \"longitude\": \"-73.9954657\", \"entityId\": \"27537542\", \"locale\": \"\", \"currency\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "transportations": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "coordinate": {
+                                            "type": "object",
+                                            "properties": {
+                                                "longitude": {
+                                                    "type": "number"
+                                                },
+                                                "latitude": {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "linearDistance": {
+                                            "type": "integer"
+                                        },
+                                        "distanceFromHotel": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "poiInfo": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "nearestTransportation": {
+                                "type": "object",
+                                "properties": {
+                                    "nearestOne": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "coordinate": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "longitude": {
+                                                        "type": "number"
+                                                    },
+                                                    "latitude": {
+                                                        "type": "number"
+                                                    }
+                                                }
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "linearDistance": {
+                                                "type": "integer"
+                                            },
+                                            "distanceFromHotel": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "attractionsSummary": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "hotels/similar-hotels",
+            "url": "https://sky-scanner3.p.rapidapi.com/hotels/similar-hotels",
+            "description": "hotels/similar-hotels",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "checkin",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Check-in date\nRequired: true\nEx: `2024-01-21`\nFormat: `YYYY-MM-DD`",
+                    "default": ""
+                },
+                {
+                    "name": "hotelId",
+                    "type": "STRING",
+                    "description": "Required: true\n`hotelId` can be retrieved from /hotels/search endpoint(data->results->hotelCards->hotelId)\nEx: `46944653`",
+                    "default": "46944653"
+                },
+                {
+                    "name": "checkout",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Check-out date\nRequired: true\nEx: `2024-01-22`\nFormat: `YYYY-MM-DD`",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from /get-config endpoint(data->locale)\nEx: `en-US`\nDefault value: `en-US`",
+                    "default": ""
+                },
+                {
+                    "name": "adults",
+                    "type": "NUMBER",
+                    "description": "Adults\nEx: `5`\nDefault value: `1`",
+                    "default": ""
+                },
+                {
+                    "name": "rooms",
+                    "type": "NUMBER",
+                    "description": "Rooms\nEx: `6`\nDefault value: `1`",
+                    "default": ""
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "`market` can be retrieved from /get-config endpoint(data->market)\nEx: `US`\nDefault value: `US`",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from /get-config endpoint(data->currency)\nEx: `USD`\nDefault value: `USD`",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/hotels/similar-hotels\"\nquerystring = {\"locale\": \"\", \"checkin\": \"\", \"adults\": \"\", \"rooms\": \"\", \"hotelId\": \"46944653\", \"checkout\": \"\", \"market\": \"\", \"currency\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/hotels/similar-hotels\"\nquerystring = {\"locale\": \"\", \"checkin\": \"\", \"adults\": \"\", \"rooms\": \"\", \"hotelId\": \"46944653\", \"checkout\": \"\", \"market\": \"\", \"currency\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "hotelId": {
+                                    "type": "string"
+                                },
+                                "heroImage": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "stars": {
+                                    "type": "integer"
+                                },
+                                "distance": {
+                                    "type": "string"
+                                },
+                                "distanceFromHotel": {
+                                    "type": "string"
+                                },
+                                "exclusiveInfo": {
+                                    "type": "null"
+                                },
+                                "price": {
+                                    "type": "string"
+                                },
+                                "cheapestOfferPartnerId": {
+                                    "type": "string"
+                                },
+                                "rawPrice": {
+                                    "type": "integer"
+                                },
+                                "rating": {
+                                    "type": "object"
+                                },
+                                "coordinate": {
+                                    "type": "object",
+                                    "properties": {
+                                        "longitude": {
+                                            "type": "number"
+                                        },
+                                        "latitude": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "hotels/reviews",
+            "url": "https://sky-scanner3.p.rapidapi.com/hotels/reviews",
+            "description": "hotels/reviews",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "hotelId",
+                    "type": "STRING",
+                    "description": "Required: true\n`hotelId` can be retrieved from /hotels/search endpoint(data->results->hotelCards->hotelId)\nEx: `106005202`",
+                    "default": "106005202"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "The page index, for paging purpose\nEx: `2`\nDefault value: `1`",
+                    "default": ""
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "`market` can be retrieved from /get-config endpoint(data->market)\nEx: `US`\nDefault value: `US`",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from /get-config endpoint(data->currency)\nEx: `USD`\nDefault value: `USD`",
+                    "default": ""
+                },
+                {
+                    "name": "tags",
+                    "type": "STRING",
+                    "description": "Tags\n`tags` can be retrieved from the response of endpoint, data->filters(type=tags)->values->id\nEx: `room`\nSome example values\n`room`: Room\n`location`: Location\n`service`: Service\n................",
+                    "default": ""
+                },
+                {
+                    "name": "guestType",
+                    "type": "STRING",
+                    "description": "Traveler type\n`guestType` can be retrieved from the response of endpoint, data->filters(type=guest_type)->values->id\nEx: `group`\nDefault value: `all`\nSome example values\n`all`: All travelers\n`business`: Business traveller\n`couple`: Couple\n................",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from /get-config endpoint(data->locale)\nEx: `en-US`\nDefault value: `en-US`",
+                    "default": ""
+                },
+                {
+                    "name": "filterLocale",
+                    "type": "STRING",
+                    "description": "Language\n`filterLocale` can be retrieved from the response of endpoint, data->filters(type=filter_locale)->values->id\nEx: `en-GB`\nDefault value: `all`\nSome example values\n`all`: All languages\n`en-GB`: English (United Kingdom)\n`fr-FR`: fran\u00e7ais\n................",
+                    "default": ""
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Sort by\n`sort` can be retrieved from the response of endpoint, data->filters(type=sort)->values->id\nEx: `rating_desc`\nDefault value: `recommended`\nSome example values\n`recommended`: Recommended\n`rating_desc`: Rating (high to low)\n`rating_asc`: Rating (low to high)\n`LAST_TWELVE_MONTHS`: Most recent\n",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/hotels/reviews\"\nquerystring = {\"page\": \"\", \"market\": \"\", \"currency\": \"\", \"tags\": \"\", \"guestType\": \"\", \"locale\": \"\", \"hotelId\": \"106005202\", \"filterLocale\": \"\", \"sort\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/hotels/reviews\"\nquerystring = {\"page\": \"\", \"market\": \"\", \"currency\": \"\", \"tags\": \"\", \"guestType\": \"\", \"locale\": \"\", \"hotelId\": \"106005202\", \"filterLocale\": \"\", \"sort\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "reviews": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "searchStatus": {
+                                "type": "object",
+                                "properties": {
+                                    "completed": {
+                                        "type": "boolean"
+                                    },
+                                    "reviewPartner": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "cta": {
+                                "type": "string"
+                            },
+                            "summaryCTA": {
+                                "type": "string"
+                            },
+                            "dialogTitle": {
+                                "type": "string"
+                            },
+                            "dialogDescription": {
+                                "type": "string"
+                            },
+                            "dialogCTA": {
+                                "type": "string"
+                            },
+                            "pageTitle": {
+                                "type": "string"
+                            },
+                            "pageCTA": {
+                                "type": "string"
+                            },
+                            "filters": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "title": {
+                                            "type": "string"
+                                        },
+                                        "values": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
+                                                    "count": {
+                                                        "type": "integer"
+                                                    },
+                                                    "label": {
+                                                        "type": "string"
+                                                    },
+                                                    "title": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "hotels/prices",
+            "url": "https://sky-scanner3.p.rapidapi.com/hotels/prices",
+            "description": "hotels/prices",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "checkin",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Check-in date\nRequired: true\nEx: `2024-01-21`\nFormat: `YYYY-MM-DD`",
+                    "default": ""
+                },
+                {
+                    "name": "hotelId",
+                    "type": "STRING",
+                    "description": "Required: true\n`hotelId` can be retrieved from /hotels/search endpoint(data->results->hotelCards->hotelId)\nEx: `46944653`",
+                    "default": "46944653"
+                },
+                {
+                    "name": "checkout",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Check-out date\nRequired: true\nEx: `2024-01-22`\nFormat: `YYYY-MM-DD`",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from /get-config endpoint(data->locale)\nEx: `en-US`\nDefault value: `en-US`",
+                    "default": ""
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "`market` can be retrieved from /get-config endpoint(data->market)\nEx: `US`\nDefault value: `US`",
+                    "default": ""
+                },
+                {
+                    "name": "rooms",
+                    "type": "NUMBER",
+                    "description": "Rooms\nEx: `6`\nDefault value: `1`",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from /get-config endpoint(data->currency)\nEx: `USD`\nDefault value: `USD`",
+                    "default": ""
+                },
+                {
+                    "name": "adults",
+                    "type": "NUMBER",
+                    "description": "Adults\nEx: `5`\nDefault value: `1`",
+                    "default": ""
+                },
+                {
+                    "name": "childrenAges",
+                    "type": "STRING",
+                    "description": "It can input multiple values, and the values should be separated by commas\nEx: `0,11,17`\n\n0: < year old\n1: 1 year old\n2: 2 years old\n..............\n17: 17 years old\n",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/hotels/prices\"\nquerystring = {\"locale\": \"\", \"market\": \"\", \"checkin\": \"\", \"hotelId\": \"46944653\", \"rooms\": \"\", \"currency\": \"\", \"checkout\": \"\", \"adults\": \"\", \"childrenAges\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/hotels/prices\"\nquerystring = {\"locale\": \"\", \"market\": \"\", \"checkin\": \"\", \"hotelId\": \"46944653\", \"rooms\": \"\", \"currency\": \"\", \"checkout\": \"\", \"adults\": \"\", \"childrenAges\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "metaInfo": {
+                                "type": "object",
+                                "properties": {
+                                    "ratesCta": {
+                                        "type": "string"
+                                    },
+                                    "rates": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            },
+                            "roomTypes": {
+                                "type": "array"
+                            },
+                            "cheapestPrice": {
+                                "type": "object",
+                                "properties": {
+                                    "price": {
+                                        "type": "string"
+                                    },
+                                    "totalWithTaxes": {
+                                        "type": "string"
+                                    },
+                                    "funnelType": {
+                                        "type": "string"
+                                    },
+                                    "partnerId": {
+                                        "type": "string"
+                                    },
+                                    "rateAttributes": {
+                                        "type": "array"
+                                    },
+                                    "rawPrice": {
+                                        "type": "integer"
+                                    }
+                                }
+                            },
+                            "exclusiveDeal": {
+                                "type": "null"
+                            },
+                            "mostPopularRates": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "noOfferPartners": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "partner_type": {
+                                            "type": "string"
+                                        },
+                                        "logo": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "website_id": {
+                                            "type": "string"
+                                        },
+                                        "is_dbook": {
+                                            "type": "boolean"
+                                        },
+                                        "is_official": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            },
+                            "isShowMostPopularSeeAll": {
+                                "type": "boolean"
+                            },
+                            "policyInfo": {
+                                "type": "string"
+                            },
+                            "otaRates": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "localCurrency": {
+                                "type": "string"
+                            },
+                            "searchId": {
+                                "type": "string"
+                            },
+                            "requestId": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "hotels/detail",
+            "url": "https://sky-scanner3.p.rapidapi.com/hotels/detail",
+            "description": "hotels/detail",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Required: true\n`id` can be retrieved from /hotels/search endpoint(data->results->hotelCards->id)\nEx: `eyJlbnRpdHlJZCI6IjI3NTM3NTQyIiwiaWQiOiI0Njk0NDY1MyJ9`",
+                    "default": "eyJlbnRpdHlJZCI6IjI3NTM3NTQyIiwiaWQiOiI0Njk0NDY1MyJ9"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from /get-config endpoint(data->currency)\nEx: `USD`\nDefault value: `USD`",
+                    "default": ""
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "`market` can be retrieved from /get-config endpoint(data->market)\nEx: `US`\nDefault value: `US`",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from /get-config endpoint(data->locale)\nEx: `en-US`\nDefault value: `en-US`",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/hotels/detail\"\nquerystring = {\"currency\": \"\", \"id\": \"eyJlbnRpdHlJZCI6IjI3NTM3NTQyIiwiaWQiOiI0Njk0NDY1MyJ9\", \"market\": \"\", \"locale\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/hotels/detail\"\nquerystring = {\"currency\": \"\", \"id\": \"eyJlbnRpdHlJZCI6IjI3NTM3NTQyIiwiaWQiOiI0Njk0NDY1MyJ9\", \"market\": \"\", \"locale\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "general": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "stars": {
+                                        "type": "integer"
+                                    }
+                                }
+                            },
+                            "goodToKnow": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "checkinTime": {
+                                        "type": "object",
+                                        "properties": {
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "time": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "checkoutTime": {
+                                        "type": "object",
+                                        "properties": {
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "time": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "description": {
+                                        "type": "object",
+                                        "properties": {
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "content": {
+                                                "type": "string"
+                                            },
+                                            "image": {
+                                                "type": "string"
+                                            },
+                                            "translated": {
+                                                "type": "boolean"
+                                            },
+                                            "needTranslation": {
+                                                "type": "boolean"
+                                            },
+                                            "locale": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "policies": {
+                                        "type": "object",
+                                        "properties": {
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "content": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "icon": {
+                                                            "type": "string"
+                                                        },
+                                                        "translated": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "needTranslation": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "locale": {
+                                                            "type": "string"
+                                                        },
+                                                        "key": {
+                                                            "type": "string"
+                                                        },
+                                                        "type": {
+                                                            "type": "string"
+                                                        },
+                                                        "values": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "content": {
+                                                                        "type": "string"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "childrenAndExtraBed": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "content": {
+                                        "type": "array"
+                                    }
+                                }
+                            },
+                            "location": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "shortAddress": {
+                                        "type": "string"
+                                    },
+                                    "address": {
+                                        "type": "string"
+                                    },
+                                    "rawAddress": {
+                                        "type": "object",
+                                        "properties": {
+                                            "nation": {
+                                                "type": "string"
+                                            },
+                                            "city": {
+                                                "type": "string"
+                                            },
+                                            "street_address": {
+                                                "type": "string"
+                                            },
+                                            "adm1": {
+                                                "type": "string"
+                                            },
+                                            "district": {
+                                                "type": "string"
+                                            },
+                                            "postcode": {
+                                                "type": "string"
+                                            },
+                                            "cityId": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "coordinates": {
+                                        "type": "object",
+                                        "properties": {
+                                            "latitude": {
+                                                "type": "number"
+                                            },
+                                            "longitude": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    },
+                                    "cta": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "gallery": {
+                                "type": "object",
+                                "properties": {
+                                    "images": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "categories": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "count": {
+                                                    "type": "integer"
+                                                },
+                                                "displayName": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "amenities": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "ctaAll": {
+                                        "type": "string"
+                                    },
+                                    "ctaLess": {
+                                        "type": "string"
+                                    },
+                                    "content": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "icon": {
+                                                    "type": "string"
+                                                },
+                                                "description": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "contentV2": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "category": {
+                                                    "type": "string"
+                                                },
+                                                "items": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "reviews": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "newTitle": {
+                                        "type": "string"
+                                    },
+                                    "cta": {
+                                        "type": "string"
+                                    },
+                                    "summaryDescription": {
+                                        "type": "string"
+                                    },
+                                    "rating": {
+                                        "type": "integer"
+                                    },
+                                    "ratingDescription": {
+                                        "type": "string"
+                                    },
+                                    "ratingDescriptionText": {
+                                        "type": "string"
+                                    },
+                                    "numberOfReviewsLabel": {
+                                        "type": "string"
+                                    },
+                                    "numberOfReviewsLabelExpanded": {
+                                        "type": "string"
+                                    },
+                                    "badges": {
+                                        "type": "array"
+                                    },
+                                    "guests": {
+                                        "type": "object",
+                                        "properties": {
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "entries": {
+                                                "type": "array"
+                                            }
+                                        }
+                                    },
+                                    "categories": {
+                                        "type": "object",
+                                        "properties": {
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "entries": {
+                                                "type": "array"
+                                            }
+                                        }
+                                    },
+                                    "explanations": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "title": {
+                                                    "type": "string"
+                                                },
+                                                "content": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "distance": {
+                                "type": "string"
+                            },
+                            "reviewRatingSummary": {
+                                "type": "object",
+                                "properties": {
+                                    "scoreLogoImageUrl": {
+                                        "type": "string"
+                                    },
+                                    "score": {
+                                        "type": "string"
+                                    },
+                                    "formatScore": {
+                                        "type": "string"
+                                    },
+                                    "totalScore": {
+                                        "type": "string"
+                                    },
+                                    "count": {
+                                        "type": "string"
+                                    },
+                                    "countNumber": {
+                                        "type": "integer"
+                                    },
+                                    "formatCountString": {
+                                        "type": "string"
+                                    },
+                                    "color": {
+                                        "type": "string"
+                                    },
+                                    "scoreDesc": {
+                                        "type": "string"
+                                    },
+                                    "highlights": {
+                                        "type": "string"
+                                    },
+                                    "categories": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "type": {
+                                                    "type": "string"
+                                                },
+                                                "score": {
+                                                    "type": "string"
+                                                },
+                                                "formatScore": {
+                                                    "type": "string"
+                                                },
+                                                "color": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "highlights": {
+                                                    "type": "string"
+                                                },
+                                                "description": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "cleanlinessMessage": {
+                                        "type": "string"
+                                    },
+                                    "locationMessage": {
+                                        "type": "string"
+                                    },
+                                    "highScoreReviews": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "type": {
+                                                    "type": "string"
+                                                },
+                                                "score": {
+                                                    "type": "string"
+                                                },
+                                                "icon": {
+                                                    "type": "string"
+                                                },
+                                                "text": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "hotels/search",
+            "url": "https://sky-scanner3.p.rapidapi.com/hotels/search",
+            "description": "You need to call the API multiple times until the item completionPercentage=100 (data->status->completionPercentage)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "entityId",
+                    "type": "STRING",
+                    "description": "Required: true\n`entityId` can be retrieved from /hotels/auto-complete endpoint(data->entityId)\nEx: `27537542`",
+                    "default": "27537542"
+                },
+                {
+                    "name": "checkout",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Check-out date\nRequired: true\nEx: `2024-01-22`\nFormat: `YYYY-MM-DD`",
+                    "default": ""
+                },
+                {
+                    "name": "checkin",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Check-in date\nRequired: true\nEx: `2024-01-21`\nFormat: `YYYY-MM-DD`",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "mealPlan",
+                    "type": "STRING",
+                    "description": "Meal plan\n`mealPlan` can be retrieved from the response of this endpoint(data->results->filters(type=meal_plan)->values->id)\nIt can input multiple values, and the values should be separated by commas\nEx: `breakfast_included,RoomRates_label_mealsNotIncluded`\nSome example values\n`breakfast_included`: Breakfast included\n`RoomRates_label_mealsNotIncluded`: Meals not included",
+                    "default": ""
+                },
+                {
+                    "name": "rating",
+                    "type": "STRING",
+                    "description": "Guest rating\n`rating` can be retrieved from the response of this endpoint(data->results->filters(type=rating)->values->id)\nIt can input multiple values, and the values should be separated by commas\nEx: `4.5,5`\nSome example values\n`3`: 3+ Satisfactory\n`3.5`: 3.5+ Good\n`4`: 4+ Very Good\n`4.5`: 4.5+ Excellent\n`5`: 5+ Outstanding",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from /get-config endpoint(data->locale)\nEx: `en-US`\nDefault value: `en-US`",
+                    "default": ""
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "`market` can be retrieved from /get-config endpoint(data->market)\nEx: `US`\nDefault value: `US`",
+                    "default": ""
+                },
+                {
+                    "name": "sorting",
+                    "type": "STRING",
+                    "description": "`sorting` can be retrieved from this endpoint(data->results->sortOptions->type)\nEx: `-price`\nDefault value: `-relevance`\nChoose one of the values below\n`-relevance`: Best\n`-price`: Price (high to low)\n`price`: Price (low to high)\n`distance`: Distance from downtown\n`-rating`: Guest rating\n`-stars`: Stars (5 to 1)\n`stars`: Stars (1 to 5)",
+                    "default": ""
+                },
+                {
+                    "name": "childrenAges",
+                    "type": "STRING",
+                    "description": "It can input multiple values, and the values should be separated by commas\nEx: `0,11,17`\n\n0: < year old\n1: 1 year old\n2: 2 years old\n..............\n17: 17 years old\n",
+                    "default": ""
+                },
+                {
+                    "name": "resultsPerPage",
+                    "type": "NUMBER",
+                    "description": "Total number of record per api call\nEx: `2`\nDefault value: `25`",
+                    "default": ""
+                },
+                {
+                    "name": "guestType",
+                    "type": "STRING",
+                    "description": "Popular with\n`guestType` can be retrieved from the response of this endpoint(data->results->filters(type=guest_type)->values->id)\nIt can input multiple values, and the values should be separated by commas\nEx: `business,couple`\nSome example values\n`business`: Business travelers\n`couple`: Couples\n`family`: Families\n`solo`: Solo travelers",
+                    "default": ""
+                },
+                {
+                    "name": "stars",
+                    "type": "STRING",
+                    "description": "Star rating\n`stars` can be retrieved from the response of this endpoint(data->results->filters(type=stars)->values->id)\nIt can input multiple values, and the values should be separated by commas\nEx: `no_stars,5`\nSome example values\n`5`: 5 stars\n`4`: 4 stars\n............\n`no_stars`: Unrated",
+                    "default": ""
+                },
+                {
+                    "name": "chain",
+                    "type": "STRING",
+                    "description": "Hotel chain\n`guestType` can be retrieved from the response of this endpoint(data->results->filters(type=chain)->values->id)\nIt can input multiple values, and the values should be separated by commas\nEx:\n`OTA3MTgzNzgsOTA3MTgzMzgsOTA3MTg0ODUsOTA3MTg1NTEsOTA3MTg2OTQsOTA3MTg2MjAsOTA3MTg1NTcsMTEzOTE0OTAyLDkwNzE4MjQxLDkwNzE4NzQy,OTA3MTg2ODYsOTA3MTg0MTEsOTA3MTg0MjIsOTA3MTgzNjAsOTA3MTg3MzQsOTA3MTg3MTEsOTA3MTgzNzAsOTA3MTg3ODM=`",
+                    "default": ""
+                },
+                {
+                    "name": "priceType",
+                    "type": "STRING",
+                    "description": "Price type\nEx: `PRICE_PER_NIGHT`\nDefault value: `PRICE_PER_NIGHT`\nChoose one of the values below\n`PRICE_PER_NIGHT`: Price per night\n`PRICE_TOTAL`: Show total price for stay",
+                    "default": ""
+                },
+                {
+                    "name": "discountTypes",
+                    "type": "STRING",
+                    "description": "Deals\n`discountTypes` can be retrieved from the response of this endpoint(data->results->filters(type=discount_types)->values->id)\nIt can input multiple values, and the values should be separated by commas\nEx: `cug`",
+                    "default": ""
+                },
+                {
+                    "name": "rooms",
+                    "type": "NUMBER",
+                    "description": "Rooms\nEx: `6`\nDefault value: `1`",
+                    "default": ""
+                },
+                {
+                    "name": "confidentType",
+                    "type": "STRING",
+                    "description": "Book with peace of mind\n`confidentType` can be retrieved from the response of this\nendpoint(data->results->filters(type=confident_type)->values->id)\nIt can input multiple values, and the values should be separated by commas\nEx: `free_cancellation,RoomRates_option_payOnArrival`\nSome example values\n`free_cancellation`: Free cancellation\n`RoomRates_option_payOnArrival`: Pay on arrival",
+                    "default": ""
+                },
+                {
+                    "name": "minPrice",
+                    "type": "STRING",
+                    "description": "Min price\nMaximum one decimal digit\nEx: `201` or `201.5`",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from /get-config endpoint(data->currency)\nEx: `USD`\nDefault value: `USD`",
+                    "default": ""
+                },
+                {
+                    "name": "amenities",
+                    "type": "STRING",
+                    "description": "Amenities\n`amenities` can be retrieved from the response of this endpoint(data->results->filters(type=amenities)->values->id)\nIt can input multiple values, and the values should be separated by commas\nEx: `WifiService,Parking`\nSome example values\n`WifiService`: WiFi\n`Parking`: Parking\n`AirConditioning`: Air conditioning\n`AirportShuttleService`: Airport Shuttle\n..............",
+                    "default": ""
+                },
+                {
+                    "name": "cancellation",
+                    "type": "STRING",
+                    "description": "Cancellation policy\n`cancellation` can be retrieved from the response of this endpoint(data->results->filters(type=cancellation)->values->id)\nIt can input multiple values, and the values should be separated by commas\nEx: `free_cancellation,refundable`\nSome example values\n`free_cancellation`: Free cancellation\n`refundable`: Refundable\n`non_refundable`: Non-Refundable",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "The page index, for paging purpose\nEx: `2`\nDefault value: `1`",
+                    "default": ""
+                },
+                {
+                    "name": "district",
+                    "type": "STRING",
+                    "description": "Neighborhoods\n`district` can be retrieved from the response of this endpoint(data->results->filters(type=district)->values->id)\nIt can input multiple values, and the values should be separated by commas\nEx: `27562849,27562665`\nSome example values\n`27562849`: Manhattan\n`27562665`: Queens\n`114666637`: Times Square\n`114668259`: Hell'S Kitchen\n..............",
+                    "default": ""
+                },
+                {
+                    "name": "adults",
+                    "type": "NUMBER",
+                    "description": "Adults\nEx: `5`\nDefault value: `1`",
+                    "default": ""
+                },
+                {
+                    "name": "maxPrice",
+                    "type": "STRING",
+                    "description": "Max price\nMaximum one decimal digit\nEx: `500` or `500.4`",
+                    "default": ""
+                },
+                {
+                    "name": "propertyType",
+                    "type": "STRING",
+                    "description": "Accommodation type\n`propertyType` can be retrieved from the response of this endpoint(data->results->filters(type=property_type)->values->id)\nIt can input multiple values, and the values should be separated by commas\nEx: `Hotel,ResidenceHotel,Hostel`\nSome example values\n`Hotel`: Hotel\n`ResidenceHotel`: Residence\n`Hostel`: Hostel\n`GuestHouse`: Guest House\n..............",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/hotels/search\"\nquerystring = {\"mealPlan\": \"\", \"rating\": \"\", \"locale\": \"\", \"entityId\": \"27537542\", \"market\": \"\", \"sorting\": \"\", \"childrenAges\": \"\", \"resultsPerPage\": \"\", \"guestType\": \"\", \"checkout\": \"\", \"stars\": \"\", \"chain\": \"\", \"priceType\": \"\", \"discountTypes\": \"\", \"rooms\": \"\", \"confidentType\": \"\", \"minPrice\": \"\", \"currency\": \"\", \"amenities\": \"\", \"cancellation\": \"\", \"page\": \"\", \"district\": \"\", \"adults\": \"\", \"maxPrice\": \"\", \"checkin\": \"\", \"propertyType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/hotels/search\"\nquerystring = {\"mealPlan\": \"\", \"rating\": \"\", \"locale\": \"\", \"entityId\": \"27537542\", \"market\": \"\", \"sorting\": \"\", \"childrenAges\": \"\", \"resultsPerPage\": \"\", \"guestType\": \"\", \"checkout\": \"\", \"stars\": \"\", \"chain\": \"\", \"priceType\": \"\", \"discountTypes\": \"\", \"rooms\": \"\", \"confidentType\": \"\", \"minPrice\": \"\", \"currency\": \"\", \"amenities\": \"\", \"cancellation\": \"\", \"page\": \"\", \"district\": \"\", \"adults\": \"\", \"maxPrice\": \"\", \"checkin\": \"\", \"propertyType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "results": {
+                                "type": "object",
+                                "properties": {
+                                    "priceType": {
+                                        "type": "string"
+                                    },
+                                    "pricePolicy": {
+                                        "type": "string"
+                                    },
+                                    "searchSummary": {
+                                        "type": "object",
+                                        "properties": {
+                                            "total": {
+                                                "type": "integer"
+                                            },
+                                            "filteredTotal": {
+                                                "type": "integer"
+                                            },
+                                            "inboundTotal": {
+                                                "type": "integer"
+                                            },
+                                            "resultsSummary": {
+                                                "type": "string"
+                                            },
+                                            "sortBy": {
+                                                "type": "string"
+                                            },
+                                            "entity": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "entityId": {
+                                                        "type": "string"
+                                                    },
+                                                    "entityType": {
+                                                        "type": "string"
+                                                    },
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "coordinates": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "latitude": {
+                                                                "type": "number"
+                                                            },
+                                                            "longitude": {
+                                                                "type": "number"
+                                                            }
+                                                        }
+                                                    },
+                                                    "levelOfEntityType": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "location": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "entityId": {
+                                                            "type": "string"
+                                                        },
+                                                        "entityType": {
+                                                            "type": "string"
+                                                        },
+                                                        "name": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "mapBoundary": {
+                                        "type": "object",
+                                        "properties": {
+                                            "north": {
+                                                "type": "number"
+                                            },
+                                            "east": {
+                                                "type": "number"
+                                            },
+                                            "south": {
+                                                "type": "number"
+                                            },
+                                            "west": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    },
+                                    "hotelsRegion": {
+                                        "type": "object",
+                                        "properties": {
+                                            "latitude": {
+                                                "type": "number"
+                                            },
+                                            "longitude": {
+                                                "type": "number"
+                                            },
+                                            "longitudeDelta": {
+                                                "type": "number"
+                                            },
+                                            "latitudeDelta": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    },
+                                    "hotelCards": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "stars": {
+                                                    "type": "string"
+                                                },
+                                                "distance": {
+                                                    "type": "string"
+                                                },
+                                                "relevantPoiDistance": {
+                                                    "type": "string"
+                                                },
+                                                "coordinates": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "latitude": {
+                                                            "type": "number"
+                                                        },
+                                                        "longitude": {
+                                                            "type": "number"
+                                                        }
+                                                    }
+                                                },
+                                                "pivot": {
+                                                    "type": "boolean"
+                                                },
+                                                "images": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "reviewsSummary": {
+                                                    "type": "object"
+                                                },
+                                                "confidentMessages": {
+                                                    "type": "array"
+                                                },
+                                                "minPriceDbookRoomId": {
+                                                    "type": "null"
+                                                },
+                                                "minPriceDbookPartnerId": {
+                                                    "type": "null"
+                                                },
+                                                "inbound": {
+                                                    "type": "boolean"
+                                                },
+                                                "lowestPrice": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "price": {
+                                                            "type": "string"
+                                                        },
+                                                        "rawPrice": {
+                                                            "type": "integer"
+                                                        },
+                                                        "partnerId": {
+                                                            "type": "string"
+                                                        },
+                                                        "partnerType": {
+                                                            "type": "string"
+                                                        },
+                                                        "partnerName": {
+                                                            "type": "string"
+                                                        },
+                                                        "partnerLogo": {
+                                                            "type": "string"
+                                                        },
+                                                        "isOfficial": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "funnelType": {
+                                                            "type": "string"
+                                                        },
+                                                        "cug": {
+                                                            "type": "null"
+                                                        },
+                                                        "discount": {
+                                                            "type": "null"
+                                                        },
+                                                        "amenities": {
+                                                            "type": "array"
+                                                        }
+                                                    }
+                                                },
+                                                "otherPrices": {
+                                                    "type": "array"
+                                                },
+                                                "isUpSorted": {
+                                                    "type": "boolean"
+                                                },
+                                                "hotelId": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "filters": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "hotelsCoordinates": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "latitude": {
+                                                    "type": "number"
+                                                },
+                                                "longitude": {
+                                                    "type": "number"
+                                                },
+                                                "price": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "sortOptions": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "optionName": {
+                                                    "type": "string"
+                                                },
+                                                "type": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "travelInfos": {
+                                        "type": "array"
+                                    },
+                                    "partnerList": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": {
+                                "type": "object",
+                                "properties": {
+                                    "completionPercentage": {
+                                        "type": "integer"
+                                    },
+                                    "searchId": {
+                                        "type": "string"
+                                    },
+                                    "requestId": {
+                                        "type": "string"
+                                    },
+                                    "fastSearchStatus": {
+                                        "type": "string"
+                                    },
+                                    "finalStatus": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "error": {
+                                "type": "null"
+                            }
+                        }
+                    },
+                    "meta": {
+                        "type": "object",
+                        "properties": {
+                            "currentPage": {
+                                "type": "integer"
+                            },
+                            "limit": {
+                                "type": "integer"
+                            },
+                            "totalRecords": {
+                                "type": "integer"
+                            },
+                            "totalPage": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "hotels/auto-complete",
+            "url": "https://sky-scanner3.p.rapidapi.com/hotels/auto-complete",
+            "description": "hotels/auto-complete",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Required: true\nEx: `New York`",
+                    "default": "New York"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from /get-config endpoint(data->locale)\nEx: `en-US`\nDefault value: `en-US`",
+                    "default": ""
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "`market` can be retrieved from /get-config endpoint(data->market)\nEx: `US`\nDefault value: `US`",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/hotels/auto-complete\"\nquerystring = {\"locale\": \"\", \"market\": \"\", \"query\": \"New York\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/hotels/auto-complete\"\nquerystring = {\"locale\": \"\", \"market\": \"\", \"query\": \"New York\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "get-config",
+            "url": "https://sky-scanner3.p.rapidapi.com/get-config",
+            "description": "Get config",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/get-config\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scanner3.p.rapidapi.com/get-config\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scanner3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    ]
+}

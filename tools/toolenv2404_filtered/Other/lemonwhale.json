@@ -1,0 +1,325 @@
+{
+    "product_id": "53aa37f4e4b0b60946a2e85e",
+    "tool_description": "Lemonwhale Cloud Video securely delivers the highest quality on-demand and live video experiences to reach your audience\u2014no matter where they are. We simplify delivery to an increasingly complex ecosystem of devices and standards across the online devices, such a web mobile and tablets.  Lemonwhale API allows you to connect your application to Lemonwhales video system without having to use the web interface.",
+    "home_url": "https://rapidapi.com/lemonwhale/api/lemonwhale/",
+    "name": "Lemonwhale",
+    "title": "Lemonwhale",
+    "pricing": "FREE",
+    "tool_name": "Lemonwhale",
+    "score": null,
+    "host": "lemonwhale-lemonwhale.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Public Toplist Videos for Site",
+            "url": "https://lemonwhale-lemonwhale.p.rapidapi.com/public/site/b2801424-fef4-4594-8b7d-200466fdc8db/toplist.json",
+            "description": "Use this request to make a toplist for videos on a site over a specified period of time. You filter your request based on categories as well as timespan. The timespan is the time period used to summarize the number of impressions for each video and then order videos by number of impressions. . With this request it's possible to use JSONP responses by using the callback-parameter.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The id for the Site.",
+                    "default": "b2801424-fef4-4594-8b7d-200466fdc8db"
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "json/xml",
+                    "default": "json"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Specifies the page of results to retrieve.",
+                    "default": "1"
+                },
+                {
+                    "name": "page_size",
+                    "type": "STRING",
+                    "description": "Specifies the number of videos to retrieve, up to a maximum of 200.",
+                    "default": "20"
+                },
+                {
+                    "name": "timespan",
+                    "type": "STRING",
+                    "description": "Specifies a timespan to use for calculating sum of views. If the timespan for example is between 2011-01-01 and 2011-02-01, the summary of views for each video will be use to order the videos in the response.",
+                    "default": "2011-01-01,2012-01-01"
+                },
+                {
+                    "name": "categories",
+                    "type": "STRING",
+                    "description": "Only include videos for specified categories in the result. It takes a comma separated list of category ids as input.",
+                    "default": "category_id1,category_id2"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://lemonwhale-lemonwhale.p.rapidapi.com/public/site/b2801424-fef4-4594-8b7d-200466fdc8db/toplist.json\"\nquerystring = {\"page\": \"1\", \"page_size\": \"20\", \"timespan\": \"2011-01-01,2012-01-01\", \"categories\": \"category_id1,category_id2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"lemonwhale-lemonwhale.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://lemonwhale-lemonwhale.p.rapidapi.com/public/site/{id}/toplist.{format}\"\nquerystring = {\"page\": \"1\", \"page_size\": \"20\", \"timespan\": \"2011-01-01,2012-01-01\", \"categories\": \"category_id1,category_id2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"lemonwhale-lemonwhale.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Public List Videos for Site",
+            "url": "https://lemonwhale-lemonwhale.p.rapidapi.com/public/site/b2801424-fef4-4594-8b7d-200466fdc8db/videos.json",
+            "description": "Use this request to list videos on a site. You filter your request based on categories as well as timespan and sort the data on several different values.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The id for the Site.",
+                    "default": "b2801424-fef4-4594-8b7d-200466fdc8db"
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "json/xml",
+                    "default": "json"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Specifies the page of results to retrieve.",
+                    "default": "1"
+                },
+                {
+                    "name": "sort_by",
+                    "type": "STRING",
+                    "description": "Specifies the attribute on which the videos should be ordered. The possible attributes to sort by: created_at, published_at, name, views, duration.",
+                    "default": "created_by"
+                },
+                {
+                    "name": "sort_order",
+                    "type": "STRING",
+                    "description": "Specifies the order in which the videos should be ordered. Possible values: desc or asc.",
+                    "default": "desc"
+                },
+                {
+                    "name": "page_size",
+                    "type": "STRING",
+                    "description": "Specifies the number of videos to try and retrieve, up to a maximum of 200.",
+                    "default": "20"
+                },
+                {
+                    "name": "timespan",
+                    "type": "STRING",
+                    "description": "Specifies a timespan to request videos from. If a video is created in the range of the timespan it will be returned.",
+                    "default": "2011-01-01,2012-01-01"
+                },
+                {
+                    "name": "categories",
+                    "type": "STRING",
+                    "description": "Only return videos in specified categories. It takes a comma separated list of category ids as input.",
+                    "default": "category_id1,category_id2"
+                },
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "Lets you search your videos titles for matching phrases. Returns a list of videos for which the title contains the search phrase. The search is not case sensitive, so you don't have to use capital letters.",
+                    "default": "videoname"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://lemonwhale-lemonwhale.p.rapidapi.com/public/site/b2801424-fef4-4594-8b7d-200466fdc8db/videos.json\"\nquerystring = {\"page\": \"1\", \"sort_by\": \"created_by\", \"sort_order\": \"desc\", \"page_size\": \"20\", \"timespan\": \"2011-01-01,2012-01-01\", \"categories\": \"category_id1,category_id2\", \"search\": \"videoname\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"lemonwhale-lemonwhale.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://lemonwhale-lemonwhale.p.rapidapi.com/public/site/{id}/videos.{format}\"\nquerystring = {\"page\": \"1\", \"sort_by\": \"created_by\", \"sort_order\": \"desc\", \"page_size\": \"20\", \"timespan\": \"2011-01-01,2012-01-01\", \"categories\": \"category_id1,category_id2\", \"search\": \"videoname\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"lemonwhale-lemonwhale.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Get Liveshow",
+            "url": "https://lemonwhale-lemonwhale.p.rapidapi.com/public/live/b2801424-fef4-4594-8b7d-200466fdc8db.json",
+            "description": "Returns data for a single liveshow that is publicly accessible (published=true). If the requested liveshow isn't publicly accessible it will return a 404. This request it's possible to use JSONP responses by using the callback-parameter.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id-format",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The id of the liveshow.",
+                    "default": "b2801424-fef4-4594-8b7d-200466fdc8db"
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "json/xml",
+                    "default": "json"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://lemonwhale-lemonwhale.p.rapidapi.com/public/live/b2801424-fef4-4594-8b7d-200466fdc8db.json\"\nquerystring = {\"id-format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"lemonwhale-lemonwhale.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://lemonwhale-lemonwhale.p.rapidapi.com/public/live/{id}.{format}\"\nquerystring = {\"id-format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"lemonwhale-lemonwhale.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Get Progress",
+            "url": "https://lemonwhale-lemonwhale.p.rapidapi.com/public/progress/01f7e4d2-9484-44ed-9e5d-bb4b7ff67739.json",
+            "description": "This request is used for receiving information on the transcoding progress for a video file.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "videoid-format",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "videoid",
+                    "type": "STRING",
+                    "description": "The id of the video for which you want to follow the transcoding progress.",
+                    "default": "01f7e4d2-9484-44ed-9e5d-bb4b7ff67739"
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "json"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://lemonwhale-lemonwhale.p.rapidapi.com/public/progress/01f7e4d2-9484-44ed-9e5d-bb4b7ff67739.json\"\nquerystring = {\"videoid-format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"lemonwhale-lemonwhale.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://lemonwhale-lemonwhale.p.rapidapi.com/public/progress/{videoid}.{format}\"\nquerystring = {\"videoid-format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"lemonwhale-lemonwhale.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Get Video",
+            "url": "https://lemonwhale-lemonwhale.p.rapidapi.com/public/video/02c26624-4c68-4b48-90f7-4d4cb6722d7f.json",
+            "description": "Returns data for a single video that is publicly accessible (published=true and a publish date that have passed). If the requested video isn't publicly accessible it will return a 404. This request it's possible to use JSONP responses by using the callback-parameter.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id-format",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The id of the video.",
+                    "default": "02c26624-4c68-4b48-90f7-4d4cb6722d7f"
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "json/xml",
+                    "default": "json"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://lemonwhale-lemonwhale.p.rapidapi.com/public/video/02c26624-4c68-4b48-90f7-4d4cb6722d7f.json\"\nquerystring = {\"id-format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"lemonwhale-lemonwhale.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://lemonwhale-lemonwhale.p.rapidapi.com/public/video/{id}.{format}\"\nquerystring = {\"id-format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"lemonwhale-lemonwhale.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Get Liveshows for Site",
+            "url": "https://lemonwhale-lemonwhale.p.rapidapi.com/public/site/b2801424-fef4-4594-8b7d-200466fdc8db/live.json",
+            "description": "Returns a list of liveshows for the specified site. By default this request returns the 20 most recently created liveshows and that either had a start time in the last 60 days or have it in the next 20 days. This can easily be changed by using either the timespan or sorting parameters. This request will only return public liveshows which is defined by its visible_in_portal-parameter. When visible_in_portal is set to false for a liveshow, it will not be returned. With this request it's possible to use JSONP responses by using the callback-parameter.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The id for the Site.",
+                    "default": "b2801424-fef4-4594-8b7d-200466fdc8db"
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "json/xml",
+                    "default": "json"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "sort_by",
+                    "type": "STRING",
+                    "description": "Specifies the attribute on which the liveshows should be ordered. The possible attributes to sort by: created_at, name, views, starttime.",
+                    "default": "created_by"
+                },
+                {
+                    "name": "sort_order",
+                    "type": "STRING",
+                    "description": "Specifies the order in which the liveshows should be ordered. Possible values: desc or asc.",
+                    "default": "desc"
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Specifies the page of results to retrieve.",
+                    "default": "1"
+                },
+                {
+                    "name": "page_size",
+                    "type": "STRING",
+                    "description": "Specifies the number of liveshows to try and retrieve, up to a maximum of 200.",
+                    "default": "20"
+                },
+                {
+                    "name": "timespan",
+                    "type": "STRING",
+                    "description": "Specifies a timespan to collect liveshows from. All liveshows that has starttime in the range of the timespan it will be returned. By default the request returns liveshows that either had a start time in the last 60 days or have it in the next 20 days.",
+                    "default": "2011-01-01,2012-01-01"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://lemonwhale-lemonwhale.p.rapidapi.com/public/site/b2801424-fef4-4594-8b7d-200466fdc8db/live.json\"\nquerystring = {\"sort_by\": \"created_by\", \"sort_order\": \"desc\", \"page\": \"1\", \"page_size\": \"20\", \"timespan\": \"2011-01-01,2012-01-01\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"lemonwhale-lemonwhale.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://lemonwhale-lemonwhale.p.rapidapi.com/public/site/{id}/live.{format}\"\nquerystring = {\"sort_by\": \"created_by\", \"sort_order\": \"desc\", \"page\": \"1\", \"page_size\": \"20\", \"timespan\": \"2011-01-01,2012-01-01\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"lemonwhale-lemonwhale.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "List Categories for Site",
+            "url": "https://lemonwhale-lemonwhale.p.rapidapi.com/public/site/b2801424-fef4-4594-8b7d-200466fdc8db/categories.json",
+            "description": "Returns up to 200 categories on the site. Categories are ordered in a tree structure with parent categories and subcategories and this can be used when filtering out categories on a site in this request. There are two parameter for filtering out categories; the first one is only_root which only returns categories without a parent category, the other parameter is parent, who when used only returns categories with the specified parent category. This is a public request which means that no categories that are hidden, e.g. parameter hidden=true, will be in the response. With this request it's possible to use JSONP responses by using the callback-parameter.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The id for the Site.",
+                    "default": "b2801424-fef4-4594-8b7d-200466fdc8db"
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "json/xml",
+                    "default": "json"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "only_root",
+                    "type": "STRING",
+                    "description": "Specifies if the request only should return root categories, e.g. without parent category.",
+                    "default": ""
+                },
+                {
+                    "name": "parent",
+                    "type": "STRING",
+                    "description": "Only returns categories with the specified parent category.",
+                    "default": "d8c23e63-75ff-47b0-9916-2510f5b0691e"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://lemonwhale-lemonwhale.p.rapidapi.com/public/site/b2801424-fef4-4594-8b7d-200466fdc8db/categories.json\"\nquerystring = {\"only_root\": \"\", \"parent\": \"d8c23e63-75ff-47b0-9916-2510f5b0691e\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"lemonwhale-lemonwhale.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://lemonwhale-lemonwhale.p.rapidapi.com/public/site/{id}/categories.{format}\"\nquerystring = {\"only_root\": \"\", \"parent\": \"d8c23e63-75ff-47b0-9916-2510f5b0691e\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"lemonwhale-lemonwhale.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

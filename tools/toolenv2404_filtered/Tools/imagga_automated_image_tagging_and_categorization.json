@@ -1,0 +1,168 @@
+{
+    "product_id": "55e443dce4b061238f36d752",
+    "tool_description": "Imagga is an automated image tagging, image categorization, composition and color analysis API. It's just a matter of making an API call to extract the type of metadata relevant to you.\r\nImagga's deep learning and image recognition technology helps developers to build apps that understand images and companies to make sense of their large-scale image collections.",
+    "home_url": "https://rapidapi.com/imagga/api/imagga-automated-image-tagging-and-categorization/",
+    "name": "Imagga automated image tagging and categorization",
+    "title": "Imagga automated image tagging and categorization",
+    "pricing": "FREEMIUM",
+    "tool_name": "Imagga automated image tagging and categorization",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 244,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.1,
+        "__typename": "Score"
+    },
+    "host": "imagga-api.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/categorizers",
+            "url": "https://imagga-api.p.rapidapi.com/categorizers",
+            "description": "Get a list of all available categorizers.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://imagga-api.p.rapidapi.com/categorizers\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imagga-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://imagga-api.p.rapidapi.com/categorizers\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imagga-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "/categorizations/{categorizer_id}",
+            "url": "https://imagga-api.p.rapidapi.com/categorizations/personal_photos",
+            "description": "Send image URLs for categorizations.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "categorizer_id",
+                    "type": "STRING",
+                    "description": "As soon as you have decided which is the best categorizer for your images or have trained your own, you are ready to get your hands dirty with some photos classification. You can get a list of the available ones using the /categorizers endpoint.",
+                    "default": "personal_photos"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "An image URL you would like to send for auto-categorization. You can provide as many url parameters as you like in order to send multiple images for categorization. (e.g. <api_endpoint>?url=<first_url>&url=<second_url>...&url=<nth_url>)",
+                    "default": "http://imagga.com/static/images/docs/sample/sample_image_1.jpg"
+                },
+                {
+                    "name": "content",
+                    "type": "STRING",
+                    "description": "You can also send an actual image files for categorization. This is achieved by uploading the images to our /content endpoint and then providing the received content identifier in this parameter. As with the url parameter you can send more than one image - up to 30 content ids by sending multiple \"content\" parameters.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://imagga-api.p.rapidapi.com/categorizations/personal_photos\"\nquerystring = {\"url\": \"http://imagga.com/static/images/docs/sample/sample_image_1.jpg\", \"content\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imagga-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://imagga-api.p.rapidapi.com/categorizations/{categorizer_id}\"\nquerystring = {\"url\": \"http://imagga.com/static/images/docs/sample/sample_image_1.jpg\", \"content\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imagga-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "/croppings",
+            "url": "https://imagga-api.p.rapidapi.com/croppings",
+            "description": "Perform smart-cropping analysis over a list of URLs and return the coordinates for cropping each of the images. You can send just one URL or several.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "resolution",
+                    "type": "STRING",
+                    "description": "Resolution pair in the form (width)x(height) where 'x' is just the small letter x. You can provide several resolution just by providing several resolution parameters as with the urls.",
+                    "default": "75x75"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "content",
+                    "type": "STRING",
+                    "description": "You can also send an actual image files for smart-cropping analysis. This is achieved by uploading the images to our /content endpoint and then providing the received content identifier in this parameter. As with the url parameter you can send more than one image - up to 30 content ids by sending multiple \"content\" parameters.",
+                    "default": ""
+                },
+                {
+                    "name": "no_scaling",
+                    "type": "BOOLEAN",
+                    "description": "Whether to apply any scaling to the smart-cropping output results or not.",
+                    "default": ""
+                },
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "A URL of the image to send for smart-cropping analysis. You can provide as many url parameters as you like in order to send multiple images for smart-cropping analysis. (e.g. <api_endpoint>?url=<first_url>&url=<second_url>...&url=<nth_url>)",
+                    "default": "http://imagga.com/static/images/tagging/wind-farm-538576_640.jpg"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://imagga-api.p.rapidapi.com/croppings\"\nquerystring = {\"content\": \"\", \"resolution\": \"75x75\", \"no_scaling\": \"\", \"url\": \"http://imagga.com/static/images/tagging/wind-farm-538576_640.jpg\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imagga-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://imagga-api.p.rapidapi.com/croppings\"\nquerystring = {\"content\": \"\", \"resolution\": \"75x75\", \"no_scaling\": \"\", \"url\": \"http://imagga.com/static/images/tagging/wind-farm-538576_640.jpg\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imagga-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "/colors",
+            "url": "https://imagga-api.p.rapidapi.com/colors",
+            "description": "Perform color extraction over one or several images.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "content",
+                    "type": "STRING",
+                    "description": "You can also send an actual image files for color extraction. This is achieved by uploading the images to our /content endpoint and then providing the received content identifier in this parameter. As with the url parameter you can send more than one image - up to 30 content ids by sending multiple \"content\" parameters.",
+                    "default": ""
+                },
+                {
+                    "name": "extract_overall_colors",
+                    "type": "BOOLEAN",
+                    "description": "Specify whether the overall image colors should be extracted. The possible values are 1 for 'yes', and 0 for 'no'. (default: 1)",
+                    "default": ""
+                },
+                {
+                    "name": "extract_object_colors",
+                    "type": "STRING",
+                    "description": "Specify if the service should try to extract object and non-object (a.k.a. foreground and background) colors separately. The possible values are 1 for 'yes', and 0 for 'no'. (default: 1)",
+                    "default": ""
+                },
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "Image URL to perform color extraction on. You can provide as many url parameters as you like in order to send multiple images for color extraction. (e.g. <api_endpoint>?url=<first_url>&url=<second_url>...&url=<nth_url>)",
+                    "default": "http://imagga.com/static/images/tagging/wind-farm-538576_640.jpg"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://imagga-api.p.rapidapi.com/colors\"\nquerystring = {\"content\": \"\", \"extract_overall_colors\": \"\", \"extract_object_colors\": \"\", \"url\": \"http://imagga.com/static/images/tagging/wind-farm-538576_640.jpg\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imagga-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://imagga-api.p.rapidapi.com/colors\"\nquerystring = {\"content\": \"\", \"extract_overall_colors\": \"\", \"extract_object_colors\": \"\", \"url\": \"http://imagga.com/static/images/tagging/wind-farm-538576_640.jpg\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imagga-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "/tagging",
+            "url": "https://imagga-api.p.rapidapi.com/tagging",
+            "description": "By sending a list of URLs to the /tagging endpoint you can get a list of all automatically detected textual tags. Confidence percentage will be assigned to each of them so you can filter only the most relevant ones.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "content",
+                    "type": "STRING",
+                    "description": "You can also send an actual image files for auto-tagging. This is achieved by uploading the images to our /content endpoint and then providing the received content identifier in this parameter. As with the url parameter you can send more than one image - up to 30 content ids by sending multiple \"content\" parameters.",
+                    "default": ""
+                },
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "Image URL to perform auto-tagging on. You can provide up to 5 urls for processing by sending multiple url parameters (e.g. ?url=<first_url>&url=<second_url>...&url=<nth_url>)",
+                    "default": "http://imagga.com/static/images/tagging/wind-farm-538576_640.jpg"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://imagga-api.p.rapidapi.com/tagging\"\nquerystring = {\"content\": \"\", \"url\": \"http://imagga.com/static/images/tagging/wind-farm-538576_640.jpg\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imagga-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://imagga-api.p.rapidapi.com/tagging\"\nquerystring = {\"content\": \"\", \"url\": \"http://imagga.com/static/images/tagging/wind-farm-538576_640.jpg\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imagga-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

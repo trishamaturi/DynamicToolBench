@@ -1,0 +1,176 @@
+{
+    "product_id": "api_a11bfb56-f996-4a34-9152-b9ddf4e1fd77",
+    "tool_description": "Search for stocks by name, ticker symbol, or description",
+    "home_url": "https://rapidapi.com/synfron/api/stocksearch/",
+    "name": "StockSearch",
+    "title": "StockSearch",
+    "pricing": "FREEMIUM",
+    "tool_name": "StockSearch",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 820,
+        "avgSuccessRate": 100,
+        "popularityScore": 5.9,
+        "__typename": "Score"
+    },
+    "host": "stocksearch.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Company Profile",
+            "url": "https://stocksearch.p.rapidapi.com/api/stocks/AAPL",
+            "description": "Get a company profile containing information such as a description, sector, address, etc.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "string",
+                    "description": "",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://stocksearch.p.rapidapi.com/api/stocks/AAPL\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stocksearch.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://stocksearch.p.rapidapi.com/api/stocks/{symbol}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stocksearch.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "symbol": {
+                            "type": "string"
+                        },
+                        "region": {
+                            "type": "string"
+                        },
+                        "securityType": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Query Stocks V2",
+            "url": "https://stocksearch.p.rapidapi.com/api/v2/stocks",
+            "description": "Search stocks by name, symbol, or related item.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Search keywords",
+                    "default": "pizza hut"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "searchMetadata",
+                    "type": "BOOLEAN",
+                    "description": "Search the company's description or related items",
+                    "default": "true"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Pagination offset from the previous set of results. For example, if `offset=5`, the results set will start at the 6th item from the total results. Note, 200 is the max number of results that will be returned in total.",
+                    "default": "0"
+                },
+                {
+                    "name": "size",
+                    "type": "NUMBER",
+                    "description": "Max number of results to get in one response. (Max value: 20)",
+                    "default": "5"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://stocksearch.p.rapidapi.com/api/v2/stocks\"\nquerystring = {\"searchMetadata\": \"true\", \"query\": \"pizza hut\", \"offset\": \"0\", \"size\": \"5\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stocksearch.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://stocksearch.p.rapidapi.com/api/v2/stocks\"\nquerystring = {\"searchMetadata\": \"true\", \"query\": \"pizza hut\", \"offset\": \"0\", \"size\": \"5\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stocksearch.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "symbol": {
+                                    "type": "string"
+                                },
+                                "shortBio": {
+                                    "type": "string"
+                                },
+                                "region": {
+                                    "type": "string"
+                                },
+                                "securityType": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "total": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Query Stocks",
+            "url": "https://stocksearch.p.rapidapi.com/api/stocks",
+            "description": "Search stocks by name or symbol",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Full or partial ticker symbol or company name",
+                    "default": "Apple"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "size",
+                    "type": "NUMBER",
+                    "description": "Number of results to return (max: 20)",
+                    "default": "5"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://stocksearch.p.rapidapi.com/api/stocks\"\nquerystring = {\"size\": \"5\", \"query\": \"Apple\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stocksearch.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://stocksearch.p.rapidapi.com/api/stocks\"\nquerystring = {\"size\": \"5\", \"query\": \"Apple\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stocksearch.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "symbol": {
+                            "type": "string"
+                        },
+                        "shortBio": {
+                            "type": "string"
+                        },
+                        "region": {
+                            "type": "string"
+                        },
+                        "securityType": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,127 @@
+{
+    "product_id": "api_e6086cf2-5745-44ef-b3b1-edcc805a2ab0",
+    "tool_description": "Returns earnings dates, ex-dividend dates and determine if one event will happen before a specific date",
+    "home_url": "https://rapidapi.com/jolima-jolima-default/api/stock-earnings-and-dividend-events/",
+    "name": "Stock Earnings and Dividend Events",
+    "title": "Stock Earnings and Dividend Events",
+    "pricing": "FREEMIUM",
+    "tool_name": "Stock Earnings and Dividend Events",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1464,
+        "avgSuccessRate": 50,
+        "popularityScore": 6.5,
+        "__typename": "Score"
+    },
+    "host": "stock-earnings-and-dividend-events.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "hasEvents",
+            "url": "https://stock-earnings-and-dividend-events.p.rapidapi.com/hasEvents/AAPL/230831",
+            "description": "Returns whether the company has one of earnings or ex-dividend event between current date and a specific date",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "beforeDate",
+                    "type": "string",
+                    "description": "",
+                    "default": "230831"
+                },
+                {
+                    "name": "ticker",
+                    "type": "string",
+                    "description": "",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://stock-earnings-and-dividend-events.p.rapidapi.com/hasEvents/AAPL/230831\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stock-earnings-and-dividend-events.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://stock-earnings-and-dividend-events.p.rapidapi.com/hasEvents/{ticker}/{beforedate}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stock-earnings-and-dividend-events.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "symbol": {
+                        "type": "string"
+                    },
+                    "hasEvents": {
+                        "type": "boolean"
+                    },
+                    "beforeDate": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "getEarningsDate",
+            "url": "https://stock-earnings-and-dividend-events.p.rapidapi.com/earnings/AAPL",
+            "description": "Returns the next earnings date along with a status indicating if the date is estimated or final",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "ticker",
+                    "type": "string",
+                    "description": "",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://stock-earnings-and-dividend-events.p.rapidapi.com/earnings/AAPL\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stock-earnings-and-dividend-events.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://stock-earnings-and-dividend-events.p.rapidapi.com/earnings/{ticker}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stock-earnings-and-dividend-events.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "symbol": {
+                        "type": "string"
+                    },
+                    "earningsDate": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "getNextExDiv",
+            "url": "https://stock-earnings-and-dividend-events.p.rapidapi.com/exdiv/AAPL",
+            "description": "Returns next ex dividend date",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "ticker",
+                    "type": "string",
+                    "description": "",
+                    "default": "AAPL"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://stock-earnings-and-dividend-events.p.rapidapi.com/exdiv/AAPL\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stock-earnings-and-dividend-events.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://stock-earnings-and-dividend-events.p.rapidapi.com/exdiv/{ticker}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"stock-earnings-and-dividend-events.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "symbol": {
+                        "type": "string"
+                    },
+                    "exDividendDate": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    ]
+}

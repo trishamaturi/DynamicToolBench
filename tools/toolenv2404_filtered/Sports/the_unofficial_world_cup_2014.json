@@ -1,0 +1,332 @@
+{
+    "product_id": "53aa619be4b0a9b1348dbf98",
+    "tool_description": "The kimonolabs World Cup 2014 API provides easy access to up-to-date player, team and match data for the 2014 World Cup as well as historical player performance across their respective club teams. The API is RESTful and uses standard HTTP response codes to indicate errors. JSON will be returned in all responses from the API.",
+    "home_url": "https://rapidapi.com/community/api/the-unofficial-world-cup-2014/",
+    "name": "The unOfficial World Cup 2014",
+    "title": "The unOfficial World Cup 2014",
+    "pricing": "FREE",
+    "tool_name": "The unOfficial World Cup 2014",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 108,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.3,
+        "__typename": "Score"
+    },
+    "host": "community-unofficial-world-cup.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Retrieve a Match",
+            "url": "https://community-unofficial-world-cup.p.rapidapi.com/api/matches/5CE66431-86C1-4BDB-8D9E-A07C238AE4B9",
+            "description": "Returns a JSON object for the team that matches the specified id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "match_id",
+                    "type": "STRING",
+                    "description": "Unique id for match",
+                    "default": "5CE66431-86C1-4BDB-8D9E-A07C238AE4B9"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Display only certain fields, comma separated",
+                    "default": "startTime,homeScore,awayScore"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://community-unofficial-world-cup.p.rapidapi.com/api/matches/5CE66431-86C1-4BDB-8D9E-A07C238AE4B9\"\nquerystring = {\"fields\": \"startTime,homeScore,awayScore\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-unofficial-world-cup.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://community-unofficial-world-cup.p.rapidapi.com/api/matches/{match_id}\"\nquerystring = {\"fields\": \"startTime,homeScore,awayScore\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-unofficial-world-cup.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Retrieve a Player Season Stat",
+            "url": "https://community-unofficial-world-cup.p.rapidapi.com/api/player_season_stats/8D29171C-9DD9-4064-AA40-190A88077EC4",
+            "description": "Returns a JSON object for the PlayerSeasonStat that matches the specified id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "player_season_stat_id",
+                    "type": "STRING",
+                    "description": "Unique id for PlayerSeasonStat",
+                    "default": "8D29171C-9DD9-4064-AA40-190A88077EC4"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Display only certain fields, comma separated",
+                    "default": "season,team,goalsScored"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://community-unofficial-world-cup.p.rapidapi.com/api/player_season_stats/8D29171C-9DD9-4064-AA40-190A88077EC4\"\nquerystring = {\"fields\": \"season,team,goalsScored\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-unofficial-world-cup.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://community-unofficial-world-cup.p.rapidapi.com/api/player_season_stats/{player_season_stat_id}\"\nquerystring = {\"fields\": \"season,team,goalsScored\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-unofficial-world-cup.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "List all Player Season Stats",
+            "url": "https://community-unofficial-world-cup.p.rapidapi.com/api/player_season_stats",
+            "description": "Returns a JSON array containing PlayerSeasonStat objects matching the arguments provided.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Display only certain fields, comma separated",
+                    "default": "season,team,goalsScored"
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Sort by any field ascending, or descending (1=ascending, -1=descending)",
+                    "default": "goalsScored,-1"
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "Maximum number of objects returned (default: 50)",
+                    "default": "250"
+                },
+                {
+                    "name": "offset",
+                    "type": "STRING",
+                    "description": "Starting index of first returned object (offset=0)",
+                    "default": "50"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://community-unofficial-world-cup.p.rapidapi.com/api/player_season_stats\"\nquerystring = {\"fields\": \"season,team,goalsScored\", \"sort\": \"goalsScored,-1\", \"limit\": \"250\", \"offset\": \"50\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-unofficial-world-cup.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://community-unofficial-world-cup.p.rapidapi.com/api/player_season_stats\"\nquerystring = {\"fields\": \"season,team,goalsScored\", \"sort\": \"goalsScored,-1\", \"limit\": \"250\", \"offset\": \"50\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-unofficial-world-cup.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Retrieve a Team",
+            "url": "https://community-unofficial-world-cup.p.rapidapi.com/api/teams/9A319800-C80A-4FD9-9679-125D27246FB0",
+            "description": "Returns a JSON object for the Team that matches the specified id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "team_id",
+                    "type": "STRING",
+                    "description": "Unique id for team",
+                    "default": "9A319800-C80A-4FD9-9679-125D27246FB0"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Display only certain fields, comma separated",
+                    "default": "name,website"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://community-unofficial-world-cup.p.rapidapi.com/api/teams/9A319800-C80A-4FD9-9679-125D27246FB0\"\nquerystring = {\"fields\": \"name,website\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-unofficial-world-cup.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://community-unofficial-world-cup.p.rapidapi.com/api/teams/{team_id}\"\nquerystring = {\"fields\": \"name,website\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-unofficial-world-cup.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Retrieve a player",
+            "url": "https://community-unofficial-world-cup.p.rapidapi.com/api/players/6EA2BF4B-81EC-48E0-B297-EA49D3553033",
+            "description": "Returns a JSON object for the player that matches the specified id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "player_id",
+                    "type": "STRING",
+                    "description": "Unique id for player",
+                    "default": "6EA2BF4B-81EC-48E0-B297-EA49D3553033"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Display only certain fields, comma separated",
+                    "default": "birthDate,nationality"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://community-unofficial-world-cup.p.rapidapi.com/api/players/6EA2BF4B-81EC-48E0-B297-EA49D3553033\"\nquerystring = {\"fields\": \"birthDate,nationality\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-unofficial-world-cup.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://community-unofficial-world-cup.p.rapidapi.com/api/players/{player_id}\"\nquerystring = {\"fields\": \"birthDate,nationality\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-unofficial-world-cup.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "List all matches",
+            "url": "https://community-unofficial-world-cup.p.rapidapi.com/api/matches",
+            "description": "Returns a JSON array containing team objects matching the arguments provided.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Display only certain fields, comma separated",
+                    "default": "startTime,homeScore,awayScore"
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Sort by any field ascending, or descending (1=ascending, -1=descending)",
+                    "default": "startTime,1"
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "Maximum number of objects returned (default: 50)",
+                    "default": "250"
+                },
+                {
+                    "name": "offset",
+                    "type": "STRING",
+                    "description": "Starting index of first returned object (offset=0)",
+                    "default": "50"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://community-unofficial-world-cup.p.rapidapi.com/api/matches\"\nquerystring = {\"fields\": \"startTime,homeScore,awayScore\", \"sort\": \"startTime,1\", \"limit\": \"250\", \"offset\": \"50\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-unofficial-world-cup.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://community-unofficial-world-cup.p.rapidapi.com/api/matches\"\nquerystring = {\"fields\": \"startTime,homeScore,awayScore\", \"sort\": \"startTime,1\", \"limit\": \"250\", \"offset\": \"50\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-unofficial-world-cup.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "List all teams",
+            "url": "https://community-unofficial-world-cup.p.rapidapi.com/api/teams",
+            "description": "Returns a JSON array containing team objects matching the arguments provided.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Display only certain fields, comma separated",
+                    "default": "name,website"
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Sort by any field ascending, or descending (1=ascending, -1=descending)",
+                    "default": "foundedYear,1"
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "Maximum number of objects returned (default: 50)",
+                    "default": "250"
+                },
+                {
+                    "name": "offset",
+                    "type": "STRING",
+                    "description": "Starting index of first returned object (offset=0)",
+                    "default": "50"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://community-unofficial-world-cup.p.rapidapi.com/api/teams\"\nquerystring = {\"fields\": \"name,website\", \"sort\": \"foundedYear,1\", \"limit\": \"250\", \"offset\": \"50\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-unofficial-world-cup.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://community-unofficial-world-cup.p.rapidapi.com/api/teams\"\nquerystring = {\"fields\": \"name,website\", \"sort\": \"foundedYear,1\", \"limit\": \"250\", \"offset\": \"50\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-unofficial-world-cup.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Retrieve a club",
+            "url": "https://community-unofficial-world-cup.p.rapidapi.com/api/clubs/1FCC9E0C-E0E5-4A8E-93FD-C7047B8D66C2",
+            "description": "Returns a JSON object for the club that matches the specified id.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "club_id",
+                    "type": "STRING",
+                    "description": "Unique id for club",
+                    "default": "1FCC9E0C-E0E5-4A8E-93FD-C7047B8D66C2"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Display only certain fields, comma separated",
+                    "default": "name,country"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://community-unofficial-world-cup.p.rapidapi.com/api/clubs/1FCC9E0C-E0E5-4A8E-93FD-C7047B8D66C2\"\nquerystring = {\"fields\": \"name,country\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-unofficial-world-cup.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://community-unofficial-world-cup.p.rapidapi.com/api/clubs/{club_id}\"\nquerystring = {\"fields\": \"name,country\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-unofficial-world-cup.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "List all players",
+            "url": "https://community-unofficial-world-cup.p.rapidapi.com/api/players",
+            "description": "Returns a JSON array containing player objects matching the arguments provided.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Display only certain fields, comma separated",
+                    "default": "birthdate,nationality"
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Sort by any field ascending, or descending (1=ascending, -1=descending)",
+                    "default": "age,-1"
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "Maximum number of objects returned (default: 50)",
+                    "default": "250"
+                },
+                {
+                    "name": "offset",
+                    "type": "STRING",
+                    "description": "Starting index of first returned object (offset=0)",
+                    "default": "50"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://community-unofficial-world-cup.p.rapidapi.com/api/players\"\nquerystring = {\"fields\": \"birthdate,nationality\", \"sort\": \"age,-1\", \"limit\": \"250\", \"offset\": \"50\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-unofficial-world-cup.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://community-unofficial-world-cup.p.rapidapi.com/api/players\"\nquerystring = {\"fields\": \"birthdate,nationality\", \"sort\": \"age,-1\", \"limit\": \"250\", \"offset\": \"50\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-unofficial-world-cup.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "List all clubs",
+            "url": "https://community-unofficial-world-cup.p.rapidapi.com/api/clubs",
+            "description": "Returns a JSON array containing club objects matching the arguments provided.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "maximum number of clubs returned",
+                    "default": "50"
+                },
+                {
+                    "name": "offset",
+                    "type": "STRING",
+                    "description": "starting index of first club",
+                    "default": "250"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://community-unofficial-world-cup.p.rapidapi.com/api/clubs\"\nquerystring = {\"limit\": \"50\", \"offset\": \"250\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-unofficial-world-cup.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://community-unofficial-world-cup.p.rapidapi.com/api/clubs\"\nquerystring = {\"limit\": \"50\", \"offset\": \"250\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"community-unofficial-world-cup.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

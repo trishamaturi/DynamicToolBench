@@ -1,0 +1,266 @@
+{
+    "product_id": "api_f18a1ebe-d3ed-42ca-b034-9f6922c864a1",
+    "tool_description": "Ebay product search API provides programmatic access to the search capabilities on the eBay platform. It lets you search and browse for products listed on eBay, and provides useful metadata to refine searches and enhance the search experience. You can search sold items data, min and max bid count, min and max price range, search under categories and sub categories. You name it and this API has all detailed information about a product in it.",
+    "home_url": "https://rapidapi.com/fareehazaidi/api/ebay-product-search/",
+    "name": "Ebay Product Search",
+    "title": "Ebay Product Search",
+    "pricing": "FREEMIUM",
+    "tool_name": "Ebay Product Search",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 197,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.1,
+        "__typename": "Score"
+    },
+    "host": "ebay-product-search.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Product Category Lookup",
+            "url": "https://ebay-product-search.p.rapidapi.com/api/ebay/lookup/category",
+            "description": "Get the ebay store category by category name or category id.  This method will return all the top level categories list if called without any input parameter otherwise the requested category and all its sub categories (if available) will get returned in the response",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "category_name_or_id",
+                    "type": "STRING",
+                    "description": "Category name or id.",
+                    "default": "paper"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://ebay-product-search.p.rapidapi.com/api/ebay/lookup/category\"\nquerystring = {\"category_name_or_id\": \"paper\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ebay-product-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://ebay-product-search.p.rapidapi.com/api/ebay/lookup/category\"\nquerystring = {\"category_name_or_id\": \"paper\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ebay-product-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Product Detail",
+            "url": "https://ebay-product-search.p.rapidapi.com/api/ebay/product",
+            "description": "Get product detail from eBay store",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "product_id",
+                    "type": "STRING",
+                    "description": "Product Identifier",
+                    "default": "76317c3237353236323237313238367c30"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://ebay-product-search.p.rapidapi.com/api/ebay/product\"\nquerystring = {\"product_id\": \"76317c3237353236323237313238367c30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ebay-product-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://ebay-product-search.p.rapidapi.com/api/ebay/product\"\nquerystring = {\"product_id\": \"76317c3237353236323237313238367c30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ebay-product-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Product Search",
+            "url": "https://ebay-product-search.p.rapidapi.com/api/ebay/product/search",
+            "description": "This method searches for eBay items by different query parameters and retrieves details of the items.\nYou can search by keyword, category, GTIN, EPID or a combination of these.\n\nOnly listings where \u201cBuy It Now\u201d is a buying option are returned by default.  To retrieve listings other than Buy It Now, please select IncludeAuctions, IncludeNegotiablePrice etc filters.\n\nThis method also supports the following:\n\nFiltering by the value of one or multiple fields, such as item condition, price range, location, and more.  The results are paginated, maximum 10 results per request will get returned.  Results can be sorted by Sort query parameters. By default, the results are sorted by Best Match.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "CountryCode",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "US"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "LastSoldWithinDays",
+                    "type": "NUMBER",
+                    "description": "This field is used to narrow down all results for the listing that are sold recently in past x number of days.",
+                    "default": ""
+                },
+                {
+                    "name": "IncludeCharityOnly",
+                    "type": "BOOLEAN",
+                    "description": "If you set this field to true it would include listings that are associated with a charity only, \r\nin the search results, on the other hand if you select it false no charity listings would be selected.",
+                    "default": "true"
+                },
+                {
+                    "name": "BidCountMin",
+                    "type": "NUMBER",
+                    "description": "This field would indicate the minimum bid count for all the results. \r\nIf the Bid count on the listing would be more than or equal to this number it would show as a result.",
+                    "default": ""
+                },
+                {
+                    "name": "DeliveryCountryCode",
+                    "type": "STRING",
+                    "description": "This field indicates the location to deliver the products listed. \r\nThis narrows down the search criteria if you only want products that can be delivered to certain countries. \r\nIt also helps to decide GuaranteedDeliveryDays.",
+                    "default": "AF"
+                },
+                {
+                    "name": "GTIN",
+                    "type": "STRING",
+                    "description": "This field lets you search by the Global Trade Item Number of the item as defined by \r\n<see href=\\\"https://www.gtin.info\\\">https://www.gtin.info</see>.\r\nYou can search only by UPC (Universal Product Code).",
+                    "default": "0013803151664"
+                },
+                {
+                    "name": "ExcludedCategoryIds",
+                    "type": "STRING",
+                    "description": "If you list any categoryIds in this field, you would get resulted listings that would exclude \r\ncategory listings, and would show everything else according to other criteria in search parameters. \r\nYou can list category Ids separated by commas.",
+                    "default": ""
+                },
+                {
+                    "name": "ItemLocationCountryCode",
+                    "type": "STRING",
+                    "description": "This field indicates the location of the products listed. \r\nThis narrows down the search criteria if you only want products from certain countries.",
+                    "default": "AF"
+                },
+                {
+                    "name": "IncludeNegotiablePrice",
+                    "type": "BOOLEAN",
+                    "description": "If you set this field to true it would include listings with best offer negotiation \r\noption in the search results, on the other hand if you select it false no listings with best offer option would be selected.",
+                    "default": "true"
+                },
+                {
+                    "name": "SubCondition",
+                    "type": "STRING",
+                    "description": "This field can be used to select the condition of the items in listings to narrow down results,",
+                    "default": "New"
+                },
+                {
+                    "name": "PerformNonStrictSearch",
+                    "type": "BOOLEAN",
+                    "description": "When this field is true all words in the keyword would be matched in the listing \r\nIf PerformNonStrictSearch is false then any combination of the search term would generate a result.",
+                    "default": "true"
+                },
+                {
+                    "name": "IncludeAuction",
+                    "type": "BOOLEAN",
+                    "description": "If you set this field to true it would include Actions in the search results, \r\non the other hand if you select it false no auctions would be selected.",
+                    "default": "true"
+                },
+                {
+                    "name": "IncludeBuyItNow",
+                    "type": "BOOLEAN",
+                    "description": "By default all search results show BuyItNow listings but if you select false, Fixed price listings would not show.",
+                    "default": "true"
+                },
+                {
+                    "name": "IncludeCreditCardPaymentOnly",
+                    "type": "BOOLEAN",
+                    "description": "This field when true narrows down the search results to only include \r\nlistings with credit card option as the payment option. If it is false it includes \r\nlistings with credit card as well as Payal or other payment methods as payment option.",
+                    "default": "true"
+                },
+                {
+                    "name": "ExcludedSellers",
+                    "type": "STRING",
+                    "description": "If you list any sellers in this field, you would get resulted listings that would exclude \r\nthose seller listings, and would show everything else according to other criteria in search parameters. \r\nYou can list sellers separated by commas.",
+                    "default": ""
+                },
+                {
+                    "name": "IncludeFreeShippingOnly",
+                    "type": "BOOLEAN",
+                    "description": "This field when true narrows down the search results to only include listings with free shipping option. \r\nIf it is false it includes free as well as charged shipping option both.",
+                    "default": "true"
+                },
+                {
+                    "name": "BidCountMax",
+                    "type": "NUMBER",
+                    "description": "This field would indicate the maximum bid count for all the results. \r\nIf the Bid count on the listing would be less than or equal to this number it would show as a result.",
+                    "default": ""
+                },
+                {
+                    "name": "IncludePromotedListingOnly",
+                    "type": "BOOLEAN",
+                    "description": "If you set this field to true it would include promoted listings in the search results, \r\non the other hand if you select it false no promoted listings would be selected.",
+                    "default": "true"
+                },
+                {
+                    "name": "DeliveryPostalCode",
+                    "type": "STRING",
+                    "description": "This field indicates the location postal code to deliver the products listed. \r\nThis narrows down the search criteria if you only want products that can be delivered to certain cities. \r\nIt also helps to decide GuaranteedDeliveryDays.",
+                    "default": ""
+                },
+                {
+                    "name": "GuaranteedDeliveryInDays",
+                    "type": "STRING",
+                    "description": "This field is to narrow down search results if there is a guaranteed delivery days option in place. \r\nDeliveryCountryCode and DeliveryPostalCode must be supplied by this option.",
+                    "default": "One"
+                },
+                {
+                    "name": "Sellers",
+                    "type": "STRING",
+                    "description": "If you list any sellers in this field, you would get resulted listings for \r\nthat seller only.You can list sellers separated by commas.",
+                    "default": "paperstreetproperties"
+                },
+                {
+                    "name": "PageNumber",
+                    "type": "NUMBER",
+                    "description": "This search field is using pagination. Each page has 10 results, so by giving page number \r\nin this field you would get next 10 listings on the specified page, \r\nby skipping the offset by that number.",
+                    "default": ""
+                },
+                {
+                    "name": "MinPrice",
+                    "type": "NUMBER",
+                    "description": "This field would indicate the minimum price for all the results. \r\nIf the price of the listing would be more than or equal to this number it would show as a result.",
+                    "default": ""
+                },
+                {
+                    "name": "IncludeReturnableOnly",
+                    "type": "BOOLEAN",
+                    "description": "This field when true narrows down the search results to only include listings with return option. \r\nIf it is false it includes listings with returnable or non returnable products.",
+                    "default": "true"
+                },
+                {
+                    "name": "EPID",
+                    "type": "STRING",
+                    "description": "The ePID is the eBay product identifier of a product from the eBay product catalog.",
+                    "default": "4033697791"
+                },
+                {
+                    "name": "Sort",
+                    "type": "STRING",
+                    "description": "The order and field name that is used to sort the items. \r\nYou can sort items by price, distance, or listing date. \r\nTo sort in descending order, insert a hyphen before the name of the sorting option.",
+                    "default": "Price"
+                },
+                {
+                    "name": "MaxPrice",
+                    "type": "NUMBER",
+                    "description": "This field would indicate the maximum price for all the results. \r\nIf the price of the listing would be less than or equal to this number it would show as a result.",
+                    "default": ""
+                },
+                {
+                    "name": "Keyword",
+                    "type": "STRING",
+                    "description": "A string consisting of one or more keywords that are used to search for items on eBay",
+                    "default": "canon printer"
+                },
+                {
+                    "name": "IncludeClassifiedAds",
+                    "type": "BOOLEAN",
+                    "description": "If you set this field to true it would include classified Ads listings in the search results, \r\non the other hand if you select it false no classified listings would be selected.",
+                    "default": "true"
+                },
+                {
+                    "name": "CharityIds",
+                    "type": "STRING",
+                    "description": "This field can have one charity ID or a comma separated list of IDs. The method will return all the items associated with the specified charities. \r\nLook up for charities that eBay supports at https://charity.ebay.com. EIN number on charity page is the Charity Id.",
+                    "default": "133661416"
+                },
+                {
+                    "name": "Condition",
+                    "type": "STRING",
+                    "description": "This field can be used to select the condition of the items in listings to narrow down results,",
+                    "default": "New"
+                },
+                {
+                    "name": "CategoryId",
+                    "type": "STRING",
+                    "description": "The method will limit and return all the items associated with the specified category.",
+                    "default": "171961"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://ebay-product-search.p.rapidapi.com/api/ebay/product/search\"\nquerystring = {\"LastSoldWithinDays\": \"\", \"IncludeCharityOnly\": \"true\", \"BidCountMin\": \"\", \"DeliveryCountryCode\": \"AF\", \"GTIN\": \"0013803151664\", \"ExcludedCategoryIds\": \"\", \"ItemLocationCountryCode\": \"AF\", \"IncludeNegotiablePrice\": \"true\", \"SubCondition\": \"New\", \"PerformNonStrictSearch\": \"true\", \"IncludeAuction\": \"true\", \"IncludeBuyItNow\": \"true\", \"IncludeCreditCardPaymentOnly\": \"true\", \"ExcludedSellers\": \"\", \"IncludeFreeShippingOnly\": \"true\", \"BidCountMax\": \"\", \"IncludePromotedListingOnly\": \"true\", \"DeliveryPostalCode\": \"\", \"GuaranteedDeliveryInDays\": \"One\", \"Sellers\": \"paperstreetproperties\", \"PageNumber\": \"\", \"MinPrice\": \"\", \"CountryCode\": \"US\", \"IncludeReturnableOnly\": \"true\", \"EPID\": \"4033697791\", \"Sort\": \"Price\", \"MaxPrice\": \"\", \"Keyword\": \"canon printer\", \"IncludeClassifiedAds\": \"true\", \"CharityIds\": \"133661416\", \"Condition\": \"New\", \"CategoryId\": \"171961\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ebay-product-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://ebay-product-search.p.rapidapi.com/api/ebay/product/search\"\nquerystring = {\"LastSoldWithinDays\": \"\", \"IncludeCharityOnly\": \"true\", \"BidCountMin\": \"\", \"DeliveryCountryCode\": \"AF\", \"GTIN\": \"0013803151664\", \"ExcludedCategoryIds\": \"\", \"ItemLocationCountryCode\": \"AF\", \"IncludeNegotiablePrice\": \"true\", \"SubCondition\": \"New\", \"PerformNonStrictSearch\": \"true\", \"IncludeAuction\": \"true\", \"IncludeBuyItNow\": \"true\", \"IncludeCreditCardPaymentOnly\": \"true\", \"ExcludedSellers\": \"\", \"IncludeFreeShippingOnly\": \"true\", \"BidCountMax\": \"\", \"IncludePromotedListingOnly\": \"true\", \"DeliveryPostalCode\": \"\", \"GuaranteedDeliveryInDays\": \"One\", \"Sellers\": \"paperstreetproperties\", \"PageNumber\": \"\", \"MinPrice\": \"\", \"CountryCode\": \"US\", \"IncludeReturnableOnly\": \"true\", \"EPID\": \"4033697791\", \"Sort\": \"Price\", \"MaxPrice\": \"\", \"Keyword\": \"canon printer\", \"IncludeClassifiedAds\": \"true\", \"CharityIds\": \"133661416\", \"Condition\": \"New\", \"CategoryId\": \"171961\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ebay-product-search.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

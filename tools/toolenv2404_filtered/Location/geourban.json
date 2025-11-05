@@ -1,0 +1,170 @@
+{
+    "product_id": "api_0914d6c9-6a8e-4803-acd0-ab4a489d663e",
+    "tool_description": "Direct access to simulated spatially enabled traffic grids of urban regions.",
+    "home_url": "https://rapidapi.com/gisfromscratch/api/geourban/",
+    "name": "geourban",
+    "title": "geourban",
+    "pricing": "FREEMIUM",
+    "tool_name": "geourban",
+    "score": null,
+    "host": "geourban.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "query",
+            "url": "https://geourban.p.rapidapi.com/query",
+            "description": "Queries the simulated agent positions in space and time.\nReturns all positions within a certain radius of a given location and within a certain time frame.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "vehicle",
+                    "type": "STRING",
+                    "description": "Car, Bike and Pedestrian are possible vehicle types.",
+                    "default": "Car"
+                },
+                {
+                    "name": "lon",
+                    "type": "NUMBER",
+                    "description": "The longitude coordinate of the location.",
+                    "default": "7.074405"
+                },
+                {
+                    "name": "datetime",
+                    "type": "STRING",
+                    "description": "Represents the simulated date and time. The query endpoint returns the simulated agents locations for this specific time. The value must be defined using ISO format.",
+                    "default": "2023-08-24T08:00:00"
+                },
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "The latitude coordinate of the location.",
+                    "default": "50.746708"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "seconds",
+                    "type": "NUMBER",
+                    "description": "The duration of the time frame defined in seconds. The maximum duration is 120 seconds.",
+                    "default": "60"
+                },
+                {
+                    "name": "meters",
+                    "type": "NUMBER",
+                    "description": "The planar distance/radius in meters defining the area of interest. The maximum distance is 1000 meters.",
+                    "default": "500"
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "The values esri and geojson are supported output formats.",
+                    "default": "geojson"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geourban.p.rapidapi.com/query\"\nquerystring = {\"vehicle\": \"Car\", \"seconds\": \"60\", \"lon\": \"7.074405\", \"datetime\": \"2023-08-24T08:00:00\", \"lat\": \"50.746708\", \"meters\": \"500\", \"format\": \"geojson\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geourban.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geourban.p.rapidapi.com/query\"\nquerystring = {\"vehicle\": \"Car\", \"seconds\": \"60\", \"lon\": \"7.074405\", \"datetime\": \"2023-08-24T08:00:00\", \"lat\": \"50.746708\", \"meters\": \"500\", \"format\": \"geojson\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geourban.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "simulations",
+            "url": "https://geourban.p.rapidapi.com/simulations",
+            "description": "Returns all the available simulations using the urban region and the simulation date.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://geourban.p.rapidapi.com/simulations\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geourban.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geourban.p.rapidapi.com/simulations\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geourban.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "aggregate",
+            "url": "https://geourban.p.rapidapi.com/aggregate",
+            "description": "Returns a spatially enabled traffic grid representing aggregated simulated movements of pedestrians, bikes and cars.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "region",
+                    "type": "STRING",
+                    "description": "The simulations endpoint returns all available urban regions. You have to use the region code, e.g. *DEA22* for the city of Bonn, Germany.",
+                    "default": "DEA22"
+                },
+                {
+                    "name": "grid",
+                    "type": "STRING",
+                    "description": "The values *agent*, *speed* and *emissions* are supported grid types.\n*agent*: The number of unique agents is calculated.\n*speed*: The speed average of every agent is calculated.\n*emissions*: The sum of carbon dioxide emissions of every agent is calculated. This makes only sense for vehicle being cars!",
+                    "default": "agent"
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "The values *esri* and *geojson* are supported output formats.",
+                    "default": "geojson"
+                },
+                {
+                    "name": "time",
+                    "type": "STRING",
+                    "description": "Represents the simulated start time. The simulations endpoint list the available urban regions with their simulation dates. The time must be defined using the simulation date and the time being on the hour, e.g. *2023-08-24T07:00:00*.",
+                    "default": "2023-08-24T07:00:00"
+                },
+                {
+                    "name": "vehicle",
+                    "type": "STRING",
+                    "description": "*Car*, *Bike* and *Pedestrian* are possible vehicle types.",
+                    "default": "Car"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://geourban.p.rapidapi.com/aggregate\"\nquerystring = {\"region\": \"DEA22\", \"grid\": \"agent\", \"format\": \"geojson\", \"time\": \"2023-08-24T07:00:00\", \"vehicle\": \"Car\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geourban.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geourban.p.rapidapi.com/aggregate\"\nquerystring = {\"region\": \"DEA22\", \"grid\": \"agent\", \"format\": \"geojson\", \"time\": \"2023-08-24T07:00:00\", \"vehicle\": \"Car\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geourban.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "top",
+            "url": "https://geourban.p.rapidapi.com/top",
+            "description": "Returns the top most accumulated traffic grid cells for an urban region.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Represents the simulated date. The simulations endpoint list the available urban regions with their simulation dates. The date must be defined using ISO format, e.g. *2023-08-24*.",
+                    "default": "2023-08-24"
+                },
+                {
+                    "name": "region",
+                    "type": "STRING",
+                    "description": "The simulations endpoint returns all available urban regions. You have to use the region code, e.g. *DEA22* for the city of Bonn, Germany.",
+                    "default": "DEA22"
+                },
+                {
+                    "name": "vehicle",
+                    "type": "STRING",
+                    "description": "*Car*, *Bike* and *Pedestrian* are possible vehicle types.",
+                    "default": "Car"
+                },
+                {
+                    "name": "grid",
+                    "type": "STRING",
+                    "description": "The values *agent*, *speed* and *emissions* are supported grid types.\n*agent*: The number of unique agents is calculated.\n*speed*: The speed average of every agent is calculated.\n*emissions*: The sum of carbon dioxide emissions of every agent is calculated. This makes only sense for vehicle being cars!",
+                    "default": "agent"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The maximum number of returned features.",
+                    "default": "10"
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "The values *esri* and *geojson* are supported output formats.",
+                    "default": "geojson"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://geourban.p.rapidapi.com/top\"\nquerystring = {\"date\": \"2023-08-24\", \"limit\": \"10\", \"region\": \"DEA22\", \"format\": \"geojson\", \"vehicle\": \"Car\", \"grid\": \"agent\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geourban.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://geourban.p.rapidapi.com/top\"\nquerystring = {\"date\": \"2023-08-24\", \"limit\": \"10\", \"region\": \"DEA22\", \"format\": \"geojson\", \"vehicle\": \"Car\", \"grid\": \"agent\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"geourban.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

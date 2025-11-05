@@ -1,0 +1,847 @@
+{
+    "product_id": "api_354289a6-1c73-4a39-8154-ab1bd2a00f1a",
+    "tool_description": "Machine Learning APIs including Naive Bayes Classifier for natural language, Linear Regression Prediction, Logistic Regression Classification and Time Series Prediction.  \u81ea\u7136\u8a00\u8a9e\u5206\u985e\u5668(Naive Bayes)\u3001\u7dda\u5f62\u56de\u5e30\u4e88\u6e2c\u3001\u30ed\u30b8\u30b9\u30c6\u30c3\u30af\u56de\u5e30\u5206\u985e\u3001\u6642\u7cfb\u5217\u4e88\u6e2c\u306e\u6a5f\u68b0\u5b66\u7fd2API\u7fa4\u3002",
+    "home_url": "https://rapidapi.com/AcroChannel/api/acrolearner/",
+    "name": "AcroLearner",
+    "title": "AcroLearner",
+    "pricing": "FREE",
+    "tool_name": "AcroLearner",
+    "score": null,
+    "host": "acrolearner.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "0305.Generate Time Series MA Model",
+            "url": "https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/AAAAAA/mamodel",
+            "description": "Generate a Moving Average Regression Prediction Model according to the trainText(a Space-separated numeric string dataset) whick inputed in Learning item in advance. In the returned result list, if Coefficient of determination(Score) in last row is close to 1, a satisfying prediction will be available.\n\u5b66\u7fd2\u9805\u76ee\u306etrainText(\u30b9\u30da\u30fc\u30b9\u533a\u5207\u308a\u306e\u6570\u5024\u6587\u5b57\u5217)\u306b\u4e88\u3081\u6295\u5165\u3057\u305f\u6570\u5024\u30c7\u30fc\u30bf\u30bb\u30c3\u30c8\u306b\u3088\u3063\u3066\u3001\u79fb\u52d5\u5e73\u5747(MA)\u30e2\u30c7\u30eb\u3092\u4f5c\u6210\u3059\u308b\u3002\u5b66\u7fd2\u306e\u7d50\u679c\u4e00\u89a7\u304c\u623b\u308a\u3001\u6700\u5f8c\u306e\u6c7a\u5b9a\u4fc2\u6570(Score)\u5024\u306f1\u306b\u8fd1\u3065\u304f\u306a\u3089\u3001\u826f\u3044\u4e88\u6e2c\u7d50\u679c\u304c\u5f97\u3089\u308c\u308b\u3002\n<hr>\nThe following external document is for directly calling AcroLearner original APIs. Some Auth parameters may be neglected here.\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=2&withTitle=true&apiCode=01105016\n\n\u4e0b\u8a18\u306e\u5916\u90e8\u30c9\u30ad\u30e5\u30e1\u30f3\u30c8\u306f\u3001AcroLearner\u30aa\u30ea\u30b8\u30ca\u30ebAPI\u306b\u5bfe\u3059\u308b\u8cc7\u6599\u3067\u3042\u308a\u3001\u3053\u3053\u3067\u306f\u4e00\u90e8\u306e\u8a8d\u8a3c\u30d1\u30e9\u30e1\u30fc\u30bf\u3092\u7701\u7565\u3057\u307e\u3059\u3002\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=1&withTitle=true&apiCode=01105016",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "interval",
+                    "type": "NUMBER",
+                    "description": "\u5b66\u7fd2\u8aa4\u5dee\u306e\u623b\u308a\u9593\u9694\nthe output interval of learning error",
+                    "default": "100"
+                },
+                {
+                    "name": "learnCount",
+                    "type": "NUMBER",
+                    "description": "\u5b66\u7fd2\u56de\u6570\nlearning time",
+                    "default": "1000"
+                },
+                {
+                    "name": "trainKey",
+                    "type": "string",
+                    "description": "",
+                    "default": "AAAAAA"
+                },
+                {
+                    "name": "qOrder",
+                    "type": "NUMBER",
+                    "description": "Moving Average Regression times for Learning\n\u79fb\u52d5\u5e73\u5747\u56de\u5e30\u306e\u56de\u6570",
+                    "default": "3"
+                },
+                {
+                    "name": "learnRate",
+                    "type": "NUMBER",
+                    "description": "\u5b66\u7fd2\u5897\u5206\u6bd4\u7387\nlearning increment rate",
+                    "default": "0.001"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/AAAAAA/mamodel\"\nquerystring = {\"interval\": \"100\", \"learnCount\": \"1000\", \"qOrder\": \"3\", \"learnRate\": \"0.001\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{trainkey}/mamodel\"\nquerystring = {\"interval\": \"100\", \"learnCount\": \"1000\", \"qOrder\": \"3\", \"learnRate\": \"0.001\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "contents": {
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "list": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "message": {
+                                "type": "string"
+                            },
+                            "subject": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "errors": {
+                        "type": "null"
+                    },
+                    "memo": {
+                        "type": "string"
+                    },
+                    "result": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        {
+            "name": "0405.Get Time Series MA Prediction",
+            "url": "https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{resultKey}/mavalue",
+            "description": "Moving Average Prediction processing is performed, the prediction result will be available.\n\u79fb\u52d5\u5e73\u5747(MA)\u30e2\u30c7\u30eb\u3067\u4e88\u6e2c\u51e6\u7406\u3092\u884c\u3044\u3001\u4e88\u6e2c\u7d50\u679c\u304c\u8fd4\u3055\u308c\u308b\u3002\n<hr>\nThe following external document is for directly calling AcroLearner original APIs. Some Auth parameters may be neglected here.\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=2&withTitle=true&apiCode=01105017\n\n\u4e0b\u8a18\u306e\u5916\u90e8\u30c9\u30ad\u30e5\u30e1\u30f3\u30c8\u306f\u3001AcroLearner\u30aa\u30ea\u30b8\u30ca\u30ebAPI\u306b\u5bfe\u3059\u308b\u8cc7\u6599\u3067\u3042\u308a\u3001\u3053\u3053\u3067\u306f\u4e00\u90e8\u306e\u8a8d\u8a3c\u30d1\u30e9\u30e1\u30fc\u30bf\u3092\u7701\u7565\u3057\u307e\u3059\u3002\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=1&withTitle=true&apiCode=01105017",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "startNo",
+                    "type": "NUMBER",
+                    "description": "StartNo of the returning prediction result\n\u4e88\u6e2c\u7d50\u679c\u623b\u308a\u306e\u958b\u59cb\u9806\u756a",
+                    "default": "1"
+                },
+                {
+                    "name": "resultKey",
+                    "type": "string",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "endNo",
+                    "type": "NUMBER",
+                    "description": "EndNo of the returning prediction result\n\u4e88\u6e2c\u7d50\u679c\u623b\u308a\u306e\u7d42\u4e86\u9806\u756a",
+                    "default": "10"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "cyclePeriod",
+                    "type": "NUMBER",
+                    "description": "Cycle period in Learning data\n\u5143\u306e\u5b66\u7fd2\u30c7\u30fc\u30bf\u5468\u671f",
+                    "default": "30"
+                },
+                {
+                    "name": "cycleStartNo",
+                    "type": "NUMBER",
+                    "description": "Cycle StartNo in Learning data\n\u5143\u306e\u5b66\u7fd2\u30c7\u30fc\u30bf\u5468\u671f\u958b\u59cb\u9806\u756a",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{resultKey}/mavalue\"\nquerystring = {\"startNo\": \"1\", \"resultKey\": \"\", \"cyclePeriod\": \"30\", \"cycleStartNo\": \"1\", \"endNo\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{resultKey}/mavalue\"\nquerystring = {\"startNo\": \"1\", \"resultKey\": \"\", \"cyclePeriod\": \"30\", \"cycleStartNo\": \"1\", \"endNo\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "prediction": {
+                        "type": "string"
+                    },
+                    "errors": {
+                        "type": "null"
+                    },
+                    "memo": {
+                        "type": "string"
+                    },
+                    "result": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        {
+            "name": "0406.Get Time Series ARMA Prediction",
+            "url": "https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{resultKey}/armavalue",
+            "description": "Autoregressive moving average Prediction processing is performed, the prediction result will be available.\n\u81ea\u5df1\u56de\u5e30\u79fb\u52d5\u5e73\u5747(ARMA)\u30e2\u30c7\u30eb\u3067\u4e88\u6e2c\u51e6\u7406\u3092\u884c\u3044\u3001\u4e88\u6e2c\u7d50\u679c\u304c\u8fd4\u3055\u308c\u308b\u3002\n<hr>\nThe following external document is for directly calling AcroLearner original APIs. Some Auth parameters may be neglected here.\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=2&withTitle=true&apiCode=01105019\n\n\u4e0b\u8a18\u306e\u5916\u90e8\u30c9\u30ad\u30e5\u30e1\u30f3\u30c8\u306f\u3001AcroLearner\u30aa\u30ea\u30b8\u30ca\u30ebAPI\u306b\u5bfe\u3059\u308b\u8cc7\u6599\u3067\u3042\u308a\u3001\u3053\u3053\u3067\u306f\u4e00\u90e8\u306e\u8a8d\u8a3c\u30d1\u30e9\u30e1\u30fc\u30bf\u3092\u7701\u7565\u3057\u307e\u3059\u3002\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=1&withTitle=true&apiCode=01105019",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "startNo",
+                    "type": "NUMBER",
+                    "description": "StartNo of the returning prediction result\n\u4e88\u6e2c\u7d50\u679c\u623b\u308a\u306e\u958b\u59cb\u9806\u756a",
+                    "default": "1"
+                },
+                {
+                    "name": "resultKey",
+                    "type": "string",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "endNo",
+                    "type": "NUMBER",
+                    "description": "EndNo of the returning prediction result\n\u4e88\u6e2c\u7d50\u679c\u623b\u308a\u306e\u7d42\u4e86\u9806\u756a",
+                    "default": "10"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "cycleStartNo",
+                    "type": "NUMBER",
+                    "description": "Cycle StartNo in Learning data\n\u5143\u306e\u5b66\u7fd2\u30c7\u30fc\u30bf\u5468\u671f\u958b\u59cb\u9806\u756a",
+                    "default": "1"
+                },
+                {
+                    "name": "cyclePeriod",
+                    "type": "NUMBER",
+                    "description": "Cycle period in Learning data\n\u5143\u306e\u5b66\u7fd2\u30c7\u30fc\u30bf\u5468\u671f",
+                    "default": "30"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{resultKey}/armavalue\"\nquerystring = {\"cycleStartNo\": \"1\", \"startNo\": \"1\", \"resultKey\": \"\", \"cyclePeriod\": \"30\", \"endNo\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{resultKey}/armavalue\"\nquerystring = {\"cycleStartNo\": \"1\", \"startNo\": \"1\", \"resultKey\": \"\", \"cyclePeriod\": \"30\", \"endNo\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "prediction": {
+                        "type": "string"
+                    },
+                    "errors": {
+                        "type": "null"
+                    },
+                    "memo": {
+                        "type": "string"
+                    },
+                    "result": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        {
+            "name": "0407.Get Time Series ARIMA Prediction",
+            "url": "https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{resultKey}/arimavalue",
+            "description": "Autoregressive integrated moving average Prediction processing is performed, the prediction result will be available.\n\u81ea\u5df1\u56de\u5e30\u548c\u5206\u79fb\u52d5\u5e73\u5747(ARIMA)\u30e2\u30c7\u30eb\u3067\u4e88\u6e2c\u51e6\u7406\u3092\u884c\u3044\u3001\u4e88\u6e2c\u7d50\u679c\u304c\u8fd4\u3055\u308c\u308b\u3002\n<hr>\nThe following external document is for directly calling AcroLearner original APIs. Some Auth parameters may be neglected here.\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=2&withTitle=true&apiCode=01105021\n\n\u4e0b\u8a18\u306e\u5916\u90e8\u30c9\u30ad\u30e5\u30e1\u30f3\u30c8\u306f\u3001AcroLearner\u30aa\u30ea\u30b8\u30ca\u30ebAPI\u306b\u5bfe\u3059\u308b\u8cc7\u6599\u3067\u3042\u308a\u3001\u3053\u3053\u3067\u306f\u4e00\u90e8\u306e\u8a8d\u8a3c\u30d1\u30e9\u30e1\u30fc\u30bf\u3092\u7701\u7565\u3057\u307e\u3059\u3002\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=1&withTitle=true&apiCode=01105021",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "resultKey",
+                    "type": "string",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "startNo",
+                    "type": "NUMBER",
+                    "description": "StartNo of the returning prediction result\n\u4e88\u6e2c\u7d50\u679c\u623b\u308a\u306e\u958b\u59cb\u9806\u756a",
+                    "default": "1"
+                },
+                {
+                    "name": "endNo",
+                    "type": "NUMBER",
+                    "description": "EndNo of the returning prediction result\n\u4e88\u6e2c\u7d50\u679c\u623b\u308a\u306e\u7d42\u4e86\u9806\u756a",
+                    "default": "10"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "cyclePeriod",
+                    "type": "NUMBER",
+                    "description": "Cycle period in Learning data\n\u5143\u306e\u5b66\u7fd2\u30c7\u30fc\u30bf\u5468\u671f",
+                    "default": "30"
+                },
+                {
+                    "name": "cycleStartNo",
+                    "type": "NUMBER",
+                    "description": "Cycle StartNo in Learning data\n\u5143\u306e\u5b66\u7fd2\u30c7\u30fc\u30bf\u5468\u671f\u958b\u59cb\u9806\u756a",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{resultKey}/arimavalue\"\nquerystring = {\"resultKey\": \"\", \"startNo\": \"1\", \"cyclePeriod\": \"30\", \"endNo\": \"10\", \"cycleStartNo\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{resultKey}/arimavalue\"\nquerystring = {\"resultKey\": \"\", \"startNo\": \"1\", \"cyclePeriod\": \"30\", \"endNo\": \"10\", \"cycleStartNo\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "prediction": {
+                        "type": "string"
+                    },
+                    "errors": {
+                        "type": "null"
+                    },
+                    "memo": {
+                        "type": "string"
+                    },
+                    "result": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        {
+            "name": "0404.Get Time Series AR Prediction",
+            "url": "https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{resultKey}/arvalue",
+            "description": "Autoregressive Prediction processing is performed, the prediction result will be available.\n\u81ea\u5df1\u56de\u5e30(AR)\u30e2\u30c7\u30eb\u3067\u4e88\u6e2c\u51e6\u7406\u3092\u884c\u3044\u3001\u4e88\u6e2c\u7d50\u679c\u304c\u8fd4\u3055\u308c\u308b\u3002\n<hr>\nThe following external document is for directly calling AcroLearner original APIs. Some Auth parameters may be neglected here.\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=2&withTitle=true&apiCode=01105015\n\n\u4e0b\u8a18\u306e\u5916\u90e8\u30c9\u30ad\u30e5\u30e1\u30f3\u30c8\u306f\u3001AcroLearner\u30aa\u30ea\u30b8\u30ca\u30ebAPI\u306b\u5bfe\u3059\u308b\u8cc7\u6599\u3067\u3042\u308a\u3001\u3053\u3053\u3067\u306f\u4e00\u90e8\u306e\u8a8d\u8a3c\u30d1\u30e9\u30e1\u30fc\u30bf\u3092\u7701\u7565\u3057\u307e\u3059\u3002\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=1&withTitle=true&apiCode=01105015",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "endNo",
+                    "type": "NUMBER",
+                    "description": "EndNo of the returning prediction result\n\u4e88\u6e2c\u7d50\u679c\u623b\u308a\u306e\u7d42\u4e86\u9806\u756a",
+                    "default": "10"
+                },
+                {
+                    "name": "startNo",
+                    "type": "NUMBER",
+                    "description": "StartNo of the returning prediction result\n\u4e88\u6e2c\u7d50\u679c\u623b\u308a\u306e\u958b\u59cb\u9806\u756a",
+                    "default": "1"
+                },
+                {
+                    "name": "resultKey",
+                    "type": "string",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "cycleStartNo",
+                    "type": "NUMBER",
+                    "description": "Cycle StartNo in Learning data\n\u5143\u306e\u5b66\u7fd2\u30c7\u30fc\u30bf\u5468\u671f\u958b\u59cb\u9806\u756a",
+                    "default": "1"
+                },
+                {
+                    "name": "cyclePeriod",
+                    "type": "NUMBER",
+                    "description": "Cycle period in Learning data\n\u5143\u306e\u5b66\u7fd2\u30c7\u30fc\u30bf\u5468\u671f",
+                    "default": "30"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{resultKey}/arvalue\"\nquerystring = {\"endNo\": \"10\", \"startNo\": \"1\", \"cycleStartNo\": \"1\", \"resultKey\": \"\", \"cyclePeriod\": \"30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{resultKey}/arvalue\"\nquerystring = {\"endNo\": \"10\", \"startNo\": \"1\", \"cycleStartNo\": \"1\", \"resultKey\": \"\", \"cyclePeriod\": \"30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "prediction": {
+                        "type": "string"
+                    },
+                    "errors": {
+                        "type": "null"
+                    },
+                    "memo": {
+                        "type": "string"
+                    },
+                    "result": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        {
+            "name": "0307.Generate Time Series ARIMA Model",
+            "url": "https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/AAAAAA/arimamodel",
+            "description": "Generate an Autoregressive integrated moving average Prediction Model according to the trainText(a Space-separated numeric string dataset) whick inputed in Learning item in advance. In the returned result list, if Coefficient of determination(Score) in last row is close to 1, a satisfying prediction will be available\n\u5b66\u7fd2\u9805\u76ee\u306etrainText(\u30b9\u30da\u30fc\u30b9\u533a\u5207\u308a\u306e\u6570\u5024\u6587\u5b57\u5217)\u306b\u4e88\u3081\u6295\u5165\u3057\u305f\u6570\u5024\u30c7\u30fc\u30bf\u30bb\u30c3\u30c8\u306b\u3088\u3063\u3066\u3001\u81ea\u5df1\u56de\u5e30\u548c\u5206\u79fb\u52d5\u5e73\u5747(ARIMA)\u30e2\u30c7\u30eb\u3092\u4f5c\u6210\u3059\u308b\u3002\u5b66\u7fd2\u306e\u7d50\u679c\u4e00\u89a7\u304c\u623b\u308a\u3001\u6700\u5f8c\u306e\u6c7a\u5b9a\u4fc2\u6570(Score)\u5024\u306f1\u306b\u8fd1\u3065\u304f\u306a\u3089\u3001\u826f\u3044\u4e88\u6e2c\u7d50\u679c\u304c\u5f97\u3089\u308c\u308b\u3002\n<hr>\nThe following external document is for directly calling AcroLearner original APIs. Some Auth parameters may be neglected here.\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=2&withTitle=true&apiCode=01105020\n\n\u4e0b\u8a18\u306e\u5916\u90e8\u30c9\u30ad\u30e5\u30e1\u30f3\u30c8\u306f\u3001AcroLearner\u30aa\u30ea\u30b8\u30ca\u30ebAPI\u306b\u5bfe\u3059\u308b\u8cc7\u6599\u3067\u3042\u308a\u3001\u3053\u3053\u3067\u306f\u4e00\u90e8\u306e\u8a8d\u8a3c\u30d1\u30e9\u30e1\u30fc\u30bf\u3092\u7701\u7565\u3057\u307e\u3059\u3002\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=1&withTitle=true&apiCode=01105020",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "learnCount",
+                    "type": "NUMBER",
+                    "description": "\u5b66\u7fd2\u56de\u6570\nlearning time",
+                    "default": "1000"
+                },
+                {
+                    "name": "learnRate",
+                    "type": "NUMBER",
+                    "description": "\u5b66\u7fd2\u5897\u5206\u6bd4\u7387\nlearning increment rate",
+                    "default": "0.001"
+                },
+                {
+                    "name": "pOrder",
+                    "type": "NUMBER",
+                    "description": "Autoregressive times for Learning\n\u81ea\u5df1\u56de\u5e30\u306e\u56de\u6570",
+                    "default": "3"
+                },
+                {
+                    "name": "qOrder",
+                    "type": "NUMBER",
+                    "description": "Moving Average Regression times for Learning\n\u79fb\u52d5\u5e73\u5747\u56de\u5e30\u306e\u56de\u6570",
+                    "default": "3"
+                },
+                {
+                    "name": "dOrder",
+                    "type": "NUMBER",
+                    "description": "Difference floors for Learning\n\u5dee\u5206\u968e\u6570",
+                    "default": "1"
+                },
+                {
+                    "name": "trainKey",
+                    "type": "string",
+                    "description": "",
+                    "default": "AAAAAA"
+                },
+                {
+                    "name": "interval",
+                    "type": "NUMBER",
+                    "description": "\u5b66\u7fd2\u8aa4\u5dee\u306e\u623b\u308a\u9593\u9694\nthe output interval of learning error",
+                    "default": "100"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/AAAAAA/arimamodel\"\nquerystring = {\"learnCount\": \"1000\", \"learnRate\": \"0.001\", \"pOrder\": \"3\", \"qOrder\": \"3\", \"dOrder\": \"1\", \"interval\": \"100\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{trainkey}/arimamodel\"\nquerystring = {\"learnCount\": \"1000\", \"learnRate\": \"0.001\", \"pOrder\": \"3\", \"qOrder\": \"3\", \"dOrder\": \"1\", \"interval\": \"100\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "contents": {
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "list": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "message": {
+                                "type": "string"
+                            },
+                            "subject": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "errors": {
+                        "type": "null"
+                    },
+                    "memo": {
+                        "type": "string"
+                    },
+                    "result": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        {
+            "name": "0306.Generate Time Series ARMA Model",
+            "url": "https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/AAAAAA/armamodel",
+            "description": "Generate an Autoregressive moving average Prediction Model according to the trainText(a Space-separated numeric string dataset) whick inputed in Learning item in advance. In the returned result list, if Coefficient of determination(Score) in last row is close to 1, a satisfying prediction will be available.\n\u5b66\u7fd2\u9805\u76ee\u306etrainText(\u30b9\u30da\u30fc\u30b9\u533a\u5207\u308a\u306e\u6570\u5024\u6587\u5b57\u5217)\u306b\u4e88\u3081\u6295\u5165\u3057\u305f\u6570\u5024\u30c7\u30fc\u30bf\u30bb\u30c3\u30c8\u306b\u3088\u3063\u3066\u3001\u81ea\u5df1\u56de\u5e30\u79fb\u52d5\u5e73\u5747(ARMA)\u30e2\u30c7\u30eb\u3092\u4f5c\u6210\u3059\u308b\u3002\u5b66\u7fd2\u306e\u7d50\u679c\u4e00\u89a7\u304c\u623b\u308a\u3001\u6700\u5f8c\u306e\u6c7a\u5b9a\u4fc2\u6570(Score)\u5024\u306f1\u306b\u8fd1\u3065\u304f\u306a\u3089\u3001\u826f\u3044\u4e88\u6e2c\u7d50\u679c\u304c\u5f97\u3089\u308c\u308b\u3002\n<hr>\nThe following external document is for directly calling AcroLearner original APIs. Some Auth parameters may be neglected here.\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=2&withTitle=true&apiCode=01105018\n\n\u4e0b\u8a18\u306e\u5916\u90e8\u30c9\u30ad\u30e5\u30e1\u30f3\u30c8\u306f\u3001AcroLearner\u30aa\u30ea\u30b8\u30ca\u30ebAPI\u306b\u5bfe\u3059\u308b\u8cc7\u6599\u3067\u3042\u308a\u3001\u3053\u3053\u3067\u306f\u4e00\u90e8\u306e\u8a8d\u8a3c\u30d1\u30e9\u30e1\u30fc\u30bf\u3092\u7701\u7565\u3057\u307e\u3059\u3002\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=1&withTitle=true&apiCode=01105018",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "pOrder",
+                    "type": "NUMBER",
+                    "description": "Autoregressive times for Learning\n\u81ea\u5df1\u56de\u5e30\u306e\u56de\u6570",
+                    "default": "3"
+                },
+                {
+                    "name": "interval",
+                    "type": "NUMBER",
+                    "description": "\u5b66\u7fd2\u8aa4\u5dee\u306e\u623b\u308a\u9593\u9694\nthe output interval of learning error",
+                    "default": "100"
+                },
+                {
+                    "name": "learnCount",
+                    "type": "NUMBER",
+                    "description": "\u5b66\u7fd2\u56de\u6570\nlearning time",
+                    "default": "1000"
+                },
+                {
+                    "name": "learnRate",
+                    "type": "NUMBER",
+                    "description": "\u5b66\u7fd2\u5897\u5206\u6bd4\u7387\nlearning increment rate",
+                    "default": "0.001"
+                },
+                {
+                    "name": "trainKey",
+                    "type": "string",
+                    "description": "",
+                    "default": "AAAAAA"
+                },
+                {
+                    "name": "qOrder",
+                    "type": "NUMBER",
+                    "description": "Moving Average Regression times for Learning\n\u79fb\u52d5\u5e73\u5747\u56de\u5e30\u306e\u56de\u6570",
+                    "default": "3"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/AAAAAA/armamodel\"\nquerystring = {\"pOrder\": \"3\", \"interval\": \"100\", \"learnCount\": \"1000\", \"learnRate\": \"0.001\", \"qOrder\": \"3\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{trainkey}/armamodel\"\nquerystring = {\"pOrder\": \"3\", \"interval\": \"100\", \"learnCount\": \"1000\", \"learnRate\": \"0.001\", \"qOrder\": \"3\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "contents": {
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "list": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "message": {
+                                "type": "string"
+                            },
+                            "subject": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "errors": {
+                        "type": "null"
+                    },
+                    "memo": {
+                        "type": "string"
+                    },
+                    "result": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        {
+            "name": "0304.Generate Time Series AR Model",
+            "url": "https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/AAAAAA/armodel",
+            "description": "Generate an Autoregressive Prediction Model according to the trainText(a Space-separated numeric string dataset) whick inputed in Learning item in advance. In the returned result list, if Coefficient of determination(Score) in last row is close to 1, a satisfying prediction will be available.\n\u5b66\u7fd2\u9805\u76ee\u306etrainText(\u30b9\u30da\u30fc\u30b9\u533a\u5207\u308a\u306e\u6570\u5024\u6587\u5b57\u5217)\u306b\u4e88\u3081\u6295\u5165\u3057\u305f\u6570\u5024\u30c7\u30fc\u30bf\u30bb\u30c3\u30c8\u306b\u3088\u3063\u3066\u3001\u81ea\u5df1\u56de\u5e30(AR)\u30e2\u30c7\u30eb\u3092\u4f5c\u6210\u3059\u308b\u5b66\u7fd2\u306e\u7d50\u679c\u4e00\u89a7\u304c\u623b\u308a\u3001\u6700\u5f8c\u306e\u6c7a\u5b9a\u4fc2\u6570(Score)\u5024\u306f1\u306b\u8fd1\u3065\u304f\u306a\u3089\u3001\u826f\u3044\u4e88\u6e2c\u7d50\u679c\u304c\u5f97\u3089\u308c\u308b\u3002\n<hr>\nThe following external document is for directly calling AcroLearner original APIs. Some Auth parameters may be neglected here.\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=2&withTitle=true&apiCode=01105014\n\n\u4e0b\u8a18\u306e\u5916\u90e8\u30c9\u30ad\u30e5\u30e1\u30f3\u30c8\u306f\u3001AcroLearner\u30aa\u30ea\u30b8\u30ca\u30ebAPI\u306b\u5bfe\u3059\u308b\u8cc7\u6599\u3067\u3042\u308a\u3001\u3053\u3053\u3067\u306f\u4e00\u90e8\u306e\u8a8d\u8a3c\u30d1\u30e9\u30e1\u30fc\u30bf\u3092\u7701\u7565\u3057\u307e\u3059\u3002\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=1&withTitle=true&apiCode=01105014",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "trainKey",
+                    "type": "string",
+                    "description": "",
+                    "default": "AAAAAA"
+                },
+                {
+                    "name": "interval",
+                    "type": "NUMBER",
+                    "description": "\u5b66\u7fd2\u8aa4\u5dee\u306e\u623b\u308a\u9593\u9694\nthe output interval of learning error",
+                    "default": "100"
+                },
+                {
+                    "name": "learnRate",
+                    "type": "NUMBER",
+                    "description": "\u5b66\u7fd2\u5897\u5206\u6bd4\u7387\nlearning increment rate",
+                    "default": "0.001"
+                },
+                {
+                    "name": "learnCount",
+                    "type": "NUMBER",
+                    "description": "\u5b66\u7fd2\u56de\u6570\nlearning time",
+                    "default": "1000"
+                },
+                {
+                    "name": "pOrder",
+                    "type": "NUMBER",
+                    "description": "Autoregressive times for Learning\n\u81ea\u5df1\u56de\u5e30\u306e\u56de\u6570",
+                    "default": "3"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/AAAAAA/armodel\"\nquerystring = {\"interval\": \"100\", \"learnRate\": \"0.001\", \"learnCount\": \"1000\", \"pOrder\": \"3\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{trainkey}/armodel\"\nquerystring = {\"interval\": \"100\", \"learnRate\": \"0.001\", \"learnCount\": \"1000\", \"pOrder\": \"3\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "contents": {
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "list": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "message": {
+                                "type": "string"
+                            },
+                            "subject": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "errors": {
+                        "type": "null"
+                    },
+                    "memo": {
+                        "type": "string"
+                    },
+                    "result": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        {
+            "name": "0301.Generate Text Classification Model",
+            "url": "https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/AAAAAA/bayesmodel",
+            "description": "Generate a Naive Bayes Classifier Model according to the trainText(text datasets) whick inputed in Learning item in advance.\n\u5b66\u7fd2\u9805\u76ee\u306etrainText\u306b\u4e88\u3081\u6295\u5165\u3057\u305f\u30c6\u30ad\u30b9\u30c8\u30c7\u30fc\u30bf\u30bb\u30c3\u30c8\u306b\u3088\u3063\u3066\u3001\u5358\u7d14\uff08\u30ca\u30a4\u30fc\u30d6\uff09\u30d9\u30a4\u30ba\u5206\u985e\u5668(Naive Bayes)\u306e\u30e2\u30c7\u30eb\u3092\u751f\u6210\u3059\u308b\u3002\n<hr>\nThe following external document is for directly calling AcroLearner original APIs. Some Auth parameters may be neglected here.\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=2&withTitle=true&apiCode=01105008\n\n\u4e0b\u8a18\u306e\u5916\u90e8\u30c9\u30ad\u30e5\u30e1\u30f3\u30c8\u306f\u3001AcroLearner\u30aa\u30ea\u30b8\u30ca\u30ebAPI\u306b\u5bfe\u3059\u308b\u8cc7\u6599\u3067\u3042\u308a\u3001\u3053\u3053\u3067\u306f\u4e00\u90e8\u306e\u8a8d\u8a3c\u30d1\u30e9\u30e1\u30fc\u30bf\u3092\u7701\u7565\u3057\u307e\u3059\u3002\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=1&withTitle=true&apiCode=01105008",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "trainKey",
+                    "type": "string",
+                    "description": "",
+                    "default": "AAAAAA"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/AAAAAA/bayesmodel\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{trainkey}/bayesmodel\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "0203.Get Learning Item",
+            "url": "https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/AAAAA/items/1",
+            "description": "Get an Item property of a specified Training Theme.\n\u6307\u5b9a\u3057\u305f\u5b66\u7fd2\u30c6\u30fc\u30de\u306e\u9805\u76ee\u60c5\u5831\u3092\u53d6\u5f97\u3057\u307e\u3059\u3002\n<hr>\nThe following external document is for directly calling AcroLearner original APIs. Some Auth parameters may be neglected here.\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=2&withTitle=true&apiCode=01106003\n\n\u4e0b\u8a18\u306e\u5916\u90e8\u30c9\u30ad\u30e5\u30e1\u30f3\u30c8\u306f\u3001AcroLearner\u30aa\u30ea\u30b8\u30ca\u30ebAPI\u306b\u5bfe\u3059\u308b\u8cc7\u6599\u3067\u3042\u308a\u3001\u3053\u3053\u3067\u306f\u4e00\u90e8\u306e\u8a8d\u8a3c\u30d1\u30e9\u30e1\u30fc\u30bf\u3092\u7701\u7565\u3057\u307e\u3059\u3002\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=1&withTitle=true&apiCode=01106003",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "trainKey",
+                    "type": "string",
+                    "description": "",
+                    "default": "AAAAA"
+                },
+                {
+                    "name": "itemNo",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/AAAAA/items/1\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{trainkey}/items/{itemno}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "0202.Get Learning Item CSV",
+            "url": "https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/AAAAAA/items/csv",
+            "description": "Get the items csv of a specified Training Theme.\n\u6307\u5b9a\u3057\u305f\u5b66\u7fd2\u30c6\u30fc\u30de\u306e\u9805\u76ee\u4e00\u89a7CSV\u3092\u53d6\u5f97\u3057\u307e\u3059\u3002\n<hr>\nThe following external document is for directly calling AcroLearner original APIs. Some Auth parameters may be neglected here.\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=2&withTitle=true&apiCode=01106002\n\n\u4e0b\u8a18\u306e\u5916\u90e8\u30c9\u30ad\u30e5\u30e1\u30f3\u30c8\u306f\u3001AcroLearner\u30aa\u30ea\u30b8\u30ca\u30ebAPI\u306b\u5bfe\u3059\u308b\u8cc7\u6599\u3067\u3042\u308a\u3001\u3053\u3053\u3067\u306f\u4e00\u90e8\u306e\u8a8d\u8a3c\u30d1\u30e9\u30e1\u30fc\u30bf\u3092\u7701\u7565\u3057\u307e\u3059\u3002\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=1&withTitle=true&apiCode=01106002",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "trainKey",
+                    "type": "string",
+                    "description": "",
+                    "default": "AAAAAA"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "rowcount",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "50"
+                },
+                {
+                    "name": "statusId",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "BBBBB"
+                },
+                {
+                    "name": "order",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/AAAAAA/items/csv\"\nquerystring = {\"rowcount\": \"50\", \"statusId\": \"1\", \"category\": \"BBBBB\", \"order\": \"\", \"offset\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{trainkey}/items/csv\"\nquerystring = {\"rowcount\": \"50\", \"statusId\": \"1\", \"category\": \"BBBBB\", \"order\": \"\", \"offset\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "0201.Get Learning Item List",
+            "url": "https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/AAAAAA/items",
+            "description": "Get the items list of a specified Training Theme.\n\u6307\u5b9a\u3057\u305f\u5b66\u7fd2\u30c6\u30fc\u30de\u306e\u9805\u76ee\u4e00\u89a7\u3092\u53d6\u5f97\u3057\u307e\u3059\u3002\n<hr>\nThe following external document is for directly calling AcroLearner original APIs. Some Auth parameters may be neglected here.\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=2&withTitle=true&apiCode=01106001\n\n\u4e0b\u8a18\u306e\u5916\u90e8\u30c9\u30ad\u30e5\u30e1\u30f3\u30c8\u306f\u3001AcroLearner\u30aa\u30ea\u30b8\u30ca\u30ebAPI\u306b\u5bfe\u3059\u308b\u8cc7\u6599\u3067\u3042\u308a\u3001\u3053\u3053\u3067\u306f\u4e00\u90e8\u306e\u8a8d\u8a3c\u30d1\u30e9\u30e1\u30fc\u30bf\u3092\u7701\u7565\u3057\u307e\u3059\u3002\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=1&withTitle=true&apiCode=01106001",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "trainKey",
+                    "type": "string",
+                    "description": "",
+                    "default": "AAAAAA"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "order",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "statusId",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "BBBBB"
+                },
+                {
+                    "name": "rowcount",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "50"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/AAAAAA/items\"\nquerystring = {\"order\": \"\", \"statusId\": \"1\", \"category\": \"BBBBB\", \"rowcount\": \"50\", \"offset\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{trainkey}/items\"\nquerystring = {\"order\": \"\", \"statusId\": \"1\", \"category\": \"BBBBB\", \"rowcount\": \"50\", \"offset\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "0101.Get Learning Theme",
+            "url": "https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/yB1o4ucY_DZpUhPeevom-0GTPX3G6JQ",
+            "description": "Get the property information of Training Theme.\n\u6307\u5b9a\u3057\u305f\u5b66\u7fd2\u30c6\u30fc\u30de\u306e\u5c5e\u6027\u60c5\u5831\u3092\u53d6\u5f97\u3057\u307e\u3059\u3002\n<hr>\nThe following external document is for directly calling AcroLearner original APIs. Some Auth parameters may be neglected here.\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=2&withTitle=true&apiCode=01105003\n\n\u4e0b\u8a18\u306e\u5916\u90e8\u30c9\u30ad\u30e5\u30e1\u30f3\u30c8\u306f\u3001AcroLearner\u30aa\u30ea\u30b8\u30ca\u30ebAPI\u306b\u5bfe\u3059\u308b\u8cc7\u6599\u3067\u3042\u308a\u3001\u3053\u3053\u3067\u306f\u4e00\u90e8\u306e\u8a8d\u8a3c\u30d1\u30e9\u30e1\u30fc\u30bf\u3092\u7701\u7565\u3057\u307e\u3059\u3002\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=1&withTitle=true&apiCode=01105003",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "trainKey",
+                    "type": "string",
+                    "description": "the  unique Key for Machine Learning Theme.",
+                    "default": "yB1o4ucY_DZpUhPeevom-0GTPX3G6JQ"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/yB1o4ucY_DZpUhPeevom-0GTPX3G6JQ\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{trainkey}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "contents": {
+                        "type": "object",
+                        "properties": {
+                            "createDT": {
+                                "type": "string"
+                            },
+                            "itemCount": {
+                                "type": "integer"
+                            },
+                            "items": {
+                                "type": "null"
+                            },
+                            "language": {
+                                "type": "integer"
+                            },
+                            "memo": {
+                                "type": "string"
+                            },
+                            "noSymbol": {
+                                "type": "integer"
+                            },
+                            "partOfSpeech": {
+                                "type": "string"
+                            },
+                            "searchMode": {
+                                "type": "integer"
+                            },
+                            "statusId": {
+                                "type": "integer"
+                            },
+                            "subject": {
+                                "type": "string"
+                            },
+                            "trainId": {
+                                "type": "integer"
+                            },
+                            "trainKey": {
+                                "type": "string"
+                            },
+                            "updateDT": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "errors": {
+                        "type": "null"
+                    },
+                    "memo": {
+                        "type": "string"
+                    },
+                    "result": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        {
+            "name": "0302.Generate Linear Regression Model",
+            "url": "https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/AAAAAA/linearmodel",
+            "description": "Generate a Linear Single or Multiple Regression Prediction Model according to the trainText(Space-separated numeric string datasets) whick inputed in Learning item in advance.\n\u5b66\u7fd2\u9805\u76ee\u306etrainText(\u30b9\u30da\u30fc\u30b9\u533a\u5207\u308a\u306e\u6570\u5024\u6587\u5b57\u5217)\u306b\u4e88\u3081\u6295\u5165\u3057\u305f\u6570\u5024\u30c7\u30fc\u30bf\u30bb\u30c3\u30c8\u306b\u3088\u3063\u3066\u3001\u7dda\u5f62\u5358\u56de\u5e30\u53c8\u306f\u91cd\u56de\u5e30\u306e\u30e2\u30c7\u30eb\u3092\u4f5c\u6210\u3059\u308b\u3002\n<hr>\nThe following external document is for directly calling AcroLearner original APIs. Some Auth parameters may be neglected here.\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=2&withTitle=true&apiCode=01105010\n\n\u4e0b\u8a18\u306e\u5916\u90e8\u30c9\u30ad\u30e5\u30e1\u30f3\u30c8\u306f\u3001AcroLearner\u30aa\u30ea\u30b8\u30ca\u30ebAPI\u306b\u5bfe\u3059\u308b\u8cc7\u6599\u3067\u3042\u308a\u3001\u3053\u3053\u3067\u306f\u4e00\u90e8\u306e\u8a8d\u8a3c\u30d1\u30e9\u30e1\u30fc\u30bf\u3092\u7701\u7565\u3057\u307e\u3059\u3002\nhttps://mars.restgate.net:8443/AcroLearner/v0_1/CltService/apiInfo/doc?appId=10007&language=1&withTitle=true&apiCode=01105010",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "learnRate",
+                    "type": "NUMBER",
+                    "description": "\u5b66\u7fd2\u5897\u5206\u6bd4\u7387\nlearning increment rate",
+                    "default": "0.001"
+                },
+                {
+                    "name": "learnCount",
+                    "type": "NUMBER",
+                    "description": "\u5b66\u7fd2\u56de\u6570\nlearning time",
+                    "default": "1000"
+                },
+                {
+                    "name": "trainKey",
+                    "type": "string",
+                    "description": "",
+                    "default": "AAAAAA"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "interval",
+                    "type": "NUMBER",
+                    "description": "\u5b66\u7fd2\u8aa4\u5dee\u306e\u623b\u308a\u9593\u9694\nthe output interval of learning error",
+                    "default": "100"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/AAAAAA/linearmodel\"\nquerystring = {\"learnRate\": \"0.001\", \"learnCount\": \"1000\", \"interval\": \"100\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://acrolearner.p.rapidapi.com/v0_1/CltService/ml/trains/{trainkey}/linearmodel\"\nquerystring = {\"learnRate\": \"0.001\", \"learnCount\": \"1000\", \"interval\": \"100\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"acrolearner.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

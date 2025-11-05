@@ -1,0 +1,943 @@
+{
+    "product_id": "api_67c33253-556c-4629-9e89-663a81b156e4",
+    "tool_description": "Copa America 2019 Live Scores API allows to retrieve matches results, scorers, lineups, substitutes, events, statistics, odds and much more all with live updates even with push notifications.",
+    "home_url": "https://rapidapi.com/heisenbug/api/copa-america/",
+    "name": "Copa America",
+    "title": "Copa America",
+    "pricing": "FREEMIUM",
+    "tool_name": "Copa America",
+    "score": null,
+    "host": "copa-america.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Player stats for a match",
+            "url": "https://copa-america.p.rapidapi.com/api/copaamerica/match/player",
+            "description": "Return the player's statistics for a match.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "team2",
+                    "type": "STRING",
+                    "description": "Away team",
+                    "default": "Bolivia"
+                },
+                {
+                    "name": "player",
+                    "type": "STRING",
+                    "description": "Player name",
+                    "default": ""
+                },
+                {
+                    "name": "team1",
+                    "type": "STRING",
+                    "description": "Home team",
+                    "default": "Brazil"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "live",
+                    "type": "BOOLEAN",
+                    "description": "Returns data for a playing match (default false)",
+                    "default": "false"
+                },
+                {
+                    "name": "matchday",
+                    "type": "NUMBER",
+                    "description": "Match day number",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/match/player\"\nquerystring = {\"live\": \"false\", \"team2\": \"Bolivia\", \"player\": \"\", \"matchday\": \"\", \"team1\": \"Brazil\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/match/player\"\nquerystring = {\"live\": \"false\", \"team2\": \"Bolivia\", \"player\": \"\", \"matchday\": \"\", \"team1\": \"Brazil\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Events subscribed",
+            "url": "https://copa-america.p.rapidapi.com/api/copaamerica/push/list",
+            "description": "Return all the events subscribed. ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/push/list\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/push/list\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Group Table",
+            "url": "https://copa-america.p.rapidapi.com/api/copaamerica/table",
+            "description": "Returns the table for a group",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "group",
+                    "type": "STRING",
+                    "description": "Group name (ex. A, B and C)",
+                    "default": "A"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "time",
+                    "type": "STRING",
+                    "description": "Let to compute the table considering only the first half (FH) or the second time (SH) results. Default is full time (FT).",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/table\"\nquerystring = {\"group\": \"A\", \"time\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/table\"\nquerystring = {\"group\": \"A\", \"time\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Matches result",
+            "url": "https://copa-america.p.rapidapi.com/api/copaamerica",
+            "description": "Returns all matches for a specified match day number.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "matchday",
+                    "type": "NUMBER",
+                    "description": "Match day number",
+                    "default": "1"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "live",
+                    "type": "BOOLEAN",
+                    "description": "Returns results for playing matches ",
+                    "default": false
+                },
+                {
+                    "name": "team2",
+                    "type": "STRING",
+                    "description": "Returns all matches with team2 as away team",
+                    "default": ""
+                },
+                {
+                    "name": "group",
+                    "type": "STRING",
+                    "description": "Searches for matches in group (A,B,C); only for group stage",
+                    "default": ""
+                },
+                {
+                    "name": "team1",
+                    "type": "STRING",
+                    "description": "Returns all matches with team1 as home team",
+                    "default": ""
+                },
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "Returns all matches in date (mmddyyyyy)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica\"\nquerystring = {\"live\": false, \"team2\": \"\", \"group\": \"\", \"team1\": \"\", \"date\": \"\", \"matchday\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica\"\nquerystring = {\"live\": false, \"team2\": \"\", \"group\": \"\", \"team1\": \"\", \"date\": \"\", \"matchday\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Missing players for a match",
+            "url": "https://copa-america.p.rapidapi.com/api/copaamerica/match/missing",
+            "description": "Return all the players who will miss the match and the reason.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "team2",
+                    "type": "STRING",
+                    "description": "Away team",
+                    "default": "Bolivia"
+                },
+                {
+                    "name": "team1",
+                    "type": "STRING",
+                    "description": "Home team",
+                    "default": "Brazil"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "matchday",
+                    "type": "NUMBER",
+                    "description": "Match day number for the match",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/match/missing\"\nquerystring = {\"matchday\": \"\", \"team2\": \"Bolivia\", \"team1\": \"Brazil\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/match/missing\"\nquerystring = {\"matchday\": \"\", \"team2\": \"Bolivia\", \"team1\": \"Brazil\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Top scorers",
+            "url": "https://copa-america.p.rapidapi.com/api/copaamerica/table/scorers",
+            "description": "Returns top scorers for the Cup or the number of goals scored by a player",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "to",
+                    "type": "NUMBER",
+                    "description": "Optional parameter to specify the last match number to consider to compute the result (default last match number played registered on system)",
+                    "default": ""
+                },
+                {
+                    "name": "how",
+                    "type": "STRING",
+                    "description": "Return only goals scored according the how parameter. Its value can be: left, right, head or any, that is the default.",
+                    "default": "any"
+                },
+                {
+                    "name": "team",
+                    "type": "STRING",
+                    "description": "Team name",
+                    "default": ""
+                },
+                {
+                    "name": "from",
+                    "type": "NUMBER",
+                    "description": "Optional parameter to specify the first match number to use to compute the result (default 1)",
+                    "default": "1"
+                },
+                {
+                    "name": "player",
+                    "type": "STRING",
+                    "description": "Player name",
+                    "default": ""
+                },
+                {
+                    "name": "fromdate",
+                    "type": "STRING",
+                    "description": "Compute the table only with matches played fromdate (forma mmddyyyy)",
+                    "default": ""
+                },
+                {
+                    "name": "mode",
+                    "type": "STRING",
+                    "description": "Optional parameter to restrict the table compute on home or away games (possible values are home, away or all, that is the default)",
+                    "default": "all"
+                },
+                {
+                    "name": "todate",
+                    "type": "STRING",
+                    "description": "Compute the table only with matches played todate (format mmddyyyy)",
+                    "default": ""
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Page result to return. Default is 1 that are results from 1 to 5 (max. value for page is 20).",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/table/scorers\"\nquerystring = {\"to\": \"\", \"how\": \"any\", \"team\": \"\", \"from\": \"1\", \"player\": \"\", \"fromdate\": \"\", \"mode\": \"all\", \"todate\": \"\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/table/scorers\"\nquerystring = {\"to\": \"\", \"how\": \"any\", \"team\": \"\", \"from\": \"1\", \"player\": \"\", \"fromdate\": \"\", \"mode\": \"all\", \"todate\": \"\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Lineups and substitutes for a match",
+            "url": "https://copa-america.p.rapidapi.com/api/copaamerica/formations",
+            "description": "Returns lineups, substitutes and coaches for a game. ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "team2",
+                    "type": "STRING",
+                    "description": "Away team",
+                    "default": "Bolivia"
+                },
+                {
+                    "name": "team1",
+                    "type": "STRING",
+                    "description": "Home team",
+                    "default": "Brazil"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "matchday",
+                    "type": "NUMBER",
+                    "description": "Match day number for the match",
+                    "default": ""
+                },
+                {
+                    "name": "live",
+                    "type": "BOOLEAN",
+                    "description": "Returns data for a playing match (default false)",
+                    "default": false
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/formations\"\nquerystring = {\"matchday\": \"\", \"live\": false, \"team2\": \"Bolivia\", \"team1\": \"Brazil\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/formations\"\nquerystring = {\"matchday\": \"\", \"live\": false, \"team2\": \"Bolivia\", \"team1\": \"Brazil\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Players Statistic Table",
+            "url": "https://copa-america.p.rapidapi.com/api/copaamerica/table/playerstat",
+            "description": "Return the players table for a specified statistic. ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "stat",
+                    "type": "STRING",
+                    "description": "Statistic name",
+                    "default": "shotsOnTarget"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "to",
+                    "type": "NUMBER",
+                    "description": "Match day number till which compute the table",
+                    "default": ""
+                },
+                {
+                    "name": "team",
+                    "type": "STRING",
+                    "description": "Team name",
+                    "default": ""
+                },
+                {
+                    "name": "player",
+                    "type": "STRING",
+                    "description": "Player name",
+                    "default": ""
+                },
+                {
+                    "name": "from",
+                    "type": "NUMBER",
+                    "description": "Match day number from which compute the table",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/table/playerstat\"\nquerystring = {\"to\": \"\", \"stat\": \"shotsOnTarget\", \"team\": \"\", \"player\": \"\", \"from\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/table/playerstat\"\nquerystring = {\"to\": \"\", \"stat\": \"shotsOnTarget\", \"team\": \"\", \"player\": \"\", \"from\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Teams Statistic Table",
+            "url": "https://copa-america.p.rapidapi.com/api/copaamerica/table/teamstat",
+            "description": "Teams table for a specified statistic. ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "stat",
+                    "type": "STRING",
+                    "description": "Statistic name",
+                    "default": "shotsOnTarget"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "to",
+                    "type": "NUMBER",
+                    "description": "Match day number till which compute the table",
+                    "default": ""
+                },
+                {
+                    "name": "team",
+                    "type": "STRING",
+                    "description": "Team name",
+                    "default": ""
+                },
+                {
+                    "name": "avg",
+                    "type": "STRING",
+                    "description": "Set to true if you want average statistic value, that is the table computed as (total value statistic/played games). Default false.",
+                    "default": false
+                },
+                {
+                    "name": "mode",
+                    "type": "STRING",
+                    "description": "Set with top to get the top 5, with bottom to get the worse 5 teams (default top)",
+                    "default": "top"
+                },
+                {
+                    "name": "from",
+                    "type": "NUMBER",
+                    "description": "Match day number from which to compute the table",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/table/teamstat\"\nquerystring = {\"to\": \"\", \"team\": \"\", \"avg\": false, \"mode\": \"top\", \"stat\": \"shotsOnTarget\", \"from\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/table/teamstat\"\nquerystring = {\"to\": \"\", \"team\": \"\", \"avg\": false, \"mode\": \"top\", \"stat\": \"shotsOnTarget\", \"from\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Cup Players",
+            "url": "https://copa-america.p.rapidapi.com/api/copaamerica/players",
+            "description": "Return all the players for a team.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "team",
+                    "type": "STRING",
+                    "description": "Team name",
+                    "default": "Brazil"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/players\"\nquerystring = {\"team\": \"Brazil\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/players\"\nquerystring = {\"team\": \"Brazil\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Match statistics",
+            "url": "https://copa-america.p.rapidapi.com/api/copaamerica/match/stats",
+            "description": "Returns statistics for a match.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "team1",
+                    "type": "STRING",
+                    "description": "Home team",
+                    "default": [
+                        "Brazil"
+                    ]
+                },
+                {
+                    "name": "team2",
+                    "type": "STRING",
+                    "description": "Away team",
+                    "default": [
+                        "Bolivia"
+                    ]
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "live",
+                    "type": "BOOLEAN",
+                    "description": "Returns data for a playing match (default false)",
+                    "default": [
+                        false
+                    ]
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/match/stats\"\nquerystring = {\"team1\": [\"Brazil\"], \"team2\": [\"Bolivia\"], \"live\": [false]}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/match/stats\"\nquerystring = {\"team1\": [\"Brazil\"], \"team2\": [\"Bolivia\"], \"live\": [false]}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Match events",
+            "url": "https://copa-america.p.rapidapi.com/api/copaamerica/match/events",
+            "description": "Returns all the events for a match.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "team2",
+                    "type": "STRING",
+                    "description": "Away team",
+                    "default": "Bolivia"
+                },
+                {
+                    "name": "team1",
+                    "type": "STRING",
+                    "description": "Home team",
+                    "default": "Brazil"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "matchday",
+                    "type": "NUMBER",
+                    "description": "Match day number for the match",
+                    "default": ""
+                },
+                {
+                    "name": "live",
+                    "type": "BOOLEAN",
+                    "description": "Returns data for a playing match (default false)",
+                    "default": false
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/match/events\"\nquerystring = {\"matchday\": \"\", \"live\": false, \"team2\": \"Bolivia\", \"team1\": \"Brazil\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/match/events\"\nquerystring = {\"matchday\": \"\", \"live\": false, \"team2\": \"Bolivia\", \"team1\": \"Brazil\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Bookmakers List",
+            "url": "https://copa-america.p.rapidapi.com/api/copaamerica/listbookmakers",
+            "description": "Returns the list of the available bookmakers for a match. ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "team2",
+                    "type": "STRING",
+                    "description": "Away team",
+                    "default": "Colombia"
+                },
+                {
+                    "name": "team1",
+                    "type": "STRING",
+                    "description": "Home team",
+                    "default": "Argentina"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "matchday",
+                    "type": "NUMBER",
+                    "description": "Match day number for the match",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/listbookmakers\"\nquerystring = {\"matchday\": \"\", \"team2\": \"Colombia\", \"team1\": \"Argentina\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/listbookmakers\"\nquerystring = {\"matchday\": \"\", \"team2\": \"Colombia\", \"team1\": \"Argentina\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Odds List",
+            "url": "https://copa-america.p.rapidapi.com/api/copaamerica/listodds",
+            "description": "Returns the available odds for a match and a bookmaker. ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "bookmaker",
+                    "type": "STRING",
+                    "description": "Bookmaker name",
+                    "default": "Bet365"
+                },
+                {
+                    "name": "team2",
+                    "type": "STRING",
+                    "description": "Away team",
+                    "default": "Bolivia"
+                },
+                {
+                    "name": "team1",
+                    "type": "STRING",
+                    "description": "Home team",
+                    "default": "Brazil"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "matchday",
+                    "type": "NUMBER",
+                    "description": "Match day number for the match",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/listodds\"\nquerystring = {\"matchday\": \"\", \"bookmaker\": \"Bet365\", \"team2\": \"Bolivia\", \"team1\": \"Brazil\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/listodds\"\nquerystring = {\"matchday\": \"\", \"bookmaker\": \"Bet365\", \"team2\": \"Bolivia\", \"team1\": \"Brazil\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Odd quotas",
+            "url": "https://copa-america.p.rapidapi.com/api/copaamerica/odds",
+            "description": "Returns quotas for an odd a match and a bookmaker.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "team1",
+                    "type": "STRING",
+                    "description": "Home team",
+                    "default": "Argentina"
+                },
+                {
+                    "name": "odd",
+                    "type": "STRING",
+                    "description": "Odd name",
+                    "default": "1x2-FT"
+                },
+                {
+                    "name": "team2",
+                    "type": "STRING",
+                    "description": "Away team",
+                    "default": "Colombia"
+                },
+                {
+                    "name": "bookmaker",
+                    "type": "STRING",
+                    "description": "Bookmaker name",
+                    "default": "Bet365"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "matchday",
+                    "type": "NUMBER",
+                    "description": "Match day number for the match",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/odds\"\nquerystring = {\"matchday\": \"\", \"team1\": \"Argentina\", \"odd\": \"1x2-FT\", \"team2\": \"Colombia\", \"bookmaker\": \"Bet365\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/odds\"\nquerystring = {\"matchday\": \"\", \"team1\": \"Argentina\", \"odd\": \"1x2-FT\", \"team2\": \"Colombia\", \"bookmaker\": \"Bet365\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Match scorers",
+            "url": "https://copa-america.p.rapidapi.com/api/copaamerica/scorers",
+            "description": "Returns when and how the scorers scored in a match. ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "team2",
+                    "type": "STRING",
+                    "description": "Away team",
+                    "default": "Bolivia"
+                },
+                {
+                    "name": "team1",
+                    "type": "STRING",
+                    "description": "Home team",
+                    "default": "Brazil"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "live",
+                    "type": "BOOLEAN",
+                    "description": "Returns data for a playing match (default false)",
+                    "default": ""
+                },
+                {
+                    "name": "matchday",
+                    "type": "STRING",
+                    "description": "Match day number for the match",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/scorers\"\nquerystring = {\"live\": \"\", \"team2\": \"Bolivia\", \"team1\": \"Brazil\", \"matchday\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://copa-america.p.rapidapi.com/api/copaamerica/scorers\"\nquerystring = {\"live\": \"\", \"team2\": \"Bolivia\", \"team1\": \"Brazil\", \"matchday\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"copa-america.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

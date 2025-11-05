@@ -1,0 +1,67 @@
+{
+    "product_id": "api_01676699-5283-42aa-8611-f9887d430633",
+    "tool_description": "Check if a vehicle is insured. Find out the insurance company and expiration date. Verifica se un veicolo \u00e9 assicurato dalla targa, scopri la compagnia assicurativa e la data di scadenza.",
+    "home_url": "https://rapidapi.com/keysersoft/api/check-car-insurance-italy-controllo-assicurazione-targa-italia/",
+    "name": "Check Car Insurance Italy - Controllo Assicurazione Targa Italia",
+    "title": "Check Car Insurance Italy - Controllo Assicurazione Targa Italia",
+    "pricing": "FREEMIUM",
+    "tool_name": "Check Car Insurance Italy - Controllo Assicurazione Targa Italia",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 14,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.3,
+        "__typename": "Score"
+    },
+    "host": "check-car-insurance-italy-controllo-assicurazione-targa-italia.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Insurance",
+            "url": "https://check-car-insurance-italy-controllo-assicurazione-targa-italia.p.rapidapi.com/insurance",
+            "description": "Find out the insurance company and expiration date of a vehicle.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "plateNumber",
+                    "type": "STRING",
+                    "description": "The licence Plate Number for example: EH332DE",
+                    "default": "FA223EH"
+                },
+                {
+                    "name": "vehicleType",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://check-car-insurance-italy-controllo-assicurazione-targa-italia.p.rapidapi.com/insurance\"\nquerystring = {\"plateNumber\": \"FA223EH\", \"vehicleType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"check-car-insurance-italy-controllo-assicurazione-targa-italia.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://check-car-insurance-italy-controllo-assicurazione-targa-italia.p.rapidapi.com/insurance\"\nquerystring = {\"plateNumber\": \"FA223EH\", \"vehicleType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"check-car-insurance-italy-controllo-assicurazione-targa-italia.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "licencePlate": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "hasInsurance": {
+                        "type": "boolean"
+                    },
+                    "insuranceCompany": {
+                        "type": "string"
+                    },
+                    "insuranceNumber": {
+                        "type": "string"
+                    },
+                    "insuranceExpiryDate": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    ]
+}

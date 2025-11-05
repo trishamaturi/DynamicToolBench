@@ -1,0 +1,112 @@
+{
+    "product_id": "api_b681ac71-d22b-4de2-b6b9-eaf0442bfda2",
+    "tool_description": "Amazon data scraper for product pricing, details and search",
+    "home_url": "https://rapidapi.com/salih.codes/api/salih-amazon-scraper/",
+    "name": "Salih Amazon scraper",
+    "title": "Salih Amazon scraper",
+    "pricing": "FREEMIUM",
+    "tool_name": "Salih Amazon scraper",
+    "score": null,
+    "host": "salih-amazon-scraper.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Amazon Search Results",
+            "url": "https://salih-amazon-scraper.p.rapidapi.com/search/Razer",
+            "description": "Returns a list of products based on the search query passed to it",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "searchQuery",
+                    "type": "string",
+                    "description": "",
+                    "default": "Razer"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "api_key",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "7c07eeffa29ca27b3f8e60799efaa7ae"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://salih-amazon-scraper.p.rapidapi.com/search/Razer\"\nquerystring = {\"api_key\": \"7c07eeffa29ca27b3f8e60799efaa7ae\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"salih-amazon-scraper.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://salih-amazon-scraper.p.rapidapi.com/search/{searchquery}\"\nquerystring = {\"api_key\": \"7c07eeffa29ca27b3f8e60799efaa7ae\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"salih-amazon-scraper.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "ads": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "type": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "image": {
+                                    "type": "string"
+                                },
+                                "has_prime": {
+                                    "type": "boolean"
+                                },
+                                "is_best_seller": {
+                                    "type": "boolean"
+                                },
+                                "is_amazon_choice": {
+                                    "type": "boolean"
+                                },
+                                "is_limited_deal": {
+                                    "type": "boolean"
+                                },
+                                "stars": {
+                                    "type": "number"
+                                },
+                                "total_reviews": {
+                                    "type": "null"
+                                },
+                                "url": {
+                                    "type": "string"
+                                },
+                                "availability_quantity": {
+                                    "type": "null"
+                                },
+                                "spec": {
+                                    "type": "object"
+                                },
+                                "price_string": {
+                                    "type": "string"
+                                },
+                                "price_symbol": {
+                                    "type": "string"
+                                },
+                                "price": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    },
+                    "amazons_choice": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "explore_more_items": {
+                        "type": "array"
+                    },
+                    "pagination": {
+                        "type": "array"
+                    }
+                }
+            }
+        }
+    ]
+}

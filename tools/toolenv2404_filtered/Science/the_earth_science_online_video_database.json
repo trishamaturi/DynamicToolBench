@@ -1,0 +1,1726 @@
+{
+    "product_id": "api_21449850-6a19-40d0-bd15-332a18e10c08",
+    "tool_description": "Public access to all 6,100+ videos' data in the ESOVDB, in JSON format.",
+    "home_url": "https://rapidapi.com/the-earth-science-online-video-database-the-earth-science-online-video-database-default/api/the-earth-science-online-video-database/",
+    "name": "The Earth Science Online Video Database",
+    "title": "The Earth Science Online Video Database",
+    "pricing": "FREEMIUM",
+    "tool_name": "The Earth Science Online Video Database",
+    "score": null,
+    "host": "the-earth-science-online-video-database.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get video by YouTube ID",
+            "url": "https://the-earth-science-online-video-database.p.rapidapi.com/videos/youtube/{id}",
+            "description": "Many videos in the ESOVDB are hosted on YouTube.  This endpoint accepts a YouTube ID (a code in the URL, for example: youtu.be/{videoId} or youtube.com/watch?v={videoId}), either as a path parameter or a query parameter (one of these is required), and it returns that video's ESOVDB record, by default as `format=raw|json` (the raw Airtable-created JSON, which includes all fields).  As with the other endpoints, other formats are available, which at this time include the `format=youtube|yt` format, which is a simplified format that consists only of `id` (the video's YouTube video ID), `recordId` (the video's ESOVDB Airtable record ID), `esovdbId` (the video's ESOVDB ID), `zoteroKey` (the video's key in the ESOVDB Zotero library), and `added` (the timestamp of when the video was added to the ESOVDB in ISO-8601 format)  and `format=zotero` (the Zotero-oriented format used for turning ESOVDB videos into Zotero `videoRecording` items).",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "Optionally specify a specific format for each video record.  Currently all formats are JSON objects, with different sets properties.\n\n**`raw`** *(alias `json`)* - formats each video as raw JSON data sent from the ESOVDB Airtable, containing all available fields.  Largest in size.\n\n**`zotero`** - formats each video as a set of fields compatible with and named according to the `videoRecording` type item in Zotero, for use in syncing ESOVDB videos with Zotero\n\n**`youtube`** *(alias `yt`) *- formats each video as a limited set of fields pertaining to a video's online presence.  Meant for use with YouTube-based videos, used by the ESOVDB chrome extension, the ESOVDB iOS shortcut, and various ESOVDB Discord bots to determine if a YouTube video is already in the ESOVDB.  Response fields include: `videoId`, its YouTube video ID, `recordId`, its Airtable record ID, `esovdbId`, its ESOVDB ID, `zoteroKey`, its Zotero Key, and `added`, a timestamp of when the video was added to the ESOVDB in ISO-8601 format.",
+                    "default": ""
+                },
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "### Path Parameter\n\n*e.g. /v1/videos/youtube/{id}*\n\nA YouTube video's videoId (the code in the video's URL found in either the format *youtu.be/{videoId}* or *youtube.com/watch?v={videoId}*.\n\nIf this path parameter is omitted, `id` must be passed as a URL query parameter.  If both an `id` path parameter and an `id` query parameter are provided, the path parameter will be used instead of the query parameter. A request made to this endpoint without either will return an error.",
+                    "default": "w_XX4r6jzUo"
+                },
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "### Query Parameter\n\n*e.g. /v1/videos/youtube/{id}*\n\nA YouTube video's videoId (the code in the video's URL found in either the format *youtu.be/{videoId}* or *youtube.com/watch?v={videoId}*.\n\nThis URL query parameter is optional, but if omitted, `id` must be passed as a path parameter.  If both an `id` path parameter and an `id` query parameter are provided, the path parameter will be used instead of the query parameter. A request made to this endpoint without either will return an error.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://the-earth-science-online-video-database.p.rapidapi.com/videos/youtube/{id}\"\nquerystring = {\"format\": \"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"the-earth-science-online-video-database.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://the-earth-science-online-video-database.p.rapidapi.com/videos/youtube/{id}\"\nquerystring = {\"format\": \"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"the-earth-science-online-video-database.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "anyOf": [
+                    {
+                        "$ref": "#/$defs/zotero"
+                    },
+                    {
+                        "$ref": "#/$defs/youtube"
+                    },
+                    {
+                        "$ref": "#/$defs/raw"
+                    }
+                ],
+                "$defs": {
+                    "zotero": {
+                        "type": "object",
+                        "properties": {
+                            "zoteroKey": {
+                                "type": "string"
+                            },
+                            "zoteroVersion": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "zoteroSeries": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "url": {
+                                "type": "string"
+                            },
+                            "year": {
+                                "type": "integer",
+                                "minimum": 1900
+                            },
+                            "desc": {
+                                "type": "string"
+                            },
+                            "runningTime": {
+                                "type": "string"
+                            },
+                            "format": {
+                                "type": "string"
+                            },
+                            "topic": {
+                                "type": "string"
+                            },
+                            "series": {
+                                "type": "string"
+                            },
+                            "seriesCount": {
+                                "type": "string"
+                            },
+                            "vol": {
+                                "type": "string"
+                            },
+                            "no": {
+                                "type": "string"
+                            },
+                            "publisher": {
+                                "type": "string"
+                            },
+                            "presenters": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "firstName": {
+                                            "type": "string"
+                                        },
+                                        "lastName": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "language": {
+                                "type": "string"
+                            },
+                            "location": {
+                                "type": "string"
+                            },
+                            "plusCode": {
+                                "type": "string"
+                            },
+                            "provider": {
+                                "type": "string"
+                            },
+                            "esovdbId": {
+                                "type": "string"
+                            },
+                            "recordId": {
+                                "type": "string"
+                            },
+                            "accessDate": {
+                                "type": "string"
+                            },
+                            "created": {
+                                "type": "string"
+                            },
+                            "modified": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "youtube": {
+                        "type": "object",
+                        "properties": {
+                            "videoId": {
+                                "type": "string"
+                            },
+                            "recordId": {
+                                "type": "string"
+                            },
+                            "esovdbId": {
+                                "type": "string"
+                            },
+                            "zoteroKey": {
+                                "type": "string"
+                            },
+                            "added": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "raw": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "Title": {
+                                "type": "string"
+                            },
+                            "URL": {
+                                "type": "string"
+                            },
+                            "Description": {
+                                "type": "string"
+                            },
+                            "Series": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Publisher": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Year": {
+                                "type": "integer"
+                            },
+                            "Running Time": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "Rating": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 5
+                            },
+                            "No": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "Format": {
+                                "type": "string"
+                            },
+                            "Medium": {
+                                "type": "string"
+                            },
+                            "Presenter(s)": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Language": {
+                                "type": "string"
+                            },
+                            "Level/Audience": {
+                                "type": "string"
+                            },
+                            "Status": {
+                                "type": "string"
+                            },
+                            "Topic": {
+                                "type": "string"
+                            },
+                            "Topic Link": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Geocoding": {
+                                "type": "string"
+                            },
+                            "Marker Color": {
+                                "type": "string"
+                            },
+                            "ID": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "YouTube Video ID": {
+                                "type": "string"
+                            },
+                            "YouTube Thumbnail": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "id",
+                                        "width",
+                                        "height",
+                                        "url",
+                                        "filename",
+                                        "size",
+                                        "type",
+                                        "thumbnails"
+                                    ],
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "width": {
+                                            "type": "integer",
+                                            "minimum": 0
+                                        },
+                                        "height": {
+                                            "type": "integer",
+                                            "minimum": 0
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "filename": {
+                                            "type": "string"
+                                        },
+                                        "size": {
+                                            "type": "integer",
+                                            "minimum": 0
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "thumbnails": {
+                                            "type": "object",
+                                            "required": [
+                                                "small",
+                                                "large",
+                                                "full"
+                                            ],
+                                            "properties": {
+                                                "small": {
+                                                    "type": "object",
+                                                    "required": [
+                                                        "url",
+                                                        "width",
+                                                        "height"
+                                                    ],
+                                                    "properties": {
+                                                        "url": {
+                                                            "type": "string"
+                                                        },
+                                                        "width": {
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        },
+                                                        "height": {
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        }
+                                                    }
+                                                },
+                                                "large": {
+                                                    "type": "object",
+                                                    "required": [
+                                                        "url",
+                                                        "width",
+                                                        "height"
+                                                    ],
+                                                    "properties": {
+                                                        "url": {
+                                                            "type": "string"
+                                                        },
+                                                        "width": {
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        },
+                                                        "height": {
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        }
+                                                    }
+                                                },
+                                                "full": {
+                                                    "type": "object",
+                                                    "required": [
+                                                        "url",
+                                                        "width",
+                                                        "height"
+                                                    ],
+                                                    "properties": {
+                                                        "url": {
+                                                            "type": "string"
+                                                        },
+                                                        "width": {
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        },
+                                                        "height": {
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "Zotero Key": {
+                                "type": "string"
+                            },
+                            "Zotero Version": {
+                                "type": "integer",
+                                "minumum": 0
+                            },
+                            "HTML Link": {
+                                "type": "string"
+                            },
+                            "Reddit/Markdown Link": {
+                                "type": "string"
+                            },
+                            "Series URL": {
+                                "type": "array",
+                                "items": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "YouTube Thumbnail URL": {
+                                "type": "string"
+                            },
+                            "No. Formatted": {
+                                "type": "string"
+                            },
+                            "Date Added": {
+                                "type": "string"
+                            },
+                            "Video Provider": {
+                                "type": "string"
+                            },
+                            "Watch Video": {
+                                "type": "object",
+                                "required": [
+                                    "label",
+                                    "url"
+                                ],
+                                "properties": {
+                                    "label": {
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "View on Map": {
+                                "type": "object",
+                                "required": [
+                                    "label",
+                                    "url"
+                                ],
+                                "properties": {
+                                    "label": {
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "Presenter First Name": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Presenter Last Name": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "ISO Added": {
+                                "type": "string"
+                            },
+                            "Publisher Code": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Code": {
+                                "type": "string"
+                            },
+                            "ESOVDBID": {
+                                "type": "string"
+                            },
+                            "Language Code": {
+                                "type": "string"
+                            },
+                            "Publisher Text": {
+                                "type": "string"
+                            },
+                            "Series Text": {
+                                "type": "string"
+                            },
+                            "Year Sort": {
+                                "type": "integer",
+                                "minimum": 1900
+                            },
+                            "Vol & No": {
+                                "type": "string"
+                            },
+                            "Record ID": {
+                                "type": "string"
+                            },
+                            "Series Count": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Series Count Text": {
+                                "type": "string"
+                            },
+                            "Modified": {
+                                "type": "string"
+                            },
+                            "Created": {
+                                "type": "string"
+                            },
+                            "Presenter(s) Text": {
+                                "type": "string"
+                            },
+                            "Publisher Sort": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Series Sort": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Series Zotero Key Lookup": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Series Zotero Key": {
+                                "type": "string"
+                            },
+                            "Topic Zotero Key Lookup": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Topic Zotero Key": {
+                                "type": "string"
+                            },
+                            "Delete Record": {
+                                "type": "object",
+                                "required": [
+                                    "label",
+                                    "url"
+                                ],
+                                "properties": {
+                                    "label": {
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "Presenter Formatted": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Status Text": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get all videos",
+            "url": "https://the-earth-science-online-video-database.p.rapidapi.com/videos",
+            "description": "Gets all 6,100+ videos from the Earth Science Online Database, as a large JSON file.  Even though the API server caches all the videos every 24 hours, and API users are only ever querying what videos have been added or updated since then, the resulting JSON file is large, and this request may take a moment to complete.\n\nPremium users of this endpoint will always receive completely fresh data, never cached.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "Optionally specify a specific format for each video record.  Currently all formats are JSON objects, with different sets properties.\n\n**`raw`** *(alias `json`)* - formats each video as raw JSON data sent from the ESOVDB Airtable, containing all available fields.  Largest in size.\n\n**`zotero`** - formats each video as a set of fields compatible with and named according to the `videoRecording` type item in Zotero, for use in syncing ESOVDB videos with Zotero\n\n**`youtube`** *(alias `yt`) *- formats each video as a limited set of fields pertaining to a video's online presence.  Meant for use with YouTube-based videos, used by the ESOVDB chrome extension, the ESOVDB iOS shortcut, and various ESOVDB Discord bots to determine if a YouTube video is already in the ESOVDB.  Response fields include: `videoId`, its YouTube video ID, `recordId`, its Airtable record ID, `esovdbId`, its ESOVDB ID, `zoteroKey`, its Zotero Key, and `added`, a timestamp of when the video was added to the ESOVDB in ISO-8601 format.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://the-earth-science-online-video-database.p.rapidapi.com/videos\"\nquerystring = {\"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"the-earth-science-online-video-database.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://the-earth-science-online-video-database.p.rapidapi.com/videos\"\nquerystring = {\"format\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"the-earth-science-online-video-database.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/zotero"
+                        },
+                        {
+                            "$ref": "#/$defs/youtube"
+                        },
+                        {
+                            "$ref": "#/$defs/raw"
+                        },
+                        {
+                            "$ref": "#/$defs/more"
+                        }
+                    ]
+                },
+                "$defs": {
+                    "zotero": {
+                        "type": "object",
+                        "properties": {
+                            "zoteroKey": {
+                                "type": "string"
+                            },
+                            "zoteroVersion": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "zoteroSeries": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "url": {
+                                "type": "string"
+                            },
+                            "year": {
+                                "type": "integer",
+                                "minimum": 1900
+                            },
+                            "desc": {
+                                "type": "string"
+                            },
+                            "runningTime": {
+                                "type": "string"
+                            },
+                            "format": {
+                                "type": "string"
+                            },
+                            "topic": {
+                                "type": "string"
+                            },
+                            "series": {
+                                "type": "string"
+                            },
+                            "seriesCount": {
+                                "type": "string"
+                            },
+                            "vol": {
+                                "type": "string"
+                            },
+                            "no": {
+                                "type": "string"
+                            },
+                            "publisher": {
+                                "type": "string"
+                            },
+                            "presenters": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "firstName": {
+                                            "type": "string"
+                                        },
+                                        "lastName": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "language": {
+                                "type": "string"
+                            },
+                            "location": {
+                                "type": "string"
+                            },
+                            "plusCode": {
+                                "type": "string"
+                            },
+                            "provider": {
+                                "type": "string"
+                            },
+                            "esovdbId": {
+                                "type": "string"
+                            },
+                            "recordId": {
+                                "type": "string"
+                            },
+                            "accessDate": {
+                                "type": "string"
+                            },
+                            "created": {
+                                "type": "string"
+                            },
+                            "modified": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "youtube": {
+                        "type": "object",
+                        "properties": {
+                            "videoId": {
+                                "type": "string"
+                            },
+                            "recordId": {
+                                "type": "string"
+                            },
+                            "esovdbId": {
+                                "type": "string"
+                            },
+                            "zoteroKey": {
+                                "type": "string"
+                            },
+                            "added": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "raw": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "Title": {
+                                "type": "string"
+                            },
+                            "URL": {
+                                "type": "string"
+                            },
+                            "Description": {
+                                "type": "string"
+                            },
+                            "Series": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Publisher": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Year": {
+                                "type": "integer"
+                            },
+                            "Running Time": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "Rating": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 5
+                            },
+                            "No": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "Format": {
+                                "type": "string"
+                            },
+                            "Medium": {
+                                "type": "string"
+                            },
+                            "Presenter(s)": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Language": {
+                                "type": "string"
+                            },
+                            "Level/Audience": {
+                                "type": "string"
+                            },
+                            "Status": {
+                                "type": "string"
+                            },
+                            "Topic": {
+                                "type": "string"
+                            },
+                            "Topic Link": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Geocoding": {
+                                "type": "string"
+                            },
+                            "Marker Color": {
+                                "type": "string"
+                            },
+                            "ID": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "YouTube Video ID": {
+                                "type": "string"
+                            },
+                            "YouTube Thumbnail": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "id",
+                                        "width",
+                                        "height",
+                                        "url",
+                                        "filename",
+                                        "size",
+                                        "type",
+                                        "thumbnails"
+                                    ],
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "width": {
+                                            "type": "integer",
+                                            "minimum": 0
+                                        },
+                                        "height": {
+                                            "type": "integer",
+                                            "minimum": 0
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "filename": {
+                                            "type": "string"
+                                        },
+                                        "size": {
+                                            "type": "integer",
+                                            "minimum": 0
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "thumbnails": {
+                                            "type": "object",
+                                            "required": [
+                                                "small",
+                                                "large",
+                                                "full"
+                                            ],
+                                            "properties": {
+                                                "small": {
+                                                    "type": "object",
+                                                    "required": [
+                                                        "url",
+                                                        "width",
+                                                        "height"
+                                                    ],
+                                                    "properties": {
+                                                        "url": {
+                                                            "type": "string"
+                                                        },
+                                                        "width": {
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        },
+                                                        "height": {
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        }
+                                                    }
+                                                },
+                                                "large": {
+                                                    "type": "object",
+                                                    "required": [
+                                                        "url",
+                                                        "width",
+                                                        "height"
+                                                    ],
+                                                    "properties": {
+                                                        "url": {
+                                                            "type": "string"
+                                                        },
+                                                        "width": {
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        },
+                                                        "height": {
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        }
+                                                    }
+                                                },
+                                                "full": {
+                                                    "type": "object",
+                                                    "required": [
+                                                        "url",
+                                                        "width",
+                                                        "height"
+                                                    ],
+                                                    "properties": {
+                                                        "url": {
+                                                            "type": "string"
+                                                        },
+                                                        "width": {
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        },
+                                                        "height": {
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "Zotero Key": {
+                                "type": "string"
+                            },
+                            "Zotero Version": {
+                                "type": "integer",
+                                "minumum": 0
+                            },
+                            "HTML Link": {
+                                "type": "string"
+                            },
+                            "Reddit/Markdown Link": {
+                                "type": "string"
+                            },
+                            "Series URL": {
+                                "type": "array",
+                                "items": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "YouTube Thumbnail URL": {
+                                "type": "string"
+                            },
+                            "No. Formatted": {
+                                "type": "string"
+                            },
+                            "Date Added": {
+                                "type": "string"
+                            },
+                            "Video Provider": {
+                                "type": "string"
+                            },
+                            "Watch Video": {
+                                "type": "object",
+                                "required": [
+                                    "label",
+                                    "url"
+                                ],
+                                "properties": {
+                                    "label": {
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "View on Map": {
+                                "type": "object",
+                                "required": [
+                                    "label",
+                                    "url"
+                                ],
+                                "properties": {
+                                    "label": {
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "Presenter First Name": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Presenter Last Name": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "ISO Added": {
+                                "type": "string"
+                            },
+                            "Publisher Code": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Code": {
+                                "type": "string"
+                            },
+                            "ESOVDBID": {
+                                "type": "string"
+                            },
+                            "Language Code": {
+                                "type": "string"
+                            },
+                            "Publisher Text": {
+                                "type": "string"
+                            },
+                            "Series Text": {
+                                "type": "string"
+                            },
+                            "Year Sort": {
+                                "type": "integer",
+                                "minimum": 1900
+                            },
+                            "Vol & No": {
+                                "type": "string"
+                            },
+                            "Record ID": {
+                                "type": "string"
+                            },
+                            "Series Count": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Series Count Text": {
+                                "type": "string"
+                            },
+                            "Modified": {
+                                "type": "string"
+                            },
+                            "Created": {
+                                "type": "string"
+                            },
+                            "Presenter(s) Text": {
+                                "type": "string"
+                            },
+                            "Publisher Sort": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Series Sort": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Series Zotero Key Lookup": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Series Zotero Key": {
+                                "type": "string"
+                            },
+                            "Topic Zotero Key Lookup": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Topic Zotero Key": {
+                                "type": "string"
+                            },
+                            "Delete Record": {
+                                "type": "object",
+                                "required": [
+                                    "label",
+                                    "url"
+                                ],
+                                "properties": {
+                                    "label": {
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "Presenter Formatted": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Status Text": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "more": {
+                        "type": "object",
+                        "properties": {
+                            "...": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get all webhooks",
+            "url": "https://the-earth-science-online-video-database.p.rapidapi.com/webhooks",
+            "description": "Without any parameters specified, returns a list of all canonical webhook events.  If the client includes a valid `url` callback parameter in the request, this endpoint instead returns a list of only the webhook events to which the provided callback URL is subscribed.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "Specifying the `url` query parameter will change the nature of the request to return the set of webhook events within the set of all canonical webhook events, to which the provided callback URL is subscribed.",
+                    "default": "https%3A%2F%2Fwww.example.com%2Fcallback"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://the-earth-science-online-video-database.p.rapidapi.com/webhooks\"\nquerystring = {\"url\": \"https%3A%2F%2Fwww.example.com%2Fcallback\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"the-earth-science-online-video-database.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://the-earth-science-online-video-database.p.rapidapi.com/webhooks\"\nquerystring = {\"url\": \"https%3A%2F%2Fwww.example.com%2Fcallback\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"the-earth-science-online-video-database.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Query videos",
+            "url": "https://the-earth-science-online-video-database.p.rapidapi.com/videos/query/1",
+            "description": "Return a subset of the ESOVDB's 6,100+ videos using various parameters to search and filter the ESOVDB's videos.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "createdAfter",
+                    "type": "STRING",
+                    "description": "(URL-encoded string representing a date in the past which can be parsed by Javascript's `Date.parse()` function)  The value of `modifiedAfter` and `createdAfter` is a date in string format,  URL-encoded, which is parseable by Javascript's `Date.parse()` function.  This means for example, you can specify dates as strings such as '2021-12-21 10:00 am', '2021-12-21 10:00 am EST', '2021-12-12', '12/21/2021', '2021-12', 'December 21, 2021', 'December 12, 2021 10:00 am GMT-05', etc, provided the string is then URL-encoded. (e.g. 'December 12, 2021 10:00 am GMT-05' => 'December%2012%2C%202021%2010%3A00%20am%20GMT-05').  Any format that is understood by Javascript's `Date.parse()` function and then URL-encoded will work.",
+                    "default": "2021-12-21%2010%3A00%20am%20EST"
+                },
+                {
+                    "name": "modifiedAfter",
+                    "type": "STRING",
+                    "description": "(URL-encoded string representing a date in the past which can be parsed by Javascript's `Date.parse()` function)  The value of `modifiedAfter` and `createdAfter` is a date in string format,  URL-encoded, which is parseable by Javascript's `Date.parse()` function.  This means for example, you can specify dates as strings such as '2021-12-21 10:00 am', '2021-12-21 10:00 am EST', '2021-12-12', '12/21/2021', '2021-12', 'December 21, 2021', 'December 12, 2021 10:00 am GMT-05', etc, provided the string is then URL-encoded. (e.g. 'December 12, 2021 10:00 am GMT-05' => 'December%2012%2C%202021%2010%3A00%20am%20GMT-05').  Any format that is understood by Javascript's `Date.parse()` function and then URL-encoded will work.",
+                    "default": "2021-12-21%2010%3A00%20am%20EST"
+                },
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "Optionally specify a specific format for each video record.  Currently all formats are JSON objects, with different sets properties.\n\n**`raw`** *(alias `json`)* - formats each video as raw JSON data sent from the ESOVDB Airtable, containing all available fields.  Largest in size.\n\n**`zotero`** - formats each video as a set of fields compatible with and named according to the `videoRecording` type item in Zotero, for use in syncing ESOVDB videos with Zotero\n\n**`youtube`** *(alias `yt`) *- formats each video as a limited set of fields pertaining to a video's online presence.  Meant for use with YouTube-based videos, used by the ESOVDB chrome extension, the ESOVDB iOS shortcut, and various ESOVDB Discord bots to determine if a YouTube video is already in the ESOVDB.  Response fields include: `videoId`, its YouTube video ID, `recordId`, its Airtable record ID, `esovdbId`, its ESOVDB ID, `zoteroKey`, its Zotero Key, and `added`, a timestamp of when the video was added to the ESOVDB in ISO-8601 format.",
+                    "default": ""
+                },
+                {
+                    "name": "maxRecords",
+                    "type": "NUMBER",
+                    "description": "(Integer greater than 1, default=null) Setting `maxRecords` ensures that your `videos/query` response will never return more than `maxRecords` number of items.  As with all requests to the `videos` set of endpoints, the records included in the response are sorted by most recently modified, unless another sort is specified (coming soon).",
+                    "default": "3"
+                },
+                {
+                    "name": "pg",
+                    "type": "NUMBER",
+                    "description": "Return a specific paged result of the query (default `pageSize` is 100, or you can also specify `pageSize` from 1 to 100).",
+                    "default": "1"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "NUMBER",
+                    "description": "(Integer from 1-100, default=100) The ESOVDB is based on Airtable, which paginates the results of querying its data.  So the `pageSize` query parameter will determine the number of each of those records in those pages.  This means a small `pageSize` could make value could make for either a very slow request (if the total returned records is a large number), or a faster request (if the total returned records are smaller than or equal to `pageSize`.  Additionally, `pageSize` can be useful used in concert with the `:pg` URL path parameter\u2014for example, the request path `/videos/query/2?pageSize=50` will return records 51-100, from all of the videos in the ESOVDB, ordered by most recently modified.",
+                    "default": "100"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://the-earth-science-online-video-database.p.rapidapi.com/videos/query/1\"\nquerystring = {\"createdAfter\": \"2021-12-21%2010%3A00%20am%20EST\", \"modifiedAfter\": \"2021-12-21%2010%3A00%20am%20EST\", \"format\": \"\", \"maxRecords\": \"3\", \"pageSize\": \"100\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"the-earth-science-online-video-database.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://the-earth-science-online-video-database.p.rapidapi.com/videos/query/{pg}\"\nquerystring = {\"createdAfter\": \"2021-12-21%2010%3A00%20am%20EST\", \"modifiedAfter\": \"2021-12-21%2010%3A00%20am%20EST\", \"format\": \"\", \"maxRecords\": \"3\", \"pageSize\": \"100\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"the-earth-science-online-video-database.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/zotero"
+                        },
+                        {
+                            "$ref": "#/$defs/youtube"
+                        },
+                        {
+                            "$ref": "#/$defs/raw"
+                        },
+                        {
+                            "$ref": "#/$defs/more"
+                        }
+                    ]
+                },
+                "$defs": {
+                    "zotero": {
+                        "type": "object",
+                        "properties": {
+                            "zoteroKey": {
+                                "type": "string"
+                            },
+                            "zoteroVersion": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "zoteroSeries": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "url": {
+                                "type": "string"
+                            },
+                            "year": {
+                                "type": "integer",
+                                "minimum": 1900
+                            },
+                            "desc": {
+                                "type": "string"
+                            },
+                            "runningTime": {
+                                "type": "string"
+                            },
+                            "format": {
+                                "type": "string"
+                            },
+                            "topic": {
+                                "type": "string"
+                            },
+                            "series": {
+                                "type": "string"
+                            },
+                            "seriesCount": {
+                                "type": "string"
+                            },
+                            "vol": {
+                                "type": "string"
+                            },
+                            "no": {
+                                "type": "string"
+                            },
+                            "publisher": {
+                                "type": "string"
+                            },
+                            "presenters": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "firstName": {
+                                            "type": "string"
+                                        },
+                                        "lastName": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "language": {
+                                "type": "string"
+                            },
+                            "location": {
+                                "type": "string"
+                            },
+                            "plusCode": {
+                                "type": "string"
+                            },
+                            "provider": {
+                                "type": "string"
+                            },
+                            "esovdbId": {
+                                "type": "string"
+                            },
+                            "recordId": {
+                                "type": "string"
+                            },
+                            "accessDate": {
+                                "type": "string"
+                            },
+                            "created": {
+                                "type": "string"
+                            },
+                            "modified": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "youtube": {
+                        "type": "object",
+                        "properties": {
+                            "videoId": {
+                                "type": "string"
+                            },
+                            "recordId": {
+                                "type": "string"
+                            },
+                            "esovdbId": {
+                                "type": "string"
+                            },
+                            "zoteroKey": {
+                                "type": "string"
+                            },
+                            "added": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "raw": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "Title": {
+                                "type": "string"
+                            },
+                            "URL": {
+                                "type": "string"
+                            },
+                            "Description": {
+                                "type": "string"
+                            },
+                            "Series": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Publisher": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Year": {
+                                "type": "integer"
+                            },
+                            "Running Time": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "Rating": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 5
+                            },
+                            "No": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "Format": {
+                                "type": "string"
+                            },
+                            "Medium": {
+                                "type": "string"
+                            },
+                            "Presenter(s)": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Language": {
+                                "type": "string"
+                            },
+                            "Level/Audience": {
+                                "type": "string"
+                            },
+                            "Status": {
+                                "type": "string"
+                            },
+                            "Topic": {
+                                "type": "string"
+                            },
+                            "Topic Link": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Geocoding": {
+                                "type": "string"
+                            },
+                            "Marker Color": {
+                                "type": "string"
+                            },
+                            "ID": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "YouTube Video ID": {
+                                "type": "string"
+                            },
+                            "YouTube Thumbnail": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "id",
+                                        "width",
+                                        "height",
+                                        "url",
+                                        "filename",
+                                        "size",
+                                        "type",
+                                        "thumbnails"
+                                    ],
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "width": {
+                                            "type": "integer",
+                                            "minimum": 0
+                                        },
+                                        "height": {
+                                            "type": "integer",
+                                            "minimum": 0
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "filename": {
+                                            "type": "string"
+                                        },
+                                        "size": {
+                                            "type": "integer",
+                                            "minimum": 0
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "thumbnails": {
+                                            "type": "object",
+                                            "required": [
+                                                "small",
+                                                "large",
+                                                "full"
+                                            ],
+                                            "properties": {
+                                                "small": {
+                                                    "type": "object",
+                                                    "required": [
+                                                        "url",
+                                                        "width",
+                                                        "height"
+                                                    ],
+                                                    "properties": {
+                                                        "url": {
+                                                            "type": "string"
+                                                        },
+                                                        "width": {
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        },
+                                                        "height": {
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        }
+                                                    }
+                                                },
+                                                "large": {
+                                                    "type": "object",
+                                                    "required": [
+                                                        "url",
+                                                        "width",
+                                                        "height"
+                                                    ],
+                                                    "properties": {
+                                                        "url": {
+                                                            "type": "string"
+                                                        },
+                                                        "width": {
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        },
+                                                        "height": {
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        }
+                                                    }
+                                                },
+                                                "full": {
+                                                    "type": "object",
+                                                    "required": [
+                                                        "url",
+                                                        "width",
+                                                        "height"
+                                                    ],
+                                                    "properties": {
+                                                        "url": {
+                                                            "type": "string"
+                                                        },
+                                                        "width": {
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        },
+                                                        "height": {
+                                                            "type": "integer",
+                                                            "minimum": 0
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "Zotero Key": {
+                                "type": "string"
+                            },
+                            "Zotero Version": {
+                                "type": "integer",
+                                "minumum": 0
+                            },
+                            "HTML Link": {
+                                "type": "string"
+                            },
+                            "Reddit/Markdown Link": {
+                                "type": "string"
+                            },
+                            "Series URL": {
+                                "type": "array",
+                                "items": {
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "YouTube Thumbnail URL": {
+                                "type": "string"
+                            },
+                            "No. Formatted": {
+                                "type": "string"
+                            },
+                            "Date Added": {
+                                "type": "string"
+                            },
+                            "Video Provider": {
+                                "type": "string"
+                            },
+                            "Watch Video": {
+                                "type": "object",
+                                "required": [
+                                    "label",
+                                    "url"
+                                ],
+                                "properties": {
+                                    "label": {
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "View on Map": {
+                                "type": "object",
+                                "required": [
+                                    "label",
+                                    "url"
+                                ],
+                                "properties": {
+                                    "label": {
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "Presenter First Name": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Presenter Last Name": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "ISO Added": {
+                                "type": "string"
+                            },
+                            "Publisher Code": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Code": {
+                                "type": "string"
+                            },
+                            "ESOVDBID": {
+                                "type": "string"
+                            },
+                            "Language Code": {
+                                "type": "string"
+                            },
+                            "Publisher Text": {
+                                "type": "string"
+                            },
+                            "Series Text": {
+                                "type": "string"
+                            },
+                            "Year Sort": {
+                                "type": "integer",
+                                "minimum": 1900
+                            },
+                            "Vol & No": {
+                                "type": "string"
+                            },
+                            "Record ID": {
+                                "type": "string"
+                            },
+                            "Series Count": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer"
+                                }
+                            },
+                            "Series Count Text": {
+                                "type": "string"
+                            },
+                            "Modified": {
+                                "type": "string"
+                            },
+                            "Created": {
+                                "type": "string"
+                            },
+                            "Presenter(s) Text": {
+                                "type": "string"
+                            },
+                            "Publisher Sort": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Series Sort": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Series Zotero Key Lookup": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Series Zotero Key": {
+                                "type": "string"
+                            },
+                            "Topic Zotero Key Lookup": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Topic Zotero Key": {
+                                "type": "string"
+                            },
+                            "Delete Record": {
+                                "type": "object",
+                                "required": [
+                                    "label",
+                                    "url"
+                                ],
+                                "properties": {
+                                    "label": {
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                }
+                            },
+                            "Presenter Formatted": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "Status Text": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "more": {
+                        "type": "object",
+                        "properties": {
+                            "...": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

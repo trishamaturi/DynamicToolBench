@@ -1,0 +1,1160 @@
+{
+    "product_id": "api_f494b281-3eef-4019-a21a-aa0d06a1b53f",
+    "tool_description": "Elevate your application with our RealTime Booking.com API, the market's fastest route to live accommodation data. This robust API grants immediate access to a world of listings, prices, and availability, ensuring your service offers the latest information with unmatched reliability. Perfect for travel platforms and apps seeking to enhance user experience with real-time booking features. Get started now and stay ahead in the dynamic world of travel!",
+    "home_url": "https://rapidapi.com/LnTtechnologies/api/booking-com-api3/",
+    "name": "BOOKING COM API",
+    "title": "BOOKING COM API",
+    "pricing": "FREEMIUM",
+    "tool_name": "BOOKING COM API",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 17,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.4,
+        "__typename": "Score"
+    },
+    "host": "booking-com-api3.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "hotelAvailability",
+            "url": "https://booking-com-api3.p.rapidapi.com/booking/hotelAvailability",
+            "description": "This endpoint returns the cheapest available room for each hotel matching your check-in and check-out dates. You can search for hotels in a city, or for a specific list of (upto 300) hotels by hotel_ids. Here you will find whether the price included breakfast or other meals, as well as whether it is possible to cancel for free. It is possible to have a breakdown of the price returned by this endpoint and to filter by property types and/or hotel facilities.\n\nAdditional information available (via extras parameter) are:\n * add_cheapest_breakfast_rate: ** DEPRECATED ** Please use `add_filtered_rate=breakfast` instead from v2.7+ *Deprecated in version 2.7.*\n * block_payment_options: Gives access to the payment options information for the block. Requires room_details extras option *Added in version 2.9.*\n * hotel_amenities: Show amenities provided by hotel\n * hotel_details: Show extra hotel details\n * payment_terms: Show payment terms like prepay or cancellation for the room\n * room_amenities: Show amenities in the room\n * room_details: Show extra room details\n * room_policies: Show policies for the room\n * sustainability: ** PILOT MODE ** Gives access to hotel sustainability program information. Requires hotel_details extras option *Added in version 2.9.*\n\n\nAvailable options to filter the output (via options parameter) are:\n * is_24hr: Only show hotels that have a reception that's open 24 hours/day\n * no_cc_filter: Filter to show only no_cc properties in the response. *Added in version 2.1.*\n * no_dorms: Do not show dormitory beds or rooms, or hotels that only have such rooms\n * show_test: This is used when debugging or when you are initially setting up your integration. A test hotel can be used to test all of our endpoints including making a booking",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "Returns the price in this currency",
+                    "default": ""
+                },
+                {
+                    "name": "hotel_facility_type_ids",
+                    "type": "STRING",
+                    "description": "Limit the results to hotels that have all provided hotel facility types. Check the values returned by `hotelFacilityTypes.hotel_facility_type_id` for the full list of valid ids.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "filter",
+                    "type": "STRING",
+                    "description": "Limit the result list to the items satisfying the specified rules",
+                    "default": "<string>,<string>"
+                },
+                {
+                    "name": "rows",
+                    "type": "STRING",
+                    "description": "The maximum number of rows to return. NOTE: this needs to be a multiple of 100, the default number returned is 1000. When requesting 1000, there can be less than 1000 rows returned, but this does not mean the end of the resultset, instead you should keep paginating by increasing the offset by 1000 until you get a page with 0 results - that is what signifies the end.",
+                    "default": "<integer>"
+                },
+                {
+                    "name": "guest_country",
+                    "type": "STRING",
+                    "description": "(Required) Guest country code. NOTE: after version 2.6 this is now a REQUIRED parameter. Used to accurately display the best prices and price details for people from that country.",
+                    "default": "<string>"
+                },
+                {
+                    "name": "guest_ip",
+                    "type": "STRING",
+                    "description": "Guest IP address Used to accurately display the best prices and price details for people from that country. (same behaviour as guest_country, but we detect where we think that IP address is from)",
+                    "default": "<string>"
+                },
+                {
+                    "name": "min_price",
+                    "type": "STRING",
+                    "description": "Show only hotels having price higher than or equal to this value in the currency specified. Prices slightly below the criterion may be returned due to currency conversion adjustments.",
+                    "default": "<integer>"
+                },
+                {
+                    "name": "mealplan",
+                    "type": "STRING",
+                    "description": "Only show blocks with the selected meal plan",
+                    "default": "<string>"
+                },
+                {
+                    "name": "district_ids",
+                    "type": "STRING",
+                    "description": "(Required) Limit the result list to the specified districts. You can get the list of district_ids from districts.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "Show the results in this language. Note: only some cities are translated. Please check the \\\"Possible Values\\\" section of the documentation for the accepted language codes.",
+                    "default": "en"
+                },
+                {
+                    "name": "user_platform",
+                    "type": "STRING",
+                    "description": "The user's platform. (desktop, mobile, mobile-app)",
+                    "default": "desktop"
+                },
+                {
+                    "name": "options",
+                    "type": "STRING",
+                    "description": "The options for this request. See the documentation for more details about each option.",
+                    "default": ""
+                },
+                {
+                    "name": "extras",
+                    "type": "STRING",
+                    "description": "The extra items for this request. See the documentation for more details about each extra.",
+                    "default": "<string>,<string>"
+                },
+                {
+                    "name": "order_by",
+                    "type": "STRING",
+                    "description": "The way to order your results. (distance, popularity, price, ranking, review_score, stars). NOTE: When ordering by distance please make sure to specify latitude and longitude!",
+                    "default": "ranking"
+                },
+                {
+                    "name": "checkout",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "(Required) The departure date. Must be later than {checkin}. Must be between 1 and 30 days after {checkin}. Must be within 500 days in the future and in the format yyyy-mm-dd.",
+                    "default": ""
+                },
+                {
+                    "name": "region_ids",
+                    "type": "NUMBER",
+                    "description": "(Required) Limit the result list to the specified regions. You can get the list of region_ids form regions.",
+                    "default": ""
+                },
+                {
+                    "name": "city_ids",
+                    "type": "NUMBER",
+                    "description": "(Required) Limit the result list to the specified cities. You can get the list of city_ids from cities.",
+                    "default": ""
+                },
+                {
+                    "name": "max_price",
+                    "type": "NUMBER",
+                    "description": "Show only hotels having price lower than or equal to this value in the currency specified. Prices slightly above the criterion may be returned due to currency conversion adjustments.",
+                    "default": ""
+                },
+                {
+                    "name": "room2",
+                    "type": "STRING",
+                    "description": "Which guests to put in this room. Similar parameters available for up to 30 rooms - room3..room30. See \\\"room1\\\" param for detailed description",
+                    "default": ""
+                },
+                {
+                    "name": "room1",
+                    "type": "STRING",
+                    "description": "(Required) A comma separated array of guests to stay in this room where \\\"A\\\" represents an adult and an integer represents a child. eg room1=A,A,4 would be a room with 2 adults and 1 four year-old child. Child age numbers are 0..17.",
+                    "default": ""
+                },
+                {
+                    "name": "property_type",
+                    "type": "NUMBER",
+                    "description": "Limit the results to these property types",
+                    "default": ""
+                },
+                {
+                    "name": "room_facility_type_ids",
+                    "type": "NUMBER",
+                    "description": "Limit the results to hotels that have all provided room facility types. Check the values returned by `roomFacilityTypes.room_facility_type_id` for the full list of valid ids.",
+                    "default": ""
+                },
+                {
+                    "name": "stars",
+                    "type": "NUMBER",
+                    "description": "Limit to hotels with the given number(s) of stars. (1-5)",
+                    "default": ""
+                },
+                {
+                    "name": "add_filtered_rate",
+                    "type": "STRING",
+                    "description": "For each hotel add a separate rate field with those filters applied",
+                    "default": ""
+                },
+                {
+                    "name": "checkin",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "(Required) The arrival date. Must be within 500 days in the future and in the format yyyy-mm-dd.",
+                    "default": ""
+                },
+                {
+                    "name": "countries",
+                    "type": "STRING",
+                    "description": "Limit the result list to these countries, ISO alpha2 ",
+                    "default": ""
+                },
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "(Required) Specify a latitude (as well as a longitude and radius) to do searches around a specific location.",
+                    "default": ""
+                },
+                {
+                    "name": "affiliate_id",
+                    "type": "NUMBER",
+                    "description": "Application affiliate id that you wish this request to be tracked against.",
+                    "default": ""
+                },
+                {
+                    "name": "order_dir",
+                    "type": "STRING",
+                    "description": "The direction you wish for your order_by parameter to be ordered in. Possible values are order_dir=asc for ascending or order_dir=desc for descending",
+                    "default": ""
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "The number of rows to offset the results by. NOTE: this needs to be 0 or a multiple of 100. Eg. rows=1000&offset=0 will be first 1000 results. rows=1000&offset=1000 will be the next 1000. You should continue to increment the offset to paginate, and you should use the value of rows as the number you increase by each time.",
+                    "default": ""
+                },
+                {
+                    "name": "no_rooms",
+                    "type": "STRING",
+                    "description": "The only group will be split in the given number of rooms automatically",
+                    "default": ""
+                },
+                {
+                    "name": "airport",
+                    "type": "STRING",
+                    "description": "Limit the result list to surroundings of specified airport IATA code.",
+                    "default": ""
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "(Required) Specify a longitude (as well as a latitude and radius) to do searches around a specific location.",
+                    "default": ""
+                },
+                {
+                    "name": "min_review_score",
+                    "type": "NUMBER",
+                    "description": "Show only hotels with review_score >= that. min_review_score should be in the range 1 to 10. Values are rounded down: min_review_score 7.8 will result in properties with review scores of 7 and up.",
+                    "default": ""
+                },
+                {
+                    "name": "show_only_deals",
+                    "type": "STRING",
+                    "description": "Only show rates that are deals of given types",
+                    "default": "<string>,<string>"
+                },
+                {
+                    "name": "radius",
+                    "type": "STRING",
+                    "description": "The radius in Km to search around the specified latitude and longitude. The minimum value (and the default) is 15 and the maximum is 100.",
+                    "default": "<double>"
+                },
+                {
+                    "name": "hotel_ids",
+                    "type": "STRING",
+                    "description": "(Required) Limit the result list to up to 1000 specified hotels where they have availability for the specified guests and dates.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "landmark_ids",
+                    "type": "STRING",
+                    "description": "(Required) Limit the result list to surroundings of specified landmark",
+                    "default": "<integer>,<integer>"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/hotelAvailability\"\nquerystring = {\"currency\": \"\", \"hotel_facility_type_ids\": \"<integer>,<integer>\", \"filter\": \"<string>,<string>\", \"rows\": \"<integer>\", \"guest_country\": \"<string>\", \"guest_ip\": \"<string>\", \"min_price\": \"<integer>\", \"mealplan\": \"<string>\", \"district_ids\": \"<integer>,<integer>\", \"language\": \"en\", \"user_platform\": \"desktop\", \"options\": \"\", \"extras\": \"<string>,<string>\", \"order_by\": \"ranking\", \"checkout\": \"\", \"region_ids\": \"\", \"city_ids\": \"\", \"max_price\": \"\", \"room2\": \"\", \"room1\": \"\", \"property_type\": \"\", \"room_facility_type_ids\": \"\", \"stars\": \"\", \"add_filtered_rate\": \"\", \"checkin\": \"\", \"countries\": \"\", \"latitude\": \"\", \"affiliate_id\": \"\", \"order_dir\": \"\", \"offset\": \"\", \"no_rooms\": \"\", \"airport\": \"\", \"longitude\": \"\", \"min_review_score\": \"\", \"show_only_deals\": \"<string>,<string>\", \"radius\": \"<double>\", \"hotel_ids\": \"<integer>,<integer>\", \"landmark_ids\": \"<integer>,<integer>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/hotelAvailability\"\nquerystring = {\"currency\": \"\", \"hotel_facility_type_ids\": \"<integer>,<integer>\", \"filter\": \"<string>,<string>\", \"rows\": \"<integer>\", \"guest_country\": \"<string>\", \"guest_ip\": \"<string>\", \"min_price\": \"<integer>\", \"mealplan\": \"<string>\", \"district_ids\": \"<integer>,<integer>\", \"language\": \"en\", \"user_platform\": \"desktop\", \"options\": \"\", \"extras\": \"<string>,<string>\", \"order_by\": \"ranking\", \"checkout\": \"\", \"region_ids\": \"\", \"city_ids\": \"\", \"max_price\": \"\", \"room2\": \"\", \"room1\": \"\", \"property_type\": \"\", \"room_facility_type_ids\": \"\", \"stars\": \"\", \"add_filtered_rate\": \"\", \"checkin\": \"\", \"countries\": \"\", \"latitude\": \"\", \"affiliate_id\": \"\", \"order_dir\": \"\", \"offset\": \"\", \"no_rooms\": \"\", \"airport\": \"\", \"longitude\": \"\", \"min_review_score\": \"\", \"show_only_deals\": \"<string>,<string>\", \"radius\": \"<double>\", \"hotel_ids\": \"<integer>,<integer>\", \"landmark_ids\": \"<integer>,<integer>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object"
+            }
+        },
+        {
+            "name": "facilityTypes",
+            "url": "https://booking-com-api3.p.rapidapi.com/booking/facilityTypes",
+            "description": "Returns facility types names and their translations.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "languages",
+                    "type": "STRING",
+                    "description": "Limit the results to these languages. Please check the \\\"Possible Values\\\" section of the documentation for the accepted language codes.",
+                    "default": "en"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "facility_type_ids",
+                    "type": "NUMBER",
+                    "description": "Limit the results to these facility types.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/facilityTypes\"\nquerystring = {\"languages\": \"en\", \"facility_type_ids\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/facilityTypes\"\nquerystring = {\"languages\": \"en\", \"facility_type_ids\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object"
+            }
+        },
+        {
+            "name": "roomTypes",
+            "url": "https://booking-com-api3.p.rapidapi.com/booking/roomTypes",
+            "description": "Returns room types names and their translations.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "languages",
+                    "type": "STRING",
+                    "description": "Limit the results to these languages. Please check the \"Possible Values\" section of the documentation for the accepted language codes.",
+                    "default": "en"
+                },
+                {
+                    "name": "room_type_ids",
+                    "type": "STRING",
+                    "description": "Limit the results to these room types.",
+                    "default": "<integer>,<integer>"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/roomTypes\"\nquerystring = {\"languages\": \"en\", \"room_type_ids\": \"<integer>,<integer>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/roomTypes\"\nquerystring = {\"languages\": \"en\", \"room_type_ids\": \"<integer>,<integer>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object"
+            }
+        },
+        {
+            "name": "roomFacilityTypes",
+            "url": "https://booking-com-api3.p.rapidapi.com/booking/roomFacilityTypes",
+            "description": "Returns room facility types names and their translations.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "facility_type_ids",
+                    "type": "STRING",
+                    "description": "Limit the results to these facility types.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "languages",
+                    "type": "STRING",
+                    "description": "Limit the results to these languages. Please check the \"Possible Values\" section of the documentation for the accepted language codes.",
+                    "default": "en"
+                },
+                {
+                    "name": "room_facility_type_ids",
+                    "type": "STRING",
+                    "description": "Limit the results to these room facility types.",
+                    "default": "<integer>,<integer>"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/roomFacilityTypes\"\nquerystring = {\"facility_type_ids\": \"<integer>,<integer>\", \"languages\": \"en\", \"room_facility_type_ids\": \"<integer>,<integer>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/roomFacilityTypes\"\nquerystring = {\"facility_type_ids\": \"<integer>,<integer>\", \"languages\": \"en\", \"room_facility_type_ids\": \"<integer>,<integer>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object"
+            }
+        },
+        {
+            "name": "chainTypes",
+            "url": "https://booking-com-api3.p.rapidapi.com/booking/chainTypes",
+            "description": "Returns a list of hotel chains (in English).",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "rows",
+                    "type": "STRING",
+                    "description": "The maximum number of entries to return. This can be used together with {offset} to get the data in parts.",
+                    "default": "<integer>"
+                },
+                {
+                    "name": "chain_ids",
+                    "type": "STRING",
+                    "description": "Limit the results to these chains.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Where in the resulting list to start. This can be used together with {rows} to get the data in parts.",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/chainTypes\"\nquerystring = {\"rows\": \"<integer>\", \"chain_ids\": \"<integer>,<integer>\", \"offset\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/chainTypes\"\nquerystring = {\"rows\": \"<integer>\", \"chain_ids\": \"<integer>,<integer>\", \"offset\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object"
+            }
+        },
+        {
+            "name": "changedHotels",
+            "url": "https://booking-com-api3.p.rapidapi.com/booking/changedHotels",
+            "description": "\nThis call returns all hotel ids which has closed or data has changed since the given timestamp. The results can be filtered by either city_ids, region_ids or countries.\n\nThe hotel data that are tracked for changes enclose:\n\n**hotel_info**\n* Main photo, logo photo, star rating\n* Checkin and checkout time\n* Closed status (also for new hotels), ranking, policy changes, hotel contract with Booking.com, hotel type\n* Name, address, country, city, currency code, zip code, default language, longitude, latitude\n* Page name at Booking.com\n\n**hotel_description**\n* Property license numbers\n* Hotel descriptions (and their translations)\n\n**hotel_facilities**\n* Hotel facilities (and their translations)\n\n**hotel_photos**\n* Hotel photos added or removed\n* Photo tags changed\n\n**room_info**\n* Room type, pricing, bedding, bookable status, ranking\n* Counts of bedrooms / bathrooms\n* Person capacity\n\n**room_description**\n* Apartment license numbers\n* Room descriptions (and their translations)\n\n**room_photos**\n* Room photos added or removed\n* Photo tags changed\n\n**room_facilities**\n* Room specific facilities (and their translations)\n\n**payment_types**\n* Various payment types associated with the hotel\n\nNOTE:The closed hotels can reopen, the hotel_ids for such hotel will reappear in changed hotels list.\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "city_ids",
+                    "type": "STRING",
+                    "description": "City ids to filter the result by.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "region_ids",
+                    "type": "STRING",
+                    "description": "Region ids to filter the result by.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "last_change",
+                    "type": "STRING",
+                    "description": "(Required) Timestamp by which to slice the results. Ids of all hotels whose data changed since this timestamp will be returned by the call. Other optional filters also apply. There is a limit to this timestamp to two days in the past. If requested timestamp is older than two days, a user error will be returned. The timestamp is in Amsterdam time zone (CET).",
+                    "default": "<string>"
+                },
+                {
+                    "name": "countries",
+                    "type": "STRING",
+                    "description": "Country codes to filter the result by.",
+                    "default": "<string>,<string>"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/changedHotels\"\nquerystring = {\"city_ids\": \"<integer>,<integer>\", \"region_ids\": \"<integer>,<integer>\", \"last_change\": \"<string>\", \"countries\": \"<string>,<string>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/changedHotels\"\nquerystring = {\"city_ids\": \"<integer>,<integer>\", \"region_ids\": \"<integer>,<integer>\", \"last_change\": \"<string>\", \"countries\": \"<string>,<string>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object"
+            }
+        },
+        {
+            "name": "paymentTypes",
+            "url": "https://booking-com-api3.p.rapidapi.com/booking/paymentTypes",
+            "description": "Returns a list of payments (in English). Only payments with {bookable} set to 1, can be used in processBooking. For processBooking, we always support Visa, Mastercard and American Express.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "payment_ids",
+                    "type": "STRING",
+                    "description": "Limit the results to these payments.",
+                    "default": "<integer>,<integer>"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/paymentTypes\"\nquerystring = {\"payment_ids\": \"<integer>,<integer>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/paymentTypes\"\nquerystring = {\"payment_ids\": \"<integer>,<integer>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object"
+            }
+        },
+        {
+            "name": "reviews",
+            "url": "https://booking-com-api3.p.rapidapi.com/booking/reviews",
+            "description": "\nReturns reviews for specified hotel_ids and filters. Available filters are country, reviewers' type, language of the review, lower and upper bound of the review score, and timestamp of the last change to the review. The 'last_change' output field will only be displayed if the last_change=... input parameter is set.\n\n\nAdditional information available (via extras parameter) are:\n * review_score_word: This will render score of a review to its description, localized to the language passed via language=... (default: 'en').\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "hotel_ids",
+                    "type": "STRING",
+                    "description": "(Required) List of hotel ids for which reviews should be displayed.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "headline_word_count",
+                    "type": "NUMBER",
+                    "description": "Truncates the headline to the given number of words. The default value is 5 words. If the headline was trimmed, it will have \"...\" appended to it. If this input parameter is equal to zero, then no truncation will be done.",
+                    "default": "5"
+                },
+                {
+                    "name": "affiliate_id",
+                    "type": "STRING",
+                    "description": "May be used to specify the affiliate_id that should be used instead of the default one.",
+                    "default": "<integer>"
+                },
+                {
+                    "name": "score_upper_bound",
+                    "type": "NUMBER",
+                    "description": "Limits the reviews to those having score lesser or equal to this value. Possible values are real numbers in range [1 - 10].",
+                    "default": "10"
+                },
+                {
+                    "name": "last_change",
+                    "type": "STRING",
+                    "description": "Limits the reviews to those changed after the given timestamp.",
+                    "default": "<string>"
+                },
+                {
+                    "name": "extras",
+                    "type": "STRING",
+                    "description": "Specify here what extra items of the result should be included. See the endpoint description for more detailed information about each extra.",
+                    "default": "<string>,<string>"
+                },
+                {
+                    "name": "reviewer_type",
+                    "type": "STRING",
+                    "description": "Limits reviews to those written by specific reviewer type.",
+                    "default": "<string>"
+                },
+                {
+                    "name": "character_count",
+                    "type": "NUMBER",
+                    "description": "Truncates the cons/pros from the review to the given number of characters. The default value is 200 characters. If cons or pros are trimmed, they will have \"...\" appended to them. If this input parameter is equal to zero, then no truncation will be done.",
+                    "default": "200"
+                },
+                {
+                    "name": "score_lower_bound",
+                    "type": "NUMBER",
+                    "description": "Limits the reviews to those having score greater or equal to this value. Possible values are real numbers in range [1 - 10].",
+                    "default": "1"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "Limits reviews to those written in this language (default: 'en'). Also sets the language of extras=review_score_word. Please check the \"Possible Values\" section of the documentation for the accepted language codes. ",
+                    "default": "en"
+                },
+                {
+                    "name": "rows",
+                    "type": "NUMBER",
+                    "description": "The maximum number of rows to return. NOTE: this needs to be a multiple of 100.",
+                    "default": "10"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Limits reviews to those written by bookers from the given country.",
+                    "default": "<string>"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "The number of rows to offset the results by. NOTE: this needs to be 0 or a multiple of 100.",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/reviews\"\nquerystring = {\"hotel_ids\": \"<integer>,<integer>\", \"headline_word_count\": \"5\", \"affiliate_id\": \"<integer>\", \"score_upper_bound\": \"10\", \"last_change\": \"<string>\", \"extras\": \"<string>,<string>\", \"reviewer_type\": \"<string>\", \"character_count\": \"200\", \"score_lower_bound\": \"1\", \"language\": \"en\", \"rows\": \"10\", \"country\": \"<string>\", \"offset\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/reviews\"\nquerystring = {\"hotel_ids\": \"<integer>,<integer>\", \"headline_word_count\": \"5\", \"affiliate_id\": \"<integer>\", \"score_upper_bound\": \"10\", \"last_change\": \"<string>\", \"extras\": \"<string>,<string>\", \"reviewer_type\": \"<string>\", \"character_count\": \"200\", \"score_lower_bound\": \"1\", \"language\": \"en\", \"rows\": \"10\", \"country\": \"<string>\", \"offset\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object"
+            }
+        },
+        {
+            "name": "blockAvailability",
+            "url": "https://booking-com-api3.p.rapidapi.com/booking/blockAvailability",
+            "description": "\nThis endpoint is where you find a list of all bookable or available rooms at a property. A room can have multiple blocks, as a block is a combination of the meal, cancellation policy, occupancy and other things. You can find detailed information about one hotel per search (detail_level) which will return most of the information needed to replicate the booking.com property page. If you want to search multiple hotels, you can, but you get less detail. For searching multiple hotels, it is recommended to use hotelAvailability.)\n\nAdditional information available (via extras parameter) are:\n * additional_room_info: Show the room size and bedding info in the result\n * addon_type: Show the addon type in the addons records, if returned\n * addons: Show addon information for blocks\n * address_required: Show an indication per hotel if the user needs to enter his address in order to book an hotel\n * all_extra_charges: Show all extra charges, even if not computable. If not computable, do not show the total amount, but include all the other details\n * all_prices: Show total incremental price with split pricing, when split pricing is activated\n * block_payment_options: Shows payment options for each block. *Added in version 2.9.*\n * cancellation_info: Show detailed cancellation timeline for each block, including fees and datetimes\n * cc_required: Show cc_required field for hotels\n * deal_flash: Show flash deals to partners\n * deal_lastm: Show lastm deals to partners\n * deal_smart: Show smart deals to partners\n * extra_beds: Show extra beds in group recommendations\n * extra_charges: Show breakdown of extra charges for each block\n * facilities: Show facilities\n * group_recommendations: Show recommendations for group bookers\n * if_domestic_no_cc: Show indication if the hotel qualifies for domestic no credit card\n * if_no_cc_allowed: Show indication if the hotel qualifies for no credit card reservation\n * important_information: Show important information\n * internet: Show internet/wifi availability\n * max_children_free: Shows the maximum number of children allowed for free\n * max_children_free_age: Shows the age limit used for deciding whether children stay for free in a room. -1 is returned when children can not stay for free.\n * max_rooms_in_reservation: Show max number of rooms in one reservation\n * mealplans: Show half-board, full-board and all inclusive mealplan information in the output\n * net_price: Show net_price in extra charges\n * number_of_rooms_left: Show the number of rooms left\n * payment_terms: Show the payment terms name and the description for cancellation and prepay terms.\n * photos: Show 1 room photo even if detail_level=0\n * policies: Show policies\n * postcard_photo: Show url for postcard photo only if high resolution photo for this format is available, otherwise skip it (requires detail_level=1 or extras=photos)\n * prepayment_info: Show prepayment timeline, including fees and datetime, for each block.\n * rack_rates: Show rack rates in the output. Using this parameter may significantly affect performance\n * room_type_id: Show room type id\n * show_conditional_charges: Shows conditional charges in extra charge breakdown. *Added in version 2.9.*\n * smoking_status: Show the no-smoking bit in the results per block. Possible values are: 0 - \"unknown\", 1 - \"smoking\" or 2 - \"non-smoking\"\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "room1",
+                    "type": "STRING",
+                    "description": "Which guests to put in which rooms. Syntax: comma-separated list, A for each adult, a number in the range 0..17 for each child.If you use this parameter,then you should add `guest_quantities` to processBooking call, otherwise per-person included charges may cause pricing problems, causing the booking to fail. NOTE: After version 2.6 either this or `guest_qty` needs to be provided.",
+                    "default": "<string>,<string>"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "Returns the prices in this currency, in addition to the hotel currency",
+                    "default": "<string>"
+                },
+                {
+                    "name": "is_24hr",
+                    "type": "NUMBER",
+                    "description": "If set to 1, then require all matching hotels to have 24-hour front desks.",
+                    "default": "0"
+                },
+                {
+                    "name": "show_test",
+                    "type": "NUMBER",
+                    "description": "Show blocks from test hotels (useful for debugging).",
+                    "default": "0"
+                },
+                {
+                    "name": "checkin",
+                    "type": "STRING",
+                    "description": "(Required) The arrival date. Must be within 500 days in the future and in the format yyyy-mm-dd.",
+                    "default": "<date>"
+                },
+                {
+                    "name": "show_only_test",
+                    "type": "NUMBER",
+                    "description": "Show blocks from only test hotels (useful for debugging).",
+                    "default": "0"
+                },
+                {
+                    "name": "options",
+                    "type": "STRING",
+                    "description": "The options for this request. See the documentation for more details about each option.",
+                    "default": "<string>,<string>"
+                },
+                {
+                    "name": "num_rooms",
+                    "type": "STRING",
+                    "description": "Takes a number of rooms to put guests into",
+                    "default": "<integer>"
+                },
+                {
+                    "name": "units",
+                    "type": "STRING",
+                    "description": "Preferred System of Measurement.",
+                    "default": "metric"
+                },
+                {
+                    "name": "allow_past",
+                    "type": "NUMBER",
+                    "description": "Allow the search to work for dates of yesterday when you are searching for after midnight. This works until 2am in the timezone of the hotel.",
+                    "default": "0"
+                },
+                {
+                    "name": "user_platform",
+                    "type": "STRING",
+                    "description": "The user's platform. (desktop, mobile, mobile-app)",
+                    "default": "desktop"
+                },
+                {
+                    "name": "guest_qty",
+                    "type": "STRING",
+                    "description": "Number of guests for which blocks will be found. The total number of guests is used for calculating city tax charges. It is specified as an array of guest numbers. If you use this parameter and make bookings through the API, you should also set the exact same value in the guest_quantities parameter for the processBooking call, otherwise per-person included charges may result in pricing problems, causing the booking to fail.  NOTE: After version 2.6 either this or `room1` needs to be provided.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "checkout",
+                    "type": "STRING",
+                    "description": "(Required) The departure date. Must be later than {checkin}. Must be between 1 and 30 days after {checkin}. Must be within 500 days in the future and in the format yyyy-mm-dd.",
+                    "default": "<date>"
+                },
+                {
+                    "name": "affiliate_id",
+                    "type": "STRING",
+                    "description": "Application affiliate id",
+                    "default": "<integer>"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "Specify the language for: block_id, policies, room texts and hotel descriptions. Note: not all text is translated in all languages. Please check the \"Possible Values\" section of the documentation for the accepted language codes.",
+                    "default": "en"
+                },
+                {
+                    "name": "extras",
+                    "type": "STRING",
+                    "description": "The extra items for this request. See the documentation for more details about each extra.",
+                    "default": "<string>,<string>"
+                },
+                {
+                    "name": "hotel_ids",
+                    "type": "STRING",
+                    "description": "(Required) Hotel IDs. The maximum number of ids allowed can be adjusted uppon request up to a maximum of 1000. Defaults to 1.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "limit_incremental_prices",
+                    "type": "STRING",
+                    "description": "Limit the number of incremental prices returned per block. Added for meta partners that only need the first one.",
+                    "default": "<integer>"
+                },
+                {
+                    "name": "https_photos",
+                    "type": "NUMBER",
+                    "description": "Return requested photo URLs with the HTTPS protocol.",
+                    "default": "0"
+                },
+                {
+                    "name": "block_ids",
+                    "type": "STRING",
+                    "description": "Return only availability hits with these particular block IDs",
+                    "default": "<string>,<string>"
+                },
+                {
+                    "name": "guest_ip",
+                    "type": "STRING",
+                    "description": "Guest IP address for determining guest country and showing the best price for that user and obeying laws regarding the display of taxes and fees.",
+                    "default": "<string>"
+                },
+                {
+                    "name": "detail_level",
+                    "type": "NUMBER",
+                    "description": "Block's information detail level. If set to 1 returns policy, photos and texts information per block. This parameter cannot be set to 1 if hotel_ids is greater than 1. Please note that from v2.6 this parameter validates as integer enforcing that only numeric values will be accepted.",
+                    "default": "0"
+                },
+                {
+                    "name": "guest_cc",
+                    "type": "STRING",
+                    "description": "(Required) Guest country code. NOTE: after version 2.6 this is now a REQUIRED parameter. Prices will be adjusted, according to the country laws regarding the display of taxes and fees.",
+                    "default": "<string>"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/blockAvailability\"\nquerystring = {\"room1\": \"<string>,<string>\", \"currency\": \"<string>\", \"is_24hr\": \"0\", \"show_test\": \"0\", \"checkin\": \"<date>\", \"show_only_test\": \"0\", \"options\": \"<string>,<string>\", \"num_rooms\": \"<integer>\", \"units\": \"metric\", \"allow_past\": \"0\", \"user_platform\": \"desktop\", \"guest_qty\": \"<integer>,<integer>\", \"checkout\": \"<date>\", \"affiliate_id\": \"<integer>\", \"language\": \"en\", \"extras\": \"<string>,<string>\", \"hotel_ids\": \"<integer>,<integer>\", \"limit_incremental_prices\": \"<integer>\", \"https_photos\": \"0\", \"block_ids\": \"<string>,<string>\", \"guest_ip\": \"<string>\", \"detail_level\": \"0\", \"guest_cc\": \"<string>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/blockAvailability\"\nquerystring = {\"room1\": \"<string>,<string>\", \"currency\": \"<string>\", \"is_24hr\": \"0\", \"show_test\": \"0\", \"checkin\": \"<date>\", \"show_only_test\": \"0\", \"options\": \"<string>,<string>\", \"num_rooms\": \"<integer>\", \"units\": \"metric\", \"allow_past\": \"0\", \"user_platform\": \"desktop\", \"guest_qty\": \"<integer>,<integer>\", \"checkout\": \"<date>\", \"affiliate_id\": \"<integer>\", \"language\": \"en\", \"extras\": \"<string>,<string>\", \"hotel_ids\": \"<integer>,<integer>\", \"limit_incremental_prices\": \"<integer>\", \"https_photos\": \"0\", \"block_ids\": \"<string>,<string>\", \"guest_ip\": \"<string>\", \"detail_level\": \"0\", \"guest_cc\": \"<string>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object"
+            }
+        },
+        {
+            "name": "districts",
+            "url": "https://booking-com-api3.p.rapidapi.com/booking/districts",
+            "description": "Returns all the districts where Booking.com offers hotels.\n\nAdditional information available (via extras parameter) are:\n * location: Latitude and longitude\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "district_types",
+                    "type": "STRING",
+                    "description": "Limit the type of districts.",
+                    "default": "official,free"
+                },
+                {
+                    "name": "rows",
+                    "type": "NUMBER",
+                    "description": "The maximum number of rows to return. NOTE: this needs to be a multiple of 100.",
+                    "default": "1000"
+                },
+                {
+                    "name": "countries",
+                    "type": "STRING",
+                    "description": "Limit the results to these countries.",
+                    "default": "<string>,<string>"
+                },
+                {
+                    "name": "city_ids",
+                    "type": "STRING",
+                    "description": "Limit the results to these cities.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "The number of rows to offset the results by. NOTE: this needs to be 0 or a multiple of 100.",
+                    "default": "0"
+                },
+                {
+                    "name": "languages",
+                    "type": "STRING",
+                    "description": "Show translations for these languages. Note: translations are not available for all the languages. Please check the \"Possible Values\" section of the documentation for the accepted language codes.",
+                    "default": "en"
+                },
+                {
+                    "name": "extras",
+                    "type": "STRING",
+                    "description": "Returns extra results.",
+                    "default": "<string>,<string>"
+                },
+                {
+                    "name": "district_ids",
+                    "type": "STRING",
+                    "description": "Limit the results to these districts.",
+                    "default": "<integer>,<integer>"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/districts\"\nquerystring = {\"district_types\": \"official,free\", \"rows\": \"1000\", \"countries\": \"<string>,<string>\", \"city_ids\": \"<integer>,<integer>\", \"offset\": \"0\", \"languages\": \"en\", \"extras\": \"<string>,<string>\", \"district_ids\": \"<integer>,<integer>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/districts\"\nquerystring = {\"district_types\": \"official,free\", \"rows\": \"1000\", \"countries\": \"<string>,<string>\", \"city_ids\": \"<integer>,<integer>\", \"offset\": \"0\", \"languages\": \"en\", \"extras\": \"<string>,<string>\", \"district_ids\": \"<integer>,<integer>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object"
+            }
+        },
+        {
+            "name": "reviewScores",
+            "url": "https://booking-com-api3.p.rapidapi.com/booking/reviewScores",
+            "description": "\nGives information about review scores for specified hotel_ids and filter. The information consists of score breakdown per reviewer_type and review questions, and overall score distribution per score value (1 - 10).\n\nThe available filter is input parameter reviewer_type=... . It allows generating review score information for just one reviewer type.\n\nLanguage in which the response is rendered can be controlled with the input parameter language=... (default: 'en'). Setting the language will reflect on the output fields question and review_score_word.\n\nOne additional output field can be requested with input parameter extras=review_score_word.\n\n\nAdditional information available (via extras parameter) are:\n * review_score_word: This will append interpretation of each score in the score breakdown, localized to the language passed via language=... (default: 'en').\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "extras",
+                    "type": "STRING",
+                    "description": "Specify here what extra items of the result should be included. See the endpoint description for more detailed information about each extra.",
+                    "default": "<string>,<string>"
+                },
+                {
+                    "name": "affiliate_id",
+                    "type": "STRING",
+                    "description": "Can be used to specify the affiliate id that should be used instead of the default one.",
+                    "default": "<integer>"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "Code of the language used to render response. Please check the \"Possible Values\" section of the documentation for the accepted language codes.",
+                    "default": "en"
+                },
+                {
+                    "name": "reviewer_type",
+                    "type": "STRING",
+                    "description": "Limits reviews to those written by specific reviewer type.",
+                    "default": "<string>"
+                },
+                {
+                    "name": "hotel_ids",
+                    "type": "STRING",
+                    "description": "(Required) List of hotel ids for which review score information should be displayed.",
+                    "default": "<integer>,<integer>"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/reviewScores\"\nquerystring = {\"extras\": \"<string>,<string>\", \"affiliate_id\": \"<integer>\", \"language\": \"en\", \"reviewer_type\": \"<string>\", \"hotel_ids\": \"<integer>,<integer>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/reviewScores\"\nquerystring = {\"extras\": \"<string>,<string>\", \"affiliate_id\": \"<integer>\", \"language\": \"en\", \"reviewer_type\": \"<string>\", \"hotel_ids\": \"<integer>,<integer>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object"
+            }
+        },
+        {
+            "name": "countries",
+            "url": "https://booking-com-api3.p.rapidapi.com/booking/countries",
+            "description": "Returns all the countries where booking.com offers hotels.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "countries",
+                    "type": "STRING",
+                    "description": "Limit the result list to the specified country.",
+                    "default": "<string>,<string>"
+                },
+                {
+                    "name": "rows",
+                    "type": "NUMBER",
+                    "description": "The maximum number of rows to return. NOTE: this needs to be a multiple of 100.",
+                    "default": "1000"
+                },
+                {
+                    "name": "languages",
+                    "type": "STRING",
+                    "description": "Show translations for these languages. Note: translations are not available for all the languages. Please check the \"Possible Values\" section of the documentation for the accepted language codes.",
+                    "default": "en"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "The number of rows to offset the results by. NOTE: this needs to be 0 or a multiple of 100.",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/countries\"\nquerystring = {\"countries\": \"<string>,<string>\", \"rows\": \"1000\", \"languages\": \"en\", \"offset\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/countries\"\nquerystring = {\"countries\": \"<string>,<string>\", \"rows\": \"1000\", \"languages\": \"en\", \"offset\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object"
+            }
+        },
+        {
+            "name": "hotelTypes",
+            "url": "https://booking-com-api3.p.rapidapi.com/booking/hotelTypes",
+            "description": "Returns hotel types names and their translations.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "rows",
+                    "type": "STRING",
+                    "description": "The maximum number of rows to return. NOTE: this needs to be a multiple of 100.",
+                    "default": "<integer>"
+                },
+                {
+                    "name": "languages",
+                    "type": "STRING",
+                    "description": "Limit the results to these languages. Please check the \"Possible Values\" section of the documentation for the accepted language codes.",
+                    "default": "en"
+                },
+                {
+                    "name": "offset",
+                    "type": "STRING",
+                    "description": "The number of rows to offset the results by. NOTE: this needs to be 0 or a multiple of 100.",
+                    "default": "<integer>"
+                },
+                {
+                    "name": "hotel_type_ids",
+                    "type": "STRING",
+                    "description": "Limit the results to these hotel types.",
+                    "default": "<integer>,<integer>"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/hotelTypes\"\nquerystring = {\"rows\": \"<integer>\", \"languages\": \"en\", \"offset\": \"<integer>\", \"hotel_type_ids\": \"<integer>,<integer>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/hotelTypes\"\nquerystring = {\"rows\": \"<integer>\", \"languages\": \"en\", \"offset\": \"<integer>\", \"hotel_type_ids\": \"<integer>,<integer>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object"
+            }
+        },
+        {
+            "name": "cities",
+            "url": "https://booking-com-api3.p.rapidapi.com/booking/cities",
+            "description": "Returns a list of cities where Booking.com offers hotels.\n\nAdditional information available (via extras parameter) are:\n * location: Latitude and longitude.\n * timezone: Timezone of the city.\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "extras",
+                    "type": "STRING",
+                    "description": "Returns extra results mentioned in this.",
+                    "default": "<string>,<string>"
+                },
+                {
+                    "name": "city_ids",
+                    "type": "STRING",
+                    "description": "Limit the results to these cities.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "languages",
+                    "type": "STRING",
+                    "description": "Show translations for these languages. Note: translations are not available for all the languages. Please check the \"Possible Values\" section of the documentation for the accepted language codes.",
+                    "default": "en"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "The number of rows to offset the results by. NOTE: this needs to be 0 or a multiple of 100.",
+                    "default": "0"
+                },
+                {
+                    "name": "rows",
+                    "type": "NUMBER",
+                    "description": "The maximum number of rows to return. NOTE: this needs to be a multiple of 100. In this procedure, multiple translations for one city constitute one row (so rows=1000 returns 8000 rows if all languages are selected).",
+                    "default": "1000"
+                },
+                {
+                    "name": "countries",
+                    "type": "STRING",
+                    "description": "Limit the results to these countries.",
+                    "default": "<string>,<string>"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/cities\"\nquerystring = {\"extras\": \"<string>,<string>\", \"city_ids\": \"<integer>,<integer>\", \"languages\": \"en\", \"offset\": \"0\", \"rows\": \"1000\", \"countries\": \"<string>,<string>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/cities\"\nquerystring = {\"extras\": \"<string>,<string>\", \"city_ids\": \"<integer>,<integer>\", \"languages\": \"en\", \"offset\": \"0\", \"rows\": \"1000\", \"countries\": \"<string>,<string>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object"
+            }
+        },
+        {
+            "name": "regions",
+            "url": "https://booking-com-api3.p.rapidapi.com/booking/regions",
+            "description": "Returns all the regions where Booking.com offers hotels.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "rows",
+                    "type": "NUMBER",
+                    "description": "The maximum number of rows to return. NOTE: this needs to be a multiple of 100.",
+                    "default": "1000"
+                },
+                {
+                    "name": "languages",
+                    "type": "STRING",
+                    "description": "Show translations for these languages. Note: translations are not available for all the languages. Please check the \"Possible Values\" section of the documentation for the accepted language codes.",
+                    "default": "en"
+                },
+                {
+                    "name": "countries",
+                    "type": "STRING",
+                    "description": "Limit the results to these countries.",
+                    "default": "<string>,<string>"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "The number of rows to offset the results by. NOTE: this needs to be 0 or a multiple of 100.",
+                    "default": "0"
+                },
+                {
+                    "name": "region_types",
+                    "type": "STRING",
+                    "description": "Limit the result list to the specified region_type: island, province, free_region.",
+                    "default": "<string>,<string>"
+                },
+                {
+                    "name": "region_ids",
+                    "type": "STRING",
+                    "description": "Limit the results to these regions.",
+                    "default": "<integer>,<integer>"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/regions\"\nquerystring = {\"rows\": \"1000\", \"languages\": \"en\", \"countries\": \"<string>,<string>\", \"offset\": \"0\", \"region_types\": \"<string>,<string>\", \"region_ids\": \"<integer>,<integer>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/regions\"\nquerystring = {\"rows\": \"1000\", \"languages\": \"en\", \"countries\": \"<string>,<string>\", \"offset\": \"0\", \"region_types\": \"<string>,<string>\", \"region_ids\": \"<integer>,<integer>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object"
+            }
+        },
+        {
+            "name": "hotels",
+            "url": "https://booking-com-api3.p.rapidapi.com/booking/hotels",
+            "description": "\nThis call returns the hotel and room data. By default, only hotel_id is returned in the output. One of the argument: hotel_ids, city_ids, country_ids, region_ids, district_ids, chain_ids is mandatory. Additional data needs to be requested via extras parameter.\n\nThe data is returned in English by default.\n\n\nAdditional information available (via extras parameter) are:\n * credit_card_exceptions: Gives information about Hotel Policy for credit card exceptions for domestic travellers. This can only be requested along with hotel_info\n * hotel_description\n * hotel_description_formatted: Same as hotel_description but with line breaks *Added in version 2.5.*\n * hotel_facilities\n * hotel_info\n * hotel_photos\n * hotel_policies\n * key_collection_info\n * payment_details\n * room_description\n * room_facilities\n * room_info\n * room_photos\n * sustainability: ** PILOT MODE ** Gives access to hotel sustainability program information. Required hotel_info extras option *Added in version 2.9.*\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "hotel_ids",
+                    "type": "STRING",
+                    "description": "A list of up to 1000 hotel ids.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "extras",
+                    "type": "STRING",
+                    "description": "Returns extra bits of information about hotels.",
+                    "default": "<string>,<string>"
+                },
+                {
+                    "name": "offset",
+                    "type": "STRING",
+                    "description": "The number of rows to offset the results by. NOTE: this needs to be 0 or a multiple of 100.",
+                    "default": "<integer>"
+                },
+                {
+                    "name": "rows",
+                    "type": "STRING",
+                    "description": "The maximum number of rows to return. NOTE: this needs to be a multiple of 100.",
+                    "default": "<integer>"
+                },
+                {
+                    "name": "hotel_facility_type_ids",
+                    "type": "STRING",
+                    "description": "Limit the results to hotels that have all of provided hotel_facility_type_ids.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "region_ids",
+                    "type": "STRING",
+                    "description": "Limit the results to these regions.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "chain_ids",
+                    "type": "STRING",
+                    "description": "Limit the results to these chains.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "district_ids",
+                    "type": "STRING",
+                    "description": "Limit the results to these districts.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "hotel_type_ids",
+                    "type": "STRING",
+                    "description": "Limits the results to hotels of a certain type: Appartment, Hostel, etc. Use the numeric id codes returned by /hotelTypes.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "city_ids",
+                    "type": "STRING",
+                    "description": "Limit the results to these cities.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "country_ids",
+                    "type": "STRING",
+                    "description": "Limit the results to these country codes (cc1).",
+                    "default": "<string>,<string>"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The language code to return the results in. Please check the \"Possible Values\" section of the documentation for the accepted language codes.",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/hotels\"\nquerystring = {\"hotel_ids\": \"<integer>,<integer>\", \"extras\": \"<string>,<string>\", \"offset\": \"<integer>\", \"rows\": \"<integer>\", \"hotel_facility_type_ids\": \"<integer>,<integer>\", \"region_ids\": \"<integer>,<integer>\", \"chain_ids\": \"<integer>,<integer>\", \"district_ids\": \"<integer>,<integer>\", \"hotel_type_ids\": \"<integer>,<integer>\", \"city_ids\": \"<integer>,<integer>\", \"country_ids\": \"<string>,<string>\", \"language\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/hotels\"\nquerystring = {\"hotel_ids\": \"<integer>,<integer>\", \"extras\": \"<string>,<string>\", \"offset\": \"<integer>\", \"rows\": \"<integer>\", \"hotel_facility_type_ids\": \"<integer>,<integer>\", \"region_ids\": \"<integer>,<integer>\", \"chain_ids\": \"<integer>,<integer>\", \"district_ids\": \"<integer>,<integer>\", \"hotel_type_ids\": \"<integer>,<integer>\", \"city_ids\": \"<integer>,<integer>\", \"country_ids\": \"<string>,<string>\", \"language\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object"
+            }
+        },
+        {
+            "name": "autocomplete",
+            "url": "https://booking-com-api3.p.rapidapi.com/booking/autocomplete",
+            "description": "\nReturns destination and theme information as result of a free text search, in the same manner as the Booking.com's destination search would.\n\nThe result describes up to five destinations. Destination descriptions allow either redirecting the guest to Booking.com's website, or using it on your own website.\n\nIf requested, the themes are appended after the destination search results.\n\n\nAdditional information available (via extras parameter) are:\n * endorsements: The top 10 endorsements for destinations that have them.\n * forecast: Each city's forecast for today\n * themes: Also include themes that match the {text} input parameter. Themes are keyword-based groups of destinations. In results, they will offer label (theme name), top_destination ids, and a total number of destinations for the theme.\n * timezones: The timezone of each destination.\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "extras",
+                    "type": "STRING",
+                    "description": "Specify here what extra items of the result should be included. See the endpoint description for more detailed information about each extra.",
+                    "default": "<string>,<string>"
+                },
+                {
+                    "name": "text",
+                    "type": "STRING",
+                    "description": "(Required) 2",
+                    "default": "<string>"
+                },
+                {
+                    "name": "affiliate_id",
+                    "type": "STRING",
+                    "description": "Partner affiliate id that will be appended to the search page URLs.",
+                    "default": "<string>"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "(Required) Language code in which to display the results. Please check the \"Possible Values\" section of the documentation for the accepted language codes.",
+                    "default": "<string>"
+                },
+                {
+                    "name": "guest_country",
+                    "type": "STRING",
+                    "description": "Guest's country code.",
+                    "default": "<string>"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/autocomplete\"\nquerystring = {\"extras\": \"<string>,<string>\", \"text\": \"<string>\", \"affiliate_id\": \"<string>\", \"language\": \"<string>\", \"guest_country\": \"<string>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/autocomplete\"\nquerystring = {\"extras\": \"<string>,<string>\", \"text\": \"<string>\", \"affiliate_id\": \"<string>\", \"language\": \"<string>\", \"guest_country\": \"<string>\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object"
+            }
+        },
+        {
+            "name": "hotelFacilityTypes",
+            "url": "https://booking-com-api3.p.rapidapi.com/booking/hotelFacilityTypes",
+            "description": "Returns hotel facility types names and their translations.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "hotel_facility_type_ids",
+                    "type": "STRING",
+                    "description": "Limit the results to these hotel facility types.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "facility_type_ids",
+                    "type": "STRING",
+                    "description": "Limit the results to these facility types.",
+                    "default": "<integer>,<integer>"
+                },
+                {
+                    "name": "languages",
+                    "type": "STRING",
+                    "description": "Limit the results to these languages. Please check the \"Possible Values\" section of the documentation for the accepted language codes.",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/hotelFacilityTypes\"\nquerystring = {\"hotel_facility_type_ids\": \"<integer>,<integer>\", \"facility_type_ids\": \"<integer>,<integer>\", \"languages\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://booking-com-api3.p.rapidapi.com/booking/hotelFacilityTypes\"\nquerystring = {\"hotel_facility_type_ids\": \"<integer>,<integer>\", \"facility_type_ids\": \"<integer>,<integer>\", \"languages\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"booking-com-api3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object"
+            }
+        }
+    ]
+}

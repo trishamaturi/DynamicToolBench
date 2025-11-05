@@ -1,0 +1,184 @@
+{
+    "product_id": "api_2a86dbeb-0232-446e-a6c3-63fa6b673013",
+    "tool_description": "Easy Shipment Tracking - Track your FedEx, UPS, USPS, DHL Express and TNT packages, parcels or shipments with Backtrack API.",
+    "home_url": "https://rapidapi.com/scottu/api/backtrack/",
+    "name": "Backtrack",
+    "title": "Backtrack",
+    "pricing": "FREE",
+    "tool_name": "Backtrack",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 641,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.3,
+        "__typename": "Score"
+    },
+    "host": "backtrack.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Carrier",
+            "url": "https://backtrack.p.rapidapi.com/v1/carriers/",
+            "description": "Retrieve a list of supported shipment carrier codes. Identify a carrier for a supplied tracking number.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "tracking_number",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://backtrack.p.rapidapi.com/v1/carriers/\"\nquerystring = {\"tracking_number\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"backtrack.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://backtrack.p.rapidapi.com/v1/carriers/\"\nquerystring = {\"tracking_number\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"backtrack.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Track",
+            "url": "https://backtrack.p.rapidapi.com/v1/track/{tracking_number}",
+            "description": "Track a shipment by providing a tracking number. Backtrack will identify the carrier, track the shipment and provide you a standard response. You may optionally supply a carrier code as a query parameter.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "tracking_number",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "carrier_code",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://backtrack.p.rapidapi.com/v1/track/{tracking_number}\"\nquerystring = {\"carrier_code\": \"\", \"tracking_number\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"backtrack.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://backtrack.p.rapidapi.com/v1/track/{tracking_number}\"\nquerystring = {\"carrier_code\": \"\", \"tracking_number\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"backtrack.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "title": "ShipmentWrapper",
+                "required": [
+                    "return_value"
+                ],
+                "type": "object",
+                "properties": {
+                    "return_value": {
+                        "title": "Shipment",
+                        "type": "object",
+                        "properties": {
+                            "success": {
+                                "title": "Success",
+                                "type": "boolean",
+                                "default": false
+                            },
+                            "message": {
+                                "title": "Message",
+                                "type": "string",
+                                "default": ""
+                            },
+                            "tracking_number": {
+                                "title": "Tracking Number",
+                                "type": "string",
+                                "default": ""
+                            },
+                            "summary": {
+                                "title": "Summary",
+                                "type": "string",
+                                "default": ""
+                            },
+                            "is_delivered": {
+                                "title": "Is Delivered",
+                                "type": "boolean",
+                                "default": false
+                            },
+                            "is_exception": {
+                                "title": "Is Exception",
+                                "type": "boolean",
+                                "default": false
+                            },
+                            "carrier": {
+                                "title": "Carrier",
+                                "type": "string",
+                                "default": ""
+                            },
+                            "tracking_url": {
+                                "title": "Tracking Url",
+                                "type": "string",
+                                "default": ""
+                            },
+                            "origination": {
+                                "title": "Origination",
+                                "type": "string",
+                                "default": ""
+                            },
+                            "destination": {
+                                "title": "Destination",
+                                "type": "string",
+                                "default": ""
+                            },
+                            "estimated_delivery": {
+                                "title": "Estimated Delivery",
+                                "type": "string",
+                                "default": ""
+                            },
+                            "scans": {
+                                "title": "Scans",
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "default": []
+                            },
+                            "scans_detail": {
+                                "title": "Scans Detail",
+                                "type": "array",
+                                "items": {
+                                    "title": "ScanDetail",
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "title": "Status",
+                                            "type": "string",
+                                            "default": ""
+                                        },
+                                        "timestamp": {
+                                            "title": "Timestamp",
+                                            "type": "string",
+                                            "default": ""
+                                        },
+                                        "date_part": {
+                                            "title": "Date Part",
+                                            "type": "string",
+                                            "default": ""
+                                        },
+                                        "short_date_part": {
+                                            "title": "Short Date Part",
+                                            "type": "string",
+                                            "default": ""
+                                        },
+                                        "time_part": {
+                                            "title": "Time Part",
+                                            "type": "string",
+                                            "default": ""
+                                        },
+                                        "location": {
+                                            "title": "Location",
+                                            "type": "string",
+                                            "default": ""
+                                        }
+                                    }
+                                },
+                                "default": []
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

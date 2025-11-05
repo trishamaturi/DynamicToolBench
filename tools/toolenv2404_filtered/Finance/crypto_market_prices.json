@@ -1,0 +1,170 @@
+{
+    "product_id": "api_6f73ae68-e517-4db9-a07c-c68ccad6d16f",
+    "tool_description": "Real-time crypto market prices and fiat currencies exchange rate.",
+    "home_url": "https://rapidapi.com/pwshub-pwshub-default/api/crypto-market-prices/",
+    "name": "Crypto Market Prices",
+    "title": "Crypto Market Prices",
+    "pricing": "FREEMIUM",
+    "tool_name": "Crypto Market Prices",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 694,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.2,
+        "__typename": "Score"
+    },
+    "host": "crypto-market-prices.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "GET /currencies",
+            "url": "https://crypto-market-prices.p.rapidapi.com/currencies",
+            "description": "List of supported fiat currencies",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://crypto-market-prices.p.rapidapi.com/currencies\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"crypto-market-prices.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://crypto-market-prices.p.rapidapi.com/currencies\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"crypto-market-prices.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "GET /currencies/convert",
+            "url": "https://crypto-market-prices.p.rapidapi.com/currencies/convert",
+            "description": "This API endpoint converts one fiat currency to another fiat currency.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "Target currency to convert to, default to **VND**. You can specify one of the supported fiats.\nCheck `/currencies` endpoint.",
+                    "default": "SGD"
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "Current currency, default to **USD**. You can specify one of the supported fiats.\nCheck `/currencies` endpoint.",
+                    "default": "USD"
+                },
+                {
+                    "name": "amount",
+                    "type": "NUMBER",
+                    "description": "Total amount of money to convert. Default to 1.",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://crypto-market-prices.p.rapidapi.com/currencies/convert\"\nquerystring = {\"to\": \"SGD\", \"from\": \"USD\", \"amount\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"crypto-market-prices.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://crypto-market-prices.p.rapidapi.com/currencies/convert\"\nquerystring = {\"to\": \"SGD\", \"from\": \"USD\", \"amount\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"crypto-market-prices.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "GET /tokens/{symbol}",
+            "url": "https://crypto-market-prices.p.rapidapi.com/tokens/BTC",
+            "description": "Get the  latest market price of a cryptocurrency from multiple exchanges and in any fiat currency.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "string",
+                    "description": "Cryptocurrency symbol, such as BTC, ETH, BNB, etc. Case insensitive.",
+                    "default": "BTC"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "base",
+                    "type": "STRING",
+                    "description": "Pricing currency, default to **USDT**. You can specify one of the supported fiats.\nCheck `/currencies` endpoint.",
+                    "default": "USDT"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://crypto-market-prices.p.rapidapi.com/tokens/BTC\"\nquerystring = {\"base\": \"USDT\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"crypto-market-prices.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://crypto-market-prices.p.rapidapi.com/tokens/{symbol}\"\nquerystring = {\"base\": \"USDT\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"crypto-market-prices.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "GET /exchanges/{name}/{symbol}",
+            "url": "https://crypto-market-prices.p.rapidapi.com/exchanges/binance/BTC",
+            "description": "Get the  latest market price of a cryptocurrency from specific exchange in any fiat currency.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "symbol",
+                    "type": "string",
+                    "description": "Cryptocurrency symbol, such as BTC, ETH, BNB, etc. Case insensitive.",
+                    "default": "BTC"
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Exchange code. Available values: **binance**, **okx**, **kucoin**, **mexc**",
+                    "default": "binance"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "base",
+                    "type": "STRING",
+                    "description": "Pricing currency, default to **USDT**. You can specify one of the supported fiats.\nCheck `/currencies` endpoint.",
+                    "default": "USDT"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://crypto-market-prices.p.rapidapi.com/exchanges/binance/BTC\"\nquerystring = {\"base\": \"USDT\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"crypto-market-prices.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://crypto-market-prices.p.rapidapi.com/exchanges/{name}/{symbol}\"\nquerystring = {\"base\": \"USDT\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"crypto-market-prices.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "GET /exchanges",
+            "url": "https://crypto-market-prices.p.rapidapi.com/exchanges",
+            "description": "List of supported cryptocurrency exchanges",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://crypto-market-prices.p.rapidapi.com/exchanges\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"crypto-market-prices.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://crypto-market-prices.p.rapidapi.com/exchanges\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"crypto-market-prices.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "GET /tokens",
+            "url": "https://crypto-market-prices.p.rapidapi.com/tokens",
+            "description": "Retrieve a list of all cryptocurrencies with their corresponding prices in any currency.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "base",
+                    "type": "STRING",
+                    "description": "Pricing currency, default to **USDT**. You can specify one of the supported fiats.\nCheck `/currencies` endpoint.",
+                    "default": "USDT"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://crypto-market-prices.p.rapidapi.com/tokens\"\nquerystring = {\"base\": \"USDT\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"crypto-market-prices.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://crypto-market-prices.p.rapidapi.com/tokens\"\nquerystring = {\"base\": \"USDT\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"crypto-market-prices.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "GET /exchanges/{name}",
+            "url": "https://crypto-market-prices.p.rapidapi.com/exchanges/binance",
+            "description": "Fetch the listing tokens from a given cryptocurrency exchange, with prices in any desired currency.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Exchange code. Available values: **binance**, **okx**, **kucoin**, **mexc**",
+                    "default": "binance"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "base",
+                    "type": "STRING",
+                    "description": "Pricing currency, default to **USDT**. You can specify one of the supported fiats.\nCheck `/currencies` endpoint.",
+                    "default": "USDT"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://crypto-market-prices.p.rapidapi.com/exchanges/binance\"\nquerystring = {\"base\": \"USDT\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"crypto-market-prices.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://crypto-market-prices.p.rapidapi.com/exchanges/{name}\"\nquerystring = {\"base\": \"USDT\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"crypto-market-prices.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

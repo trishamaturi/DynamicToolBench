@@ -1,0 +1,80 @@
+{
+    "product_id": "api_f2c45e12-9183-4a41-8d5c-079876a6bffd",
+    "tool_description": "Unveil the market dynamics with 'Product Price History', an intuitive API delivering detailed price history of products at specific intervals like 8 hours, 1 day, and 1 week. Tailored for marketers, analysts, and e-commerce platforms, this API provides essential insights into pricing trends, helping you strategize and respond to the ever-changing market.\n\nWhether tracking short-term fluctuations or long-term changes, 'Product Price History' offers valuable data for competitive analysis, marke...",
+    "home_url": "https://rapidapi.com/scrapemax-scrapemax-default/api/product-price-history/",
+    "name": "Product Price History",
+    "title": "Product Price History",
+    "pricing": "FREEMIUM",
+    "tool_name": "Product Price History",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 3563,
+        "avgSuccessRate": 95,
+        "popularityScore": 8.5,
+        "__typename": "Score"
+    },
+    "host": "product-price-history.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "price-history",
+            "url": "https://product-price-history.p.rapidapi.com/price-history",
+            "description": "Get product price history by country iso2 code and GTIN/ISBN and different barcodes",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "country_iso2",
+                    "type": "STRING",
+                    "description": "country iso2 code",
+                    "default": "nl"
+                },
+                {
+                    "name": "gtin",
+                    "type": "NUMBER",
+                    "description": "isbn,ean,gtin code",
+                    "default": "194253401179"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "interval",
+                    "type": "ENUM",
+                    "description": "1h,8h,1d,1w,1M",
+                    "default": ""
+                },
+                {
+                    "name": "last_x_months",
+                    "type": "NUMBER",
+                    "description": "data for last X months, maximum 24 months",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://product-price-history.p.rapidapi.com/price-history\"\nquerystring = {\"interval\": \"\", \"country_iso2\": \"nl\", \"gtin\": \"194253401179\", \"last_x_months\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"product-price-history.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://product-price-history.p.rapidapi.com/price-history\"\nquerystring = {\"interval\": \"\", \"country_iso2\": \"nl\", \"gtin\": \"194253401179\", \"last_x_months\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"product-price-history.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

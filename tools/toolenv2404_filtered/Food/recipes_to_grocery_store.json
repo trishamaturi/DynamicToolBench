@@ -1,0 +1,628 @@
+{
+    "product_id": "55dc07f0e4b061238f36c376",
+    "tool_description": "This API provides functionality to build a recipe site and meal planning system which can be connected to an online grocery store. For demonstration of a site implementing the API please visit https://madplan.nu. The API documentation is in progress, meaning more methods is being added during the next months.",
+    "home_url": "https://rapidapi.com/tk76/api/recipes-to-grocery-store/",
+    "name": "Recipes to grocery store",
+    "title": "Recipes to grocery store",
+    "pricing": "FREEMIUM",
+    "tool_name": "Recipes to grocery store",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 510,
+        "avgSuccessRate": 100,
+        "popularityScore": 5.8,
+        "__typename": "Score"
+    },
+    "host": "dp.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "GetRecipe",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Gets the details for a specific recipe.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "RecipeId",
+                    "type": "STRING",
+                    "description": "The id of the recipe to get data for.",
+                    "default": "10610"
+                },
+                {
+                    "name": "Servings",
+                    "type": "STRING",
+                    "description": "Number of servings. Use \"0\" to obtain default servings used when this recipe was created.",
+                    "default": "0"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"RecipeId\": \"10610\", \"Servings\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"RecipeId\": \"10610\", \"Servings\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GetCategories",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Gets a list of all categories.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "SetFavoriteRecipe",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Sets a user favorite recipe.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "method",
+                    "type": "STRING",
+                    "description": "The method to call on the server.",
+                    "default": "SetFavoriteRecipe"
+                },
+                {
+                    "name": "DeviceId",
+                    "type": "STRING",
+                    "description": "The unique id of the client calling the method.",
+                    "default": "0"
+                },
+                {
+                    "name": "UserId",
+                    "type": "NUMBER",
+                    "description": "The id of the user.",
+                    "default": "0"
+                },
+                {
+                    "name": "RecipeId",
+                    "type": "NUMBER",
+                    "description": "The id of the recipe to flag for favorite.",
+                    "default": "10263"
+                },
+                {
+                    "name": "IsFavorite",
+                    "type": "BOOLEAN",
+                    "description": "Should the recipe be flagged as a favorite, 0 for false, 1 for true.",
+                    "default": "1"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"method\": \"SetFavoriteRecipe\", \"DeviceId\": \"0\", \"UserId\": \"0\", \"RecipeId\": \"10263\", \"IsFavorite\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"method\": \"SetFavoriteRecipe\", \"DeviceId\": \"0\", \"UserId\": \"0\", \"RecipeId\": \"10263\", \"IsFavorite\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GetMealBoxCategories",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Gets all categories for meal boxes.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "targetstoreid",
+                    "type": "NUMBER",
+                    "description": "Identifies the categories to use for this request. If no recipes attached to a category, category will not be included in the result returned.",
+                    "default": "16"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"targetstoreid\": \"16\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"targetstoreid\": \"16\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GetFavoriteRecipes",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Get the recipes the user has flagged as favorites.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "method",
+                    "type": "STRING",
+                    "description": "The name of the method to call.",
+                    "default": "GetFavoriteRecipes"
+                },
+                {
+                    "name": "UserId",
+                    "type": "NUMBER",
+                    "description": "The id of the user requesting the data.",
+                    "default": "1"
+                },
+                {
+                    "name": "deviceid",
+                    "type": "STRING",
+                    "description": "The unique id of the device requesting the data.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "PageIndex",
+                    "type": "NUMBER",
+                    "description": "The page index to get data for.",
+                    "default": "0"
+                },
+                {
+                    "name": "PageSize",
+                    "type": "NUMBER",
+                    "description": "The number of recipes to return pr. page.",
+                    "default": "10"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"method\": \"GetFavoriteRecipes\", \"UserId\": \"1\", \"PageIndex\": \"0\", \"PageSize\": \"10\", \"deviceid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"method\": \"GetFavoriteRecipes\", \"UserId\": \"1\", \"PageIndex\": \"0\", \"PageSize\": \"10\", \"deviceid\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GetCollectedRecipes",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Gets the recipes the user has added to his meal plan.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "rnd",
+                    "type": "STRING",
+                    "description": "A random string to ensure you do not get a cached version from somewhere.",
+                    "default": "sdfwetb34q56b3"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "WeekToken",
+                    "type": "STRING",
+                    "description": "Can be used to automatic add recipes from some custom logic to this users meal plan before retrieving the collected recipes. Leave it blank.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"rnd\": \"sdfwetb34q56b3\", \"WeekToken\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"rnd\": \"sdfwetb34q56b3\", \"WeekToken\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "SetMealDate",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Set the date and time for a recipe on the meal plan.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "CollectId",
+                    "type": "NUMBER",
+                    "description": "The id of the record to make the change to.",
+                    "default": "0"
+                },
+                {
+                    "name": "mealdate",
+                    "type": "STRING",
+                    "description": "the date and time in the format yyyy-MM-ddTHH:mm",
+                    "default": "2015-02-25T18:45"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"CollectId\": \"0\", \"mealdate\": \"2015-02-25T18:45\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"CollectId\": \"0\", \"mealdate\": \"2015-02-25T18:45\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GetListsOfValues",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Gets list of values to be used with drop downs.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GetRecipesByFreeText",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Gets a list of recipes. Max number of recipes returned is limited to 50.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "The text to search for in the recipes.",
+                    "default": "spaghetti med"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"q\": \"spaghetti med\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"q\": \"spaghetti med\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "AddRecipeToMealPlan",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Adds a recipe to the users meal plan.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "Servings",
+                    "type": "NUMBER",
+                    "description": "The amount of servings to add.",
+                    "default": "4"
+                },
+                {
+                    "name": "MealDate",
+                    "type": "STRING",
+                    "description": "Use \"0\" to add to next free slot, or use format 2014-11-05T13:15:30.",
+                    "default": "0"
+                },
+                {
+                    "name": "recipeid",
+                    "type": "NUMBER",
+                    "description": "The id of the recipe to add to the meal plan.",
+                    "default": "10610"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"Servings\": \"4\", \"MealDate\": \"0\", \"recipeid\": \"10610\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"Servings\": \"4\", \"MealDate\": \"0\", \"recipeid\": \"10610\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GetTabRecipes",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Get 3 sets of recipe data (popular, new and recommended)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "PageSize",
+                    "type": "STRING",
+                    "description": "The number of recipes to return in each dataset.",
+                    "default": "5"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"PageSize\": \"5\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"PageSize\": \"5\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "RemoveCollectedRecipes",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Removes all recipes form the meal plan.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GetDefaultSupplierMappingByRecipe",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Gets a list of products that if purchased matches the ingredients attached to the recipe.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "RecipeId",
+                    "type": "STRING",
+                    "description": "The id of the recipe to get the mapping for.",
+                    "default": "10873"
+                },
+                {
+                    "name": "Servings",
+                    "type": "NUMBER",
+                    "description": "The amount of servings to calculate product mappings for. If 0, we use recipe default.",
+                    "default": "0"
+                },
+                {
+                    "name": "DepartmentId",
+                    "type": "NUMBER",
+                    "description": "If the supplier has multiple departments for delivering groceries, this will identify the department.",
+                    "default": "7"
+                },
+                {
+                    "name": "supplierid",
+                    "type": "NUMBER",
+                    "description": "The supplier to get the mapping for. This is only an option if the system you build should be connected to an online supermarket.",
+                    "default": "3"
+                },
+                {
+                    "name": "supplierpriceconfiguration",
+                    "type": "NUMBER",
+                    "description": "The products to display for this recipe if multiple products have been attached to each ingredient. Possible values at the moment are: DefaultSelection = 0, CheapestPossible = 1, Organic = 2.",
+                    "default": "1"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"RecipeId\": \"10873\", \"Servings\": \"0\", \"DepartmentId\": \"7\", \"supplierid\": \"3\", \"supplierpriceconfiguration\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"RecipeId\": \"10873\", \"Servings\": \"0\", \"DepartmentId\": \"7\", \"supplierid\": \"3\", \"supplierpriceconfiguration\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GetRecipesInCategory",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Gets the recipes for a specific category. TODO: Add current page and total number of pages to response.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "MealCatId",
+                    "type": "NUMBER",
+                    "description": "The id of the category to get the recipes for.",
+                    "default": "1006"
+                },
+                {
+                    "name": "PageIndex",
+                    "type": "NUMBER",
+                    "description": "The page to retrieve from the server.",
+                    "default": "0"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "PageSize",
+                    "type": "NUMBER",
+                    "description": "The number of recipes per page.",
+                    "default": "10"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"MealCatId\": \"1006\", \"PageIndex\": \"0\", \"PageSize\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"MealCatId\": \"1006\", \"PageIndex\": \"0\", \"PageSize\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "SetConfirmItemsReceivedAtSupplier",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Supermarket must call this method just after meal plan was transferred to basket from foreign domain.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "OrderIdDraft",
+                    "type": "NUMBER",
+                    "description": "The draft id created when converting the meal plan to a basket.",
+                    "default": "0"
+                },
+                {
+                    "name": "DraftKey",
+                    "type": "STRING",
+                    "description": "A uniqueidentifier in the format DF452C8E-DE33-425A-8958-77E697384928. This identifier is generated when meal plan is converted to ingredients.",
+                    "default": "0"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"OrderIdDraft\": \"0\", \"DraftKey\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"OrderIdDraft\": \"0\", \"DraftKey\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GetMealBoxRecipes",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Gets a list of recipes for a specific meal box.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "MealBoxId",
+                    "type": "NUMBER",
+                    "description": "The id of the meal box to get the recipes for.",
+                    "default": "22"
+                },
+                {
+                    "name": "log",
+                    "type": "STRING",
+                    "description": "Should the request be logged and data used in analytics such as most viewed meal boxes. Default is 0. Possible values 0 or 1.",
+                    "default": "0"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"MealBoxId\": \"22\", \"log\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"MealBoxId\": \"22\", \"log\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "RemoveRecipeFromMealPlan",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Removes a recipe form the meal plan.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "CollectId",
+                    "type": "NUMBER",
+                    "description": "The id representing the row to delete in the DB.",
+                    "default": "0"
+                },
+                {
+                    "name": "RecipeId",
+                    "type": "NUMBER",
+                    "description": "The id of the recipe to remove from the meal plan.",
+                    "default": "0"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"CollectId\": \"0\", \"RecipeId\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"CollectId\": \"0\", \"RecipeId\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "SetConfirmOrderFromSupplier",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Confirms that a meal plan was converted to an order and payment accepted.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "OrderIdDraft",
+                    "type": "NUMBER",
+                    "description": "An id generated when the meal plan is converted to ingredients, but before receiving payment.",
+                    "default": "0"
+                },
+                {
+                    "name": "TransactionId",
+                    "type": "STRING",
+                    "description": "The transaction id for the payment, used for tracking back.",
+                    "default": "0"
+                },
+                {
+                    "name": "SupplierOrderTotalPrice",
+                    "type": "NUMBER",
+                    "description": "The total amount of the basket, which was paid in the transaction.",
+                    "default": "0"
+                },
+                {
+                    "name": "SupplierNewCustomer",
+                    "type": "BOOLEAN",
+                    "description": "A value indicating if this was the first order the customer placed at the online supermarket.",
+                    "default": ""
+                },
+                {
+                    "name": "draftkey",
+                    "type": "STRING",
+                    "description": "A uniqueidentifier in the format DF452C8E-DE33-425A-8958-77E697384928. This identifier is generated when meal plan is converted to ingredients.",
+                    "default": "0"
+                },
+                {
+                    "name": "supplierorderid",
+                    "type": "NUMBER",
+                    "description": "The order id this transaction was given at the online supermarket. Used for tracking and linking data.",
+                    "default": "0"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"OrderIdDraft\": \"0\", \"TransactionId\": \"0\", \"SupplierOrderTotalPrice\": \"0\", \"SupplierNewCustomer\": \"\", \"draftkey\": \"0\", \"supplierorderid\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"OrderIdDraft\": \"0\", \"TransactionId\": \"0\", \"SupplierOrderTotalPrice\": \"0\", \"SupplierNewCustomer\": \"\", \"draftkey\": \"0\", \"supplierorderid\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GetGroceryListByUserId",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Gets the sum of grocery list for the current user. If UserId is 0, data stored on DeviceId is used in stead. If UserId > 0 we check if DeviceId is associated with UserId on backend.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "SetRecipeCollectServings",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Sets the number of servings on the meal plan for a given recipe.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "CollectId",
+                    "type": "NUMBER",
+                    "description": "The id in the DB to update data for.",
+                    "default": "0"
+                },
+                {
+                    "name": "Servings",
+                    "type": "NUMBER",
+                    "description": "The number of servings to set for the recipe on the meal plan.",
+                    "default": "0"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"CollectId\": \"0\", \"Servings\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"CollectId\": \"0\", \"Servings\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GetMealBoxesByCategoryId",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Gets the meal boxes attached to a specific category.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "TargetStoreId",
+                    "type": "STRING",
+                    "description": "The id of the store to get the list of meal boxes for.",
+                    "default": "16"
+                },
+                {
+                    "name": "MealBoxCategoryId",
+                    "type": "NUMBER",
+                    "description": "The id of the category to get the meal boxes for.",
+                    "default": "23"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"TargetStoreId\": \"16\", \"MealBoxCategoryId\": \"23\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"TargetStoreId\": \"16\", \"MealBoxCategoryId\": \"23\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GetListOfIngredientsUsedInRecipes",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Gets a complete list of ingredients used in recipes.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "A text used in a like filter on the ingredients to return. Leave empty to return all ingredients.",
+                    "default": "kartof"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"q\": \"kartof\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"q\": \"kartof\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "GetWeeklyMealPlan",
+            "url": "https://dp.p.rapidapi.com/",
+            "description": "Gets the recipes for a specific weekly meal plan.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "WeeklyId",
+                    "type": "NUMBER",
+                    "description": "The id of the meal plan to get the recipes for. Use 0 for current week.",
+                    "default": "0"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"WeeklyId\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://dp.p.rapidapi.com/\"\nquerystring = {\"WeeklyId\": \"0\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"dp.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

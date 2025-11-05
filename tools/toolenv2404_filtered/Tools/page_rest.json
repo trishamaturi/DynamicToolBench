@@ -1,0 +1,70 @@
+{
+    "product_id": "59bc36d3e4b0b0cacf7c7b39",
+    "tool_description": "An API to extract content from any web page as JSON. Get the title, description, open graph, embed content or any other information available at a given public URL.",
+    "home_url": "https://rapidapi.com/laktek/api/page-rest/",
+    "name": "Page.REST",
+    "title": "Page.REST",
+    "pricing": "FREEMIUM",
+    "tool_name": "Page.REST",
+    "score": null,
+    "host": "page-rest.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Fetch",
+            "url": "https://page-rest.p.rapidapi.com/fetch",
+            "description": "Fetches details from a web page given by the URL",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "Give the URL of the page you want to fetch",
+                    "default": "https://www.stripe.com"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "selector",
+                    "type": "STRING",
+                    "description": "A valid CSS selector to extract element(s) from the page (You can provide multiple selectors, up to 10)",
+                    "default": "header h1"
+                },
+                {
+                    "name": "og",
+                    "type": "STRING",
+                    "description": "Set this param if you want the response to include OpenGraph data from the page",
+                    "default": "1"
+                },
+                {
+                    "name": "header",
+                    "type": "STRING",
+                    "description": "An HTTP response header value to return from the response (You can provide multiple selectors, up to 10)",
+                    "default": "server"
+                },
+                {
+                    "name": "prerender",
+                    "type": "BOOLEAN",
+                    "description": "Set this param if you want the page to be pre-rendered (usually this is needed for pages that are client-side rendered, for example if the site uses React)",
+                    "default": "1"
+                },
+                {
+                    "name": "contains",
+                    "type": "STRING",
+                    "description": "Provide a valid JS regex (or simply a string) to see if a pattern matching it exists in the page's text.",
+                    "default": "foo*"
+                },
+                {
+                    "name": "embed",
+                    "type": "BOOLEAN",
+                    "description": "Set this param if you want the response to include oEmbed content from the page",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://page-rest.p.rapidapi.com/fetch\"\nquerystring = {\"selector\": \"header h1\", \"og\": \"1\", \"header\": \"server\", \"prerender\": \"1\", \"contains\": \"foo*\", \"url\": \"https://www.stripe.com\", \"embed\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"page-rest.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://page-rest.p.rapidapi.com/fetch\"\nquerystring = {\"selector\": \"header h1\", \"og\": \"1\", \"header\": \"server\", \"prerender\": \"1\", \"contains\": \"foo*\", \"url\": \"https://www.stripe.com\", \"embed\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"page-rest.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

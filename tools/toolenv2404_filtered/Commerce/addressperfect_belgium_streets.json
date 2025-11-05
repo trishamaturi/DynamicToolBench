@@ -1,0 +1,206 @@
+{
+    "product_id": "api_7fd7fbdb-4d32-4379-864e-43e2e508d191",
+    "tool_description": "Smart Validation & Correction for Belgian Addresses. It offers real-time autocomplete suggestions for cities, streets, and postal codes, making data entry swift and error-free. Additionally, the feature for correcting existing address records with precise accuracy up to the house number level. This ensures high-quality data management and reliable address information for businesses and organizations, streamlining operations and improving customer interactions.",
+    "home_url": "https://rapidapi.com/AndyTheFactory/api/addressperfect-belgium-streets/",
+    "name": "AddressPerfect Belgium Streets",
+    "title": "AddressPerfect Belgium Streets",
+    "pricing": "FREEMIUM",
+    "tool_name": "AddressPerfect Belgium Streets",
+    "score": null,
+    "host": "addressperfect-belgium-streets.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Zipcode List",
+            "url": "https://addressperfect-belgium-streets.p.rapidapi.com/getziplist",
+            "description": "Get a list of Zipcodes for Belgian Addresses starting with the prefix `zip`.\nYou can optionally restrict the search with a city.\n\nIf no city is provided, zipcode must be at least 2 characters long \n\nIf you provide a zip code prefix, the result will be a list of zip codes  starting with the prefix. \nIf provided, City must be the whole city name  (as provided by /getcitylist). Partial city names are not matched.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "city",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "zip",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "88"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://addressperfect-belgium-streets.p.rapidapi.com/getziplist\"\nquerystring = {\"city\": \"\", \"zip\": \"88\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"addressperfect-belgium-streets.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://addressperfect-belgium-streets.p.rapidapi.com/getziplist\"\nquerystring = {\"city\": \"\", \"zip\": \"88\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"addressperfect-belgium-streets.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Validate Address",
+            "url": "https://addressperfect-belgium-streets.p.rapidapi.com/validateaddress",
+            "description": "A full Belgian address is validated and corrected if possible. \n\nThe Flag field indicates the type of correction that was applied to the address.\n\n* 0 - Nothing found, address invalid\n* 1 - Address found, no correction applied\n* 2 - Address found, correction applied\n* 3 - Just Zip code and City could be validated, no correction applied on street\n\nHnrValid flag will be 0 for invalid (not confirmed) house numbers and 1 for confirmed house numbers.\n\nRating fields indicate the confidence level of the result on field level and overall. Values are from 0 to 100.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "hnr",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "36"
+                },
+                {
+                    "name": "city",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Lichtervelfe"
+                },
+                {
+                    "name": "street",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Beverenstaat"
+                },
+                {
+                    "name": "zip",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "8800"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://addressperfect-belgium-streets.p.rapidapi.com/validateaddress\"\nquerystring = {\"hnr\": \"36\", \"city\": \"Lichtervelfe\", \"street\": \"Beverenstaat\", \"zip\": \"8800\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"addressperfect-belgium-streets.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://addressperfect-belgium-streets.p.rapidapi.com/validateaddress\"\nquerystring = {\"hnr\": \"36\", \"city\": \"Lichtervelfe\", \"street\": \"Beverenstaat\", \"zip\": \"8800\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"addressperfect-belgium-streets.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Autocomplete (Full Text search)",
+            "url": "https://addressperfect-belgium-streets.p.rapidapi.com/autocomplete",
+            "description": "Provides a full text search functionality over the addresses of a specific country. Returns the matches\nin the order of relevance.\n\nReturn value is a list of `AddressResponse` objects with the relevant fields filled in. There is no\nHouse number validation for this endpoint.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Beveren"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://addressperfect-belgium-streets.p.rapidapi.com/autocomplete\"\nquerystring = {\"query\": \"Beveren\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"addressperfect-belgium-streets.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://addressperfect-belgium-streets.p.rapidapi.com/autocomplete\"\nquerystring = {\"query\": \"Beveren\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"addressperfect-belgium-streets.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Get Cities List",
+            "url": "https://addressperfect-belgium-streets.p.rapidapi.com/getcitylist",
+            "description": "Get a list of Cities for auto-completing a Belgian city field. You can optionally filter with zipcode.\n\nIf no zip code is provided, city must be at least 2 characters long \n\nIf you provide a city prefix, the result will be a list of cities starting with the prefix. \nZipcode must be the zipcode (as provided by /getziplist). Partial zip codes are not matched.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "zip",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "city",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Li"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://addressperfect-belgium-streets.p.rapidapi.com/getcitylist\"\nquerystring = {\"zip\": \"\", \"city\": \"Li\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"addressperfect-belgium-streets.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://addressperfect-belgium-streets.p.rapidapi.com/getcitylist\"\nquerystring = {\"zip\": \"\", \"city\": \"Li\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"addressperfect-belgium-streets.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Get Streetnames List",
+            "url": "https://addressperfect-belgium-streets.p.rapidapi.com/getstreetlist",
+            "description": "Get a list of Streets for Belgian Addresses. \nIf no other fields are provided, the results are a list of country-wide street names starting with the provided prefix.\nOptionally, a zip code or a city can be provided for narrowing down the results.\n\nStreet must be at least 2 characters long \nIf you provide a city and/or a zip code, the result will be a list of streets in that city and/or zip code.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "street",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Bever"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "city",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "zip",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://addressperfect-belgium-streets.p.rapidapi.com/getstreetlist\"\nquerystring = {\"city\": \"\", \"street\": \"Bever\", \"zip\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"addressperfect-belgium-streets.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://addressperfect-belgium-streets.p.rapidapi.com/getstreetlist\"\nquerystring = {\"city\": \"\", \"street\": \"Bever\", \"zip\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"addressperfect-belgium-streets.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "anyOf": [
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "properties": {
+                            "detail": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "loc": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        },
+                                        "input": {
+                                            "type": "string"
+                                        },
+                                        "ctx": {
+                                            "type": "object",
+                                            "properties": {
+                                                "min_length": {
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "type": "object",
+                        "title": "ErrorResponse"
+                    }
+                ],
+                "title": "Response Autocomplete Autocomplete Get"
+            }
+        }
+    ]
+}

@@ -1,0 +1,46 @@
+{
+    "product_id": "api_cd5faa39-b119-4763-a597-fb9a5ed9b8f9",
+    "tool_description": "Simple endpoint that return Ibovespa listed Stocks prices (with a delay up to 15 minutes)",
+    "home_url": "https://rapidapi.com/andresmafra/api/simple-ibovespa-stocks/",
+    "name": "Simple Ibovespa Stocks",
+    "title": "Simple Ibovespa Stocks",
+    "pricing": "FREEMIUM",
+    "tool_name": "Simple Ibovespa Stocks",
+    "score": null,
+    "host": "simple-ibovespa-stocks.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "ListTickers",
+            "url": "https://simple-ibovespa-stocks.p.rapidapi.com/stocks/tickers",
+            "description": "List all available tickers for query",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://simple-ibovespa-stocks.p.rapidapi.com/stocks/tickers\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"simple-ibovespa-stocks.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://simple-ibovespa-stocks.p.rapidapi.com/stocks/tickers\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"simple-ibovespa-stocks.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "GetStocks",
+            "url": "https://simple-ibovespa-stocks.p.rapidapi.com/stocks",
+            "description": "Get up to 5 stocks data from each request",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "stocks",
+                    "type": "STRING",
+                    "description": "Each stock must be separated per comma (,).",
+                    "default": "PETR4,BIDI4,DTEX3"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://simple-ibovespa-stocks.p.rapidapi.com/stocks\"\nquerystring = {\"stocks\": \"PETR4,BIDI4,DTEX3\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"simple-ibovespa-stocks.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://simple-ibovespa-stocks.p.rapidapi.com/stocks\"\nquerystring = {\"stocks\": \"PETR4,BIDI4,DTEX3\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"simple-ibovespa-stocks.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

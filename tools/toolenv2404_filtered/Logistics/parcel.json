@@ -1,0 +1,127 @@
+{
+    "product_id": "api_817d0c35-a802-44b8-8d02-7d842ef10858",
+    "tool_description": "At the core of the Sendcloud Shipping API is the Parcels resource. Parcels are data objects which can be announced and have a shipping method and shipping label assigned to them. You can also think of parcels as shipments.",
+    "home_url": "https://rapidapi.com/sendcloud-api-sendcloud-api-default/api/parcel3/",
+    "name": "Parcel",
+    "title": "Parcel",
+    "pricing": "FREE",
+    "tool_name": "Parcel",
+    "score": null,
+    "host": "parcel3.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Retrieve a return portal URL",
+            "url": "https://parcel3.p.rapidapi.com/parcels/{id}/return_portal_url",
+            "description": "This endpoint lets you see which of your branded Return portals is associated with a specific parcel based on the provided parcel `id`.\nThe URL which is retrieved will link directly to the parcel in the Sendcloud Return portal, so a **return parcel** can be created immediately based on the outgoing shipment.\nIf no Return portal is configured, or if no brand is connected to the parcel, this endpoint will return a status code 404 error.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "ID of the parcel",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://parcel3.p.rapidapi.com/parcels/{id}/return_portal_url\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"parcel3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://parcel3.p.rapidapi.com/parcels/{id}/return_portal_url\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"parcel3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "minLength": 1
+                    }
+                },
+                "required": [
+                    "url"
+                ]
+            }
+        },
+        {
+            "name": "Retrieve a list of parcels",
+            "url": "https://parcel3.p.rapidapi.com/parcels",
+            "description": "This endpoint allows you to retrieve a list of all the parcels which you have created or imported into your Sendcloud account under your API credentials. You can filter the results based on the query parameters provided below, in order to retrieve a specific parcel or list of parcels which match the defined criteria.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "parcel_status",
+                    "type": "NUMBER",
+                    "description": "Returns parcels that have the requested status. For a list of possible statuses, see the [Parcel statuses](openapi.yaml/paths/~1parcels~1statuses) endpoint",
+                    "default": ""
+                },
+                {
+                    "name": "errors",
+                    "type": "STRING",
+                    "description": "If you are using this API for development purposes, you might want to use the errors query string in the URL. This allows you to visualize errors from the carrier.",
+                    "default": "verbose-carrier"
+                },
+                {
+                    "name": "tracking_number",
+                    "type": "STRING",
+                    "description": "Returns parcels that match a specified tracking number",
+                    "default": ""
+                },
+                {
+                    "name": "cursor",
+                    "type": "STRING",
+                    "description": "Next and previous token that is used to paginate. The token is included in the response.",
+                    "default": ""
+                },
+                {
+                    "name": "ids",
+                    "type": "STRING",
+                    "description": "Filter results using a list of Parcel IDs. This is a comma separated list of IDs, it may not contain more then 100 IDs.",
+                    "default": ""
+                },
+                {
+                    "name": "order_number",
+                    "type": "STRING",
+                    "description": "Returns an order that matches a specific `order_number` property from your parcels",
+                    "default": ""
+                },
+                {
+                    "name": "announced_after",
+                    "type": "STRING",
+                    "description": "Returns all orders which have been updated in our system after you given time. You can use the value of ISO 8601 DateTime string like this",
+                    "default": "2018-02-26T11:01:47.505309+00:00"
+                },
+                {
+                    "name": "updated_after",
+                    "type": "STRING",
+                    "description": "Returns all orders which have been updated in our system after a given time. You can use the value of ISO 8601 DateTime string like this",
+                    "default": "2018-02-26T11:01:47.505309+00:00"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://parcel3.p.rapidapi.com/parcels\"\nquerystring = {\"parcel_status\": \"\", \"errors\": \"verbose-carrier\", \"tracking_number\": \"\", \"cursor\": \"\", \"ids\": \"\", \"order_number\": \"\", \"announced_after\": \"2018-02-26T11:01:47.505309+00:00\", \"updated_after\": \"2018-02-26T11:01:47.505309+00:00\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"parcel3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://parcel3.p.rapidapi.com/parcels\"\nquerystring = {\"parcel_status\": \"\", \"errors\": \"verbose-carrier\", \"tracking_number\": \"\", \"cursor\": \"\", \"ids\": \"\", \"order_number\": \"\", \"announced_after\": \"2018-02-26T11:01:47.505309+00:00\", \"updated_after\": \"2018-02-26T11:01:47.505309+00:00\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"parcel3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Retrieve a parcel",
+            "url": "https://parcel3.p.rapidapi.com/parcels/{id}",
+            "description": "This endpoint allows you to retrieve a specific parcel created under your Sendcloud credentials, based on the parcel `id`.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "The id of the parcel you want to retrieve",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://parcel3.p.rapidapi.com/parcels/{id}\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"parcel3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://parcel3.p.rapidapi.com/parcels/{id}\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"parcel3.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

@@ -1,0 +1,161 @@
+{
+    "product_id": "api_ca034b50-309c-412f-92ee-0be1044aedd9",
+    "tool_description": "United States NOAA tide height and time predictions in JSON format.",
+    "home_url": "https://rapidapi.com/aptitudeapps/api/noaa-tides/",
+    "name": "NOAA Tides",
+    "title": "NOAA Tides",
+    "pricing": "FREEMIUM",
+    "tool_name": "NOAA Tides",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 169,
+        "avgSuccessRate": 95,
+        "popularityScore": 9,
+        "__typename": "Score"
+    },
+    "host": "noaa-tides.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get station information",
+            "url": "https://noaa-tides.p.rapidapi.com/stations/8570283",
+            "description": "Get information about the provided station ID.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "8570283"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://noaa-tides.p.rapidapi.com/stations/8570283\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"noaa-tides.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://noaa-tides.p.rapidapi.com/stations/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"noaa-tides.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "latitude": {
+                        "type": "string"
+                    },
+                    "longitude": {
+                        "type": "string"
+                    },
+                    "time_zone": {
+                        "type": "string"
+                    },
+                    "time_zone_offset": {
+                        "type": "string"
+                    },
+                    "noaa_chart": {
+                        "type": "string"
+                    },
+                    "established": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get tides for a station",
+            "url": "https://noaa-tides.p.rapidapi.com/stations/9411340/tides",
+            "description": "Get tide information for the given station ID in local times.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": "9411340"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20220625"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://noaa-tides.p.rapidapi.com/stations/9411340/tides\"\nquerystring = {\"date\": \"20220625\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"noaa-tides.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://noaa-tides.p.rapidapi.com/stations/{id}/tides\"\nquerystring = {\"date\": \"20220625\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"noaa-tides.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "station_id": {
+                        "type": "string"
+                    },
+                    "tides": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "date": {
+                                    "type": "string"
+                                },
+                                "time": {
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "type": "string"
+                                },
+                                "height": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get stations",
+            "url": "https://noaa-tides.p.rapidapi.com/stations",
+            "description": "Get list of all NOAA stations that provide tide predictions to be used in other endpoints.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://noaa-tides.p.rapidapi.com/stations\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"noaa-tides.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://noaa-tides.p.rapidapi.com/stations\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"noaa-tides.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "stations": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "state": {
+                                    "type": "string"
+                                },
+                                "long_name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

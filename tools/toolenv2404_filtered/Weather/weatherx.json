@@ -1,0 +1,116 @@
+{
+    "product_id": "api_25737026-263b-4ad5-b16d-90b6f0ff2067",
+    "tool_description": "Stay ahead of the weather curve with WeatherX",
+    "home_url": "https://rapidapi.com/smaster0019-1dkEfievv4/api/weatherx/",
+    "name": "WeatherX",
+    "title": "WeatherX",
+    "pricing": "FREEMIUM",
+    "tool_name": "WeatherX",
+    "score": {
+        "avgServiceLevel": 90,
+        "avgLatency": 712,
+        "avgSuccessRate": 90,
+        "popularityScore": 7.1,
+        "__typename": "Score"
+    },
+    "host": "weatherx.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/weather/v1.0/current",
+            "url": "https://weatherx.p.rapidapi.com/weather/v1.0/current",
+            "description": "Retrieves real-time weather information for the specified location",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "The location for which to retrieve weather data",
+                    "default": "London"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://weatherx.p.rapidapi.com/weather/v1.0/current\"\nquerystring = {\"location\": \"London\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"weatherx.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://weatherx.p.rapidapi.com/weather/v1.0/current\"\nquerystring = {\"location\": \"London\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"weatherx.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "location": {
+                        "type": "string",
+                        "description": "The location for which weather information is provided."
+                    },
+                    "temperature": {
+                        "type": "object",
+                        "properties": {
+                            "current": {
+                                "type": "number",
+                                "format": "float",
+                                "description": "Current temperature in Celsius.",
+                                "minimum": -3.402823669209385e+38,
+                                "maximum": 3.402823669209385e+38
+                            },
+                            "feelsLike": {
+                                "type": "number",
+                                "format": "float",
+                                "description": "Feels like temperature in Celsius.",
+                                "minimum": -3.402823669209385e+38,
+                                "maximum": 3.402823669209385e+38
+                            }
+                        }
+                    },
+                    "temperatureF": {
+                        "type": "object",
+                        "properties": {
+                            "current": {
+                                "type": "number",
+                                "format": "float",
+                                "description": "Current temperature in Celsius.",
+                                "minimum": -3.402823669209385e+38,
+                                "maximum": 3.402823669209385e+38
+                            },
+                            "feelsLike": {
+                                "type": "number",
+                                "format": "float",
+                                "description": "Feels like temperature in Celsius.",
+                                "minimum": -3.402823669209385e+38,
+                                "maximum": 3.402823669209385e+38
+                            }
+                        }
+                    },
+                    "visibility": {
+                        "type": "integer",
+                        "description": "Visibility in meters."
+                    },
+                    "humidity": {
+                        "type": "integer",
+                        "description": "Humidity percentage."
+                    },
+                    "pressure": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Pressure in hPa.",
+                        "minimum": -3.402823669209385e+38,
+                        "maximum": 3.402823669209385e+38
+                    },
+                    "wind": {
+                        "type": "object",
+                        "properties": {
+                            "speed": {
+                                "type": "number",
+                                "format": "float",
+                                "description": "Wind speed in meters per second.",
+                                "minimum": -3.402823669209385e+38,
+                                "maximum": 3.402823669209385e+38
+                            },
+                            "direction": {
+                                "type": "integer",
+                                "description": "Wind direction in degrees."
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

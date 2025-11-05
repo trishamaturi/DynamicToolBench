@@ -1,0 +1,61 @@
+{
+    "product_id": "api_4db524ae-f2bf-49e8-9482-a1b656f3fb31",
+    "tool_description": "Scrape off products, reviews, searches off Amazon in JSON format",
+    "home_url": "https://rapidapi.com/onyeluka/api/amazon-scrapper-pro/",
+    "name": "Amazon Scrapper Pro",
+    "title": "Amazon Scrapper Pro",
+    "pricing": "FREEMIUM",
+    "tool_name": "Amazon Scrapper Pro",
+    "score": null,
+    "host": "amazon-scrapper-pro.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Amazon Search",
+            "url": "https://amazon-scrapper-pro.p.rapidapi.com/search/mac book",
+            "description": "Search Amazon For Any Products",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "searchQuery",
+                    "type": "string",
+                    "description": "",
+                    "default": "mac book"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://amazon-scrapper-pro.p.rapidapi.com/search/mac book\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"amazon-scrapper-pro.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://amazon-scrapper-pro.p.rapidapi.com/search/{searchquery}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"amazon-scrapper-pro.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "ads": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "amazons_choice": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "explore_more_items": {
+                        "type": "array"
+                    },
+                    "pagination": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

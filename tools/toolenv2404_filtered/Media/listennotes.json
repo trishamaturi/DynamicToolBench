@@ -1,0 +1,394 @@
+{
+    "product_id": "5a2061f4e4b0a5e0bc5dff0a",
+    "tool_description": "The Best Podcast API for Search, Directory, and Insights.\n\nNote: We have deprecated this version of API (v1) from RapidAPI since 2019.\n\nPlease use the latest version v2 at https://www.podcastapi.com/",
+    "home_url": "https://rapidapi.com/listennotes/api/listennotes/",
+    "name": "ListenNotes",
+    "title": "ListenNotes",
+    "pricing": "FREEMIUM",
+    "tool_name": "ListenNotes",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 97,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.2,
+        "__typename": "Score"
+    },
+    "host": "listennotes.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Fetch a list of supported countries/regions for best podcasts",
+            "url": "https://listennotes.p.rapidapi.com/api/v1/regions",
+            "description": "It returns a dictionary of country codes (e.g., us, gb...) & country names (United States, United Kingdom...). The country code is used in the query parameter \"region\" of the /api/v1/best_podcasts endpoint.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/regions\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/regions\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Fetch recommendations for a podcast",
+            "url": "https://listennotes.p.rapidapi.com/api/v1/podcasts/25212ac3c53240a880dd5032e547047b/recommendations",
+            "description": "Up to 8 podcast recommendations based on the given podcast id",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Podcast id",
+                    "default": "25212ac3c53240a880dd5032e547047b"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "safe_mode",
+                    "type": "NUMBER",
+                    "description": "Whether or not to exclude podcasts/episodes with explicit language. 1 is yes and 0 is no. Default: 0.",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/podcasts/25212ac3c53240a880dd5032e547047b/recommendations\"\nquerystring = {\"safe_mode\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/podcasts/{id}/recommendations\"\nquerystring = {\"safe_mode\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Fetch recommendations for an episode",
+            "url": "https://listennotes.p.rapidapi.com/api/v1/episodes/deecd6ee486f4f47abe61998efc2c0c2/recommendations",
+            "description": "Up to 8 episode recommendations based on the given episode id",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Episode id",
+                    "default": "deecd6ee486f4f47abe61998efc2c0c2"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "safe_mode",
+                    "type": "NUMBER",
+                    "description": "Whether or not to exclude podcasts/episodes with explicit language. 1 is yes and 0 is no. Default: 0.",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/episodes/deecd6ee486f4f47abe61998efc2c0c2/recommendations\"\nquerystring = {\"safe_mode\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/episodes/{id}/recommendations\"\nquerystring = {\"safe_mode\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Fetch a random podcast episode",
+            "url": "https://listennotes.p.rapidapi.com/api/v1/just_listen",
+            "description": "Good luck!",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/just_listen\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/just_listen\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Fetch a curated list of podcasts by id",
+            "url": "https://listennotes.p.rapidapi.com/api/v1/curated_podcasts/9c0iYKTzbtS",
+            "description": "You can get the id of a curated list from /api/v1/search?type=curated or /api/v1/curated_podcasts",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "id for a specific curated list of podcasts. You can get the id from the response of /api/v1/search?type=curated or /api/v1/curated_podcasts",
+                    "default": "9c0iYKTzbtS"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/curated_podcasts/9c0iYKTzbtS\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/curated_podcasts/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Fetch curated lists of podcasts",
+            "url": "https://listennotes.p.rapidapi.com/api/v1/curated_podcasts",
+            "description": "A bunch of curated lists from online media. For each list, you'll get basic info of up to 5 podcasts. To get detailed meta data of all podcasts in a specific list, you need to use /api/v1/curated_podcasts/{id}. We constantly add new curated lists to the database.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Page number of curated lists. Default: 1",
+                    "default": "2"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/curated_podcasts\"\nquerystring = {\"page\": \"2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/curated_podcasts\"\nquerystring = {\"page\": \"2\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Fetch meta data for a podcast by id",
+            "url": "https://listennotes.p.rapidapi.com/api/v1/podcasts/9d6939745ed34e3aab0eb78a408ab40d",
+            "description": "Fetch meta data for a specific podcast. You can get id from search api's response.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "id for a specific podcast. You can get id from search api's response.",
+                    "default": "9d6939745ed34e3aab0eb78a408ab40d"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "How do you want to sort the episodes of this podcast? Available options: recent_first (default), oldest_first",
+                    "default": "recent_first"
+                },
+                {
+                    "name": "next_episode_pub_date",
+                    "type": "NUMBER",
+                    "description": "Used for episodes pagination. Typically, it's the value of next_episode_pub_date from the response of last request. If not specified, just return latest 10 episodes or oldest 10 episodes, depending on the value of \"sort\" parameter.",
+                    "default": "1479154463000"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/podcasts/9d6939745ed34e3aab0eb78a408ab40d\"\nquerystring = {\"sort\": \"recent_first\", \"next_episode_pub_date\": \"1479154463000\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/podcasts/{id}\"\nquerystring = {\"sort\": \"recent_first\", \"next_episode_pub_date\": \"1479154463000\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Full-text Search",
+            "url": "https://listennotes.p.rapidapi.com/api/v1/search",
+            "description": "Search episodes or podcasts",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Search term",
+                    "default": "star wars"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "What to search: \"episode\" (default), \"podcast\", or \"curated\"? Note: \"curated\" is for curated lists of podcasts.",
+                    "default": "episode"
+                },
+                {
+                    "name": "genre_ids",
+                    "type": "STRING",
+                    "description": "A comma-delimited string of a list of genre ids. You can find the id and the name of all genres in the response of /api/v1/genres . It works only when \"type\" is episode or podcast.",
+                    "default": "68,82"
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "Limit search results to a specific language. If not specified, it'll be any language. You can get a list of supported languages from /api/v1/languages endpoint. It works only when \"type\" is episode or podcast.",
+                    "default": "English"
+                },
+                {
+                    "name": "safe_mode",
+                    "type": "NUMBER",
+                    "description": "Whether or not to exclude podcasts/episodes with explicit language. 1 is yes and 0 is no. Default: 0. It works only when \"type\" is episode or podcast.",
+                    "default": "1"
+                },
+                {
+                    "name": "sort_by_date",
+                    "type": "NUMBER",
+                    "description": "Sort by date or not? If 1, sort by date. If 0 (default), sort by relevance.",
+                    "default": "0"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Offset for search results, for pagination. You'll use next_offset from response for this parameter.",
+                    "default": "0"
+                },
+                {
+                    "name": "ocid",
+                    "type": "STRING",
+                    "description": "A podcast id (the podcast_id field in response). This parameter is to limit search results in a specific podcast. It works only when \"type\" is episode.",
+                    "default": ""
+                },
+                {
+                    "name": "ncid",
+                    "type": "STRING",
+                    "description": "A podcast id (the podcast_id field in response). This parameter is to exclude search results from a specific podcast. It works only when \"type\" is episode.",
+                    "default": ""
+                },
+                {
+                    "name": "only_in",
+                    "type": "STRING",
+                    "description": "Search only in specific fields. Allowed values: title, description, author, audio. If not specified, then search every fields",
+                    "default": "title"
+                },
+                {
+                    "name": "len_max",
+                    "type": "NUMBER",
+                    "description": "Maximum audio length in minutes. Applicable only when type parameter is \"episode\".",
+                    "default": "10"
+                },
+                {
+                    "name": "len_min",
+                    "type": "NUMBER",
+                    "description": "Minimum audio length in minutes. Applicable only when type parameter is \"episode\".",
+                    "default": "2"
+                },
+                {
+                    "name": "published_after",
+                    "type": "NUMBER",
+                    "description": "Only show episodes published after this timestamp (in milliseconds). Default: 0 (since the very first episode). If published_before & published_after are used at the same time, published_before should be bigger than published_after.",
+                    "default": "1390190241000"
+                },
+                {
+                    "name": "published_before",
+                    "type": "NUMBER",
+                    "description": "Only show episodes published before this timestamp (in milliseconds). Default: now.  If published_before & published_after are used at the same time, published_before should be bigger than published_after.",
+                    "default": "1490190241000"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/search\"\nquerystring = {\"type\": \"episode\", \"genre_ids\": \"68,82\", \"language\": \"English\", \"safe_mode\": \"1\", \"sort_by_date\": \"0\", \"offset\": \"0\", \"q\": \"star wars\", \"ocid\": \"\", \"ncid\": \"\", \"only_in\": \"title\", \"len_max\": \"10\", \"len_min\": \"2\", \"published_after\": \"1390190241000\", \"published_before\": \"1490190241000\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/search\"\nquerystring = {\"type\": \"episode\", \"genre_ids\": \"68,82\", \"language\": \"English\", \"safe_mode\": \"1\", \"sort_by_date\": \"0\", \"offset\": \"0\", \"q\": \"star wars\", \"ocid\": \"\", \"ncid\": \"\", \"only_in\": \"title\", \"len_max\": \"10\", \"len_min\": \"2\", \"published_after\": \"1390190241000\", \"published_before\": \"1490190241000\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Fetch meta data for an episode by id",
+            "url": "https://listennotes.p.rapidapi.com/api/v1/episodes/7fbabe370daf4e34a225bce232764f96",
+            "description": "Fetch meta data for a specific episode. You can get id from search api's response.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "id for a specific episode. You can get id from search api's response.",
+                    "default": "7fbabe370daf4e34a225bce232764f96"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/episodes/7fbabe370daf4e34a225bce232764f96\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/episodes/{id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Typeahead",
+            "url": "https://listennotes.p.rapidapi.com/api/v1/typeahead",
+            "description": "Suggest search terms",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Search term",
+                    "default": "star"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "safe_mode",
+                    "type": "NUMBER",
+                    "description": "Whether or not to exclude podcasts/episodes with explicit language. 1 is yes and 0 is no. Default: 0. This is only applicable when show_podcasts=1",
+                    "default": "1"
+                },
+                {
+                    "name": "show_genres",
+                    "type": "NUMBER",
+                    "description": "Autosuggest genres. 1 is yes, 0 is no. Default: 0",
+                    "default": "1"
+                },
+                {
+                    "name": "show_podcasts",
+                    "type": "NUMBER",
+                    "description": "Autosuggest podcasts. This only searches podcast title and publisher and returns very limited info of 5 podcasts. 1 is yes, 0 is no. It's a bit slow to autosuggest podcasts, so we turn it off by default. Default: 0. If show_podcasts=1, you can also pass iTunes id (e.g., 474722933) to the q parameter to fetch podcast meta data.",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/typeahead\"\nquerystring = {\"safe_mode\": \"1\", \"q\": \"star\", \"show_genres\": \"1\", \"show_podcasts\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/typeahead\"\nquerystring = {\"safe_mode\": \"1\", \"q\": \"star\", \"show_genres\": \"1\", \"show_podcasts\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Fetch a list of supported languages for podcasts",
+            "url": "https://listennotes.p.rapidapi.com/api/v1/languages",
+            "description": "Get a list of languages that are supported in Listen Notes database. You can use the language string as query parameter in the search API",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/languages\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/languages\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Fetch a list of podcast genres",
+            "url": "https://listennotes.p.rapidapi.com/api/v1/genres",
+            "description": "Get a list of podcast genres that are supported in Listen Notes. The genre id can be passed to Search API and filter results by specific genres. You may want to cache this list of genres on the client side.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/genres\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/genres\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Fetch a list of best podcasts by genre",
+            "url": "https://listennotes.p.rapidapi.com/api/v1/best_podcasts",
+            "description": "Get a list of curated best podcasts by genre. You can get the genre ids from /api/v1/genres endpoint",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Page number of those podcasts in this genre.",
+                    "default": "2"
+                },
+                {
+                    "name": "safe_mode",
+                    "type": "NUMBER",
+                    "description": "Whether or not to exclude podcasts/episodes with explicit language. 1 is yes and 0 is no. Default: 0.",
+                    "default": "1"
+                },
+                {
+                    "name": "genre_id",
+                    "type": "NUMBER",
+                    "description": "You can get the id from /api/v1/genres. If not specified, it'll be all podcasts.",
+                    "default": "125"
+                },
+                {
+                    "name": "region",
+                    "type": "STRING",
+                    "description": "Filter best podcasts by country/region. You can get the supported country codes from the /api/v1/regions endpoint. Default: us",
+                    "default": "fr"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/best_podcasts\"\nquerystring = {\"page\": \"2\", \"safe_mode\": \"1\", \"genre_id\": \"125\", \"region\": \"fr\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://listennotes.p.rapidapi.com/api/v1/best_podcasts\"\nquerystring = {\"page\": \"2\", \"safe_mode\": \"1\", \"genre_id\": \"125\", \"region\": \"fr\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"listennotes.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

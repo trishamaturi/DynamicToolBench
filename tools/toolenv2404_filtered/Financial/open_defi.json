@@ -1,0 +1,593 @@
+{
+    "product_id": "api_6572f712-9381-4136-9528-bb662803bae3",
+    "tool_description": "Open DeFi API gives you access to decentralised exchange trading data, liquidity and tokens across multiple blockchains.",
+    "home_url": "https://rapidapi.com/miohtama/api/open-defi/",
+    "name": "Open DeFi",
+    "title": "Open DeFi",
+    "pricing": "FREE",
+    "tool_name": "Open DeFi",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 444,
+        "avgSuccessRate": 31,
+        "popularityScore": 8,
+        "__typename": "Score"
+    },
+    "host": "open-defi.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "web_pair_details",
+            "url": "https://open-defi.p.rapidapi.com/pair-details",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "chain_slug",
+                    "type": "STRING",
+                    "description": "Blockchain slug, e.g, \"ethereum\"",
+                    "default": "ethereum"
+                },
+                {
+                    "name": "pair_slug",
+                    "type": "STRING",
+                    "description": "\nTrading pair friendly presentation (token0 symbol - token1 symbol) or pair pool contract address.\n\nSymbols can be in any order: base token - quote token or quote token - base token.\n\nIf multiple trading pairs match the same symbol the one with the highest volume is returned\n(assuming other trading pairs are ones with a fake token).\n\nExamples of accepted `pair_slugs`:\n- `ETH-USDC`\n- `eth-usdc`\n- `WETH-USDC`\n- `USDC-WETH`\n- `0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc`\n\nThe response is a composite of pair summary information, additional trading volume numbers and related links.\n",
+                    "default": "ETH-USDC"
+                },
+                {
+                    "name": "exchange_slug",
+                    "type": "STRING",
+                    "description": "Exchange path slug e.g, `sushiswap`\n",
+                    "default": "sushiswap"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://open-defi.p.rapidapi.com/pair-details\"\nquerystring = {\"chain_slug\": \"ethereum\", \"pair_slug\": \"ETH-USDC\", \"exchange_slug\": \"sushiswap\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"open-defi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://open-defi.p.rapidapi.com/pair-details\"\nquerystring = {\"chain_slug\": \"ethereum\", \"pair_slug\": \"ETH-USDC\", \"exchange_slug\": \"sushiswap\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"open-defi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "web_candles",
+            "url": "https://open-defi.p.rapidapi.com/candles",
+            "description": "\nFetch candle data for a single trading pair.\n\nYou need to resolve the symbolic trading pair name to `pair_id` primary key with `/pairs` or `/pair-details`\nto call this API endpoint.\n\nCandle response size is limited to 10,000 candles. Only the first 10,000 candles\nsince the start timestamp is returned.\n\n[Inspired by Bitfinex API](https://docs.bitfinex.com/reference#rest-public-candles).\n",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "time_bucket",
+                    "type": "STRING",
+                    "description": "\nWhat time bucket to use for the candle size.\n",
+                    "default": "1h"
+                },
+                {
+                    "name": "pair_id",
+                    "type": "NUMBER",
+                    "description": "\nPrimary key for the trading pair\n\nFor tests and demos use id `1` which is ETH/USDC pair on Uniswap v2,\nas it is the first deployed Uniswap v2 compatible pool.\n",
+                    "default": 1
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "\nWhen the candle fetch period starts.\n\nUse UNIX UTC timestamp, as ISO 8601 formatted string.\n[Read more information about the time format](https://docs.python.org/3/library/datetime.html#datetime.datetime.fromisoformat).\n\nIf not specific this will be resolved to now() - time_bucket * 100, or getting the last 100 candles.\n\nThis range parameter is inclusive.\n",
+                    "default": "2020-05-18 00:00"
+                },
+                {
+                    "name": "end",
+                    "type": "STRING",
+                    "description": "\nWhen the candle fetch period ends.\n\nUse UNIX UTC timestamp, as ISO 8601 formatted string.\n\nIf not specific this will be resolved to now().\n\nThis range parameter is inclusive.\n",
+                    "default": "2020-05-19 00:00"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://open-defi.p.rapidapi.com/candles\"\nquerystring = {\"time_bucket\": \"1h\", \"start\": \"2020-05-18 00:00\", \"end\": \"2020-05-19 00:00\", \"pair_id\": 1}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"open-defi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://open-defi.p.rapidapi.com/candles\"\nquerystring = {\"time_bucket\": \"1h\", \"start\": \"2020-05-18 00:00\", \"end\": \"2020-05-19 00:00\", \"pair_id\": 1}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"open-defi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "description": "\nMultiple candles to render.\n\nNote that this data is sparse. If there were no trades, the timestamp for the candle time bucket\nperiod does not exist in the array.\n\nCandles will be sorted from the first to the last.\n",
+                "type": "array",
+                "items": {
+                    "description": "\nOne OHLCV candle for the candle charts\n\n[Read more about what trading candles are](https://tradingstrategy.ai/docs/glossary.html#term-Candle).\n",
+                    "type": "object",
+                    "properties": {
+                        "ts": {
+                            "description": "\nUNIX UTC timestamp as ISO 8601 formatted string.\n",
+                            "type": "number",
+                            "format": "timestamp"
+                        },
+                        "o": {
+                            "description": "Open value of the candle\n",
+                            "type": "number",
+                            "format": "us_dollar"
+                        },
+                        "h": {
+                            "description": "High value of the candle\n",
+                            "type": "number",
+                            "format": "us_dollar"
+                        },
+                        "l": {
+                            "description": "Low value of the candle\n",
+                            "type": "number",
+                            "format": "us_dollar"
+                        },
+                        "c": {
+                            "description": "Close value of the candle\n",
+                            "type": "number",
+                            "format": "us_dollar"
+                        },
+                        "v": {
+                            "description": "Trade volume in US dollar\n",
+                            "type": "number",
+                            "format": "us_dollar"
+                        },
+                        "xr": {
+                            "description": "\n`xr` stands for the exchange rate.\n\nAppromaxime exchange rate between US dollar and quote token for this candle.\n\nThe actual exchange rate may be true only for 1 minute candles.\nThe 1 minute candles use reference price oracle for quote token/USD.\nOther candle data is upsampled from the 1 minute candles and do not internally use any exchange rate.\n\nAny USD stablecoin is assumed to be 1:1 to actual USD.\n",
+                            "type": "number"
+                        },
+                        "tc": {
+                            "description": "\n`ct` stands for the trade count.\n\nNumber of individual trades executed during the candle time period.\n",
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "web_pairs",
+            "url": "https://open-defi.p.rapidapi.com/pairs",
+            "description": "\nQuery different combinations of the trading pairs.\n\nThe most common query is all trading pairs of a decentralised exchange.\n\n`/pairs?chain_slugs=ethereum&exchange-slugs=uniswap-v2`\n\nThe results are always paginated.\n\n## Parameter seralisation\n\nNote that lists are not JSON serialised, but use [OpenAPI query parameter serialization](https://swagger.io/docs/specification/serialization/). I.e. lists are comma separated, no spaces between items.\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "direction",
+                    "type": "STRING",
+                    "description": "Sort order:\n * `asc` - Ascending, from A to Z\n * `desc` - Descending, from Z to A\n",
+                    "default": "asc"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Page number, zero-indexed",
+                    "default": 0
+                },
+                {
+                    "name": "filter_junk",
+                    "type": "BOOLEAN",
+                    "description": "If there are multiple token pairs with matching symbols in the result,\nchoose one with the highest volume and hide the others.\n",
+                    "default": true
+                },
+                {
+                    "name": "token0",
+                    "type": "STRING",
+                    "description": "Symbol of one of the token pairs e.g. WETH",
+                    "default": ""
+                },
+                {
+                    "name": "page_size",
+                    "type": "NUMBER",
+                    "description": "Limit number of pairs returned (default is 20)",
+                    "default": 20
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "\nWhat kind of sort options is available for the list\n\nThe default `pair_id` sorting makes only sense for machine-to-machine actions.\nThe recommended sort method is by descending volume (most interesting trading pairs first).\n",
+                    "default": "pair_id"
+                },
+                {
+                    "name": "token1",
+                    "type": "STRING",
+                    "description": "Symbol of one of the token pairs e.g. USDC",
+                    "default": ""
+                },
+                {
+                    "name": "exchange_slugs",
+                    "type": "ARRAY",
+                    "description": "Slugs for DEXes to look up",
+                    "default": [
+                        "uniswap-v2"
+                    ]
+                },
+                {
+                    "name": "chain_slugs",
+                    "type": "ARRAY",
+                    "description": "Slugs for blockchain to look up",
+                    "default": [
+                        "ethereum"
+                    ]
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://open-defi.p.rapidapi.com/pairs\"\nquerystring = {\"direction\": \"asc\", \"page\": 0, \"filter_junk\": true, \"token0\": \"\", \"page_size\": 20, \"sort\": \"pair_id\", \"token1\": \"\", \"exchange_slugs\": [\"uniswap-v2\"], \"chain_slugs\": [\"ethereum\"]}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"open-defi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://open-defi.p.rapidapi.com/pairs\"\nquerystring = {\"direction\": \"asc\", \"page\": 0, \"filter_junk\": true, \"token0\": \"\", \"page_size\": 20, \"sort\": \"pair_id\", \"token1\": \"\", \"exchange_slugs\": [\"uniswap-v2\"], \"chain_slugs\": [\"ethereum\"]}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"open-defi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "description": "Iterate through a list of PairSummary responses\n",
+                "properties": {
+                    "total": {
+                        "description": "Total results entries",
+                        "type": "integer"
+                    },
+                    "pages": {
+                        "description": "Total result pages",
+                        "type": "integer"
+                    },
+                    "results": {
+                        "description": "One page of pair summaries",
+                        "type": "array",
+                        "items": {
+                            "description": "Summary of the trading pair.\n\nUsed to return pair data in listings.\n",
+                            "properties": {
+                                "pair_id": {
+                                    "description": "Primary key for the traidng pair",
+                                    "type": "integer"
+                                },
+                                "pair_name": {
+                                    "description": "\nHuman-readable name for this trading pair.\n",
+                                    "type": "string"
+                                },
+                                "pair_symbol": {
+                                    "description": "\nHuman-readable name for this trading pair.\n\nUsually base token - quote token, uppercase.\n\nWETH is displayed as ETH.\n",
+                                    "type": "string"
+                                },
+                                "pair_slug": {
+                                    "description": "\nURL slug for this trading pair.\n\nUsually base token - quote token, lower case.\n\nWETH is displayed as ETH.\n",
+                                    "type": "string"
+                                },
+                                "exchange_id": {
+                                    "description": "Exchange primary key where this token trades",
+                                    "type": "integer"
+                                },
+                                "exchange_slug": {
+                                    "description": "URL slug for the exchange",
+                                    "type": "string"
+                                },
+                                "exchange_name": {
+                                    "description": "Human readable name of the exchange\n",
+                                    "type": "string"
+                                },
+                                "chain_name": {
+                                    "description": "Human-readable name of the blockchain\n",
+                                    "type": "string"
+                                },
+                                "chain_slug": {
+                                    "description": "URL slug for the blockchain on which this exchange runs",
+                                    "type": "string"
+                                },
+                                "chain_id": {
+                                    "description": "Ethereum chain id for the blockchain this exchange runs on, from https://chainlist.org/",
+                                    "type": "integer"
+                                },
+                                "base_token_symbol": {
+                                    "description": "Token that is being bought",
+                                    "type": "string"
+                                },
+                                "quote_token_symbol": {
+                                    "description": "Token that is used as a currency",
+                                    "type": "string"
+                                },
+                                "base_token_symbol_friendly": {
+                                    "description": "Token that is being bought.\n\nHuman friendly symbol. E.g. WETH->ETH.\n",
+                                    "type": "string"
+                                },
+                                "quote_token_symbol_friendly": {
+                                    "description": "Token that is used as a currency\n\nHuman friendly symbol. E.g. WETH->ETH.\n",
+                                    "type": "string"
+                                },
+                                "base_token_address": {
+                                    "description": "Smart contract address of the base token",
+                                    "type": "string",
+                                    "format": "Ethereum address"
+                                },
+                                "quote_token_address": {
+                                    "description": "Smart contract address of the quote token",
+                                    "type": "string",
+                                    "format": "Ethereum address"
+                                },
+                                "pool_address": {
+                                    "description": "Pool contract address",
+                                    "type": "string",
+                                    "minLength": 4,
+                                    "format": "Ethereum address"
+                                },
+                                "exchange_rate": {
+                                    "description": "US dollar / quote token exchange rate used to calculate the latest price.\n\nIf the pair is quoted in a US dollar stablecoin this number is 1.0.\n\nIf the pair is quoted in ETH then this is the current ETH price.\n\nIn some situations, the exchange rate might be missing, in which case this is `null`.\n(TODO: In the future the exchange rate will be always present.)\n",
+                                    "type": "number"
+                                },
+                                "usd_price_latest": {
+                                    "description": "Base token/quote token converted to USD through direct quote token/USD exchange rate.\n\nThe close of the 15 minute candle.\n",
+                                    "type": "number"
+                                },
+                                "price_change_24h": {
+                                    "description": "The % how much price has changed for the last 24h.\n",
+                                    "type": "number"
+                                },
+                                "usd_volume_24h": {
+                                    "description": "USD trading volume for the last day",
+                                    "type": "number"
+                                },
+                                "usd_liquidity_latest": {
+                                    "description": "The current available XY liquidity",
+                                    "type": "number"
+                                },
+                                "liquidity_change_24h": {
+                                    "description": "The % how much liquidity has changed for the last 24h.\n",
+                                    "type": "number"
+                                },
+                                "liquidity_type": {
+                                    "description": "What of liquidity measurement is used",
+                                    "type": "string",
+                                    "enum": [
+                                        "xyliquidity"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "web_pair_trade_data",
+            "url": "https://open-defi.p.rapidapi.com/pair-trade-data",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "pair_id",
+                    "type": "NUMBER",
+                    "description": "\nPair id as received in `/pairs` or `/pair-details`\n\nAs the endpoint /pair-details is preferred, this endpoint only gives direct pair_id access for now.\n",
+                    "default": 1
+                },
+                {
+                    "name": "period",
+                    "type": "STRING",
+                    "description": "\nThe time perid for the stats.\n\nCurrently only latest stats are supported.\n",
+                    "default": "hourly"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://open-defi.p.rapidapi.com/pair-trade-data\"\nquerystring = {\"pair_id\": 1, \"period\": \"hourly\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"open-defi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://open-defi.p.rapidapi.com/pair-trade-data\"\nquerystring = {\"pair_id\": 1, \"period\": \"hourly\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"open-defi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "description": "\nTrade data for a selected timespan. Usually this is the summary data of the latest daily, hourly or weekly data.\n\nFor the pairs that do not have active trading, the data is based on the time of the last trade.\n(This behavior is to be changed in the future.)\n",
+                "type": "object",
+                "properties": {
+                    "price_open": {
+                        "description": "Open value of the candle\n",
+                        "type": "number",
+                        "format": "us_dollar"
+                    },
+                    "price_high": {
+                        "description": "High value of the candle\n",
+                        "type": "number",
+                        "format": "us_dollar"
+                    },
+                    "price_low": {
+                        "description": "Low value of the candle\n",
+                        "type": "number",
+                        "format": "us_dollar"
+                    },
+                    "price_close": {
+                        "description": "Close value of the candle\n",
+                        "type": "number",
+                        "format": "us_dollar"
+                    },
+                    "volume": {
+                        "description": "Trade volume in US dollar\n",
+                        "type": "number",
+                        "format": "us_dollar"
+                    },
+                    "liquidity_high": {
+                        "description": "Max liquidity during the period\n",
+                        "type": "number",
+                        "format": "us_dollar"
+                    },
+                    "liquidity_low": {
+                        "description": "Min liquidity during the period\n",
+                        "type": "number",
+                        "format": "us_dollar"
+                    },
+                    "buys": {
+                        "description": "Number of individual buys\n",
+                        "type": "integer"
+                    },
+                    "sells": {
+                        "description": "Number of individual sells\n",
+                        "type": "integer"
+                    },
+                    "liquidity_events": {
+                        "description": "Number of individual liquidity events - how many times liquidity was added or removed from the pool\n",
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        {
+            "name": "web_exchange_details",
+            "url": "https://open-defi.p.rapidapi.com/exchange-details",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "exchange_slug",
+                    "type": "STRING",
+                    "description": "Exchange path slug e.g, `sushiswap`\n",
+                    "default": ""
+                },
+                {
+                    "name": "chain_slug",
+                    "type": "STRING",
+                    "description": "Blockchain slug, e.g, \"ethereum\"",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://open-defi.p.rapidapi.com/exchange-details\"\nquerystring = {\"exchange_slug\": \"\", \"chain_slug\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"open-defi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://open-defi.p.rapidapi.com/exchange-details\"\nquerystring = {\"exchange_slug\": \"\", \"chain_slug\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"open-defi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "web_exchanges",
+            "url": "https://open-defi.p.rapidapi.com/exchanges",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "\nWhat kind of sort options is available for the output.\n\nThe default `usd_volume_30d` sorts the exchanges based on their monthly volume.\n",
+                    "default": "usd_volume_30d"
+                },
+                {
+                    "name": "direction",
+                    "type": "STRING",
+                    "description": "Sort order:\n * `asc` - Ascending, from A to Z\n * `desc` - Descending, from Z to A\n",
+                    "default": "desc"
+                },
+                {
+                    "name": "filter_zero_volume",
+                    "type": "BOOLEAN",
+                    "description": "When set, do not return exchanegs which have had no volume for last 30 days.\n\nThis will speed up the response a bit, as most exchanges are ghost exchanges.\n",
+                    "default": false
+                },
+                {
+                    "name": "chain_slug",
+                    "type": "STRING",
+                    "description": "Blockchain slug, e.g, `ethereum` for Ethereum mainnet.\n\nIf present, list exchanges only for this chain.\n",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://open-defi.p.rapidapi.com/exchanges\"\nquerystring = {\"sort\": \"usd_volume_30d\", \"direction\": \"desc\", \"filter_zero_volume\": false, \"chain_slug\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"open-defi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://open-defi.p.rapidapi.com/exchanges\"\nquerystring = {\"sort\": \"usd_volume_30d\", \"direction\": \"desc\", \"filter_zero_volume\": false, \"chain_slug\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"open-defi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "exchanges": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "notable": {
+                                    "description": "Should be shown by default",
+                                    "type": "boolean"
+                                },
+                                "exchange_id": {
+                                    "description": "Primary key for exchange",
+                                    "type": "integer"
+                                },
+                                "chain_id": {
+                                    "description": "Ethereum chain id for the blockchain this exchange runs on, from https://chainlist.org/",
+                                    "type": "integer"
+                                },
+                                "exchange_slug": {
+                                    "description": "URL slug for the exchange",
+                                    "type": "string"
+                                },
+                                "chain_slug": {
+                                    "description": "URL slug for the blockchain on which this exchange runs",
+                                    "type": "string"
+                                },
+                                "chain_name": {
+                                    "description": "Human readable name for the blockchain where the exchange is running",
+                                    "type": "string"
+                                },
+                                "human_readable_name": {
+                                    "description": "Human readable name for this exchange. If there is no known name, then it is generated based on the address.",
+                                    "type": "string",
+                                    "minLength": 4
+                                },
+                                "address": {
+                                    "description": "Ethereum address, non-checksummed, for the exchange factory",
+                                    "type": "string",
+                                    "minLength": 4
+                                },
+                                "exchange_type": {
+                                    "description": "Exchange type enum - see https://tradingstrategy.ai/docs/programming/api/exchange.html#tradingstrategy.exchange.ExchangeType",
+                                    "type": "string",
+                                    "minLength": 4
+                                },
+                                "usd_volume_30d": {
+                                    "description": "USD volume for the last 30 days",
+                                    "type": "number"
+                                },
+                                "pair_count": {
+                                    "description": "How many trading pairs this exchange has\n",
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "web_impressive_numbers",
+            "url": "https://open-defi.p.rapidapi.com/impressive-numbers",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://open-defi.p.rapidapi.com/impressive-numbers\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"open-defi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://open-defi.p.rapidapi.com/impressive-numbers\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"open-defi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "web_chains",
+            "url": "https://open-defi.p.rapidapi.com/chains",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://open-defi.p.rapidapi.com/chains\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"open-defi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://open-defi.p.rapidapi.com/chains\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"open-defi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "web_chain_details",
+            "url": "https://open-defi.p.rapidapi.com/chain-details",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "chain_slug",
+                    "type": "STRING",
+                    "description": "Blockchain slug, e.g, `ethereum` for Ethereum mainnet\n",
+                    "default": "ethereum"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://open-defi.p.rapidapi.com/chain-details\"\nquerystring = {\"chain_slug\": \"ethereum\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"open-defi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://open-defi.p.rapidapi.com/chain-details\"\nquerystring = {\"chain_slug\": \"ethereum\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"open-defi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "web_top_momentum",
+            "url": "https://open-defi.p.rapidapi.com/top-momentum",
+            "description": "\nReturn top up and down 100 price changes for 24h.\n\nThe results are split for all trading pairs and trading pairs with $1M min liquidity.\n",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://open-defi.p.rapidapi.com/top-momentum\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"open-defi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://open-defi.p.rapidapi.com/top-momentum\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"open-defi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

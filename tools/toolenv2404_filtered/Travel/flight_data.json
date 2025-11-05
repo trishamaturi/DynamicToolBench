@@ -1,0 +1,1130 @@
+{
+    "product_id": "api_093b785a-ed47-4123-b637-2193eb855b63",
+    "tool_description": "Real-time data, unofficial API skyscanner.com.\nSearch for a list of flights everywhere, roundtrip, one-way, multi-city like on the skyscanner.com website",
+    "home_url": "https://rapidapi.com/ntd119/api/flight-data24/",
+    "name": "Flight Data",
+    "title": "Flight Data",
+    "pricing": "FREEMIUM",
+    "tool_name": "Flight Data",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 5655,
+        "avgSuccessRate": 81,
+        "popularityScore": 7.9,
+        "__typename": "Score"
+    },
+    "host": "flight-data24.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "flights/auto-complete",
+            "url": "https://flight-data24.p.rapidapi.com/flights/auto-complete",
+            "description": "flights/auto-complete",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Required: true\nEx: `New York`",
+                    "default": "New York"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "placeTypes",
+                    "type": "STRING",
+                    "description": "It can input multiple values, and the values should be separated by commas\nThe  **/flights/search-multi-city**  endpoint is only used in the case placeTypes=CITY,AIRPORT\nEx: `CITY,AIRPORT`\n`CITY`: City\n`AIRPORT`: Airport\n`COUNTRY`: Country",
+                    "default": ""
+                },
+                {
+                    "name": "outboundDate",
+                    "type": "STRING",
+                    "description": "Format:  `YYYY-MM-DD`\nDefault value: Current date",
+                    "default": ""
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "`market` can be retrieved from /get-config endpoint(data->market)\nEx: `US`\nDefault value: `US`",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from /get-config endpoint(data->locale)\nEx: `en-US`\nDefault value: `en-US`",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://flight-data24.p.rapidapi.com/flights/auto-complete\"\nquerystring = {\"placeTypes\": \"\", \"outboundDate\": \"\", \"market\": \"\", \"query\": \"New York\", \"locale\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"flight-data24.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://flight-data24.p.rapidapi.com/flights/auto-complete\"\nquerystring = {\"placeTypes\": \"\", \"outboundDate\": \"\", \"market\": \"\", \"query\": \"New York\", \"locale\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"flight-data24.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "presentation": {
+                                    "type": "object",
+                                    "properties": {
+                                        "title": {
+                                            "type": "string"
+                                        },
+                                        "suggestionTitle": {
+                                            "type": "string"
+                                        },
+                                        "subtitle": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "navigation": {
+                                    "type": "object",
+                                    "properties": {
+                                        "entityId": {
+                                            "type": "string"
+                                        },
+                                        "entityType": {
+                                            "type": "string"
+                                        },
+                                        "localizedName": {
+                                            "type": "string"
+                                        },
+                                        "relevantFlightParams": {
+                                            "type": "object",
+                                            "properties": {
+                                                "skyId": {
+                                                    "type": "string"
+                                                },
+                                                "entityId": {
+                                                    "type": "string"
+                                                },
+                                                "flightPlaceType": {
+                                                    "type": "string"
+                                                },
+                                                "localizedName": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "relevantHotelParams": {
+                                            "type": "object",
+                                            "properties": {
+                                                "entityId": {
+                                                    "type": "string"
+                                                },
+                                                "entityType": {
+                                                    "type": "string"
+                                                },
+                                                "localizedName": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "flights/search-incomplete",
+            "url": "https://flight-data24.p.rapidapi.com/flights/search-incomplete",
+            "description": "Get full data for  **/flights/search-roundtrip** or  **/flights/search-one-way** or  **/flights/search-multi-city**  endpoint\n\nYou need to call the API multiple times until the item status is 'complete'(data->context->status=complete)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "sessionId",
+                    "type": "STRING",
+                    "description": "From location\nRequired: true\n`fromEntityId` can be retrieved from /flights/auto-complete endpoint(data->presentation->id)\nEx: `eyJlIjoiMjc1Mzc1NDIiLCJzIjoiTllDQSIsImgiOiIyNzUzNzU0MiJ9` (New York)",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from /get-config endpoint(data->locale)\nEx: `en-US`\nDefault value: `en-US`",
+                    "default": ""
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "`market` can be retrieved from /get-config endpoint(data->market)\nEx: `US`\nDefault value: `US`",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from /get-config endpoint(data->currency)\nEx: `USD`\nDefault value: `USD`",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://flight-data24.p.rapidapi.com/flights/search-incomplete\"\nquerystring = {\"locale\": \"\", \"market\": \"\", \"sessionId\": \"\", \"currency\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"flight-data24.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://flight-data24.p.rapidapi.com/flights/search-incomplete\"\nquerystring = {\"locale\": \"\", \"market\": \"\", \"sessionId\": \"\", \"currency\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"flight-data24.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "context": {
+                                "type": "object",
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "sessionId": {
+                                        "type": "string"
+                                    },
+                                    "totalResults": {
+                                        "type": "integer"
+                                    }
+                                }
+                            },
+                            "itineraries": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "messages": {
+                                "type": "array"
+                            },
+                            "filterStats": {
+                                "type": "object",
+                                "properties": {
+                                    "duration": {
+                                        "type": "object",
+                                        "properties": {
+                                            "min": {
+                                                "type": "integer"
+                                            },
+                                            "max": {
+                                                "type": "integer"
+                                            },
+                                            "multiCityMin": {
+                                                "type": "integer"
+                                            },
+                                            "multiCityMax": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    },
+                                    "airports": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "city": {
+                                                    "type": "string"
+                                                },
+                                                "airports": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string"
+                                                            },
+                                                            "name": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "carriers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "logoUrl": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "stopPrices": {
+                                        "type": "object",
+                                        "properties": {
+                                            "direct": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "isPresent": {
+                                                        "type": "boolean"
+                                                    }
+                                                }
+                                            },
+                                            "one": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "isPresent": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "formattedPrice": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "twoOrMore": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "isPresent": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "formattedPrice": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "flightsSessionId": {
+                                "type": "string"
+                            },
+                            "destinationImageUrl": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "flights/search-roundtrip",
+            "url": "https://flight-data24.p.rapidapi.com/flights/search-roundtrip",
+            "description": "flights/search-roundtrip\n\nIn case the status is 'incomplete'(data->context->status=incomplete), you need to use the /flights/search-incomplete endpoint to get the full data until the status is 'complete'(data->context->status=complete)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "departDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Depart date\nRequired: true\nFormat: `YYYY-MM-DD`\nEx: `2024-02-14`",
+                    "default": ""
+                },
+                {
+                    "name": "toEntityId",
+                    "type": "STRING",
+                    "description": "To location\n`toEntityId` can be retrieved from /flights/auto-complete endpoint(data->presentation->id) or the response of endpoint(data->everywhereDestination/countryDestination->results->id)\nEx: `eyJlIjoiMjk0NzUwODUiLCJzIjoiUFIifQ==` (Puerto Rico)",
+                    "default": "eyJlIjoiOTU2NzM3NDQiLCJzIjoiTlVFIiwiaCI6IjI3NTQ1MTYyIn0"
+                },
+                {
+                    "name": "returnDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Return date\nRequired: true\nFormat: `YYYY-MM-DD`\nEx: `2024-02-15`",
+                    "default": ""
+                },
+                {
+                    "name": "fromEntityId",
+                    "type": "STRING",
+                    "description": "From location\nRequired: true\n`fromEntityId` can be retrieved from /flights/auto-complete endpoint(data->presentation->id)\nEx: `eyJlIjoiMjc1Mzc1NDIiLCJzIjoiTllDQSIsImgiOiIyNzUzNzU0MiJ9` (New York)",
+                    "default": "eyJlIjoiMjc1Mzc1NDIiLCJzIjoiTllDQSIsImgiOiIyNzUzNzU0MiJ9"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "children",
+                    "type": "NUMBER",
+                    "description": "Children: 2-12 years\nEx: `4`\nDefault value: `0`",
+                    "default": ""
+                },
+                {
+                    "name": "infants",
+                    "type": "NUMBER",
+                    "description": "Infants: Under 2 years\nEx: `1`\nDefault value: `0`",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from /get-config endpoint(data->currency)\nEx: `USD`\nDefault value: `USD`",
+                    "default": ""
+                },
+                {
+                    "name": "cabinClass",
+                    "type": "ENUM",
+                    "description": "Cabin class\nEx: `economy`\nDefault value: `economy`\n\n`economy`: Economy\n`premium_economy`: Premium Economy\n`business`: Business\n`first`: First",
+                    "default": ""
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "`market` can be retrieved from /get-config endpoint(data->market)\nEx: `US`\nDefault value: `US`",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from /get-config endpoint(data->locale)\nEx: `en-US`\nDefault value: `en-US`",
+                    "default": ""
+                },
+                {
+                    "name": "adults",
+                    "type": "NUMBER",
+                    "description": "Adults: 12+ years\nEx: `3`\nDefault value: `1`",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://flight-data24.p.rapidapi.com/flights/search-roundtrip\"\nquerystring = {\"departDate\": \"\", \"children\": \"\", \"toEntityId\": \"eyJlIjoiOTU2NzM3NDQiLCJzIjoiTlVFIiwiaCI6IjI3NTQ1MTYyIn0\", \"infants\": \"\", \"currency\": \"\", \"returnDate\": \"\", \"cabinClass\": \"\", \"market\": \"\", \"fromEntityId\": \"eyJlIjoiMjc1Mzc1NDIiLCJzIjoiTllDQSIsImgiOiIyNzUzNzU0MiJ9\", \"locale\": \"\", \"adults\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"flight-data24.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://flight-data24.p.rapidapi.com/flights/search-roundtrip\"\nquerystring = {\"departDate\": \"\", \"children\": \"\", \"toEntityId\": \"eyJlIjoiOTU2NzM3NDQiLCJzIjoiTlVFIiwiaCI6IjI3NTQ1MTYyIn0\", \"infants\": \"\", \"currency\": \"\", \"returnDate\": \"\", \"cabinClass\": \"\", \"market\": \"\", \"fromEntityId\": \"eyJlIjoiMjc1Mzc1NDIiLCJzIjoiTllDQSIsImgiOiIyNzUzNzU0MiJ9\", \"locale\": \"\", \"adults\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"flight-data24.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "context": {
+                                "type": "object",
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "sessionId": {
+                                        "type": "string"
+                                    },
+                                    "totalResults": {
+                                        "type": "integer"
+                                    }
+                                }
+                            },
+                            "itineraries": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "messages": {
+                                "type": "array"
+                            },
+                            "filterStats": {
+                                "type": "object",
+                                "properties": {
+                                    "duration": {
+                                        "type": "object",
+                                        "properties": {
+                                            "min": {
+                                                "type": "integer"
+                                            },
+                                            "max": {
+                                                "type": "integer"
+                                            },
+                                            "multiCityMin": {
+                                                "type": "integer"
+                                            },
+                                            "multiCityMax": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    },
+                                    "airports": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "city": {
+                                                    "type": "string"
+                                                },
+                                                "airports": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string"
+                                                            },
+                                                            "name": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "carriers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "logoUrl": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "stopPrices": {
+                                        "type": "object",
+                                        "properties": {
+                                            "direct": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "isPresent": {
+                                                        "type": "boolean"
+                                                    }
+                                                }
+                                            },
+                                            "one": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "isPresent": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "formattedPrice": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "twoOrMore": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "isPresent": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "formattedPrice": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "flightsSessionId": {
+                                "type": "string"
+                            },
+                            "destinationImageUrl": {
+                                "type": "string"
+                            },
+                            "token": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "flights/price-calendar",
+            "url": "https://flight-data24.p.rapidapi.com/flights/price-calendar",
+            "description": "flights/price-calendar",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "fromEntityId",
+                    "type": "STRING",
+                    "description": "From location\nRequired: true\n`fromEntityId` can be retrieved from /flights/auto-complete endpoint(data->presentation->id)\nEx: `eyJlIjoiMjc1Mzc1NDIiLCJzIjoiTllDQSIsImgiOiIyNzUzNzU0MiJ9` (New York)",
+                    "default": "eyJlIjoiMjc1Mzk3MzMiLCJzIjoiUEFSSSIsImgiOiIyNzUzOTczMyJ9"
+                },
+                {
+                    "name": "departDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Depart date\nRequired: true\nFormat: `YYYY-MM-DD`\nEx: `2024-02-14`",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "`market` can be retrieved from /get-config endpoint(data->market)\nEx: `US`\nDefault value: `US`",
+                    "default": ""
+                },
+                {
+                    "name": "toEntityId",
+                    "type": "NUMBER",
+                    "description": "To location\n`fromEntityId` can be retrieved from /flights/auto-complete endpoint(data->presentation->id)\nEx: `eyJlIjoiMzUyMzQ4OTIiLCJzIjoiTVNZQSIsImgiOiIzNTIzNDg5MiJ9`\n\nDefault value: `anywhere`",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from /get-config endpoint(data->currency)\nEx: `USD`\nDefault value: `USD`",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from /get-config endpoint(data->locale)\nEx: `en-US`\nDefault value: `en-US`",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://flight-data24.p.rapidapi.com/flights/price-calendar\"\nquerystring = {\"market\": \"\", \"toEntityId\": \"\", \"fromEntityId\": \"eyJlIjoiMjc1Mzk3MzMiLCJzIjoiUEFSSSIsImgiOiIyNzUzOTczMyJ9\", \"currency\": \"\", \"locale\": \"\", \"departDate\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"flight-data24.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://flight-data24.p.rapidapi.com/flights/price-calendar\"\nquerystring = {\"market\": \"\", \"toEntityId\": \"\", \"fromEntityId\": \"eyJlIjoiMjc1Mzk3MzMiLCJzIjoiUEFSSSIsImgiOiIyNzUzOTczMyJ9\", \"currency\": \"\", \"locale\": \"\", \"departDate\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"flight-data24.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "flights": {
+                                "type": "object",
+                                "properties": {
+                                    "noPriceLabel": {
+                                        "type": "string"
+                                    },
+                                    "groups": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "label": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "days": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "day": {
+                                                    "type": "string"
+                                                },
+                                                "group": {
+                                                    "type": "string"
+                                                },
+                                                "price": {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "currency": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "flights/search-one-way",
+            "url": "https://flight-data24.p.rapidapi.com/flights/search-one-way",
+            "description": "flights/search-one-way\n\nIn case the status is 'incomplete'(data->context->status=incomplete), you need to use the /flights/search-incomplete endpoint to get the full data until the status is 'complete'(data->context->status=complete)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "toEntityId",
+                    "type": "STRING",
+                    "description": "To location\n`toEntityId` can be retrieved from /flights/auto-complete endpoint(data->presentation->id) or the response of endpoint(data->everywhereDestination/countryDestination->results->id)\nEx: `eyJlIjoiMjk0NzUwODUiLCJzIjoiUFIifQ==` (Puerto Rico)",
+                    "default": "eyJlIjoiOTU2NzM3NDQiLCJzIjoiTlVFIiwiaCI6IjI3NTQ1MTYyIn0"
+                },
+                {
+                    "name": "fromEntityId",
+                    "type": "STRING",
+                    "description": "From location\nRequired: true\n`fromEntityId` can be retrieved from /flights/auto-complete endpoint(data->presentation->id)\nEx: `eyJlIjoiMjc1Mzc1NDIiLCJzIjoiTllDQSIsImgiOiIyNzUzNzU0MiJ9` (New York)",
+                    "default": "eyJlIjoiMjc1Mzc1NDIiLCJzIjoiTllDQSIsImgiOiIyNzUzNzU0MiJ9"
+                },
+                {
+                    "name": "departDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Depart date\nRequired: true\nFormat: `YYYY-MM-DD`\nEx: `2024-02-14`",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from /get-config endpoint(data->currency)\nEx: `USD`\nDefault value: `USD`",
+                    "default": ""
+                },
+                {
+                    "name": "adults",
+                    "type": "NUMBER",
+                    "description": "Adults: 12+ years\nEx: `3`\nDefault value: `1`",
+                    "default": ""
+                },
+                {
+                    "name": "infants",
+                    "type": "NUMBER",
+                    "description": "Infants: Under 2 years\nEx: `1`\nDefault value: `0`",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from /get-config endpoint(data->locale)\nEx: `en-US`\nDefault value: `en-US`",
+                    "default": ""
+                },
+                {
+                    "name": "children",
+                    "type": "NUMBER",
+                    "description": "Children: 2-12 years\nEx: `4`\nDefault value: `0`",
+                    "default": ""
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "`market` can be retrieved from /get-config endpoint(data->market)\nEx: `US`\nDefault value: `US`",
+                    "default": ""
+                },
+                {
+                    "name": "cabinClass",
+                    "type": "ENUM",
+                    "description": "Cabin class\nEx: `economy`\nDefault value: `economy`\n\n`economy`: Economy\n`premium_economy`: Premium Economy\n`business`: Business\n`first`: First",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://flight-data24.p.rapidapi.com/flights/search-one-way\"\nquerystring = {\"currency\": \"\", \"toEntityId\": \"eyJlIjoiOTU2NzM3NDQiLCJzIjoiTlVFIiwiaCI6IjI3NTQ1MTYyIn0\", \"adults\": \"\", \"infants\": \"\", \"locale\": \"\", \"children\": \"\", \"market\": \"\", \"fromEntityId\": \"eyJlIjoiMjc1Mzc1NDIiLCJzIjoiTllDQSIsImgiOiIyNzUzNzU0MiJ9\", \"departDate\": \"\", \"cabinClass\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"flight-data24.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://flight-data24.p.rapidapi.com/flights/search-one-way\"\nquerystring = {\"currency\": \"\", \"toEntityId\": \"eyJlIjoiOTU2NzM3NDQiLCJzIjoiTlVFIiwiaCI6IjI3NTQ1MTYyIn0\", \"adults\": \"\", \"infants\": \"\", \"locale\": \"\", \"children\": \"\", \"market\": \"\", \"fromEntityId\": \"eyJlIjoiMjc1Mzc1NDIiLCJzIjoiTllDQSIsImgiOiIyNzUzNzU0MiJ9\", \"departDate\": \"\", \"cabinClass\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"flight-data24.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "context": {
+                                "type": "object",
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "sessionId": {
+                                        "type": "string"
+                                    },
+                                    "totalResults": {
+                                        "type": "integer"
+                                    }
+                                }
+                            },
+                            "itineraries": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "messages": {
+                                "type": "array"
+                            },
+                            "filterStats": {
+                                "type": "object",
+                                "properties": {
+                                    "duration": {
+                                        "type": "object",
+                                        "properties": {
+                                            "min": {
+                                                "type": "integer"
+                                            },
+                                            "max": {
+                                                "type": "integer"
+                                            },
+                                            "multiCityMin": {
+                                                "type": "integer"
+                                            },
+                                            "multiCityMax": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    },
+                                    "airports": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "city": {
+                                                    "type": "string"
+                                                },
+                                                "airports": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string"
+                                                            },
+                                                            "name": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "carriers": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer"
+                                                },
+                                                "logoUrl": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "stopPrices": {
+                                        "type": "object",
+                                        "properties": {
+                                            "direct": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "isPresent": {
+                                                        "type": "boolean"
+                                                    }
+                                                }
+                                            },
+                                            "one": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "isPresent": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "formattedPrice": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "twoOrMore": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "isPresent": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "formattedPrice": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "flightsSessionId": {
+                                "type": "string"
+                            },
+                            "destinationImageUrl": {
+                                "type": "string"
+                            },
+                            "token": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "flights/search-everywhere",
+            "url": "https://flight-data24.p.rapidapi.com/flights/search-everywhere",
+            "description": "flights/search-everywhere",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "fromEntityId",
+                    "type": "STRING",
+                    "description": "From location\nRequired: true\n`fromEntityId` can be retrieved from /flights/auto-complete endpoint(data->presentation->id)\nEx: `eyJlIjoiMjc1Mzc1NDIiLCJzIjoiTllDQSIsImgiOiIyNzUzNzU0MiJ9` (New York)",
+                    "default": "eyJlIjoiMjc1Mzc1NDIiLCJzIjoiTllDQSIsImgiOiIyNzUzNzU0MiJ9"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "toEntityId",
+                    "type": "STRING",
+                    "description": "To location\n`toEntityId` can be retrieved from /flights/auto-complete endpoint(data->presentation->id) or the response of endpoint(data->everywhereDestination/countryDestination->results->id)\nEx: `eyJlIjoiMjk0NzUwODUiLCJzIjoiUFIifQ==` (Puerto Rico)",
+                    "default": ""
+                },
+                {
+                    "name": "cabinClass",
+                    "type": "ENUM",
+                    "description": "Cabin class\nEx: `economy`\nDefault value: `economy`\n\n`economy`: Economy\n`premium_economy`: Premium Economy\n`business`: Business\n`first`: First",
+                    "default": ""
+                },
+                {
+                    "name": "year",
+                    "type": "STRING",
+                    "description": "Depart year\nFormat: `YYYY`\nEx: `2024`",
+                    "default": ""
+                },
+                {
+                    "name": "adults",
+                    "type": "NUMBER",
+                    "description": "Adults: 12+ years\nEx: `3`\nDefault value: `1`",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from /get-config endpoint(data->locale)\nEx: `en-US`\nDefault value: `en-US`",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from /get-config endpoint(data->currency)\nEx: `USD`\nDefault value: `USD`",
+                    "default": ""
+                },
+                {
+                    "name": "children",
+                    "type": "NUMBER",
+                    "description": "Children: 2-12 years\nEx: `4`\nDefault value: `0`",
+                    "default": ""
+                },
+                {
+                    "name": "infants",
+                    "type": "NUMBER",
+                    "description": "Infants: Under 2 years\nEx: `1`\nDefault value: `0`",
+                    "default": ""
+                },
+                {
+                    "name": "month",
+                    "type": "STRING",
+                    "description": "Depart month\nFormat: `MM`\nEx: `05`",
+                    "default": ""
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "`market` can be retrieved from /get-config endpoint(data->market)\nEx: `US`\nDefault value: `US`",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://flight-data24.p.rapidapi.com/flights/search-everywhere\"\nquerystring = {\"toEntityId\": \"\", \"cabinClass\": \"\", \"year\": \"\", \"adults\": \"\", \"locale\": \"\", \"currency\": \"\", \"children\": \"\", \"infants\": \"\", \"month\": \"\", \"market\": \"\", \"fromEntityId\": \"eyJlIjoiMjc1Mzc1NDIiLCJzIjoiTllDQSIsImgiOiIyNzUzNzU0MiJ9\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"flight-data24.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://flight-data24.p.rapidapi.com/flights/search-everywhere\"\nquerystring = {\"toEntityId\": \"\", \"cabinClass\": \"\", \"year\": \"\", \"adults\": \"\", \"locale\": \"\", \"currency\": \"\", \"children\": \"\", \"infants\": \"\", \"month\": \"\", \"market\": \"\", \"fromEntityId\": \"eyJlIjoiMjc1Mzc1NDIiLCJzIjoiTllDQSIsImgiOiIyNzUzNzU0MiJ9\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"flight-data24.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "everywhereDestination": {
+                                "type": "object",
+                                "properties": {
+                                    "context": {
+                                        "type": "object",
+                                        "properties": {
+                                            "status": {
+                                                "type": "string"
+                                            },
+                                            "sessionId": {
+                                                "type": "string"
+                                            },
+                                            "totalResults": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    },
+                                    "features": {
+                                        "type": "object",
+                                        "properties": {
+                                            "flightsIndicative": {
+                                                "type": "string"
+                                            },
+                                            "images": {
+                                                "type": "string"
+                                            },
+                                            "ads": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "buckets": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "label": {
+                                                    "type": "string"
+                                                },
+                                                "category": {
+                                                    "type": "string"
+                                                },
+                                                "resultIds": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "flightQuotes": {
+                                                    "type": "string"
+                                                },
+                                                "hotelQuotes": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "results": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "type": {
+                                                    "type": "string"
+                                                },
+                                                "content": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "location": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string"
+                                                                },
+                                                                "skyCode": {
+                                                                    "type": "string"
+                                                                },
+                                                                "name": {
+                                                                    "type": "string"
+                                                                },
+                                                                "type": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        },
+                                                        "flightQuotes": {
+                                                            "type": "object"
+                                                        },
+                                                        "image": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "url": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "context": {
+                                "type": "object",
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "sessionId": {
+                                        "type": "string"
+                                    },
+                                    "totalResults": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        {
+            "name": "get-config",
+            "url": "https://flight-data24.p.rapidapi.com/get-config",
+            "description": "get-config",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://flight-data24.p.rapidapi.com/get-config\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"flight-data24.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://flight-data24.p.rapidapi.com/get-config\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"flight-data24.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    ]
+}

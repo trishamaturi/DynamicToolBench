@@ -1,0 +1,844 @@
+{
+    "product_id": "api_c97a2796-57ef-456f-86d2-a130f95b5721",
+    "tool_description": "This API helps to query properties for sale, rent, sold,etc\u2026 to create a real estate site/application",
+    "home_url": "https://rapidapi.com/apidojo/api/unofficial-redfin/",
+    "name": "Unofficial Redfin",
+    "title": "Unofficial Redfin",
+    "pricing": "FREEMIUM",
+    "tool_name": "Unofficial Redfin",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 2132,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.6,
+        "__typename": "Score"
+    },
+    "host": "unofficial-redfin.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "mortgage/check-rates (Deprecated)",
+            "url": "https://unofficial-redfin.p.rapidapi.com/mortgage/check-rates",
+            "description": "Finance tools to check mortgage rates",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "loanBalance",
+                    "type": "NUMBER",
+                    "description": "Loan balance",
+                    "default": "320000"
+                },
+                {
+                    "name": "homePrice",
+                    "type": "NUMBER",
+                    "description": "Home price",
+                    "default": "2500000"
+                },
+                {
+                    "name": "homeValue",
+                    "type": "NUMBER",
+                    "description": "Home value",
+                    "default": "400000"
+                },
+                {
+                    "name": "locationId",
+                    "type": "NUMBER",
+                    "description": "You need to use regex to extract the value of id field returned in .../auto-complete endpoint. Ex : '2_30749', 30749 is the value you need to extract from the string.",
+                    "default": "39375"
+                },
+                {
+                    "name": "locationType",
+                    "type": "NUMBER",
+                    "description": "The value of type field returned in .../auto-complete",
+                    "default": "4"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "loanType",
+                    "type": "STRING",
+                    "description": "One of the following : purchase|refinance",
+                    "default": "purchase"
+                },
+                {
+                    "name": "points",
+                    "type": "STRING",
+                    "description": "One of the following : zero|zerotoone|onetotwo|all",
+                    "default": "zero"
+                },
+                {
+                    "name": "percentageDown",
+                    "type": "NUMBER",
+                    "description": "Percentage down payment",
+                    "default": "20"
+                },
+                {
+                    "name": "veteranType",
+                    "type": "STRING",
+                    "description": "One of the following : Non-Military|RegularMilitary|NationalGuard|Reserves|SpouseOfRegularMilitary|SpouseOfReserveMilitary",
+                    "default": "Non-Military"
+                },
+                {
+                    "name": "creditScore",
+                    "type": "NUMBER",
+                    "description": "From 670 to 760",
+                    "default": "760"
+                },
+                {
+                    "name": "loanTerms",
+                    "type": "STRING",
+                    "description": "One of the following : 30yr|20yr|15yr|10yr|3-1arm|5-1arm|7-1arm",
+                    "default": "30yr"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/mortgage/check-rates\"\nquerystring = {\"loanType\": \"purchase\", \"loanBalance\": \"320000\", \"points\": \"zero\", \"percentageDown\": \"20\", \"veteranType\": \"Non-Military\", \"creditScore\": \"760\", \"homePrice\": \"2500000\", \"loanTerms\": \"30yr\", \"homeValue\": \"400000\", \"locationId\": \"39375\", \"locationType\": \"4\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/mortgage/check-rates\"\nquerystring = {\"loanType\": \"purchase\", \"loanBalance\": \"320000\", \"points\": \"zero\", \"percentageDown\": \"20\", \"veteranType\": \"Non-Military\", \"creditScore\": \"760\", \"homePrice\": \"2500000\", \"loanTerms\": \"30yr\", \"homeValue\": \"400000\", \"locationId\": \"39375\", \"locationType\": \"4\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "auto-complete",
+            "url": "https://unofficial-redfin.p.rapidapi.com/auto-complete",
+            "description": "Get auto complete suggestions by term or phrase.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "Any terms or phrases that you are familiar with.",
+                    "default": "Los Ang"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/auto-complete\"\nquerystring = {\"location\": \"Los Ang\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/auto-complete\"\nquerystring = {\"location\": \"Los Ang\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "mortgage/v2/check-rates",
+            "url": "https://unofficial-redfin.p.rapidapi.com/mortgage/v2/check-rates",
+            "description": "Finance tools to check mortgage rates",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "locationId",
+                    "type": "NUMBER",
+                    "description": "You need to use regex to extract the value of id field returned in .../auto-complete endpoint. Ex : '2_30749', 30749 is the value you need to extract from the string.",
+                    "default": "39375"
+                },
+                {
+                    "name": "locationType",
+                    "type": "NUMBER",
+                    "description": "The value of type field returned in .../auto-complete",
+                    "default": "4"
+                },
+                {
+                    "name": "homeValue",
+                    "type": "NUMBER",
+                    "description": "Home value",
+                    "default": "400000"
+                },
+                {
+                    "name": "homePrice",
+                    "type": "NUMBER",
+                    "description": "Home price",
+                    "default": "2500000"
+                },
+                {
+                    "name": "loanBalance",
+                    "type": "NUMBER",
+                    "description": "Loan balance",
+                    "default": "320000"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "vaLoans",
+                    "type": "STRING",
+                    "description": "One of the followings : DO_NOT_SHOW|SHOW",
+                    "default": "SHOW"
+                },
+                {
+                    "name": "points",
+                    "type": "STRING",
+                    "description": "One of the following : zero|zerotoone|onetotwo|all",
+                    "default": "zero"
+                },
+                {
+                    "name": "propertyType",
+                    "type": "STRING",
+                    "description": "One of the followings : SINGLE_FAMILY_OR_TOWNHOME|CONDOMINIUM_LT_FOUR_STORIES|CONDOMINIUM_GT_MORE_STORIES|DUPLEX|TRIPLEX|QUADPLEX",
+                    "default": "SINGLE_FAMILY_OR_TOWNHOME"
+                },
+                {
+                    "name": "fhaLoans",
+                    "type": "STRING",
+                    "description": "One of the followings : DO_NOT_SHOW|SHOW",
+                    "default": "SHOW"
+                },
+                {
+                    "name": "loanTerms",
+                    "type": "STRING",
+                    "description": "One of the following : PERIOD_FIXED_10YEARS|PERIOD_FIXED_15YEARS|PERIOD_FIXED_20YEARS|PERIOD_FIXED_30YEARS|PERIOD_FIXED_40YEARS|PERIOD_ARM_1YEARS|PERIOD_ARM_3YEARS|PERIOD_ARM_5YEARS|PERIOD_ARM_7YEARS|PERIOD_ARM_10YEARS",
+                    "default": "PERIOD_FIXED_30YEARS"
+                },
+                {
+                    "name": "loanType",
+                    "type": "NUMBER",
+                    "description": "One of the following : 52(purchase)|54(refinance)",
+                    "default": "52"
+                },
+                {
+                    "name": "creditScore",
+                    "type": "NUMBER",
+                    "description": "From 670 to 760",
+                    "default": "760"
+                },
+                {
+                    "name": "occupancyType",
+                    "type": "STRING",
+                    "description": "One of the followings : PRIMARY_RESIDENCE|SECOND_HOME|INVESTMENT",
+                    "default": "PRIMARY_RESIDENCE"
+                },
+                {
+                    "name": "percentageDown",
+                    "type": "NUMBER",
+                    "description": "Percentage down payment",
+                    "default": "20"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/mortgage/v2/check-rates\"\nquerystring = {\"vaLoans\": \"SHOW\", \"points\": \"zero\", \"locationId\": \"39375\", \"propertyType\": \"SINGLE_FAMILY_OR_TOWNHOME\", \"fhaLoans\": \"SHOW\", \"loanTerms\": \"PERIOD_FIXED_30YEARS\", \"locationType\": \"4\", \"loanType\": \"52\", \"creditScore\": \"760\", \"occupancyType\": \"PRIMARY_RESIDENCE\", \"homeValue\": \"400000\", \"homePrice\": \"2500000\", \"percentageDown\": \"20\", \"loanBalance\": \"320000\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/mortgage/v2/check-rates\"\nquerystring = {\"vaLoans\": \"SHOW\", \"points\": \"zero\", \"locationId\": \"39375\", \"propertyType\": \"SINGLE_FAMILY_OR_TOWNHOME\", \"fhaLoans\": \"SHOW\", \"loanTerms\": \"PERIOD_FIXED_30YEARS\", \"locationType\": \"4\", \"loanType\": \"52\", \"creditScore\": \"760\", \"occupancyType\": \"PRIMARY_RESIDENCE\", \"homeValue\": \"400000\", \"homePrice\": \"2500000\", \"percentageDown\": \"20\", \"loanBalance\": \"320000\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "properties/get-parcel-bounds",
+            "url": "https://unofficial-redfin.p.rapidapi.com/properties/get-parcel-bounds",
+            "description": "Get parcel bounds info. This endpoint is used to get fipsCode and apn to pass in .../properties/get-flood-info endpoint.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "propertyId",
+                    "type": "STRING",
+                    "description": "The value of propertyId field returned in .../properties/list endpoint.",
+                    "default": "40913212"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-parcel-bounds\"\nquerystring = {\"propertyId\": \"40913212\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-parcel-bounds\"\nquerystring = {\"propertyId\": \"40913212\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "properties/list",
+            "url": "https://unofficial-redfin.p.rapidapi.com/properties/list",
+            "description": "List properties for sales, sold, etc... with options and filters",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "region_type",
+                    "type": "NUMBER",
+                    "description": "One of the following : -1:Unknowns|1:Neighborhood|2:Zip Code|4:State|5:County|6:City|7:School|8:School District|9:Service Region|10:Minor Civil Division|11:Country|30:CA Postal Code|31:CA Province|32:CA Provincial Division|33:CA Municipality|34:CA Forward Sortation Area\nYou need to use regex to examine the value of url field returned in .../auto-complete for suitable value. Ex : '/city/30749/...', it is city so it is 6 in this case.",
+                    "default": "6"
+                },
+                {
+                    "name": "region_id",
+                    "type": "NUMBER",
+                    "description": "You need to use regex to extract the value of id field returned in .../auto-complete endpoint. Ex : '2_30749', 30749 is the value you need to extract from the string.",
+                    "default": "30749"
+                },
+                {
+                    "name": "uipt",
+                    "type": "STRING",
+                    "description": "Property types, uses of the following : 1-Home|2-Condo|3-Townhouse|4-Multi-family|5-Land|6-Other|7-Manufactured|8-Co-op\nSeparated by comma for multiple options. Ex : 1,2,3,4,7,8",
+                    "default": "1,2,3,4,7,8"
+                },
+                {
+                    "name": "status",
+                    "type": "NUMBER",
+                    "description": "One of the following : 1-Active listings|8-Coming soon listings|9-Active + coming soon listings|130-Only under contract/pending|131-Active + under contract/pending",
+                    "default": "9"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "min_year_built",
+                    "type": "NUMBER",
+                    "description": "Filter by year built",
+                    "default": ""
+                },
+                {
+                    "name": "wd",
+                    "type": "BOOLEAN",
+                    "description": "true : has washer/dryer hookup",
+                    "default": ""
+                },
+                {
+                    "name": "green",
+                    "type": "BOOLEAN",
+                    "description": "true : Green Home",
+                    "default": ""
+                },
+                {
+                    "name": "financing_type",
+                    "type": "NUMBER",
+                    "description": "Accepted Financing, one of the following : 1-FHA|2-VA",
+                    "default": ""
+                },
+                {
+                    "name": "elevator",
+                    "type": "BOOLEAN",
+                    "description": "true : has elevator",
+                    "default": ""
+                },
+                {
+                    "name": "time_on_market_range",
+                    "type": "STRING",
+                    "description": "Time on Redfin, you need to put the minus before/after every numbers. Ex :\n1-:Less than 1 day|3-:Less than 3 days|7-|14-|30-|-30:More than 30 days|-60|-120|-:For any time",
+                    "default": ""
+                },
+                {
+                    "name": "min_parcel_size",
+                    "type": "NUMBER",
+                    "description": "Lot size",
+                    "default": ""
+                },
+                {
+                    "name": "excl_ss",
+                    "type": "BOOLEAN",
+                    "description": "true : Exclude short sales",
+                    "default": ""
+                },
+                {
+                    "name": "min_price_per_sqft",
+                    "type": "NUMBER",
+                    "description": "Filter by price per sqft",
+                    "default": ""
+                },
+                {
+                    "name": "pool_types",
+                    "type": "NUMBER",
+                    "description": "One of the following : 1-Private pool|2-Community pool|3-Private or Community pool|4-No private pool",
+                    "default": ""
+                },
+                {
+                    "name": "primary_bed_on_main",
+                    "type": "BOOLEAN",
+                    "description": "true : has primary bedroom on main floor",
+                    "default": ""
+                },
+                {
+                    "name": "excl_ll",
+                    "type": "BOOLEAN",
+                    "description": "true : Exclude land leases",
+                    "default": ""
+                },
+                {
+                    "name": "include_outdoor_parking",
+                    "type": "BOOLEAN",
+                    "description": "true : Include outdoor parking",
+                    "default": ""
+                },
+                {
+                    "name": "unrated_schools",
+                    "type": "BOOLEAN",
+                    "description": "true : Include unrated schools. Use along with school_rating parameter.",
+                    "default": ""
+                },
+                {
+                    "name": "walk_score",
+                    "type": "STRING",
+                    "description": "Filter by walk score, you need to put the minus after every numbers. Ex : 10-|20-|30-|etc...",
+                    "default": ""
+                },
+                {
+                    "name": "guest_house",
+                    "type": "BOOLEAN",
+                    "description": "true : has guest house",
+                    "default": ""
+                },
+                {
+                    "name": "max_property_tax",
+                    "type": "NUMBER",
+                    "description": "Max property tax. Ex : 750",
+                    "default": ""
+                },
+                {
+                    "name": "school_rating",
+                    "type": "STRING",
+                    "description": "Filter by school rate, you need to put the minus after every numbers. Ex : 1-|2-|3-|...|10-",
+                    "default": ""
+                },
+                {
+                    "name": "wf",
+                    "type": "BOOLEAN",
+                    "description": "true : has water front",
+                    "default": ""
+                },
+                {
+                    "name": "accessible",
+                    "type": "BOOLEAN",
+                    "description": "true : Accessible Home",
+                    "default": ""
+                },
+                {
+                    "name": "transit_score",
+                    "type": "STRING",
+                    "description": "Filter by transit score, you need to put the minus after every numbers. Ex : 10-|20-|30-|etc...",
+                    "default": ""
+                },
+                {
+                    "name": "rv_parking",
+                    "type": "BOOLEAN",
+                    "description": "true : Include RV parking",
+                    "default": ""
+                },
+                {
+                    "name": "bike_score",
+                    "type": "STRING",
+                    "description": "Filter by bike score, you need to put the minus after every numbers. Ex : 10-|20-|30-|etc...",
+                    "default": ""
+                },
+                {
+                    "name": "pets_allowed",
+                    "type": "BOOLEAN",
+                    "description": "true : allow pets",
+                    "default": ""
+                },
+                {
+                    "name": "fixer",
+                    "type": "BOOLEAN",
+                    "description": "true : Fixer Uppers Only",
+                    "default": ""
+                },
+                {
+                    "name": "basement_types",
+                    "type": "STRING",
+                    "description": "One of the following : 1-Finished|3-Unfinished. Separated by comma for multiple options. Ex : 1,3",
+                    "default": ""
+                },
+                {
+                    "name": "ac",
+                    "type": "BOOLEAN",
+                    "description": "true : has air conditioning",
+                    "default": ""
+                },
+                {
+                    "name": "virtual_tour",
+                    "type": "BOOLEAN",
+                    "description": "true|false",
+                    "default": ""
+                },
+                {
+                    "name": "excl_ar",
+                    "type": "BOOLEAN",
+                    "description": "true : Exclude 55+ communities",
+                    "default": ""
+                },
+                {
+                    "name": "open_house",
+                    "type": "NUMBER",
+                    "description": "1-Any time|2-This weekend",
+                    "default": ""
+                },
+                {
+                    "name": "max_stories",
+                    "type": "NUMBER",
+                    "description": "Filter by stories",
+                    "default": ""
+                },
+                {
+                    "name": "min_price",
+                    "type": "NUMBER",
+                    "description": "Filter by price",
+                    "default": ""
+                },
+                {
+                    "name": "school_types",
+                    "type": "STRING",
+                    "description": "Use along with school_rating parameter. One of the following : 1-Elementary schools|2-Middle schools|3-High schools. Separated by comma for multiple options. Ex : 1,2,3",
+                    "default": ""
+                },
+                {
+                    "name": "max_listing_approx_size",
+                    "type": "NUMBER",
+                    "description": "Square Feet",
+                    "default": ""
+                },
+                {
+                    "name": "num_beds",
+                    "type": "NUMBER",
+                    "description": "Filter by number of beds room at least. Ex : 2",
+                    "default": ""
+                },
+                {
+                    "name": "sold_within_days",
+                    "type": "NUMBER",
+                    "description": "Use this parameter to list SOLD properties. If you pass this parameter, leave sf parameter empty.",
+                    "default": ""
+                },
+                {
+                    "name": "max_price",
+                    "type": "NUMBER",
+                    "description": "Filter by price",
+                    "default": ""
+                },
+                {
+                    "name": "hoa",
+                    "type": "NUMBER",
+                    "description": "HOA fees. Ex : 0|25|50|75|...|2000",
+                    "default": ""
+                },
+                {
+                    "name": "min_stories",
+                    "type": "NUMBER",
+                    "description": "Filter by stories",
+                    "default": ""
+                },
+                {
+                    "name": "view",
+                    "type": "BOOLEAN",
+                    "description": "true : Must have view",
+                    "default": ""
+                },
+                {
+                    "name": "rd",
+                    "type": "STRING",
+                    "description": "Price reduce, you need to put the minus before/after every numbers. Ex :\n1-:Less than 1 day|3-:Less than 3 days|7-|14-|30-|-30:More than 30 days|-60|-120|-:For any time",
+                    "default": ""
+                },
+                {
+                    "name": "max_year_built",
+                    "type": "NUMBER",
+                    "description": "Filter by year built",
+                    "default": ""
+                },
+                {
+                    "name": "sf",
+                    "type": "STRING",
+                    "description": "MLS listings, uses of the following : 1,7-Agent listed Homes|2-MLS listed foreclosures|3-For sale by owner|4-Foreclosures|5,6-New construction\nSeparated by comma for multiple options. Ex : 1,2,3,5,6,7",
+                    "default": "1,2,3,5,6,7"
+                },
+                {
+                    "name": "fireplace",
+                    "type": "BOOLEAN",
+                    "description": "true : has fireplace",
+                    "default": ""
+                },
+                {
+                    "name": "pkg",
+                    "type": "STRING",
+                    "description": "Garage spots 1-|2-|3-|4-|5- (You need to put the minus behind every numbers)",
+                    "default": ""
+                },
+                {
+                    "name": "max_price_per_sqft",
+                    "type": "NUMBER",
+                    "description": "Filter by price per sqft",
+                    "default": ""
+                },
+                {
+                    "name": "min_listing_approx_size",
+                    "type": "NUMBER",
+                    "description": "Square Feet",
+                    "default": ""
+                },
+                {
+                    "name": "max_parcel_size",
+                    "type": "NUMBER",
+                    "description": "Lot size",
+                    "default": ""
+                },
+                {
+                    "name": "num_baths",
+                    "type": "NUMBER",
+                    "description": "Filter by number of baths at least. Ex : 2.5",
+                    "default": ""
+                },
+                {
+                    "name": "num_homes",
+                    "type": "NUMBER",
+                    "description": "Number of items per response (Max 400). Redfin always return max 400 properties for every search, there is no paging feature.",
+                    "default": "50"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/list\"\nquerystring = {\"min_year_built\": \"\", \"region_type\": \"6\", \"wd\": \"\", \"green\": \"\", \"financing_type\": \"\", \"elevator\": \"\", \"time_on_market_range\": \"\", \"min_parcel_size\": \"\", \"excl_ss\": \"\", \"min_price_per_sqft\": \"\", \"pool_types\": \"\", \"primary_bed_on_main\": \"\", \"excl_ll\": \"\", \"region_id\": \"30749\", \"uipt\": \"1,2,3,4,7,8\", \"include_outdoor_parking\": \"\", \"unrated_schools\": \"\", \"walk_score\": \"\", \"guest_house\": \"\", \"max_property_tax\": \"\", \"school_rating\": \"\", \"wf\": \"\", \"accessible\": \"\", \"transit_score\": \"\", \"rv_parking\": \"\", \"bike_score\": \"\", \"pets_allowed\": \"\", \"fixer\": \"\", \"basement_types\": \"\", \"ac\": \"\", \"virtual_tour\": \"\", \"excl_ar\": \"\", \"open_house\": \"\", \"max_stories\": \"\", \"min_price\": \"\", \"school_types\": \"\", \"max_listing_approx_size\": \"\", \"num_beds\": \"\", \"sold_within_days\": \"\", \"max_price\": \"\", \"hoa\": \"\", \"min_stories\": \"\", \"view\": \"\", \"rd\": \"\", \"max_year_built\": \"\", \"sf\": \"1,2,3,5,6,7\", \"fireplace\": \"\", \"pkg\": \"\", \"max_price_per_sqft\": \"\", \"min_listing_approx_size\": \"\", \"max_parcel_size\": \"\", \"num_baths\": \"\", \"num_homes\": \"50\", \"status\": \"9\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/list\"\nquerystring = {\"min_year_built\": \"\", \"region_type\": \"6\", \"wd\": \"\", \"green\": \"\", \"financing_type\": \"\", \"elevator\": \"\", \"time_on_market_range\": \"\", \"min_parcel_size\": \"\", \"excl_ss\": \"\", \"min_price_per_sqft\": \"\", \"pool_types\": \"\", \"primary_bed_on_main\": \"\", \"excl_ll\": \"\", \"region_id\": \"30749\", \"uipt\": \"1,2,3,4,7,8\", \"include_outdoor_parking\": \"\", \"unrated_schools\": \"\", \"walk_score\": \"\", \"guest_house\": \"\", \"max_property_tax\": \"\", \"school_rating\": \"\", \"wf\": \"\", \"accessible\": \"\", \"transit_score\": \"\", \"rv_parking\": \"\", \"bike_score\": \"\", \"pets_allowed\": \"\", \"fixer\": \"\", \"basement_types\": \"\", \"ac\": \"\", \"virtual_tour\": \"\", \"excl_ar\": \"\", \"open_house\": \"\", \"max_stories\": \"\", \"min_price\": \"\", \"school_types\": \"\", \"max_listing_approx_size\": \"\", \"num_beds\": \"\", \"sold_within_days\": \"\", \"max_price\": \"\", \"hoa\": \"\", \"min_stories\": \"\", \"view\": \"\", \"rd\": \"\", \"max_year_built\": \"\", \"sf\": \"1,2,3,5,6,7\", \"fireplace\": \"\", \"pkg\": \"\", \"max_price_per_sqft\": \"\", \"min_listing_approx_size\": \"\", \"max_parcel_size\": \"\", \"num_baths\": \"\", \"num_homes\": \"50\", \"status\": \"9\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "properties/get-popularity-info",
+            "url": "https://unofficial-redfin.p.rapidapi.com/properties/get-popularity-info",
+            "description": "Get popularity info relating to a property",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "listingId",
+                    "type": "STRING",
+                    "description": "The value of listingId field returned in .../properties/list endpoint.",
+                    "default": "143076129"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-popularity-info\"\nquerystring = {\"listingId\": \"143076129\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-popularity-info\"\nquerystring = {\"listingId\": \"143076129\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "properties/get-tour-insights",
+            "url": "https://unofficial-redfin.p.rapidapi.com/properties/get-tour-insights",
+            "description": "Get tour insights of a property",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "propertyId",
+                    "type": "STRING",
+                    "description": "The value of propertyId field returned in .../properties/list endpoint.",
+                    "default": "40913212"
+                },
+                {
+                    "name": "listingId",
+                    "type": "STRING",
+                    "description": "The value of listingId field returned in .../properties/list endpoint.",
+                    "default": "143076129"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-tour-insights\"\nquerystring = {\"propertyId\": \"40913212\", \"listingId\": \"143076129\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-tour-insights\"\nquerystring = {\"propertyId\": \"40913212\", \"listingId\": \"143076129\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "properties/get-estimate",
+            "url": "https://unofficial-redfin.p.rapidapi.com/properties/get-estimate",
+            "description": "Get Redfin's estimate of a property",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "listingId",
+                    "type": "STRING",
+                    "description": "The value of listingId field returned in .../properties/list endpoint.",
+                    "default": "143076129"
+                },
+                {
+                    "name": "propertyId",
+                    "type": "STRING",
+                    "description": "The value of propertyId field returned in .../properties/list endpoint.",
+                    "default": "40913212"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-estimate\"\nquerystring = {\"listingId\": \"143076129\", \"propertyId\": \"40913212\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-estimate\"\nquerystring = {\"listingId\": \"143076129\", \"propertyId\": \"40913212\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "properties/get-mortgage-calculator",
+            "url": "https://unofficial-redfin.p.rapidapi.com/properties/get-mortgage-calculator",
+            "description": "Get mortgage calculator of a property",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "listingId",
+                    "type": "STRING",
+                    "description": "The value of listingId field returned in .../properties/list endpoint.",
+                    "default": "143076129"
+                },
+                {
+                    "name": "propertyId",
+                    "type": "STRING",
+                    "description": "The value of propertyId field returned in .../properties/list endpoint.",
+                    "default": "40913212"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-mortgage-calculator\"\nquerystring = {\"listingId\": \"143076129\", \"propertyId\": \"40913212\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-mortgage-calculator\"\nquerystring = {\"listingId\": \"143076129\", \"propertyId\": \"40913212\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "properties/get-amenities",
+            "url": "https://unofficial-redfin.p.rapidapi.com/properties/get-amenities",
+            "description": "Get all amenities of a property",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "propertyId",
+                    "type": "STRING",
+                    "description": "The value of propertyId field returned in .../properties/list endpoint.",
+                    "default": "40913212"
+                },
+                {
+                    "name": "listingId",
+                    "type": "STRING",
+                    "description": "The value of listingId field returned in .../properties/list endpoint.",
+                    "default": "143076129"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-amenities\"\nquerystring = {\"propertyId\": \"40913212\", \"listingId\": \"143076129\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-amenities\"\nquerystring = {\"propertyId\": \"40913212\", \"listingId\": \"143076129\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "properties/get-agent",
+            "url": "https://unofficial-redfin.p.rapidapi.com/properties/get-agent",
+            "description": "Get agent info relating to a property",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "propertyId",
+                    "type": "STRING",
+                    "description": "The value of propertyId field returned in .../properties/list endpoint.",
+                    "default": "40913212"
+                },
+                {
+                    "name": "listingId",
+                    "type": "STRING",
+                    "description": "The value of listingId field returned in .../properties/list endpoint.",
+                    "default": "143076129"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-agent\"\nquerystring = {\"propertyId\": \"40913212\", \"listingId\": \"143076129\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-agent\"\nquerystring = {\"propertyId\": \"40913212\", \"listingId\": \"143076129\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "properties/get-flood-info",
+            "url": "https://unofficial-redfin.p.rapidapi.com/properties/get-flood-info",
+            "description": "Get flood info",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "apn",
+                    "type": "STRING",
+                    "description": "The value of apn field returned in .../properties/get-parcel-bounds endpoint.",
+                    "default": "53226107"
+                },
+                {
+                    "name": "lng",
+                    "type": "NUMBER",
+                    "description": "The longitude of GEO location",
+                    "default": "-121.9615086"
+                },
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "The latitude of GEO location",
+                    "default": "37.2104814"
+                },
+                {
+                    "name": "fipsCode",
+                    "type": "STRING",
+                    "description": "The value of fipsCode field returned in .../properties/get-parcel-bounds endpoint.",
+                    "default": "06085"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-flood-info\"\nquerystring = {\"apn\": \"53226107\", \"lng\": \"-121.9615086\", \"lat\": \"37.2104814\", \"fipsCode\": \"06085\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-flood-info\"\nquerystring = {\"apn\": \"53226107\", \"lng\": \"-121.9615086\", \"lat\": \"37.2104814\", \"fipsCode\": \"06085\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "properties/get-walk-score",
+            "url": "https://unofficial-redfin.p.rapidapi.com/properties/get-walk-score",
+            "description": "Get walk score of a property",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "propertyId",
+                    "type": "STRING",
+                    "description": "The value of propertyId field returned in .../properties/list endpoint.",
+                    "default": "40913212"
+                },
+                {
+                    "name": "listingId",
+                    "type": "STRING",
+                    "description": "The value of listingId field returned in .../properties/list endpoint.",
+                    "default": "143076129"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-walk-score\"\nquerystring = {\"propertyId\": \"40913212\", \"listingId\": \"143076129\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-walk-score\"\nquerystring = {\"propertyId\": \"40913212\", \"listingId\": \"143076129\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "properties/get-extra-info",
+            "url": "https://unofficial-redfin.p.rapidapi.com/properties/get-extra-info",
+            "description": "Get extra info of a property",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "listingId",
+                    "type": "STRING",
+                    "description": "The value of listingId field returned in .../properties/list endpoint.",
+                    "default": "143076129"
+                },
+                {
+                    "name": "propertyId",
+                    "type": "STRING",
+                    "description": "The value of propertyId field returned in .../properties/list endpoint.",
+                    "default": "40913212"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-extra-info\"\nquerystring = {\"listingId\": \"143076129\", \"propertyId\": \"40913212\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-extra-info\"\nquerystring = {\"listingId\": \"143076129\", \"propertyId\": \"40913212\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "properties/get-main-info",
+            "url": "https://unofficial-redfin.p.rapidapi.com/properties/get-main-info",
+            "description": "Get main info of a property",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "propertyId",
+                    "type": "STRING",
+                    "description": "The value of propertyId field returned in .../properties/list endpoint.",
+                    "default": "40913212"
+                },
+                {
+                    "name": "listingId",
+                    "type": "STRING",
+                    "description": "The value of listingId field returned in .../properties/list endpoint.",
+                    "default": "143076129"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-main-info\"\nquerystring = {\"propertyId\": \"40913212\", \"listingId\": \"143076129\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://unofficial-redfin.p.rapidapi.com/properties/get-main-info\"\nquerystring = {\"propertyId\": \"40913212\", \"listingId\": \"143076129\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"unofficial-redfin.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

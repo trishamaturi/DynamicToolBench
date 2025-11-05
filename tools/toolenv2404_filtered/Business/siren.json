@@ -1,0 +1,92 @@
+{
+    "product_id": "api_67638f3a-7116-4867-a7da-6e4dbac57ccf",
+    "tool_description": "French SIREN reference, siren2url, url2siren, siren2phone, siren2logo, url2logo",
+    "home_url": "https://rapidapi.com/fliot/api/siren/",
+    "name": "SIREN",
+    "title": "SIREN",
+    "pricing": "FREEMIUM",
+    "tool_name": "SIREN",
+    "score": {
+        "avgServiceLevel": 0,
+        "avgLatency": 69,
+        "avgSuccessRate": 0,
+        "popularityScore": 0.2,
+        "__typename": "Score"
+    },
+    "host": "siren.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "siren2url",
+            "url": "https://siren.p.rapidapi.com/siren2url/491023073",
+            "description": "Get an URL link from a French SIREN reference. This API works with all French companies having a website (a 404 response is returned for companies having no website).",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "siren",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "491023073"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://siren.p.rapidapi.com/siren2url/491023073\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"siren.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://siren.p.rapidapi.com/siren2url/{siren}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"siren.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "siren": {
+                        "type": "integer"
+                    },
+                    "url": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "url2siren",
+            "url": "https://siren.p.rapidapi.com/url2siren/https/www.restoflash.fr",
+            "description": "From a website URL of a French company, get the company's SIREN registration number.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "protocol",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "https"
+                },
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "www.restoflash.fr"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://siren.p.rapidapi.com/url2siren/https/www.restoflash.fr\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"siren.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://siren.p.rapidapi.com/url2siren/{protocol}/{domain}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"siren.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "siren": {
+                        "title": "Siren",
+                        "type": "integer"
+                    },
+                    "url": {
+                        "title": "Url",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "siren",
+                    "url"
+                ],
+                "title": "Corporate",
+                "type": "object"
+            }
+        }
+    ]
+}

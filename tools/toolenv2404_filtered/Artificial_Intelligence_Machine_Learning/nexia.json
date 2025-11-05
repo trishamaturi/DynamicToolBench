@@ -1,0 +1,42 @@
+{
+    "product_id": "api_741d2560-bfd8-4918-9480-93cce512a544",
+    "tool_description": "Revolutionize your text processing capabilities with Nexia API. Features, include  OpenAI GPT-3 powered prompt generation, prompt editing, sentiment and emotion analysis, and create customizable prompt instructions and save them for later usecases, will take your application to the next level.\n\nWith Nexia API, you can also create and update text tones, ensuring that your prompts always align with your brand's voice and tone. Plus, our secure API with secure authentication gives you peace of m...",
+    "home_url": "https://rapidapi.com/AvidityLabs/api/nexia2/",
+    "name": "nexia",
+    "title": "nexia",
+    "pricing": "FREEMIUM",
+    "tool_name": "nexia",
+    "score": null,
+    "host": "nexia2.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Instruction Detail",
+            "url": "https://nexia2.p.rapidapi.com/instructions/{id}/",
+            "description": "Retrieve the details of a specific instruction.\n\n`URL: /instructions/<instruction_id>/`\n\n**Method:** GET\n\n**Auth required:** Yes\n\n**Path parameters:**\n\n**instruction_id: **The ID of the instruction to retrieve.\n\n**Success response:\n**\n\n```\nCode: 200 OK\nContent: { \"id\": 1, \"description\": \"Summarize the text\", \"tones\": [ { \"id\": 1, \"name\": \"professional\" } ], \"category\": { \"id\": 1, \"name\": \"marketing\" } }\n```\n\n**Error response:**\n\n```\nCode: 404 NOT FOUND\nContent: { \"error\": \"Instruction not found\" }\n```",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://nexia2.p.rapidapi.com/instructions/{id}/\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"nexia2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://nexia2.p.rapidapi.com/instructions/{id}/\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"nexia2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Search Instruction",
+            "url": "https://nexia2.p.rapidapi.com/instructions/search/",
+            "description": "Search for instructions by description, category, and/or tones.\n\n`URL: /instructions/search/`\n\n**Method:** GET\n\n**Auth required: **Yes\n\n**URL parameters:**\n\n**description: **A string to search for in the description field.\n**category:** A string to search for in the category name.\n**tones:** A list of tone names to filter by. Use multiple times to filter by multiple tones.\n\n**Sample request:**\n\n`GET /instructions/search/?description=summarize&category=marketing&tones=professional`\n\n**Success response:**\n\n```\n**Code: **200 OK\n**Content:** [ { \"id\": 1, \"description\": \"Summarize the text\", \"tones\": [ { \"id\": 1, \"name\": \"professional\" } ], \"category\": { \"id\": 1, \"name\": \"marketing\" } } ]\n\n```\n\n\nError response:\n\nCode: 400 BAD REQUEST\nContent: { \"errors\": { \"tones\": [ \"This field is required.\" ] } }",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://nexia2.p.rapidapi.com/instructions/search/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"nexia2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://nexia2.p.rapidapi.com/instructions/search/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"nexia2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

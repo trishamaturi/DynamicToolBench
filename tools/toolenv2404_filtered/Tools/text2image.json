@@ -1,0 +1,175 @@
+{
+    "product_id": "api_65d106c4-6f99-4a77-b720-5c345c124539",
+    "tool_description": "API that takes a string and converts it to an image of the text like in an ebook. Returns image as an array buffer.",
+    "home_url": "https://rapidapi.com/tylerhbaker99-aS61HIBUPR/api/text2image4/",
+    "name": "text2image",
+    "title": "text2image",
+    "pricing": "FREEMIUM",
+    "tool_name": "text2image",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 57,
+        "avgSuccessRate": 0,
+        "popularityScore": 0,
+        "__typename": "Score"
+    },
+    "host": "text2image4.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Convert Text to Image",
+            "url": "https://text2image4.p.rapidapi.com/api/converter",
+            "description": "## Required Queries\n\n- fileType: \"png\" or \"jpeg\"\n- textType: \"plainText\" or \"lz-string\"\n    - If necessary, you can use lz encoding (ex. `lz-string` npm library) to encode text to make it shorter.\n- text: string or lz-encoded string\n\n## Optional Parameters\n**Note: numerical values must be numbers and not letters. For example, type \"30\", not \"thirty\".**\n- width: number in pixels\n- height: number in pixels\n- padding: number in pixels\n- fontFamily: css font-family element\n    - Most standard system fonts should work. Others may not render correctly. I plan on adding support for more fonts in the future.\n    - Japanese text using the Hina Micho font is supported by default.\n- fontSize: number in pixels\n- backgroundColor: css color property\n    - ex. `#0092d2` or `tomato`\n- textColor: css color property\n- pages: number\n    - specifies max number of pages. If `pages` is specified, the converter will convert as many pages it needs but will not return more than the number specified. \n    - the API will calculate the necessary number of images by default.\n    - **This does not make the app squeeze the text to fit it in a certain number of pages.** If 2 pages are specified, it will produce the first two pages and then not send any more.\n\n## Default Option Values\n\n- width: '800',\n-  height: '800',\n- padding: '0',\n- fontFamily: 'Times New Roman, Hina Mincho',\n- fontSize: '16',\n- backgroundColor: '#ffffff',\n- textColor: '#000000',",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "text",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Hello World"
+                },
+                {
+                    "name": "textType",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "plainText"
+                },
+                {
+                    "name": "fileType",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "png"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "height",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "300"
+                },
+                {
+                    "name": "textColor",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "#ffffff"
+                },
+                {
+                    "name": "fontFamily",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Arial"
+                },
+                {
+                    "name": "pages",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "backgroundColor",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "#0092d2"
+                },
+                {
+                    "name": "padding",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "30"
+                },
+                {
+                    "name": "fontSize",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "64"
+                },
+                {
+                    "name": "width",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "300"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://text2image4.p.rapidapi.com/api/converter\"\nquerystring = {\"text\": \"Hello World\", \"height\": \"300\", \"textColor\": \"#ffffff\", \"fontFamily\": \"Arial\", \"pages\": \"1\", \"backgroundColor\": \"#0092d2\", \"padding\": \"30\", \"fontSize\": \"64\", \"width\": \"300\", \"textType\": \"plainText\", \"fileType\": \"png\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"text2image4.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://text2image4.p.rapidapi.com/api/converter\"\nquerystring = {\"text\": \"Hello World\", \"height\": \"300\", \"textColor\": \"#ffffff\", \"fontFamily\": \"Arial\", \"pages\": \"1\", \"backgroundColor\": \"#0092d2\", \"padding\": \"30\", \"fontSize\": \"64\", \"width\": \"300\", \"textType\": \"plainText\", \"fileType\": \"png\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"text2image4.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Calculate Number of Images",
+            "url": "https://text2image4.p.rapidapi.com/api/page-count",
+            "description": "Returns an object containing information about the number of pages with the supplied image properties. Also returns total lines per page and an array with the text split into lines.\n\n## Required Queries\n\n- fileType: \"png\" or \"jpeg\"\n- textType: \"plainText\" or \"lz-string\"\n    - If necessary, you can use lz encoding (ex. `lz-string` npm library) to encode text to make it shorter.\n- text: string or lz-encoded string\n\n## Optional Parameters\n**Note: numerical values must be numbers and not letters. For example, type \"30\", not \"thirty\".**\n- width: number in pixels\n- height: number in pixels\n- padding: number in pixels\n- fontFamily: css font-family element\n    - Most standard system fonts should work. Others may not render correctly. I plan on adding support for more fonts in the future.\n    - Japanese text using the Hina Micho font is supported by default.\n- fontSize: number in pixels\n- backgroundColor: css color property\n    - ex. `#0092d2` or `tomato`\n- textColor: css color property\n\n## Default Option Values\n\n- width: '800',\n-  height: '800',\n- padding: '0',\n- fontFamily: 'Times New Roman, Hina Mincho',\n- fontSize: '16',\n- backgroundColor: '#ffffff',\n- textColor: '#000000',",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "fileType",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "png"
+                },
+                {
+                    "name": "text",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Hello World"
+                },
+                {
+                    "name": "textType",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "plainText"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "fontSize",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "backgroundColor",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "textColor",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "fontFamily",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "height",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "padding",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "width",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://text2image4.p.rapidapi.com/api/page-count\"\nquerystring = {\"fontSize\": \"\", \"fileType\": \"png\", \"backgroundColor\": \"\", \"textColor\": \"\", \"fontFamily\": \"\", \"height\": \"\", \"padding\": \"\", \"width\": \"\", \"text\": \"Hello World\", \"textType\": \"plainText\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"text2image4.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://text2image4.p.rapidapi.com/api/page-count\"\nquerystring = {\"fontSize\": \"\", \"fileType\": \"png\", \"backgroundColor\": \"\", \"textColor\": \"\", \"fontFamily\": \"\", \"height\": \"\", \"padding\": \"\", \"width\": \"\", \"text\": \"Hello World\", \"textType\": \"plainText\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"text2image4.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

@@ -1,0 +1,183 @@
+{
+    "product_id": "api_92b166da-c1d1-49b2-8623-37f298da1ca5",
+    "tool_description": "Get Business data from yellowpages.ca",
+    "home_url": "https://rapidapi.com/zakaryloney/api/yellowpages-canada-api/",
+    "name": "YellowPages Canada API",
+    "title": "YellowPages Canada API",
+    "pricing": "FREEMIUM",
+    "tool_name": "YellowPages Canada API",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 5166,
+        "avgSuccessRate": 100,
+        "popularityScore": 5.9,
+        "__typename": "Score"
+    },
+    "host": "yellowpages-canada-api.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Data By Phone Number",
+            "url": "https://yellowpages-canada-api.p.rapidapi.com/reversePhoneSearch",
+            "description": "Get specific business data like address, reviews, socials, etc from phone number",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "n",
+                    "type": "STRING",
+                    "description": "Phone number to search for",
+                    "default": "705-472-7510"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://yellowpages-canada-api.p.rapidapi.com/reversePhoneSearch\"\nquerystring = {\"n\": \"705-472-7510\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yellowpages-canada-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://yellowpages-canada-api.p.rapidapi.com/reversePhoneSearch\"\nquerystring = {\"n\": \"705-472-7510\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yellowpages-canada-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Get Data By yellowpages.ca URL",
+            "url": "https://yellowpages-canada-api.p.rapidapi.com/businessByYPUrl",
+            "description": "Get specific business data like address, reviews, socials, etc from yellowpages.ca URL",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "Yellow Pages URL to search for",
+                    "default": "https://www.yellowpages.ca/bus/Ontario/North-Bay/Cecil-s-Brewhouse-Kitchen/3502657.html"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://yellowpages-canada-api.p.rapidapi.com/businessByYPUrl\"\nquerystring = {\"url\": \"https://www.yellowpages.ca/bus/Ontario/North-Bay/Cecil-s-Brewhouse-Kitchen/3502657.html\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yellowpages-canada-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://yellowpages-canada-api.p.rapidapi.com/businessByYPUrl\"\nquerystring = {\"url\": \"https://www.yellowpages.ca/bus/Ontario/North-Bay/Cecil-s-Brewhouse-Kitchen/3502657.html\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"yellowpages-canada-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "type": "string"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "itemType": {
+                                "type": "string"
+                            },
+                            "image": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "url": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "address": {
+                                "type": "string"
+                            },
+                            "streetAddress": {
+                                "type": "string"
+                            },
+                            "addressLocality": {
+                                "type": "string"
+                            },
+                            "addressRegion": {
+                                "type": "string"
+                            },
+                            "postalCode": {
+                                "type": "string"
+                            },
+                            "telephone": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "servesCuisine": {
+                                "type": "string"
+                            },
+                            "openingHours": {
+                                "type": "string"
+                            },
+                            "aggregateRating": {
+                                "type": "object",
+                                "properties": {
+                                    "ratingValue": {
+                                        "type": "string"
+                                    },
+                                    "ratingCount": {
+                                        "type": "integer"
+                                    }
+                                }
+                            },
+                            "reviews": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "ratingValue": {
+                                            "type": "integer"
+                                        },
+                                        "author": {
+                                            "type": "string"
+                                        },
+                                        "datePublished": {
+                                            "type": "string",
+                                            "format": "date"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "reviewBody": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "website": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "socialMedia": {
+                                "type": "object",
+                                "properties": {
+                                    "facebook": {
+                                        "type": "string",
+                                        "format": "uri"
+                                    },
+                                    "twitter": {
+                                        "type": "string",
+                                        "format": "uri"
+                                    },
+                                    "instagram": {
+                                        "type": "string",
+                                        "format": "uri"
+                                    },
+                                    "linkedin": {
+                                        "type": "string",
+                                        "format": "uri"
+                                    },
+                                    "youtube": {
+                                        "type": "string",
+                                        "format": "uri"
+                                    },
+                                    "pinterest": {
+                                        "type": "string",
+                                        "format": "uri"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

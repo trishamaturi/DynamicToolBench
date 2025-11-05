@@ -1,0 +1,152 @@
+{
+    "product_id": "api_d2380a8d-bed6-4d78-9e1d-cbdeac220f1d",
+    "tool_description": "FASTEST real-time Telegram API. Fetch channel's info and messages in milliseconds. FREE if getting empty response!",
+    "home_url": "https://rapidapi.com/akrakoro/api/telegram-channel/",
+    "name": "Telegram Channel",
+    "title": "Telegram Channel",
+    "pricing": "FREEMIUM",
+    "tool_name": "Telegram Channel",
+    "score": {
+        "avgServiceLevel": 75,
+        "avgLatency": 711,
+        "avgSuccessRate": 75,
+        "popularityScore": 9.8,
+        "__typename": "Score"
+    },
+    "host": "telegram-channel.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get latest messages",
+            "url": "https://telegram-channel.p.rapidapi.com/channel/message",
+            "description": "The endpoint fetches messages from Telegram Channel. The channel should be public.\n[How to find the telegram channel name?](https://rapidapi.com/akrakoro/api/telegram-channel/details)\n- id\n- author\n- date\n- text\n- html\n- forwarded\n- button\n- link\n- photo\n- video\n- audio\n- sticker\n- attachment\n- media_poll\n- `user_read_status` (`read` /  `unread`)",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "channel",
+                    "type": "STRING",
+                    "description": "public channel name",
+                    "default": "telegram"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "number of messages, maximization is 50",
+                    "default": "5"
+                },
+                {
+                    "name": "max_id",
+                    "type": "NUMBER",
+                    "description": "maximize message id, all the messages with a higher (newer) ID to this will be excluded.",
+                    "default": "999999999"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://telegram-channel.p.rapidapi.com/channel/message\"\nquerystring = {\"limit\": \"5\", \"channel\": \"telegram\", \"max_id\": \"999999999\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"telegram-channel.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://telegram-channel.p.rapidapi.com/channel/message\"\nquerystring = {\"limit\": \"5\", \"channel\": \"telegram\", \"max_id\": \"999999999\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"telegram-channel.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "author": {
+                            "type": "string"
+                        },
+                        "date": {
+                            "type": "string"
+                        },
+                        "user_read_status": {
+                            "type": "string"
+                        },
+                        "text": {
+                            "type": "string"
+                        },
+                        "html": {
+                            "type": "string"
+                        },
+                        "views": {
+                            "type": "string"
+                        },
+                        "forwarded": {
+                            "type": "object"
+                        },
+                        "button": {
+                            "type": "object"
+                        },
+                        "link": {
+                            "type": "object"
+                        },
+                        "photo": {
+                            "type": "object"
+                        },
+                        "video": {
+                            "type": "object"
+                        },
+                        "audio": {
+                            "type": "object"
+                        },
+                        "sticker": {
+                            "type": "object"
+                        },
+                        "attachment": {
+                            "type": "object"
+                        },
+                        "media_poll": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get channel info",
+            "url": "https://telegram-channel.p.rapidapi.com/channel/info",
+            "description": "The endpoint returns real-time information about the public Telegram Channel.\n[How to find the telegram channel name?](https://rapidapi.com/akrakoro/api/telegram-channel/details)\n- title\n- chat_type  (`channel` / `group` / `unknown`)\n- image\n- description\n- subscribers\n- subscribers_online\n- verified",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "channel",
+                    "type": "STRING",
+                    "description": "public channel name",
+                    "default": "telegram"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://telegram-channel.p.rapidapi.com/channel/info\"\nquerystring = {\"channel\": \"telegram\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"telegram-channel.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://telegram-channel.p.rapidapi.com/channel/info\"\nquerystring = {\"channel\": \"telegram\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"telegram-channel.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "verified": {
+                        "type": "boolean"
+                    },
+                    "chat_type": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "image": {
+                        "type": "string"
+                    },
+                    "subscribers": {
+                        "type": "string"
+                    },
+                    "subscribers_online": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    ]
+}

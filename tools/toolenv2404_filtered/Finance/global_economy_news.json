@@ -1,0 +1,156 @@
+{
+    "product_id": "api_ebcf9699-b1a1-48c4-a157-3b4f385c9cc2",
+    "tool_description": "Direct access to up-to-date, expert-selected global economic news. Ideal for financial analysis and economic trend monitoring. This API provides constant updates and precise data, essential for professionals and enthusiasts in the fast-evolving world of global economy.\n",
+    "home_url": "https://rapidapi.com/trw-trw-default/api/global-economy-news/",
+    "name": "Global Economy News",
+    "title": "Global Economy News",
+    "pricing": "FREEMIUM",
+    "tool_name": "Global Economy News",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1765,
+        "avgSuccessRate": 100,
+        "popularityScore": 8.2,
+        "__typename": "Score"
+    },
+    "host": "global-economy-news.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Articles",
+            "url": "https://global-economy-news.p.rapidapi.com/",
+            "description": "This method allows you to obtain articles by performing Boolean queries.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "## Country Selection for News Queries\n\nPlease use lowercase ISO country codes for news queries, e.g., use **\\\\\\\\\\\\\\\"es\\\\\\\\\\\\\\\" (lowercase)** for Spain. This ensures relevant results for the intended country. Available country codes include:\n- `de` for Germany\n- `es` for Spain\n- `fr` for France\n- `gb` for the UK\n- `it` for Italy\n- `nl` for the Netherlands\n- `pl` for Poland\n- `pt` for Portugal\n- `ru` for Russia\n- `us` for the United States of America\n\nYou can find more information about the accepted countries in the **About** section.",
+                    "default": "us"
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "### Defines a category among those available:\nExample:  \n- Banking\n- Business\n- Currency\n- DeFi\n- Economy\n- Energy\n- Fiat\n- Finance\n- Fund\n- Insurance\n- Job\n- Market\n- Real Estate\n- Startup\n- Tax\n- Trade\n- Transport\n- Venture Capital",
+                    "default": "fiat"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "## Query Expressions with Keywords and Filters: Using Boolean Operators\n\n- **Combine keywords and filters** for precise searches.\n- **Boolean operators** (`AND`, `OR`, `NOT`) enable specific query refinements.\n\n### Examples:\n- `site:lavanguardia.com` - Searches within a specific domain.\n- `Tesla AND Elon` - Both keywords must be present.\n- `title:Tesla` - Filters by keyword in the title.\n- **Combined**: `site:ft.com AND title:(Tesla AND Elon)` - Searches articles with multiple conditions.",
+                    "default": ""
+                },
+                {
+                    "name": "final",
+                    "type": "NUMBER",
+                    "description": "## Final Data-Time Delimiter\n- Defines the **final time delimiter** in Unix Time format (milliseconds).\n- **Example**:\n  - `1705878000000`\n- Defaults to **Now** if not specified.",
+                    "default": ""
+                },
+                {
+                    "name": "initial",
+                    "type": "NUMBER",
+                    "description": "## Initial Date-Time Limit Reference\n- Specify the **initial date-time limit** in Unix time (milliseconds).\n- **Example**:\n  - `1705791600000`\n- Defaults to **-1 month ago** if not specified.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://global-economy-news.p.rapidapi.com/\"\nquerystring = {\"country\": \"us\", \"query\": \"\", \"final\": \"\", \"initial\": \"\", \"category\": \"fiat\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"global-economy-news.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://global-economy-news.p.rapidapi.com/\"\nquerystring = {\"country\": \"us\", \"query\": \"\", \"final\": \"\", \"initial\": \"\", \"category\": \"fiat\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"global-economy-news.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "response": {
+                        "type": "object",
+                        "properties": {
+                            "next_category": {
+                                "type": "string"
+                            },
+                            "restResults": {
+                                "type": "integer"
+                            },
+                            "totalResults": {
+                                "type": "integer"
+                            },
+                            "next_ts": {
+                                "type": "string"
+                            },
+                            "next_q": {
+                                "type": "string"
+                            },
+                            "data": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "value": {
+                                            "type": "number"
+                                        },
+                                        "site_region": {
+                                            "type": "string"
+                                        },
+                                        "site_language": {
+                                            "type": "string"
+                                        },
+                                        "domain": {
+                                            "type": "string"
+                                        },
+                                        "unique_visitors": {
+                                            "type": "integer"
+                                        },
+                                        "language": {
+                                            "type": "string"
+                                        },
+                                        "site_type": {
+                                            "type": "string"
+                                        },
+                                        "rank": {
+                                            "type": "integer"
+                                        },
+                                        "site_country": {
+                                            "type": "string"
+                                        },
+                                        "site": {
+                                            "type": "string"
+                                        },
+                                        "section": {
+                                            "type": "string"
+                                        },
+                                        "author": {
+                                            "type": "string"
+                                        },
+                                        "text": {
+                                            "type": "string"
+                                        },
+                                        "title": {
+                                            "type": "string"
+                                        },
+                                        "site_section": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "published": {
+                                            "type": "string"
+                                        },
+                                        "url": {
+                                            "type": "string"
+                                        },
+                                        "crawled": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            },
+                            "next_tsi": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

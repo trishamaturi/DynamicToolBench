@@ -1,0 +1,137 @@
+{
+    "product_id": "api_b0bc3115-d940-4338-bd96-e22dcfe4ddc1",
+    "tool_description": "Real-time phone validation and data lookup for U.S. numbers. \nAll-in-one: carrier look-up, line type, portability status, geoIP, timezone, and routing.",
+    "home_url": "https://rapidapi.com/checkthatphone/api/checkthatphone/",
+    "name": "CheckThatPhone",
+    "title": "CheckThatPhone",
+    "pricing": "FREEMIUM",
+    "tool_name": "CheckThatPhone",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 747,
+        "avgSuccessRate": 100,
+        "popularityScore": 8,
+        "__typename": "Score"
+    },
+    "host": "checkthatphone.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/checkthatphone",
+            "url": "https://checkthatphone.p.rapidapi.com/checkthatphone",
+            "description": "Validation, carrier look-up, line type, portability status, geoIP and timezone, routing.\nSimply provide a United States phone number and an ip (optional) to get a result.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "phone",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "8182925409"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "ip",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "172.95.90.55"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://checkthatphone.p.rapidapi.com/checkthatphone\"\nquerystring = {\"phone\": \"8182925409\", \"ip\": \"172.95.90.55\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"checkthatphone.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://checkthatphone.p.rapidapi.com/checkthatphone\"\nquerystring = {\"phone\": \"8182925409\", \"ip\": \"172.95.90.55\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"checkthatphone.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "input": {
+                        "type": "object",
+                        "properties": {
+                            "phone_number": {
+                                "type": "string"
+                            },
+                            "date": {
+                                "type": "string"
+                            },
+                            "ip": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "validation_result": {
+                        "type": "object",
+                        "properties": {
+                            "valid_mobile": {
+                                "type": "boolean"
+                            },
+                            "valid_landline": {
+                                "type": "boolean"
+                            }
+                        }
+                    },
+                    "nanp": {
+                        "type": "object",
+                        "properties": {
+                            "line_type": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "carrier_data": {
+                        "type": "object",
+                        "properties": {
+                            "lookup_result": {
+                                "type": "string"
+                            },
+                            "carrier": {
+                                "type": "string"
+                            },
+                            "line_type": {
+                                "type": "string"
+                            },
+                            "line_sub_type": {
+                                "type": "string"
+                            },
+                            "ported": {
+                                "type": "boolean"
+                            },
+                            "lrn": {
+                                "type": "string"
+                            },
+                            "ocn": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "geo": {
+                        "type": "object",
+                        "properties": {
+                            "source": {
+                                "type": "string"
+                            },
+                            "country": {
+                                "type": "string"
+                            },
+                            "state": {
+                                "type": "string"
+                            },
+                            "city": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "timezone": {
+                        "type": "object",
+                        "properties": {
+                            "tz": {
+                                "type": "string"
+                            },
+                            "offset": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

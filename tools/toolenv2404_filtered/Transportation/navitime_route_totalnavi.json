@@ -1,0 +1,488 @@
+{
+    "product_id": "api_b20447a9-d2ce-4a04-823c-d1a624f10a05",
+    "tool_description": "\u516c\u5171\u4ea4\u901a\u624b\u6bb5\uff0b\u5f92\u6b69\u3067\u3001\u30c9\u30a2to\u30c9\u30a2\u306e\u6700\u9069\u306a\u79fb\u52d5\u7d4c\u8def\u30fb\u6599\u91d1\u3092\u7b97\u51fa\u3059\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002\u99c5\u306e\u51fa\u5165\u308a\u53e3\u60c5\u5831\u306a\u3069\u3082\u5408\u308f\u305b\u3066\u53d6\u5f97\u3067\u304d\u307e\u3059\u3002\u3000Calculate the optimal door-to-door route and fares by public transportation and walking. In addition, you can get the station entrance/exit informations.",
+    "home_url": "https://rapidapi.com/navitimejapan-navitimejapan/api/navitime-route-totalnavi/",
+    "name": "NAVITIME Route(totalnavi)",
+    "title": "NAVITIME Route(totalnavi)",
+    "pricing": "FREEMIUM",
+    "tool_name": "NAVITIME Route(totalnavi)",
+    "score": {
+        "avgServiceLevel": 99,
+        "avgLatency": 557,
+        "avgSuccessRate": 96,
+        "popularityScore": 9.4,
+        "__typename": "Score"
+    },
+    "host": "navitime-route-totalnavi.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "fare_comparison",
+            "url": "https://navitime-route-totalnavi.p.rapidapi.com/fare_comparison",
+            "description": "\u5b9a\u671f\u5238\u3092\u8cfc\u5165\u3057\u305f\u5834\u5408\u3068\u3001\u51fa\u793e\u65e5\u5206\u3092\u90fd\u5ea6\u8cfc\u5165\u3057\u305f\u5834\u5408\u306e\u904b\u8cc3\u3092\u6bd4\u8f03\u3057\u307e\u3059\u3002",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Departure point.\n(node ID or latitude/longitude)",
+                    "default": "35.665251,139.712092"
+                },
+                {
+                    "name": "days",
+                    "type": "NUMBER",
+                    "description": "Commuting days per month(Minimum value: 1, Maximum value: 31)",
+                    "default": "10"
+                },
+                {
+                    "name": "goal",
+                    "type": "STRING",
+                    "description": "Arrival point.\n(node ID or latitude/longitude)",
+                    "default": "35.661971,139.703795"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of searches.\n(Minimum value: 1, Maximum value: 10, Default value: 5)\nInvalid if \\\"via_type=optimal\\\" is specified.",
+                    "default": "5"
+                },
+                {
+                    "name": "start_time",
+                    "type": "STRING",
+                    "description": "Departure time.\n(ex.2022-04-01T09:00:00)",
+                    "default": "2022-01-19T10:00:00"
+                },
+                {
+                    "name": "via",
+                    "type": "STRING",
+                    "description": "Destination.\n(maximum number of 10 points)",
+                    "default": ""
+                },
+                {
+                    "name": "via_type",
+                    "type": "STRING",
+                    "description": "Routing mode.\n(specified: specified order, optimal: optimal order)",
+                    "default": ""
+                },
+                {
+                    "name": "order",
+                    "type": "STRING",
+                    "description": "Output order.\n(total_distance: total movement distance, walk_distance: total walking distance, fare: fare, time: required time, transit: transfer times, commuter_pass_price: commuter pass price)",
+                    "default": ""
+                },
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude.\n(wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "walk_route",
+                    "type": "STRING",
+                    "description": "Specify the route to use on foot (avoid_step: routes that avoid stairs, avoid_escalator: routes that avoid stairway and escalator, avoid_rain: routes that is less likely to get wet, babycar: routes that a stroller can get through)",
+                    "default": ""
+                },
+                {
+                    "name": "goal_time",
+                    "type": "STRING",
+                    "description": "Arrival time.\n(ex.2022-04-01T09:00:00)",
+                    "default": ""
+                },
+                {
+                    "name": "term",
+                    "type": "NUMBER",
+                    "description": "Period-separated range of multiple possible search times.\n(Maximum value: 2440, Default value: 1440)\nThe unit is \\\"minutes\\\".",
+                    "default": "1440"
+                },
+                {
+                    "name": "unuse",
+                    "type": "STRING",
+                    "description": "Public transportation that does not use.",
+                    "default": ""
+                },
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data.\n(degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                },
+                {
+                    "name": "options",
+                    "type": "STRING",
+                    "description": "Additional output information.\n(railway_calling_at: transfer station information)",
+                    "default": ""
+                },
+                {
+                    "name": "payment",
+                    "type": "STRING",
+                    "description": "Fare payment method\n(ic: IC payment, ticket: ticket payment)",
+                    "default": "ic"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-route-totalnavi.p.rapidapi.com/fare_comparison\"\nquerystring = {\"limit\": \"5\", \"start_time\": \"2022-01-19T10:00:00\", \"start\": \"35.665251,139.712092\", \"via\": \"\", \"days\": \"10\", \"via_type\": \"\", \"order\": \"\", \"datum\": \"wgs84\", \"walk_route\": \"\", \"goal_time\": \"\", \"term\": \"1440\", \"unuse\": \"\", \"coord_unit\": \"degree\", \"options\": \"\", \"goal\": \"35.661971,139.703795\", \"payment\": \"ic\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-route-totalnavi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-route-totalnavi.p.rapidapi.com/fare_comparison\"\nquerystring = {\"limit\": \"5\", \"start_time\": \"2022-01-19T10:00:00\", \"start\": \"35.665251,139.712092\", \"via\": \"\", \"days\": \"10\", \"via_type\": \"\", \"order\": \"\", \"datum\": \"wgs84\", \"walk_route\": \"\", \"goal_time\": \"\", \"term\": \"1440\", \"unuse\": \"\", \"coord_unit\": \"degree\", \"options\": \"\", \"goal\": \"35.661971,139.703795\", \"payment\": \"ic\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-route-totalnavi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "fare_table",
+            "url": "https://navitime-route-totalnavi.p.rapidapi.com/fare_table",
+            "description": "Return fare divisions including route search results.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://navitime-route-totalnavi.p.rapidapi.com/fare_table\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-route-totalnavi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-route-totalnavi.p.rapidapi.com/fare_table\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-route-totalnavi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "route_transit",
+            "url": "https://navitime-route-totalnavi.p.rapidapi.com/route_transit",
+            "description": "\u30eb\u30fc\u30c8\u691c\u7d22\uff08\u30c8\u30fc\u30bf\u30eb\u30ca\u30d3\uff09\n\u96fb\u8eca\uff08\u822a\u7a7a\u8def\u7dda\u3001\u5f92\u6b69\u542b\u3080\uff09\u3092\u79fb\u52d5\u624b\u6bb5\u3068\u3057\u3066\u3001\uff12\u5730\u70b9\u9593\u306e\u30eb\u30fc\u30c8\u3092\u63a2\u7d22\u3057\u307e\u3059\u3002\u7d4c\u7531\u5730\u306e\u6307\u5b9a\u3082\u53ef\u80fd\u3067\u3059\u3002",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "start_time",
+                    "type": "STRING",
+                    "description": "Departure time. (ex.2020-04-01T09:00:00)",
+                    "default": "2020-08-19T10:00:00"
+                },
+                {
+                    "name": "goal",
+                    "type": "STRING",
+                    "description": "Arrival point. (node ID or latitude/longitude)",
+                    "default": "35.661971,139.703795"
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Departure point. (node ID or latitude/longitude)",
+                    "default": "35.665251,139.712092"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of searches. (Minimum value: 1, Maximum value: 10, Default value: 5) Invalid if \"via_type=optimal\" is specified.",
+                    "default": "5"
+                },
+                {
+                    "name": "walk_route",
+                    "type": "STRING",
+                    "description": "Specify the route to use on foot (avoid_step: routes that avoid stairs, avoid_escalator: routes that avoid stairway and escalator, avoid_rain: routes that is less likely to get wet, babycar: routes that a stroller can get through)",
+                    "default": ""
+                },
+                {
+                    "name": "via_type",
+                    "type": "STRING",
+                    "description": "Routing mode. (specified: specified order, optimal: optimal order)",
+                    "default": ""
+                },
+                {
+                    "name": "options",
+                    "type": "STRING",
+                    "description": "Additional output information. (railway_calling_at: transfer station information)",
+                    "default": ""
+                },
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data. (degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                },
+                {
+                    "name": "goal_time",
+                    "type": "STRING",
+                    "description": "Arrival time. (ex.2020-04-01T09:00:00)",
+                    "default": ""
+                },
+                {
+                    "name": "term",
+                    "type": "NUMBER",
+                    "description": "Period-separated range of multiple possible search times. (Maximum value: 2440, Default value: 1440) The unit is \"minutes\".",
+                    "default": "1440"
+                },
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude. (wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "unuse",
+                    "type": "STRING",
+                    "description": "Public transportation that does not use.",
+                    "default": ""
+                },
+                {
+                    "name": "order",
+                    "type": "STRING",
+                    "description": "Output order. (total_distance: total movement distance, walk_distance: total walking distance, fare: fare, time: required time, transit: transfer times, commuter_pass_price: commuter pass price)",
+                    "default": ""
+                },
+                {
+                    "name": "via",
+                    "type": "STRING",
+                    "description": "Destination. (maximum number of 10 points)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-route-totalnavi.p.rapidapi.com/route_transit\"\nquerystring = {\"limit\": \"5\", \"start_time\": \"2020-08-19T10:00:00\", \"walk_route\": \"\", \"via_type\": \"\", \"options\": \"\", \"goal\": \"35.661971,139.703795\", \"coord_unit\": \"degree\", \"goal_time\": \"\", \"term\": \"1440\", \"datum\": \"wgs84\", \"unuse\": \"\", \"order\": \"\", \"start\": \"35.665251,139.712092\", \"via\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-route-totalnavi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-route-totalnavi.p.rapidapi.com/route_transit\"\nquerystring = {\"limit\": \"5\", \"start_time\": \"2020-08-19T10:00:00\", \"walk_route\": \"\", \"via_type\": \"\", \"options\": \"\", \"goal\": \"35.661971,139.703795\", \"coord_unit\": \"degree\", \"goal_time\": \"\", \"term\": \"1440\", \"datum\": \"wgs84\", \"unuse\": \"\", \"order\": \"\", \"start\": \"35.665251,139.712092\", \"via\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-route-totalnavi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "items": {
+                        "items": {
+                            "properties": {
+                                "sections": {
+                                    "items": {
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "summary": {
+                                    "properties": {
+                                        "goal": {
+                                            "properties": {
+                                                "coord": {
+                                                    "properties": {
+                                                        "lat": {
+                                                            "type": "number"
+                                                        },
+                                                        "lon": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "type": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "move": {
+                                            "type": "object"
+                                        },
+                                        "no": {
+                                            "type": "string"
+                                        },
+                                        "start": {
+                                            "properties": {
+                                                "coord": {
+                                                    "properties": {
+                                                        "lat": {
+                                                            "type": "number"
+                                                        },
+                                                        "lon": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "type": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "unit": {
+                        "properties": {
+                            "coord_unit": {
+                                "type": "string"
+                            },
+                            "currency": {
+                                "type": "string"
+                            },
+                            "datum": {
+                                "type": "string"
+                            },
+                            "distance": {
+                                "type": "string"
+                            },
+                            "time": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "shape_transit",
+            "url": "https://navitime-route-totalnavi.p.rapidapi.com/shape_transit",
+            "description": "\u30eb\u30fc\u30c8\u5f62\u72b6\u53d6\u5f97\uff08\u30c8\u30fc\u30bf\u30eb\u30ca\u30d3\uff09\n\u96fb\u8eca\uff08\u822a\u7a7a\u8def\u7dda\u3001\u5f92\u6b69\u542b\u3080\uff09\u3092\u79fb\u52d5\u624b\u6bb5\u3068\u3057\u3066\uff12\u5730\u70b9\u9593\u306e\u30eb\u30fc\u30c8\u3092\u63a2\u7d22\u3057\u3001\u305d\u306e\u7d50\u679c\u3092\u5f62\u72b6\u3067\u53d6\u5f97\u3057\u307e\u3059\u3002",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "start_time",
+                    "type": "STRING",
+                    "description": "Departure time. (ex.2020-04-01T09:00:00)",
+                    "default": "2020-08-19T10:00:00"
+                },
+                {
+                    "name": "goal",
+                    "type": "STRING",
+                    "description": "Arrival point. (node ID or latitude/longitude)",
+                    "default": "35.661971,139.703795"
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Departure point. (node ID or latitude/longitude)",
+                    "default": "35.665251,139.712092"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of searches. (Minimum value: 1, Maximum value: 10, Default value: 5) Invalid if \"via_type=optimal\" is specified.",
+                    "default": "5"
+                },
+                {
+                    "name": "via_type",
+                    "type": "STRING",
+                    "description": "Routing mode. (specified: specified order, optimal: optimal order)",
+                    "default": ""
+                },
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude. (wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "order",
+                    "type": "STRING",
+                    "description": "Output order. (total_distance: total movement distance, walk_distance: total walking distance, fare: fare, time: required time, transit: transfer times, commuter_pass_price: commuter pass price)",
+                    "default": ""
+                },
+                {
+                    "name": "term",
+                    "type": "NUMBER",
+                    "description": "Period-separated range of multiple possible search times. (Maximum value: 2440, Default value: 1440) The unit is \"minutes\".",
+                    "default": "1440"
+                },
+                {
+                    "name": "walk_route",
+                    "type": "STRING",
+                    "description": "Specify the route to use on foot (avoid_step: routes that avoid stairs, avoid_escalator: routes that avoid stairway and escalator, avoid_rain: routes that is less likely to get wet, babycar: routes that a stroller can get through)",
+                    "default": ""
+                },
+                {
+                    "name": "no",
+                    "type": "NUMBER",
+                    "description": "Route Number. When multiple routes are being returned, one route must be identified.  Specifies the route number to be output. If not specified, the first route will be selected.",
+                    "default": ""
+                },
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data. (degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                },
+                {
+                    "name": "unuse",
+                    "type": "STRING",
+                    "description": "Public transportation that does not use.",
+                    "default": ""
+                },
+                {
+                    "name": "goal_time",
+                    "type": "STRING",
+                    "description": "Arrival time. (ex.2020-04-01T09:00:00)",
+                    "default": ""
+                },
+                {
+                    "name": "via",
+                    "type": "STRING",
+                    "description": "Destination. (maximum number of 10 points)",
+                    "default": ""
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "Output format (geojson: GeoJSON format (default), json: JSON format)",
+                    "default": "geojson"
+                },
+                {
+                    "name": "options",
+                    "type": "STRING",
+                    "description": "Additional output information. (transport_shape: public transportation route shape)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-route-totalnavi.p.rapidapi.com/shape_transit\"\nquerystring = {\"limit\": \"5\", \"start_time\": \"2020-08-19T10:00:00\", \"via_type\": \"\", \"datum\": \"wgs84\", \"order\": \"\", \"goal\": \"35.661971,139.703795\", \"term\": \"1440\", \"walk_route\": \"\", \"no\": \"\", \"coord_unit\": \"degree\", \"unuse\": \"\", \"goal_time\": \"\", \"via\": \"\", \"start\": \"35.665251,139.712092\", \"format\": \"geojson\", \"options\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-route-totalnavi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-route-totalnavi.p.rapidapi.com/shape_transit\"\nquerystring = {\"limit\": \"5\", \"start_time\": \"2020-08-19T10:00:00\", \"via_type\": \"\", \"datum\": \"wgs84\", \"order\": \"\", \"goal\": \"35.661971,139.703795\", \"term\": \"1440\", \"walk_route\": \"\", \"no\": \"\", \"coord_unit\": \"degree\", \"unuse\": \"\", \"goal_time\": \"\", \"via\": \"\", \"start\": \"35.665251,139.712092\", \"format\": \"geojson\", \"options\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-route-totalnavi.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,39 @@
+{
+    "product_id": "5968972de4b06b6af1ff7484",
+    "tool_description": "[BETA VERSION] This API returns the number of people who can see a car travelling along a given route at a given time (unique impressions). Current geographic coverage: Prague, Czech Republic.",
+    "home_url": "https://rapidapi.com/urban-algorithmics/api/impressions/",
+    "name": "Impressions",
+    "title": "Impressions",
+    "pricing": "PAID",
+    "tool_name": "Impressions",
+    "score": null,
+    "host": "urban-algorithmics-impressions-v1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/impressions_route",
+            "url": "https://urban-algorithmics-impressions-v1.p.rapidapi.com/impressions_route",
+            "description": "Get the number of unique impressions among a car trip route at a specified time.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "route",
+                    "type": "STRING",
+                    "description": "WKT LINESTRING representation of the route. The number of GPS cooordinates (LON LAT) in the 'route' linestring needs to be the same as number of times in the 'times' parameter.",
+                    "default": "LINESTRING(14.524669646343682 50.083448934828134,14.520549773296807 50.08322863399282,14.519519805035088 50.07948336488464,14.518833159527276 50.077500456896146,14.51299667271087 50.077941110203284,14.508190154156182 50.07772078405598,14.503383635601494 50.077500456896146,14.49926376255462 50.077280128723835,14.49926376255462 50.07529712961025,14.499950408062432 50.07331404848296,14.495830535015557 50.07287335265026,14.491367339214776 50.07243265276744,14.4872474661679 50.0717715953492,14.490337370953057 50.06956800480667)"
+                },
+                {
+                    "name": "times",
+                    "type": "STRING",
+                    "description": "Comma-separated list of the times within a day (24-hour HH:MM:SS format) saying when the car was on the corresponding GPS coordinates from the 'route' parameter. Number and ordering of times must be the same as the number and ordering of the coordinates.",
+                    "default": "13:00:00,13:00:30,13:01:00,13:01:30,13:02:00,13:02:30,13:03:00,13:03:30,13:04:00,13:04:30,13:05:00,13:05:30,13:06:00,13:06:30"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://urban-algorithmics-impressions-v1.p.rapidapi.com/impressions_route\"\nquerystring = {\"route\": \"LINESTRING(14.524669646343682 50.083448934828134,14.520549773296807 50.08322863399282,14.519519805035088 50.07948336488464,14.518833159527276 50.077500456896146,14.51299667271087 50.077941110203284,14.508190154156182 50.07772078405598,14.503383635601494 50.077500456896146,14.49926376255462 50.077280128723835,14.49926376255462 50.07529712961025,14.499950408062432 50.07331404848296,14.495830535015557 50.07287335265026,14.491367339214776 50.07243265276744,14.4872474661679 50.0717715953492,14.490337370953057 50.06956800480667)\", \"times\": \"13:00:00,13:00:30,13:01:00,13:01:30,13:02:00,13:02:30,13:03:00,13:03:30,13:04:00,13:04:30,13:05:00,13:05:30,13:06:00,13:06:30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"urban-algorithmics-impressions-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://urban-algorithmics-impressions-v1.p.rapidapi.com/impressions_route\"\nquerystring = {\"route\": \"LINESTRING(14.524669646343682 50.083448934828134,14.520549773296807 50.08322863399282,14.519519805035088 50.07948336488464,14.518833159527276 50.077500456896146,14.51299667271087 50.077941110203284,14.508190154156182 50.07772078405598,14.503383635601494 50.077500456896146,14.49926376255462 50.077280128723835,14.49926376255462 50.07529712961025,14.499950408062432 50.07331404848296,14.495830535015557 50.07287335265026,14.491367339214776 50.07243265276744,14.4872474661679 50.0717715953492,14.490337370953057 50.06956800480667)\", \"times\": \"13:00:00,13:00:30,13:01:00,13:01:30,13:02:00,13:02:30,13:03:00,13:03:30,13:04:00,13:04:30,13:05:00,13:05:30,13:06:00,13:06:30\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"urban-algorithmics-impressions-v1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}

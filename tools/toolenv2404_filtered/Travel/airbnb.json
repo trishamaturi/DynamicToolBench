@@ -1,0 +1,1279 @@
+{
+    "product_id": "api_6a953d79-8084-4100-97c4-ed7b7ddf664b",
+    "tool_description": "Access information on Airbnb listings, locate rooms, examine availability, and pricing in all areas.",
+    "home_url": "https://rapidapi.com/apiheya/api/airbnb45/",
+    "name": "Airbnb",
+    "title": "Airbnb",
+    "pricing": "FREEMIUM",
+    "tool_name": "Airbnb",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1535,
+        "avgSuccessRate": 99,
+        "popularityScore": 9.2,
+        "__typename": "Score"
+    },
+    "host": "airbnb45.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Test",
+            "url": "https://airbnb45.p.rapidapi.com/api/v1/test",
+            "description": "To check if server is running.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/test\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/test\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Search Property By Category",
+            "url": "https://airbnb45.p.rapidapi.com/api/v1/searchPropertyByCategory",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "categoryKey",
+                    "type": "STRING",
+                    "description": "Search for properties by their category.\n`categoryKey` can be retrieved from `api/v1/getCategory`**(Get Category)** endpoint in `Utils` collection as `key` parameter.",
+                    "default": "Tag:8536"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "minBedrooms",
+                    "type": "NUMBER",
+                    "description": "The minimum number of bedrooms required for a property. The range for `minBedrooms` is between 1-8. The **default** is set to **1**.",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "Search for property in the desired currency. `currency` can be retrieved from `api/v1/getCurrency`**(Get Currency)** endpoint in **Utils** collection as `code`.",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "nextPageCursor",
+                    "type": "STRING",
+                    "description": "To access properties on the next page, use `nextPageCursor`. The previous page API call can be used to retrieve `nextPageCursor`. The `nextPageCursor` needs to be excluded if it's the first page.",
+                    "default": ""
+                },
+                {
+                    "name": "minBeds",
+                    "type": "NUMBER",
+                    "description": "The minimum number of beds required for a property. The range for `minBeds` is between 1-8. The **default** is set to **1**.",
+                    "default": ""
+                },
+                {
+                    "name": "selfCheckin",
+                    "type": "ENUM",
+                    "description": "Self Check-in\n0 - False\n1 - True\n***Note: The default is set to 0.***",
+                    "default": ""
+                },
+                {
+                    "name": "priceMin",
+                    "type": "NUMBER",
+                    "description": "Minimum Price filter for search.",
+                    "default": ""
+                },
+                {
+                    "name": "locationFilter",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "minBathrooms",
+                    "type": "NUMBER",
+                    "description": "The minimum number of bathrooms required for a property. The range for `minBathrooms` is between 1-8. The **default** is set to **1**.",
+                    "default": ""
+                },
+                {
+                    "name": "guestFavorite",
+                    "type": "ENUM",
+                    "description": "Guest Favorite Property\n0 - False\n1 - True\n***Note: The default is set to 0.***",
+                    "default": ""
+                },
+                {
+                    "name": "allowsPets",
+                    "type": "ENUM",
+                    "description": "Allow Pets\n0 - False\n1 - True\n***Note: The default is set to 0.***",
+                    "default": ""
+                },
+                {
+                    "name": "flexibleCancellation",
+                    "type": "ENUM",
+                    "description": "Flexible Cancellation Property\n0 - False\n1 - True\n***Note: The default is set to 0.***",
+                    "default": ""
+                },
+                {
+                    "name": "priceMax",
+                    "type": "NUMBER",
+                    "description": "Maximum Price filter for search.",
+                    "default": ""
+                },
+                {
+                    "name": "propertyType",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "instantBook",
+                    "type": "ENUM",
+                    "description": "Instant Book\n0 - False\n1 - True\n***Note: The default is set to 0.***",
+                    "default": ""
+                },
+                {
+                    "name": "hostLanguage",
+                    "type": "STRING",
+                    "description": "The language that the property owner is familiar with. `hostLanguage` can be retrive from `api/v1/getFilters`**(Get Filters)** endpoint in **Utils** collection as `value` parameter in `hostLanguage` object.",
+                    "default": ""
+                },
+                {
+                    "name": "typeOfPlace",
+                    "type": "ENUM",
+                    "description": "Type of Property\n\nentire_home :- Entire home/apt\nprivate_room :- Private room",
+                    "default": ""
+                },
+                {
+                    "name": "accessibilityFeatures",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/searchPropertyByCategory\"\nquerystring = {\"minBedrooms\": \"\", \"currency\": \"\", \"locale\": \"\", \"nextPageCursor\": \"\", \"minBeds\": \"\", \"selfCheckin\": \"\", \"priceMin\": \"\", \"locationFilter\": \"\", \"minBathrooms\": \"\", \"guestFavorite\": \"\", \"allowsPets\": \"\", \"flexibleCancellation\": \"\", \"priceMax\": \"\", \"propertyType\": \"\", \"instantBook\": \"\", \"categoryKey\": \"Tag:8536\", \"hostLanguage\": \"\", \"typeOfPlace\": \"\", \"accessibilityFeatures\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/searchPropertyByCategory\"\nquerystring = {\"minBedrooms\": \"\", \"currency\": \"\", \"locale\": \"\", \"nextPageCursor\": \"\", \"minBeds\": \"\", \"selfCheckin\": \"\", \"priceMin\": \"\", \"locationFilter\": \"\", \"minBathrooms\": \"\", \"guestFavorite\": \"\", \"allowsPets\": \"\", \"flexibleCancellation\": \"\", \"priceMax\": \"\", \"propertyType\": \"\", \"instantBook\": \"\", \"categoryKey\": \"Tag:8536\", \"hostLanguage\": \"\", \"typeOfPlace\": \"\", \"accessibilityFeatures\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get PropertyReviews",
+            "url": "https://airbnb45.p.rapidapi.com/api/v1/getPropertyReviews",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "propertyId",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "742424658135898180"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getPropertyReviews\"\nquerystring = {\"page\": \"1\", \"locale\": \"\", \"propertyId\": \"742424658135898180\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getPropertyReviews\"\nquerystring = {\"page\": \"1\", \"locale\": \"\", \"propertyId\": \"742424658135898180\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Search Property By Location",
+            "url": "https://airbnb45.p.rapidapi.com/api/v1/searchPropertyByLocation",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Luck"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "nextPageCursor",
+                    "type": "STRING",
+                    "description": "To access properties on the next page, use `nextPageCursor`. The previous page API call can be used to retrieve `nextPageCursor`. The `nextPageCursor` needs to be excluded if it's the first page.",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "hostLanguage",
+                    "type": "STRING",
+                    "description": "The language that the property owner is familiar with. `hostLanguage` can be retrive from `api/v1/getFilters`**(Get Filters)** endpoint in **Utils** collection as `value` parameter in `hostLanguage` object.",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "Search for property in the desired currency. `currency` can be retrieved from `api/v1/getCurrency`**(Get Currency)** endpoint in **Utils** collection as `code`.",
+                    "default": ""
+                },
+                {
+                    "name": "minBedrooms",
+                    "type": "NUMBER",
+                    "description": "The minimum number of bedrooms required for a property. The range for `minBedrooms` is between 1-8. The **default** is set to **1**.",
+                    "default": ""
+                },
+                {
+                    "name": "accessibilityFeatures",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "instantBook",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "selfCheckin",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "priceMax",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "locationFilter",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "minBathrooms",
+                    "type": "NUMBER",
+                    "description": "The minimum number of bathrooms required for a property. The range for `minBathrooms` is between 1-8. The **default** is set to **1**.",
+                    "default": ""
+                },
+                {
+                    "name": "priceMin",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "typeOfPlace",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "guestFavorite",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "propertyType",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "allowsPets",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "flexibleCancellation",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "minBeds",
+                    "type": "NUMBER",
+                    "description": "The minimum number of beds required for a property. The range for `minBeds` is between 1-8. The **default** is set to **1**.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/searchPropertyByLocation\"\nquerystring = {\"nextPageCursor\": \"\", \"location\": \"Luck\", \"locale\": \"\", \"hostLanguage\": \"\", \"currency\": \"\", \"minBedrooms\": \"\", \"accessibilityFeatures\": \"\", \"instantBook\": \"\", \"selfCheckin\": \"\", \"priceMax\": \"\", \"locationFilter\": \"\", \"minBathrooms\": \"\", \"priceMin\": \"\", \"typeOfPlace\": \"\", \"guestFavorite\": \"\", \"propertyType\": \"\", \"allowsPets\": \"\", \"flexibleCancellation\": \"\", \"minBeds\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/searchPropertyByLocation\"\nquerystring = {\"nextPageCursor\": \"\", \"location\": \"Luck\", \"locale\": \"\", \"hostLanguage\": \"\", \"currency\": \"\", \"minBedrooms\": \"\", \"accessibilityFeatures\": \"\", \"instantBook\": \"\", \"selfCheckin\": \"\", \"priceMax\": \"\", \"locationFilter\": \"\", \"minBathrooms\": \"\", \"priceMin\": \"\", \"typeOfPlace\": \"\", \"guestFavorite\": \"\", \"propertyType\": \"\", \"allowsPets\": \"\", \"flexibleCancellation\": \"\", \"minBeds\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get Availability Calendar",
+            "url": "https://airbnb45.p.rapidapi.com/api/v1/getAvailabilityCalendar",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "propertyId",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "742424658135898180"
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "2024"
+                },
+                {
+                    "name": "month",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "11"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getAvailabilityCalendar\"\nquerystring = {\"propertyId\": \"742424658135898180\", \"year\": \"2024\", \"month\": \"11\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getAvailabilityCalendar\"\nquerystring = {\"propertyId\": \"742424658135898180\", \"year\": \"2024\", \"month\": \"11\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Search Location",
+            "url": "https://airbnb45.p.rapidapi.com/api/v1/searchLocation",
+            "description": "Search for a location to locate the property.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Name of **locations**, **cities**, **districts**, **places**, **countries**, **counties** etc.",
+                    "default": "new"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/searchLocation\"\nquerystring = {\"query\": \"new\", \"locale\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/searchLocation\"\nquerystring = {\"query\": \"new\", \"locale\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get Property Details",
+            "url": "https://airbnb45.p.rapidapi.com/api/v1/getPropertyDetails",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "propertyId",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "819818987227302539"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getPropertyDetails\"\nquerystring = {\"propertyId\": \"819818987227302539\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getPropertyDetails\"\nquerystring = {\"propertyId\": \"819818987227302539\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get User Managed Listing",
+            "url": "https://airbnb45.p.rapidapi.com/api/v1/getUserManagedListing",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "userId",
+                    "type": "STRING",
+                    "description": "84128379,464257363",
+                    "default": "464257363"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getUserManagedListing\"\nquerystring = {\"page\": \"1\", \"userId\": \"464257363\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getUserManagedListing\"\nquerystring = {\"page\": \"1\", \"userId\": \"464257363\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Search Property By Coordinates",
+            "url": "https://airbnb45.p.rapidapi.com/api/v1/searchPropertyByCoordinates",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "swLng",
+                    "type": "NUMBER",
+                    "description": "Longitude of the southwestern corner of the search area.",
+                    "default": "99.8238356"
+                },
+                {
+                    "name": "neLng",
+                    "type": "NUMBER",
+                    "description": "Longitude of the northeastern corner of the search area.",
+                    "default": "100.2321409"
+                },
+                {
+                    "name": "zoomLevel",
+                    "type": "NUMBER",
+                    "description": "The zoom level for the searched area. Within the range of 1-20.",
+                    "default": "10.477618217468262"
+                },
+                {
+                    "name": "neLat",
+                    "type": "NUMBER",
+                    "description": "Latitude of the northeastern corner of the search area.",
+                    "default": "9.8165723"
+                },
+                {
+                    "name": "swLat",
+                    "type": "NUMBER",
+                    "description": "Latitude of the southwestern corner of the search area.",
+                    "default": "9.2115689"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "locationFilter",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "Search for property in the desired currency. `currency` can be retrieved from `api/v1/getCurrency`**(Get Currency)** endpoint in **Utils** collection as `code`.",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "minBeds",
+                    "type": "NUMBER",
+                    "description": "The minimum number of beds required for a property. The range for `minBeds` is between 1-8. The **default** is set to **1**.",
+                    "default": ""
+                },
+                {
+                    "name": "nextPageCursor",
+                    "type": "STRING",
+                    "description": "To access properties on the next page, use `nextPageCursor`. The previous page API call can be used to retrieve `nextPageCursor`. The `nextPageCursor` needs to be excluded if it's the first page.",
+                    "default": ""
+                },
+                {
+                    "name": "propertyType",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "allowsPets",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "flexibleCancellation",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "guestFavorite",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "instantBook",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "minBathrooms",
+                    "type": "NUMBER",
+                    "description": "The minimum number of bathrooms required for a property. The range for `minBathrooms` is between 1-8. The **default** is set to **1**.",
+                    "default": ""
+                },
+                {
+                    "name": "accessibilityFeatures",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "priceMax",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "minBedrooms",
+                    "type": "NUMBER",
+                    "description": "The minimum number of bedrooms required for a property. The range for `minBedrooms` is between 1-8. The **default** is set to **1**.",
+                    "default": ""
+                },
+                {
+                    "name": "hostLanguage",
+                    "type": "STRING",
+                    "description": "The language that the property owner is familiar with. `hostLanguage` can be retrive from `api/v1/getFilters`**(Get Filters)** endpoint in **Utils** collection as `value` parameter in `hostLanguage` object.",
+                    "default": ""
+                },
+                {
+                    "name": "priceMin",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "typeOfPlace",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "categoryTag",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "selfCheckin",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/searchPropertyByCoordinates\"\nquerystring = {\"locationFilter\": \"\", \"currency\": \"\", \"locale\": \"\", \"swLng\": \"99.8238356\", \"minBeds\": \"\", \"nextPageCursor\": \"\", \"propertyType\": \"\", \"neLng\": \"100.2321409\", \"allowsPets\": \"\", \"flexibleCancellation\": \"\", \"guestFavorite\": \"\", \"instantBook\": \"\", \"minBathrooms\": \"\", \"zoomLevel\": \"10.477618217468262\", \"neLat\": \"9.8165723\", \"accessibilityFeatures\": \"\", \"priceMax\": \"\", \"minBedrooms\": \"\", \"hostLanguage\": \"\", \"priceMin\": \"\", \"typeOfPlace\": \"\", \"swLat\": \"9.2115689\", \"categoryTag\": \"\", \"selfCheckin\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/searchPropertyByCoordinates\"\nquerystring = {\"locationFilter\": \"\", \"currency\": \"\", \"locale\": \"\", \"swLng\": \"99.8238356\", \"minBeds\": \"\", \"nextPageCursor\": \"\", \"propertyType\": \"\", \"neLng\": \"100.2321409\", \"allowsPets\": \"\", \"flexibleCancellation\": \"\", \"guestFavorite\": \"\", \"instantBook\": \"\", \"minBathrooms\": \"\", \"zoomLevel\": \"10.477618217468262\", \"neLat\": \"9.8165723\", \"accessibilityFeatures\": \"\", \"priceMax\": \"\", \"minBedrooms\": \"\", \"hostLanguage\": \"\", \"priceMin\": \"\", \"typeOfPlace\": \"\", \"swLat\": \"9.2115689\", \"categoryTag\": \"\", \"selfCheckin\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get Category",
+            "url": "https://airbnb45.p.rapidapi.com/api/v1/getCategory",
+            "description": "List of available category on Airbnb.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getCategory\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getCategory\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get Checkout Prefetch",
+            "url": "https://airbnb45.p.rapidapi.com/api/v1/getCheckoutPrefetch",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "checkinDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "propertyId",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "668146487515150072"
+                },
+                {
+                    "name": "checkoutDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "photoId",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "numberOfInfants",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0"
+                },
+                {
+                    "name": "numberOfChildren",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0"
+                },
+                {
+                    "name": "numberOfAdults",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                },
+                {
+                    "name": "numberOfPets",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getCheckoutPrefetch\"\nquerystring = {\"checkinDate\": \"\", \"propertyId\": \"668146487515150072\", \"photoId\": \"\", \"numberOfInfants\": \"0\", \"numberOfChildren\": \"0\", \"numberOfAdults\": \"1\", \"numberOfPets\": \"0\", \"checkoutDate\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getCheckoutPrefetch\"\nquerystring = {\"checkinDate\": \"\", \"propertyId\": \"668146487515150072\", \"photoId\": \"\", \"numberOfInfants\": \"0\", \"numberOfChildren\": \"0\", \"numberOfAdults\": \"1\", \"numberOfPets\": \"0\", \"checkoutDate\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get User Stats",
+            "url": "https://airbnb45.p.rapidapi.com/api/v1/getUserStats",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "userId",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "464257363"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getUserStats\"\nquerystring = {\"userId\": \"464257363\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getUserStats\"\nquerystring = {\"userId\": \"464257363\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get Filters",
+            "url": "https://airbnb45.p.rapidapi.com/api/v1/getFilters",
+            "description": "List of available filters on Airbnb.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getFilters\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getFilters\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get User Profile Reviews",
+            "url": "https://airbnb45.p.rapidapi.com/api/v1/getUserProfileReviews",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "userId",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "464257363"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "guest,host",
+                    "default": "host"
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getUserProfileReviews\"\nquerystring = {\"from\": \"host\", \"userId\": \"464257363\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getUserProfileReviews\"\nquerystring = {\"from\": \"host\", \"userId\": \"464257363\", \"page\": \"1\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get Currency",
+            "url": "https://airbnb45.p.rapidapi.com/api/v1/getCurrency",
+            "description": "List of available currency on Airbnb.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getCurrency\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getCurrency\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Search Property By PlaceId",
+            "url": "https://airbnb45.p.rapidapi.com/api/v1/searchPropertyByPlaceId",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "placeId",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "ChIJLbZ-NFv9DDkRzk0gTkm3wlI"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "Search for property in the desired currency. `currency` can be retrieved from `api/v1/getCurrency`**(Get Currency)** endpoint in **Utils** collection as `code`.",
+                    "default": ""
+                },
+                {
+                    "name": "accessibilityFeatures",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "flexibleCancellation",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "priceMax",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "allowsPets",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "locationFilter",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "selfCheckin",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "guestFavorite",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "priceMin",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "propertyType",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "hostLanguage",
+                    "type": "STRING",
+                    "description": "The language that the property owner is familiar with. `hostLanguage` can be retrive from `api/v1/getFilters`**(Get Filters)** endpoint in **Utils** collection as `value` parameter in `hostLanguage` object.",
+                    "default": ""
+                },
+                {
+                    "name": "minBathrooms",
+                    "type": "NUMBER",
+                    "description": "The minimum number of bathrooms required for a property. The range for `minBathrooms` is between 1-8. The **default** is set to **1**.",
+                    "default": ""
+                },
+                {
+                    "name": "typeOfPlace",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "minBedrooms",
+                    "type": "NUMBER",
+                    "description": "The minimum number of bedrooms required for a property. The range for `minBedrooms` is between 1-8. The **default** is set to **1**.",
+                    "default": ""
+                },
+                {
+                    "name": "minBeds",
+                    "type": "NUMBER",
+                    "description": "The minimum number of beds required for a property. The range for `minBeds` is between 1-8. The **default** is set to **1**.",
+                    "default": ""
+                },
+                {
+                    "name": "instantBook",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "nextPageCursor",
+                    "type": "STRING",
+                    "description": "To access properties on the next page, use `nextPageCursor`. The previous page API call can be used to retrieve `nextPageCursor`. The `nextPageCursor` needs to be excluded if it's the first page.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/searchPropertyByPlaceId\"\nquerystring = {\"currency\": \"\", \"accessibilityFeatures\": \"\", \"locale\": \"\", \"flexibleCancellation\": \"\", \"priceMax\": \"\", \"allowsPets\": \"\", \"locationFilter\": \"\", \"selfCheckin\": \"\", \"guestFavorite\": \"\", \"priceMin\": \"\", \"propertyType\": \"\", \"hostLanguage\": \"\", \"minBathrooms\": \"\", \"typeOfPlace\": \"\", \"minBedrooms\": \"\", \"minBeds\": \"\", \"placeId\": \"ChIJLbZ-NFv9DDkRzk0gTkm3wlI\", \"instantBook\": \"\", \"nextPageCursor\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/searchPropertyByPlaceId\"\nquerystring = {\"currency\": \"\", \"accessibilityFeatures\": \"\", \"locale\": \"\", \"flexibleCancellation\": \"\", \"priceMax\": \"\", \"allowsPets\": \"\", \"locationFilter\": \"\", \"selfCheckin\": \"\", \"guestFavorite\": \"\", \"priceMin\": \"\", \"propertyType\": \"\", \"hostLanguage\": \"\", \"minBathrooms\": \"\", \"typeOfPlace\": \"\", \"minBedrooms\": \"\", \"minBeds\": \"\", \"placeId\": \"ChIJLbZ-NFv9DDkRzk0gTkm3wlI\", \"instantBook\": \"\", \"nextPageCursor\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get User Profile",
+            "url": "https://airbnb45.p.rapidapi.com/api/v1/getUserProfile",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "userId",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "464257363"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getUserProfile\"\nquerystring = {\"userId\": \"464257363\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getUserProfile\"\nquerystring = {\"userId\": \"464257363\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get Locale",
+            "url": "https://airbnb45.p.rapidapi.com/api/v1/getLocale",
+            "description": "List of available Locale on Airbnb.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getLocale\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://airbnb45.p.rapidapi.com/api/v1/getLocale\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"airbnb45.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

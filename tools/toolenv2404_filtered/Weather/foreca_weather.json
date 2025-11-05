@@ -1,0 +1,665 @@
+{
+    "product_id": "api_d19de4ad-dd2b-4885-b4ed-fed53ecd33c9",
+    "tool_description": "Everything you need to build a weather app",
+    "home_url": "https://rapidapi.com/foreca-ltd-foreca-ltd-default/api/foreca-weather/",
+    "name": "Foreca Weather",
+    "title": "Foreca Weather",
+    "pricing": "FREE",
+    "tool_name": "Foreca Weather",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 122,
+        "avgSuccessRate": 99,
+        "popularityScore": 9.7,
+        "__typename": "Score"
+    },
+    "host": "foreca-weather.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Nowcast",
+            "url": "https://foreca-weather.p.rapidapi.com/forecast/15minutely/102643743",
+            "description": "3-hour forecast in 15-minute time steps.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "102643743"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "dataset",
+                    "type": "STRING",
+                    "description": "Variable set",
+                    "default": "full"
+                },
+                {
+                    "name": "windunit",
+                    "type": "STRING",
+                    "description": "Wind speed unit in response.",
+                    "default": "MS"
+                },
+                {
+                    "name": "tz",
+                    "type": "STRING",
+                    "description": "Time zone in response (IANA time zone database names)",
+                    "default": "Europe/London"
+                },
+                {
+                    "name": "tempunit",
+                    "type": "STRING",
+                    "description": "Temperature unit in response",
+                    "default": "C"
+                },
+                {
+                    "name": "alt",
+                    "type": "NUMBER",
+                    "description": "Altitude (meters)",
+                    "default": "0"
+                },
+                {
+                    "name": "periods",
+                    "type": "NUMBER",
+                    "description": "Number of time steps (default 8, maximum 12)",
+                    "default": "8"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://foreca-weather.p.rapidapi.com/forecast/15minutely/102643743\"\nquerystring = {\"dataset\": \"full\", \"windunit\": \"MS\", \"tz\": \"Europe/London\", \"tempunit\": \"C\", \"alt\": \"0\", \"periods\": \"8\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"foreca-weather.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://foreca-weather.p.rapidapi.com/forecast/15minutely/{location}\"\nquerystring = {\"dataset\": \"full\", \"windunit\": \"MS\", \"tz\": \"Europe/London\", \"tempunit\": \"C\", \"alt\": \"0\", \"periods\": \"8\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"foreca-weather.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "forecast": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "time": {
+                                    "type": "string"
+                                },
+                                "symbol": {
+                                    "type": "string"
+                                },
+                                "symbolPhrase": {
+                                    "type": "string"
+                                },
+                                "temperature": {
+                                    "type": "integer"
+                                },
+                                "feelsLikeTemp": {
+                                    "type": "integer"
+                                },
+                                "relHumidity": {
+                                    "type": "integer"
+                                },
+                                "dewPoint": {
+                                    "type": "integer"
+                                },
+                                "windDir": {
+                                    "type": "integer"
+                                },
+                                "windSpeed": {
+                                    "type": "integer"
+                                },
+                                "windGust": {
+                                    "type": "integer"
+                                },
+                                "windDirString": {
+                                    "type": "string"
+                                },
+                                "precipProb": {
+                                    "type": "integer"
+                                },
+                                "precipRate": {
+                                    "type": "integer"
+                                },
+                                "cloudiness": {
+                                    "type": "integer"
+                                },
+                                "thunderProb": {
+                                    "type": "integer"
+                                },
+                                "uvIndex": {
+                                    "type": "integer"
+                                },
+                                "pressure": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Three-hourly",
+            "url": "https://foreca-weather.p.rapidapi.com/forecast/3hourly/102643743",
+            "description": "A longer three-hourly forecast up to 14 days.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "102643743"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "history",
+                    "type": "BOOLEAN",
+                    "description": "Whether to include 24 hours of past data.",
+                    "default": "0"
+                },
+                {
+                    "name": "tz",
+                    "type": "STRING",
+                    "description": "Time zone in response (IANA time zone database names)",
+                    "default": "Europe/London"
+                },
+                {
+                    "name": "dataset",
+                    "type": "STRING",
+                    "description": "Variable set",
+                    "default": "full"
+                },
+                {
+                    "name": "tempunit",
+                    "type": "STRING",
+                    "description": "Temperature unit in response",
+                    "default": "C"
+                },
+                {
+                    "name": "alt",
+                    "type": "NUMBER",
+                    "description": "Altitude (meters)",
+                    "default": "0"
+                },
+                {
+                    "name": "periods",
+                    "type": "NUMBER",
+                    "description": "Number of time steps (default 8, maximum 12)",
+                    "default": "8"
+                },
+                {
+                    "name": "windunit",
+                    "type": "STRING",
+                    "description": "Wind speed unit in response.",
+                    "default": "MS"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://foreca-weather.p.rapidapi.com/forecast/3hourly/102643743\"\nquerystring = {\"history\": \"0\", \"tz\": \"Europe/London\", \"dataset\": \"full\", \"tempunit\": \"C\", \"alt\": \"0\", \"periods\": \"8\", \"windunit\": \"MS\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"foreca-weather.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://foreca-weather.p.rapidapi.com/forecast/3hourly/{location}\"\nquerystring = {\"history\": \"0\", \"tz\": \"Europe/London\", \"dataset\": \"full\", \"tempunit\": \"C\", \"alt\": \"0\", \"periods\": \"8\", \"windunit\": \"MS\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"foreca-weather.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Daily",
+            "url": "https://foreca-weather.p.rapidapi.com/forecast/daily/102643743",
+            "description": "Daily forecast.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "102643743"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "alt",
+                    "type": "NUMBER",
+                    "description": "Altitude (meters)",
+                    "default": "0"
+                },
+                {
+                    "name": "dataset",
+                    "type": "STRING",
+                    "description": "Variable set",
+                    "default": "full"
+                },
+                {
+                    "name": "tempunit",
+                    "type": "STRING",
+                    "description": "Temperature unit in response",
+                    "default": "C"
+                },
+                {
+                    "name": "windunit",
+                    "type": "STRING",
+                    "description": "Wind speed unit in response.",
+                    "default": "MS"
+                },
+                {
+                    "name": "periods",
+                    "type": "NUMBER",
+                    "description": "Number of time steps (default 8, maximum 12)",
+                    "default": "8"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://foreca-weather.p.rapidapi.com/forecast/daily/102643743\"\nquerystring = {\"alt\": \"0\", \"dataset\": \"full\", \"tempunit\": \"C\", \"windunit\": \"MS\", \"periods\": \"8\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"foreca-weather.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://foreca-weather.p.rapidapi.com/forecast/daily/{location}\"\nquerystring = {\"alt\": \"0\", \"dataset\": \"full\", \"tempunit\": \"C\", \"windunit\": \"MS\", \"periods\": \"8\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"foreca-weather.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "forecast": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Location info",
+            "url": "https://foreca-weather.p.rapidapi.com/location/101275339",
+            "description": "Metadata for location.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "101275339"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://foreca-weather.p.rapidapi.com/location/101275339\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"foreca-weather.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://foreca-weather.p.rapidapi.com/location/{location}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"foreca-weather.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Current",
+            "url": "https://foreca-weather.p.rapidapi.com/current/102643743",
+            "description": "Current weather estimate for location.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "102643743"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "windunit",
+                    "type": "STRING",
+                    "description": "Wind speed unit in response.",
+                    "default": "MS"
+                },
+                {
+                    "name": "alt",
+                    "type": "NUMBER",
+                    "description": "Altitude (meters)",
+                    "default": "0"
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language (ISO 639-1 codes). Options: de, en, es, fr, it, pl, ru, fi, sv, nl, ko, pt, th, tr, zh, zh_TW (Chinese in Taiwan), zh_CN (Chinese in China). (default en)",
+                    "default": "en"
+                },
+                {
+                    "name": "tz",
+                    "type": "STRING",
+                    "description": "Time zone in response (IANA time zone database names)",
+                    "default": "Europe/London"
+                },
+                {
+                    "name": "tempunit",
+                    "type": "STRING",
+                    "description": "Temperature unit in response",
+                    "default": "C"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://foreca-weather.p.rapidapi.com/current/102643743\"\nquerystring = {\"windunit\": \"MS\", \"alt\": \"0\", \"lang\": \"en\", \"tz\": \"Europe/London\", \"tempunit\": \"C\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"foreca-weather.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://foreca-weather.p.rapidapi.com/current/{location}\"\nquerystring = {\"windunit\": \"MS\", \"alt\": \"0\", \"lang\": \"en\", \"tz\": \"Europe/London\", \"tempunit\": \"C\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"foreca-weather.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "current": {
+                        "type": "object",
+                        "properties": {
+                            "time": {
+                                "type": "string"
+                            },
+                            "symbol": {
+                                "type": "string"
+                            },
+                            "symbolPhrase": {
+                                "type": "string"
+                            },
+                            "temperature": {
+                                "type": "integer"
+                            },
+                            "feelsLikeTemp": {
+                                "type": "integer"
+                            },
+                            "relHumidity": {
+                                "type": "integer"
+                            },
+                            "dewPoint": {
+                                "type": "integer"
+                            },
+                            "windSpeed": {
+                                "type": "integer"
+                            },
+                            "windDirString": {
+                                "type": "string"
+                            },
+                            "windGust": {
+                                "type": "integer"
+                            },
+                            "precipProb": {
+                                "type": "integer"
+                            },
+                            "precipRate": {
+                                "type": "integer"
+                            },
+                            "cloudiness": {
+                                "type": "integer"
+                            },
+                            "thunderProb": {
+                                "type": "integer"
+                            },
+                            "uvIndex": {
+                                "type": "integer"
+                            },
+                            "pressure": {
+                                "type": "number"
+                            },
+                            "visibility": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Latest observations",
+            "url": "https://foreca-weather.p.rapidapi.com/observation/latest/102643743",
+            "description": "Observations from nearby representative weather stations.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "102643743"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://foreca-weather.p.rapidapi.com/observation/latest/102643743\"\nquerystring = {\"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"foreca-weather.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://foreca-weather.p.rapidapi.com/observation/latest/{location}\"\nquerystring = {\"lang\": \"en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"foreca-weather.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "observations": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "station": {
+                                    "type": "string"
+                                },
+                                "distance": {
+                                    "type": "string"
+                                },
+                                "time": {
+                                    "type": "string"
+                                },
+                                "temperature": {
+                                    "type": "integer"
+                                },
+                                "feelsLikeTemp": {
+                                    "type": "integer"
+                                },
+                                "symbol": {
+                                    "type": "string"
+                                },
+                                "windDirString": {
+                                    "type": "string"
+                                },
+                                "windDir": {
+                                    "type": "integer"
+                                },
+                                "windSpeed": {
+                                    "type": "integer"
+                                },
+                                "windGust": {
+                                    "type": "null"
+                                },
+                                "pressure": {
+                                    "type": "integer"
+                                },
+                                "relHumidity": {
+                                    "type": "integer"
+                                },
+                                "visibility": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Location search",
+            "url": "https://foreca-weather.p.rapidapi.com/location/search/mumbai",
+            "description": "Search for locations by name.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "string",
+                    "description": "",
+                    "default": "mumbai"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en"
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "in"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://foreca-weather.p.rapidapi.com/location/search/mumbai\"\nquerystring = {\"lang\": \"en\", \"country\": \"in\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"foreca-weather.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://foreca-weather.p.rapidapi.com/location/search/{query}\"\nquerystring = {\"lang\": \"en\", \"country\": \"in\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"foreca-weather.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "locations": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "country": {
+                                    "type": "string"
+                                },
+                                "timezone": {
+                                    "type": "string"
+                                },
+                                "adminArea": {
+                                    "type": "string"
+                                },
+                                "lon": {
+                                    "type": "number"
+                                },
+                                "lat": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Hourly",
+            "url": "https://foreca-weather.p.rapidapi.com/forecast/hourly/102643743",
+            "description": "Hourly forecast.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "102643743"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "alt",
+                    "type": "NUMBER",
+                    "description": "Altitude (meters)",
+                    "default": "0"
+                },
+                {
+                    "name": "history",
+                    "type": "BOOLEAN",
+                    "description": "Whether to include 24 hours of past data.",
+                    "default": "0"
+                },
+                {
+                    "name": "dataset",
+                    "type": "STRING",
+                    "description": "Variable set",
+                    "default": "full"
+                },
+                {
+                    "name": "tz",
+                    "type": "STRING",
+                    "description": "Time zone in response (IANA time zone database names)",
+                    "default": "Europe/London"
+                },
+                {
+                    "name": "periods",
+                    "type": "NUMBER",
+                    "description": "Number of time steps (default 8, maximum 12)",
+                    "default": "8"
+                },
+                {
+                    "name": "windunit",
+                    "type": "STRING",
+                    "description": "Wind speed unit in response.",
+                    "default": "MS"
+                },
+                {
+                    "name": "tempunit",
+                    "type": "STRING",
+                    "description": "Temperature unit in response",
+                    "default": "C"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://foreca-weather.p.rapidapi.com/forecast/hourly/102643743\"\nquerystring = {\"alt\": \"0\", \"history\": \"0\", \"dataset\": \"full\", \"tz\": \"Europe/London\", \"periods\": \"8\", \"windunit\": \"MS\", \"tempunit\": \"C\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"foreca-weather.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://foreca-weather.p.rapidapi.com/forecast/hourly/{location}\"\nquerystring = {\"alt\": \"0\", \"history\": \"0\", \"dataset\": \"full\", \"tz\": \"Europe/London\", \"periods\": \"8\", \"windunit\": \"MS\", \"tempunit\": \"C\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"foreca-weather.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "forecast": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "time": {
+                                    "type": "string"
+                                },
+                                "symbol": {
+                                    "type": "string"
+                                },
+                                "symbolPhrase": {
+                                    "type": "string"
+                                },
+                                "temperature": {
+                                    "type": "integer"
+                                },
+                                "feelsLikeTemp": {
+                                    "type": "integer"
+                                },
+                                "relHumidity": {
+                                    "type": "integer"
+                                },
+                                "dewPoint": {
+                                    "type": "integer"
+                                },
+                                "windDir": {
+                                    "type": "integer"
+                                },
+                                "windSpeed": {
+                                    "type": "integer"
+                                },
+                                "windGust": {
+                                    "type": "integer"
+                                },
+                                "windDirString": {
+                                    "type": "string"
+                                },
+                                "precipProb": {
+                                    "type": "integer"
+                                },
+                                "precipAccum": {
+                                    "type": "integer"
+                                },
+                                "cloudiness": {
+                                    "type": "integer"
+                                },
+                                "thunderProb": {
+                                    "type": "integer"
+                                },
+                                "uvIndex": {
+                                    "type": "integer"
+                                },
+                                "pressure": {
+                                    "type": "number"
+                                },
+                                "visibility": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

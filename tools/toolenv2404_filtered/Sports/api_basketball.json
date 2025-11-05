@@ -1,0 +1,1028 @@
+{
+    "product_id": "api_ed8496b9-674d-4c82-b02d-f620d3b79cae",
+    "tool_description": "+400 Basketball Leagues & Cups with Livescore, Odds, Bookmakers, Statistics, Standings, Historical Data, Countries, Seasons. Documentation : https://api-sports.io/documentation/basketball/v1. Widgets : https://www.api-football.com/widgets",
+    "home_url": "https://rapidapi.com/api-sports/api/api-basketball/",
+    "name": "API-BASKETBALL",
+    "title": "API-BASKETBALL",
+    "pricing": "FREEMIUM",
+    "tool_name": "API-BASKETBALL",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 333,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.9,
+        "__typename": "Score"
+    },
+    "host": "api-basketball.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "countries",
+            "url": "https://api-basketball.p.rapidapi.com/countries",
+            "description": "Get all available countries | The {country} and {code} keys can be used in other endpoints as filters",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Fails if field contains anything other than alpha-numeric characters, numbers or space",
+                    "default": ""
+                },
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": ""
+                },
+                {
+                    "name": "code",
+                    "type": "STRING",
+                    "description": "2 characters | Fails if field has anything other than alphabetic characters | Ex : FR, GB, IT...",
+                    "default": ""
+                },
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "3 characters minimum | Fails if field has anything other than alphabetic characters",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/countries\"\nquerystring = {\"name\": \"\", \"id\": \"\", \"code\": \"\", \"search\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/countries\"\nquerystring = {\"name\": \"\", \"id\": \"\", \"code\": \"\", \"search\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "seasons",
+            "url": "https://api-basketball.p.rapidapi.com/seasons",
+            "description": "Get all available seasons | All {season} can be used in other endpoints as filters",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/seasons\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/seasons\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "leagues",
+            "url": "https://api-basketball.p.rapidapi.com/leagues",
+            "description": "Get all available leagues | The league {id} are unique in the API and leagues keep it across all seasons",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Fails if field contains anything other than alpha-numeric characters, numbers or space",
+                    "default": ""
+                },
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": ""
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Fails if field is not within a predetermined list : [league,cup]",
+                    "default": ""
+                },
+                {
+                    "name": "season",
+                    "type": "STRING",
+                    "description": "Fails if field contains anything other than a valid season [YYYY] or [YYYY-YYYY]",
+                    "default": ""
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Fails if field contains anything other than alpha-numeric characters, numbers or space",
+                    "default": ""
+                },
+                {
+                    "name": "code",
+                    "type": "STRING",
+                    "description": "2 characters | Fails if field has anything other than alphabetic characters | Ex : FR, GB, IT...",
+                    "default": ""
+                },
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "3 characters minimum | Fails if field has anything other than alphabetic characters",
+                    "default": ""
+                },
+                {
+                    "name": "country_id",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/leagues\"\nquerystring = {\"country\": \"\", \"id\": \"\", \"type\": \"\", \"season\": \"\", \"name\": \"\", \"code\": \"\", \"search\": \"\", \"country_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/leagues\"\nquerystring = {\"country\": \"\", \"id\": \"\", \"type\": \"\", \"season\": \"\", \"name\": \"\", \"code\": \"\", \"search\": \"\", \"country_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "head 2 head",
+            "url": "https://api-basketball.p.rapidapi.com/games",
+            "description": "Get all head to head between two teams",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "h2h",
+                    "type": "STRING",
+                    "description": "Fails if field does not match the regular expression : [id-id]",
+                    "default": "142-144"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "league",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": ""
+                },
+                {
+                    "name": "season",
+                    "type": "STRING",
+                    "description": "Fails if field contains anything other than a valid season [YYYY] or [YYYY-YYYY]",
+                    "default": ""
+                },
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "Fails if field is not a result of the endpoint timezone",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/games\"\nquerystring = {\"league\": \"\", \"season\": \"\", \"timezone\": \"\", \"h2h\": \"142-144\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/games\"\nquerystring = {\"league\": \"\", \"season\": \"\", \"timezone\": \"\", \"h2h\": \"142-144\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "bookmakers",
+            "url": "https://api-basketball.p.rapidapi.com/bookmakers",
+            "description": "get all available bookmakers | All bookmakers {id} can be used in endpoint [odds] as filters",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "3 characters minimum | Fails if field has anything other than alphabetic characters",
+                    "default": ""
+                },
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/bookmakers\"\nquerystring = {\"search\": \"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/bookmakers\"\nquerystring = {\"search\": \"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "bets",
+            "url": "https://api-basketball.p.rapidapi.com/bets",
+            "description": "get all available bets labels | All bets {id} can be used in endpoint [odds] as filters",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": ""
+                },
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "3 characters minimum | Fails if field has anything other than alphabetic characters",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/bets\"\nquerystring = {\"id\": \"\", \"search\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/bets\"\nquerystring = {\"id\": \"\", \"search\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "teams statistics",
+            "url": "https://api-basketball.p.rapidapi.com/statistics",
+            "description": "Get team statistics",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "season",
+                    "type": "STRING",
+                    "description": "Fails if field contains anything other than a valid season [YYYY] or [YYYY-YYYY]",
+                    "default": "2019-2020"
+                },
+                {
+                    "name": "league",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": "12"
+                },
+                {
+                    "name": "team",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": "133"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Fails if field does not contain a valid date : [YYYY-MM-DD]",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/statistics\"\nquerystring = {\"season\": \"2019-2020\", \"date\": \"\", \"league\": \"12\", \"team\": \"133\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/statistics\"\nquerystring = {\"season\": \"2019-2020\", \"date\": \"\", \"league\": \"12\", \"team\": \"133\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "teams informations",
+            "url": "https://api-basketball.p.rapidapi.com/teams",
+            "description": "Get all available teams | The team {id} are unique in the API and teams keep it among all the leagues/cups in which they participate",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Fails if field contains anything other than alpha-numeric characters, numbers, dashes or space",
+                    "default": ""
+                },
+                {
+                    "name": "league",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": "12"
+                },
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": ""
+                },
+                {
+                    "name": "season",
+                    "type": "STRING",
+                    "description": "Fails if field contains anything other than a valid season [YYYY] or [YYYY-YYYY]",
+                    "default": "2019-2020"
+                },
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "3 characters minimum | Fails if field has anything other than alphabetic characters",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/teams\"\nquerystring = {\"name\": \"\", \"league\": \"12\", \"id\": \"\", \"season\": \"2019-2020\", \"search\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/teams\"\nquerystring = {\"name\": \"\", \"league\": \"12\", \"id\": \"\", \"season\": \"2019-2020\", \"search\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "games",
+            "url": "https://api-basketball.p.rapidapi.com/games",
+            "description": "Get all available games",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "Fails if field is not a result of the endpoint timezone",
+                    "default": ""
+                },
+                {
+                    "name": "season",
+                    "type": "STRING",
+                    "description": "Fails if field contains anything other than a valid season [YYYY] or [YYYY-YYYY]",
+                    "default": ""
+                },
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": ""
+                },
+                {
+                    "name": "league",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": ""
+                },
+                {
+                    "name": "date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Fails if field does not contain a valid date : [YYYY-MM-DD]",
+                    "default": "2019-11-26"
+                },
+                {
+                    "name": "team",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/games\"\nquerystring = {\"timezone\": \"\", \"season\": \"\", \"id\": \"\", \"league\": \"\", \"date\": \"2019-11-26\", \"team\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/games\"\nquerystring = {\"timezone\": \"\", \"season\": \"\", \"id\": \"\", \"league\": \"\", \"date\": \"2019-11-26\", \"team\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "timezone",
+            "url": "https://api-basketball.p.rapidapi.com/timezone",
+            "description": "Get the list of available timezone to be used in the [games] endpoint",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/timezone\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/timezone\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "odds",
+            "url": "https://api-basketball.p.rapidapi.com/odds",
+            "description": "get all available odds",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "league",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": ""
+                },
+                {
+                    "name": "season",
+                    "type": "STRING",
+                    "description": "Fails if field contains anything other than a valid season [YYYY] or [YYYY-YYYY]",
+                    "default": ""
+                },
+                {
+                    "name": "game",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": "1912"
+                },
+                {
+                    "name": "bookmaker",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": ""
+                },
+                {
+                    "name": "bet",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/odds\"\nquerystring = {\"league\": \"\", \"season\": \"\", \"game\": \"1912\", \"bookmaker\": \"\", \"bet\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/odds\"\nquerystring = {\"league\": \"\", \"season\": \"\", \"game\": \"1912\", \"bookmaker\": \"\", \"bet\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "search bets",
+            "url": "https://api-basketball.p.rapidapi.com/bets",
+            "description": "get all available bets labels | All bets {id} can be used in endpoint [odds] as filters",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "3 characters minimum | Fails if field has anything other than alphabetic characters",
+                    "default": "home"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/bets\"\nquerystring = {\"search\": \"home\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/bets\"\nquerystring = {\"search\": \"home\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "search bookmakers",
+            "url": "https://api-basketball.p.rapidapi.com/bookmakers",
+            "description": "get all available bookmakers | All bookmakers {id} can be used in endpoint [odds] as filters",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "3 characters minimum | Fails if field has anything other than alphabetic characters",
+                    "default": "bet"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/bookmakers\"\nquerystring = {\"search\": \"bet\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/bookmakers\"\nquerystring = {\"search\": \"bet\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "search countries",
+            "url": "https://api-basketball.p.rapidapi.com/countries",
+            "description": "Get all available countries | The {country} and {code} keys can be used in other endpoints as filters",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "3 characters minimum | Fails if field has anything other than alphabetic characters",
+                    "default": "usa"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/countries\"\nquerystring = {\"search\": \"usa\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/countries\"\nquerystring = {\"search\": \"usa\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "search leagues",
+            "url": "https://api-basketball.p.rapidapi.com/leagues",
+            "description": "Get all available leagues | The league {id} are unique in the API and leagues keep it across all seasons",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "3 characters minimum | Fails if field has anything other than alphabetic characters",
+                    "default": "nba"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/leagues\"\nquerystring = {\"search\": \"nba\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/leagues\"\nquerystring = {\"search\": \"nba\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "search teams",
+            "url": "https://api-basketball.p.rapidapi.com/teams",
+            "description": "Get all available teams | The team {id} are unique in the API and teams keep it among all the leagues/cups in which they participate",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "3 characters minimum | Fails if field has anything other than alphabetic characters",
+                    "default": "boston"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/teams\"\nquerystring = {\"search\": \"boston\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/teams\"\nquerystring = {\"search\": \"boston\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "standings",
+            "url": "https://api-basketball.p.rapidapi.com/standings",
+            "description": "Get all available standings | Return a table of one or more rankings according to the league / cup",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "league",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": "12"
+                },
+                {
+                    "name": "season",
+                    "type": "STRING",
+                    "description": "Fails if field contains anything other than a valid season [YYYY] or [YYYY-YYYY]",
+                    "default": "2019-2020"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "stage",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "group",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                },
+                {
+                    "name": "team",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/standings\"\nquerystring = {\"stage\": \"\", \"group\": \"\", \"league\": \"12\", \"team\": \"\", \"season\": \"2019-2020\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/standings\"\nquerystring = {\"stage\": \"\", \"group\": \"\", \"league\": \"12\", \"team\": \"\", \"season\": \"2019-2020\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "stages",
+            "url": "https://api-basketball.p.rapidapi.com/standings/stages",
+            "description": "Get all available stages for standings",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "league",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": "12"
+                },
+                {
+                    "name": "season",
+                    "type": "STRING",
+                    "description": "Fails if field contains anything other than a valid season [YYYY] or [YYYY-YYYY]",
+                    "default": "2019-2020"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/standings/stages\"\nquerystring = {\"league\": \"12\", \"season\": \"2019-2020\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/standings/stages\"\nquerystring = {\"league\": \"12\", \"season\": \"2019-2020\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "groups",
+            "url": "https://api-basketball.p.rapidapi.com/standings/groups",
+            "description": "Get all available groups for standings",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "season",
+                    "type": "STRING",
+                    "description": "Fails if field contains anything other than a valid season [YYYY] or [YYYY-YYYY]",
+                    "default": "2019-2020"
+                },
+                {
+                    "name": "league",
+                    "type": "NUMBER",
+                    "description": "Fails if field contains anything other than an integer",
+                    "default": "12"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/standings/groups\"\nquerystring = {\"season\": \"2019-2020\", \"league\": \"12\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://api-basketball.p.rapidapi.com/standings/groups\"\nquerystring = {\"season\": \"2019-2020\", \"league\": \"12\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"api-basketball.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

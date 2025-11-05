@@ -1,0 +1,1425 @@
+{
+    "product_id": "api_69b58c8a-f993-4511-8a5b-2f522a7e9396",
+    "tool_description": "This API can be used to inquire about prices for real-time flights, hotels, rental cars etc form website like SkyScanner.",
+    "home_url": "https://rapidapi.com/datacore/api/sky-scrapper1/",
+    "name": "Sky Scrapper",
+    "title": "Sky Scrapper",
+    "pricing": "FREEMIUM",
+    "tool_name": "Sky Scrapper",
+    "score": {
+        "avgServiceLevel": 96,
+        "avgLatency": 25056,
+        "avgSuccessRate": 96,
+        "popularityScore": 9.7,
+        "__typename": "Score"
+    },
+    "host": "sky-scrapper1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "searchFlightsEverywhere",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/flights/searchFlightsEverywhere",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Travel date.\nFormat: **YYYY-MM-DD**",
+                    "default": ""
+                },
+                {
+                    "name": "fromId",
+                    "type": "STRING",
+                    "description": "The `fromId` can be extracted from the `api/v1/flights/searchAirport`**(searchAirport)** endpoint in **Flights** collection as `id`.",
+                    "default": "eyJzaWQiOiJOWUNBIiwiZWlkIjoiMjc1Mzc1NDIiLCJwZWlkIjoiMjc1Mzc1NDIiLCJmcHQiOiJDSVRZIn0="
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "USD"
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "The preferred region's country/market code. `market` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "US"
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "en-US"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/flights/searchFlightsEverywhere\"\nquerystring = {\"date\": \"\", \"currency\": \"USD\", \"fromId\": \"eyJzaWQiOiJOWUNBIiwiZWlkIjoiMjc1Mzc1NDIiLCJwZWlkIjoiMjc1Mzc1NDIiLCJmcHQiOiJDSVRZIn0=\", \"market\": \"US\", \"locale\": \"en-US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/flights/searchFlightsEverywhere\"\nquerystring = {\"date\": \"\", \"currency\": \"USD\", \"fromId\": \"eyJzaWQiOiJOWUNBIiwiZWlkIjoiMjc1Mzc1NDIiLCJwZWlkIjoiMjc1Mzc1NDIiLCJmcHQiOiJDSVRZIn0=\", \"market\": \"US\", \"locale\": \"en-US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "searchFlights",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/flights/searchFlights",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "toId",
+                    "type": "STRING",
+                    "description": "The `toId` can be extracted from the `api/v1/flights/searchAirport`**(searchAirport)** endpoint in **Flights** collection as `id`.",
+                    "default": ""
+                },
+                {
+                    "name": "date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Travel date.\nFormat: **YYYY-MM-DD**",
+                    "default": ""
+                },
+                {
+                    "name": "fromId",
+                    "type": "STRING",
+                    "description": "The `fromId` can be extracted from the `api/v1/flights/searchAirport`**(searchAirport)** endpoint in **Flights** collection as `id`.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "carriers",
+                    "type": "STRING",
+                    "description": "Filter the results by carriers. Enter the ID for the carriers. If there are multiple 'carriers' to be submitted, they should be comma-separated.\nEg: `-32119,-32213`",
+                    "default": ""
+                },
+                {
+                    "name": "children",
+                    "type": "NUMBER",
+                    "description": "The number of children between the **ages** of `1` and `18`.",
+                    "default": ""
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "USD"
+                },
+                {
+                    "name": "cabinClass",
+                    "type": "ENUM",
+                    "description": "Search for flights that match the cabin class specified. Cabin call can be either economy, premium_economy, business or first.",
+                    "default": ""
+                },
+                {
+                    "name": "stops",
+                    "type": "STRING",
+                    "description": "Number of stops\nNon Stop: 0\nOne Stop: 1\nTwo Stops: 2\nExample:\nIf the search result contains flights that are `non stops` or have `two stops`, pass in `0,2` as parameter value.",
+                    "default": ""
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "`limit` the number of records in the result.",
+                    "default": ""
+                },
+                {
+                    "name": "infants",
+                    "type": "NUMBER",
+                    "description": "The number of infants. Children under the **age** of `12` months.",
+                    "default": ""
+                },
+                {
+                    "name": "co2",
+                    "type": "ENUM",
+                    "description": "Flight with lower CO2 emission.\n1 = True\n0 = False",
+                    "default": ""
+                },
+                {
+                    "name": "sortBy",
+                    "type": "ENUM",
+                    "description": "This parameter orders result by best, cheapest, fastest,outbound_take_off_time,outbound_landing_time,return_take_off_time or return_landing_time flights.\n\n",
+                    "default": ""
+                },
+                {
+                    "name": "adults",
+                    "type": "NUMBER",
+                    "description": "The number of guests who are 18 years of age or older. The default value is set to 1.",
+                    "default": ""
+                },
+                {
+                    "name": "returnDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Return date.\nFormat: **YYYY-MM-DD**",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "en-US"
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "The preferred region's country/market code. `market` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "US"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/flights/searchFlights\"\nquerystring = {\"carriers\": \"\", \"toId\": \"\", \"children\": \"\", \"currency\": \"USD\", \"date\": \"\", \"cabinClass\": \"\", \"stops\": \"\", \"limit\": \"\", \"infants\": \"\", \"fromId\": \"\", \"co2\": \"\", \"sortBy\": \"\", \"adults\": \"\", \"returnDate\": \"\", \"locale\": \"en-US\", \"market\": \"US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/flights/searchFlights\"\nquerystring = {\"carriers\": \"\", \"toId\": \"\", \"children\": \"\", \"currency\": \"USD\", \"date\": \"\", \"cabinClass\": \"\", \"stops\": \"\", \"limit\": \"\", \"infants\": \"\", \"fromId\": \"\", \"co2\": \"\", \"sortBy\": \"\", \"adults\": \"\", \"returnDate\": \"\", \"locale\": \"en-US\", \"market\": \"US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get Config",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/getConfig",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/getConfig\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/getConfig\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Test API",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/test",
+            "description": "To check if server is up and running",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/test\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/test\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "Location to Lat Long",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/locationToLatLong",
+            "description": "Get location/address latitude and longitude",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Names of locations, apartment, address, cities, districts, places, countries, counties etc.",
+                    "default": "new"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/locationToLatLong\"\nquerystring = {\"query\": \"new\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/locationToLatLong\"\nquerystring = {\"query\": \"new\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "getNearbyMap",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getNearbyMap",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "Location latitude.",
+                    "default": "19.2624847"
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "Location longitude.",
+                    "default": "72.874057"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "en-US"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "USD"
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "The preferred region's country/market code. `market` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "US"
+                },
+                {
+                    "name": "cityId",
+                    "type": "NUMBER",
+                    "description": "`cityId` can be extracted from the `api/v1/hotels/searchHotelOrDestination`**(searchHotelOrDestination)** endpoint in **Hotels** as `entity_id` inside **location** object where `entity_type` is equals to `City`",
+                    "default": "27539520"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getNearbyMap\"\nquerystring = {\"locale\": \"en-US\", \"currency\": \"USD\", \"latitude\": \"19.2624847\", \"market\": \"US\", \"cityId\": \"27539520\", \"longitude\": \"72.874057\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getNearbyMap\"\nquerystring = {\"locale\": \"en-US\", \"currency\": \"USD\", \"latitude\": \"19.2624847\", \"market\": \"US\", \"cityId\": \"27539520\", \"longitude\": \"72.874057\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "getHotelsByCoordinates",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getHotelsByCoordinates",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "**Latitude** of the searched location. `latitude` can be retrieved from `api/v1/locationToLatLong`**(Location to Lat Long)** endpoint in **Meta** collection.",
+                    "default": "19.2624847"
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "**Longitude** of the searched location. `longitude` can be retrieved from `api/v1/locationToLatLong`**(Location to Lat Long)** endpoint in **Meta** collection.",
+                    "default": "72.874057"
+                },
+                {
+                    "name": "sorting",
+                    "type": "ENUM",
+                    "description": "This parameter orders result by BEST,PRICE_HIGH_TO_LOW,PRICE_LOW_TO_HIGH,DISTANCE_FROM_LOCATION,GUEST_RATING or STARS_5_TO_1,STARS_1_TO_5 hotels.",
+                    "default": ""
+                },
+                {
+                    "name": "checkoutDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "The date of **departure** or **check-out**.\nFormat: **YYYY-MM-DD**",
+                    "default": ""
+                },
+                {
+                    "name": "checkinDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "The date on which you will **arrive** or **check-in**.\nFormat: **YYYY-MM-DD**",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "pageNo",
+                    "type": "NUMBER",
+                    "description": "The page number.",
+                    "default": "1"
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "en-US"
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "The preferred region's country/market code. `market` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "US"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "USD"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getHotelsByCoordinates\"\nquerystring = {\"latitude\": \"19.2624847\", \"longitude\": \"72.874057\", \"sorting\": \"\", \"checkoutDate\": \"\", \"pageNo\": \"1\", \"locale\": \"en-US\", \"market\": \"US\", \"checkinDate\": \"\", \"currency\": \"USD\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getHotelsByCoordinates\"\nquerystring = {\"latitude\": \"19.2624847\", \"longitude\": \"72.874057\", \"sorting\": \"\", \"checkoutDate\": \"\", \"pageNo\": \"1\", \"locale\": \"en-US\", \"market\": \"US\", \"checkinDate\": \"\", \"currency\": \"USD\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "getLocationByCoordinates",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getLocationByCoordinates",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "Location latitude.",
+                    "default": "19.2624847"
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "Location longitude",
+                    "default": "72.874057"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "en-US"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "USD"
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "The preferred region's country/market code. `market` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "US"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getLocationByCoordinates\"\nquerystring = {\"locale\": \"en-US\", \"currency\": \"USD\", \"market\": \"US\", \"latitude\": \"19.2624847\", \"longitude\": \"72.874057\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getLocationByCoordinates\"\nquerystring = {\"locale\": \"en-US\", \"currency\": \"USD\", \"market\": \"US\", \"latitude\": \"19.2624847\", \"longitude\": \"72.874057\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "searchHotelOrDestination",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/searchHotelOrDestination",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Names of locations, cities, districts, places, countries, counties etc.",
+                    "default": "Karol"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "en-US"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "USD"
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "The preferred region's country/market code. `market` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "US"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/searchHotelOrDestination\"\nquerystring = {\"query\": \"Karol\", \"locale\": \"en-US\", \"currency\": \"USD\", \"market\": \"US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/searchHotelOrDestination\"\nquerystring = {\"query\": \"Karol\", \"locale\": \"en-US\", \"currency\": \"USD\", \"market\": \"US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "searchAirport",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/flights/searchAirport",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "The name of the location where the **Airport** is located.",
+                    "default": "new york"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "en-US"
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "The preferred region's country/market code. `market` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "US"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "USD"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/flights/searchAirport\"\nquerystring = {\"locale\": \"en-US\", \"query\": \"new york\", \"market\": \"US\", \"currency\": \"USD\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/flights/searchAirport\"\nquerystring = {\"locale\": \"en-US\", \"query\": \"new york\", \"market\": \"US\", \"currency\": \"USD\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "getAmenities",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/flights/getAmenities",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "flightId",
+                    "type": "STRING",
+                    "description": "`flightId` can be extracted from the `api/v1/flights/searchFlights`**(searchFlights)** or `api/v1/flights/searchFlightsMultiStops`**(searchFlightsMultiStops)** endpoints in Flights collection inside `itineraries` object as `id`.",
+                    "default": "DEL-DXB-EK-513-20231107-FIRST,DXB-JFK-EK-201-20231107-FIRST,JFK-KWI-KU-118-20231112-FIRST,KWI-DXB-KU-673-20231113-FIRST,DXB-DEL-EK-512-20231113-FIRST,DEL-DXB-EK-517-20231117-FIRST,DXB-BOM-EK-500-20231117-FIRST"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/flights/getAmenities\"\nquerystring = {\"flightId\": \"DEL-DXB-EK-513-20231107-FIRST,DXB-JFK-EK-201-20231107-FIRST,JFK-KWI-KU-118-20231112-FIRST,KWI-DXB-KU-673-20231113-FIRST,DXB-DEL-EK-512-20231113-FIRST,DEL-DXB-EK-517-20231117-FIRST,DXB-BOM-EK-500-20231117-FIRST\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/flights/getAmenities\"\nquerystring = {\"flightId\": \"DEL-DXB-EK-513-20231107-FIRST,DXB-JFK-EK-201-20231107-FIRST,JFK-KWI-KU-118-20231112-FIRST,KWI-DXB-KU-673-20231113-FIRST,DXB-DEL-EK-512-20231113-FIRST,DEL-DXB-EK-517-20231117-FIRST,DXB-BOM-EK-500-20231117-FIRST\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "getPriceCalendar",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/flights/getPriceCalendar",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "fromId",
+                    "type": "STRING",
+                    "description": "The `fromId` can be extracted from the `api/v1/flights/searchAirport`**(searchAirport)** endpoint in **Flights** collection as `id`.",
+                    "default": ""
+                },
+                {
+                    "name": "toId",
+                    "type": "STRING",
+                    "description": "The `toId` can be extracted from the `api/v1/flights/searchAirport`**(searchAirport)** endpoint in **Flights** collection as `id`.",
+                    "default": ""
+                },
+                {
+                    "name": "date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Travel date.\nFormat: **YYYY-MM-DD**",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "USD"
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "en-US"
+                },
+                {
+                    "name": "returnDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Return date.\nFormat: **YYYY-MM-DD**",
+                    "default": ""
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "The preferred region's country/market code. `market` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "US"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/flights/getPriceCalendar\"\nquerystring = {\"currency\": \"USD\", \"locale\": \"en-US\", \"returnDate\": \"\", \"market\": \"US\", \"fromId\": \"\", \"toId\": \"\", \"date\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/flights/getPriceCalendar\"\nquerystring = {\"currency\": \"USD\", \"locale\": \"en-US\", \"returnDate\": \"\", \"market\": \"US\", \"fromId\": \"\", \"toId\": \"\", \"date\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "getPrice",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getPrice",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "checkinDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "The date on which you will **arrive** or **check-in**.\nFormat: **YYYY-MM-DD**",
+                    "default": ""
+                },
+                {
+                    "name": "checkoutDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "The date of **departure** or **check-out**.\nFormat: **YYYY-MM-DD**",
+                    "default": ""
+                },
+                {
+                    "name": "hotelId",
+                    "type": "NUMBER",
+                    "description": "`hotelId` can be extracted from the `api/v1/hotels/searchHotels`**(searchHotels)** or `api/v1/hotels/getHotelsByCoordinates`**(getHotelsByCoordinates)** endpoints in **Hotels** collection inside `hotels` object as `hotelId`. OR from `api/v1/hotels/getSimilarHotels`**(getSimilarHotels)** endpoints in **Hotels** as `hotelId`",
+                    "default": "47023082"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "adults",
+                    "type": "NUMBER",
+                    "description": "The number of guests who are `18 years` of **age** or **older**. The **default** value is set to `1`.",
+                    "default": "2"
+                },
+                {
+                    "name": "entityId",
+                    "type": "NUMBER",
+                    "description": "`entityId` can be extracted from the `api/v1/hotels/searchHotelOrDestination`**(searchHotelOrDestination)** endpoint in **Hotels** as `entityId` OR `api/v1/hotels/getLocationByCoordinates`**(getLocationByCoordinates)** endpoint in **Hotels** inside `city/district` object as `id `",
+                    "default": "27539520"
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "en-US"
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "The preferred region's country/market code. `market` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "US"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "USD"
+                },
+                {
+                    "name": "rooms",
+                    "type": "NUMBER",
+                    "description": "The number of **rooms** that are required. The **default** value is set to `1`.",
+                    "default": "1"
+                },
+                {
+                    "name": "childrenAges",
+                    "type": "STRING",
+                    "description": "The number of **children**, including **infants**, who are under `18`.\nExample:\nChild 1 Age = 8 months\nChild 2 Age = 1 year\nChild 3 Age = 17 years\nHere is what the request parameter would look like:\n`childrenAges: 0,1,17`",
+                    "default": "0,17"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getPrice\"\nquerystring = {\"adults\": \"2\", \"checkinDate\": \"\", \"entityId\": \"27539520\", \"checkoutDate\": \"\", \"locale\": \"en-US\", \"market\": \"US\", \"currency\": \"USD\", \"rooms\": \"1\", \"childrenAges\": \"0,17\", \"hotelId\": \"47023082\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getPrice\"\nquerystring = {\"adults\": \"2\", \"checkinDate\": \"\", \"entityId\": \"27539520\", \"checkoutDate\": \"\", \"locale\": \"en-US\", \"market\": \"US\", \"currency\": \"USD\", \"rooms\": \"1\", \"childrenAges\": \"0,17\", \"hotelId\": \"47023082\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "getHotelDetails",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getHotelDetails",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "hotelId",
+                    "type": "NUMBER",
+                    "description": "`hotelId` can be extracted from the `api/v1/hotels/searchHotels`**(searchHotels)** or `api/v1/hotels/getHotelsByCoordinates`**(getHotelsByCoordinates)** endpoints in **Hotels** collection inside `hotels` object as `hotelId`. OR from `api/v1/hotels/getSimilarHotels`**(getSimilarHotels)** endpoints in **Hotels** as `hotelId`",
+                    "default": "47023082"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "The preferred region's country/market code. `market` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "US"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "USD"
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "en-US"
+                },
+                {
+                    "name": "entityId",
+                    "type": "NUMBER",
+                    "description": "`entityId` can be extracted from the `api/v1/hotels/searchHotelOrDestination`**(searchHotelOrDestination)** endpoint in **Hotels** as `entityId` OR `api/v1/hotels/getLocationByCoordinates`**(getLocationByCoordinates)** endpoint in **Hotels** inside `city/district` object as `id `",
+                    "default": "27539520"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getHotelDetails\"\nquerystring = {\"market\": \"US\", \"currency\": \"USD\", \"locale\": \"en-US\", \"hotelId\": \"47023082\", \"entityId\": \"27539520\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getHotelDetails\"\nquerystring = {\"market\": \"US\", \"currency\": \"USD\", \"locale\": \"en-US\", \"hotelId\": \"47023082\", \"entityId\": \"27539520\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "searchFlightEverywhereDetails",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/flights/searchFlightEverywhereDetails",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "`id` can be extracted from the `api/v1/flights/searchFlightsEverywhere`**(searchFlightsEverywhere)** endpoint in Flights collection as `id`.",
+                    "default": "eyJvIjoiTllDQSIsImQiOiJVUyIsImZkIjoiMjAyMy0xMS0wNyIsInRkIjoiMjAyMy0xMS0wNyJ9"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "en-US"
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "The preferred region's country/market code. `market` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "US"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "USD"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/flights/searchFlightEverywhereDetails\"\nquerystring = {\"locale\": \"en-US\", \"market\": \"US\", \"currency\": \"USD\", \"id\": \"eyJvIjoiTllDQSIsImQiOiJVUyIsImZkIjoiMjAyMy0xMS0wNyIsInRkIjoiMjAyMy0xMS0wNyJ9\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/flights/searchFlightEverywhereDetails\"\nquerystring = {\"locale\": \"en-US\", \"market\": \"US\", \"currency\": \"USD\", \"id\": \"eyJvIjoiTllDQSIsImQiOiJVUyIsImZkIjoiMjAyMy0xMS0wNyIsInRkIjoiMjAyMy0xMS0wNyJ9\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "searchHotels",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/searchHotels",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "checkinDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "The date on which you will **arrive** or **check-in**.\nFormat: **YYYY-MM-DD**",
+                    "default": ""
+                },
+                {
+                    "name": "checkoutDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "The date of **departure** or **check-out**.\nFormat: **YYYY-MM-DD**",
+                    "default": ""
+                },
+                {
+                    "name": "entityId",
+                    "type": "NUMBER",
+                    "description": "`entityId` can be extracted from the `api/v1/hotels/searchHotelOrDestination`**(searchHotelOrDestination)** endpoint in **Hotels** as `entityId` OR `api/v1/hotels/getLocationByCoordinates`**(getLocationByCoordinates)** endpoint in **Hotels** inside `city/district` object as `id `",
+                    "default": "95565058"
+                },
+                {
+                    "name": "sorting",
+                    "type": "ENUM",
+                    "description": "This parameter orders result by BEST,PRICE_HIGH_TO_LOW,PRICE_LOW_TO_HIGH,DISTANCE_FROM_LOCATION,GUEST_RATING or STARS_5_TO_1,STARS_1_TO_5 hotels.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "childrenAges",
+                    "type": "STRING",
+                    "description": "The number of **children**, including **infants**, who are under `18`.\nExample:\nChild 1 Age = 8 months\nChild 2 Age = 1 year\nChild 3 Age = 17 years\nHere is what the request parameter would look like:\n`childrenAges: 0,1,17`",
+                    "default": ""
+                },
+                {
+                    "name": "pageNo",
+                    "type": "NUMBER",
+                    "description": "The page number.",
+                    "default": "1"
+                },
+                {
+                    "name": "adults",
+                    "type": "NUMBER",
+                    "description": "The number of guests who are `18 years` of **age** or **older**. The **default** value is set to `1`.",
+                    "default": "1"
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "The preferred region's country/market code. `market` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "US"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "USD"
+                },
+                {
+                    "name": "rooms",
+                    "type": "NUMBER",
+                    "description": "The number of **rooms** that are required. The **default** value is set to `1`.",
+                    "default": "1"
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "en-US"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/searchHotels\"\nquerystring = {\"childrenAges\": \"\", \"checkinDate\": \"\", \"pageNo\": \"1\", \"checkoutDate\": \"\", \"entityId\": \"95565058\", \"adults\": \"1\", \"market\": \"US\", \"currency\": \"USD\", \"rooms\": \"1\", \"sorting\": \"\", \"locale\": \"en-US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/searchHotels\"\nquerystring = {\"childrenAges\": \"\", \"checkinDate\": \"\", \"pageNo\": \"1\", \"checkoutDate\": \"\", \"entityId\": \"95565058\", \"adults\": \"1\", \"market\": \"US\", \"currency\": \"USD\", \"rooms\": \"1\", \"sorting\": \"\", \"locale\": \"en-US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "searchCars",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/cars/searchCars",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "dropOffDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Drop off date\nFormat: **YYYY-MM-DD**",
+                    "default": ""
+                },
+                {
+                    "name": "pickUpTime",
+                    "type": "TIME (24-hour HH:MM)",
+                    "description": "\nPick up time\nFormat: **HH:MM**\n*Note: The format of time is 24 hours.*",
+                    "default": "10:00"
+                },
+                {
+                    "name": "pickUpEntityId",
+                    "type": "NUMBER",
+                    "description": "`pickUpEntityId` can be retrieved from `api/v1/cars/searchLocation`**(searchLocation)** endpoint in **Car Hire** collection as `entity_id`.",
+                    "default": "27544925"
+                },
+                {
+                    "name": "dropOffEntityId",
+                    "type": "NUMBER",
+                    "description": "`dropOffEntityId` can be retrieved from `api/v1/cars/searchLocation`**(searchLocation)** endpoint in **Car Hire** collection as `entity_id`.",
+                    "default": "27544925"
+                },
+                {
+                    "name": "pickUpDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Pick up date\nFormat: **YYYY-MM-DD**",
+                    "default": ""
+                },
+                {
+                    "name": "dropOffTime",
+                    "type": "TIME (24-hour HH:MM)",
+                    "description": "Drop off time\nFormat: **HH:MM**\n*Note: The format of time is 24 hours.*",
+                    "default": "10:00"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "en-US"
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "The preferred region's country/market code. `market` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "US"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "USD"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/cars/searchCars\"\nquerystring = {\"locale\": \"en-US\", \"dropOffDate\": \"\", \"pickUpTime\": \"10:00\", \"market\": \"US\", \"pickUpEntityId\": \"27544925\", \"dropOffEntityId\": \"27544925\", \"pickUpDate\": \"\", \"currency\": \"USD\", \"dropOffTime\": \"10:00\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/cars/searchCars\"\nquerystring = {\"locale\": \"en-US\", \"dropOffDate\": \"\", \"pickUpTime\": \"10:00\", \"market\": \"US\", \"pickUpEntityId\": \"27544925\", \"dropOffEntityId\": \"27544925\", \"pickUpDate\": \"\", \"currency\": \"USD\", \"dropOffTime\": \"10:00\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "getReviews",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getReviews",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "hotelId",
+                    "type": "NUMBER",
+                    "description": "`hotelId` can be extracted from the `api/v1/hotels/searchHotels`**(searchHotels)** or `api/v1/hotels/getHotelsByCoordinates`**(getHotelsByCoordinates)** endpoints in **Hotels** collection inside `hotels` object as `hotelId`. OR from `api/v1/hotels/getSimilarHotels`**(getSimilarHotels)** endpoints in **Hotels** as `hotelId`",
+                    "default": "95820742"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "The preferred region's country/market code. `market` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "US"
+                },
+                {
+                    "name": "pageNo",
+                    "type": "NUMBER",
+                    "description": "The page number.",
+                    "default": "1"
+                },
+                {
+                    "name": "sortBy",
+                    "type": "ENUM",
+                    "description": "This parameter orders result by RECOMMENDED,RATING_HIGH_TO_LOW,RATING_LOW_TO_HIGH or MOST_RECENT reviews.",
+                    "default": ""
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "en-US"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "USD"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getReviews\"\nquerystring = {\"market\": \"US\", \"pageNo\": \"1\", \"sortBy\": \"\", \"locale\": \"en-US\", \"hotelId\": \"95820742\", \"currency\": \"USD\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getReviews\"\nquerystring = {\"market\": \"US\", \"pageNo\": \"1\", \"sortBy\": \"\", \"locale\": \"en-US\", \"hotelId\": \"95820742\", \"currency\": \"USD\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "getNearByAirports",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/flights/getNearByAirports",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "Latitude of the searched location. `latitude` can be retrieved from `api/v1/meta/locationToLatLong`**(Location to Lat Long)** endpoint in **Meta** collection.",
+                    "default": "19.242218017578125"
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "Longitude of the searched location. `longitude` can be retrieved from `api/v1/meta/locationToLatLong`**(Location to Lat Long)** endpoint in **Meta** collection.",
+                    "default": "72.85846156046128"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/flights/getNearByAirports\"\nquerystring = {\"latitude\": \"19.242218017578125\", \"longitude\": \"72.85846156046128\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/flights/getNearByAirports\"\nquerystring = {\"latitude\": \"19.242218017578125\", \"longitude\": \"72.85846156046128\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "searchLocation",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/cars/searchLocation",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Names of locations, cities, districts, places, countries, counties etc.",
+                    "default": "manh"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "The preferred region's country/market code. `market` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "US"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "USD"
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "en-US"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/cars/searchLocation\"\nquerystring = {\"market\": \"US\", \"query\": \"manh\", \"currency\": \"USD\", \"locale\": \"en-US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/cars/searchLocation\"\nquerystring = {\"market\": \"US\", \"query\": \"manh\", \"currency\": \"USD\", \"locale\": \"en-US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "getSimilarHotels",
+            "url": "https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getSimilarHotels",
+            "description": "-",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "checkoutDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "The date of **departure** or **check-out**.\nFormat: **YYYY-MM-DD**",
+                    "default": ""
+                },
+                {
+                    "name": "checkinDate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "The date on which you will **arrive** or **check-in**.\nFormat: **YYYY-MM-DD**",
+                    "default": ""
+                },
+                {
+                    "name": "hotelId",
+                    "type": "NUMBER",
+                    "description": "`hotelId` can be extracted from the `api/v1/hotels/searchHotels`**(searchHotels)** or `api/v1/hotels/getHotelsByCoordinates`**(getHotelsByCoordinates)** endpoints in **Hotels** collection inside `hotels` object as `hotelId`. OR from `api/v1/hotels/getSimilarHotels`**(getSimilarHotels)** endpoints in **Hotels** as `hotelId`",
+                    "default": "136295916"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "`locale` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "en-US"
+                },
+                {
+                    "name": "adults",
+                    "type": "NUMBER",
+                    "description": "The number of guests who are `18 years` of **age** or **older**. The **default** value is set to `1`.",
+                    "default": "2"
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "The preferred region's country/market code. `market` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "US"
+                },
+                {
+                    "name": "room",
+                    "type": "NUMBER",
+                    "description": "The number of **rooms** that are required. The **default** value is set to `1`.",
+                    "default": "1"
+                },
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "`currency` can be retrieved from `api/v1/getConfig`**(Get Config)** endpoint in **Meta** collection.",
+                    "default": "USD"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getSimilarHotels\"\nquerystring = {\"locale\": \"en-US\", \"checkoutDate\": \"\", \"adults\": \"2\", \"market\": \"US\", \"room\": \"1\", \"checkinDate\": \"\", \"hotelId\": \"136295916\", \"currency\": \"USD\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://sky-scrapper1.p.rapidapi.com/api/v1/hotels/getSimilarHotels\"\nquerystring = {\"locale\": \"en-US\", \"checkoutDate\": \"\", \"adults\": \"2\", \"market\": \"US\", \"room\": \"1\", \"checkinDate\": \"\", \"hotelId\": \"136295916\", \"currency\": \"USD\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"sky-scrapper1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

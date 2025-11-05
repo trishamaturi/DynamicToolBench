@@ -1,0 +1,46 @@
+{
+    "product_id": "api_59e834fe-9879-44ca-aec0-59533bfaeea5",
+    "tool_description": "\"Chat with Document\" API enables clients to provide a PDF URL, which is then downloaded and ingested by the backend. The API then provides a chat endpoint for clients to engage in interactive conversations about the content of the document. With \"Chat with Document,\" clients can easily extract insights, ask questions, and collaborate with others in real-time, all without ever leaving the document.\nDiscord: https://discord.com/channels/1092063384721162361/1092063450185867314",
+    "home_url": "https://rapidapi.com/fyhao/api/chat-with-document/",
+    "name": "Chat With Document",
+    "title": "Chat With Document",
+    "pricing": "FREEMIUM",
+    "tool_name": "Chat With Document",
+    "score": {
+        "avgServiceLevel": 47,
+        "avgLatency": 2994,
+        "avgSuccessRate": 47,
+        "popularityScore": 6.2,
+        "__typename": "Score"
+    },
+    "host": "chat-with-document.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get Session Status API",
+            "url": "https://chat-with-document.p.rapidapi.com/getsessionstatus",
+            "description": "This API let you check the session status by passing in sessionId. The supported status are:\npending - The session is just created\ndownloading - Backend job is just available and pick up your URL and downloading the documents\ndownloaded - Your document just successfully downloaded and store in our cloud storage\ningesting - Backend job start ingesting your document into embedding\ningested - Backend job successfully ingest your document and you are ready to evaluate (start the chat interaction)\nerror_ingested - There are error on server side to ingest your document.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "sessionId",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "1234"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://chat-with-document.p.rapidapi.com/getsessionstatus\"\nquerystring = {\"sessionId\": \"1234\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chat-with-document.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://chat-with-document.p.rapidapi.com/getsessionstatus\"\nquerystring = {\"sessionId\": \"1234\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"chat-with-document.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    ]
+}

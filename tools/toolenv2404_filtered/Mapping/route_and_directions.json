@@ -1,0 +1,173 @@
+{
+    "product_id": "api_d51a1099-497b-4dfa-98d3-f2c8e0414c77",
+    "tool_description": "Calculate a route with turn-by-turn navigation instructions between a pair or more waypoints.",
+    "home_url": "https://rapidapi.com/geoapify-gmbh-geoapify/api/route-and-directions/",
+    "name": "Route and directions",
+    "title": "Route and directions",
+    "pricing": "FREEMIUM",
+    "tool_name": "Route and directions",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 397,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.5,
+        "__typename": "Score"
+    },
+    "host": "route-and-directions.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Route and directions",
+            "url": "https://route-and-directions.p.rapidapi.com/v1/routing",
+            "description": "Provide Latitude/Longitude coordinates (separated by \"|\") as \"waypoints\", transportation mode (\"drive\", \"truck\", \"bicycle\", \"walk\" or \"transit\") as \"mode\". The API returns [GeoJSON.Features](https://apidocs.geoapify.com/docs/routing/feature/) as a result.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "waypoints",
+                    "type": "STRING",
+                    "description": "List of two or more lat,lon coordinates, separated by the pipe symbol \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"|\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"",
+                    "default": "48.34364,10.87474|48.37073,10.90925"
+                },
+                {
+                    "name": "mode",
+                    "type": "STRING",
+                    "description": "Routing mode - drive, truck, bicycle, walk or transit",
+                    "default": "drive"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://route-and-directions.p.rapidapi.com/v1/routing\"\nquerystring = {\"waypoints\": \"48.34364,10.87474|48.37073,10.90925\", \"mode\": \"drive\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"route-and-directions.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://route-and-directions.p.rapidapi.com/v1/routing\"\nquerystring = {\"waypoints\": \"48.34364,10.87474|48.37073,10.90925\", \"mode\": \"drive\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"route-and-directions.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string"
+                    },
+                    "features": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "type": {
+                                    "type": "string"
+                                },
+                                "properties": {
+                                    "type": "object",
+                                    "properties": {
+                                        "mode": {
+                                            "type": "string"
+                                        },
+                                        "time": {
+                                            "type": "integer"
+                                        },
+                                        "legs": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "steps": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "time": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "from_index": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "distance": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "to_index": {
+                                                                    "type": "integer"
+                                                                },
+                                                                "instruction": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "text": {
+                                                                            "type": "string"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "time": {
+                                                        "type": "integer"
+                                                    },
+                                                    "distance": {
+                                                        "type": "integer"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "distance": {
+                                            "type": "integer"
+                                        },
+                                        "waypoints": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "location": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "original_index": {
+                                                        "type": "integer"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "geometry": {
+                                    "type": "object",
+                                    "properties": {
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "coordinates": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "number"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "properties": {
+                        "type": "object",
+                        "properties": {
+                            "mode": {
+                                "type": "string"
+                            },
+                            "waypoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "number"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

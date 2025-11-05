@@ -1,0 +1,1051 @@
+{
+    "product_id": "api_e6141a29-69de-4eb2-ab60-2cf4b439b0e6",
+    "tool_description": "Live news from 8000+ sources, with keywords, locations, and sentiments. ML and NLP insights.",
+    "home_url": "https://rapidapi.com/Togotis/api/tidalwaves-news-analytics2/",
+    "name": "TidalWaves News Analytics",
+    "title": "TidalWaves News Analytics",
+    "pricing": "FREEMIUM",
+    "tool_name": "TidalWaves News Analytics",
+    "score": null,
+    "host": "tidalwaves-news-analytics2.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Fetch the latest articles",
+            "url": "https://tidalwaves-news-analytics2.p.rapidapi.com/articles/latest",
+            "description": "Returns all articles from the latest batch.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "withKeywords",
+                    "type": "STRING",
+                    "description": "Include related keywords for each article.",
+                    "default": true
+                },
+                {
+                    "name": "withLocations",
+                    "type": "STRING",
+                    "description": "Include related locations for each article.",
+                    "default": true
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/articles/latest\"\nquerystring = {\"withKeywords\": true, \"withLocations\": true}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/articles/latest\"\nquerystring = {\"withKeywords\": true, \"withLocations\": true}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "count": {
+                        "type": "integer"
+                    },
+                    "data": {
+                        "items": {
+                            "properties": {
+                                "batch_id": {
+                                    "type": "integer"
+                                },
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "keywords": {
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "label": {
+                                                "type": "string"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "locations": {
+                                    "items": {
+                                        "properties": {
+                                            "country_code": {
+                                                "type": "string"
+                                            },
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "lat": {
+                                                "type": "number"
+                                            },
+                                            "long": {
+                                                "type": "number"
+                                            },
+                                            "tag": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "source": {
+                                    "type": "string"
+                                },
+                                "story_id": {
+                                    "type": "null"
+                                },
+                                "timestamp": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "tone": {
+                                    "type": "number"
+                                },
+                                "url": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Fetch the latest stories",
+            "url": "https://tidalwaves-news-analytics2.p.rapidapi.com/stories/latest",
+            "description": "Returns all stories from the latest batch.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "withArticles",
+                    "type": "STRING",
+                    "description": "Include related articles (with keywords & locations) for each story.",
+                    "default": true
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/stories/latest\"\nquerystring = {\"withArticles\": true}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/stories/latest\"\nquerystring = {\"withArticles\": true}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "count": {
+                        "type": "integer"
+                    },
+                    "data": {
+                        "items": {
+                            "properties": {
+                                "articles": {
+                                    "items": {
+                                        "properties": {
+                                            "batch_id": {
+                                                "type": "integer"
+                                            },
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "keywords": {
+                                                "items": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "integer"
+                                                        },
+                                                        "label": {
+                                                            "type": "string"
+                                                        },
+                                                        "type": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            },
+                                            "locations": {
+                                                "items": {
+                                                    "properties": {
+                                                        "country_code": {
+                                                            "type": "string"
+                                                        },
+                                                        "id": {
+                                                            "type": "integer"
+                                                        },
+                                                        "lat": {
+                                                            "type": "number"
+                                                        },
+                                                        "long": {
+                                                            "type": "number"
+                                                        },
+                                                        "tag": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            },
+                                            "source": {
+                                                "type": "string"
+                                            },
+                                            "story_id": {
+                                                "type": "integer"
+                                            },
+                                            "timestamp": {
+                                                "type": "string"
+                                            },
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "tone": {
+                                                "type": "number"
+                                            },
+                                            "url": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "avg_tone": {
+                                    "type": "number"
+                                },
+                                "batch_id": {
+                                    "type": "integer"
+                                },
+                                "gist": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "timestamp": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Fetch article locations",
+            "url": "https://tidalwaves-news-analytics2.p.rapidapi.com/articles/id/locations",
+            "description": "Quick location fetch for specific article",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "id"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/articles/id/locations\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/articles/{id}/locations\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "count": {
+                        "type": "integer"
+                    },
+                    "data": {
+                        "items": {
+                            "properties": {
+                                "article_id": {
+                                    "type": "integer"
+                                },
+                                "country_code": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "lat": {
+                                    "type": "number"
+                                },
+                                "long": {
+                                    "type": "number"
+                                },
+                                "tag": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Fetch article keywords",
+            "url": "https://tidalwaves-news-analytics2.p.rapidapi.com/articles/id/keywords",
+            "description": "Quick keyword fetch for specific article",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "id"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/articles/id/keywords\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/articles/{id}/keywords\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "count": {
+                        "type": "integer"
+                    },
+                    "data": {
+                        "items": {
+                            "properties": {
+                                "article_id": {
+                                    "type": "integer"
+                                },
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "label": {
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Fetch articles",
+            "url": "https://tidalwaves-news-analytics2.p.rapidapi.com/articles",
+            "description": "Query flat article data.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "orderDir",
+                    "type": "STRING",
+                    "description": "Row ordering direction. Either \"asc\" or \"desc\".",
+                    "default": "asc"
+                },
+                {
+                    "name": "orderBy",
+                    "type": "STRING",
+                    "description": "Row ordering. Available columns: \"title\", \"tone\", and \"timestamp\".",
+                    "default": "title"
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "Min. publishing timestamp.",
+                    "default": "2020-10-17T11:00"
+                },
+                {
+                    "name": "maxTone",
+                    "type": "NUMBER",
+                    "description": "Max. tone sentiment.",
+                    "default": 5
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Number of rows to offset by.",
+                    "default": 100
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of rows to return.",
+                    "default": 10
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "Max. publishing timestamp.",
+                    "default": "2020-10-17T12:00"
+                },
+                {
+                    "name": "minTone",
+                    "type": "NUMBER",
+                    "description": "Min. tone sentiment.",
+                    "default": -1
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/articles\"\nquerystring = {\"orderDir\": \"asc\", \"orderBy\": \"title\", \"from\": \"2020-10-17T11:00\", \"maxTone\": 5, \"offset\": 100, \"limit\": 10, \"to\": \"2020-10-17T12:00\", \"minTone\": -1}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/articles\"\nquerystring = {\"orderDir\": \"asc\", \"orderBy\": \"title\", \"from\": \"2020-10-17T11:00\", \"maxTone\": 5, \"offset\": 100, \"limit\": 10, \"to\": \"2020-10-17T12:00\", \"minTone\": -1}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "count": {
+                        "type": "integer"
+                    },
+                    "data": {
+                        "items": {
+                            "properties": {
+                                "batch_id": {
+                                    "type": "integer"
+                                },
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "source": {
+                                    "type": "string"
+                                },
+                                "story_id": {
+                                    "type": "null"
+                                },
+                                "timestamp": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "tone": {
+                                    "type": "number"
+                                },
+                                "url": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Fetch stories",
+            "url": "https://tidalwaves-news-analytics2.p.rapidapi.com/stories",
+            "description": "Query trending stories with their related articles.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "Max. publishing timestamp.",
+                    "default": "2020-10-17T12:00"
+                },
+                {
+                    "name": "minTone",
+                    "type": "NUMBER",
+                    "description": "Min. average tone sentiment.",
+                    "default": -1
+                },
+                {
+                    "name": "orderBy",
+                    "type": "STRING",
+                    "description": "Row ordering. Available columns: \"gist\", \"avg_tone\", and \"timestamp\".",
+                    "default": "gist"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Number of rows to offset by.",
+                    "default": 100
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of rows to return.",
+                    "default": 10
+                },
+                {
+                    "name": "maxTone",
+                    "type": "NUMBER",
+                    "description": "Max. average tone sentiment.",
+                    "default": 5
+                },
+                {
+                    "name": "orderDir",
+                    "type": "STRING",
+                    "description": "Row ordering direction. Either \"asc\" or \"desc\".",
+                    "default": "asc"
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "Min. publishing timestamp.",
+                    "default": "2020-10-17T11:00"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/stories\"\nquerystring = {\"to\": \"2020-10-17T12:00\", \"minTone\": -1, \"orderBy\": \"gist\", \"offset\": 100, \"limit\": 10, \"maxTone\": 5, \"orderDir\": \"asc\", \"from\": \"2020-10-17T11:00\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/stories\"\nquerystring = {\"to\": \"2020-10-17T12:00\", \"minTone\": -1, \"orderBy\": \"gist\", \"offset\": 100, \"limit\": 10, \"maxTone\": 5, \"orderDir\": \"asc\", \"from\": \"2020-10-17T11:00\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "count": {
+                        "type": "integer"
+                    },
+                    "data": {
+                        "items": {
+                            "properties": {
+                                "avg_tone": {
+                                    "type": "number"
+                                },
+                                "batch_id": {
+                                    "type": "integer"
+                                },
+                                "gist": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "timestamp": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Fetch keywords",
+            "url": "https://tidalwaves-news-analytics2.p.rapidapi.com/keywords",
+            "description": "Query keywords according to search string and other parameters.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "orderBy",
+                    "type": "STRING",
+                    "description": "Row ordering. Available columns: \"id\", \"label\".",
+                    "default": "label"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Number of rows to offset by.",
+                    "default": 100
+                },
+                {
+                    "name": "exact",
+                    "type": "STRING",
+                    "description": "Flag to match for exact query string, or allow partial matching.",
+                    "default": true
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of rows to return.",
+                    "default": 10
+                },
+                {
+                    "name": "orderDir",
+                    "type": "STRING",
+                    "description": "Row ordering direction. Either \"asc\" or \"desc\".",
+                    "default": "asc"
+                },
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Search query string.",
+                    "default": "brexit"
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Category filter. Available categories: \"themes\", \"people\", \"orgs\", and \"misc\".",
+                    "default": "misc"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/keywords\"\nquerystring = {\"orderBy\": \"label\", \"offset\": 100, \"exact\": true, \"limit\": 10, \"orderDir\": \"asc\", \"query\": \"brexit\", \"type\": \"misc\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/keywords\"\nquerystring = {\"orderBy\": \"label\", \"offset\": 100, \"exact\": true, \"limit\": 10, \"orderDir\": \"asc\", \"query\": \"brexit\", \"type\": \"misc\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "count": {
+                        "type": "integer"
+                    },
+                    "data": {
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "label": {
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Fetch keyword articles",
+            "url": "https://tidalwaves-news-analytics2.p.rapidapi.com/keywords/id/articles",
+            "description": "Query keywords according to search string and other parameters.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "id"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "maxTone",
+                    "type": "NUMBER",
+                    "description": "Max. tone sentiment.",
+                    "default": 5
+                },
+                {
+                    "name": "minTone",
+                    "type": "NUMBER",
+                    "description": "Min. tone sentiment.",
+                    "default": -1
+                },
+                {
+                    "name": "orderDir",
+                    "type": "STRING",
+                    "description": "Row ordering direction. Either \"asc\" or \"desc\".",
+                    "default": "asc"
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "Max. publishing timestamp.",
+                    "default": "2020-10-17T12:00"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of rows to return.",
+                    "default": 10
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "Min. publishing timestamp.",
+                    "default": "2020-10-17T11:00"
+                },
+                {
+                    "name": "orderBy",
+                    "type": "STRING",
+                    "description": "Row ordering. Available columns: \"title\", \"tone\", and \"timestamp\".",
+                    "default": "title"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Number of rows to offset by.",
+                    "default": 100
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/keywords/id/articles\"\nquerystring = {\"maxTone\": 5, \"minTone\": -1, \"orderDir\": \"asc\", \"to\": \"2020-10-17T12:00\", \"limit\": 10, \"from\": \"2020-10-17T11:00\", \"orderBy\": \"title\", \"offset\": 100}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/keywords/{id}/articles\"\nquerystring = {\"maxTone\": 5, \"minTone\": -1, \"orderDir\": \"asc\", \"to\": \"2020-10-17T12:00\", \"limit\": 10, \"from\": \"2020-10-17T11:00\", \"orderBy\": \"title\", \"offset\": 100}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "count": {
+                        "type": "integer"
+                    },
+                    "data": {
+                        "items": {
+                            "properties": {
+                                "batch_id": {
+                                    "type": "integer"
+                                },
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "source": {
+                                    "type": "string"
+                                },
+                                "story_id": {
+                                    "type": "null"
+                                },
+                                "timestamp": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "tone": {
+                                    "type": "number"
+                                },
+                                "url": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Fetch locations",
+            "url": "https://tidalwaves-news-analytics2.p.rapidapi.com/locations",
+            "description": "Query keywords according to search string and other parameters.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of rows to return.",
+                    "default": 10
+                },
+                {
+                    "name": "orderBy",
+                    "type": "STRING",
+                    "description": "Row ordering. Available columns: \"country_code\", \"tag\", \"lat\", \"long\".",
+                    "default": "tag"
+                },
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Search query string.",
+                    "default": "eng"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Number of rows to offset by.",
+                    "default": 100
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "ISO 3306 Alpha-2 country code filter.",
+                    "default": "GB"
+                },
+                {
+                    "name": "exact",
+                    "type": "STRING",
+                    "description": "Flag to match for exact query string, or allow partial matching.",
+                    "default": true
+                },
+                {
+                    "name": "orderDir",
+                    "type": "STRING",
+                    "description": "Row ordering direction. Either \"asc\" or \"desc\".",
+                    "default": "asc"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/locations\"\nquerystring = {\"limit\": 10, \"orderBy\": \"tag\", \"query\": \"eng\", \"offset\": 100, \"country\": \"GB\", \"exact\": true, \"orderDir\": \"asc\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/locations\"\nquerystring = {\"limit\": 10, \"orderBy\": \"tag\", \"query\": \"eng\", \"offset\": 100, \"country\": \"GB\", \"exact\": true, \"orderDir\": \"asc\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "count": {
+                        "type": "integer"
+                    },
+                    "data": {
+                        "items": {
+                            "properties": {
+                                "country_code": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "lat": {
+                                    "type": "number"
+                                },
+                                "long": {
+                                    "type": "number"
+                                },
+                                "tag": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Fetch location articles",
+            "url": "https://tidalwaves-news-analytics2.p.rapidapi.com/locations/id/articles",
+            "description": "Query keywords according to search string and other parameters.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "id"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "maxTone",
+                    "type": "NUMBER",
+                    "description": "Max. tone sentiment.",
+                    "default": 5
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "Max. publishing timestamp.",
+                    "default": "2020-10-17T12:00"
+                },
+                {
+                    "name": "orderBy",
+                    "type": "STRING",
+                    "description": "Row ordering. Available columns: \"title\", \"tone\", and \"timestamp\".",
+                    "default": "title"
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Number of rows to offset by.",
+                    "default": 100
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of rows to return.",
+                    "default": 10
+                },
+                {
+                    "name": "minTone",
+                    "type": "NUMBER",
+                    "description": "Min. tone sentiment.",
+                    "default": -1
+                },
+                {
+                    "name": "orderDir",
+                    "type": "STRING",
+                    "description": "Row ordering direction. Either \"asc\" or \"desc\".",
+                    "default": "asc"
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "Min. publishing timestamp.",
+                    "default": "2020-10-17T11:00"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/locations/id/articles\"\nquerystring = {\"maxTone\": 5, \"to\": \"2020-10-17T12:00\", \"orderBy\": \"title\", \"offset\": 100, \"limit\": 10, \"minTone\": -1, \"orderDir\": \"asc\", \"from\": \"2020-10-17T11:00\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/locations/{id}/articles\"\nquerystring = {\"maxTone\": 5, \"to\": \"2020-10-17T12:00\", \"orderBy\": \"title\", \"offset\": 100, \"limit\": 10, \"minTone\": -1, \"orderDir\": \"asc\", \"from\": \"2020-10-17T11:00\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "count": {
+                        "type": "integer"
+                    },
+                    "data": {
+                        "items": {
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Check API health",
+            "url": "https://tidalwaves-news-analytics2.p.rapidapi.com/health",
+            "description": "Performs various system checks, such as connection to the DB and query latency, and returns the result. Use this endpoint to confirm the API is available.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/health\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/health\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "ok": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Fetch batches",
+            "url": "https://tidalwaves-news-analytics2.p.rapidapi.com/batches",
+            "description": "View batch history.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Number of rows to offset by.",
+                    "default": 100
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "Max. publishing timestamp.",
+                    "default": "2020-10-17T12:00"
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "Min. publishing timestamp.",
+                    "default": "2020-10-17T11:00"
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of rows to return.",
+                    "default": 10
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/batches\"\nquerystring = {\"offset\": 100, \"to\": \"2020-10-17T12:00\", \"from\": \"2020-10-17T11:00\", \"limit\": 10}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/batches\"\nquerystring = {\"offset\": 100, \"to\": \"2020-10-17T12:00\", \"from\": \"2020-10-17T11:00\", \"limit\": 10}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "count": {
+                        "type": "integer"
+                    },
+                    "data": {
+                        "items": {
+                            "properties": {
+                                "created_at": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "timestamp": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "limit": {
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        {
+            "name": "Fetch the latest batch",
+            "url": "https://tidalwaves-news-analytics2.p.rapidapi.com/batches/latest",
+            "description": "Useful for polling the latest data.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/batches/latest\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://tidalwaves-news-analytics2.p.rapidapi.com/batches/latest\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"tidalwaves-news-analytics2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "properties": {
+                    "created_at": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "integer"
+                    },
+                    "timestamp": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    ]
+}

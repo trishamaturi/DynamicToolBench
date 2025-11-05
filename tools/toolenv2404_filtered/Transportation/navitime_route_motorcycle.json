@@ -1,0 +1,231 @@
+{
+    "product_id": "api_bb5170a1-cfe5-4efd-8b87-61d881697e40",
+    "tool_description": "\u30d0\u30a4\u30af\u306e\u6700\u9069\u306a\u79fb\u52d5\u7d4c\u8def\u3092\u7b97\u51fa\u3059\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002\u6392\u6c17\u91cf\u3092\u8a2d\u5b9a\u3059\u308b\u3053\u3068\u306b\u3088\u308a\u3001\u305d\u306e\u8eca\u4e21\u304c\u901a\u308c\u308b\u6700\u9069\u306a\u30eb\u30fc\u30c8\u3092\u691c\u7d22\u3057\u307e\u3059\u3002<br>Calculate the optimal route for motorcycles. By setting the displacement of the motorcycle, you can search for the route that can be taken.",
+    "home_url": "https://rapidapi.com/navitimejapan-navitimejapan/api/navitime-route-motorcycle/",
+    "name": "NAVITIME Route(motorcycle)",
+    "title": "NAVITIME Route(motorcycle)",
+    "pricing": "FREEMIUM",
+    "tool_name": "NAVITIME Route(motorcycle)",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 759,
+        "avgSuccessRate": 100,
+        "popularityScore": 5.7,
+        "__typename": "Score"
+    },
+    "host": "navitime-route-motorcycle.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "route_motorcycle",
+            "url": "https://navitime-route-motorcycle.p.rapidapi.com/route_motorcycle",
+            "description": "Calculate the optimal route for motorcycles.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "goal",
+                    "type": "STRING",
+                    "description": "Arrival point.\n(node ID or latitude/longitude)",
+                    "default": "35.661971,139.703795"
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Departure point.\n(node ID or latitude/longitude) (ex.35.689457,139.691935)",
+                    "default": "35.665251,139.712092"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "order",
+                    "type": "STRING",
+                    "description": "Output order.\n(total_distance: total movement distance, time: required time)\n\nValid only for one-to-many search, or many-to-one route search.",
+                    "default": ""
+                },
+                {
+                    "name": "via",
+                    "type": "STRING",
+                    "description": "Destination.\n(maximum number of 10 points)",
+                    "default": ""
+                },
+                {
+                    "name": "condition",
+                    "type": "STRING",
+                    "description": "Route search conditions.(recommend: recommended (default), \ntoll_time: toll road use and time priority, \ntoll_distance: toll road use and distance priority, \ntoll_gas: toll road use and gasoline saving priority, \nfree_time: free road use and time priority, \nfree_distance: free road use and  distance priority, \nfree_gas: free road use, gasoline saving priority)",
+                    "default": "recommend"
+                },
+                {
+                    "name": "start_time",
+                    "type": "STRING",
+                    "description": "Departure time.\n(ex.2021-01-15T08:00:00)",
+                    "default": ""
+                },
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data.\n(degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                },
+                {
+                    "name": "smart_ic",
+                    "type": "STRING",
+                    "description": "Smart IC consideration.\n(unuse : not considering smart IC, use : considering smart IC)",
+                    "default": "unuse"
+                },
+                {
+                    "name": "ferry",
+                    "type": "STRING",
+                    "description": "Ferry priority search.\n(unuse : do not use ferries, use : use ferries, more_use : use ferries first)",
+                    "default": "use"
+                },
+                {
+                    "name": "options",
+                    "type": "STRING",
+                    "description": "Additional output information.\n(turn_by_turn: turn-by-turn information)\n\nPoint information for guiding progress information at such as intersections.",
+                    "default": ""
+                },
+                {
+                    "name": "fuel",
+                    "type": "NUMBER",
+                    "description": "Traveling distance per liter.\n(Minimum value: 1, Maximum value: 200)",
+                    "default": ""
+                },
+                {
+                    "name": "displacement",
+                    "type": "NUMBER",
+                    "description": "Displacement of the motorcycle.\n(Minimum value: 1, Maximum value: 3000)\n\nIf the displacement is less than 125cc, you cannot specify an ic in the point JSON.",
+                    "default": ""
+                },
+                {
+                    "name": "via_type",
+                    "type": "STRING",
+                    "description": "Routing mode.\n(specified: specified order, optimal: optimal order)",
+                    "default": ""
+                },
+                {
+                    "name": "goal_time",
+                    "type": "STRING",
+                    "description": "Arrival time.\n(ex.2021-01-15T08:00:00)",
+                    "default": ""
+                },
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude.\n(wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-route-motorcycle.p.rapidapi.com/route_motorcycle\"\nquerystring = {\"order\": \"\", \"via\": \"\", \"condition\": \"recommend\", \"start_time\": \"\", \"coord_unit\": \"degree\", \"smart_ic\": \"unuse\", \"goal\": \"35.661971,139.703795\", \"ferry\": \"use\", \"start\": \"35.665251,139.712092\", \"options\": \"\", \"fuel\": \"\", \"displacement\": \"\", \"via_type\": \"\", \"goal_time\": \"\", \"datum\": \"wgs84\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-route-motorcycle.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-route-motorcycle.p.rapidapi.com/route_motorcycle\"\nquerystring = {\"order\": \"\", \"via\": \"\", \"condition\": \"recommend\", \"start_time\": \"\", \"coord_unit\": \"degree\", \"smart_ic\": \"unuse\", \"goal\": \"35.661971,139.703795\", \"ferry\": \"use\", \"start\": \"35.665251,139.712092\", \"options\": \"\", \"fuel\": \"\", \"displacement\": \"\", \"via_type\": \"\", \"goal_time\": \"\", \"datum\": \"wgs84\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-route-motorcycle.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "shape_motorcycle",
+            "url": "https://navitime-route-motorcycle.p.rapidapi.com/shape_motorcycle",
+            "description": "Return informations of route shape to draw lines on a map.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "goal",
+                    "type": "STRING",
+                    "description": "Arrival point.\n(node ID or latitude/longitude)",
+                    "default": "35.661971,139.703795"
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Departure point.\n(node ID or latitude/longitude) (ex.35.689457,139.691935)",
+                    "default": "35.665251,139.712092"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "displacement",
+                    "type": "NUMBER",
+                    "description": "Displacement of the motorcycle.\n(Minimum value: 1, Maximum value: 3000)\n\nIf the displacement is less than 125cc, you cannot specify an ic in the point JSON.",
+                    "default": ""
+                },
+                {
+                    "name": "start_time",
+                    "type": "STRING",
+                    "description": "Departure time.\n(ex.2021-01-15T08:00:00)",
+                    "default": ""
+                },
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data.\n(degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                },
+                {
+                    "name": "smart_ic",
+                    "type": "STRING",
+                    "description": "Smart IC consideration.\n(unuse : not considering smart IC, use : considering smart IC)",
+                    "default": "unuse"
+                },
+                {
+                    "name": "via",
+                    "type": "STRING",
+                    "description": "Destination.\n(maximum number of 10 points)",
+                    "default": ""
+                },
+                {
+                    "name": "goal_time",
+                    "type": "STRING",
+                    "description": "Arrival time.\n(ex.2021-01-15T08:00:00)",
+                    "default": ""
+                },
+                {
+                    "name": "no",
+                    "type": "NUMBER",
+                    "description": "Route Number.\nIn the case of one-to-many or many-to-one search, it is necessary to specify one route to output from among multiple routes in the result.\nIf not specified, the first route will be selected.",
+                    "default": ""
+                },
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude.\n(wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "via_type",
+                    "type": "STRING",
+                    "description": "Routing mode.\n(specified: specified order, optimal: optimal order)",
+                    "default": ""
+                },
+                {
+                    "name": "ferry",
+                    "type": "STRING",
+                    "description": "Ferry priority search.\n(unuse : do not use ferries, use : use ferries, more_use : use ferries first)",
+                    "default": "use"
+                },
+                {
+                    "name": "options",
+                    "type": "STRING",
+                    "description": "Additional output information.\n(turn_by_turn: turn-by-turn information)\n\nPoint information for guiding progress information at such as intersections.",
+                    "default": ""
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "Output format (geojson: GeoJSON format (default), json: JSON format)",
+                    "default": "geojson"
+                },
+                {
+                    "name": "condition",
+                    "type": "STRING",
+                    "description": "Route search conditions.(recommend: recommended (default), \ntoll_time: toll road use and time priority, \ntoll_distance: toll road use and distance priority, \ntoll_gas: toll road use and gasoline saving priority, \nfree_time: free road use and time priority, \nfree_distance: free road use and  distance priority, \nfree_gas: free road use, gasoline saving priority)",
+                    "default": "recommend"
+                },
+                {
+                    "name": "fuel",
+                    "type": "NUMBER",
+                    "description": "Traveling distance per liter.\n(Minimum value: 1, Maximum value: 200)",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-route-motorcycle.p.rapidapi.com/shape_motorcycle\"\nquerystring = {\"displacement\": \"\", \"start_time\": \"\", \"coord_unit\": \"degree\", \"goal\": \"35.661971,139.703795\", \"smart_ic\": \"unuse\", \"via\": \"\", \"goal_time\": \"\", \"no\": \"\", \"datum\": \"wgs84\", \"via_type\": \"\", \"start\": \"35.665251,139.712092\", \"ferry\": \"use\", \"options\": \"\", \"format\": \"geojson\", \"condition\": \"recommend\", \"fuel\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-route-motorcycle.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-route-motorcycle.p.rapidapi.com/shape_motorcycle\"\nquerystring = {\"displacement\": \"\", \"start_time\": \"\", \"coord_unit\": \"degree\", \"goal\": \"35.661971,139.703795\", \"smart_ic\": \"unuse\", \"via\": \"\", \"goal_time\": \"\", \"no\": \"\", \"datum\": \"wgs84\", \"via_type\": \"\", \"start\": \"35.665251,139.712092\", \"ferry\": \"use\", \"options\": \"\", \"format\": \"geojson\", \"condition\": \"recommend\", \"fuel\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-route-motorcycle.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

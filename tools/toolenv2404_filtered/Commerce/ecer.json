@@ -1,0 +1,116 @@
+{
+    "product_id": "api_446b4239-e5d7-4d0f-a173-056e1e5957b4",
+    "tool_description": "https://www.ecer.com",
+    "home_url": "https://rapidapi.com/di-fusion-di-fusion-default/api/ecer/",
+    "name": "Ecer",
+    "title": "Ecer",
+    "pricing": "FREEMIUM",
+    "tool_name": "Ecer",
+    "score": null,
+    "host": "ecer.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "ecer/search",
+            "url": "https://ecer.p.rapidapi.com/ecer/search",
+            "description": " ",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 1
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://ecer.p.rapidapi.com/ecer/search\"\nquerystring = {\"page\": 1, \"q\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ecer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://ecer.p.rapidapi.com/ecer/search\"\nquerystring = {\"page\": 1, \"q\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"ecer.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "required": [
+                    "currency",
+                    "items",
+                    "page",
+                    "page_size",
+                    "query"
+                ],
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "required": [
+                                "big_image",
+                                "brand_name",
+                                "company_name",
+                                "company_url",
+                                "name",
+                                "small_image",
+                                "url"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "url": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "price_raw": {
+                                    "type": "string"
+                                },
+                                "price": {
+                                    "type": "number",
+                                    "format": "double",
+                                    "minimum": -1.7976931348623157e+308,
+                                    "maximum": 1.7976931348623157e+308
+                                },
+                                "small_image": {
+                                    "type": "string"
+                                },
+                                "big_image": {
+                                    "type": "string"
+                                },
+                                "brand_name": {
+                                    "type": "string"
+                                },
+                                "company_name": {
+                                    "type": "string"
+                                },
+                                "company_url": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "query": {
+                        "type": "string"
+                    },
+                    "page": {
+                        "type": "integer",
+                        "format": "int32",
+                        "minimum": -2147483648,
+                        "maximum": 2147483647
+                    },
+                    "page_size": {
+                        "type": "integer",
+                        "format": "int32",
+                        "minimum": -2147483648,
+                        "maximum": 2147483647
+                    },
+                    "currency": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,392 @@
+{
+    "product_id": "api_2e9ad348-2ce8-4b4f-a2d7-71293b7a6f9d",
+    "tool_description": "No fuss vector database for AI",
+    "home_url": "https://rapidapi.com/semafind-semadb/api/semadb/",
+    "name": "SemaDB",
+    "title": "SemaDB",
+    "pricing": "FREEMIUM",
+    "tool_name": "SemaDB",
+    "score": {
+        "avgServiceLevel": 98,
+        "avgLatency": 1090,
+        "avgSuccessRate": 87,
+        "popularityScore": 8.2,
+        "__typename": "Score"
+    },
+    "host": "semadb.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "ListCollection",
+            "url": "https://semadb.p.rapidapi.com/collections",
+            "description": "Returns a list of all collections for the current user. The list is not sorted by any value and the order may change between requests.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://semadb.p.rapidapi.com/collections\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"semadb.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://semadb.p.rapidapi.com/collections\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"semadb.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "collections": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "title": "Collection Id",
+                                    "description": "The unique identifier of the collection",
+                                    "pattern": "^[a-z0-9]{3,24}$"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "GetCollection",
+            "url": "https://semadb.p.rapidapi.com/collections/mycollection",
+            "description": "This endpoint attempts to also list the shards currently available in the collection. Some shards may be temporarily unavailable. In that case, you can retry at a future time.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "collectionId",
+                    "type": "STRING",
+                    "description": "The unique identifier of the collection",
+                    "default": "mycollection"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://semadb.p.rapidapi.com/collections/mycollection\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"semadb.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://semadb.p.rapidapi.com/collections/{collectionid}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"semadb.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "title": "Collection Id",
+                        "description": "The unique identifier of the collection",
+                        "pattern": "^[a-z0-9]{3,24}$"
+                    },
+                    "indexSchema": {
+                        "type": "object",
+                        "description": "The schema for the collection, each property can be indexed with a different type of index.",
+                        "minProperties": 1,
+                        "additionalProperties": {
+                            "type": "object",
+                            "description": "Defines what the property is and how it is indexed.",
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "enum": [
+                                        "vectorFlat",
+                                        "vectorVamana",
+                                        "text",
+                                        "string",
+                                        "stringArray",
+                                        "integer",
+                                        "float"
+                                    ]
+                                },
+                                "vectorFlat": {
+                                    "type": "object",
+                                    "description": "Parameters for flat indexing. Flat indexing is the simplest form of indexing, where the search is exhaustive.",
+                                    "required": [
+                                        "vectorSize",
+                                        "distanceMetric"
+                                    ],
+                                    "properties": {
+                                        "vectorSize": {
+                                            "type": "number",
+                                            "description": "The size of the vectors in the collection",
+                                            "minimum": 1,
+                                            "maximum": 4096
+                                        },
+                                        "distanceMetric": {
+                                            "type": "string",
+                                            "enum": [
+                                                "euclidean",
+                                                "cosine",
+                                                "dot",
+                                                "hamming",
+                                                "jaccard",
+                                                "haversine"
+                                            ]
+                                        },
+                                        "quantizer": {
+                                            "type": "object",
+                                            "description": "Applied quantizer to the vectors if any",
+                                            "required": [
+                                                "type"
+                                            ],
+                                            "properties": {
+                                                "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "none",
+                                                        "binary",
+                                                        "product"
+                                                    ]
+                                                },
+                                                "binary": {
+                                                    "type": "object",
+                                                    "description": "Converts vectors to boolean values. Works effectively only if vector features are already binary or are normally distributed.",
+                                                    "required": [
+                                                        "distanceMetric"
+                                                    ],
+                                                    "minProperties": 2,
+                                                    "properties": {
+                                                        "threshold": {
+                                                            "type": "number",
+                                                            "description": "Optional initial threshold for binary quantization, if not provided, it will be calculated at trigger threshold."
+                                                        },
+                                                        "triggerThreshold": {
+                                                            "type": "number",
+                                                            "description": "Optional trigger threshold for binary quantization.",
+                                                            "minimum": 0,
+                                                            "maximum": 50000,
+                                                            "default": 10000
+                                                        },
+                                                        "distanceMetric": {
+                                                            "type": "string",
+                                                            "description": "The distance metric to use for binary quantization after the vectors are encoded",
+                                                            "enum": [
+                                                                "hamming",
+                                                                "jaccard"
+                                                            ]
+                                                        }
+                                                    }
+                                                },
+                                                "product": {
+                                                    "type": "object",
+                                                    "description": "Uses the product quantization to reduce the memory footprint of the vectors. It may be slower and less accurate.",
+                                                    "required": [
+                                                        "numCentroids",
+                                                        "numSubVectors",
+                                                        "triggerThreshold"
+                                                    ],
+                                                    "properties": {
+                                                        "numCentroids": {
+                                                            "type": "number",
+                                                            "description": "Number of centroids to quantize to, this is the k* parameter in the paper and is often set to 255 giving 256 centroids (including 0). We are limiting this to maximum of 256 (uint8) to keep the overhead of this process tractable.",
+                                                            "minimum": 2,
+                                                            "maximum": 256,
+                                                            "default": 256
+                                                        },
+                                                        "numSubVectors": {
+                                                            "type": "number",
+                                                            "description": "Number of subvectors / segments / subquantizers to use, this is the m parameter in the paper and is often set to 8.",
+                                                            "minimum": 2
+                                                        },
+                                                        "triggerThreshold": {
+                                                            "type": "number",
+                                                            "description": "The trigger threshold is the number of points in the collection that will trigger the quantization process. This is to ensure that the quantization process is only triggered when the collection is large enough to benefit from the memory savings.",
+                                                            "minimum": 1000,
+                                                            "maximum": 10000,
+                                                            "default": 10000
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "vectorVamana": {
+                                    "type": "object",
+                                    "description": "Parameters for Vamana indexing",
+                                    "required": [
+                                        "vectorSize",
+                                        "distanceMetric",
+                                        "searchSize",
+                                        "degreeBound",
+                                        "alpha"
+                                    ],
+                                    "properties": {
+                                        "vectorSize": {
+                                            "type": "number",
+                                            "description": "The size of the vectors in the collection",
+                                            "minimum": 1,
+                                            "maximum": 4096
+                                        },
+                                        "distanceMetric": {
+                                            "type": "string",
+                                            "enum": [
+                                                "euclidean",
+                                                "cosine",
+                                                "dot",
+                                                "hamming",
+                                                "jaccard",
+                                                "haversine"
+                                            ]
+                                        },
+                                        "searchSize": {
+                                            "type": "number",
+                                            "description": "Determines the scope of the greedy search algorithm. The higher the value, the more exhaustive the search.",
+                                            "minimum": 25,
+                                            "maximum": 75,
+                                            "default": 75
+                                        },
+                                        "degreeBound": {
+                                            "type": "number",
+                                            "description": "Maximum number of edges of a node in the graph. The higher the value, the denser the graph becomes, slower the search but more accurate.",
+                                            "minimum": 32,
+                                            "maximum": 64,
+                                            "default": 64
+                                        },
+                                        "alpha": {
+                                            "type": "number",
+                                            "description": "Determines how aggressive the edge pruning is. Higher values reduce pruning, lower values make it more aggressive.",
+                                            "minimum": 1.1,
+                                            "maximum": 1.5,
+                                            "default": 1.2
+                                        },
+                                        "quantizer": {
+                                            "type": "object",
+                                            "description": "Applied quantizer to the vectors if any",
+                                            "required": [
+                                                "type"
+                                            ],
+                                            "properties": {
+                                                "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "none",
+                                                        "binary",
+                                                        "product"
+                                                    ]
+                                                },
+                                                "binary": {
+                                                    "type": "object",
+                                                    "description": "Converts vectors to boolean values. Works effectively only if vector features are already binary or are normally distributed.",
+                                                    "required": [
+                                                        "distanceMetric"
+                                                    ],
+                                                    "minProperties": 2,
+                                                    "properties": {
+                                                        "threshold": {
+                                                            "type": "number",
+                                                            "description": "Optional initial threshold for binary quantization, if not provided, it will be calculated at trigger threshold."
+                                                        },
+                                                        "triggerThreshold": {
+                                                            "type": "number",
+                                                            "description": "Optional trigger threshold for binary quantization.",
+                                                            "minimum": 0,
+                                                            "maximum": 50000,
+                                                            "default": 10000
+                                                        },
+                                                        "distanceMetric": {
+                                                            "type": "string",
+                                                            "description": "The distance metric to use for binary quantization after the vectors are encoded",
+                                                            "enum": [
+                                                                "hamming",
+                                                                "jaccard"
+                                                            ]
+                                                        }
+                                                    }
+                                                },
+                                                "product": {
+                                                    "type": "object",
+                                                    "description": "Uses the product quantization to reduce the memory footprint of the vectors. It may be slower and less accurate.",
+                                                    "required": [
+                                                        "numCentroids",
+                                                        "numSubVectors",
+                                                        "triggerThreshold"
+                                                    ],
+                                                    "properties": {
+                                                        "numCentroids": {
+                                                            "type": "number",
+                                                            "description": "Number of centroids to quantize to, this is the k* parameter in the paper and is often set to 255 giving 256 centroids (including 0). We are limiting this to maximum of 256 (uint8) to keep the overhead of this process tractable.",
+                                                            "minimum": 2,
+                                                            "maximum": 256,
+                                                            "default": 256
+                                                        },
+                                                        "numSubVectors": {
+                                                            "type": "number",
+                                                            "description": "Number of subvectors / segments / subquantizers to use, this is the m parameter in the paper and is often set to 8.",
+                                                            "minimum": 2
+                                                        },
+                                                        "triggerThreshold": {
+                                                            "type": "number",
+                                                            "description": "The trigger threshold is the number of points in the collection that will trigger the quantization process. This is to ensure that the quantization process is only triggered when the collection is large enough to benefit from the memory savings.",
+                                                            "minimum": 1000,
+                                                            "maximum": 10000,
+                                                            "default": 10000
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "text": {
+                                    "type": "object",
+                                    "description": "Parameters for text indexing",
+                                    "required": [
+                                        "analyser"
+                                    ],
+                                    "properties": {
+                                        "analyser": {
+                                            "type": "string",
+                                            "enum": [
+                                                "standard"
+                                            ],
+                                            "default": "standard"
+                                        }
+                                    }
+                                },
+                                "string": {
+                                    "type": "object",
+                                    "description": "Parameters for string indexing",
+                                    "required": [
+                                        "caseSensitive"
+                                    ],
+                                    "properties": {
+                                        "caseSensitive": {
+                                            "type": "boolean",
+                                            "description": "Whether the string is case sensitive",
+                                            "default": false
+                                        }
+                                    }
+                                },
+                                "stringArray": {
+                                    "type": "object",
+                                    "description": "Parameters for string indexing",
+                                    "required": [
+                                        "caseSensitive"
+                                    ],
+                                    "properties": {
+                                        "caseSensitive": {
+                                            "type": "boolean",
+                                            "description": "Whether the string is case sensitive",
+                                            "default": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "shards": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                },
+                                "pointCount": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,225 @@
+{
+    "product_id": "api_acae906f-608e-4191-90ad-672296c60255",
+    "tool_description": "\u5f92\u6b69\u306e\u6700\u9069\u306a\u79fb\u52d5\u7d4c\u8def\u3092\u7b97\u51fa\u3059\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002\u3000Calculate the optimal route for walking.",
+    "home_url": "https://rapidapi.com/navitimejapan-navitimejapan/api/navitime-route-walk/",
+    "name": "NAVITIME Route(walk)",
+    "title": "NAVITIME Route(walk)",
+    "pricing": "FREEMIUM",
+    "tool_name": "NAVITIME Route(walk)",
+    "score": null,
+    "host": "navitime-route-walk.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "route_walk",
+            "url": "https://navitime-route-walk.p.rapidapi.com/route_walk",
+            "description": "Calculate the optimal route for walking.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Departure point. (node ID or latitude/longitude) (ex.35.689457,139.691935)",
+                    "default": "35.665251,139.712092"
+                },
+                {
+                    "name": "goal",
+                    "type": "STRING",
+                    "description": "Arrival point. (node ID or latitude/longitude)",
+                    "default": "35.661971,139.703795"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude. (wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "speed",
+                    "type": "NUMBER",
+                    "description": "Walking speed. (Minimum value: 3, Maximum value: 8, Default value: 5). Unit is \\\"km/h\\\".  Set a numerical value for the speed per hour. Small numbers are valid up to the first place.",
+                    "default": "5"
+                },
+                {
+                    "name": "options",
+                    "type": "STRING",
+                    "description": "Additional output information. (turn_by_turn: turn-by-turn information)  Point information for guiding progress information at such as intersections.",
+                    "default": ""
+                },
+                {
+                    "name": "via_type",
+                    "type": "STRING",
+                    "description": "Routing mode. (specified: specified order, optimal: optimal order)",
+                    "default": ""
+                },
+                {
+                    "name": "start_time",
+                    "type": "STRING",
+                    "description": "Departure time. (ex.2019-09-26T08:00:00)",
+                    "default": ""
+                },
+                {
+                    "name": "goal_time",
+                    "type": "STRING",
+                    "description": "Arrival time. (ex.2019-09-26T08:00:00)",
+                    "default": ""
+                },
+                {
+                    "name": "condition",
+                    "type": "STRING",
+                    "description": "Priority considerations for walking route search. (recommend: recommended route (default),  distance: shorter distance routes)",
+                    "default": ""
+                },
+                {
+                    "name": "via",
+                    "type": "STRING",
+                    "description": "Destination. (maximum number of 10 points)",
+                    "default": ""
+                },
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data. (degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-route-walk.p.rapidapi.com/route_walk\"\nquerystring = {\"start\": \"35.665251,139.712092\", \"datum\": \"wgs84\", \"speed\": \"5\", \"options\": \"\", \"via_type\": \"\", \"start_time\": \"\", \"goal\": \"35.661971,139.703795\", \"goal_time\": \"\", \"condition\": \"\", \"via\": \"\", \"coord_unit\": \"degree\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-route-walk.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-route-walk.p.rapidapi.com/route_walk\"\nquerystring = {\"start\": \"35.665251,139.712092\", \"datum\": \"wgs84\", \"speed\": \"5\", \"options\": \"\", \"via_type\": \"\", \"start_time\": \"\", \"goal\": \"35.661971,139.703795\", \"goal_time\": \"\", \"condition\": \"\", \"via\": \"\", \"coord_unit\": \"degree\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-route-walk.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "shape_walk",
+            "url": "https://navitime-route-walk.p.rapidapi.com/shape_walk",
+            "description": "Return informations of route shape to draw lines on a map.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "goal",
+                    "type": "STRING",
+                    "description": "Arrival point. (node ID or latitude/longitude)",
+                    "default": "35.661971,139.703795"
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Departure point. (node ID or latitude/longitude) (ex.35.689457,139.691935)",
+                    "default": "35.665251,139.712092"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "coord_unit",
+                    "type": "STRING",
+                    "description": "The unit of latitude and longitude included in the output data. (degree: decimal system of degrees (default), millisec: milliseconds)",
+                    "default": "degree"
+                },
+                {
+                    "name": "speed",
+                    "type": "NUMBER",
+                    "description": "Walking speed. (Minimum value: 3, Maximum value: 8, Default value: 5). Unit is \"km/h\".  Set a numerical value for the speed per hour. Small numbers are valid up to the first place.",
+                    "default": "5"
+                },
+                {
+                    "name": "start_time",
+                    "type": "STRING",
+                    "description": "Departure time. (ex.2019-09-26T08:00:00)",
+                    "default": ""
+                },
+                {
+                    "name": "options",
+                    "type": "STRING",
+                    "description": "Additional output information. (turn_by_turn: turn-by-turn information)  Point information for guiding progress information at such as intersections.",
+                    "default": ""
+                },
+                {
+                    "name": "via",
+                    "type": "STRING",
+                    "description": "Destination. (maximum number of 10 points)",
+                    "default": ""
+                },
+                {
+                    "name": "goal_time",
+                    "type": "STRING",
+                    "description": "Arrival time. (ex.2019-09-26T08:00:00)",
+                    "default": ""
+                },
+                {
+                    "name": "condition",
+                    "type": "STRING",
+                    "description": "Priority considerations for walking route search. (recommend: recommended route (default),  distance: shorter distance routes)",
+                    "default": ""
+                },
+                {
+                    "name": "datum",
+                    "type": "STRING",
+                    "description": "Geodetic system of latitude and longitude. (wgs84: World Geodetic System (default), tokyo: Old Japan Geodetic System)",
+                    "default": "wgs84"
+                },
+                {
+                    "name": "via_type",
+                    "type": "STRING",
+                    "description": "Routing mode. (specified: specified order, optimal: optimal order)",
+                    "default": ""
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "Output format (geojson: GeoJSON format (default), json: JSON format)",
+                    "default": "geojson"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://navitime-route-walk.p.rapidapi.com/shape_walk\"\nquerystring = {\"goal\": \"35.661971,139.703795\", \"coord_unit\": \"degree\", \"speed\": \"5\", \"start_time\": \"\", \"options\": \"\", \"start\": \"35.665251,139.712092\", \"via\": \"\", \"goal_time\": \"\", \"condition\": \"\", \"datum\": \"wgs84\", \"via_type\": \"\", \"format\": \"geojson\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-route-walk.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://navitime-route-walk.p.rapidapi.com/shape_walk\"\nquerystring = {\"goal\": \"35.661971,139.703795\", \"coord_unit\": \"degree\", \"speed\": \"5\", \"start_time\": \"\", \"options\": \"\", \"start\": \"35.665251,139.712092\", \"via\": \"\", \"goal_time\": \"\", \"condition\": \"\", \"datum\": \"wgs84\", \"via_type\": \"\", \"format\": \"geojson\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"navitime-route-walk.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

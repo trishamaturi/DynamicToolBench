@@ -1,0 +1,235 @@
+{
+    "product_id": "api_f72b82e6-a3ea-41c4-baf3-2191ce6adcfe",
+    "tool_description": "coruna.community: Eventos y comunidades en Coru\u00f1a",
+    "home_url": "https://rapidapi.com/alvarolozano2000/api/corunacommunity/",
+    "name": "CorunaCommunity",
+    "title": "CorunaCommunity",
+    "pricing": "FREEMIUM",
+    "tool_name": "CorunaCommunity",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 2254,
+        "avgSuccessRate": 100,
+        "popularityScore": 7.8,
+        "__typename": "Score"
+    },
+    "host": "corunacommunity.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Informacion comunidad",
+            "url": "https://corunacommunity.p.rapidapi.com/comunidad/{id}",
+            "description": "Obtiene informaci\u00f3n sobre una comunidad",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "eventos",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "pasados",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://corunacommunity.p.rapidapi.com/comunidad/{id}\"\nquerystring = {\"pasados\": \"\", \"eventos\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corunacommunity.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corunacommunity.p.rapidapi.com/comunidad/{id}\"\nquerystring = {\"pasados\": \"\", \"eventos\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corunacommunity.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "$schema": "http://json-schema.org/draft-06/schema#",
+                "$ref": "#/definitions/CommunityElement",
+                "definitions": {
+                    "CommunityElement": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "format": "uuid"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "logo": {
+                                "type": "string",
+                                "format": "uri",
+                                "qt-uri-protocols": [
+                                    "https"
+                                ],
+                                "qt-uri-extensions": [
+                                    ".jpg"
+                                ]
+                            },
+                            "slug": {
+                                "type": "string"
+                            },
+                            "links": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "qt-uri-protocols": [
+                                        "https"
+                                    ]
+                                }
+                            },
+                            "tags": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": [
+                            "id",
+                            "logo",
+                            "name",
+                            "slug",
+                            "tags"
+                        ],
+                        "title": "CommunityElement"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Listar eventos",
+            "url": "https://corunacommunity.p.rapidapi.com/eventos",
+            "description": "Devuelve una lista con todos los eventos de todas las comunidades (para generar vista calendario)",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://corunacommunity.p.rapidapi.com/eventos\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corunacommunity.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corunacommunity.p.rapidapi.com/eventos\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corunacommunity.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "$schema": "http://json-schema.org/draft-06/schema#",
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/EventElement"
+                },
+                "definitions": {
+                    "EventElement": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "format": "uuid"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "url": {
+                                "type": "string",
+                                "format": "uri",
+                                "qt-uri-protocols": [
+                                    "https"
+                                ]
+                            },
+                            "community": {
+                                "type": "string",
+                                "format": "uuid"
+                            },
+                            "dateFrom": {
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "dateTo": {
+                                "type": "string",
+                                "format": "date-time"
+                            }
+                        },
+                        "required": [
+                            "community",
+                            "dateFrom",
+                            "id",
+                            "name",
+                            "url"
+                        ],
+                        "title": "EventElement"
+                    }
+                }
+            }
+        },
+        {
+            "name": "Listar comunidades",
+            "url": "https://corunacommunity.p.rapidapi.com/",
+            "description": "Devuelve una lista con todas las comunidades disponibles",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://corunacommunity.p.rapidapi.com/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corunacommunity.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://corunacommunity.p.rapidapi.com/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"corunacommunity.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "$schema": "http://json-schema.org/draft-06/schema#",
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/Welcome8Element"
+                },
+                "definitions": {
+                    "Welcome8Element": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "format": "uuid"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "logo": {
+                                "type": "string",
+                                "format": "uri",
+                                "qt-uri-protocols": [
+                                    "https"
+                                ],
+                                "qt-uri-extensions": [
+                                    ".jpg",
+                                    ".png",
+                                    ".svg"
+                                ]
+                            },
+                            "slug": {
+                                "type": "string"
+                            },
+                            "links": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "qt-uri-protocols": [
+                                        "https"
+                                    ]
+                                }
+                            },
+                            "tags": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "required": [
+                            "id",
+                            "logo",
+                            "name",
+                            "slug",
+                            "tags"
+                        ],
+                        "title": "CommunityElement"
+                    }
+                }
+            }
+        }
+    ]
+}

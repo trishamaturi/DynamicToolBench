@@ -1,0 +1,159 @@
+{
+    "product_id": "api_1f557d31-526b-44d7-a09e-2d40e0e6527e",
+    "tool_description": "IMDB API provides a comprehensive set of endpoints to retrieve detailed information about movies, TV series, and user-generated reviews. Access up-to-date details on titles, reviews, seasons, and user profiles through a simple and efficient interface.",
+    "home_url": "https://rapidapi.com/yassinezaza20/api/imdb-api12/",
+    "name": "IMDB API",
+    "title": "IMDB API",
+    "pricing": "FREEMIUM",
+    "tool_name": "IMDB API",
+    "score": {
+        "avgServiceLevel": 93,
+        "avgLatency": 1224,
+        "avgSuccessRate": 93,
+        "popularityScore": 8.9,
+        "__typename": "Score"
+    },
+    "host": "imdb-api12.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Fetch a User's Ratings and Reviews",
+            "url": "https://imdb-api12.p.rapidapi.com/user/ur82525142/ratings",
+            "description": "Get a user's ratings and reviews with optional filtering and sorting.\npossible values for filter and sort :    \n\nratingFilter={1-10}&sort={most_recent|oldest|top_rated|worst_rated}\n\nExample: /user/ur82525142/ratings?ratingFilter=5&sort=most_recent",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "user_id",
+                    "type": "string",
+                    "description": "",
+                    "default": "ur82525142"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "ratingFilter",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "10"
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "most_recent"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://imdb-api12.p.rapidapi.com/user/ur82525142/ratings\"\nquerystring = {\"ratingFilter\": \"10\", \"sort\": \"most_recent\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imdb-api12.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://imdb-api12.p.rapidapi.com/user/{user_id}/ratings\"\nquerystring = {\"ratingFilter\": \"10\", \"sort\": \"most_recent\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imdb-api12.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Fetch a User's Info",
+            "url": "https://imdb-api12.p.rapidapi.com/user/ur82525142",
+            "description": "Retrieve information about a specific user.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "user_id",
+                    "type": "string",
+                    "description": "",
+                    "default": "ur82525142"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://imdb-api12.p.rapidapi.com/user/ur82525142\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imdb-api12.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://imdb-api12.p.rapidapi.com/user/{user_id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imdb-api12.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Fetch a Single Season of a Series",
+            "url": "https://imdb-api12.p.rapidapi.com/title/tt6522580/season/2",
+            "description": "Fetch details of a specific season for a TV series.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "imdb_id",
+                    "type": "string",
+                    "description": "",
+                    "default": "tt6522580"
+                },
+                {
+                    "name": "season_id",
+                    "type": "string",
+                    "description": "",
+                    "default": "2"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://imdb-api12.p.rapidapi.com/title/tt6522580/season/2\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imdb-api12.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://imdb-api12.p.rapidapi.com/title/{imdb_id}/season/{season_id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imdb-api12.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Reviews of a Title",
+            "url": "https://imdb-api12.p.rapidapi.com/reviews/tt0087884",
+            "description": "Obtain reviews for a title with various sorting and filtering options.\n\npossible values for option and sortOrder:\n\n/reviews/{imdb_id}?option={helpfulness|date|votes|rating}&sortOrder={asc|desc}\n\nExample: /reviews/tt1234567?option=date&sortOrder=desc",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "imdb_id",
+                    "type": "string",
+                    "description": "",
+                    "default": "tt0087884"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "sortOrder",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "desc"
+                },
+                {
+                    "name": "option",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "date"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://imdb-api12.p.rapidapi.com/reviews/tt0087884\"\nquerystring = {\"sortOrder\": \"desc\", \"option\": \"date\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imdb-api12.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://imdb-api12.p.rapidapi.com/reviews/{imdb_id}\"\nquerystring = {\"sortOrder\": \"desc\", \"option\": \"date\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imdb-api12.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Get Title Details by ID",
+            "url": "https://imdb-api12.p.rapidapi.com/title/tt0087884",
+            "description": "Retrieve detailed information about a specific movie or TV series.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "imdb_id",
+                    "type": "string",
+                    "description": "",
+                    "default": "tt0087884"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://imdb-api12.p.rapidapi.com/title/tt0087884\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imdb-api12.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://imdb-api12.p.rapidapi.com/title/{imdb_id}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imdb-api12.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Search Titles by Title",
+            "url": "https://imdb-api12.p.rapidapi.com/search",
+            "description": "Search for movie titles based on the provided query.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "game of th"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://imdb-api12.p.rapidapi.com/search\"\nquerystring = {\"query\": \"game of th\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imdb-api12.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://imdb-api12.p.rapidapi.com/search\"\nquerystring = {\"query\": \"game of th\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"imdb-api12.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

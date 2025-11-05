@@ -1,0 +1,103 @@
+{
+    "product_id": "api_11863011-5a81-4655-93bc-20d5a8a883ab",
+    "tool_description": "Tiled raster and vector maps with multiple visual styles. For web, mobile apps, GIS systems & more.",
+    "home_url": "https://rapidapi.com/geoapify-gmbh-geoapify/api/raster-and-vector-maps/",
+    "name": "Raster and vector maps",
+    "title": "Raster and vector maps",
+    "pricing": "FREEMIUM",
+    "tool_name": "Raster and vector maps",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 66,
+        "avgSuccessRate": 100,
+        "popularityScore": 8.3,
+        "__typename": "Score"
+    },
+    "host": "raster-and-vector-maps.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Map styles",
+            "url": "https://raster-and-vector-maps.p.rapidapi.com/v1/styles/osm-carto/style.json",
+            "description": "Style definitions and corresponding resources, including layer definitions, fonts, sprites. It is recommended to use \"style.json\" resource to automatically confiugre OpenLayers, MapboxGL, Leaflet or other map renderers. ----------------------------[IMPORTANT]---------------------------- To authorize renderer requests to RapidAPI, you either need to inject \"x-rapidapi-key\" header into each request issued by renderer OR (easier) add it as the \"rapidapi-key\" query string parameter.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "resource",
+                    "type": "string",
+                    "description": "Style resources, including style.json, tile.json, fonts, sprites and other meta-resources referenced by a map style.",
+                    "default": "style.json"
+                },
+                {
+                    "name": "style",
+                    "type": "string",
+                    "description": "Supported map style: osm-carto, osm-bright, klokantech-basic, positron, or dark-matter",
+                    "default": "osm-carto"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://raster-and-vector-maps.p.rapidapi.com/v1/styles/osm-carto/style.json\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"raster-and-vector-maps.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://raster-and-vector-maps.p.rapidapi.com/v1/styles/{style}/{resource}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"raster-and-vector-maps.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": ""
+        },
+        {
+            "name": "Tiles",
+            "url": "https://raster-and-vector-maps.p.rapidapi.com/v1/tile/osm-carto/0/0/0.png",
+            "description": "Individual map tiles in raster or vector (MVT compatible) format.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "z",
+                    "type": "string",
+                    "description": "Zoom",
+                    "default": "0"
+                },
+                {
+                    "name": "x",
+                    "type": "string",
+                    "description": "Tile X coordinate",
+                    "default": "0"
+                },
+                {
+                    "name": "y_and_format",
+                    "type": "string",
+                    "description": "Tile Y coordinate and format",
+                    "default": "0.png"
+                },
+                {
+                    "name": "style",
+                    "type": "string",
+                    "description": "Supported map style: osm-carto and vector",
+                    "default": "osm-carto"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://raster-and-vector-maps.p.rapidapi.com/v1/tile/osm-carto/0/0/0.png\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"raster-and-vector-maps.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://raster-and-vector-maps.p.rapidapi.com/v1/tile/{style}/{z}/{x}/{y_and_format}\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"raster-and-vector-maps.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

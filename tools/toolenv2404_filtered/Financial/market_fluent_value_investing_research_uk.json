@@ -1,0 +1,247 @@
+{
+    "product_id": "api_52edc13a-134f-4129-9e77-98b13b2fd01d",
+    "tool_description": "Integrating Market Fluent's database into your own application is now easy! Its is ideal for investors looking for companies that meet specific criteria of value investing, based on the time-tested methods of Graham and Dodd. We provide high quality database, updated every 24 hours, contains over 4000 companies across Europe and North American. With more added all the time.",
+    "home_url": "https://rapidapi.com/MarketFluent/api/market-fluent-value-investing-research-uk/",
+    "name": "Market Fluent Value Investing Research UK",
+    "title": "Market Fluent Value Investing Research UK",
+    "pricing": "FREEMIUM",
+    "tool_name": "Market Fluent Value Investing Research UK",
+    "score": null,
+    "host": "market-fluent-value-investing-research-uk.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "All companies listed",
+            "url": "https://market-fluent-value-investing-research-uk.p.rapidapi.com/list/all",
+            "description": "Currently, we have over 4000 companies that have been reviewed and assessed using the principles set out by Ben Graham in The Intelligent Investor.\n\nThe return will include Ticker (GENERAL_CODE) and Company name (GENERAL_NAME). The ticker is used to find a company full report. Also, you can is if the company you are interested in, is part of the `database.`",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://market-fluent-value-investing-research-uk.p.rapidapi.com/list/all\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"market-fluent-value-investing-research-uk.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://market-fluent-value-investing-research-uk.p.rapidapi.com/list/all\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"market-fluent-value-investing-research-uk.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        },
+        {
+            "name": "List of UK Companies",
+            "url": "https://market-fluent-value-investing-research-uk.p.rapidapi.com/list/uk",
+            "description": "This list contains all the UK companies we currently hold in our database. We update our database every month.\n\nThe return will include Ticker (GENERAL_CODE) and Company name (GENERAL_NAME). The ticker is used to find a company full report. Also, you can is if the company you are interested in, is part of the database.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://market-fluent-value-investing-research-uk.p.rapidapi.com/list/uk\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"market-fluent-value-investing-research-uk.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://market-fluent-value-investing-research-uk.p.rapidapi.com/list/uk\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"market-fluent-value-investing-research-uk.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "General_Code": {
+                            "type": "string"
+                        },
+                        "General_Name": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Report on a UK Company",
+            "url": "https://market-fluent-value-investing-research-uk.p.rapidapi.com/markets/uk/{ticker}",
+            "description": "### How to use API overview\n\nUsing the ticker (General Code) for a company, this endpoint will bring back all the information we hold on that business.\n\nThis includes (but not limited to):\n\n- Sector and Industry\n\n- Description of their business\n\n- Website details\n\n- The number of years worth of data we have used in our model. This will be outlined as Growth Percentage (GP) Year.\n\tGP Year 1 with be for the last year reported i.e. 1 year.\n\tGP Year 2 will normally be for the last 3 years.\n\tGP Year 3 will be for the last 5 years.\n\tGP year 4 will be for the last 7 years.\n\tGP year 5 will be for the last 9 years.\n\tIf any of these timeframes are different, the output from the API will be given a number, that is the number of years that we hold data on that company. Example GP Year 5 = 8, which means we hold data for the last 8 years and that is what the model has used.\n\n- An indication on growth percentage for the following areas of the business:\n\n  - Equity (%)\n  - Free Cash Flow (%)\n  - Revenue (%)\n  - Earnings per Share (EPS) (%)\n  - Return on Invested Capital (ROIC) (%)\n\n  Included is our Price to Earnings (PE) ratio and an average of the PE Ratios published online, using the most conservative figure to make our predictions and valuations.\n\n- Our algorithm takes all of the factors mentioned above and creates the following predictions:\n\n  - Future EPS in 10 years time (\u00a3)\n  - Future Share Price in 10 years time (\u00a3)\n  - A fair price for the share today (\u00a3)\n  - A margin of safety price, allowing for mistakes in the valuation (\u00a3)\n\n- The number of years debt when compared to the last know free cash flow is included for comparison of how much debt a company is holding.\n\n**To ensure the endpoint works correctly, you must put the companies ticker in capital letters**",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "ticker",
+                    "type": "string",
+                    "description": "",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://market-fluent-value-investing-research-uk.p.rapidapi.com/markets/uk/{ticker}\"\nquerystring = {\"ticker\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"market-fluent-value-investing-research-uk.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://market-fluent-value-investing-research-uk.p.rapidapi.com/markets/uk/{ticker}\"\nquerystring = {\"ticker\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"market-fluent-value-investing-research-uk.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "General_Code": {
+                        "type": "string"
+                    },
+                    "General_Type": {
+                        "type": "string"
+                    },
+                    "General_Name": {
+                        "type": "string"
+                    },
+                    "General_FiscalYearEnd": {
+                        "type": "string"
+                    },
+                    "General_InternationalDomestic": {
+                        "type": "string"
+                    },
+                    "General_Sector": {
+                        "type": "string"
+                    },
+                    "General_Industry": {
+                        "type": "string"
+                    },
+                    "General_GicSector": {
+                        "type": "string"
+                    },
+                    "General_GicGroup": {
+                        "type": "string"
+                    },
+                    "General_GicIndustry": {
+                        "type": "string"
+                    },
+                    "General_GicSubIndustry": {
+                        "type": "string"
+                    },
+                    "General_Description": {
+                        "type": "string"
+                    },
+                    "General_WebURL": {
+                        "type": "string"
+                    },
+                    "General_LogoURL": {
+                        "type": "string"
+                    },
+                    "General_UpdatedAt": {
+                        "type": "string"
+                    },
+                    "Ticker": {
+                        "type": "string"
+                    },
+                    "Close Price": {
+                        "type": "string"
+                    },
+                    "GP Year 1": {
+                        "type": "string"
+                    },
+                    "GP Year 2": {
+                        "type": "string"
+                    },
+                    "GP Year 3": {
+                        "type": "string"
+                    },
+                    "GP Year 4": {
+                        "type": "string"
+                    },
+                    "GP Year 5": {
+                        "type": "string"
+                    },
+                    "Equity 1": {
+                        "type": "string"
+                    },
+                    "Equity 2": {
+                        "type": "string"
+                    },
+                    "Equity 3": {
+                        "type": "string"
+                    },
+                    "Equity 4": {
+                        "type": "string"
+                    },
+                    "Equity 5": {
+                        "type": "string"
+                    },
+                    "Free Cash Flow 1": {
+                        "type": "string"
+                    },
+                    "Free Cash Flow 2": {
+                        "type": "string"
+                    },
+                    "Free Cash Flow 3": {
+                        "type": "string"
+                    },
+                    "Free Cash Flow 4": {
+                        "type": "string"
+                    },
+                    "Free Cash Flow 5": {
+                        "type": "string"
+                    },
+                    "Revenue 1": {
+                        "type": "string"
+                    },
+                    "Revenue 2": {
+                        "type": "string"
+                    },
+                    "Revenue 3": {
+                        "type": "string"
+                    },
+                    "Revenue 4": {
+                        "type": "string"
+                    },
+                    "Revenue 5": {
+                        "type": "string"
+                    },
+                    "EPS 1": {
+                        "type": "string"
+                    },
+                    "EPS 2": {
+                        "type": "string"
+                    },
+                    "EPS 3": {
+                        "type": "string"
+                    },
+                    "EPS 4": {
+                        "type": "string"
+                    },
+                    "EPS 5": {
+                        "type": "string"
+                    },
+                    "ROIC 1": {
+                        "type": "string"
+                    },
+                    "ROIC 2": {
+                        "type": "string"
+                    },
+                    "ROIC 3": {
+                        "type": "string"
+                    },
+                    "ROIC 4": {
+                        "type": "string"
+                    },
+                    "ROIC 5": {
+                        "type": "string"
+                    },
+                    "Price:Earnings": {
+                        "type": "string"
+                    },
+                    "P/E ratio": {
+                        "type": "string"
+                    },
+                    "Future EPS": {
+                        "type": "string"
+                    },
+                    "Future Share Price": {
+                        "type": "string"
+                    },
+                    "Fair Price": {
+                        "type": "string"
+                    },
+                    "MoS": {
+                        "type": "string"
+                    },
+                    "MoSMet": {
+                        "type": "string"
+                    },
+                    "Graham Multiplier": {
+                        "type": "string"
+                    },
+                    "Debt Years": {
+                        "type": "string"
+                    },
+                    "Period": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    ]
+}

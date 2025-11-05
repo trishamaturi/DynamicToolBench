@@ -1,0 +1,62 @@
+{
+    "product_id": "api_3af24881-6c65-45d3-b1b2-e38396e54fc2",
+    "tool_description": "Comprehensive Weather API with Geocoding and Maps",
+    "home_url": "https://rapidapi.com/ed2clark/api/treehouse-weather-api/",
+    "name": "TreeHouse Weather API",
+    "title": "TreeHouse Weather API",
+    "pricing": "FREEMIUM",
+    "tool_name": "TreeHouse Weather API",
+    "score": null,
+    "host": "treehouse-weather-api.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "getWeather",
+            "url": "https://treehouse-weather-api.p.rapidapi.com/",
+            "description": "Retrieve weather data for given coordinates",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "longitude",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "-73.961"
+                },
+                {
+                    "name": "latitude",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "40.714"
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "imageType",
+                    "type": "STRING",
+                    "description": "The TreeHouse Weather API creates maps in several formats, listed below:\n* `roadmap`\u00a0specifies a standard roadmap image, as is normally shown on the Google Maps website.\n* `satellite`\u00a0specifies a satellite image.\n* `terrain`\u00a0specifies a physical relief map image, showing terrain and vegetation.\n* `hybrid`\u00a0specifies a hybrid of the satellite and roadmap image, showing a transparent layer of major streets and place names on the satellite image.  If no\u00a0maptype\u00a0value is specified, the TreeHouse Weather API serves\u00a0`hybrid`\u00a0tiles by default.",
+                    "default": "hybrid"
+                },
+                {
+                    "name": "imageSize",
+                    "type": "STRING",
+                    "description": "Defines the rectangular dimensions of the map image. This parameter takes a string of {*horizontal_value}x{vertical_value*}. For example, `500x400` defines a map 500 pixels wide by 400 pixels high. Maps smaller than 180 pixels in width will display a reduced-size Google logo.  The image dimension will default to `400x400` when the parameter is not provided.",
+                    "default": "400x400"
+                },
+                {
+                    "name": "convertToMPH",
+                    "type": "STRING",
+                    "description": "Converts speed to Mile per Hour (MPH) - defaults to Kilometers per Hour when not provided.",
+                    "default": "false"
+                },
+                {
+                    "name": "convertToFahrenheit",
+                    "type": "STRING",
+                    "description": "Converts temperature values to Fahrenheit\u2014defaults to Celsius when not provided.",
+                    "default": "false"
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://treehouse-weather-api.p.rapidapi.com/\"\nquerystring = {\"imageType\": \"hybrid\", \"imageSize\": \"400x400\", \"convertToMPH\": \"false\", \"convertToFahrenheit\": \"false\", \"longitude\": \"-73.961\", \"latitude\": \"40.714\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"treehouse-weather-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://treehouse-weather-api.p.rapidapi.com/\"\nquerystring = {\"imageType\": \"hybrid\", \"imageSize\": \"400x400\", \"convertToMPH\": \"false\", \"convertToFahrenheit\": \"false\", \"longitude\": \"-73.961\", \"latitude\": \"40.714\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"treehouse-weather-api.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": ""
+        }
+    ]
+}

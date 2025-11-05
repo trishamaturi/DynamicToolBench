@@ -1,0 +1,39 @@
+{
+    "product_id": "api_47d2ca19-2bd3-4048-b73c-511bd37e8fdc",
+    "tool_description": "Set of APIs for generating PDF and reading from PDF, reading from Barcodes and spreadsheets using AI and machine learning",
+    "home_url": "https://rapidapi.com/pdf-co-pdf-co-default/api/pdf-co2/",
+    "name": "PDF.co",
+    "title": "PDF.co",
+    "pricing": "FREEMIUM",
+    "tool_name": "PDF.co",
+    "score": null,
+    "host": "pdf-co2.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/file/upload/get-presigned-url(GETgeneratesecureURLforupload)",
+            "url": "https://pdf-co2.p.rapidapi.com/v1/file/upload/get-presigned-url",
+            "description": "**Description:** This method generates links to upload your local file to. Use this `presignedUrl` from the response to upload your file. Once you upload your file to this `presignedUrl` using `PUT`, you can use `url` link to access the uploaded file.\r\n\r\nWith this method you can upload files up to 2GB in size. Please note that to process these files you should use `async=true` mode with data extraction and tools endpoints along with `/job/check` to check status of background jobs you create.\r\n\r\n\r\n**Steps to Upload File:**\r\n\r\n\r\n- First, call `/file/upload/get-presigned-url`. It will generate **link for uploading** (`presignedUrl`) and **final link** (`url`)\r\n- Now send your file to the `presignedUrl` link using `PUT` method within next 30 minutes. \r\n- Oncce finished, use `url` to access the file you have just uploaded.\r\n\r\n\r\n**Important**: all uploaded files are considered to be temporary files and are automatically permanently removed after 1 hour.\r\n\r\n**Status Errors**\r\n\r\n| Code\t| Description|\r\n|-- |--\r\n|`200`| The request has succeeded|\r\n|`400`| bad input parameters|\r\n|`401`|\tunauthorized|\r\n|`403`|\tnot enough credits|\r\n|`405`|\tTimeout error. To process large documents or files please use asynchronous mode ( set `async` parameter to true) and then check the status using `/job/check` endpoint. If file contains many pages then specify a page range using pages parameter. The number of pages of the document can be obtained using the endpoint `/pdf/info`|\r\n\r\n**Example**\r\n\r\nSample Request:\r\n\r\n! Don't forget to set `x-api-key` url param or http header param (preferred) to API key, get yours [here](https://app.pdf.co/signup)\r\n\r\n```\r\nGET\r\nhttps://api.pdf.co/v1/file/upload/get-presigned-url?name=test.pdf&encrypt=true\r\n\r\n200\r\n{\r\n    \"presignedUrl\": \"https://pdf-temp-files.s3-us-west-2.amazonaws.com/28e191b14f3a4f43b16fcef1d53d191e/test.pdf?X-Amz-Expires=900&....\",\r\n    \"url\": \"https://pdf-temp-files.s3-us-west-2.amazonaws.com/28e191b14f3a4f43b16fcef1d53d191e/test.pdf?X-Amz-Expires=....\",\r\n    \"error\": false,\r\n    \"status\": 200,\r\n    \"name\": \"test.pdf\",\r\n    \"remainingCredits\": 93574\r\n}\r\n\r\nPUT\r\nhttps://pdf-temp-files.s3-us-west-2.amazonaws.com/28e191b14f3a4f43b16fcef1d53d191e/test.pdf?X-Amz-Expires=900&....\r\n--form 'file=@/path/to/file'\r\n\r\n200\r\n{\r\n}\r\n\r\nNow you can access your file using link from \"url\" param to from the first step.\r\n```",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "encrypt",
+                    "type": "STRING",
+                    "description": "Enable encryption for output file. Must be one of: `true`, `false`.",
+                    "default": "true"
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "The name the file will be stored with. Must be a String.",
+                    "default": "test.pdf"
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://pdf-co2.p.rapidapi.com/v1/file/upload/get-presigned-url\"\nquerystring = {\"encrypt\": \"true\", \"name\": \"test.pdf\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"pdf-co2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://pdf-co2.p.rapidapi.com/v1/file/upload/get-presigned-url\"\nquerystring = {\"encrypt\": \"true\", \"name\": \"test.pdf\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"pdf-co2.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {}
+        }
+    ]
+}

@@ -1,0 +1,227 @@
+{
+    "product_id": "53aa3b1fe4b00287471a0c6c",
+    "tool_description": "App.net is a subscription-based, ad-free social network and API, a home for meaningful interactions and a platform developers can trust. We rely on our developers and our developers can rely on us for a robust, responsive and transparent platform.",
+    "home_url": "https://rapidapi.com/appdotnet/api/app-net/",
+    "name": "App.net",
+    "title": "App.net",
+    "pricing": "FREE",
+    "tool_name": "App.net",
+    "score": null,
+    "host": "appdotnet-appnet.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Search for Posts",
+            "url": "https://appdotnet-appnet.p.rapidapi.com/stream/0/posts/search",
+            "description": "Returns Post objects which match a given search query. Searches ordered by id require at least one query or filter to be specified; searches ordered by score require at least one query and zero or more filters to be specified. Searches require an ordering and at least one search query to be specified, and allow for zero or more filters to be added. All parameters should be passed in the query string.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Type of index to use. The default (and currently, the only) index is complete, which searches all posts. We may add additional index types later (e.g., an index only of recent posts, for speed.)",
+                    "default": ""
+                },
+                {
+                    "name": "order",
+                    "type": "STRING",
+                    "description": "One of: id (default), score. Searches of ordering id are returned in roughly the same order as other streams, and support pagination. Searches of ordering score are returned by a relevance score. Currently, the only ordering that supports pagination is id, and we are working on improving relevance scores.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://appdotnet-appnet.p.rapidapi.com/stream/0/posts/search\"\nquerystring = {\"query\": \"\", \"order\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appdotnet-appnet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://appdotnet-appnet.p.rapidapi.com/stream/0/posts/search\"\nquerystring = {\"query\": \"\", \"order\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appdotnet-appnet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Search for Channels",
+            "url": "https://appdotnet-appnet.p.rapidapi.com/stream/0/channels/search",
+            "description": "Returns Channel objects which match a given search query. Because channels have no inherent notion of description or name, we take textual data from common channel annotations which contain such fields, e.g. net.patter-app.settings. We also allow filtering on specific channel properties, such as channel type. No matter what query data is supplied, the search results will respect channel ACLs, and results are limited to non-private channels if the requesting access token does not have the messages scope.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Searches any textual fields extracted from channel annotations. We may tweak which annotations and fields are included by this search over time.",
+                    "default": ""
+                },
+                {
+                    "name": "order",
+                    "type": "STRING",
+                    "description": "One of: popularity (default), id, or activity. Searches of ordering popularity are returned in an order that roughly matches the popularity of the channels. activity searches will order results roughly by time of last message (precise sorting of very recent messages is not guaranteed).",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://appdotnet-appnet.p.rapidapi.com/stream/0/channels/search\"\nquerystring = {\"q\": \"\", \"order\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appdotnet-appnet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://appdotnet-appnet.p.rapidapi.com/stream/0/channels/search\"\nquerystring = {\"q\": \"\", \"order\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appdotnet-appnet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Search for a Place",
+            "url": "https://appdotnet-appnet.p.rapidapi.com/stream/0/places/search",
+            "description": "Performs a search for nearest places from given latitude and longitude. Optionally takes a q string to restrict matches on name (like autocomplete for Place names).  Returns a list of Places sorted by distance or distance/string match if q is provided. These are the same Place objects as returned by the previous endpoint but will also include a distance property which gives, in meters, the distance from the search centroid to the Place.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "latitude",
+                    "type": "STRING",
+                    "description": "decimal\tLatitude of search location. Combined with longitude to create central point of search results.",
+                    "default": ""
+                },
+                {
+                    "name": "longitude",
+                    "type": "STRING",
+                    "description": "decimal\tLongitude of search location. Combined with latitude to create central point of search results.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "string\tThe name-based search query. Can be a partial string \u2014 for example, 'cre' will find any local 'creameries' and 'ice cream' locations.",
+                    "default": ""
+                },
+                {
+                    "name": "radius",
+                    "type": "STRING",
+                    "description": "decimal\tApproximate radius (in meters) of bounding circle on results. For example, supplying radius=100 will limit all locations to be within 100 meters. Defaults to 100, ranges between 0.001 and 50,000.",
+                    "default": ""
+                },
+                {
+                    "name": "count",
+                    "type": "STRING",
+                    "description": "integer\tNumber of results to return. Defaults to 20, ranges between 1 and 100.",
+                    "default": ""
+                },
+                {
+                    "name": "remove_closed",
+                    "type": "STRING",
+                    "description": "int (0 or 1)\tSet to 0 if you would like the result to include entities which are closed (is_closed=1) or 1 if you would only prefer to see results for entities that are open. Defaults to 1.",
+                    "default": ""
+                },
+                {
+                    "name": "altitude",
+                    "type": "STRING",
+                    "description": "decimal\tAltitude of search location (in meters). Not presently used to generate search results but may be later.",
+                    "default": ""
+                },
+                {
+                    "name": "horizontal_accuracy",
+                    "type": "STRING",
+                    "description": "decimal\tAccuracy of latitude/longitude parameters (in meters). Not presently used to generate search results but may be later.",
+                    "default": ""
+                },
+                {
+                    "name": "vertical_accuracy",
+                    "type": "STRING",
+                    "description": "decimal\tAccuracy of altitude parameter (in meters). Not presently used to generate search results but may be later.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://appdotnet-appnet.p.rapidapi.com/stream/0/places/search\"\nquerystring = {\"latitude\": \"\", \"longitude\": \"\", \"q\": \"\", \"radius\": \"\", \"count\": \"\", \"remove_closed\": \"\", \"altitude\": \"\", \"horizontal_accuracy\": \"\", \"vertical_accuracy\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appdotnet-appnet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://appdotnet-appnet.p.rapidapi.com/stream/0/places/search\"\nquerystring = {\"latitude\": \"\", \"longitude\": \"\", \"q\": \"\", \"radius\": \"\", \"count\": \"\", \"remove_closed\": \"\", \"altitude\": \"\", \"horizontal_accuracy\": \"\", \"vertical_accuracy\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appdotnet-appnet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Retrieve all Explore Streams",
+            "url": "https://appdotnet-appnet.p.rapidapi.com/stream/0/posts/stream/explore",
+            "description": "Retrieve a list of all Explore Streams. The list of Explore Streams are dynamic and will sometimes change. Please cache them for 24 hours in your app. Also, please note that this endpoint is not paginated.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://appdotnet-appnet.p.rapidapi.com/stream/0/posts/stream/explore\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appdotnet-appnet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://appdotnet-appnet.p.rapidapi.com/stream/0/posts/stream/explore\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appdotnet-appnet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Retrieve the Messages in a Channel",
+            "url": "https://appdotnet-appnet.p.rapidapi.com/stream/0/channels/{channel_id}/messages",
+            "description": "Retrieve a stream of the Messages in a channel.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "channel_id",
+                    "type": "STRING",
+                    "description": "The id of the Channel to retrieve Messages from.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://appdotnet-appnet.p.rapidapi.com/stream/0/channels/{channel_id}/messages\"\nquerystring = {\"channel_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appdotnet-appnet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://appdotnet-appnet.p.rapidapi.com/stream/0/channels/{channel_id}/messages\"\nquerystring = {\"channel_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appdotnet-appnet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "List User interactions with me",
+            "url": "https://appdotnet-appnet.p.rapidapi.com/stream/0/users/me/interactions",
+            "description": "List all the Interactions other users have had with me.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [],
+            "code": "import requests\n\nurl = \"https://appdotnet-appnet.p.rapidapi.com/stream/0/users/me/interactions\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appdotnet-appnet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://appdotnet-appnet.p.rapidapi.com/stream/0/users/me/interactions\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appdotnet-appnet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Get current token\u2019s Streams",
+            "url": "https://appdotnet-appnet.p.rapidapi.com/stream/0/streams",
+            "description": "Return the Streams for the current token.",
+            "method": "GET",
+            "required_parameters": [],
+            "optional_parameters": [
+                {
+                    "name": "key",
+                    "type": "STRING",
+                    "description": "(Optional) Only retrieve the stream that matches the given key.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://appdotnet-appnet.p.rapidapi.com/stream/0/streams\"\nquerystring = {\"key\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appdotnet-appnet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://appdotnet-appnet.p.rapidapi.com/stream/0/streams\"\nquerystring = {\"key\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appdotnet-appnet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        },
+        {
+            "name": "Search for Users",
+            "url": "https://appdotnet-appnet.p.rapidapi.com/stream/0/users/search",
+            "description": "Search the App.net userbase.",
+            "method": "GET",
+            "required_parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "The search query. Supports @username or #tag searches as well as normal search terms. Searches username, display name, bio information. Does not search posts.",
+                    "default": ""
+                }
+            ],
+            "optional_parameters": [
+                {
+                    "name": "count",
+                    "type": "STRING",
+                    "description": "The number of Users to return, up to a maximum of 200. Defaults to 20 if not specified.",
+                    "default": ""
+                }
+            ],
+            "code": "import requests\n\nurl = \"https://appdotnet-appnet.p.rapidapi.com/stream/0/users/search\"\nquerystring = {\"q\": \"\", \"count\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appdotnet-appnet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://appdotnet-appnet.p.rapidapi.com/stream/0/users/search\"\nquerystring = {\"q\": \"\", \"count\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"appdotnet-appnet.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": ""
+        }
+    ]
+}
