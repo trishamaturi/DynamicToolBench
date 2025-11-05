@@ -1,4 +1,4 @@
-How does StableToolBench work?
+# How does StableToolBench work?
 
 To increase capabilities of LLMs, tool calls were integrated as a way to call external APIs and extract relevant 
 information. To test these capabilities, ToolBench was created which consisted of thousands of live public APIs 
