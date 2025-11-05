@@ -16,5 +16,7 @@ system with two main steps:
 2. If the API request is not in the cache, they call GPT-4 to simulate a plausible JSON response based on the API 
    documentation. This response is then cached so that future requests will always result in the same response.
 
+![StableToolBench Cached Tool System](../resources/stabletoolbench.png "StableToolBench Cached Tool System")
+
 Thus, this benchmark achieves reproducibility, stability, and scalability at the cost of the truthfulness and 
 realism. However, since the point of the benchmark is to test model functionality, it serves its purpose.
