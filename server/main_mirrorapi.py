@@ -1,7 +1,6 @@
 import os, sys
 from fastapi import FastAPI
 from pydantic import BaseModel
-from fastapi import FastAPI
 from fastapi.requests import Request
 import uvicorn
 import time
@@ -10,25 +9,20 @@ import yaml
 import requests
 from typing import Union
 from utils import standardize, change_name
-
-from fastapi import FastAPI
 from slowapi.errors import RateLimitExceeded
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
-import openai
 import re
+import google.generativeai as genai
 
 config_file = 'config_mirrorapi.yml'
 CONFIG = yaml.load(open(config_file, 'r'), Loader=yaml.FullLoader)
 print(CONFIG)
 
-from openai import OpenAI, AzureOpenAI
+genai.configure(api_key=CONFIG['api_key'])
+model_name = CONFIG.get('model', 'gemini-2.5-flash')
+temperature = CONFIG['temperature']
 
-if 'api_base' in CONFIG:
-    OPENAI_API_BASE = CONFIG['api_base']
-else:
-    OPENAI_API_BASE = "https://api.openai.com/v1"
-OPENAI_API_KEY = CONFIG['api_key']
 
 limiter = Limiter(key_func=get_remote_address)
 app = FastAPI()
@@ -236,7 +230,7 @@ def fake_response_function_with_trained_simulator(tool_input, data, api_doc):
     api_doc: dict, api document
     '''
     from system_prompts import SFT_SYSTEM
-
+    global model_name
     USER_PROMPT = """\
 API doc:
 {api_doc}
@@ -260,25 +254,21 @@ Request:
         request.pop('toolbench_key')
     instruction = USER_PROMPT.format(api_doc=api_doc, request=request)
     messages = [
-        {"role": "system", "content": SFT_SYSTEM},
-        {"role": "user", "content": instruction},
+        {"role": "user", "parts": SFT_SYSTEM},
+        {"role": "user", "parts": instruction},
     ]
 
-    client = openai.OpenAI(
-        base_url=OPENAI_API_BASE,
-        api_key=OPENAI_API_KEY,
+    model = genai.GenerativeModel(model_name)
+    response = model.generate_content(
+        messages,
+        generation_config=genai.types.GenerationConfig(
+            temperature=temperature,
+            max_output_tokens=2048
+        )
     )
-    generate_text = client.chat.completions.create(
-        model=CONFIG.get('model', 'simulation-250123-qwen25-mixed'),
-        messages=messages,
-        temperature=CONFIG['temperature'],
-        max_tokens=2048,
-        seed=42
-    )
-    generate_text = generate_text.choices[0].message.content
 
-    model = CONFIG.get('model', 'simulation-250123-qwen25-mixed')
-    model = model.split("/")[-1]
+    generate_text = response.text
+    model_name = model_name.split("/")[-1]
 
     _, error, response = extract_attributes_json(generate_text)
     if error or response:

@@ -22,14 +22,13 @@ CONFIG = yaml.load(open(config_file, 'r'), Loader=yaml.FullLoader)
 print(CONFIG)
 CACHE_FOLDER = CONFIG['cache_folder']
 LOG_FILE = CONFIG['log_file']
-# OpenAI API
-from openai import OpenAI
 
-if 'api_base' in CONFIG:
-    OPENAI_API_BASE = CONFIG['api_base']
-else:
-    OPENAI_API_BASE = "https://api.openai.com/v1"
-OPENAI_API_KEY = CONFIG['api_key']
+import google.generativeai as genai
+
+genai.configure(api_key=CONFIG['api_key'])
+model_name = CONFIG.get('model', 'gemini-2.5-flash')
+temperature = CONFIG.get('temperature', 0.1)
+
 
 limiter = Limiter(key_func=get_remote_address)
 app = FastAPI()
@@ -293,6 +292,7 @@ def fake_response_function_chat(api_example, tool_input, api_doc):
     tool_input: dict, input of the tool
     api_doc: dict, api document
     '''
+    global model_name
     system_prompt = '''
 Imagine you are an API Server operating within a specialized tool, which contains a collection of distinct APIs. Your role is to deeply understand the function of each API based on their descriptions in the API documentation. As you receive specific inputs for individual API calls within this tool, analyze these inputs to determine their intended purpose. Your task is to craft a JSON formatted response that aligns with the expected output of the API, guided by the provided examples.\n
 Your responses must adhere to a specific JSON structure, which is as follows:\n
@@ -345,28 +345,26 @@ Response:
 
 Your will also be given successful examples of API calls and their expected outputs, based on which you will generate the response for the given input.
     '''
-    system_prompt = {"role": "system", "content": system_prompt}
+    system_prompt = {"role": "user", "parts": system_prompt}
     # user prompt, truncated to 2048 characters if too long
     user_prompt = "API Documentation:" + str(api_doc) + "\n" + "API Examples:" + str(api_example)[
                                                                                  :2048] + "\n" + "API Input:" + str(
         tool_input) + "\n"
-    user_prompt = {"role": "user", "content": user_prompt}
+    user_prompt = {"role": "user", "parts": user_prompt}
 
-    client = OpenAI(
-        api_key=OPENAI_API_KEY,
-        base_url=OPENAI_API_BASE,
-    )
+    model = genai.GenerativeModel(model_name)
+    messages = [system_prompt, user_prompt]
+
     max_retries = 3
     flag = False
     for attempt in range(max_retries):
-        response = client.chat.completions.create(
-            model=CONFIG['model'],
-            messages=[system_prompt, user_prompt],
-            max_tokens=1024,
-            temperature=CONFIG['temperature'],
-            response_format={"type": "json_object"},
+        response = model.generate_content(
+            messages,
+            generation_config=genai.types.GenerationConfig(
+                temperature=temperature
+            )
         )
-        result = response.choices[0].message.content
+        result = response.text
         if "```json" in result:
             result = result.replace("```json", "").replace("```", "").strip()
         if is_valid_json(result):
