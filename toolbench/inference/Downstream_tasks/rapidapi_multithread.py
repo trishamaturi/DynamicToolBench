@@ -26,7 +26,7 @@ from toolbench.utils import (
 from toolbench.inference.Downstream_tasks.base_env import base_env
 from concurrent.futures import ThreadPoolExecutor
 
-config_file = 'toolbench/inference/Downstream_tasks/config.yml'
+config_file = 'config.yml'
 CONFIG = yaml.load(open(config_file, 'r'), Loader=yaml.FullLoader)
 
 # For pipeline environment preparation
