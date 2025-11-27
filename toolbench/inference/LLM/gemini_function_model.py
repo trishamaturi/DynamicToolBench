@@ -81,10 +81,22 @@ def gemini_chat_request(
     for m in messages:
         role = m.get("role", "user")
         text = m.get("content", "")
+
+        if not isinstance(text, str):
+            text = json.dumps(text, ensure_ascii=False)
+
         if role == "assistant":
+            tool_calls = m.get("tool_calls", "")
+            if tool_calls:
+                tool_name = tool_calls[0]["function"].get("name", "")
+                args_dict = json.loads(tool_calls[0]["function"].get("arguments", "{}"))
+                text = {"function_call": {"name": tool_name, "args": args_dict}}
+
             contents.append({"role": "model", "parts": [text]})
         else:
             # treat system/user/tool all as user for simplicity
+            if role == "tool":
+                text = f"Results of calling tool: {text}"
             contents.append({"role": "user", "parts": [text]})
 
     # Convert OpenAI-style tools → Gemini tools (function declarations)
@@ -105,7 +117,7 @@ def gemini_chat_request(
                 "parameters": fn.get("parameters", {}),
             }
             function_declarations.append(fn_decl)
-    print(function_declarations)
+
     gemini_tools = None
     if function_declarations:
         # In current gemini client, tools is a dict with "function_declarations"
@@ -136,13 +148,6 @@ def gemini_chat_request(
             tool_config=tool_config,
             generation_config=generation_config,
         )
-
-        # Convert response to a dict similar enough to OpenAI's for the rest of your code
-        # We will build:
-        # {
-        #   "choices": [{"message": {role, content, tool_calls}}],
-        #   "usage": {"total_tokens": ...}
-        # }
 
         candidate = response.candidates[0]
         parts = candidate.content.parts
