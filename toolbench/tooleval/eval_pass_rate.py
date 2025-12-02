@@ -20,7 +20,7 @@ def parse_args():
     parser.add_argument('--save_path', type=str, default="", required=False, help='result save path')
     parser.add_argument('--reference_model', type=str, default="", required=False, help='model predictions path')
     parser.add_argument('--test_ids', type=str, default="", required=True, help='model predictions path')
-    parser.add_argument('--evaluator', type=str, default="tooleval_gpt-3.5-turbo_default", required=False,
+    parser.add_argument('--evaluator', type=str, default="tooleval_gemini", required=False,
                         help='which evaluator to use.')
     parser.add_argument('--max_eval_threads', type=int, default=30, required=False, help='max threads nums')
     parser.add_argument('--evaluate_times', type=int, default=4, required=False,

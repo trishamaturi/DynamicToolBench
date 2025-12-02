@@ -6,8 +6,8 @@ from typing import List, Union, Dict, Any, Callable, Optional
 from copy import deepcopy
 from tenacity import retry, stop_after_attempt
 
-from .utils import register_evaluator, OpenaiPoolRequest
-from .tooleval import OpenAINormalizedEvaluator
+from .utils import register_evaluator
+from .gemini_tooleval import GeminiNormalizedEvaluator
 
 from enum import Enum
 
@@ -31,7 +31,7 @@ class AnswerPass(Enum):
 
 
 @register_evaluator
-class ReinforceToolLearningEvaluator(OpenAINormalizedEvaluator):
+class ReinforceToolLearningEvaluator(GeminiNormalizedEvaluator):
     def check_has_hallucination(self, available_tools: List[Dict], answer: Dict[Any, Any]) -> bool:
         available_names = set([tool['name'] for tool in available_tools])
 
@@ -198,7 +198,7 @@ class ReinforceToolLearningEvaluator(OpenAINormalizedEvaluator):
         else:
             raise ValueError(f'Index {index} not found!')
 
-    def normalized_openai_completions(self, task_description: Dict, answers: List[Dict[Any, Any]], task_status: None,
+    def normalized_gemini_completions(self, task_description: Dict, answers: List[Dict[Any, Any]], task_status: None,
                                       answer_statuss) -> int:
         if answer_statuss[0] is None:
             # print("comparing from scratch...")

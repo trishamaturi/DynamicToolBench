@@ -89,8 +89,9 @@ def gemini_chat_request(
             tool_calls = m.get("tool_calls", "")
             if tool_calls:
                 tool_name = tool_calls[0]["function"].get("name", "")
-                args_dict = json.loads(tool_calls[0]["function"].get("arguments", "{}"))
-                text = {"function_call": {"name": tool_name, "args": args_dict}}
+                if tool_name:
+                    args_dict = json.loads(tool_calls[0]["function"].get("arguments", "{}"))
+                    text = {"function_call": {"name": tool_name, "args": args_dict}}
 
             contents.append({"role": "model", "parts": [text]})
         else:
@@ -103,6 +104,7 @@ def gemini_chat_request(
     # OpenAI tools look like:
     # {"type":"function","function":{"name":...,"description":...,"parameters":{...}}}
     function_declarations = []
+
     if tools:
         # Tools are OpenAI formatted so need to be cleaned for Gemini
         tools = clean_schema(tools)

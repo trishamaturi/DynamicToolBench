@@ -223,7 +223,7 @@ You have access of the following tools:\n'''
 
         pure_api_name = change_name(standardize(api_json["api_name"]))
         templete["name"] = pure_api_name + f"_for_{standard_tool_name}"
-        templete["name"] = templete["name"][-64:]
+        templete["name"] = templete["name"][:64]
 
         templete["description"] = f"This is the subfunction for tool \"{standard_tool_name}\", you can use this tool."
 
@@ -355,7 +355,7 @@ You have access of the following tools:\n'''
             for k, function_dict in enumerate(self.functions):
                 function = function_dict['function']
                 # import pdb; pdb.set_trace()
-                if function["name"].endswith(action_name):
+                if function["name"].startswith(action_name):
                     pure_api_name = self.api_name_reflect[function["name"]]
                     payload = {
                         "category": self.cate_names[k],
