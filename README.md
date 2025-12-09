@@ -5,7 +5,7 @@
 git clone <repository-url>
 ```
 
-2. Download toolset from [Huggingface](https://huggingface.co/datasets/stabletoolbench/ToolEnv2404/tree/main) 
+2. Download toolset from [Huggingface]([https://huggingface.co/datasets/stabletoolbench/ToolEnv2404/tree/main](https://huggingface.co/datasets/stabletoolbench/Cache/blob/main/server_cache.zip))
 3. Move it under a folder called tools/
 
 4. Create a `config.yml` file (copy from `example_config.yml`):
