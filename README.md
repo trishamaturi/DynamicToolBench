@@ -39,3 +39,11 @@ python server/main.py
 ```
 python toolbench/inference/qa_pipeline_multithread.py --tool_root_dir=tools/toolenv2404_filtered --backbone_model=gemini_function --max_observation_length=1024 --method=CoT@1 --input_query_file=solvable_queries/test_instruction/G1_category.json --output_answer_file=data/answer/virtual_gemini_cot --num_thread=1
 ```
+10. Convert answer results
+```
+python toolbench/tooleval/convert_to_answer_format.py --answer_dir="data/answer/virtual_gemini_cot/G1_category" --method=CoT@1 --output="data/model_predictions_converted/virtual_gemini_cot/G1_category.json"
+```
+11. Evaluate answers
+```
+python toolbench/tooleval/eval_pass_rate.py --converted_answer_path="data/model_predictions_converted" --save_path="data/pass_rate_results/virtual_gemini_cot" --reference_model=virtual_gemini_cot --test_ids="solvable_queries/test_query_ids" --max_eval_threads=35 --evaluate_times=3 --test_set=G1_category
+```
