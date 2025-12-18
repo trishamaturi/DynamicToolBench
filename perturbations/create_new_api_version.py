@@ -2,20 +2,29 @@ import os, json, csv, random
 from pathlib import Path
 
 # Config
-ROOT_DIR = "../tools/toolenv_v2"
-NEW_DIR = "../tools/toolenv_v3"
-CHANGE_LOG = "../tools/api_version_changes_v3.csv"
+SCRIPT_DIR = Path(__file__).parent.resolve()
+
+ROOT_DIR = SCRIPT_DIR / "../tools/toolenv2404_filtered"
+NEW_DIR = SCRIPT_DIR / "../tools/toolenv_new"
+CHANGE_LOG = SCRIPT_DIR / "../tools/api_version_changes.csv"
+RENAME_FILE = SCRIPT_DIR / "renames.json"
 
 random.seed(42)
 
 if os.path.exists(CHANGE_LOG):
     os.remove(CHANGE_LOG)
 
+with open(RENAME_FILE) as f:
+    RENAMES = json.load(f)
+
 # Helpers:
+def rename_param(name: str) -> str:
+    """Rename parameters."""
+    return RENAMES.get(name, name)
+
 def restructure_url(url: str) -> str:
     """Increment API version"""
-    url = url.replace("/v2/", "/v3/").replace("rapidapi.com", "api-service.io")
-    if random.random() < 0.3:
+    if random.random() < 0.99:
         url = url.replace("/get", "/fetch").replace("/post", "/submit")
     return url
 
@@ -33,11 +42,11 @@ def swap_required_optional(api: dict):
     """Randomly move params between required and optional"""
     req, opt = api.get("required_parameters", []), api.get("optional_parameters", [])
     swaps = []
-    if req and random.random() < 0.2:
+    if req and random.random() < 0.99:
         moved = req.pop(random.randrange(len(req)))
         opt.append(moved)
         swaps.append(f"Required to Optional: {moved['name']}")
-    if opt and random.random() < 0.2:
+    if opt and random.random() < 0.99:
         moved = opt.pop(random.randrange(len(opt)))
         req.append(moved)
         swaps.append(f"Optional to Required: {moved['name']}")
@@ -86,6 +95,7 @@ def evolve_api(api: dict) -> dict:
         "File": "",
         "API": api.get("name", ""),
         "URLChanged": "",
+        "RenamedParams": "",
         "TypeDrifted": "",
         "DefaultFlipped": "",
         "ReqOptSwaps": "",
@@ -99,8 +109,15 @@ def evolve_api(api: dict) -> dict:
     if api["url"] != old_url:
         rec["URLChanged"] = f"{old_url} to {api['url']}"
 
+    renamed_list = []
     for sec in ["required_parameters", "optional_parameters"]:
         for p in api.get(sec, []):
+            old_name = p["name"]
+            new_name = rename_param(old_name)
+            if old_name != new_name:
+                renamed_list.append(f"{old_name} to {new_name}")
+                p["name"] = new_name
+            
             type_change = limited_type_drift(p)
             if type_change:
                 typed.append(type_change)
@@ -108,8 +125,8 @@ def evolve_api(api: dict) -> dict:
             default_change = flip_default_behavior(p)
             if default_change:
                 flipped.append(default_change)
-
-    if random.random() < 0.3:
+    
+    if random.random() < 0.99:
         nested_obj = create_nested_object(api, ["address", "geo", "coord"])
         if nested_obj:
             nested.append(nested_obj)
@@ -117,10 +134,11 @@ def evolve_api(api: dict) -> dict:
     swap_changes = swap_required_optional(api)
     swaps.extend(swap_changes)
 
-    rec["TypeDrifted"] = "; ".join(typed) if typed else ""
-    rec["DefaultFlipped"] = "; ".join(flipped) if flipped else ""
-    rec["ReqOptSwaps"] = "; ".join(swaps) if swaps else ""
-    rec["NestedObjects"] = "; ".join(nested) if nested else ""
+    rec["RenamedParams"] = "; ".join(renamed_list) if renamed_list else "x"
+    rec["TypeDrifted"] = "; ".join(typed) if typed else "x"
+    rec["DefaultFlipped"] = "; ".join(flipped) if flipped else "x"
+    rec["ReqOptSwaps"] = "; ".join(swaps) if swaps else "x"
+    rec["NestedObjects"] = "; ".join(nested) if nested else "x"
 
     return rec
 
@@ -158,6 +176,6 @@ for dirpath, _, files in os.walk(ROOT_DIR):
                 writer.writeheader()
             writer.writerows(changes)
 
-print("\nV3 Versioning complete")
+print("\n New Version complete")
 print(f"New versioned APIs saved under: {NEW_DIR}")
 print(f"Change log saved to: {CHANGE_LOG}\n")
