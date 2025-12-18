@@ -9,10 +9,22 @@
 Existing tool-use benchmarks assume static, perfectly aligned API schemas, while real-world APIs evolve through versioning and refactoring. This mismatch causes tool-augmented LLMs to generate requests based on outdated interface assumptions, leading to failures that current evaluations do not capture. We address the problem of evaluating LLM robustness under realistic API schema drift, independently of natural language variation, in a reproducible setting.
 
 ---
-## 2. Model Description
-Summarize the model architecture(s) used (e.g., ResNet-18, Transformer). Include:
-- Framework (e.g., PyTorch, TensorFlow)
-- Any custom layers or changes to standard models
+## 2. Summary of Code:
+
+`perturbations/`: contains scripts for generating controlled query-level and api-versioning perturbations used to evaluate robustness.
+
+`server/`: implements the server-side infrastructure for executing tool calls, including cached response lookup and LLM-based simulation of API responses when cache misses occur.
+
+`solvable_queries/`: stores filtered query subsets that are solvable under baseline conditions and used for consistent evaluation across perturbation settings.
+
+`toolbench/inference/`: contains the inference and execution logic for running tool-augmented LLMs, including tool selection, request generation, and iterative reasoning.
+
+`toolbench/qa_pipeline_multithread.py`: implements the multithreaded pipeline for running large-scale tool-use experiments efficiently across multiple queries.
+
+`tooleval/`: provides evaluation utilities for converting raw model outputs into standardized formats and computing pass-rate metrics.
+
+`tool_response_cache/`: stores precomputed and cached tool responses downloaded from HuggingFace to ensure reproducible and deterministic API execution.
+
 ---
 
 ## 3. Final Results Summary
@@ -37,7 +49,7 @@ Query Robustness Solvable Pass Rate:
 ## 4. Reproducibility Instructions
 ### A. Pre Requisites
 1. Download toolset from [Huggingface](https://huggingface.co/datasets/stabletoolbench/Cache/blob/main/server_cache.zip)
-2. Move it under a folder called tools/
+2. Move the folders (tools/ and tool_response_cache/)  to the repository
 
 3. Create a `config.yml` file (copy from `example_config.yml`):
 ```bash
@@ -77,8 +89,7 @@ python pertubations/perturb_query.py --input [input_file] --output [output_file]
 python server/main.py
 ```
 
-9. Open a new terminal window
-10. Run the pipeline on the solvable queries (G1_instruction, G1_category, G1_tool, G2_instruction, G2_category, G3_category)
+9. Open a new terminal window and run the pipeline on the solvable queries (G1_instruction, G1_category, G1_tool, G2_instruction, G2_category, G3_category)
 ```bash
 python -m toolbench.inference.qa_pipeline_multithread \
   --tool_root_dir=tools/toolenv2404_filtered \
